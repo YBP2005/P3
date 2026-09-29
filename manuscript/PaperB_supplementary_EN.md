@@ -192,7 +192,7 @@ corresponding span figures are reported under the official weights as well.
 | ShanghaiTech-A test | 182 | 433.3 | 784.7 | Very small, severe overlap | Very high density |
 | CountBench | 491 | 6.04 | 31.1 | Large, clear | VLM-native benchmark |
 | TallyQA | 498 | 8.2 | 48.0 | Large, clear | External validity |
-| FSC-147 | 600 | 80.8 | ~180 | Medium, class-agnostic | External validity |
+| FSC-147 | 600 | 80.8 | ~180 | Medium, class-agnostic | External validity; §5.13 uses a fixed-seed, GT-stratified sample of **300** of the 600 test images |
 | VisDrone (person) | 400 | 22.4 | — | Very small, low contrast | Aerial extreme |
 | AI-TOD (person) | 226 | 17.0 | — | Very small, near-indistinguishable | Aerial extreme |
 
@@ -521,10 +521,10 @@ we recompute under a person-matched convention and report both.
 ### I.2 Figure list (for §3.9)
 
 Figures **1–4** are carried in the main text at the point where their claim is stated (the
-abstention-versus-tiling mechanism, the four-panel separation of the two failure modes, the prompt-strength
-dose–response, and the threshold-cleaning curve).
+abstention-versus-tiling mechanism, the prompt-strength dose–response, the threshold-cleaning curve, and
+the four-panel separation of the two failure modes).
 
-## Appendix J. Proofs and verification evidence for Propositions 4–6
+## Appendix J. Proofs and verification evidence for Propositions 4–8
 
 Every number in this appendix is **computed from the corpus** by `p4_decomp_verify.py`, not transcribed;
 re-running that script reproduces the tables below. The corpus conventions are those of Appendix I
@@ -634,11 +634,11 @@ they can be checked against the same rules as every other span in the paper. All
 deviations over the **density-regression input-scale knob**, evaluated on the **common item intersection**
 of the compared runs, at the same task, domain and protocol.
 
-| Implementation | Pooled span | Zero-crossing cells | Note |
-|---|---|---|---|
-| Official **DM-Count** weights | **20.1–34.3 pp** | 3/4 | common item intersection; the implementation of record |
-| Official **P2PNet** weights | **10.1 pp** | — | official weights, same protocol |
-| A superseded reproduction of the same CSRNet architecture | **107.0–1432.9 pp** | 3/4 | **implementation defect**, not a paradigm difference; retained only as the reason §7.5 reports implementation effect as 2–3.4× across official implementations |
+| Implementation | Pooled span | levels | Zero-crossing cells | Note |
+|---|---|---|---|---|
+| Official **DM-Count** weights | **20.1–34.3 pp** | 5 | 3/4 | common item intersection; the implementation of record |
+| Official **P2PNet** weights | **10.1 pp** | 5 | — | official weights, same protocol |
+| A superseded reproduction of the same CSRNet architecture | **107.0–1432.9 pp** | 5 | 3/4 | **implementation defect**, not a paradigm difference; retained only as the reason the Abstract and §6.1 report the implementation effect as 2–3.4× across official implementations |
 
 The ratio quoted in Appendix M.17 (5–42×) is the ratio between the last row and the official rows; it is a
 statement about **implementation quality within one architecture family**, and the paper does not use it to
@@ -657,8 +657,9 @@ repetition (Appendix A.3).
 The remaining figures — per-cell
 detection ladders, per-level saturation curves, the contract prediction distribution, the cross-implementation
 knob curves and the scale-invariance panels — are provided in the supplementary file, as are the per-cell
-tables referenced from Appendices E–G. Table 1 is the lineage-stratified abstention table of §3.6; the
-numerosity-stimulus comparison of §2.4 is Table 2. All tables are supplied as editable text with no
+tables referenced from Appendices E–G. Table 1 is the numerosity-stimulus comparison of §2.4; the lineage-stratified abstention table of §3.6 is Table 2.
+
+Main-text figure list (the pointer of §3.9): **Fig. 1** tiling removes the abstention; **Fig. 2** the prompt-strength dose–response; **Fig. 3** the threshold-cleaning curve that separates reachable from unreachable levels; **Fig. 4** the four-panel separation of the two failure modes. All tables are supplied as editable text with no
 vertical rules and no shading.
 
 ### F.4 Saturation-slope detail
@@ -702,9 +703,9 @@ to invert the ranking of the paradigms being compared.
 ($0 < f < 1$), the number of items a report records as abstaining is $(1-f)A$ where $A$ is the true
 abstention count, so the relative error is $f$. Writing $\kappa$ for answered zeros divided by refusals,
 $\kappa = (1-f)A / (fA) = (1-f)/f$, hence $f = 1/(\kappa+1)$ — the identity is independent of $A$ and
-therefore of the corpus size. Substituting the measured $\kappa$ values of §3.6 Table 1 gives
+therefore of the corpus size. Substituting the measured $\kappa$ values of §3.6 Table 2 gives
 $1/551.6 = 0.18\%$ and $6{,}096/20{,}111 = 30.31\%$ (equivalently $1/(\kappa+1)$ with
-$\kappa = 14{,}015/6{,}096 = 2.2990$, which rounds to the 2.3 : 1 printed in Table 1; the rounded
+$\kappa = 14{,}015/6{,}096 = 2.2990$, which rounds to the 2.3 : 1 printed in Table 2; the rounded
 $\kappa = 2.3$ gives 30.30%, so the exact ratio is used here).
 
 **Proposition 8.** The bound follows from the identity of Proposition 4 by taking absolute values, and
@@ -741,7 +742,7 @@ such a decomposition explicitly as a **definitional identity** ($\delta_U = \del
 verified exactly per image, §4.7), and warn against treating it as an empirical finding: any two of the
 three quantities determine the third.
 
-### E.7 Non-monotonicity detail for §4.6
+### E.6 Non-monotonicity detail for §4.6
 
 This is
 one more instance of the paper's rule: **every entry in the response spectrum must be labelled with
@@ -781,7 +782,7 @@ abstention rate rises steeply with ground truth (27.5% → 85.7%, $r = +0.490$),
 "relative deviation vs. GT" relation between conventions (**−0.00051 → +0.00037**) — so much of the
 reported "negative saturation slope" on dense domains is manufactured by abstention (§5.11).
 
-### I.2 Runner-defect detail for §8.1
+### I.3 Runner-defect detail for §8.1
 
 **Two runner defects, located, with stated workarounds.** The first could write results into a directory
 already populated by a different model, producing **duplicate rows for the same item** or, more
@@ -989,7 +990,7 @@ of all **2496** rows of the three-arm prompt experiment (832 items x 3 arms) sho
 rows containing no digit at all and **0** rows where the JSON value could not be recovered;
 all **802** answered zeros are literally `{"count": 0}`. The defect is therefore real but has
 **no** effect on the released values, and it independently rules out a parsing artefact as the origin
-of the zeros.
+of the zeros. **The same defect, with the opposite sign of consequence, is recorded twice more**: on the exit arms the abstention token contains no integer, so it is stored as a *parse failure* rather than as a value (M.31.6, M.19.12(e)). The boundary between the two readings is exactly whether the reply contains a digit — documented, not incidental.
 
 ### M.7 What E1 establishes, and what it does not
 
@@ -1103,8 +1104,8 @@ individual units substantially — BBBC005 falls from 79.4 to **49.0** and the p
 **Provenance and caliber.** This table is a **transcription**: its values are reproduced verbatim from
 the Chinese working skeleton's §8.10 table and verified row by row against it (`f9_transcribe_check.py`; all ten rows and four numeric columns match). It is **not** independently reproducible from the released records:
 under the pooled caliber declared above, an in-sample isotonic calibration is not a distinct reading. The
-column is quoted **as transcribed**, and §7.3 names the caliber when it uses it. **No main-text claim rests
-on this column**: the load-bearing ordering evidence is the **recomputable** set of Appendix M.37, built on
+column is quoted **as transcribed**, and §7.3 names the caliber when it uses it. **The main-text uses of this
+column are illustrative only and no load-bearing claim rests on it**: the load-bearing ordering evidence is the **recomputable** set of Appendix M.37, built on
 the same ten constructs at **36 units** and computed from released records, which is the version to cite.
 **Can these ten rows be recomputed instead?** Run with the rule fixed in advance (`f9_repro.py`; within 5%
 is a match, above 20% on both families is "no implementation here"), only the two density-regression units
@@ -1320,7 +1321,7 @@ absence of directional controllability under $\tau$ for that configuration**.
 **§4.1.** The reason is measurable: the **highest** `pred/gt` reached
 anywhere on the $\tau$ ladder is **1.004 / 1.688 / 2.094** for the in-domain YOLO weights but only
 **0.179 / 0.339 / 0.631** for the same architecture with COCO-pretrained weights, and on the dense domains
-COCO detectors reach only **≈ 0.10–0.21** at any threshold. Reachability therefore has a checkable criterion (**Fig. 4**) — is `pred/gt ≥ 1` attained at the lowest threshold? —
+COCO detectors reach only **≈ 0.10–0.21** at any threshold. Reachability therefore has a checkable criterion (**Fig. 3**) — is `pred/gt ≥ 1` attained at the lowest threshold? —
 which gives **zero exceptions** across three lineages and nine cells.
 
 **§4.7.** Decomposing the cascade error on a safety-helmet task
@@ -1377,7 +1378,7 @@ protocol is matched — 71.3 / 221.3 / 9.8 against 220.5 / 287.3 / 31.2 for dete
 architecture and data, MAE differs by **5.4–13.6×**. **Detection is the best value**, within roughly
 1.6–3× of the best density regression while offering a directional knob.
 
-**7.6 Language-side contracts: channel independence, and one excluded branch.** And **`forbid0` is the strongest directional contract in dense domains** yet nearly inert on BBBC005 [42] (*per-arm values in Appendix M.8*). **The cause of that boundary is not "no answered zero left to rewrite"** (see §7.6: after tiling drives
+**7.6 Language-side contracts: channel independence, and one excluded branch.** And **`forbid0` is the strongest directional contract in dense domains** yet nearly inert on BBBC005 [48] (*per-arm values in Appendix M.8*). **The cause of that boundary is not "no answered zero left to rewrite"** (see §7.6: after tiling drives
 the 32B abstention rate from **56.6%** to **0.0%** (2×2: 6.0%, 3×3: 0.55%), the effect is essentially unchanged,
 **+185 → +195 → +167 pp**).
 
@@ -1391,7 +1392,7 @@ evaluation, however, reports **symmetric magnitude** metrics — MAE, RMSE and t
 for which counting 100 objects as 50 and as 150 are indistinguishable, although the two are not
 interchangeable in any deployment decision.
 
-**2.9 Crowded-scene occlusion counting.** The separation is
+**2.8 Crowded-scene occlusion counting.** The separation is
 measured here: when the occluded position **can** be inferred the abstention rate equals the unoccluded
 control exactly (both 0%), and when it cannot the rate rises to **60–90%**.
 
@@ -1402,7 +1403,7 @@ legibility; destroys accuracy)** also drives abstention from **53–57%** to zer
 **5.10 Aerial domain: the legibility extreme.** Whole-image abstention rates are **68.2%** and **68.1%**,
 and **none** of the three arms moves the direction positive — the opposite of the crowd domain.
 
-### M.14 Numeric detail for §§6.2, 7.9, 7.10 and 7.11
+### M.14 Numeric detail for §§6.2, 7.7 and 7.9
 
 Per-cell numbers behind the corresponding main-text claims, moved verbatim.
 
@@ -1420,7 +1421,7 @@ domain is unreachable" is therefore not an absolute property of the domain but a
 {domain × input protocol}**. Second, **the two families unseal at different granularities**: RetinaNet, a
 pre-FPN architecture, needs finer tiling than YOLO to unseal the same domain.
 
-**7.7 Three mechanism hypotheses, tested and excluded.** **Synthetic reproduction — fails**: the effect is **+124 to +248 pp** on crowd images against only
+**7.6 Three mechanism hypotheses, tested and excluded.** **Synthetic reproduction — fails**: the effect is **+124 to +248 pp** on crowd images against only
 **+20 pp** on synthetic discs even at $\sigma = 0$, a tenfold difference. **Overlap/occlusion — not
 supported**: a 2×2×4×10 factorial decoupling crowding from size gives $\Delta = +0.3$ pp in the critical
 cell. 
@@ -1431,7 +1432,7 @@ Moved verbatim; every claim sentence remains in the main text.
 
 **§1 supporting result.** Three independent pieces of evidence: official DM-Count
 weights give **20.1–34.3 pp** and official P2PNet **10.1 pp** within one task, domain, protocol and item
-intersection, whereas a retired reproduction of the same CSRNet [42] architecture gives **107–1433 pp** on the
+intersection, whereas a retired reproduction of the same CSRNet [44] architecture gives **107–1433 pp** on the
 same ladder — a **5–42× implementation difference within one architecture family** (per-implementation readings and protocol in Appendix K; this is the cost of an implementation defect, not a paradigm difference); the same detection architecture under a
 training-domain swap changes span from **55.5 pp** to **195.7 pp** (**3.5×**); and "side of action" does
 not predict span.
@@ -1453,7 +1454,7 @@ every number in this appendix are listed in §M.18.7.
 | Contracts | `base` (the corpus prompt, unchanged), `permit` (allowed to answer `abstain`), `bestA` / `bestB` / `bestC` (abstention **forbidden**, a best estimate demanded, three phrasings), `channel` (three options: a number, `cannot_judge`, `no_people`) |
 | Added arms (E2) | `enum` — **requires per-instance enumeration** ("find every person one by one and count them") but exposes only a numeric field; `locate` — requires localisation ("locate every person"), numeric field only; `enumAbstain` — the **same** enumeration demand **plus** an abstention token |
 | Domains | st_a (ShanghaiTech-A), st_b (ShanghaiTech-B), ucf (UCF-QNRF), visdrone (VisDrone), aitod (AI-TOD); countbench is **excluded** (see §M.18.6) |
-| Configurations | 14, spanning Qwen3-VL 2B/4B/8B/30B-A3B(MoE)/32B and Qwen2.5-VL 7B/72B, InternVL2.5-8B and InternVL3.5-38B, in AWQ-4bit, AWQ-8bit, GPTQ-W4 [54], FP8 and BF16 builds |
+| Configurations | 14, spanning Qwen3-VL 2B/4B/8B/30B-A3B(MoE)/32B and Qwen2.5-VL 7B/72B, InternVL2.5-8B and InternVL3.5-38B, in AWQ-4bit, AWQ-8bit, GPTQ-W4 [41], FP8 and BF16 builds |
 | Two pools | **zero pool** = items that the domain's corpus configuration answered exactly 0; **non-zero pool** = items it answered with a number, so the two pools are complementary within a domain |
 | Comparability | `base` prompt, image encoding, parsing and output columns reused verbatim from the corpus runner; the image encoder and parser are the same as E1's; sampling is **fixed-seed**, so every configuration at a given `--n` receives the **same items** (checked by set intersection, all pairs identical), and the 150-item sample is a subset of the full pool (VisDrone 273, AI-TOD 154) |
 
@@ -1624,7 +1625,7 @@ non-zero pools), one per (configuration × domain × contract × pool).
 #### M.18.8 Build versus domain: a two-way variance decomposition
 
 The census contains five deployments of **one set of weights** (Qwen3-VL-32B-Instruct in AWQ-4bit,
-AWQ-8bit, BF16, FP8 and GPTQ-W4 [54] builds), each measured on the same items in four domains. That is a
+AWQ-8bit, BF16, FP8 and GPTQ-W4 [41] builds), each measured on the same items in four domains. That is a
 balanced 5 × 4 design in which the "build" factor carries no change of model, only of deployment. The
 dependent variable is the answered-zero rate of the `base` arm on that domain's zero pool.
 
@@ -2335,14 +2336,14 @@ the noise floor is **2.15–6.46 pp** (Appendix F.8).
 
 Their conclusions are in the main text; the bodies are reproduced so that no wording is lost.
 
-#### 7.5 Saturation slope: a same-lineage scale difference, verified two ways
+#### 7.4 Saturation slope: a same-lineage scale difference, verified two ways
 
 Across the four configurations of one lineage the slope of the density-saturation relation is
 $-0.00511$ to $-0.00382$ (range 0.00129, 27.5% relative); the three configurations that agree at about −0.005 do so as a cluster, with the 8B point as the outlier. 
 
 *(Full detail in Appendix F.)*
 
-#### 7.8 The quantitative structure of relative deviation
+#### The quantitative structure of relative deviation (no main-text section)
 
 Per-level means and medians disagree at the sparse end for every configuration, and the disagreement is a
 **magnification** rather than a shift; only Qwen3-VL-8B assigns the correct direction to all three curves
@@ -2363,7 +2364,7 @@ regress-then-round pipelines lose the property being measured.
 ### M.24 The public-benchmark check: FSC-147, nine configurations, and one counterexample
 
 §5.13 states the result; this appendix carries the full panel, the mechanism arms, and the diagnosis of the
-counterexample. Design: **FSC-147** [17] at the resolution of its published release — the short side is fixed
+counterexample. Design: **FSC-147** [5] at the resolution of its published release — the short side is fixed
 at 384 px for all 6,146 images, the long side varying with aspect ratio (384–1229 on this sample), and
 Appendix M.41 varies that scale — a **fixed-seed, GT-stratified
 sample of 300 test images** (step-sampled over the GT-sorted test split, so the sample spans 7–3 000
@@ -2542,7 +2543,7 @@ structured-JSON branch never fires, because its pattern omits the quote before t
 value came from its first-integer fallback. We audited all **2,496** rows of the three-arm prompt experiment (**832** items x 3 arms) and the two readings
 agree in **100%** of them, so the finding has **zero** measured impact (Appendix M.6).
 
-**Run-to-run non-determinism.** Nondeterminism in this regime is documented for LLM inference [49], [50] and for evaluation harnesses [51], [52]. With temperature 0 under 4-bit AWQ the per-image disagreement rate is
+**Run-to-run non-determinism.** Nondeterminism in this regime is documented for LLM inference [52], [53] and for evaluation harnesses [54], [55]. With temperature 0 under 4-bit AWQ the per-image disagreement rate is
 **22–27%** while the aggregate change in ME stays within **0.19** counts; for a hosted API, item-level
 reproducibility falls to roughly **15%**. Where the corpus contains an independent re-run of the same
 configuration, the aggregate $\rho$ differs by at most **0.81 pp** across the six such pairs
@@ -2709,7 +2710,7 @@ by the integer fallback, and the abstention form `{"count": "abstain"}` contains
 unparsed. Of 55,351 stored rows none carries an abstention token in `pred`, 25,108 contain an abstention word in the
 raw reply (23,605 in quoted JSON form, none unquoted), and 23,602 quoted abstentions were recorded as parsing
 failures. **No aggregate in this paper depends on the affected column**: abstention is counted by matching the raw
-reply, and answering zero is a successful parse with value zero, which the integer fallback supplies. The panel's
+reply, and answering zero is a successful parse with value zero, which the integer fallback supplies. **This is the same defect as M.6** (where the digit is present and the value is recoverable) and as **M.19.12(e)** (where it is not); the boundary is whether the reply carries a digit. The panel's
 analyses were re-run under raw matching after this was found, which is why the hosted table reads as abstention
 rather than as failure to parse.
 
@@ -2944,7 +2945,7 @@ it; `channel` 18,219 against 18,212; `permitB`/`permitC`/`channelB` 1,981 agains
 would silently convert "abstention rate" into "parse-failure rate" and produce a self-contradictory
 $\Delta$zero without a matching $\Delta$abstention. The amended criteria only repair the instrument and leave
 every threshold unchanged. The paper's own corpus numbers are unaffected, because the authority analyser
-counts abstention by scanning all columns other than `pred`/`gt`, which already includes `raw` (Appendix Z).
+counts abstention by scanning all columns other than `pred`/`gt`, which already includes `raw` (Appendix Z). **This is the same dead parse branch as M.6 and M.31.6**; here the abstention token carries no digit, so the recovery that works in M.6 does not apply.
 
 **(f) Independent recomputation.** `pA_indep_check.py` re-derives every headline number above from the raw CSVs
 with a separately written implementation (different file discovery, count-based rather than rate-based
@@ -4219,7 +4220,7 @@ subset *under*-counts ($\rho_{\text{total}} = +11.35$). Both failures have the s
 §M.19.16 already reports for the densest cell: once the answered items under-count on net, the ratio is no
 longer a share. The English arm is **not** uniformly the more extreme one: on the two aerial domains the
 Chinese and English shares are within 4–5 pp, while on the dense domains the language moves the
-answered-zero rate by −23 to −26 pp. As before, these four cells are reported as their own build and are
+answered-zero rate by **−21.4 pp** (ShanghaiTech-A) and **−18.4 pp** (UCF-QNRF) on this build, i.e. the **18–22 pp** of §M.19.16. As before, these four cells are reported as their own build and are
 **not** tabulated against the published four-quarter-bit cells.
 
 *Reproduction: the frozen criteria of both runs, the runner, the analysers and the per-item records of all
@@ -4366,7 +4367,7 @@ artefact rather than deleted.*
 §7.3's ordering is measured inside this paper's own corpus. Two public counting domains that share neither
 this paper's objects nor its images were used to test whether it travels: **MTDC** (maize tassels; Zou et al.,
 *Plant Methods* 16, 2020; 361 images, 13,564 instances) and **GWHD 2021** (wheat heads; David et al., 2021;
-6,512 images). Both are CC-BY-4.0, both are cited rather than re-released, and the exact digests of the copies
+6,512 images). **GWHD 2021** is released under **CC-BY-4.0**; **MTDC**'s own release terms restrict it to **academic purposes**, so it is used here under that licence and not re-licensed by us. Both are cited rather than re-released, and the exact digests of the copies
 used are recorded in the frozen criteria. The protocol, the item sampling rule, the level sets, the criteria
 and the two reporting rules were frozen **before** the runs; two amendments made before any data existed are
 part of that record and are stated here rather than silently applied: the tiling knob was **dropped** (its
@@ -4405,7 +4406,7 @@ domain-level rule (all three starts) and the majority rule agree, and no "any st
 since that would be selecting a start.
 
 **Two facts from these domains that the corpus does not show.** (i) The pixel-budget knob spans **46.9–80.0
-pp** here, against 4.0–14.6 pp in §F.2: at the smallest budget the answered-zero count reaches 159 of 183
+pp** here, against 4.0–14.6 pp in §F.2: at the smallest budget the answered-zero count reaches 159 of 200
 items, so the ladder is driven by a floor rather than by a graded response. (ii) The two knob spectra are
 nearly equal on MTDC (79.4 vs 80.0 pp) for opposite reasons — the contract spectrum is carried by a single
 arm that separates sharply, and the budget spectrum by monotone saturation — so equality of two spans does

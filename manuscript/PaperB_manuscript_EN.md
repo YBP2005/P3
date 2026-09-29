@@ -64,7 +64,7 @@ its ratio of answered-zero to textual refusal would approach 0.
 
 **② Gated by per-instance legibility, not by target count**, and **decoupled from directional bias**:
 on count-controlled grids, arrangement and blur alone drive abstention from 0% to 90%, while on clean
-synthetic dots the base arm never abstains yet still underestimates by **up to 43%**, and in microscopy
+synthetic dots the base arm never abstains yet still underestimates by **up to 42.5%**, and in microscopy
 abstention is **0.0%** with a bias of **−50.1%** (§5.6, §5.7).
 
 **③ Switchable from both ends**, because it is a behaviour: tiling (**Fig. 1**) drops the ShanghaiTech-A [3] abstention rate from **56.6%** to **0.0%** (2×2: 6.0%, 3×3: 0.55%)
@@ -281,7 +281,7 @@ gate. What matters for the central claim: VisDrone [32] and AI-TOD [33] have the
 combinations, zero-shot COCO [36] person detectors under a tiling protocol for the dense end, and two label
 conventions; Faster R-CNN [37] and RetinaNet [38] supply a second and third family (fairness parameters in
 Appendix D.2; Appendix M.11). **Vision-language models:** **Qwen3-VL-32B-Instruct** [39] on a self-hosted
-4-bit AWQ [40] and GPTQ-W4 [41] stacks cross-checked against a BF16 hosted API, with an 8B scale control, a Qwen2.5-VL-7B [42]
+4-bit AWQ [40] **community requantisation** (`cyankiwi/Qwen3-VL-32B-Instruct-AWQ-4bit`; Appendix M.46) and GPTQ-W4 [41] stacks cross-checked against a BF16 hosted API, with an 8B scale control, a Qwen2.5-VL-7B [42]
 generation control and InternVL2.5-8B [4] as a second lineage; three directional arms use **byte-identical
 prompts across datasets**, plus five prompt families and a seven-level prompt-strength dose, with **Chinese**
 corpus prompts (language control: §5.5). **Density regression:** BL [43], CSRNet [44] and DM-Count [45]
@@ -523,7 +523,7 @@ The title claims the **composition of the aggregate under-count**, not the absen
 answered-only relative deviation is **−19.8%** (ShanghaiTech-A), **−29.2%** (UCF-QNRF), **−30.5%** (VisDrone)
 and **−39.6%** (AI-TOD), each far outside the paper's own **7 pp** band (§8.1).
 
-**Mode A: capacity-driven under-counting.** Even with ideal input the model under-counts by **up to 43%** in relative deviation (not an abstention share; Appendix C.3) — a floor set by the reporting stage, not by perception. **Mode B: mode collapse, whose extreme form is answering 0.** Triggered by loss of legibility, absent on clean input, switchable on by blur, overlap or a strict prompt.
+**Mode A: capacity-driven under-counting.** Even with ideal input the model under-counts by **up to 42.5%** in relative deviation (not an abstention share; Appendix J.8) — a floor set by the reporting stage, not by perception. **Mode B: mode collapse, whose extreme form is answering 0.** Triggered by loss of legibility, absent on clean input, switchable on by blur, overlap or a strict prompt.
 **The channel is set by the output contract (Appendix M):** on the items that the corpus configuration
 answered exactly 0, five configurations given an explicit abstention option abstained
 explicitly in **1591 of 1591** successful calls and **never** answered 0, while forbidding abstention
@@ -556,7 +556,7 @@ removed the answered zero in **7 of 7**:
 | InternVL2.5-8B-AWQ (anchor) | 230 | 0 | **0.0%** | [0.0%, 1.6%] |
 
 **The two modes decouple completely (Fig. 4).** On clean synthetic dots the base arm **never abstains** yet still
-under-counts by **up to 43%**; in microscopy (BBBC005 [48]) abstention is **0.0%** while the bias reaches **−50.1%**.
+under-counts by **up to 42.5%**; in microscopy (BBBC005 [48]) abstention is **0.0%** while the bias reaches **−50.1%**.
 Conversely, on dense crowds abstention is 50–70% while the answered-only bias is only −19.8% / −29.2%.
 
 (Appendix M.34)
@@ -764,7 +764,7 @@ is re-fitted independently: **0.810 / 0.536** over 8 / 36 units, per-unit family
 (isotonic **0.571 / 0.548**). Measured $s$ spans **0.027–2.352**, so a compressor must vary its factor **across units**; **no deployment-usable granularity does so while preserving the ordering** (per-domain
 **0.732**, per-knob **0.790**, per-unit **0.536**; Appendix M.37). The claim is scoped to the first two calibers, and the VLM unit's own build-sensitivity is bounded in **Appendix M.18.8** (its level moves 90.3 pp across five builds; its contract effect does not). The *magnitudes* are
 not caliber-portable: the in-domain detector ladders give **96–196 pp** person-matched and **353–508 pp**
-all-detections, so a magnitude is quoted with its **caliber** (Appendix F.2 reconciles the three unit sets; M.37), .
+all-detections, so a magnitude is quoted with its **caliber** (Appendix F.2 reconciles the three unit sets; M.37).
 **No scale-free form of the span — equal-count gridding, endpoint removal, or the three M.37 calibration
 families — makes cross-knob magnitudes invariant, and the ordering also survives normalising each span by
 its knob's relative travel (Appendix F.10; M.42–M.45).** **On two counting domains this paper has never used it passes on one and is a knife-edge that fails on the other (M.49).** **Under a common error-and-cost budget the ordering is
@@ -832,7 +832,7 @@ fixed before the runs (Appendix M.46).
 
 ### 8.1 Disclosure of measurement fragility
 
-Seven counts of measurement fragility are disclosed with item-level impact in **Appendix M.32**. **Two runner defects**
+Six counts of measurement fragility are disclosed with item-level impact in **Appendix M.32**. **Two runner defects**
 are itemised there, one of them a dead parse branch; **Run-to-run non-determinism** is characterised below; **Graded isolation** carries a residue ledger;
 **a census of anomalous predictions** records what the graded tiers hold; **No attention-based criterion** is
 available to us; and **Per-cell intervals are lower bounds**, because where a cell has few levels the
@@ -879,7 +879,7 @@ anchor lineage answers zero on **60.2%** of the dense pool under Chinese and **1
 measured here, not to the lineage (six of seven further families fall short; M.19.15). The true-zero pools differ by **54.7 pp**, so $p\approx1$ is not transferable (Appendix M.21.9).
 Two further limits from the same experiment: the abstention **share** leaves its unit interval when the net
 deviation is near zero — three of twenty cells, reported as unmeasured rather than clipped — and the **English**
-prompt lowers the answered-zero rate on the dense domains only, by 18–22 pp on the **BF16** build, against **15–26 pp** on the corpus's own **4-bit** build, where two of the twenty cells stay outside the unit interval (Appendices M.19.16, M.46(c)).
+prompt lowers the answered-zero rate on the dense domains only, by 18–22 pp on the **BF16** build, against **15–26 pp** on the corpus's own **third-party 4-bit** build, where two of the twenty cells stay outside the unit interval (Appendices M.19.16, M.46(c)).
 
 **Domain composition is not systematic**: the nine datasets were assembled to span a legibility range
 rather than sampled from a stated population, so domain-level statements describe these domains and are

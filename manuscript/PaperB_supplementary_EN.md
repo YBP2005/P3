@@ -32,7 +32,7 @@ $$\rho \;=\; \frac{\overline{\text{pred}} - \overline{\text{gt}}}{\overline{\tex
 computed under two sub-conventions: the **pooled ratio** (means taken separately in numerator and
 denominator) and the **per-image ratio mean**. Equation (1) of the main text and Proposition 2 state
 their relation. An anomalous-prediction rule applies throughout: records with `pred ≥ 1e5`, and the
-exact sentinel value 1234567890, are removed before any rate is computed (Appendix H).
+exact sentinel value 1234567890, are removed before any rate is computed (Appendix I).
 
 Density is summarised by **OPM**, objects per megapixel; §7.1 gives its applicability boundary.
 
@@ -203,7 +203,7 @@ corresponding span figures are reported under the official weights as well.
 ### E.1 The fine $\tau$ ladder in full
 
 **Protocol, and which bootstrap applies where.** All four tables scan the same grid — $\tau$ from 0.02 to
-0.902 in steps of 0.005 (**177 points**), with the zero crossing located by linear interpolation between
+0.90 in steps of 0.005 (**177 points**), with the zero crossing located by linear interpolation between
 adjacent grid points and NMS IoU 0.7 unless a row says otherwise (RetinaNet fixes IoU 0.5 inside its own
 NMS). The bootstrap that produces the 95% interval of $\tau^\*$ differs by scan and is stated where it
 applies: **4,000×** image resampling for **E.1–E.2** — the fine ladder of §4.3 and its knob series — and
@@ -301,8 +301,9 @@ knob and the input scale as a third, weaker one.
 
 **Reconciling the three unit sets.** The same knob's span appears at three different magnitudes in this
 paper, and the differences are **unit set and calibration**, not disagreement. The table above reports
-**one span per knob**, pooling that knob over its domains on the **uncalibrated** pooled relative deviation;
-§F.9 splits the same knobs into **ten (knob × domain) units** and reports them **isotonic-calibrated**;
+**one span per knob**, pooling that knob over its domains on the **uncalibrated** pooled relative deviation,
+with the detector row flagged below; §F.9 splits **four of the six** knobs into **ten (knob × domain) units**
+and reports them **isotonic-calibrated**;
 §M.37 rebuilds **36 configuration-level units** from the same per-item records, uncalibrated. For the two
 knobs a reader is most likely to try to line up:
 
@@ -319,6 +320,20 @@ configuration — and the largest tiling unit (**260.4**) is a **contract × til
 tiling level. **Subtracting one row from another is the construction §F.10's caliber rule already
 forbids.** The three sets agree on the **ordering**, which is the claim §7.3 makes; the reconciliation is a
 recomputation over the printed tables (`span_caliber_reconcile.py`), not a transcription.
+
+**The detector row.** The paragraph above reconciles **two of the six** rows; the detector knob needs
+its own note rather than a third column, because its **30.0–90.0 pp** is a **calibrated** per-knob span
+and not an uncalibrated one. The same three in-domain VisDrone ladders read **95.8–195.7 pp**
+person-matched and **352.8–508.4 pp** all-detections on the **uncalibrated** pooled caliber (§F.10, at
+640 / 1024 / 1536 px). Its per-unit counterparts are §F.9's three isotonic detection units — **49.0**
+(in-domain BBBC005), **54.2** (zero-shot COCO) and **150.7** (in-domain VisDrone) pp — and the twelve
+detector configuration units of §M.37, which run **16.4–204.9 pp** uncalibrated. The four readings are
+four different unit sets — a per-knob pooled range, three single ladders, three (knob × domain) units
+and twelve configuration units — and for this knob they do not share one caliber either, so **none of
+them is a term-by-term counterpart of another** and no two may be subtracted: that is the construction
+§F.10's caliber rule forbids, and it is why a magnitude is quoted together with its caliber. A reader
+who wants this row's ordering evidence should use the recomputable per-unit set of §M.37, exactly as
+§7.3 says for the spectrum as a whole.
 
 
 ### F.3 The split-point enumeration
@@ -688,7 +703,7 @@ the density-regression family's scale freedom parameter and its weight-set sprea
 dominate any directional difference between families, so a regression-style model must be calibrated per
 domain before its direction can be compared at all.
 
-### F.6 Reporting-norm recommendation detail for §7.9
+### F.6 Reporting-norm recommendation detail
 
 **Match the effective target scale** — comparisons at unmatched scale are not
 comparisons. **Report the weight-set distribution** rather than a single number, since the same
@@ -800,7 +815,7 @@ approached monotonically across count bins ($[1,10)$ is exactly **+0.0%**; $[60,
 **−53.8%**). The two microscopy numbers are therefore the *same* quantity at two calibers (whole-domain
 pooled versus top count bin), both under the pooled convention and confined to these models and domains.
 
-### J.8 The clean synthetic grid: the per-cell values behind the "up to 43%" of §5.7
+### J.8 The clean synthetic grid: the per-cell values behind the "up to 42.5%" of §5.7
 
 A deterministic disc grid on which the ground-truth count $n$ and the disc radius $r$ vary independently
 ($n \in \{50, 100, 200, 400, 800\}$ × $r \in \{2, 4, 8, 16\}$ px = **20 cells**), rendered once with an
@@ -830,8 +845,8 @@ answered-zero rate is 0.0% in every cell — and the pooled relative deviation $
 | 800 | 8 | 256 | 0.0% | 525 | −34.4% |
 | 800 | 16 | 1024 | 0.0% | 605 | −24.4% |
 
-**Scope of the number printed in §5.7.** The "**up to 43%**" quoted there is the largest $\lvert\rho\rvert$
-in this table (42.5%, rounded up), and it is stated without further qualification. For a reader who wants
+**Scope of the number printed in §5.7.** The "**up to 42.5%**" quoted there is the largest $\lvert\rho\rvert$
+in this table, and it is stated without further qualification. For a reader who wants
 the distribution rather than its maximum: the under-count reaches 20% or more in **14 of the 20 cells**
 (20.0%–42.5% across those cells), the full range over all 20 cells is **+0.0%** to **−42.5%**, and the
 per-$n$ means are −20.0% / −10.2% / −25.8% / −34.5% / −35.0% for $n$ = 50 / 100 / 200 / 400 / 800, so the
@@ -1667,7 +1682,8 @@ larger than the sampling error on either share:
 * **Within the dense domains the build dominates**: the five deployments of one checkpoint differ by
   **90.3 pp** on ShanghaiTech-A (8.7 → 99.0) and **76.1 pp** on UCF-QNRF (16.1 → 92.2).
 * **Within the aerial domains it does not**: the same five deployments differ by **2.7 pp** on VisDrone
-  (96.7 → 99.3) and **8.7 pp** on AI-TOD (88.7 → 97.3).
+  (96.7 → 99.3) and **8.7 pp** on AI-TOD (88.7 → 97.3); in both cases the gap
+  is computed from the unrounded values, so the printed endpoints do not subtract to it.
 * **Within a build the domain effect is large exactly when the build is not saturated**: GPTQ-W4 spans
   87.9 pp across domains and BF16 35.2 pp, whereas AWQ-4bit — already at 92–99% everywhere — spans only
   7.1 pp.
@@ -2537,7 +2553,7 @@ domain conditionality §7.5 reports for the corpus arms (Appendix M.18).
 ### M.32 Measurement-fragility disclosures
 
 **Two runner defects, and one dead parse branch.** Two defects in the measurement runners were found
-and are disclosed in full in Appendix I.2; both affect only the collection path, not the reported
+and are disclosed in full in Appendix I.3; both affect only the collection path, not the reported
 aggregates. A third instrument finding belongs with them for the same reason: the corpus runner's
 structured-JSON branch never fires, because its pattern omits the quote before the key, so every stored
 value came from its first-integer fallback. We audited all **2,496** rows of the three-arm prompt experiment (**832** items x 3 arms) and the two readings
@@ -2612,7 +2628,7 @@ interaction, the five deployments of that checkpoint differing by up to **90.3 p
 
 **A three-way corroboration that abstention is not the cause.** Three settings in which abstention is
 excluded each still under-count, but by *different* amounts: the clean synthetic grid (no answered zero on
-any of its 20 cells) by **up to 43%** (§J.8), microscopy with its abstention channel closed (0.0% answered zeros over
+any of its 20 cells) by **up to 42.5%** (§J.8), microscopy with its abstention channel closed (0.0% answered zeros over
 1,210 items) by **−50.1%**, and real images restricted to the answered subset by **−19.8%** and
 **−29.2%**. These are three domain-specific magnitudes, **not one common band**; what the three share is
 that the under-count survives with abstention removed, and in the first two with resolution not the binding
@@ -3782,7 +3798,7 @@ content are preserved: 256 is a $0.667\times$ rescale ($0.444\times$ the area) a
 directories — the prompts and the parser are imported from the same frozen module as the §5.6 panel — on the
 same frozen 300-image sample and the same six arms: the four contract arms of the frozen panel plus the two
 exemplar arms whose
-resolution dependence that the limitations section flags as uncontrolled. Three builds were run at all three scales, so every cell below is
+resolution dependence the limitations section flags as uncontrolled. Three builds were run at all three scales, so every cell below is
 a within-item, within-probe comparison.
 
 | build | arm | zero@384 (release) | zero@256 ($0.444\times$ area) | Δ | zero@768up ($4.000\times$ area, upsampled) | Δ |
@@ -4215,10 +4231,11 @@ then re-run on the **same build and the same session** so that the four are fina
 | UCF-QNRF | 11.4% | +18.84 | **3.0778** | 0.8384 |
 
 **The criterion fails, and it fails in two different ways.** Only **two of the four** cells keep $S$ inside
-$[0,1]$; UCF-QNRF crosses to **3.08**, and ShanghaiTech-A's share is **undefined** because its answered
-subset *under*-counts ($\rho_{\text{total}} = +11.35$). Both failures have the same cause as the one
-§M.19.16 already reports for the densest cell: once the answered items under-count on net, the ratio is no
-longer a share. The English arm is **not** uniformly the more extreme one: on the two aerial domains the
+$[0,1]$; UCF-QNRF crosses to **3.08**, and ShanghaiTech-A's share is **undefined** because its net
+deviation is an *over*-count ($\rho_{\text{total}} = +11.35$, against $\rho_{\text{answered}} = +28.05$
+in the table above). Both failures have the same cause as the one
+§M.19.16 already reports for the densest cell: once the answered items stop under-counting on net, the
+ratio is no longer a share. The English arm is **not** uniformly the more extreme one: on the two aerial domains the
 Chinese and English shares are within 4–5 pp, while on the dense domains the language moves the
 answered-zero rate by **−21.4 pp** (ShanghaiTech-A) and **−18.4 pp** (UCF-QNRF) on this build, i.e. the **18–22 pp** of §M.19.16. As before, these four cells are reported as their own build and are
 **not** tabulated against the published four-quarter-bit cells.
@@ -4524,7 +4541,7 @@ now stands, and the artefact that recomputes it.
   **−42.5%**). The paragraph now states the three magnitudes separately and says explicitly that they are
   **not one common band**; no measured value changed. The per-cell table behind the synthetic figure is now
   printed in **§J.8**, so that number is traceable inside the submitted material rather than only in an
-  internal record, and §1/§5.7 quote it as "**up to 43%**" — the unconditional maximum — instead of the
+  internal record, and §1/§5.7 quote it as "**up to 42.5%**" — the unconditional maximum — instead of the
   narrower band that held for 14 of its 20 cells.
 - **The two microscopy numbers are one quantity at two calibers.** §5.7 prints **−50.1%** and §J.7 printed
   **−53.8%** without saying how the two relate. They are the whole-domain pooled figure and the top count

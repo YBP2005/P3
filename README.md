@@ -13,17 +13,17 @@ typed in from memory: each is either computed by a script in `code/`, or taken f
 
 | Path | What it is |
 |---|---|
-| `data/derived/` | **All per-image prediction records** (1,112 CSV files) — the released corpus: detection ladders, tiling ladders, density-regression runs, prompt-family and contract arms, aerial and microscopy domains, VLM and detector families. |
+| `data/derived/` | **All per-image prediction records** (2,338 CSV files) — the released corpus: detection ladders, tiling ladders, density-regression runs, prompt-family and contract arms, aerial and microscopy domains, VLM and detector families. |
 | `data/derived/e2/` | The abstention-channel **census (E2)**: 558 result files = 14 configurations x 6 contracts x {zero pool, non-zero pool} over five usable domains (st_a, st_b, ucf, VisDrone, AI-TOD; CountBench is excluded — see *Known limitations*). Files prefixed `nz__` are the non-zero pool. |
 | `data/derived/e1/` | The discriminating experiment (E1) on the abstention channel: 48 cells over five configurations x two domains x up to six arms. |
 | `data/derived/corpus/` | The nine whole-image corpus tables behind the abstention decomposition. |
 | `data/gold/` | Gold-standard counts (`counts.csv`) for ShanghaiTech and UCF-QNRF: file name -> target count. |
 | `code/experiments/` | The runners that produced the corpus (one script per experiment, in the order they were run), including the E2 census drivers (`h20_exp_v6.sh`, `h20_exp_v7c.sh`) and `make_19e.py`, which derives the E2 probe `19e_probe_multi.py` from `19b_e1_probe.py` deterministically — it re-reverts its own patch set and asserts byte-identity with the original, so the six-line difference between the two probes is auditable rather than asserted. |
-| `code/analysis/` | Measurement, auditing and verification scripts (see below). |
-| `figures/` | The 13 finished figures (PNG). Fig. 1-4 of the manuscript are the first four of these. |
+| `code/analysis/` | Measurement, auditing and verification scripts (see below). **Prefix map:** where the supplementary material cites a reproducibility script as `analysis/work/<name>.py`, that file is released here as `code/analysis/<name>.py` — `analysis/work/` is the authoring path, not a directory of this package. |
+| `figures/` | The 14 finished figures (PNG). Fig. 1-4 of the manuscript are the first four of these. |
 | `manuscript/` | English manuscript and supplementary material (Markdown source), the PR-layout `.docx` (`PaperB_manuscript_PR_layout.docx`), the Highlights file, the cover letter, the E1/E2 evidence records, the review-control evidence record, and the frozen pagination measurements. |
 | `env/` | Serving configuration evidence (vLLM log for the self-hosted 4-bit stack) and, in `env/h20_v7c_logs/`, the E2 census run logs (serving starts, per-arm probe logs, per-cell wall-clock). |
-| `MANIFEST.csv` | `path, bytes, md5` for **every** file in this package. |
+| `MANIFEST.csv` | `path, bytes, md5` for every file in this package **except the manifest itself and the derived `data.zip`**, which is rebuilt from `data/` by the sync step and is therefore fully covered by the rows below it. (Disk file count and row count therefore differ by exactly those two.) |
 | `LICENSE` | CC BY 4.0. |
 
 ## How to reproduce the main results
@@ -38,9 +38,9 @@ typed in from memory: each is either computed by a script in `code/`, or taken f
 | **The two kinds of answered zero** (dense: build-specific, 9% vs 99% for two builds of one checkpoint; aerial: 11 of 12 configurations at 62-99%) | `code/analysis/e2_v7c_subset.py` (common-150 comparison) and `e2_v7c_analysis.py`. |
 | The zero is not a parsing artefact (audit of all 2,496 corpus rows) | `code/analysis/corpus_parse_audit.py` over `data/derived/corpus/`. |
 | The tiling ladder (56.6% -> 6.0% (2x2) -> 0.0% (4x4 and finer) on ShanghaiTech-A) | `code/analysis/tile_ladder.py` over `data/derived/tile_results/` + `data/gold/`. |
-| **The span spectrum is not a function of the scanning grid** (ordering preserved at Spearman 0.964 / 0.977 / 0.993 over 24 knob x domain units; detector-threshold magnitudes fall 2.2-2.3x in-domain and 5-10x zero-shot under equal-count gridding) | `code/analysis/span_equalcount.py` over `data/derived/`; frozen result `code/analysis/span_equalcount_result.json`; written up in supplementary F.10/F.11. |
+| **The span spectrum is not a function of the scanning grid** (ordering preserved at Spearman 0.999 / 0.981 / 0.991 over 24 knob x domain units; the detector-threshold **magnitudes** are governed by the caliber, not by the grid) | `code/analysis/span_equalcount2.py` over `data/derived/`; frozen result `code/analysis/span_equalcount2_result.json`; written up in supplementary F.10/F.11. **Withdrawn:** the superseded `span_equalcount.py` and its `span_equalcount_result.json` are kept here **byte-identical for audit only** — that pair is the caliber-mixed version, its numbers are withdrawn, and nothing in the manuscript quotes them (supplementary Z.3). |
 | **The dense-scene answered zero is build-specific** (variance decomposition: 38.7% domain / 33.9% build / 27.4% interaction; five deployments of one checkpoint differ by 90.3 pp on ShanghaiTech-A but 2.7-8.7 pp on the aerial domains) | `code/analysis/variance_decomp.py` over `data/derived/e2/`; frozen result `code/analysis/variance_decomp_result.json`; written up in supplementary M.18.8. |
-| Pagination (33-34 pages, single column, 1.5 spacing, numbered) | `code/analysis/build_pr_docx.py` rebuilds the submission `.docx` under the journal's layout (10 pt text, 1.5 spacing, 4.3/4.8/4.3/4.8 cm margins) and `code/analysis/freeze_docx_measurement.py` times it with the word processor's own paginator; the frozen result is `manuscript/pagination_measurement.json`. `code/analysis/measure_pr_layout.py` gives the RTF-proxy reading with its **positive control** (injecting 600 words must change the page count) and is kept as `manuscript/pagination_measurement_rtf_proxy.json`. |
+| Pagination (35 pages, single column, 1.5 spacing, numbered) | `code/analysis/build_pr_docx.py` rebuilds the submission `.docx` under the journal's layout (10 pt text, 1.5 spacing, 4.3/4.8/4.3/4.8 cm margins) and `code/analysis/freeze_docx_measurement.py` times it with the word processor's own paginator; the frozen result is `manuscript/pagination_measurement.json`. `code/analysis/measure_pr_layout.py` gives the RTF-proxy reading with its **positive control** (injecting 600 words must change the page count) and is kept as `manuscript/pagination_measurement_rtf_proxy.json`. |
 | Every structural/consistency assertion used before submission | `code/analysis/en_check.py`, `verify_objective.py`, `cite_guard.py`, `pr_compliance_check.py`, `verify_s11.py` |
 
 ## Environment
@@ -72,7 +72,7 @@ in `code/experiments/` rather than collected.
 
 ## Integrity
 
-`MANIFEST.csv` lists `path, bytes, md5` for every file. To verify after download:
+`MANIFEST.csv` lists `path, bytes, md5` for every file **except itself and the derived `data.zip`** (2 rows fewer than the file count). To verify after download:
 
 ```bash
 python - <<'PY'

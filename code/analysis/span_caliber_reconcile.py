@@ -116,9 +116,10 @@ def problems(r):
 DECL = [
     '**Reconciling the three unit sets.**',
     'The table above reports **one span per knob**, pooling that knob over its domains on the '
-    '**uncalibrated** pooled relative deviation; §F.9 splits the same knobs into **ten (knob × domain) '
-    'units** and reports them **isotonic-calibrated**; §M.37 rebuilds **36 configuration-level units** '
-    'from the same per-item records, uncalibrated.',
+    '**uncalibrated** pooled relative deviation, with the detector row flagged below; §F.9 splits '
+    '**four of the six** knobs into **ten (knob × domain) units** and reports them '
+    '**isotonic-calibrated**; §M.37 rebuilds **36 configuration-level units** from the same per-item '
+    'records, uncalibrated.',
     'the three rows differ by **3.0–9.7×**',
     'Subtracting one row from another is the construction §F.10\'s caliber rule already forbids',
 ]

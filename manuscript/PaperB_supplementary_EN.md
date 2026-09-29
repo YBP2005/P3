@@ -51,7 +51,13 @@ temperature 0 under 4-bit AWQ, the per-image disagreement rate is **22–27%**, 
 in ME stays within **0.19** counts. Magnitude and direction conclusions at the aggregate level are
 therefore robust, whereas per-image conclusions must be read against the noise band. For a hosted API,
 item-level reproducibility falls to roughly **15%**, whereas a locally controlled stack at batch ≤ 2
-agrees at essentially 100% for the same configuration. Consequently, model-to-model differences below
+agrees at essentially 100% for the same configuration. The per-image figure above covers **both** kinds of
+movement, and the paper's rates depend on only one of them. Separating them on the four M.21.10 builds
+across **three fresh service starts at four-worker concurrency**, the **answered-zero classification**
+flips on **4 of 4,136 items (0.097%)**, while the reported count differs by **±1–2 on 4.28%** of items.
+The two settings are not comparable — the 22–27% above is a 4-bit stack and counts value differences as
+well — so this is a **boundary on a different setting, not a correction of that figure**. Consequently,
+model-to-model differences below
 **7 pp** are treated as indistinguishable throughout, and one difference that flips under repetition is
 not reported at all. The noise floor is the **across-repeat standard deviation of $\rho$** for a fixed configuration on a hosted
 endpoint — computed from the repeated runs of `ds_repeat.py`, whose item-level agreement is the ≈**15%**
@@ -432,6 +438,37 @@ association **does not reproduce** on the controlled grid, and its cause remains
 unexamined domain dependence — the strong effect may require some property of real images (crowding,
 semantic ambiguity) rather than the numerical magnitude of the ground truth. **This is the most important
 unresolved mechanism question in the paper.**
+
+### G.6 An attempted factorial on the controlled grid, and why it does not adjudicate the mechanism
+
+We attempted to separate the two candidate real-image properties named at the end of G.2 by a $2\times2$
+factorial on the same controlled grid — crowding (fraction of discs placed within $2r$ of another disc:
+$0$ vs $0.40$) × semantic ambiguity (fraction of non-circular "person-like" distractors injected: $0$ vs
+$0.20$) — with $n = 400$, $r = 2$, $\sigma = 2.0$, 150 images per cell, three arms (`base`, `forbid0`,
+`neutral0`) and three fresh service starts (16,200 calls pre-registered).
+
+**The pre-registered design could not be measured, and we report that rather than a null.** At the frozen
+parameter point **both arms saturate**: `base` answers zero on **150 of 150** images in every cell and
+`forbid0` — whose instruction **forbids** answering zero — answers zero on **149–150 of 150**. The
+difference the design exists to measure therefore has **no range**, and this is not evidence that the
+effect is absent: reporting it as "not separated" would treat an unmeasured quantity as a measured one.
+
+**The instrument, not the hypothesis, is what failed.** At $r = 2$ the discs are 4 px across on a $1024^2$
+canvas — **smaller than a single ViT patch** — the image is **99.5% uniform background** (blue channel
+$p_1 = 225$, $p_{99} = 235$ against a background of 235), and a geometric check of the manipulation itself
+passes exactly (realized overlap $0.000$ and $0.400$). A dynamic-range pilot run afterwards maps the
+region: abstention on this grid is a **cliff** between $0\%$ and $100\%$, the two builds' transition bands
+**do not overlap**, and the 31–42 pp effects published above live on the **saturated side** ($\sigma = 8$,
+$n = 800$, where the 32B `base` rate is 100% and $\Delta$ is still **+14.2 pp**) — a point the frozen
+design, with $n$ fixed at 400 and a single $\sigma$, does not occupy.
+
+**What this costs and what it leaves standing.** The three exclusions of G.2 stand; the crowding and
+semantic-ambiguity readings remain **untested**, and we now say why, instead of reporting a factorial we
+could not run. **A general lesson, recorded because it is cheap to state and was expensive to learn:** for
+any new synthetic stimulus, a **dynamic-range pilot** — a small batch confirming that the target quantity
+has a middle range at the *designed* parameter point — must precede freezing the criteria; geometric or
+pixel-level verification of the construction **does not substitute for it**, because it can show that the
+manipulation was built correctly but not that the model can see it.
 
 ### G.3 Mediator correlation analysis, and the downgraded statement
 
@@ -2078,12 +2115,45 @@ quantities above are easy to conflate in prose, so they are written out once:
 | emptiness outlet's **sensitivity** (**47.9–86.9%**) | **`channel`** | `no_people` $\mid$ item truly empty | the **306** verified-empty crops $\times$ 3 starts | measured (M.38/M.40) |
 | emptiness outlet's **specificity** (**0.0–1.7%** false `no_people`) | **`channel`** | ¬`no_people` $\mid$ item non-empty | the census-answered-zero dense items | measured (M.38/M.40) |
 | answered zero's **sensitivity on genuine zeros** (**98–100%** on pool S-1, three of four builds) | **`base`** | answered zero $\mid$ item truly empty | **two external** true-zero pools, 300 items $\times$ 4 builds | measured (§M.21.9) |
-| zero-channel **precision** $P(\text{genuine zero}\mid\text{answered zero})$ | **`base`** | genuine zero $\mid$ answered zero | the **mixed** corpus | **still not identified, but its conditioning numerator is now measured** (§M.21.9): precision $=p\,\pi/q$, where $p=P(\text{answered zero}\mid\text{truly empty})$ is measured on those pools but **assumed** domain-invariant, $q$ the corpus's answered-zero rate is measured, and $\pi$ — the corpus's base rate of truly empty items — remains the **only** unmeasured factor |
+| zero-channel **precision** $P(\text{genuine zero}\mid\text{answered zero})$ | **`base`** | genuine zero $\mid$ answered zero | the **mixed** corpus | **still not identified, but its conditioning numerator is now measured** (§M.21.9): precision $=p\,\pi/q$, where $p=P(\text{answered zero}\mid\text{truly empty})$ is measured on those pools but **assumed, and re-measured on a constructed mix** (M.21.10), domain-invariant, $q$ the corpus's answered-zero rate is measured, and $\pi$ — the corpus's base rate of truly empty items — remains the **only** unmeasured factor |
 
 The last row is the quantity the section is *about*, and the table is the reason we do not quote a number for
 it: every pool we have is single-sided, so what can be measured is the **pair** of conditional rates above,
 under a *different* contract from the one the corpus rate is defined on. Reading either of those two as "the
 zero-channel precision" would repeat the error this appendix corrects (below).
+
+#### M.21.10 A constructed mix with a known true-zero base rate: what the identity does and does not show
+
+We built three mixtures of the AI-TOD test census (226 items, all with ground-truth count > 0) with the
+frozen S-1 true-zero pool (150 items, disjoint from the census) at realized $\pi$ = **5.04% / 19.86% /
+39.89%**, and measured the answered-zero precision of four builds (3 fresh service starts each, 14,200
+calls).
+
+**(a) The identity is a gate, not a finding.** With $p$ measured on the mixture's own true-zero subset,
+$|\text{precision}_{obs}-p\,\pi/q| \le$ **0.59 pp** in all 12 cells — as it must be: on a constructed mix
+this equality is Bayes' rule, so it cannot fail and we do not report it as evidence.
+
+**(b) The real test is transfer.** With $p$ measured instead on a **disjoint** true-zero subset, the
+identity holds within 10 pp in **11 of 12** cells; the single miss is gemma-3-12b at the lowest $\pi$
+(**+20.87 pp**), the least-powered cell ($N_2 = 12$; Wilson width **33.1 pp**, above the 20 pp at which
+this appendix does not print a number). Its source is a within-S-1 fluctuation between two disjoint subsets
+of the *same* pool (50.0% vs 32.6%), not the S-1/S-2 source gap of **54.7 pp** reported above; a
+two-proportion exact test gives $p = 0.043$, **Holm-corrected $p = 0.52$**. We therefore report the transfer
+test as **not uniformly met but not a refutation**.
+
+**(c) The instrument reproduces the published column.** Re-measuring $p$ independently on 414 S-1 items
+gives **100.0 / 97.8 / 99.3 / 32.6 %** for the four builds, against the **100.0 / 98.0 / 99.3 / 34.0 %**
+printed above.
+
+**(d) Scope, stated as a hard limit.** The construction could not exceed $\pi \approx 0.40$: the census
+holds 226 items with ground truth > 0 and the frozen true-zero pool holds 150, giving a ceiling of
+$150/376 = 0.399$. Nothing here speaks to $\pi = 0.5$, and nothing here measures the **corpus's** $\pi$ —
+the experiment tests the identity's transferability, not the corpus base rate.
+
+*Reproduction: the analysis is `pi_analyze.py` over the per-item records of three fresh service starts per
+build in `pi_res/`; the criteria were frozen before any rate was computed (`pi_criteria_frozen.json`, md5
+`aca4444c7f681b0596db4e4a84578b62`). These artefacts are from the run reported here and are **not part of
+the released reproduction package**.*
 
 #### M.21.9 Two **external** true-zero pools, and what they do and do not identify
 
@@ -3200,15 +3270,19 @@ to 71.50% against the correct 28.78%.
 | **Qwen3-VL-32B-AWQ** | **95.26%** | **90.30%** | 98.33% | 59.12% |
 | **Qwen3-VL-32B-BF16** | **64.03%** | **82.27%** | 95.33% | 49.66% |
 | Qwen2.5-VL-72B-AWQ | 0.00% | *n/a* | 71.33% | 51.82% |
+| InternVL3.5-38B-fp8 | 7.11% | 18.28% | 78.00% | *n/a* |
 
 *`n/a` marks a cell with no abstentions, where $S$ is undefined rather than zero.* Comparable item sets:
 253 dense and 300 aerial on the zero pool; 482 and 499 on the full set. Qwen3-VL-32B-AWQ is the
 configuration that **defined** the zero pool.
 
-**On the dense domains the headline does not reproduce in any other family.** Five of the seven families are
-not Qwen, and **none** reaches either a dense zero rate of 30% or a share of 50%; the build that does is the
-one that defined the pool. **The same checkpoint at BF16 clears the bar and does not reproduce it whole**: on the identical item sets it holds **82.27%** of the share (against **90.30%**, a paired bootstrap difference of **8.03 pp**, 95% **[−12.37, −3.75]**) while the answered-zero rate falls from **95.26%** to **64.03%**. The **share** is therefore a build-level quantity and the **rate** is a build-and-precision one, which is the narrower reading §8.2 now states. Three denominators must not be crossed here: **64.03%** is the dense **intersection** (253 items), **65.02%** is this build's **own** dense zero pool (283 items), and **33.61%** is the dense rate on the **full** item set (482 items). This is sharper than "lineage- or build-specific": **the other Qwen anchor fails
-as well** (dense 0.00%). What the cross-family grid therefore supports is that the dense abstention channel
+**On the dense domains the headline does not reproduce in any other family.** Of the **nine** families and
+builds screened, **none** other than the two Qwen3-VL-32B precisions reaches either a dense zero rate of
+30% or a share of 50% — including a **larger build of a non-Qwen family** (InternVL3.5-38B-fp8: dense
+zero-pool rate **7.11%** [4.55, 10.96], share **18.28%**), which was run **once** and is an **fp8** build,
+so its precision axis moves with its family axis and the two cannot be separated from this row alone. The other eight families and builds therefore all fall below the bar, and the two that clear it are the
+same checkpoint at two precisions. **The same checkpoint at BF16 clears the bar and does not reproduce it whole**: on the identical item sets it holds **82.27%** of the share (against **90.30%**, a paired bootstrap difference of **8.03 pp**, 95% **[−12.37, −3.75]**) while the answered-zero rate falls from **95.26%** to **64.03%**. The **share** is therefore a build-level quantity and the **rate** is a build-and-precision one, which is the narrower reading §8.2 now states. Three denominators must not be crossed here: **64.03%** is the dense **intersection** (253 items), **65.02%** is this build's **own** dense zero pool (283 items), and **33.61%** is the dense rate on the **full** item set (482 items). This is sharper than "lineage- or build-specific": **the other Qwen anchor (AWQ) fails
+as well** (dense 0.00%); the BF16 build of that same checkpoint clears it (64.03% / 82.27%). What the cross-family grid therefore supports is that the dense abstention channel
 belongs to **that build in that configuration** — the same conclusion §8.2 reaches from the five-deployment
 spread, now measured in the headline's own quantity.
 

@@ -755,14 +755,14 @@ under the **pooled relative deviation** (Appendix F.7, M.37). F.9 is an illustra
 on a **common level count** with each ladder's extreme level removed, it is preserved at Spearman
 **0.999 / 0.981 / 0.991** over 24 (knob × domain) units, and at **0.983 / 0.987 / 0.983** on a **fully
 recomputable** unit set at the same level count (31 units; Appendix M.37). A unit bootstrap puts it at
-**0.939–0.996** (31 units) and **0.836–0.983** (36 units, k=3); a label-permutation test gives
-$p<5\times10^{-5}$; leaving out any single knob keeps it at **0.883–0.970**; per-unit spans with their own
+**0.939–0.996** (31 units) and **0.836–0.983** (36 units, k=3), and **clustering by knob gives 0.913–0.994**;
+a label-permutation test gives $p<5\times10^{-5}$; leaving out any single knob (**36** units) keeps it at **0.883–0.970**; per-unit spans with their own
 caliber intervals are plotted in **Fig. F.17** (Appendix F.12). It is also **exactly** preserved under shared
 affine calibration (Proposition 5: `span ↦ s·span`) and under no calibration — the M.37 held-out third gives
 median **0.995**, interval **0.984–0.998**, above 0.9 in **200 of 200** splits — but **not** when each unit
 is re-fitted independently: **0.810 / 0.536** over 8 / 36 units, per-unit family medians **0.41–0.54**
 (isotonic **0.571 / 0.548**). Measured $s$ spans **0.027–2.352**, so a compressor must vary its factor **across units**; **no deployment-usable granularity does so while preserving the ordering** (per-domain
-**0.732**, per-knob **0.790**, per-unit **0.536**; Appendix M.37). The claim is scoped to the first two calibers, and the VLM unit's own build-sensitivity is bounded in **Appendix M.18.8** (its level moves 90.3 pp across five builds; its contract effect does not). The *magnitudes* are
+**0.732**; Appendix M.37). The claim is scoped to the first two calibers, and the VLM unit's own build-sensitivity is bounded in **Appendix M.18.8** (its level moves 90.3 pp across five builds; its contract effect does not). The *magnitudes* are
 not caliber-portable: the in-domain detector ladders give **96–196 pp** person-matched and **353–508 pp**
 all-detections, so a magnitude is quoted with its **caliber** (Appendix F.2 reconciles the three unit sets; M.37).
 **No scale-free form of the span — equal-count gridding, endpoint removal, or the three M.37 calibration
@@ -876,7 +876,7 @@ prompts, so we repeated the arms in a byte-frozen English rendering on the same 
 is language-robust (`no_people` differs by at most **7.2 pp**), but the answered-zero rate is not — the
 anchor lineage answers zero on **60.2%** of the dense pool under Chinese and **17.5%** under English, a
 **42.7 pp** drop **on the BF16 build** (Appendix M.39). The shares of §5.5 are therefore scoped to the prompt language and to the **one anchor build**
-measured here, not to the lineage (six of seven further families fall short; M.19.15). The true-zero pools differ by **54.7 pp**, so $p\approx1$ is not transferable (Appendix M.21.9).
+measured here (**the share holds at BF16; the rate does not**; six of seven further families fall short; M.19.15). The true-zero pools differ by **54.7 pp**, so $p\approx1$ is not transferable (Appendix M.21.9).
 Two further limits from the same experiment: the abstention **share** leaves its unit interval when the net
 deviation is near zero — three of twenty cells, reported as unmeasured rather than clipped — and the **English**
 prompt lowers the answered-zero rate on the dense domains only, by 18–22 pp on the **BF16** build, against **15–26 pp** on the corpus's own **third-party 4-bit** build, where two of the twenty cells stay outside the unit interval (Appendices M.19.16, M.46(c)).

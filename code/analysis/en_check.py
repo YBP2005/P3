@@ -270,6 +270,13 @@ EQUIV = {
     # §7.3 的 0.07 是**推导值**：p≈0.008 是 9 个枚举分割点上的最小值 ⇒ 最小可校正值 ≈ 0.008×9。
     # 该句由 2026-09-20 的 v0487 轮评审（glm53flash）指出后补写，故不在中文定稿里。
     '0.07': '§7.3 多重校正后的最小可校正 p（= 0.008 × 9 个枚举分割点），2026-09-20 补写',
+    # ★ 2026-09-29（v0605）：§7.3 新增**按旋钮聚类**的区间端点（簇级整块 bootstrap 2,000 次，
+    #   种子 20260924）。它不是中文定稿里的数，因为该区间是本轮**新做的只读复算**；
+    #   出处：`analysis/work/p3r2_plan_m37_cluster.py` →
+    #   `analysis/work/p3r2_plan_m37_cluster_result.json`（判据件
+    #   `p3r2_plan_m37cluster_criteria_frozen.json` 跑前冻结）；同一批读数印在补充材料 §F.7。
+    '0.913': '§7.3 簇级（按旋钮整块）bootstrap 31 单元下沿，2026-09-29 v0605 只读复算',
+    '0.994': '§7.3 簇级（按旋钮整块）bootstrap 31 单元上沿，2026-09-29 v0605 只读复算',
 }
 missing = sorted((en_flat - zh_flat) - WHITE - ARXIV - SECT - set(EQUIV), key=lambda s: -len(s))
 chk('无法溯源的数字 token 0 个', not missing, str(missing[:12]))

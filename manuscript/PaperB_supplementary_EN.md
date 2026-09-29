@@ -1034,8 +1034,16 @@ group **6 of 6 adjacent pairs overlap**.
 **The ordering, with intervals.** On the same unit sets the ordering is *certified* rather than asserted: over
 the **36** units at a common level count $k=3$ the Spearman between the two readings is **0.932** with a
 unit-bootstrap 95% interval **0.836–0.983**, and over the **31** fully recomputable units at $k=4$ it is
-**0.982** (**0.939–0.996**); a label-permutation test gives $p<5\times10^{-5}$, and removing any single knob
-leaves **0.883–0.970** (`m37_ci_power.py`; frozen `m37_ci_power_result.json`).
+**0.982** (**0.939–0.996**); a label-permutation test gives $p<5\times10^{-5}$, and on the same **36** units
+dropping any single one of the **six** knobs **whole** — the detector-threshold block (12 units), density
+regression (4), output contract (2), pixel budget (6), prompt family (6) and tiling (6) — leaves
+**0.883–0.970**. That reading is recomputed from the released `equalcount36_result.json`; the frozen
+`m37_ci_power_result.json` stores the same quantity over the **nine** name-parsed subgroups instead, whose
+`n_dropped` (2/6/6/6/2/2/4/4/3) never removes the detector block whole and leaves one unit un-dropped — the
+two agree because the interval's two ends are two of the six knobs. The **31**-unit set above carries no
+leave-one-out reading, and `m37_ci_power.py` is the generator of the frozen field only.
+
+**The intervals do not depend on treating the units as independent.** The units are nested in six knobs, so we re-ran the resampling at the **cluster** level: resampling whole knobs with replacement gives a 95% interval of **0.913–0.994** over the **31** unit set (2,000 draws, seed 20260924), against **0.939–0.996** under the unit bootstrap printed above — a lower bound **2.6 pp** below the i.i.d. one and still well above the **0.80** bar this paper would have read as instability (F.10). The same substitution on the **36** unit set gives **0.883–0.998**, and removing any one knob whole leaves **0.883–0.970** as above. We report the clustered interval alongside the unit one rather than instead of it, because **a cluster-level permutation test has no power here**: the statistic is a rank correlation over the paired unit readings, which is invariant to relabelling units, so permuting knob labels leaves it **bit-identical** (all 720 block permutations give the same value, `p = 1`). We therefore rest the claim on the interval, not on a clustered $p$ — the units are six knobs and the test cannot separate them. Reproduction: `m37_cluster.py`; result `m37_cluster_result.json`.
 
 **Why no split could be certified.** The observed split is **3 vs 7**, and $\binom{10}{3} = 120$ assignments
 put a floor of $1/120 = 0.0083$ under the permutation $p$ *before* correction; with the nine enumerated split
@@ -1917,7 +1925,7 @@ claim.
 *Reproduction: `code/analysis/a5_*.py` (judge, report, two_kinds, qc, qc_matrix, rawsamples, pull), the
 frozen criteria `a5_criteria_frozen.json` (+ `.md5`), the grid driver `a5_grid.sh` /
 `a800_chain_families.py`, the stack patch `a800_fix_llava.sh`, the environment snapshot
-`env/a800_env_snapshot.txt`, and the raw CSVs under `data/derived/e2xt_a800/`.*
+`data/derived/e3/env/a800_env_snapshot.txt`, and the raw CSVs under `data/derived/e3/`.*
 
 ---
 
@@ -1948,7 +1956,8 @@ excluded, and §7.7 states what such a rule would have to satisfy.
 
 *Reproduction: `code/analysis/a_lightfree.py` (four detectors), `a_lightfree_grid.py` (twelve
 post-processing settings), frozen results `a_lightfree_result.json`, `a_lightfree_grid.json`; inputs are
-the detector box archives `data/harvest_A/{gaps__,rn__}boxes_st_a_test_*.npz` and the corpus predictions
+the detector box archives `analysis/data/harvest_A/{gaps__,rn__}boxes_st_a_test_*.npz` (**detector outputs on the public
+corpus images; not part of the released package**) and the corpus predictions
 `data/derived/e2_pools/dense_results/vlm_st_a_base_whole.csv`.*
 
 ---
@@ -2123,8 +2132,21 @@ items while **still answering zero on 146 of 150 S-2 items** — a family × dom
 one. (c) Under the three-outcome `channel` contract the models take an explicit outlet on **99.3–100%** of
 these items, which is why the pool's original eligibility window (which additionally required outlet use
 $\le 95\%$) proved **unsatisfiable by construction** on a true-zero pool; we therefore report the window
-both as pre-registered and as revised to require headroom only in the compared quantity (`base` zero rate
-$\in[10\%,90\%]$). Under the revised window **only gemma-3-12b has headroom in both pools** (34.0% vs
+both **as originally written** and as revised to require headroom only in the compared quantity (`base` zero rate
+$\in[10\%,90\%]$). The eight `base` cells, cell by cell, with the two windows applied:
+
+| build | pool | `base` zero rate | headroom in the compared quantity | `channel` outlet use | headroom under the **original** window |
+|---|---|---|---|---|---|
+| Qwen3-VL-32B-Instruct | S-1 | **100.0%** (150/150) | no | **100.0%** | no |
+| Qwen3-VL-32B-Instruct | S-2 | **99.3%** (149/150) | no | **100.0%** | no |
+| InternVL3.5-8B | S-1 | **98.0%** (147/150) | no | **100.0%** | no |
+| InternVL3.5-8B | S-2 | **100.0%** (150/150) | no | **100.0%** | no |
+| Phi-3.5-Vision | S-1 | **99.3%** (149/150) | no | **100.0%** | no |
+| Phi-3.5-Vision | S-2 | **65.3%** (98/150) | yes | **100.0%** | no |
+| gemma-3-12b | S-1 | **34.0%** (51/150) | yes | **100.0%** | no |
+| gemma-3-12b | S-2 | **88.7%** (133/150) | yes | **99.3%** | no |
+
+The labelling changes which cells are admissible and we give both counts: **3 of 8** cells have headroom in the compared quantity under the revised window and **0 of 8** pass the original one. The 5 that fail the revised window are the saturated cells of Qwen3-VL-32B (both pools), InternVL3.5-8B (both pools) and Phi-3.5-Vision (S-1); and no cell at all is admissible under the original window, since the least saturated cell still takes the explicit outlet on **100.0%** of its items, above the 95% the original window allowed. Under the revised window **only gemma-3-12b has headroom in both pools** (34.0% vs
 88.7%, a 54.7 pp source gap), so only that build licenses a cross-source comparison, and the “both sources
 agree in direction” reading of the other three is largely a consequence of saturation. **The licensing is a property of the window, and we report the whole
 family rather than the one window we adopted:** recomputing the licence over a family of windows
@@ -2167,7 +2189,7 @@ first-integer fallback, `re.compile(r'-?\d+')` applied to the stored reply with 
 only misread a cell if a reply carries **both** a refusal word and a digit. We counted that class rather than
 assuming it away (`n2_adversarial_probe.py`): over the **95,160** stored rows of **654** files, **35,716**
 contain one of the three refusal words (`abstain`, `cannot_judge`, `no_people`, matched as lower-case
-substrings) and **0** contain a refusal word **and** a digit — so the class is empty, and that is what makes
+substrings) and **0** contain a refusal word **and** a digit — so **the class is empty at the audited scope of this probe** (654 files, 95,160 rows: 35,716 carry a refusal word, **0** carry a refusal word and a digit; **0** of those place the digit first, which is the only ordering the fallback can misread). We record the breakdown in full rather than the bare zero, because the scope of the count is itself a finding: whether a wider sample contains such a row is **not** decided here, and that is what makes
 the invariance an empirical property of this corpus rather than a theorem. A constructed reply such as
 `{"response": "no_people", "confidence": 0.85}` lies in exactly that class: keyword matching reads
 `no_people` while the first-integer rule reads the `0` of `0.85`, so the two would disagree. The frozen
@@ -2309,7 +2331,7 @@ closure* of the answer-level route, plus the two outputs that do transfer — th
 dual-convention reporting step of §M.22, whose consequence §5.12 measures.
 
 *Reproduction: `code/analysis/b2_pilot{,_phrasing,_consensus}.py` and their frozen `b2_pilot*_result.json`;
-inputs are the E2/E3 per-item CSVs under `data/derived/e2xt_a800/` — no new inference.*
+inputs are the E2/E3 per-item CSVs under `data/derived/e3/` — no new inference.*
 
 ---
 
@@ -2441,7 +2463,7 @@ the build: it is a **wording × domain** interaction — here the outlet has to 
 rather than *permitted* — and it only surfaces when the domain changes. It also gives the recipe a cheap
 fix: **offer the three options, not a permission**, which is what §M.22 step 2 already prescribes.
 
-*Reproduction: `code/analysis/b1_fsc_full.py` over `data/derived/fsc_a800/` (28 CSVs: 9 configurations ×
+*Reproduction: `code/analysis/b1_fsc_full.py` over `data/derived/fsc_res/frozen384/` (28 CSVs: 9 configurations ×
 base/permit, plus four mechanism arms) and `code/analysis/permit_vs_channel.py` over the E2/E3 census
 (43 cells); probe `code/experiments/19g_probe_fsc.py`, which imports the census probe so prompts and parser
 are byte-identical; images, annotations and splits from the public `isentropic/FSC147` repository.*
@@ -2516,8 +2538,8 @@ convention is a comparability problem, not a decision problem** — it cannot ma
 model, but it can make the numbers incomparable with everyone else's — and the decision-relevant quantity is
 the **abstention mass**, which a report must state alongside its convention.
 
-*Reproduction: `code/analysis/deploy_decision2.py` over `data/derived/fsc_a800/` and
-`data/derived/{e2xt_a800,e2_pools}/`; frozen result `deploy_decision2_result.json`. Thresholds (§M.27 table)
+*Reproduction: `code/analysis/deploy_decision2.py` over `data/derived/fsc_res/frozen384/` and
+`data/derived/{e3,e2_pools}/`; frozen result `deploy_decision2_result.json`. Thresholds (§M.27 table)
 were frozen before the run.*
 
 ---
@@ -3176,6 +3198,7 @@ to 71.50% against the correct 28.78%.
 | LLaVA-OneVision-7B | 0.00% | *n/a* | 80.20% | 28.78% |
 | InternVL2.5-8B-AWQ | 0.00% | *n/a* | 76.67% | 27.07% |
 | **Qwen3-VL-32B-AWQ** | **95.26%** | **90.30%** | 98.33% | 59.12% |
+| **Qwen3-VL-32B-BF16** | **64.03%** | **82.27%** | 95.33% | 49.66% |
 | Qwen2.5-VL-72B-AWQ | 0.00% | *n/a* | 71.33% | 51.82% |
 
 *`n/a` marks a cell with no abstentions, where $S$ is undefined rather than zero.* Comparable item sets:
@@ -3184,7 +3207,7 @@ configuration that **defined** the zero pool.
 
 **On the dense domains the headline does not reproduce in any other family.** Five of the seven families are
 not Qwen, and **none** reaches either a dense zero rate of 30% or a share of 50%; the build that does is the
-one that defined the pool. This is sharper than "lineage- or build-specific": **the other Qwen anchor fails
+one that defined the pool. **The same checkpoint at BF16 clears the bar and does not reproduce it whole**: on the identical item sets it holds **82.27%** of the share (against **90.30%**, a paired bootstrap difference of **8.03 pp**, 95% **[−12.37, −3.75]**) while the answered-zero rate falls from **95.26%** to **64.03%**. The **share** is therefore a build-level quantity and the **rate** is a build-and-precision one, which is the narrower reading §8.2 now states. Three denominators must not be crossed here: **64.03%** is the dense **intersection** (253 items), **65.02%** is this build's **own** dense zero pool (283 items), and **33.61%** is the dense rate on the **full** item set (482 items). This is sharper than "lineage- or build-specific": **the other Qwen anchor fails
 as well** (dense 0.00%). What the cross-family grid therefore supports is that the dense abstention channel
 belongs to **that build in that configuration** — the same conclusion §8.2 reaches from the five-deployment
 spread, now measured in the headline's own quantity.
@@ -3609,8 +3632,10 @@ Every corpus-level rate in this paper was measured with **Chinese** prompts. To 
 depend on that, we rendered the three contract arms into a byte-frozen, **semantically equivalent English**
 version (frozen table md5 `a31bd97c6b70`) and re-ran them on **exactly the items already scored under
 Chinese**, so that the comparison is paired item by item: 5,290 calls, five families, four pools — the two
-true-zero strata of M.38 and the `st_a`/`ucf` census zero pools. The instrument is the frozen probe of M.19,
-imported rather than modified.
+true-zero strata of M.38 and the `st_a`/`ucf` census zero pools. The two census zero pools are **subsets of**
+their domains, not the domains themselves — **103** and **150** items against the two domains' **182** and
+**334** — so every rate below is a rate **within the subset**, not a whole-domain rate of §5.5. The
+instrument is the frozen probe of M.19, imported rather than modified.
 
 **The channel result is language-robust.** The `no_people` rate of the `channel` arm differs between the two
 languages by **-7.2 to +2.6 pp** in every (family, pool) cell, with a per-item classification agreement of
@@ -3618,7 +3643,7 @@ languages by **-7.2 to +2.6 pp** in every (family, pool) cell, with a per-item c
 verdict — that the outlet is used selectively and correctly — therefore does not depend on the prompt language.
 
 **The answered-zero rate is not.** For the anchor lineage, Qwen3-VL-32B-Instruct answers zero on **60.2%** of
-the dense pool under Chinese and **17.5%** under English, a **42.7 pp** drop; the four other families sit at
+the dense pool — **62 of its 103** items — under Chinese and **17.5%** under English, a **42.7 pp** drop; the four other families sit at
 approximately zero in both languages, so the sensitivity is concentrated in the lineage the corpus is built
 from. On the true-zero strata the two languages differ in both directions and by at most 12.4 pp.
 
@@ -3626,11 +3651,13 @@ from. On the true-zero strata the two languages differ in both directions and by
 M.38 control is unaffected.
 
 **The share itself is language-dependent, and can leave its definitional domain.** We extended the English arm
-to the **four headline cells** themselves (anchor build, `base` arm, same items as the Chinese records, using
+to the **four headline cells** themselves (**BF16** build, `base` arm, same items as the Chinese records, using
 the same frozen English table). The share $S$ is defined as the abstention term over the total under-count, so
 it presumes the answered items under-count **on net**; under English that presumption fails in the densest
-cell, where the answered-zero rate falls from **56.6% to 9.3%** and the answered term turns positive, so the
-ratio crosses 100% and $S$ is **no longer a share** (the 82–94% range therefore does not transfer to English
+cell, where the answered-zero rate falls from **35.7% to 9.3%** on that same BF16 build — **not** from the
+**56.6%** of §5.5, which is the **whole 182-item** domain on the corpus's own 4-bit build, so those two are
+not the two ends of one contrast — and the answered term turns positive, so the ratio is **no longer a
+share**: on this run $S$ is **undefined** rather than above 100% (the 82–94% range therefore does not transfer to English
 as a range). **Leaving the unit interval is not, however, an English-only phenomenon:** of the twenty
 (language × configuration) cells, §M.19.16(ii) records **three** outside it — **102.9%** on UCF-QNRF
 `cn-base`, **610.8%** on ShanghaiTech-A `en-base`, and **undefined** on UCF-QNRF `en-base`. What the three
@@ -3736,7 +3763,7 @@ true-zero pool is also **not** unanimous — 1,771 of 9,180 observations call a 
 not as a rule, and why it is not called a precision: a precision would additionally need that pool's base
 rate (see the coverage-versus-precision paragraph of M.21).
 
-*Reproduction: `gen_m40_2x2.py` over `analysis/ea2_z0` and `analysis/e1_results_nonzero`; frozen
+*Reproduction: `gen_m40_2x2.py` over `data/derived/ea2/` and `data/derived/e3/nonzero/` (package-relative); frozen
 `m40_2x2_result.json`; both are re-derived from those frozen artifacts by `anchor_m40m41.py`.*
 
 The outlets are used **discriminatively**: on verified-empty images the emptiness outlet dominates, while on
@@ -4236,8 +4263,12 @@ deviation is an *over*-count ($\rho_{\text{total}} = +11.35$, against $\rho_{\te
 in the table above). Both failures have the same cause as the one
 §M.19.16 already reports for the densest cell: once the answered items stop under-counting on net, the
 ratio is no longer a share. The English arm is **not** uniformly the more extreme one: on the two aerial domains the
-Chinese and English shares are within 4–5 pp, while on the dense domains the language moves the
-answered-zero rate by **−21.4 pp** (ShanghaiTech-A) and **−18.4 pp** (UCF-QNRF) on this build, i.e. the **18–22 pp** of §M.19.16. As before, these four cells are reported as their own build and are
+Chinese and English shares are within 4 pp, while on the dense domains the language moves the answered-zero
+rate by **−26.4 pp** (ShanghaiTech-A, 35.7 → 9.3) and **−23.4 pp** (UCF-QNRF, 34.7 → 11.4) in the runs
+tabulated above, against **−21.4** and **−18.4 pp** in §M.19.16's separate session on the same build; the
+**18–22 pp** of §M.19.16 and the pair above are **not two readings of one band** — they are different
+sessions, reported separately, and neither is substituted for the other, and neither is a change of sign.
+As before, these four cells are reported as their own build and are
 **not** tabulated against the published four-quarter-bit cells.
 
 *Reproduction: the frozen criteria of both runs, the runner, the analysers and the per-item records of all
@@ -4265,7 +4296,7 @@ stack band** on every absolute rate below.
 **The language effect, per start, on the baseline build** ($\Delta = $ `en-base` $-$ `cn-base`, answered-zero
 rate, pp):
 
-| domain | start 1 | start 2 | start 3 | BF16 (part (b)) |
+| domain | start 1 | start 2 | start 3 | BF16 (§M.19.16) |
 |---|---|---|---|---|
 | ShanghaiTech-A | −15.9 | −14.8 | −14.8 | −21.4 |
 | UCF-QNRF | −24.3 | −25.5 | −23.1 | −18.4 |
@@ -4450,6 +4481,21 @@ This file is a **move, not a deletion**: every section moved out of the main tex
 with a one- to two-sentence conclusion and a pointer here, so each claim can be checked against the same
 rules and numbers. **Where the two disagree, the main text governs.** Section headings here name the
 main-text section each block belongs to.
+
+### Z.1b Private paths and their released equivalents
+
+Some reproduction pointers in this file name the internal working tree in which the runs were made. Where a reader needs to find the same artefact inside the released package, this table is the mapping; **no number or claim depends on it**, and the released package is the authority.
+
+| internal path (as used during the runs) | released equivalent |
+|---|---|
+| `analysis/e2xt_a800/{merged,nonzero}/` | `data/derived/e3/{merged,nonzero}/` |
+| `analysis/e2xt_a800/{zero,anchors,ablate,ablate3,build,reps,env}/` | `data/derived/e3/` |
+| `analysis/fsc_a800/` | `data/derived/fsc_res/frozen384/` |
+| `analysis/fsc_res/` | `data/derived/fsc_res/<tag>/` |
+| `analysis/ea2_z0/` | `data/derived/ea2/` |
+| `analysis/e1_results_nonzero/` | `data/derived/e3/nonzero/` |
+| `analysis/data/harvest_A/*.npz` | **not released** (detector box archives; see the note in §M.20) |
+| `analysis/work/<name>.py` | `code/analysis/<name>.py` |
 
 ### Z.2 Where the review requests came from
 

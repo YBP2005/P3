@@ -9,9 +9,9 @@ Evaluation reports symmetric magnitudes: 100 and 150 look alike. We treat the **
 error direction** as a measurable dimension and contribute **two findings, plus the apparatus that makes
 them checkable**: an **operationalisation** of abstention for counting that separates a suppressed abstention
 from a true zero, and the **dual-convention identities** that make under-counts readable. For the
-open-weight models studied here (§5.7, §8.2), the dominant dense-scene failure is **not underestimation
-but abstention** — a literal "0" — accounting for **82–94%** of the total under-count under the ground-truth-weighted share
-(**base arm, Chinese prompts, one anchor build**; the **unweighted** convention gives **53.9–68.2%**); **answered-zero rate** drops **42.7 pp under English prompts** (§8.2).
+open-weight models here (§5.7, §8.2), the dominant dense-scene failure is **not underestimation
+but abstention** — a literal "0" — accounting for **82–94%** of the total under-count under ground-truth-weighted share
+(**base arm, Chinese prompts, one anchor build**; the **unweighted** convention gives **53.9–68.2%**); **answered-zero rate** drops **42.7 pp on the BF16 build under English** (§8.2).
 Given an abstention option **1591/1591** calls abstain; forbidding it yields a **per-item median** of **2.463–9.452×** (§5.7, Appendix M).
 The gate is the **availability of an abstention token**, not enumeration demand
 (Appendix M.18). Abstention is a
@@ -21,7 +21,7 @@ of {implementation × training domain × data domain × protocol}, not of a para
 **2–3.4×** across official implementations (DM-Count **20.1–34.3 pp** vs
 P2PNet [1] **10.1 pp**, same protocol and items), **3.5×** under a training-domain swap,
 and a defective reproduction as an **implementation defect** (§6.1, Appendix K).
-What replicates under **shared calibration** is the **ordering** of these spans, not their magnitudes, and then only under the **level sets and calibers compared** (§7.3).
+What replicates under **shared calibration** is the **ordering** of these spans, not their magnitudes, and only under the **level sets and calibers compared** (§7.3).
 
 ## 1. Introduction
 
@@ -39,7 +39,7 @@ four VLM configurations, nine datasets), we find that **the dominant component o
 cannot individually ascertain, and expresses that refusal as the **literal answer "0"**. Under a ground-truth-weighted convention, answering 0 accounts for **82–94%** of the total under-count
 (**base contract arm, Chinese prompts, one anchor build**; over all arms and domains the share spans
 **0–99.4%** — the `over` arm never abstains (Appendix J.1);
-the **answered-zero rate** drops **42.7 pp under English prompts** (Appendix M.39)).
+the **answered-zero rate** drops **42.7 pp on the BF16 build under English prompts** (Appendix M.39)).
 
 The distinction changes three things.
 
@@ -869,14 +869,13 @@ the two outlets' **sensitivity and specificity on stated pools**, which is **not
 **The corpus is dominated by one lineage, which bounds every frequency claim.** Most of the ~620k records
 come from the Qwen family, so the abstractions' frequency statements are claims about that family and the
 configurations measured alongside it, not about vision-language models in general. **The contract result is
-not lineage-bound**: the same instrument on seven families removes the answered zero in **7 of 7** on the
-corpus domains (§5.7) and in **8 of 9 configurations** on the public benchmark FSC-147 (§5.13) — with the Qwen3-VL-32B build
+not lineage-bound**: on the public benchmark FSC-147 it holds in **8 of 9 configurations** (§5.13) — with the Qwen3-VL-32B build
 as the reported counterexample there. The abstention *completeness* claim still rests on the Qwen family ($\kappa = 550.6$) and the smaller
 InternVL subset ($1/(\kappa+1) = $ **30.31%**). Every corpus-level rate was measured with **Chinese**
 prompts, so we repeated the arms in a byte-frozen English rendering on the same items: the channel result
 is language-robust (`no_people` differs by at most **7.2 pp**), but the answered-zero rate is not — the
 anchor lineage answers zero on **60.2%** of the dense pool under Chinese and **17.5%** under English, a
-**42.7 pp** drop (Appendix M.39). The shares of §5.5 are therefore scoped to the prompt language and to the **one anchor build**
+**42.7 pp** drop **on the BF16 build** (Appendix M.39). The shares of §5.5 are therefore scoped to the prompt language and to the **one anchor build**
 measured here, not to the lineage (six of seven further families fall short; M.19.15). The true-zero pools differ by **54.7 pp**, so $p\approx1$ is not transferable (Appendix M.21.9).
 Two further limits from the same experiment: the abstention **share** leaves its unit interval when the net
 deviation is near zero — three of twenty cells, reported as unmeasured rather than clipped — and the **English**

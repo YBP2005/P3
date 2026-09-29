@@ -1,0 +1,9 @@
+  冻结探针 19e_probe_multi.py md5 ✓
+  零池：283 项（st_a,ucf）｜臂 base
+  待跑 283 项 → /root/p5a_results/p5a_Qwen3-VL-32B-Instruct_base.csv
+    50/283  3.46 it/s  err=0
+    100/283  3.59 it/s  err=0
+    150/283  2.97 it/s  err=29
+    200/283  2.56 it/s  err=60
+    250/283  2.38 it/s  err=83
+  [base] DONE：283 行（err=102）→ /root/p5a_results/p5a_Qwen3-VL-32B-Instruct_base.csv

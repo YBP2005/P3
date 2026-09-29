@@ -1,0 +1,34 @@
+[15:37:39] ########## FSC 机制臂开始 ##########
+[15:39:27]   [fsc2_gemma] 起服就绪（105s）
+[15:39:27] == [fsc2_gemma] channel,enumAbstain ==
+仪器：复用 19e 的 P/parse/call_img（19e 未改动）
+  [channel] 300 行；pred==0 的 0 个；-> /root/fsc_results/fsc_gemma3-12b_channel.csv
+  [enumAbstain] 300 行；pred==0 的 0 个；-> /root/fsc_results/fsc_gemma3-12b_enumAbstain.csv
+[15:40:18]    rc=0 用时 51s
+[15:41:06]   [fsc2_ivl] 起服就绪（45s）
+[15:41:06] == [fsc2_ivl] channel,enumAbstain ==
+仪器：复用 19e 的 P/parse/call_img（19e 未改动）
+  [channel] 300 行；pred==0 的 0 个；-> /root/fsc_results/fsc_InternVL3_5-8B_channel.csv
+  [enumAbstain] 300 行；pred==0 的 0 个；-> /root/fsc_results/fsc_InternVL3_5-8B_enumAbstain.csv
+[15:42:55]    rc=0 用时 109s
+[15:43:43]   [fsc2_phi] 起服就绪（45s）
+[15:43:43] == [fsc2_phi] channel,enumAbstain ==
+仪器：复用 19e 的 P/parse/call_img（19e 未改动）
+  [channel] 300 行；pred==0 的 0 个；-> /root/fsc_results/fsc_Phi-3.5-vision-instruct_channel.csv
+  [enumAbstain] 300 行；pred==0 的 7 个；-> /root/fsc_results/fsc_Phi-3.5-vision-instruct_enumAbstain.csv
+[15:44:23]    rc=0 用时 40s
+[15:45:26]   [fsc2_lov] 起服就绪（60s）
+[15:45:26] == [fsc2_lov] channel,enumAbstain ==
+仪器：复用 19e 的 P/parse/call_img（19e 未改动）
+  [channel] 300 行；pred==0 的 0 个；-> /root/fsc_results/fsc_llava-onevision-qwen2-7b-ov_channel.csv
+  [enumAbstain] 300 行；pred==0 的 0 个；-> /root/fsc_results/fsc_llava-onevision-qwen2-7b-ov_enumAbstain.csv
+[15:46:19]    rc=0 用时 53s
+[15:47:52]   [fsc2_q32] 起服就绪（90s）
+[15:47:52] == [fsc2_q32] channel,enumAbstain ==
+仪器：复用 19e 的 P/parse/call_img（19e 未改动）
+  [channel] 300 行；pred==0 的 0 个；-> /root/fsc_results/fsc_Qwen3-VL-32B-Instruct_channel.csv
+  [enumAbstain] 300 行；pred==0 的 257 个；-> /root/fsc_results/fsc_Qwen3-VL-32B-Instruct_enumAbstain.csv
+[15:49:07]    rc=0 用时 75s
+[15:49:07] 文件清点：20 个
+[15:49:07] ########## FSC 机制臂结束 ##########
+FSC2_DONE

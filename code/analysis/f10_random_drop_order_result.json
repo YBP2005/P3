@@ -1,0 +1,39 @@
+{
+  "purpose": "F.10 随机删档：24 单元的幅度保留率与排序保全率（v0547 盲审 dspro −4.0 / T3 / T5）",
+  "design": "随机抽 k=4 档（不放回）2000 次；幅度=抽样跨度/全长跨度；排序=抽样跨度向量与全长跨度向量的 Spearman",
+  "k": 4,
+  "per_caliber": {
+    "person": {
+      "n_units": 24,
+      "unit_retention": {
+        "median": 1.0,
+        "p05": 0.318,
+        "p95": 1.0,
+        "minimum": 0.059,
+        "frac_ge_090": 0.584
+      },
+      "ordering_spearman": {
+        "median": 0.963,
+        "p05": 0.924,
+        "p95": 0.987,
+        "minimum": 0.885
+      }
+    },
+    "allclass": {
+      "n_units": 24,
+      "unit_retention": {
+        "median": 1.0,
+        "p05": 0.318,
+        "p95": 1.0,
+        "minimum": 0.065,
+        "frac_ge_090": 0.577
+      },
+      "ordering_spearman": {
+        "median": 0.977,
+        "p05": 0.959,
+        "p95": 0.992,
+        "minimum": 0.937
+      }
+    }
+  }
+}

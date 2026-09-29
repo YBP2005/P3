@@ -1,0 +1,27 @@
+[07:22:49][gpu1] == gpu1 开始 ｜ 组：B C ｜ 臂：forbid0,neutral0,base ｜ workers=8 ==
+[07:22:49][gpu1] [gemma3-12b] GPU1 port=8001 frac=0.40 maxlen=8192 extra='' 起服
+[07:22:49][gpu1] [llava-onevision-qwen2-7b-ov] GPU1 port=8004 frac=0.26 maxlen=8192 extra='' 起服
+[07:22:49][gpu1] [Phi-3.5-vision-instruct] GPU1 port=8003 frac=0.30 maxlen=8192 extra='--trust_remote_code' 起服
+[07:24:49][gpu1] [Phi-3.5-vision-instruct] !! 起服失败（见 /root/logs/p1d_serve_Phi-3.5-vision-instruct.log）
+[07:24:49][gpu1] [Phi-3.5-vision-instruct] !! 未就绪，跳过该族（其他族不受影响）
+    (APIServer pid=10606)     ^
+    (APIServer pid=10606)   File "/usr/local/miniconda3/lib/python3.13/site-packages/vllm/v1/engine/utils.py", line 1320, in wait_for_engine_startup
+    (APIServer pid=10606)     raise RuntimeError(
+    (APIServer pid=10606)     ...<8 lines>...
+    (APIServer pid=10606)     )
+    (APIServer pid=10606) RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+[07:25:21][gpu1] [llava-onevision-qwen2-7b-ov] !! 起服失败（见 /root/logs/p1d_serve_llava-onevision-qwen2-7b-ov.log）
+[07:25:21][gpu1] [llava-onevision-qwen2-7b-ov] !! 未就绪，跳过该族（其他族不受影响）
+    (EngineCore pid=11145)   File "/usr/local/miniconda3/lib/python3.13/site-packages/vllm/v1/core/kv_cache_utils.py", line 859, in _check_enough_kv_cache_memory
+    (EngineCore pid=11145)     raise ValueError(
+    (EngineCore pid=11145)     ...<6 lines>...
+    (EngineCore pid=11145)     )
+    (EngineCore pid=11145) ValueError: No available memory for the cache blocks. Try increasing `gpu_memory_utilization` when initializing the engine (this flag also controls CPU memory reservation on the CPU backend, despite its name). See https://docs.vllm.ai/en/latest/configuration/conserving_memory/ for more details.
+    [rank0]:[W925 07:25:21.527325845 ProcessGroupNCCL.cpp:1624] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[07:25:37][gpu1] [gemma3-12b] 就绪（168s）
+[07:27:29][gpu1] [gemma3-12b/forbid0] 675 行
+[07:27:29][gpu1] [gemma3-12b/neutral0] 675 行
+[07:27:30][gpu1] [gemma3-12b/base] 675 行
+/root/p1d_run.sh: line 70: 10586 Killed                  CUDA_VISIBLE_DEVICES="$G" nohup $VLLM serve "$MP" --served-model-name "$NAME" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization "$FRAC" --max-num-seqs 24 --port "$PORT" $EXTRA < /dev/null > "$LOG" 2>&1
+[07:27:35][gpu1] [gemma3-12b] 完成并已停自己的服务
+[07:27:35][gpu1] == 组 B 结束 ==

@@ -1,0 +1,320 @@
+{
+ "n_units": 43,
+ "saves": [
+  [
+   "qwen3-vl-2b",
+   "aitod",
+   0.4158415841584158,
+   0.0
+  ],
+  [
+   "qwen3-vl-2b",
+   "visdrone",
+   0.5567010309278351,
+   0.0
+  ]
+ ],
+ "rows": [
+  {
+   "cfg": "InternVL3_5-8B",
+   "ds": "aitod",
+   "n": 59,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "InternVL3_5-8B",
+   "ds": "visdrone",
+   "n": 95,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "Phi-3.5-vision-instruct",
+   "ds": "aitod",
+   "n": 105,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "Phi-3.5-vision-instruct",
+   "ds": "visdrone",
+   "n": 92,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "internvl25-8b-awq",
+   "ds": "aitod",
+   "n": 102,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "internvl25-8b-awq",
+   "ds": "visdrone",
+   "n": 128,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "internvl35-38b-fp8",
+   "ds": "aitod",
+   "n": 106,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "internvl35-38b-fp8",
+   "ds": "ucf",
+   "n": 14,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "internvl35-38b-fp8",
+   "ds": "visdrone",
+   "n": 211,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "llava-onevision-qwen2-7b-ov",
+   "ds": "aitod",
+   "n": 101,
+   "permit": 0.0297029702970297,
+   "channel": 0.0
+  },
+  {
+   "cfg": "llava-onevision-qwen2-7b-ov",
+   "ds": "visdrone",
+   "n": 134,
+   "permit": 0.014925373134328358,
+   "channel": 0.0
+  },
+  {
+   "cfg": "qwen25vl-72b-awq",
+   "ds": "aitod",
+   "n": 93,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "qwen25vl-72b-awq",
+   "ds": "visdrone",
+   "n": 121,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "qwen25vl-7b-awq",
+   "ds": "ucf",
+   "n": 19,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "qwen3-vl-2b",
+   "ds": "aitod",
+   "n": 101,
+   "permit": 0.4158415841584158,
+   "channel": 0.0
+  },
+  {
+   "cfg": "qwen3-vl-2b",
+   "ds": "visdrone",
+   "n": 194,
+   "permit": 0.5567010309278351,
+   "channel": 0.0
+  },
+  {
+   "cfg": "qwen3-vl-30b-a3b-fp8",
+   "ds": "aitod",
+   "n": 10,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "qwen3-vl-30b-a3b-fp8",
+   "ds": "visdrone",
+   "n": 37,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "qwen3-vl-32b-awq",
+   "ds": "aitod",
+   "n": 149,
+   "permit": 0.006711409395973154,
+   "channel": 0.0
+  },
+  {
+   "cfg": "qwen3-vl-32b-awq",
+   "ds": "st_a",
+   "n": 407,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "qwen3-vl-32b-awq",
+   "ds": "ucf",
+   "n": 673,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "qwen3-vl-32b-awq",
+   "ds": "visdrone",
+   "n": 268,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "qwen3-vl-32b-awq8",
+   "ds": "aitod",
+   "n": 142,
+   "permit": 0.007042253521126761,
+   "channel": 0.0
+  },
+  {
+   "cfg": "qwen3-vl-32b-awq8",
+   "ds": "st_a",
+   "n": 67,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "qwen3-vl-32b-awq8",
+   "ds": "ucf",
+   "n": 125,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "qwen3-vl-32b-awq8",
+   "ds": "visdrone",
+   "n": 255,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "qwen3-vl-32b-bf16",
+   "ds": "aitod",
+   "n": 143,
+   "permit": 0.006993006993006993,
+   "channel": 0.0
+  },
+  {
+   "cfg": "qwen3-vl-32b-bf16",
+   "ds": "st_a",
+   "n": 253,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "qwen3-vl-32b-bf16",
+   "ds": "ucf",
+   "n": 120,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "qwen3-vl-32b-bf16",
+   "ds": "visdrone",
+   "n": 254,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "qwen3-vl-32b-fp8",
+   "ds": "aitod",
+   "n": 139,
+   "permit": 0.007194244604316547,
+   "channel": 0.0
+  },
+  {
+   "cfg": "qwen3-vl-32b-fp8",
+   "ds": "st_a",
+   "n": 82,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "qwen3-vl-32b-fp8",
+   "ds": "ucf",
+   "n": 143,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "qwen3-vl-32b-fp8",
+   "ds": "visdrone",
+   "n": 146,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "qwen3-vl-32b-gptq",
+   "ds": "aitod",
+   "n": 133,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "qwen3-vl-32b-gptq",
+   "ds": "ucf",
+   "n": 29,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "qwen3-vl-32b-gptq",
+   "ds": "visdrone",
+   "n": 145,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "qwen3-vl-4b",
+   "ds": "aitod",
+   "n": 118,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "qwen3-vl-4b",
+   "ds": "st_a",
+   "n": 24,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "qwen3-vl-4b",
+   "ds": "ucf",
+   "n": 15,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "qwen3-vl-4b",
+   "ds": "visdrone",
+   "n": 232,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "qwen3-vl-8b-awq",
+   "ds": "aitod",
+   "n": 119,
+   "permit": 0.0,
+   "channel": 0.0
+  },
+  {
+   "cfg": "qwen3-vl-8b-awq",
+   "ds": "visdrone",
+   "n": 136,
+   "permit": 0.0,
+   "channel": 0.0
+  }
+ ]
+}

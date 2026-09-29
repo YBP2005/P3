@@ -1,0 +1,24 @@
+  ① 19e_probe_multi.py md5 03edb14c98ff ✓
+  ② p1d_prompts.json   md5 d35ec04a163e ✓（新增臂 ['forbid0', 'neutral0']）
+  提示词（圆点版）就绪；尾串比对：True
+  载入模型 /model/ModelScope/Qwen/Qwen3-VL-8B-Instruct（bf16，device 0）
+Loading weights:   0%|          | 0/750 [00:00<?, ?it/s]Loading weights:   0%|          | 1/750 [00:00<02:56,  4.24it/s]Loading weights:   3%|▎         | 21/750 [00:00<00:09, 77.73it/s]Loading weights:   6%|▌         | 45/750 [00:00<00:05, 133.36it/s]Loading weights:   9%|▊         | 65/750 [00:00<00:04, 152.94it/s]Loading weights:  11%|█         | 83/750 [00:00<00:04, 160.95it/s]Loading weights:  14%|█▍        | 105/750 [00:00<00:03, 171.27it/s]Loading weights:  17%|█▋        | 127/750 [00:00<00:03, 181.98it/s]Loading weights:  20%|█▉        | 149/750 [00:00<00:03, 185.32it/s]Loading weights:  23%|██▎       | 171/750 [00:01<00:03, 187.34it/s]Loading weights:  26%|██▌       | 193/750 [00:01<00:02, 193.77it/s]Loading weights:  29%|██▊       | 215/750 [00:01<00:02, 197.60it/s]Loading weights:  31%|███▏      | 236/750 [00:01<00:02, 198.17it/s]Loading weights:  35%|███▍      | 259/750 [00:01<00:02, 205.14it/s]Loading weights:  37%|███▋      | 280/750 [00:01<00:02, 203.81it/s]Loading weights:  40%|████      | 303/750 [00:01<00:02, 210.00it/s]Loading weights:  44%|████▍     | 329/750 [00:01<00:01, 221.90it/s]Loading weights:  47%|████▋     | 353/750 [00:01<00:01, 226.43it/s]Loading weights:  50%|█████     | 376/750 [00:02<00:01, 227.06it/s]Loading weights:  53%|█████▎    | 399/750 [00:02<00:01, 227.42it/s]Loading weights:  81%|████████▏ | 610/750 [00:02<00:00, 784.25it/s]Loading weights:  99%|█████████▉| 745/750 [00:02<00:00, 948.95it/s]Loading weights: 100%|██████████| 750/750 [00:02<00:00, 321.43it/s]
+  载入完成 5.0 s
+  token "0" id=15 ｜ u0 范数 1.422
+  σ=8 层：135 项 ｜ 臂 ['base', 'forbid0', 'neutral0']
+  已完成 0 / 本次 135
+    10/135  0.67 it/s
+    20/135  0.69 it/s
+    30/135  0.70 it/s
+    40/135  0.71 it/s
+    50/135  0.72 it/s
+    60/135  0.73 it/s
+    70/135  0.74 it/s
+    80/135  0.75 it/s
+    90/135  0.75 it/s
+    100/135  0.75 it/s
+    110/135  0.76 it/s
+    120/135  0.76 it/s
+    130/135  0.76 it/s
+  汇总：n_base_zero=62 ｜ L*(forbid0)=18 ｜ L*(neutral0)=18 ｜ cos(meanΔh,u0) 末层 f=-0.0845 n=+0.0196
+  DONE：135 项 → /root/p5c_results2.jsonl

@@ -1,0 +1,16 @@
+[02:07:42] == P4 big 开始 ｜ 显存 0 MiB ｜ 每格 6 线程 ==
+[02:07:42] [Qwen3-VL-32B-Instruct] 起服 frac=0.85 maxlen=4096
+/root/p4_run.sh: line 96: unexpected EOF while looking for matching `"'
+/root/p4_run.sh: line 97: syntax error: unexpected end of file
+[02:09:12] [Qwen3-VL-32B-Instruct] 就绪（90 s）｜显存 67185 MiB
+[02:09:15] == P4 a3b 开始 ｜ 显存 0 MiB ｜ 每格 6 线程 ==
+[02:09:15] [Qwen3-VL-30B-A3B-Instruct] 起服 frac=0.85 maxlen=4096
+/root/p4_run.sh: line 52: 14836 Killed                  nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization "$FRAC" --max-num-seqs 24 --port "$PORT" < /dev/null > "$LOG" 2>&1
+[02:11:16] [Qwen3-VL-30B-A3B-Instruct] !! 进程退出
+[02:11:16] [Qwen3-VL-30B-A3B-Instruct] 跳过
+[02:11:29] == P4 a3b 结束 ｜ 显存 0 MiB ==
+[02:11:29] P4_a3b_DONE
+/root/p4_run.sh: line 65: 14447 Killed                  nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization "$FRAC" --max-num-seqs 24 --port "$PORT" < /dev/null > "$LOG" 2>&1
+[02:19:43] [Qwen3-VL-32B-Instruct] 256 完成（ERR 行 0/744）
+[02:22:53] [Qwen3-VL-32B-Instruct] 768 完成（ERR 行 0/1202）
+[02:22:57] [Qwen3-VL-32B-Instruct] 停服；产物：4 个文件

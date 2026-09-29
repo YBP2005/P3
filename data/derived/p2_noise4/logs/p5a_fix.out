@@ -1,0 +1,12 @@
+[04:19:04] P4 llava 已结束（或超时）
+  base 283 → 220 行
+  forbid0 283 → 220 行
+  permit 283 → 220 行
+[04:19:07] 起服 Qwen3-VL-8B-Instruct（maxlen 16384, frac 0.45，起服前显存 0 MiB）
+/root/_p5a_fix_ucf.sh: line 51:  1208 Killed                  nohup $VLLM serve /model/ModelScope/Qwen/Qwen3-VL-8B-Instruct --served-model-name "$M" --max-model-len 16384 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.45 --max-num-seqs 24 --port 8043 < /dev/null > /root/logs/serve_p5a_${M}_ml16384.log 2>&1
+[04:19:27] !! 起服失败
+    (APIServer pid=1208) INFO 09-25 04:19:17 [api_utils.py:347]    ▀▀  ▀▀▀▀▀ ▀▀▀▀▀ ▀     ▀
+    (APIServer pid=1208) INFO 09-25 04:19:17 [api_utils.py:347] 
+    (APIServer pid=1208) INFO 09-25 04:19:17 [api_utils.py:286] non-default args: {'model_tag': '/model/ModelScope/Qwen/Qwen3-VL-8B-Instruct', 'port': 8043, 'model': '/model/ModelScope/Qwen/Qwen3-VL-8B-Instruct', 'max_model_len': 16384, 'served_model_name': ['Qwen3-VL-8B-Instruct'], 'gpu_memory_utilization': 0.45, 'limit_mm_per_prompt': {'image': 1}, 'max_num_seqs': 24}
+    (APIServer pid=1208) INFO 09-25 04:19:17 [model.py:684] Resolved architecture: Qwen3VLForConditionalGeneration
+    (APIServer pid=1208) INFO 09-25 04:19:17 [model.py:2021] Using max model len 16384

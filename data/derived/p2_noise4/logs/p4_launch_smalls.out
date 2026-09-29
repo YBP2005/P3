@@ -1,0 +1,26 @@
+[01:57:50] == P4 smalls 开始 ｜ 显存 0 MiB ｜ 每格 6 线程 ==
+[01:57:50] [Qwen2.5-VL-3B-Instruct] 起服 frac=0.16 maxlen=8192
+[01:59:00] [Qwen3-VL-4B-Instruct] 起服 frac=0.16 maxlen=8192
+[01:59:00] [Qwen2.5-VL-3B-Instruct] 就绪（70 s）｜显存 11127 MiB
+[01:59:20] [Qwen2.5-VL-3B-Instruct] 256 完成（ERR 行 0/600）
+[02:00:20] [Qwen3-VL-8B-Instruct] 起服 frac=0.30 maxlen=8192
+[02:00:20] [Qwen3-VL-4B-Instruct] 就绪（80 s）｜显存 23940 MiB
+[02:00:22] [Qwen2.5-VL-3B-Instruct] 768 完成（ERR 行 0/600）
+/root/p4_run.sh: line 43: 12941 Killed                  nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization "$FRAC" --max-num-seqs 24 --port "$PORT" < /dev/null > "$LOG" 2>&1
+[02:00:26] [Qwen2.5-VL-3B-Instruct] 停服；产物：4 个文件
+[02:00:37] [Qwen3-VL-4B-Instruct] 256 完成（ERR 行 0/600）
+[02:01:25] [Qwen3-VL-4B-Instruct] 768 完成（ERR 行 0/600）
+/root/p4_run.sh: line 43: 13244 Killed                  nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization "$FRAC" --max-num-seqs 24 --port "$PORT" < /dev/null > "$LOG" 2>&1
+[02:01:29] [Qwen3-VL-4B-Instruct] 停服；产物：4 个文件
+[02:01:40] [llava-onevision-qwen2-7b-ov] 起服 frac=0.26 maxlen=8192
+[02:01:40] [Qwen3-VL-8B-Instruct] 就绪（80 s）｜显存 47956 MiB
+[02:02:02] [Qwen3-VL-8B-Instruct] 256 完成（ERR 行 0/600）
+[02:02:50] [llava-onevision-qwen2-7b-ov] 就绪（70 s）｜显存 70883 MiB
+[02:03:20] [Qwen3-VL-8B-Instruct] 768 完成（ERR 行 0/600）
+/root/p4_run.sh: line 43: 13606 Killed                  nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization "$FRAC" --max-num-seqs 24 --port "$PORT" < /dev/null > "$LOG" 2>&1
+[02:03:24] [Qwen3-VL-8B-Instruct] 停服；产物：4 个文件
+[02:04:17] [llava-onevision-qwen2-7b-ov] 256 完成（ERR 行 0/600）
+/root/p4_run.sh: line 65: 13974 Killed                  nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization "$FRAC" --max-num-seqs 24 --port "$PORT" < /dev/null > "$LOG" 2>&1
+[02:11:10] [llava-onevision-qwen2-7b-ov] 768 完成（ERR 行 38/600）
+[02:11:14] [llava-onevision-qwen2-7b-ov] 停服；产物：4 个文件
+/root/p4_run.sh: line 95: warning: here-document at line 91 delimited by end-of-file (wanted `$FAMS')

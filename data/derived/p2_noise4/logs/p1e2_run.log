@@ -1,0 +1,13 @@
+[07:53:59][p1e2] == p1e2 placebo100 补跑（卡1：Phi → InternVL3.5）==
+[07:53:59][p1e2] [GPU1] 显存已回落（0 MiB）
+[07:53:59][p1e2] [Phi-3.5-vision-instruct] GPU1 port=8003 frac=0.30 maxlen=8192 起服
+[07:54:47][p1e2] [Phi-3.5-vision-instruct] 就绪（48s）
+[07:55:34][p1e2] [Phi-3.5-vision-instruct/placebo100] 675 行
+[07:55:42][p1e2] 回收孤儿 EngineCore pid=18316
+[07:55:42][p1e2] [Phi-3.5-vision-instruct] 完成并已停自己的服务
+[07:55:52][p1e2] [GPU1] 显存已回落（0 MiB）
+[07:55:52][p1e2] [InternVL3_5-8B] GPU1 port=8002 frac=0.28 maxlen=8192 起服
+[07:56:40][p1e2] [InternVL3_5-8B] 就绪（48s）
+[07:59:24][p1e2] [InternVL3_5-8B/placebo100] 675 行
+[07:59:32][p1e2] [InternVL3_5-8B] 完成并已停自己的服务
+[07:59:32][p1e2] P1E2_DONE

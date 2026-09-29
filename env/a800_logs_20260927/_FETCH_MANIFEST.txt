@@ -1,0 +1,43 @@
+A800 -> <WORKDIR>\PaperB\analysis\a800_logs_20260927
+来源 <REDACTED-A800-HOST>
+
+A800交接说明_给P3_20260926.md  10907
+A800交接说明_给P3_20260927.md  7771
+RUNNING.md  32310
+RUNNING.md.bak_before_p3_20260926  12426
+RUNNING.md.bak_before_panelfill  22555
+RUNNING.md.bak_before_s10  19989
+RUNNING.md.bak_before_s8  11066
+RUNNING.md.bak_before_s9  15588
+RUNNING.md.bak_before_s95  18931
+_RUNNING_a800.md  3736
+_p3_running_done.md  1761
+g3.log  2413
+g3_fetch.log  74392
+g3_outer.log  3361
+g3_serve_InternVL3_5-8B.log  197385
+g3_serve_Qwen2.5-VL-3B-Instruct.log  195748
+g3_serve_Qwen3-VL-32B-Instruct.log  207014
+g3_serve_Qwen3-VL-4B-Instruct.log  195264
+g56.log  1577
+g7.log  790
+g7_outer.log  5544
+g7_serve_F2_16384.log  91598
+g7_serve_F2_4096.log  91592
+g7_serve_R_s1.log  214564
+g7_serve_R_s2.log  91333
+g7_serve_R_s3.log  91594
+g8.log  2384
+g8_outer.log  1303
+g8_serve_16384.log  136964
+g8_serve_32768.log  33829
+g8_serve_65536.log  34198
+g9.log  34192
+g9_outer.log  253
+gx.log  77948
+gx_outer.log  3277
+gx_serve_InternVL3_5-8B.log  79581
+gx_serve_Qwen3-VL-32B-Instruct.log  91082
+gx_serve_gemma3-12b.log  78793
+
+取回成功 38 / 失败 0

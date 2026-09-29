@@ -1,0 +1,4 @@
+  冻结探针 19e_probe_multi.py md5 03edb14c98ff ✓（提示词/解析/传输逐字复用）
+  [llava-onevision-qwen2-7b-ov/base/blur4] 网格 300 项 / 已完成 0 / 本次 300 ｜ model=llava-onevision-qwen2-7b-ov ｜ system=无（冻结传输）
+    200/300  0.34 it/s  zero=9 abstain=174 parse_fail=174
+  [llava-onevision-qwen2-7b-ov/base] DONE：300 行写入 /root/p1c_results/p1b_blur4_llava-onevision-qwen2-7b-ov_base.csv（zero=34 abstain=243 parse_fail=243）

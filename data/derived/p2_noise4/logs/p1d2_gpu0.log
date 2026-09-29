@@ -1,0 +1,12 @@
+[07:26:45][gpu0] == gpu0 补充轨开始（逐族独占）｜臂：forbid0,neutral0,base ｜workers=8 ==
+[07:28:35][gpu0] [GPU0] 等待显存回落…（现 70969 MiB）
+[07:30:36][gpu0] [GPU0] 等待显存回落…（现 70969 MiB）
+[07:32:36][gpu0] [GPU0] 等待显存回落…（现 70969 MiB）
+[07:33:06][gpu0] [GPU0] 显存已回落（0 MiB）
+[07:33:06][gpu0] [Qwen3-VL-8B-Instruct] GPU0 port=8005 frac=0.45 maxlen=8192 起服
+[07:34:34][gpu0] [Qwen3-VL-8B-Instruct] 就绪（88s）
+[07:36:03][gpu0] [Qwen3-VL-8B-Instruct/forbid0] 675 行
+[07:36:03][gpu0] [Qwen3-VL-8B-Instruct/neutral0] 675 行
+[07:36:03][gpu0] [Qwen3-VL-8B-Instruct/base] 675 行
+[07:36:11][gpu0] [Qwen3-VL-8B-Instruct] 完成并已停自己的服务
+[07:36:11][gpu0] P1D2_gpu0_DONE

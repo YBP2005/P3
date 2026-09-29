@@ -1,0 +1,150 @@
+  冻结判据 /root/g_criteria_frozen.json ｜ md5 b9e8227d9aa332ce529976b34f1cb21b
+  英/中文提示词表 md5 0fc1a569c9cd
+  单变量断言：3 个 neutral0 臂 = 同语言 base + 一段 target 子句 ✓
+  冻结探针 /root/19e_probe_multi.py ｜ md5 03edb14c98ffa3aea9ffa20f59b00bc8 ✓
+  [st_a/cn-base] 共 182 项，已完成 0，待跑 182
+    50/182
+    100/182
+    150/182
+  [st_a/cn-base] 写 182 行 -> /root/g2_neutral0/st_a__cn-base.csv（0.7 分钟）
+  [st_a/cn-neutral0] 共 182 项，已完成 0，待跑 182
+    50/182
+    100/182
+    150/182
+  [st_a/cn-neutral0] 写 182 行 -> /root/g2_neutral0/st_a__cn-neutral0.csv（0.7 分钟）
+  [st_a/en-base] 共 182 项，已完成 0，待跑 182
+    50/182
+    100/182
+    150/182
+  [st_a/en-base] 写 182 行 -> /root/g2_neutral0/st_a__en-base.csv（0.7 分钟）
+  [st_a/en-neutral0] 共 182 项，已完成 0，待跑 182
+    50/182
+    100/182
+    150/182
+  [st_a/en-neutral0] 写 182 行 -> /root/g2_neutral0/st_a__en-neutral0.csv（0.7 分钟）
+  [st_a/en-neutral0em] 共 182 项，已完成 0，待跑 182
+    50/182
+    100/182
+    150/182
+  [st_a/en-neutral0em] 写 182 行 -> /root/g2_neutral0/st_a__en-neutral0em.csv（0.7 分钟）
+  [ucf/cn-base] 共 334 项，已完成 0，待跑 334
+    50/334
+    100/334
+    150/334
+    200/334
+    250/334
+    300/334
+  [ucf/cn-base] 写 334 行 -> /root/g2_neutral0/ucf__cn-base.csv（4.8 分钟）
+  [ucf/cn-neutral0] 共 334 项，已完成 0，待跑 334
+    50/334
+    100/334
+    150/334
+    200/334
+    250/334
+    300/334
+  [ucf/cn-neutral0] 写 334 行 -> /root/g2_neutral0/ucf__cn-neutral0.csv（4.8 分钟）
+  [ucf/en-base] 共 334 项，已完成 0，待跑 334
+    50/334
+    100/334
+    150/334
+    200/334
+    250/334
+    300/334
+  [ucf/en-base] 写 334 行 -> /root/g2_neutral0/ucf__en-base.csv（4.8 分钟）
+  [ucf/en-neutral0] 共 334 项，已完成 0，待跑 334
+    50/334
+    100/334
+    150/334
+    200/334
+    250/334
+    300/334
+  [ucf/en-neutral0] 写 334 行 -> /root/g2_neutral0/ucf__en-neutral0.csv（4.8 分钟）
+  [ucf/en-neutral0em] 共 334 项，已完成 0，待跑 334
+    50/334
+    100/334
+    150/334
+    200/334
+    250/334
+    300/334
+  [ucf/en-neutral0em] 写 334 行 -> /root/g2_neutral0/ucf__en-neutral0em.csv（4.8 分钟）
+  [visdrone/cn-base] 共 400 项，已完成 0，待跑 400
+    50/400
+    100/400
+    150/400
+    200/400
+    250/400
+    300/400
+    350/400
+    400/400
+  [visdrone/cn-base] 写 400 行 -> /root/g2_neutral0/visdrone__cn-base.csv（3.1 分钟）
+  [visdrone/cn-neutral0] 共 400 项，已完成 0，待跑 400
+    50/400
+    100/400
+    150/400
+    200/400
+    250/400
+    300/400
+    350/400
+    400/400
+  [visdrone/cn-neutral0] 写 400 行 -> /root/g2_neutral0/visdrone__cn-neutral0.csv（3.1 分钟）
+  [visdrone/en-base] 共 400 项，已完成 0，待跑 400
+    50/400
+    100/400
+    150/400
+    200/400
+    250/400
+    300/400
+    350/400
+    400/400
+  [visdrone/en-base] 写 400 行 -> /root/g2_neutral0/visdrone__en-base.csv（3.0 分钟）
+  [visdrone/en-neutral0] 共 400 项，已完成 0，待跑 400
+    50/400
+    100/400
+    150/400
+    200/400
+    250/400
+    300/400
+    350/400
+    400/400
+  [visdrone/en-neutral0] 写 400 行 -> /root/g2_neutral0/visdrone__en-neutral0.csv（3.1 分钟）
+  [visdrone/en-neutral0em] 共 400 项，已完成 0，待跑 400
+    50/400
+    100/400
+    150/400
+    200/400
+    250/400
+    300/400
+    350/400
+    400/400
+  [visdrone/en-neutral0em] 写 400 行 -> /root/g2_neutral0/visdrone__en-neutral0em.csv（3.1 分钟）
+  [aitod/cn-base] 共 226 项，已完成 0，待跑 226
+    50/226
+    100/226
+    150/226
+    200/226
+  [aitod/cn-base] 写 226 行 -> /root/g2_neutral0/aitod__cn-base.csv（0.9 分钟）
+  [aitod/cn-neutral0] 共 226 项，已完成 0，待跑 226
+    50/226
+    100/226
+    150/226
+    200/226
+  [aitod/cn-neutral0] 写 226 行 -> /root/g2_neutral0/aitod__cn-neutral0.csv（1.0 分钟）
+  [aitod/en-base] 共 226 项，已完成 0，待跑 226
+    50/226
+    100/226
+    150/226
+    200/226
+  [aitod/en-base] 写 226 行 -> /root/g2_neutral0/aitod__en-base.csv（0.9 分钟）
+  [aitod/en-neutral0] 共 226 项，已完成 0，待跑 226
+    50/226
+    100/226
+    150/226
+    200/226
+  [aitod/en-neutral0] 写 226 行 -> /root/g2_neutral0/aitod__en-neutral0.csv（1.0 分钟）
+  [aitod/en-neutral0em] 共 226 项，已完成 0，待跑 226
+    50/226
+    100/226
+    150/226
+    200/226
+  [aitod/en-neutral0em] 写 226 行 -> /root/g2_neutral0/aitod__en-neutral0em.csv（1.0 分钟）
+DONE

@@ -1,0 +1,285 @@
+########## 全部任务开始 07:18:02 ##########
+[07:18:12]   起服务 qwen3-vl-32b-awq（不带 attention-backend）
+[07:20:57]     READY 显存 71575 MiB
+[07:20:57]     跑 19b_e1_probe.py / qwen3-vl-32b-awq / st_a / base,permit,bestA,bestB,bestC,channel (reps=1)
+[07:22:44]       rc=0 文件 0→6
+[07:22:44]     跑 19b_e1_probe.py / qwen3-vl-32b-awq / ucf / base,permit,bestA,bestB,bestC,channel (reps=1)
+[07:27:12]       rc=0 文件 6→12
+[07:27:12]     跑 19d_probe_nonzero.py / qwen3-vl-32b-awq / st_a / base,permit,channel (reps=1)
+[07:28:01]       rc=0 文件 0→3
+[07:28:01]     跑 19d_probe_nonzero.py / qwen3-vl-32b-awq / ucf / base,permit,channel (reps=1)
+[07:30:38]       rc=0 文件 3→6
+[07:30:38]     跑 19c_probe_paraphrase.py / qwen3-vl-32b-awq / st_a / permitB,permitC,channelB (reps=1)
+[07:31:46]       rc=0 文件 12→15
+[07:31:46]     跑 19c_probe_paraphrase.py / qwen3-vl-32b-awq / ucf / permitB,permitC,channelB (reps=1)
+[07:34:49]       rc=0 文件 15→18
+[07:34:49]     跑 19b_e1_probe.py / qwen3-vl-32b-awq / st_a / base,permit,channel (reps=3)
+[07:36:11]       rc=0 文件 18→18
+[07:36:11]       !! 未产出新文件（池可能为空），探针日志尾：
+            base 臂 pred==0 的 item 共 103 个；本次抽 103 个（gt 从 138 到 2256）
+            [base] 412 行；pred==0 的 407 个；-> /root/e1_results/e1_qwen3-vl-32b-awq_st_a_base.csv
+            [permit] 412 行；pred==0 的 0 个；-> /root/e1_results/e1_qwen3-vl-32b-awq_st_a_permit.csv
+            [channel] 412 行；pred==0 的 0 个；-> /root/e1_results/e1_qwen3-vl-32b-awq_st_a_channel.csv
+[07:36:11]     跑 19b_e1_probe.py / qwen3-vl-32b-awq / ucf / base,permit,channel (reps=3)
+[07:40:17]       rc=0 文件 18→18
+[07:40:17]       !! 未产出新文件（池可能为空），探针日志尾：
+            base 臂 pred==0 的 item 共 180 个；本次抽 180 个（gt 从 137 到 4535）
+            [base] 720 行；pred==0 的 673 个；-> /root/e1_results/e1_qwen3-vl-32b-awq_ucf_base.csv
+            [permit] 720 行；pred==0 的 0 个；-> /root/e1_results/e1_qwen3-vl-32b-awq_ucf_permit.csv
+            [channel] 720 行；pred==0 的 0 个；-> /root/e1_results/e1_qwen3-vl-32b-awq_ucf_channel.csv
+/root/exp.sh: line 44:  2651 Killed                  nohup $VLLM serve "$M" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --mm-processor-kwargs '{"max_pixels": 1048576, "min_pixels": 200704}' --gpu-memory-utilization "$U" --max-num-seqs 24 --port 8000 "$@" > "$L" 2>&1
+[07:40:27]   起服务 qwen3-vl-32b-bf16（不带 attention-backend）
+[07:45:13]     READY 显存 86185 MiB
+[07:45:13]     跑 19b_e1_probe.py / qwen3-vl-32b-bf16 / st_a / base,permit,bestA,bestB,bestC,channel (reps=1)
+[07:46:49]       rc=0 文件 18→24
+[07:46:49]     跑 19b_e1_probe.py / qwen3-vl-32b-bf16 / ucf / base,permit,bestA,bestB,bestC,channel (reps=1)
+[07:57:00]       rc=0 文件 24→30
+[07:57:00]     跑 19d_probe_nonzero.py / qwen3-vl-32b-bf16 / st_a / base,permit,channel (reps=1)
+[07:57:37]       rc=0 文件 6→9
+[07:57:37]     跑 19d_probe_nonzero.py / qwen3-vl-32b-bf16 / ucf / base,permit,channel (reps=1)
+[08:01:53]       rc=0 文件 9→12
+[08:01:53]     跑 19d_probe_nonzero.py / qwen3-vl-32b-bf16 / st_b / base,permit,channel (reps=1)
+[08:09:02]       rc=0 文件 12→15
+[08:09:02]     跑 19c_probe_paraphrase.py / qwen3-vl-32b-bf16 / st_a / permitB,permitC,channelB (reps=1)
+[08:09:53]       rc=0 文件 30→33
+[08:09:53]     跑 19c_probe_paraphrase.py / qwen3-vl-32b-bf16 / ucf / permitB,permitC,channelB (reps=1)
+[08:14:38]       rc=0 文件 33→36
+[08:14:38]     跑 19b_e1_probe.py / qwen3-vl-32b-bf16 / st_a / base,permit,channel (reps=3)
+[08:15:48]       rc=0 文件 36→36
+[08:15:48]       !! 未产出新文件（池可能为空），探针日志尾：
+            base 臂 pred==0 的 item 共 103 个；本次抽 103 个（gt 从 138 到 2256）
+            [base] 412 行；pred==0 的 253 个；-> /root/e1_results/e1_qwen3-vl-32b-bf16_st_a_base.csv
+            [permit] 412 行；pred==0 的 0 个；-> /root/e1_results/e1_qwen3-vl-32b-bf16_st_a_permit.csv
+            [channel] 412 行；pred==0 的 0 个；-> /root/e1_results/e1_qwen3-vl-32b-bf16_st_a_channel.csv
+/root/exp.sh: line 44:  4615 Killed                  nohup $VLLM serve "$M" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --mm-processor-kwargs '{"max_pixels": 1048576, "min_pixels": 200704}' --gpu-memory-utilization "$U" --max-num-seqs 24 --port 8000 "$@" > "$L" 2>&1
+[08:15:58]   起服务 qwen3-vl-8b-awq（不带 attention-backend）
+[08:18:13]     READY 显存 72215 MiB
+[08:18:14]     跑 19b_e1_probe.py / qwen3-vl-8b-awq / st_a / base,permit,bestA,bestB,bestC,channel (reps=1)
+[08:18:52]       rc=0 文件 36→42
+[08:18:52]     跑 19b_e1_probe.py / qwen3-vl-8b-awq / ucf / base,permit,bestA,bestB,bestC,channel (reps=1)
+[08:20:46]       rc=0 文件 42→48
+[08:20:46]     跑 19d_probe_nonzero.py / qwen3-vl-8b-awq / st_a / base,permit,channel (reps=1)
+[08:21:02]       rc=0 文件 15→18
+[08:21:02]     跑 19d_probe_nonzero.py / qwen3-vl-8b-awq / ucf / base,permit,channel (reps=1)
+[08:22:04]       rc=0 文件 18→21
+[08:22:04]     跑 19c_probe_paraphrase.py / qwen3-vl-8b-awq / st_a / permitB,permitC,channelB (reps=1)
+[08:22:28]       rc=0 文件 48→51
+[08:22:28]     跑 19c_probe_paraphrase.py / qwen3-vl-8b-awq / ucf / permitB,permitC,channelB (reps=1)
+[08:23:39]       rc=0 文件 51→54
+[08:23:39]     跑 19b_e1_probe.py / qwen3-vl-8b-awq / st_a / base,permit,channel (reps=3)
+[08:24:00]       rc=0 文件 54→54
+[08:24:00]       !! 未产出新文件（池可能为空），探针日志尾：
+            base 臂 pred==0 的 item 共 103 个；本次抽 103 个（gt 从 138 到 2256）
+            [base] 412 行；pred==0 的 0 个；-> /root/e1_results/e1_qwen3-vl-8b-awq_st_a_base.csv
+            [permit] 412 行；pred==0 的 0 个；-> /root/e1_results/e1_qwen3-vl-8b-awq_st_a_permit.csv
+            [channel] 412 行；pred==0 的 0 个；-> /root/e1_results/e1_qwen3-vl-8b-awq_st_a_channel.csv
+/root/exp.sh: line 44:  7042 Killed                  nohup $VLLM serve "$M" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --mm-processor-kwargs '{"max_pixels": 1048576, "min_pixels": 200704}' --gpu-memory-utilization "$U" --max-num-seqs 24 --port 8000 "$@" > "$L" 2>&1
+[08:24:10]   起服务 qwen3-vl-8b-bf16（不带 attention-backend）
+[08:26:40]     READY 显存 72219 MiB
+[08:26:40]     跑 19b_e1_probe.py / qwen3-vl-8b-bf16 / st_a / base,permit,bestA,bestB,bestC,channel (reps=1)
+[08:27:15]       rc=0 文件 54→60
+[08:27:15]     跑 19b_e1_probe.py / qwen3-vl-8b-bf16 / ucf / base,permit,bestA,bestB,bestC,channel (reps=1)
+[08:28:57]       rc=0 文件 60→66
+[08:28:57]     跑 19d_probe_nonzero.py / qwen3-vl-8b-bf16 / st_a / base,permit,channel (reps=1)
+[08:29:10]       rc=0 文件 21→24
+[08:29:10]     跑 19d_probe_nonzero.py / qwen3-vl-8b-bf16 / ucf / base,permit,channel (reps=1)
+[08:30:02]       rc=0 文件 24→27
+/root/exp.sh: line 44:  8069 Killed                  nohup $VLLM serve "$M" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --mm-processor-kwargs '{"max_pixels": 1048576, "min_pixels": 200704}' --gpu-memory-utilization "$U" --max-num-seqs 24 --port 8000 "$@" > "$L" 2>&1
+[08:30:12]   起服务 qwen25vl-7b-awq（不带 attention-backend）
+[08:32:12]     READY 显存 72201 MiB
+[08:32:12]     跑 19b_e1_probe.py / qwen25vl-7b-awq / st_a / base,permit,bestA,bestB,bestC,channel (reps=1)
+[08:32:54]       rc=0 文件 66→72
+[08:32:54]     跑 19b_e1_probe.py / qwen25vl-7b-awq / ucf / base,permit,bestA,bestB,bestC,channel (reps=1)
+[08:34:59]       rc=0 文件 72→78
+[08:34:59]     跑 19d_probe_nonzero.py / qwen25vl-7b-awq / st_a / base,permit,channel (reps=1)
+[08:35:16]       rc=0 文件 27→30
+[08:35:16]     跑 19d_probe_nonzero.py / qwen25vl-7b-awq / ucf / base,permit,channel (reps=1)
+[08:36:20]       rc=0 文件 30→33
+/root/exp.sh: line 44:  9151 Killed                  nohup $VLLM serve "$M" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --mm-processor-kwargs '{"max_pixels": 1048576, "min_pixels": 200704}' --gpu-memory-utilization "$U" --max-num-seqs 24 --port 8000 "$@" > "$L" 2>&1
+[08:36:30]   起服务 internvl25-8b-awq（不带 attention-backend）
+      进程第 30s 消失
+[08:37:00]     失败 → 回退带 --attention-backend FLASH_ATTN
+      进程第 15s 消失
+[08:37:25]   !! internvl25-8b-awq 两种配置都起不来；日志尾：
+        (APIServer pid=10074)     image_processor = self.get_image_processor(**kwargs)
+        (APIServer pid=10074)                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        (APIServer pid=10074)   File "/root/vllm312/lib/python3.12/site-packages/vllm/model_executor/models/internvl.py", line 342, in get_image_processor
+        (APIServer pid=10074)     return InternVLImageProcessor(**kwargs)
+        (APIServer pid=10074)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        (APIServer pid=10074) TypeError: InternVLImageProcessor.__init__() got an unexpected keyword argument 'max_pixels'
+########## 全部任务结束 08:37:25 ##########
+--- 零池结果 ---
+-rw-r--r-- 1 root root 18082 Sep 21 08:23 e1_qwen3-vl-8b-awq_st_a_base.csv
+-rw-r--r-- 1 root root 15762 Sep 21 08:18 e1_qwen3-vl-8b-awq_st_a_bestA.csv
+-rw-r--r-- 1 root root  4543 Sep 21 08:18 e1_qwen3-vl-8b-awq_st_a_bestB.csv
+-rw-r--r-- 1 root root  4598 Sep 21 08:18 e1_qwen3-vl-8b-awq_st_a_bestC.csv
+-rw-r--r-- 1 root root 23805 Sep 21 08:24 e1_qwen3-vl-8b-awq_st_a_channel.csv
+-rw-r--r-- 1 root root  5752 Sep 21 08:22 e1_qwen3-vl-8b-awq_st_a_channelB.csv
+-rw-r--r-- 1 root root 20531 Sep 21 08:23 e1_qwen3-vl-8b-awq_st_a_permit.csv
+-rw-r--r-- 1 root root  4929 Sep 21 08:22 e1_qwen3-vl-8b-awq_st_a_permitB.csv
+-rw-r--r-- 1 root root  4921 Sep 21 08:22 e1_qwen3-vl-8b-awq_st_a_permitC.csv
+-rw-r--r-- 1 root root  7890 Sep 21 08:19 e1_qwen3-vl-8b-awq_ucf_base.csv
+-rw-r--r-- 1 root root 25957 Sep 21 08:20 e1_qwen3-vl-8b-awq_ucf_bestA.csv
+-rw-r--r-- 1 root root  8332 Sep 21 08:20 e1_qwen3-vl-8b-awq_ucf_bestB.csv
+-rw-r--r-- 1 root root  8446 Sep 21 08:20 e1_qwen3-vl-8b-awq_ucf_bestC.csv
+-rw-r--r-- 1 root root 10342 Sep 21 08:20 e1_qwen3-vl-8b-awq_ucf_channel.csv
+-rw-r--r-- 1 root root 10348 Sep 21 08:23 e1_qwen3-vl-8b-awq_ucf_channelB.csv
+-rw-r--r-- 1 root root  8903 Sep 21 08:19 e1_qwen3-vl-8b-awq_ucf_permit.csv
+-rw-r--r-- 1 root root  8911 Sep 21 08:23 e1_qwen3-vl-8b-awq_ucf_permitB.csv
+-rw-r--r-- 1 root root  8909 Sep 21 08:23 e1_qwen3-vl-8b-awq_ucf_permitC.csv
+-rw-r--r-- 1 root root  4233 Sep 21 08:26 e1_qwen3-vl-8b-bf16_st_a_base.csv
+-rw-r--r-- 1 root root 18646 Sep 21 08:27 e1_qwen3-vl-8b-bf16_st_a_bestA.csv
+-rw-r--r-- 1 root root  4564 Sep 21 08:27 e1_qwen3-vl-8b-bf16_st_a_bestB.csv
+-rw-r--r-- 1 root root  4609 Sep 21 08:27 e1_qwen3-vl-8b-bf16_st_a_bestC.csv
+-rw-r--r-- 1 root root  5754 Sep 21 08:27 e1_qwen3-vl-8b-bf16_st_a_channel.csv
+-rw-r--r-- 1 root root  4930 Sep 21 08:26 e1_qwen3-vl-8b-bf16_st_a_permit.csv
+-rw-r--r-- 1 root root  7753 Sep 21 08:27 e1_qwen3-vl-8b-bf16_ucf_base.csv
+-rw-r--r-- 1 root root 31313 Sep 21 08:28 e1_qwen3-vl-8b-bf16_ucf_bestA.csv
+-rw-r--r-- 1 root root  8351 Sep 21 08:28 e1_qwen3-vl-8b-bf16_ucf_bestB.csv
+-rw-r--r-- 1 root root  8482 Sep 21 08:28 e1_qwen3-vl-8b-bf16_ucf_bestC.csv
+-rw-r--r-- 1 root root 10340 Sep 21 08:28 e1_qwen3-vl-8b-bf16_ucf_channel.csv
+-rw-r--r-- 1 root root  8911 Sep 21 08:27 e1_qwen3-vl-8b-bf16_ucf_permit.csv
+--- 非零池结果 ---
+-rw-r--r-- 1 root root  8525 Sep 21 08:35 e1_qwen25vl-7b-awq_ucf_base.csv
+-rw-r--r-- 1 root root  8800 Sep 21 08:36 e1_qwen25vl-7b-awq_ucf_channel.csv
+-rw-r--r-- 1 root root  7564 Sep 21 08:36 e1_qwen25vl-7b-awq_ucf_permit.csv
+-rw-r--r-- 1 root root  3360 Sep 21 07:27 e1_qwen3-vl-32b-awq_st_a_base.csv
+-rw-r--r-- 1 root root  4390 Sep 21 07:28 e1_qwen3-vl-32b-awq_st_a_channel.csv
+-rw-r--r-- 1 root root  3766 Sep 21 07:27 e1_qwen3-vl-32b-awq_st_a_permit.csv
+-rw-r--r-- 1 root root  6766 Sep 21 07:30 e1_qwen3-vl-32b-awq_ucf_base.csv
+-rw-r--r-- 1 root root  8798 Sep 21 07:30 e1_qwen3-vl-32b-awq_ucf_channel.csv
+-rw-r--r-- 1 root root  7562 Sep 21 07:30 e1_qwen3-vl-32b-awq_ucf_permit.csv
+-rw-r--r-- 1 root root  3348 Sep 21 07:57 e1_qwen3-vl-32b-bf16_st_a_base.csv
+-rw-r--r-- 1 root root  4398 Sep 21 07:57 e1_qwen3-vl-32b-bf16_st_a_channel.csv
+-rw-r--r-- 1 root root  3773 Sep 21 07:57 e1_qwen3-vl-32b-bf16_st_a_permit.csv
+-rw-r--r-- 1 root root 12896 Sep 21 08:04 e1_qwen3-vl-32b-bf16_st_b_base.csv
+-rw-r--r-- 1 root root 16833 Sep 21 08:09 e1_qwen3-vl-32b-bf16_st_b_channel.csv
+-rw-r--r-- 1 root root 14634 Sep 21 08:06 e1_qwen3-vl-32b-bf16_st_b_permit.csv
+-rw-r--r-- 1 root root  6763 Sep 21 07:59 e1_qwen3-vl-32b-bf16_ucf_base.csv
+-rw-r--r-- 1 root root  8797 Sep 21 08:01 e1_qwen3-vl-32b-bf16_ucf_channel.csv
+-rw-r--r-- 1 root root  7564 Sep 21 08:00 e1_qwen3-vl-32b-bf16_ucf_permit.csv
+-rw-r--r-- 1 root root  3357 Sep 21 08:20 e1_qwen3-vl-8b-awq_st_a_base.csv
+-rw-r--r-- 1 root root  4405 Sep 21 08:21 e1_qwen3-vl-8b-awq_st_a_channel.csv
+-rw-r--r-- 1 root root  3776 Sep 21 08:20 e1_qwen3-vl-8b-awq_st_a_permit.csv
+-rw-r--r-- 1 root root  6740 Sep 21 08:21 e1_qwen3-vl-8b-awq_ucf_base.csv
+-rw-r--r-- 1 root root  8792 Sep 21 08:22 e1_qwen3-vl-8b-awq_ucf_channel.csv
+-rw-r--r-- 1 root root  7560 Sep 21 08:21 e1_qwen3-vl-8b-awq_ucf_permit.csv
+-rw-r--r-- 1 root root  3354 Sep 21 08:29 e1_qwen3-vl-8b-bf16_st_a_base.csv
+-rw-r--r-- 1 root root  4406 Sep 21 08:29 e1_qwen3-vl-8b-bf16_st_a_channel.csv
+-rw-r--r-- 1 root root  3780 Sep 21 08:29 e1_qwen3-vl-8b-bf16_st_a_permit.csv
+-rw-r--r-- 1 root root  6675 Sep 21 08:29 e1_qwen3-vl-8b-bf16_ucf_base.csv
+-rw-r--r-- 1 root root  8794 Sep 21 08:30 e1_qwen3-vl-8b-bf16_ucf_channel.csv
+-rw-r--r-- 1 root root  7562 Sep 21 08:29 e1_qwen3-vl-8b-bf16_ucf_permit.csv
+--- 各文件行数 ---
+  e1_qwen25vl-7b-awq_st_a_base.csv: 375 行
+  e1_qwen25vl-7b-awq_st_a_bestA.csv: 103 行
+  e1_qwen25vl-7b-awq_st_a_bestB.csv: 103 行
+  e1_qwen25vl-7b-awq_st_a_bestC.csv: 103 行
+  e1_qwen25vl-7b-awq_st_a_channel.csv: 103 行
+  e1_qwen25vl-7b-awq_st_a_permit.csv: 103 行
+  e1_qwen25vl-7b-awq_ucf_base.csv: 550 行
+  e1_qwen25vl-7b-awq_ucf_bestA.csv: 184 行
+  e1_qwen25vl-7b-awq_ucf_bestB.csv: 180 行
+  e1_qwen25vl-7b-awq_ucf_bestC.csv: 180 行
+  e1_qwen25vl-7b-awq_ucf_channel.csv: 180 行
+  e1_qwen25vl-7b-awq_ucf_permit.csv: 180 行
+  e1_qwen3-vl-32b-awq_st_a_base.csv: 412 行
+  e1_qwen3-vl-32b-awq_st_a_bestA.csv: 103 行
+  e1_qwen3-vl-32b-awq_st_a_bestB.csv: 103 行
+  e1_qwen3-vl-32b-awq_st_a_bestC.csv: 103 行
+  e1_qwen3-vl-32b-awq_st_a_channel.csv: 412 行
+  e1_qwen3-vl-32b-awq_st_a_channelB.csv: 103 行
+  e1_qwen3-vl-32b-awq_st_a_permit.csv: 412 行
+  e1_qwen3-vl-32b-awq_st_a_permitB.csv: 103 行
+  e1_qwen3-vl-32b-awq_st_a_permitC.csv: 103 行
+  e1_qwen3-vl-32b-awq_ucf_base.csv: 720 行
+  e1_qwen3-vl-32b-awq_ucf_bestA.csv: 180 行
+  e1_qwen3-vl-32b-awq_ucf_bestB.csv: 180 行
+  e1_qwen3-vl-32b-awq_ucf_bestC.csv: 180 行
+  e1_qwen3-vl-32b-awq_ucf_channel.csv: 720 行
+  e1_qwen3-vl-32b-awq_ucf_channelB.csv: 180 行
+  e1_qwen3-vl-32b-awq_ucf_permit.csv: 720 行
+  e1_qwen3-vl-32b-awq_ucf_permitB.csv: 180 行
+  e1_qwen3-vl-32b-awq_ucf_permitC.csv: 180 行
+  e1_qwen3-vl-32b-bf16_st_a_base.csv: 412 行
+  e1_qwen3-vl-32b-bf16_st_a_bestA.csv: 103 行
+  e1_qwen3-vl-32b-bf16_st_a_bestB.csv: 103 行
+  e1_qwen3-vl-32b-bf16_st_a_bestC.csv: 103 行
+  e1_qwen3-vl-32b-bf16_st_a_channel.csv: 412 行
+  e1_qwen3-vl-32b-bf16_st_a_channelB.csv: 103 行
+  e1_qwen3-vl-32b-bf16_st_a_permit.csv: 412 行
+  e1_qwen3-vl-32b-bf16_st_a_permitB.csv: 103 行
+  e1_qwen3-vl-32b-bf16_st_a_permitC.csv: 103 行
+  e1_qwen3-vl-32b-bf16_ucf_base.csv: 180 行
+  e1_qwen3-vl-32b-bf16_ucf_bestA.csv: 180 行
+  e1_qwen3-vl-32b-bf16_ucf_bestB.csv: 180 行
+  e1_qwen3-vl-32b-bf16_ucf_bestC.csv: 180 行
+  e1_qwen3-vl-32b-bf16_ucf_channel.csv: 180 行
+  e1_qwen3-vl-32b-bf16_ucf_channelB.csv: 180 行
+  e1_qwen3-vl-32b-bf16_ucf_permit.csv: 180 行
+  e1_qwen3-vl-32b-bf16_ucf_permitB.csv: 180 行
+  e1_qwen3-vl-32b-bf16_ucf_permitC.csv: 180 行
+  e1_qwen3-vl-8b-awq_st_a_base.csv: 412 行
+  e1_qwen3-vl-8b-awq_st_a_bestA.csv: 118 行
+  e1_qwen3-vl-8b-awq_st_a_bestB.csv: 103 行
+  e1_qwen3-vl-8b-awq_st_a_bestC.csv: 103 行
+  e1_qwen3-vl-8b-awq_st_a_channel.csv: 412 行
+  e1_qwen3-vl-8b-awq_st_a_channelB.csv: 103 行
+  e1_qwen3-vl-8b-awq_st_a_permit.csv: 412 行
+  e1_qwen3-vl-8b-awq_st_a_permitB.csv: 103 行
+  e1_qwen3-vl-8b-awq_st_a_permitC.csv: 103 行
+  e1_qwen3-vl-8b-awq_ucf_base.csv: 182 行
+  e1_qwen3-vl-8b-awq_ucf_bestA.csv: 204 行
+  e1_qwen3-vl-8b-awq_ucf_bestB.csv: 180 行
+  e1_qwen3-vl-8b-awq_ucf_bestC.csv: 180 行
+  e1_qwen3-vl-8b-awq_ucf_channel.csv: 180 行
+  e1_qwen3-vl-8b-awq_ucf_channelB.csv: 180 行
+  e1_qwen3-vl-8b-awq_ucf_permit.csv: 180 行
+  e1_qwen3-vl-8b-awq_ucf_permitB.csv: 180 行
+  e1_qwen3-vl-8b-awq_ucf_permitC.csv: 180 行
+  e1_qwen3-vl-8b-bf16_st_a_base.csv: 103 行
+  e1_qwen3-vl-8b-bf16_st_a_bestA.csv: 373 行
+  e1_qwen3-vl-8b-bf16_st_a_bestB.csv: 103 行
+  e1_qwen3-vl-8b-bf16_st_a_bestC.csv: 103 行
+  e1_qwen3-vl-8b-bf16_st_a_channel.csv: 103 行
+  e1_qwen3-vl-8b-bf16_st_a_permit.csv: 103 行
+  e1_qwen3-vl-8b-bf16_ucf_base.csv: 180 行
+  e1_qwen3-vl-8b-bf16_ucf_bestA.csv: 510 行
+  e1_qwen3-vl-8b-bf16_ucf_bestB.csv: 180 行
+  e1_qwen3-vl-8b-bf16_ucf_bestC.csv: 180 行
+  e1_qwen3-vl-8b-bf16_ucf_channel.csv: 180 行
+  e1_qwen3-vl-8b-bf16_ucf_permit.csv: 180 行
+  e1_qwen25vl-7b-awq_st_a_base.csv: 287 行
+  e1_qwen25vl-7b-awq_st_a_channel.csv: 79 行
+  e1_qwen25vl-7b-awq_st_a_permit.csv: 79 行
+  e1_qwen25vl-7b-awq_ucf_base.csv: 486 行
+  e1_qwen25vl-7b-awq_ucf_channel.csv: 154 行
+  e1_qwen25vl-7b-awq_ucf_permit.csv: 154 行
+  e1_qwen3-vl-32b-awq_st_a_base.csv: 79 行
+  e1_qwen3-vl-32b-awq_st_a_channel.csv: 79 行
+  e1_qwen3-vl-32b-awq_st_a_permit.csv: 79 行
+  e1_qwen3-vl-32b-awq_ucf_base.csv: 154 行
+  e1_qwen3-vl-32b-awq_ucf_channel.csv: 154 行
+  e1_qwen3-vl-32b-awq_ucf_permit.csv: 154 行
+  e1_qwen3-vl-32b-bf16_st_a_base.csv: 79 行
+  e1_qwen3-vl-32b-bf16_st_a_channel.csv: 79 行
+  e1_qwen3-vl-32b-bf16_st_a_permit.csv: 79 行
+  e1_qwen3-vl-32b-bf16_st_b_base.csv: 316 行
+  e1_qwen3-vl-32b-bf16_st_b_channel.csv: 316 行
+  e1_qwen3-vl-32b-bf16_st_b_permit.csv: 316 行
+  e1_qwen3-vl-32b-bf16_ucf_base.csv: 154 行
+  e1_qwen3-vl-32b-bf16_ucf_channel.csv: 154 行
+  e1_qwen3-vl-32b-bf16_ucf_permit.csv: 154 行
+  e1_qwen3-vl-8b-awq_st_a_base.csv: 79 行
+  e1_qwen3-vl-8b-awq_st_a_channel.csv: 79 行
+  e1_qwen3-vl-8b-awq_st_a_permit.csv: 79 行
+  e1_qwen3-vl-8b-awq_ucf_base.csv: 154 行
+  e1_qwen3-vl-8b-awq_ucf_channel.csv: 154 行
+  e1_qwen3-vl-8b-awq_ucf_permit.csv: 154 行
+  e1_qwen3-vl-8b-bf16_st_a_base.csv: 79 行
+  e1_qwen3-vl-8b-bf16_st_a_channel.csv: 79 行
+  e1_qwen3-vl-8b-bf16_st_a_permit.csv: 79 行
+  e1_qwen3-vl-8b-bf16_ucf_base.csv: 154 行
+  e1_qwen3-vl-8b-bf16_ucf_channel.csv: 154 行
+  e1_qwen3-vl-8b-bf16_ucf_permit.csv: 154 行
+EXP_ALL_DONE

@@ -1,0 +1,23 @@
+[15:07:46] ########## E-C 开始（英文提示词，同 item 配对）##########
+[15:07:46] ===== E-C 家族 ivl8b（InternVL3_5-8B，英文提示词）=====
+[15:08:34]   [ivl8b] 起服就绪 45s
+/root/ea_lang_run.sh: line 15:  3405 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_lang_${TAG}.log" 2>&1
+[15:10:40]   [ivl8b] 完成
+[15:10:40] ===== E-C 家族 phi35（Phi-3.5-vision-instruct，英文提示词）=====
+[15:11:28]   [phi35] 起服就绪 45s
+/root/ea_lang_run.sh: line 15:  3827 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_lang_${TAG}.log" 2>&1
+[15:12:34]   [phi35] 完成
+[15:12:34] ===== E-C 家族 llavaov（llava-onevision-qwen2-7b-ov，英文提示词）=====
+[15:13:38]   [llavaov] 起服就绪 60s
+/root/ea_lang_run.sh: line 15:  4202 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_lang_${TAG}.log" 2>&1
+[15:19:34]   [llavaov] 完成
+[15:19:34] ===== E-C 家族 gemma12b（gemma3-12b，英文提示词）=====
+[15:21:37]   [gemma12b] 起服就绪 120s
+/root/ea_lang_run.sh: line 15:  4603 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_lang_${TAG}.log" 2>&1
+[15:23:24]   [gemma12b] 完成
+[15:23:24] ===== E-C 家族 qwen32b（Qwen3-VL-32B-Instruct，英文提示词）=====
+[15:24:42]   [qwen32b] 起服就绪 75s
+/root/ea_lang_run.sh: line 15:  4991 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_lang_${TAG}.log" 2>&1
+[15:27:47]   [qwen32b] 完成
+[15:27:47] ########## E-C 结束 ##########
+  产物文件数：38

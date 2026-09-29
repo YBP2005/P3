@@ -1,0 +1,9 @@
+[07:54:48] 等 exp.sh 结束
+[08:37:48] exp.sh 已结束
+[08:38:18] === FP8 普查 ===
+[08:38:28]   起服务 qwen3-vl-32b-fp8（不带 attention-backend）
+[08:40:43]     进程第 135s 消失
+[08:40:43]     失败 → 回退带 --attention-backend FLASH_ATTN
+[08:42:54]     回退后进程第 120s 消失
+[08:42:54] === 下 GPTQ-W4 与 AWQ-8bit ===
+/root/h20_exp_extra2.sh: line 127: 11713 Killed                  $PY -u /root/h20_dl_model.py LosCV29/Qwen3-VL-32B-Instruct-GPTQ-W4 /root/models/Qwen3-VL-32B-Instruct-GPTQ-W4 cyankiwi/Qwen3-VL-32B-Instruct-AWQ-8bit /root/models/Qwen3-VL-32B-Instruct-AWQ-8bit >> "$L" 2>&1

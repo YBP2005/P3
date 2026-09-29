@@ -1,0 +1,78 @@
+{
+ "round": "g2",
+ "frozen_at": "2026-09-26",
+ "frozen_by": "P3 owner (author side)",
+ "why_this_file": "★ 先冻结、后跑。评审本轮反复说的是『设计前提缺失 / 判据事后自订』（dsflash A5-1、gpt6sol E-2）。所以本件在**任何一次调用之前**写定：问句、域与 item 集、臂、提示词逐字、模型、以及**判据与阈值**。跑完只读不改；若本件 md5 变了，该轮结果作废。",
+
+ "question": "★ 评审原话（glm53flash A5-1）：「头条格语言×措辞收口：ST-A/UCF/VisDrone/AI-TOD × {英文 base、英文 neutral0、中文 base} × 3 起点 × 300 项 ≈ 1.1 万调用；判据：$S$ 是否保持为份额及区间」。",
+ "what_already_exists": {
+  "cn_base": "语料池本身（/root/dense_results/vlm_<ds>_base_whole.csv）即是中文 base 的记录",
+  "en_base": "M.39 的英文 base 臂（/root/ec3_en/<ds>_base_en.csv），已跑、已写入补充材料",
+  "missing": "**neutral0 这一措辞在头条格上从未跑过**（M.19.13 只在 675 张确定性圆点网格上跑过），英文侧更没跑过"
+ },
+ "what_this_run_adds": "在**四个头条域的真实语料池**上，**同一批 item、同一会话**，补跑 **cn-neutral0** 与 **en-neutral0**，并把**同会话的 cn-base / en-base** 一并跑出来，使 Δ 不被会话或构建混淆。",
+
+ "deviation_declared": {
+  "model_build": "语料配置用的是 Qwen3-VL-32B-**AWQ（4bit）**；本机模型卷上**没有 AWQ 构建**，故本次用 **BF16** 的 Qwen3-VL-32B-Instruct（63 GB）。★ 这不影响本实验的**对照**（每个 Δ 都是同会话内、同构建的差），但**绝对值**不可与语料池的 base 直接比 —— 报告里必须写明。",
+  "emphasis_markers": "中文 neutral0 的**存档字符串**里含 markdown 粗体标记 `**`（`注意：**可能是 0**；…`）。未知当年发出去的是否逐字含 `**`，故英文侧**同时跑两个渲染**：不带标记（`en-neutral0`）与带标记（`en-neutral0em`），作为渲染敏感性的内置对照。"
+ },
+
+ "design": {
+  "domains": ["st_a", "ucf", "visdrone", "aitod"],
+  "item_sets": "各域语料池里 `parse_ok==1` 的行（与 ec3_run_en.py / ec3_share3.py 同一口径，也是 J.1 的 canonical 口径）",
+  "arms": ["cn-base", "cn-neutral0", "en-base", "en-neutral0", "en-neutral0em"],
+  "language_of_arm": "cn-* 用中文提示词；en-* 用英文提示词",
+  "serving": "vLLM 0.29.0；temperature 0；单卡 A800-SXM4-80GB；每臂一次会话（与 M.19.13 的『one serving session per family』同构）",
+  "workers": 8,
+  "instrument": "/root/19e_probe_multi.py，md5 必须为 03edb14c98ffa3aea9ffa20f59b00bc8（启动时断言）",
+  "item_budget": "全池（st_a 182 / ucf 334 / visdrone 400 / aitod 226 ⇒ 合计 1,142 项/臂；5 臂 ⇒ 5,710 次调用）"
+ },
+
+ "prompts_frozen": {
+  "cn_base": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复。以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+  "cn_neutral0": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复。注意：**可能是 0**；如果你的判断确实是 0，请照实回答 0。以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+  "cn_neutral0_source": "/root/p1d_prompts.json 的 arms.neutral0（该文件 md5 d35ec04a163ecdcb021e1273bfc8e198），**逐字照抄，不另译**",
+  "en_base": "Count the number of people in the image (every head or body in the crowd). Do not miss any and do not double-count. Output in JSON format: {\"count\": number}, output JSON only.",
+  "en_base_source": "/root/ec3_run_en.py 的 EN['base']（即 M.39 用的那张冻结英文表），**逐字照抄**",
+  "en_neutral0": "Count the number of people in the image (every head or body in the crowd). Do not miss any and do not double-count. Note: it may be 0; if your judgement is indeed 0, answer 0 as it is. Output in JSON format: {\"count\": number}, output JSON only.",
+  "en_neutral0em": "Count the number of people in the image (every head or body in the crowd). Do not miss any and do not double-count. Note: **it may be 0**; if your judgement is indeed 0, answer 0 as it is. Output in JSON format: {\"count\": number}, output JSON only.",
+  "single_variable_rule": "每个 neutral0 臂与其同语言的 base 臂**逐字相同**，只多出那一段 target 子句（脚本启动时逐字符断言）。"
+ },
+
+ "criteria_fixed_in_advance": {
+  "C1_share_remains_a_share": {
+   "statement": "评审原话的判据：$S$ 是否**保持为份额**。",
+   "rule": "在每个 (域 × 臂) 格上计算 $S=(G-G_N)/(G-P)$（等价于命题 4 的闭式）。**S 有定义当且仅当 ρ_total<0**；把 ρ_total ≥ 0 的格**显式记为 undefined 而不是 0**。",
+   "pass": "四个域 × 五个臂全部要么在 [0,1] 内、要么被显式记为 undefined（即**不得出现越界值**）"
+  },
+  "C2_interval": {
+   "statement": "评审原话的『及区间』。",
+   "rule": "答零率给 Wilson 95% 区间；$S$ 给 **2,000 次 item 级 bootstrap** 的 95% 区间（与 census 同一协议）。",
+   "pass": "每个非 undefined 的格都给出两类区间"
+  },
+  "C3_named_value_mechanism_on_the_corpus": {
+   "statement": "把 M.19.13 在确定性网格上确立的机制（**被点名的数字被『抄走』**：neutral0 大幅抬高零率）**搬到头条语料格**上做首次检验。",
+   "rule": "Δ = (neutral0 的答零率 − 同语言 base 的答零率)，单位 pp。",
+   "pass": "**≥3/4 个域**上 Δ ≥ +10 pp（沿用 M.19.13 的 +10 pp 动作阈值）",
+   "note": "这一条**先冻结**，且**与 C4 相互独立**；若 C3 不通过，M.19.13 的机制**不得**被写成对真实语料成立。"
+  },
+  "C4_language_robustness_of_the_effect": {
+   "statement": "机制是否**跨语言**（这是 A5-1 真正要问的）。",
+   "rule": "δ = Δ(英文) − Δ(中文)，单位 pp。",
+   "pass": "**≥3/4 个域**上 |δ| ≤ 20 pp",
+   "note": "阈值取 20 pp 是因为本设计单格 n≥182，答零率的 Wilson 半宽在 3–7 pp 量级，两个语言各一格的差的不确定度约 10 pp；20 pp 是它的两倍。"
+  },
+  "C5_rendering_sensitivity": {
+   "statement": "英文渲染里要不要带 `**` 粗体标记 —— 这是一个我们**无法从存档判定**的选择。",
+   "rule": "δe = Δ(en-neutral0em) − Δ(en-neutral0)。",
+   "pass": "**≥3/4 个域**上 |δe| ≤ 20 pp；若不过，把渲染选择本身作为一条限定写进报告。"
+  }
+ },
+
+ "analysis_discipline": {
+  "no_peeking": "本件的判据与阈值写在**任何调用之前**；跑完后本件 md5 不再变。",
+  "gt_source": "每个 item 的 gt 取自同域语料池 CSV 的 gt 列（不是本脚本写出的；本脚本的产物里 gt 留空，分析时按 item 连接）。",
+  "classification": "答零 / 拒答 / 未解析一律用冻结探针 `19e_probe_multi.py` 的 `parse()` 与 `a5_report.py::cls()` 同一口径；两套口径都给（本轮已知它们在**零/非零边界**上逐行一致）。",
+  "report_undefined": "$S$ 无定义的格**不得**填数、不得当 0、不得当 1。"
+ }
+}

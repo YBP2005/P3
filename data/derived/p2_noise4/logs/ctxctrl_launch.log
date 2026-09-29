@@ -1,0 +1,82 @@
+[07:15:52] ########## S1 服务栈对照：max-model-len 4096 vs 8192 × 3 次全新起服 ##########
+[07:15:52] ① 前置：探针与样本 md5
+9c091be2a2c8b196a56443dd71fe2698  /root/ctxctrl_probe.py
+03edb14c98ffa3aea9ffa20f59b00bc8  /root/19e_probe_multi.py
+d7d30474dc8357e2c67b39d0c23b5516  /root/fsc147/sample_test_ids.txt
+[07:15:52]   图像：300 张；样本：299 行
+[07:15:52]   GPU：NVIDIA A800-SXM4-80GB, 0 MiB
+[07:15:52] --- ctxctrl phi35 ｜ ctx=4096 ｜ start=1 ｜ /root/w1_results/ctxctrl_phi35_ml4096_s1
+[07:17:40]   [phi35 ml4096] 起服就绪 105s
+[07:19:39]   完成：4 个臂文件
+/root/ctxctrl_run.sh: line 39:   385 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ctxctrl_${TAG}_ml${ML}.log" 2>&1
+[07:19:42] --- ctxctrl phi35 ｜ ctx=8192 ｜ start=1 ｜ /root/w1_results/ctxctrl_phi35_ml8192_s1
+[07:20:45]   [phi35 ml8192] 起服就绪 60s
+[07:22:37]   完成：4 个臂文件
+/root/ctxctrl_run.sh: line 39:   776 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ctxctrl_${TAG}_ml${ML}.log" 2>&1
+[07:22:40] --- ctxctrl phi35 ｜ ctx=4096 ｜ start=2 ｜ /root/w1_results/ctxctrl_phi35_ml4096_s2
+[07:23:43]   [phi35 ml4096] 起服就绪 60s
+[07:25:40]   完成：4 个臂文件
+/root/ctxctrl_run.sh: line 39:  1153 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ctxctrl_${TAG}_ml${ML}.log" 2>&1
+[07:25:43] --- ctxctrl phi35 ｜ ctx=8192 ｜ start=2 ｜ /root/w1_results/ctxctrl_phi35_ml8192_s2
+[07:26:31]   [phi35 ml8192] 起服就绪 45s
+[07:28:23]   完成：4 个臂文件
+/root/ctxctrl_run.sh: line 39:  1566 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ctxctrl_${TAG}_ml${ML}.log" 2>&1
+[07:28:26] --- ctxctrl phi35 ｜ ctx=4096 ｜ start=3 ｜ /root/w1_results/ctxctrl_phi35_ml4096_s3
+[07:29:29]   [phi35 ml4096] 起服就绪 60s
+[07:31:28]   完成：4 个臂文件
+/root/ctxctrl_run.sh: line 39:  1910 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ctxctrl_${TAG}_ml${ML}.log" 2>&1
+[07:31:31] --- ctxctrl phi35 ｜ ctx=8192 ｜ start=3 ｜ /root/w1_results/ctxctrl_phi35_ml8192_s3
+[07:32:19]   [phi35 ml8192] 起服就绪 45s
+[07:34:10]   完成：4 个臂文件
+/root/ctxctrl_run.sh: line 39:  2260 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ctxctrl_${TAG}_ml${ML}.log" 2>&1
+[07:34:13] --- ctxctrl ivl8b ｜ ctx=4096 ｜ start=1 ｜ /root/w1_results/ctxctrl_ivl8b_ml4096_s1
+[07:36:16]   [ivl8b ml4096] 起服就绪 120s
+[07:39:47]   完成：4 个臂文件
+/root/ctxctrl_run.sh: line 39:  2606 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ctxctrl_${TAG}_ml${ML}.log" 2>&1
+[07:39:50] --- ctxctrl ivl8b ｜ ctx=8192 ｜ start=1 ｜ /root/w1_results/ctxctrl_ivl8b_ml8192_s1
+[07:40:38]   [ivl8b ml8192] 起服就绪 45s
+[07:44:08]   完成：4 个臂文件
+/root/ctxctrl_run.sh: line 39:  3004 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ctxctrl_${TAG}_ml${ML}.log" 2>&1
+[07:44:11] --- ctxctrl ivl8b ｜ ctx=4096 ｜ start=2 ｜ /root/w1_results/ctxctrl_ivl8b_ml4096_s2
+[07:44:59]   [ivl8b ml4096] 起服就绪 45s
+[07:48:31]   完成：4 个臂文件
+/root/ctxctrl_run.sh: line 39:  3387 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ctxctrl_${TAG}_ml${ML}.log" 2>&1
+[07:48:34] --- ctxctrl ivl8b ｜ ctx=8192 ｜ start=2 ｜ /root/w1_results/ctxctrl_ivl8b_ml8192_s2
+[07:49:22]   [ivl8b ml8192] 起服就绪 45s
+[07:52:53]   完成：4 个臂文件
+/root/ctxctrl_run.sh: line 39:  3881 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ctxctrl_${TAG}_ml${ML}.log" 2>&1
+[07:52:56] --- ctxctrl ivl8b ｜ ctx=4096 ｜ start=3 ｜ /root/w1_results/ctxctrl_ivl8b_ml4096_s3
+[07:53:44]   [ivl8b ml4096] 起服就绪 45s
+[07:57:14]   完成：4 个臂文件
+/root/ctxctrl_run.sh: line 39:  4263 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ctxctrl_${TAG}_ml${ML}.log" 2>&1
+[07:57:17] --- ctxctrl ivl8b ｜ ctx=8192 ｜ start=3 ｜ /root/w1_results/ctxctrl_ivl8b_ml8192_s3
+[07:58:05]   [ivl8b ml8192] 起服就绪 45s
+[08:01:36]   完成：4 个臂文件
+/root/ctxctrl_run.sh: line 39:  4643 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ctxctrl_${TAG}_ml${ML}.log" 2>&1
+[08:01:39] --- ctxctrl gemma12b ｜ ctx=4096 ｜ start=1 ｜ /root/w1_results/ctxctrl_gemma12b_ml4096_s1
+[08:04:27]   [gemma12b ml4096] 起服就绪 165s
+[08:05:46]   完成：4 个臂文件
+/root/ctxctrl_run.sh: line 39:  5195 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ctxctrl_${TAG}_ml${ML}.log" 2>&1
+[08:05:49] --- ctxctrl gemma12b ｜ ctx=8192 ｜ start=1 ｜ /root/w1_results/ctxctrl_gemma12b_ml8192_s1
+[08:07:52]   [gemma12b ml8192] 起服就绪 120s
+[08:09:11]   完成：4 个臂文件
+/root/ctxctrl_run.sh: line 39:  5560 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ctxctrl_${TAG}_ml${ML}.log" 2>&1
+[08:09:14] --- ctxctrl gemma12b ｜ ctx=4096 ｜ start=2 ｜ /root/w1_results/ctxctrl_gemma12b_ml4096_s2
+[08:11:17]   [gemma12b ml4096] 起服就绪 120s
+[08:12:35]   完成：4 个臂文件
+/root/ctxctrl_run.sh: line 39:  5916 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ctxctrl_${TAG}_ml${ML}.log" 2>&1
+[08:12:38] --- ctxctrl gemma12b ｜ ctx=8192 ｜ start=2 ｜ /root/w1_results/ctxctrl_gemma12b_ml8192_s2
+[08:14:26]   [gemma12b ml8192] 起服就绪 105s
+[08:15:45]   完成：4 个臂文件
+/root/ctxctrl_run.sh: line 39:  6277 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ctxctrl_${TAG}_ml${ML}.log" 2>&1
+[08:15:48] --- ctxctrl gemma12b ｜ ctx=4096 ｜ start=3 ｜ /root/w1_results/ctxctrl_gemma12b_ml4096_s3
+[08:17:51]   [gemma12b ml4096] 起服就绪 120s
+[08:19:09]   完成：4 个臂文件
+/root/ctxctrl_run.sh: line 39:  6634 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ctxctrl_${TAG}_ml${ML}.log" 2>&1
+[08:19:12] --- ctxctrl gemma12b ｜ ctx=8192 ｜ start=3 ｜ /root/w1_results/ctxctrl_gemma12b_ml8192_s3
+[08:21:15]   [gemma12b ml8192] 起服就绪 120s
+[08:22:33]   完成：4 个臂文件
+/root/ctxctrl_run.sh: line 39:  6991 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ctxctrl_${TAG}_ml${ML}.log" 2>&1
+[08:22:36] ########## S1 主跑完成，开始汇总 ##########
+[08:22:37] ########## S1 完成 ##########
+[08:22:37] CTXCTRL_DONE

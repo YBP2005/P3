@@ -1,0 +1,65 @@
+[10:15:42] ########## A5 家族 internvl3.5-8b 开始（InternVL3_5-8B；extra='--trust-remote-code'）##########
+[10:17:30]   起服就绪（105s）
+[10:17:30] == InternVL3_5-8B / st_a 零池 6 臂 ==
+  base 臂 pred==0 的 item 共 103 个；本次抽 103 个（gt 从 138 到 2256）
+  [base] 103 行；pred==0 的 1 个；-> /root/e1_results/e1_InternVL3_5-8B_st_a_base.csv
+  [permit] 103 行；pred==0 的 0 个；-> /root/e1_results/e1_InternVL3_5-8B_st_a_permit.csv
+  [bestA] 103 行；pred==0 的 0 个；-> /root/e1_results/e1_InternVL3_5-8B_st_a_bestA.csv
+  [bestB] 103 行；pred==0 的 0 个；-> /root/e1_results/e1_InternVL3_5-8B_st_a_bestB.csv
+  [bestC] 103 行；pred==0 的 0 个；-> /root/e1_results/e1_InternVL3_5-8B_st_a_bestC.csv
+  [channel] 103 行；pred==0 的 0 个；-> /root/e1_results/e1_InternVL3_5-8B_st_a_channel.csv
+[10:18:24]    rc=0 用时 54s
+[10:18:24] == InternVL3_5-8B / st_a 非零池 3 臂 ==
+  base 臂 pred==0 的 item 共 79 个；本次抽 79 个（gt 从 66 到 823）
+  [base] 79 行；pred==0 的 0 个；-> /root/e1_results_nonzero/e1_InternVL3_5-8B_st_a_base.csv
+  [permit] 79 行；pred==0 的 0 个；-> /root/e1_results_nonzero/e1_InternVL3_5-8B_st_a_permit.csv
+  [channel] 79 行；pred==0 的 0 个；-> /root/e1_results_nonzero/e1_InternVL3_5-8B_st_a_channel.csv
+[10:18:48]    rc=0 用时 24s
+[10:18:48] == InternVL3_5-8B / ucf 零池 6 臂 ==
+  base 臂 pred==0 的 item 共 180 个；本次抽 150 个（gt 从 137 到 1798）
+  [base] 150 行；pred==0 的 1 个；-> /root/e1_results/e1_InternVL3_5-8B_ucf_base.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/e1_results/e1_InternVL3_5-8B_ucf_permit.csv
+  [bestA] 150 行；pred==0 的 0 个；-> /root/e1_results/e1_InternVL3_5-8B_ucf_bestA.csv
+  [bestB] 150 行；pred==0 的 0 个；-> /root/e1_results/e1_InternVL3_5-8B_ucf_bestB.csv
+  [bestC] 150 行；pred==0 的 0 个；-> /root/e1_results/e1_InternVL3_5-8B_ucf_bestC.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/e1_results/e1_InternVL3_5-8B_ucf_channel.csv
+[10:20:28]    rc=0 用时 100s
+[10:20:28] == InternVL3_5-8B / ucf 非零池 3 臂 ==
+  base 臂 pred==0 的 item 共 154 个；本次抽 150 个（gt 从 65 到 737）
+  [base] 150 行；pred==0 的 0 个；-> /root/e1_results_nonzero/e1_InternVL3_5-8B_ucf_base.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/e1_results_nonzero/e1_InternVL3_5-8B_ucf_permit.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/e1_results_nonzero/e1_InternVL3_5-8B_ucf_channel.csv
+[10:21:25]    rc=0 用时 57s
+[10:21:25] == InternVL3_5-8B / visdrone 零池 6 臂 ==
+  base 臂 pred==0 的 item 共 273 个；本次抽 150 个（gt 从 1 到 8）
+  [base] 150 行；pred==0 的 95 个；-> /root/e1_results/e1_InternVL3_5-8B_visdrone_base.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/e1_results/e1_InternVL3_5-8B_visdrone_permit.csv
+  [bestA] 150 行；pred==0 的 3 个；-> /root/e1_results/e1_InternVL3_5-8B_visdrone_bestA.csv
+  [bestB] 150 行；pred==0 的 2 个；-> /root/e1_results/e1_InternVL3_5-8B_visdrone_bestB.csv
+  [bestC] 150 行；pred==0 的 1 个；-> /root/e1_results/e1_InternVL3_5-8B_visdrone_bestC.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/e1_results/e1_InternVL3_5-8B_visdrone_channel.csv
+[10:24:18]    rc=0 用时 173s
+[10:24:18] == InternVL3_5-8B / visdrone 非零池 3 臂 ==
+  base 臂 pred==0 的 item 共 127 个；本次抽 127 个（gt 从 1 到 262）
+  [base] 127 行；pred==0 的 1 个；-> /root/e1_results_nonzero/e1_InternVL3_5-8B_visdrone_base.csv
+  [permit] 127 行；pred==0 的 0 个；-> /root/e1_results_nonzero/e1_InternVL3_5-8B_visdrone_permit.csv
+  [channel] 127 行；pred==0 的 0 个；-> /root/e1_results_nonzero/e1_InternVL3_5-8B_visdrone_channel.csv
+[10:25:02]    rc=0 用时 44s
+[10:25:02] == InternVL3_5-8B / aitod 零池 6 臂 ==
+  base 臂 pred==0 的 item 共 154 个；本次抽 150 个（gt 从 1 到 61）
+  [base] 150 行；pred==0 的 59 个；-> /root/e1_results/e1_InternVL3_5-8B_aitod_base.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/e1_results/e1_InternVL3_5-8B_aitod_permit.csv
+  [bestA] 150 行；pred==0 的 23 个；-> /root/e1_results/e1_InternVL3_5-8B_aitod_bestA.csv
+  [bestB] 150 行；pred==0 的 9 个；-> /root/e1_results/e1_InternVL3_5-8B_aitod_bestB.csv
+  [bestC] 150 行；pred==0 的 0 个；-> /root/e1_results/e1_InternVL3_5-8B_aitod_bestC.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/e1_results/e1_InternVL3_5-8B_aitod_channel.csv
+[10:25:56]    rc=0 用时 54s
+[10:25:56] == InternVL3_5-8B / aitod 非零池 3 臂 ==
+  base 臂 pred==0 的 item 共 72 个；本次抽 72 个（gt 从 1 到 123）
+  [base] 72 行；pred==0 的 1 个；-> /root/e1_results_nonzero/e1_InternVL3_5-8B_aitod_base.csv
+  [permit] 72 行；pred==0 的 0 个；-> /root/e1_results_nonzero/e1_InternVL3_5-8B_aitod_permit.csv
+  [channel] 72 行；pred==0 的 0 个；-> /root/e1_results_nonzero/e1_InternVL3_5-8B_aitod_channel.csv
+[10:26:10]    rc=0 用时 14s
+[10:26:10] 零池文件 48 个；非零池 24 个
+[10:26:10] ########## A5 家族 internvl3.5-8b 结束 ##########
+A5_internvl3.5-8b_DONE

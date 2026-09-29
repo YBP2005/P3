@@ -1,0 +1,41 @@
+[01:16:15] 等待回收序列结束（W1_RECOVER_DONE）…
+[02:58:16] 开始 FSC 示例臂序列
+[02:58:16] ===== FSC 臂：gemma4_31b（gemma-4-31b-it）=====
+[03:01:04]   [gemma4_31b] 起服就绪 165s
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 266 个；-> /root/w1_results/fsc/fsc_gemma-4-31b-it_base.csv
+  [permit] 300 行；答 0 的 247 个；-> /root/w1_results/fsc/fsc_gemma-4-31b-it_permit.csv
+  [exemplar3] 300 行；答 0 的 0 个；-> /root/w1_results/fsc/fsc_gemma-4-31b-it_exemplar3.csv
+  [exemplar3permit] 300 行；答 0 的 0 个；-> /root/w1_results/fsc/fsc_gemma-4-31b-it_exemplar3permit.csv
+[03:05:38]   [gemma4_31b] FSC 产物 4 个文件
+[03:05:41] ===== FSC 臂：minicpmv45（MiniCPM-V-4_5）=====
+[03:07:29]   [minicpmv45] 起服就绪 105s
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 278 个；-> /root/w1_results/fsc/fsc_MiniCPM-V-4_5_base.csv
+  [permit] 300 行；答 0 的 0 个；-> /root/w1_results/fsc/fsc_MiniCPM-V-4_5_permit.csv
+  [exemplar3] 300 行；答 0 的 0 个；-> /root/w1_results/fsc/fsc_MiniCPM-V-4_5_exemplar3.csv
+  [exemplar3permit] 300 行；答 0 的 0 个；-> /root/w1_results/fsc/fsc_MiniCPM-V-4_5_exemplar3permit.csv
+[03:08:08]   [minicpmv45] FSC 产物 4 个文件
+[03:08:11] ===== FSC 臂：step3vl10b（Step3-VL-10B）=====
+[03:08:59]   [step3vl10b] 起服就绪 45s
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 237 个；-> /root/w1_results/fsc/fsc_Step3-VL-10B_base.csv
+  [permit] 300 行；答 0 的 118 个；-> /root/w1_results/fsc/fsc_Step3-VL-10B_permit.csv
+  [exemplar3] 300 行；答 0 的 9 个；-> /root/w1_results/fsc/fsc_Step3-VL-10B_exemplar3.csv
+  [exemplar3permit] 300 行；答 0 的 9 个；-> /root/w1_results/fsc/fsc_Step3-VL-10B_exemplar3permit.csv
+[03:13:10]   [step3vl10b] FSC 产物 4 个文件
+[03:13:13] ===== FSC 臂：dsvl2_tiny（deepseek-vl2-tiny）=====
+[03:15:01]   [dsvl2_tiny] 起服就绪 105s
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 1 个；-> /root/w1_results/fsc/fsc_deepseek-vl2-tiny_base.csv
+  [permit] 300 行；答 0 的 20 个；-> /root/w1_results/fsc/fsc_deepseek-vl2-tiny_permit.csv
+  [exemplar3] 300 行；答 0 的 203 个；-> /root/w1_results/fsc/fsc_deepseek-vl2-tiny_exemplar3.csv
+  [exemplar3permit] 300 行；答 0 的 115 个；-> /root/w1_results/fsc/fsc_deepseek-vl2-tiny_exemplar3permit.csv
+[03:15:50]   [dsvl2_tiny] FSC 产物 4 个文件
+[03:15:53] 跳过 FSC idefics3_8b：无权重 /root/w1_models/idefics3-8b
+[03:15:53] ===== FSC 臂：molmo7b（Molmo-7B-D-0924）=====
+[03:16:12]   [molmo7b] !! 起服报错
+[03:16:12] !! molmo7b 起服失败，跳过 FSC
+[03:16:15] ########## W1d 结束 ##########
+16
+W1_FSC_DONE

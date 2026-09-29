@@ -1,0 +1,5 @@
+[01:40:15] 已保护：/root/w1_models/molmo-7b-d -> /root/w1_keep/molmo-7b-d（30G）
+[01:43:15] 已保护：/root/w1_models/minicpm-v-4_5 -> /root/w1_keep/minicpm-v-4_5（17G）
+[04:13:17] 等待超时：microsoft/Phi-4-multimodal-instruct
+[04:13:17] 守卫结束
+W1_GUARD_DONE

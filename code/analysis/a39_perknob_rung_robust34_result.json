@@ -1,0 +1,356 @@
+{
+  "script": "a39_perknob_robust34.py",
+  "copied_from": "a39_perknob_rung.py",
+  "copied_from_md5": "8d546c35db3e2ebf7eece2b5de2f54da",
+  "statistical_object": "A = 36-unit (same object as the frozen artefact). B/C = 34-unit, a DIFFERENT statistical object; NOT a replication.",
+  "retired_units": [
+    "density·CSRNet / st",
+    "density·CSRNet / ladder"
+  ],
+  "eligibility": ">=3 levels and >=20 common items, applied per unit (A39 rule)",
+  "protocol": {
+    "nsplit": 200,
+    "seed": 20260923,
+    "calib_frac": 0.3333333333333333
+  },
+  "knob_unit_counts": {
+    "n36": {
+      "K1 detection·threshold τ × input size": 12,
+      "K2 density regression·input scale": 4,
+      "K3 VLM·output contract": 2,
+      "K4 VLM·prompt family": 6,
+      "K5 VLM·tiling level": 6,
+      "K6 VLM·pixel budget": 6
+    },
+    "n34": {
+      "K1 detection·threshold τ × input size": 12,
+      "K2 density regression·input scale": 2,
+      "K3 VLM·output contract": 2,
+      "K4 VLM·prompt family": 6,
+      "K5 VLM·tiling level": 6,
+      "K6 VLM·pixel budget": 6
+    }
+  },
+  "pathA_36units": {
+    "arms": {
+      "C0e": {
+        "median": 0.994916019821965,
+        "p05": 0.9842332216789866,
+        "p95": 0.9978763132832723,
+        "frac_ge_090": 1.0,
+        "frac_ge_080": 1.0
+      },
+      "C1u": {
+        "median": 0.5360705333193382,
+        "p05": 0.4278267593645811,
+        "p95": 0.6466310586785967,
+        "frac_ge_090": 0.0,
+        "frac_ge_080": 0.0
+      },
+      "C2l": {
+        "median": 0.522813566949136,
+        "p05": 0.3478988359092848,
+        "p95": 0.6818971633915616,
+        "frac_ge_090": 0.0,
+        "frac_ge_080": 0.0
+      },
+      "Cg": {
+        "median": 0.994916019821965,
+        "p05": 0.9842332216789866,
+        "p95": 0.9978763132832723,
+        "frac_ge_090": 1.0,
+        "frac_ge_080": 1.0
+      },
+      "ISO": {
+        "median": 0.5207542323673571,
+        "p05": 0.3539481312432605,
+        "p95": 0.6624621932760225,
+        "frac_ge_090": 0.0,
+        "frac_ge_080": 0.0
+      },
+      "QNT": {
+        "median": 0.4096788733626539,
+        "p05": 0.27775275171743863,
+        "p95": 0.5354269912625322,
+        "frac_ge_090": 0.0,
+        "frac_ge_080": 0.0
+      },
+      "Ck": {
+        "median": 0.7901409373463186,
+        "p05": 0.7284896083043108,
+        "p95": 0.8331295467409546,
+        "frac_ge_090": 0.0,
+        "frac_ge_080": 0.375
+      },
+      "SISOk": {
+        "median": 0.756419333569688,
+        "p05": 0.7174206849272488,
+        "p95": 0.8085462401709682,
+        "frac_ge_090": 0.0,
+        "frac_ge_080": 0.095
+      },
+      "SISOg": {
+        "median": 0.815577742919033,
+        "p05": 0.7950318569780437,
+        "p95": 0.8379787732691374,
+        "frac_ge_090": 0.0,
+        "frac_ge_080": 0.885
+      }
+    },
+    "knob_level_spearman": {
+      "C0e": {
+        "median": 1.0
+      },
+      "C1u": {
+        "median": 0.6
+      },
+      "C2l": {
+        "median": 0.8285714285714286
+      },
+      "Cg": {
+        "median": 1.0
+      },
+      "ISO": {
+        "median": 0.7714285714285715
+      },
+      "QNT": {
+        "median": 0.14285714285714285
+      },
+      "Ck": {
+        "median": 0.4857142857142857
+      },
+      "SISOk": {
+        "median": 0.8285714285714286
+      },
+      "SISOg": {
+        "median": 0.9428571428571428
+      }
+    },
+    "replication_gate": {
+      "C0e": {
+        "mine": 0.994916019821965,
+        "frozen": 0.994916019821965,
+        "delta": 0.0,
+        "ok": true
+      },
+      "C1u": {
+        "mine": 0.5360705333193382,
+        "frozen": 0.5360705333193382,
+        "delta": 0.0,
+        "ok": true
+      },
+      "C2l": {
+        "mine": 0.522813566949136,
+        "frozen": 0.522813566949136,
+        "delta": 0.0,
+        "ok": true
+      },
+      "Cg": {
+        "mine": 0.994916019821965,
+        "frozen": 0.994916019821965,
+        "delta": 0.0,
+        "ok": true
+      },
+      "ISO": {
+        "mine": 0.5207542323673571,
+        "frozen": 0.5207542323673571,
+        "delta": 0.0,
+        "ok": true
+      },
+      "QNT": {
+        "mine": 0.4096788733626539,
+        "frozen": 0.4096788733626539,
+        "delta": 0.0,
+        "ok": true
+      }
+    }
+  },
+  "pathB_34units_own_split": {
+    "arms": {
+      "C0e": {
+        "median": 0.9944228006713246,
+        "p05": 0.9770035936528041,
+        "p95": 0.997326001841078,
+        "frac_ge_090": 1.0,
+        "frac_ge_080": 1.0
+      },
+      "Cg": {
+        "median": 0.9944228006713246,
+        "p05": 0.9770035936528041,
+        "p95": 0.997326001841078,
+        "frac_ge_090": 1.0,
+        "frac_ge_080": 1.0
+      },
+      "Ck": {
+        "median": 0.723661091576428,
+        "p05": 0.6234242511891525,
+        "p95": 0.7991443219900165,
+        "frac_ge_090": 0.0,
+        "frac_ge_080": 0.04
+      },
+      "SISOk": {
+        "median": 0.6894338777856509,
+        "p05": 0.64512185993152,
+        "p95": 0.7443459657701712,
+        "frac_ge_090": 0.0,
+        "frac_ge_080": 0.0
+      },
+      "SISOg": {
+        "median": 0.821147530855516,
+        "p05": 0.7976163213743568,
+        "p95": 0.8372946341574331,
+        "frac_ge_090": 0.0,
+        "frac_ge_080": 0.92
+      },
+      "C1u": {
+        "median": 0.4732217906698052,
+        "p05": 0.36290014621917577,
+        "p95": 0.6306058540827529,
+        "frac_ge_090": 0.0,
+        "frac_ge_080": 0.0
+      }
+    },
+    "knob_level_spearman": {
+      "C0e": {
+        "median": 1.0
+      },
+      "Cg": {
+        "median": 1.0
+      },
+      "Ck": {
+        "median": 0.37142857142857144
+      },
+      "SISOk": {
+        "median": 0.5428571428571428
+      },
+      "SISOg": {
+        "median": 0.9428571428571428
+      },
+      "C1u": {
+        "median": 0.3142857142857143
+      }
+    }
+  },
+  "pathC_34units_same_split": {
+    "arms": {
+      "C0e": {
+        "median": 0.9944228006713246,
+        "p05": 0.9815875954997831,
+        "p95": 0.9974788019026439,
+        "frac_ge_090": 1.0,
+        "frac_ge_080": 1.0
+      },
+      "Cg": {
+        "median": 0.9944228006713246,
+        "p05": 0.9815875954997831,
+        "p95": 0.9974788019026439,
+        "frac_ge_090": 1.0,
+        "frac_ge_080": 1.0
+      },
+      "Ck": {
+        "median": 0.7215218907145043,
+        "p05": 0.6371762567300896,
+        "p95": 0.7979219214974888,
+        "frac_ge_090": 0.0,
+        "frac_ge_080": 0.045
+      },
+      "SISOk": {
+        "median": 0.6894865525672372,
+        "p05": 0.6490946615322352,
+        "p95": 0.7396088019559903,
+        "frac_ge_090": 0.0,
+        "frac_ge_080": 0.0
+      },
+      "SISOg": {
+        "median": 0.8177859295010647,
+        "p05": 0.7999694376528118,
+        "p95": 0.8414214970859198,
+        "frac_ge_090": 0.0,
+        "frac_ge_080": 0.945
+      },
+      "C1u": {
+        "median": 0.49400259904277694,
+        "p05": 0.3868897558850328,
+        "p95": 0.6429826590695965,
+        "frac_ge_090": 0.0,
+        "frac_ge_080": 0.0
+      }
+    },
+    "knob_level_spearman": {
+      "C0e": {
+        "median": 1.0
+      },
+      "Cg": {
+        "median": 1.0
+      },
+      "Ck": {
+        "median": 0.37142857142857144
+      },
+      "SISOk": {
+        "median": 0.5428571428571428
+      },
+      "SISOg": {
+        "median": 0.9428571428571428
+      },
+      "C1u": {
+        "median": 0.37142857142857144
+      }
+    },
+    "within_knob_spearman": {
+      "Cg": {
+        "K1 detection·threshold τ × input size": {
+          "median": 0.9912449526987599,
+          "n": 12
+        },
+        "K4 VLM·prompt family": {
+          "median": 0.9428571428571428,
+          "n": 6
+        },
+        "K5 VLM·tiling level": {
+          "median": 0.9428571428571428,
+          "n": 6
+        },
+        "K6 VLM·pixel budget": {
+          "median": 0.9428571428571428,
+          "n": 6
+        }
+      },
+      "Ck": {
+        "K1 detection·threshold τ × input size": {
+          "median": 0.9912449526987599,
+          "n": 12
+        },
+        "K4 VLM·prompt family": {
+          "median": 0.9428571428571428,
+          "n": 6
+        },
+        "K5 VLM·tiling level": {
+          "median": 0.9428571428571428,
+          "n": 6
+        },
+        "K6 VLM·pixel budget": {
+          "median": 0.9428571428571428,
+          "n": 6
+        }
+      }
+    }
+  },
+  "between_knob_factor_spread": {
+    "A_36": {
+      "a_min": 0.07700256805804802,
+      "a_max": 0.5900752317148188
+    },
+    "B_34": {
+      "a_min": 0.10025336589356044,
+      "a_max": 1.0575773317170212
+    },
+    "C_34": {
+      "a_min": 0.10081406522624571,
+      "a_max": 1.0592159525909224
+    }
+  },
+  "verdict": {
+    "persists": true,
+    "statement": "Dropping the two retired reproductions does not change the conclusion: the single global map stays at/above 0.9 while the per-knob map stays well below it, on both 34-unit paths."
+  }
+}

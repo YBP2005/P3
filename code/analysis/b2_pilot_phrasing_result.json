@@ -1,0 +1,162 @@
+{
+ "gemma3-12b|st_a": {
+  "n": 103,
+  "auc_big": 0.535064935064935,
+  "auc_zero": null,
+  "mae_all": 0.605930813864118,
+  "mae_20": 0.5478179374673111,
+  "usable": false
+ },
+ "gemma3-12b|ucf": {
+  "n": 150,
+  "auc_big": 0.5181433044759625,
+  "auc_zero": null,
+  "mae_all": 0.6861299810987599,
+  "mae_20": 0.6356642233662276,
+  "usable": false
+ },
+ "gemma3-12b|visdrone": {
+  "n": 150,
+  "auc_big": 0.19256756756756757,
+  "auc_zero": 0.9310344827586207,
+  "mae_all": 8.054246031746034,
+  "mae_20": 8.899444444444443,
+  "usable": false
+ },
+ "gemma3-12b|aitod": {
+  "n": 150,
+  "auc_big": 0.6937669376693767,
+  "auc_zero": 0.8578767123287672,
+  "mae_all": 7.129823712226567,
+  "mae_20": 2.935275451349347,
+  "usable": true
+ },
+ "InternVL3_5-8B|st_a": {
+  "n": 103,
+  "auc_big": 0.5984674329501916,
+  "auc_zero": 0.8823529411764706,
+  "mae_all": 0.5189346040568539,
+  "mae_20": 0.3816081554733743,
+  "usable": false
+ },
+ "InternVL3_5-8B|ucf": {
+  "n": 150,
+  "auc_big": 0.4899980194097841,
+  "auc_zero": 0.7046979865771812,
+  "mae_all": 0.5784660140115875,
+  "mae_20": 0.4971244362717657,
+  "usable": false
+ },
+ "InternVL3_5-8B|visdrone": {
+  "n": 150,
+  "auc_big": 0.649804275820536,
+  "auc_zero": 0.7494736842105263,
+  "mae_all": 1.0583015873015873,
+  "mae_20": 1.8290079365079366,
+  "usable": false
+ },
+ "InternVL3_5-8B|aitod": {
+  "n": 150,
+  "auc_big": 0.7870274736624664,
+  "auc_zero": 0.90538275284038,
+  "mae_all": 0.741839741594197,
+  "mae_20": 0.5063770033932691,
+  "usable": false
+ },
+ "Phi-3.5-vision-instruct|st_a": {
+  "n": 103,
+  "auc_big": 0.39466484268125857,
+  "auc_zero": null,
+  "mae_all": 41216.089748103215,
+  "mae_20": 51368.719581716075,
+  "usable": false
+ },
+ "Phi-3.5-vision-instruct|ucf": {
+  "n": 150,
+  "auc_big": 0.6052721670660732,
+  "auc_zero": null,
+  "mae_all": 24540.68389579285,
+  "mae_20": 33652.18663843966,
+  "usable": false
+ },
+ "Phi-3.5-vision-instruct|visdrone": {
+  "n": 150,
+  "auc_big": 0.476027397260274,
+  "auc_zero": 0.8708770614692654,
+  "mae_all": 2.0096507936507937,
+  "mae_20": 4.0134920634920634,
+  "usable": false
+ },
+ "Phi-3.5-vision-instruct|aitod": {
+  "n": 147,
+  "auc_big": 0.590702947845805,
+  "auc_zero": 0.6743764172335601,
+  "mae_all": 43.16769178371843,
+  "mae_20": 1.601411332058555,
+  "usable": false
+ },
+ "llava-onevision-qwen2-7b-ov|st_a": {
+  "n": 98,
+  "auc_big": 0.3719298245614035,
+  "auc_zero": null,
+  "mae_all": 0.8958844894549305,
+  "mae_20": 0.914611652160883,
+  "usable": false
+ },
+ "llava-onevision-qwen2-7b-ov|ucf": {
+  "n": 144,
+  "auc_big": 0.44421272158498437,
+  "auc_zero": null,
+  "mae_all": 0.8438967850159469,
+  "mae_20": 0.8919499044813948,
+  "usable": false
+ },
+ "llava-onevision-qwen2-7b-ov|visdrone": {
+  "n": 150,
+  "auc_big": 0.6003521126760564,
+  "auc_zero": 0.6021455223880597,
+  "mae_all": 1.0084444444444443,
+  "mae_20": 0.9555555555555555,
+  "usable": false
+ },
+ "llava-onevision-qwen2-7b-ov|aitod": {
+  "n": 149,
+  "auc_big": 0.4893977947413062,
+  "auc_zero": 0.33374587458745875,
+  "mae_all": 0.8813170456156458,
+  "mae_20": 0.9407894736842105,
+  "usable": false
+ },
+ "qwen3-vl-32b-awq|st_a": {
+  "n": 103,
+  "auc_big": null,
+  "auc_zero": 1.0,
+  "mae_all": 1.0048543689320388,
+  "mae_20": 1.0238095238095237,
+  "usable": false
+ },
+ "qwen3-vl-32b-awq|ucf": {
+  "n": 180,
+  "auc_big": 0.9363222871994802,
+  "auc_zero": 0.9135111876075731,
+  "mae_all": 0.9611486614880425,
+  "mae_20": 0.8280863662802804,
+  "usable": false
+ },
+ "qwen3-vl-32b-awq|visdrone": {
+  "n": 273,
+  "auc_big": 0.79182156133829,
+  "auc_zero": 0.7820895522388059,
+  "mae_all": 0.9876785810851746,
+  "mae_20": 0.9818181818181818,
+  "usable": false
+ },
+ "qwen3-vl-32b-awq|aitod": {
+  "n": 154,
+  "auc_big": 0.94,
+  "auc_zero": 0.9530201342281879,
+  "mae_all": 0.9839233068898141,
+  "mae_20": 0.9201351374526248,
+  "usable": false
+ }
+}

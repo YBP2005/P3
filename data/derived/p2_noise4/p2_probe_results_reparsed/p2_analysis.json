@@ -1,0 +1,429 @@
+{
+  "cells": {
+    "InternVL3_5-8B||S-1": {
+      "base": {
+        "n": 150,
+        "zero": 147,
+        "zero_rate": 0.98,
+        "zero_ci": [
+          0.9429,
+          0.9932
+        ],
+        "abstain": 0,
+        "abstain_rate": 0.0,
+        "outlet": 0,
+        "outlet_rate": 0.0
+      },
+      "channel": {
+        "n": 150,
+        "zero": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          0.0,
+          0.025
+        ],
+        "abstain": 0,
+        "abstain_rate": 0.0,
+        "outlet": 150,
+        "outlet_rate": 1.0
+      },
+      "permit": {
+        "n": 150,
+        "zero": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          0.0,
+          0.025
+        ],
+        "abstain": 150,
+        "abstain_rate": 1.0,
+        "outlet": 0,
+        "outlet_rate": 0.0
+      },
+      "in_operating_range_original": false,
+      "in_operating_range": false,
+      "window": "revised 2026-09-26: base in [0.10,0.90]; outlet condition dropped as unsatisfiable on a true-zero pool"
+    },
+    "InternVL3_5-8B||S-2": {
+      "base": {
+        "n": 150,
+        "zero": 150,
+        "zero_rate": 1.0,
+        "zero_ci": [
+          0.975,
+          1.0
+        ],
+        "abstain": 0,
+        "abstain_rate": 0.0,
+        "outlet": 0,
+        "outlet_rate": 0.0
+      },
+      "channel": {
+        "n": 150,
+        "zero": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          0.0,
+          0.025
+        ],
+        "abstain": 0,
+        "abstain_rate": 0.0,
+        "outlet": 150,
+        "outlet_rate": 1.0
+      },
+      "permit": {
+        "n": 150,
+        "zero": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          0.0,
+          0.025
+        ],
+        "abstain": 150,
+        "abstain_rate": 1.0,
+        "outlet": 0,
+        "outlet_rate": 0.0
+      },
+      "in_operating_range_original": false,
+      "in_operating_range": false,
+      "window": "revised 2026-09-26: base in [0.10,0.90]; outlet condition dropped as unsatisfiable on a true-zero pool"
+    },
+    "Phi-3.5-vision-instruct||S-1": {
+      "base": {
+        "n": 150,
+        "zero": 149,
+        "zero_rate": 0.9933,
+        "zero_ci": [
+          0.9632,
+          0.9988
+        ],
+        "abstain": 0,
+        "abstain_rate": 0.0,
+        "outlet": 0,
+        "outlet_rate": 0.0
+      },
+      "channel": {
+        "n": 150,
+        "zero": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          0.0,
+          0.025
+        ],
+        "abstain": 0,
+        "abstain_rate": 0.0,
+        "outlet": 150,
+        "outlet_rate": 1.0
+      },
+      "permit": {
+        "n": 150,
+        "zero": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          0.0,
+          0.025
+        ],
+        "abstain": 150,
+        "abstain_rate": 1.0,
+        "outlet": 0,
+        "outlet_rate": 0.0
+      },
+      "in_operating_range_original": false,
+      "in_operating_range": false,
+      "window": "revised 2026-09-26: base in [0.10,0.90]; outlet condition dropped as unsatisfiable on a true-zero pool"
+    },
+    "Phi-3.5-vision-instruct||S-2": {
+      "base": {
+        "n": 150,
+        "zero": 98,
+        "zero_rate": 0.6533,
+        "zero_ci": [
+          0.5742,
+          0.7248
+        ],
+        "abstain": 0,
+        "abstain_rate": 0.0,
+        "outlet": 0,
+        "outlet_rate": 0.0
+      },
+      "channel": {
+        "n": 150,
+        "zero": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          0.0,
+          0.025
+        ],
+        "abstain": 0,
+        "abstain_rate": 0.0,
+        "outlet": 150,
+        "outlet_rate": 1.0
+      },
+      "permit": {
+        "n": 150,
+        "zero": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          0.0,
+          0.025
+        ],
+        "abstain": 147,
+        "abstain_rate": 0.98,
+        "outlet": 0,
+        "outlet_rate": 0.0
+      },
+      "in_operating_range_original": false,
+      "in_operating_range": true,
+      "window": "revised 2026-09-26: base in [0.10,0.90]; outlet condition dropped as unsatisfiable on a true-zero pool"
+    },
+    "Qwen3-VL-32B-Instruct||S-1": {
+      "base": {
+        "n": 150,
+        "zero": 150,
+        "zero_rate": 1.0,
+        "zero_ci": [
+          0.975,
+          1.0
+        ],
+        "abstain": 0,
+        "abstain_rate": 0.0,
+        "outlet": 0,
+        "outlet_rate": 0.0
+      },
+      "channel": {
+        "n": 150,
+        "zero": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          0.0,
+          0.025
+        ],
+        "abstain": 0,
+        "abstain_rate": 0.0,
+        "outlet": 150,
+        "outlet_rate": 1.0
+      },
+      "permit": {
+        "n": 150,
+        "zero": 2,
+        "zero_rate": 0.0133,
+        "zero_ci": [
+          0.0037,
+          0.0473
+        ],
+        "abstain": 148,
+        "abstain_rate": 0.9867,
+        "outlet": 0,
+        "outlet_rate": 0.0
+      },
+      "in_operating_range_original": false,
+      "in_operating_range": false,
+      "window": "revised 2026-09-26: base in [0.10,0.90]; outlet condition dropped as unsatisfiable on a true-zero pool"
+    },
+    "Qwen3-VL-32B-Instruct||S-2": {
+      "base": {
+        "n": 150,
+        "zero": 149,
+        "zero_rate": 0.9933,
+        "zero_ci": [
+          0.9632,
+          0.9988
+        ],
+        "abstain": 0,
+        "abstain_rate": 0.0,
+        "outlet": 0,
+        "outlet_rate": 0.0
+      },
+      "channel": {
+        "n": 150,
+        "zero": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          0.0,
+          0.025
+        ],
+        "abstain": 0,
+        "abstain_rate": 0.0,
+        "outlet": 150,
+        "outlet_rate": 1.0
+      },
+      "permit": {
+        "n": 150,
+        "zero": 146,
+        "zero_rate": 0.9733,
+        "zero_ci": [
+          0.9334,
+          0.9896
+        ],
+        "abstain": 3,
+        "abstain_rate": 0.02,
+        "outlet": 0,
+        "outlet_rate": 0.0
+      },
+      "in_operating_range_original": false,
+      "in_operating_range": false,
+      "window": "revised 2026-09-26: base in [0.10,0.90]; outlet condition dropped as unsatisfiable on a true-zero pool"
+    },
+    "gemma-3-12b-it||S-1": {
+      "base": {
+        "n": 150,
+        "zero": 51,
+        "zero_rate": 0.34,
+        "zero_ci": [
+          0.269,
+          0.419
+        ],
+        "abstain": 0,
+        "abstain_rate": 0.0,
+        "outlet": 0,
+        "outlet_rate": 0.0
+      },
+      "channel": {
+        "n": 150,
+        "zero": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          0.0,
+          0.025
+        ],
+        "abstain": 0,
+        "abstain_rate": 0.0,
+        "outlet": 150,
+        "outlet_rate": 1.0
+      },
+      "permit": {
+        "n": 150,
+        "zero": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          0.0,
+          0.025
+        ],
+        "abstain": 150,
+        "abstain_rate": 1.0,
+        "outlet": 0,
+        "outlet_rate": 0.0
+      },
+      "in_operating_range_original": false,
+      "in_operating_range": true,
+      "window": "revised 2026-09-26: base in [0.10,0.90]; outlet condition dropped as unsatisfiable on a true-zero pool"
+    },
+    "gemma-3-12b-it||S-2": {
+      "base": {
+        "n": 150,
+        "zero": 133,
+        "zero_rate": 0.8867,
+        "zero_ci": [
+          0.826,
+          0.928
+        ],
+        "abstain": 0,
+        "abstain_rate": 0.0,
+        "outlet": 0,
+        "outlet_rate": 0.0
+      },
+      "channel": {
+        "n": 150,
+        "zero": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          0.0,
+          0.025
+        ],
+        "abstain": 0,
+        "abstain_rate": 0.0,
+        "outlet": 149,
+        "outlet_rate": 0.9933
+      },
+      "permit": {
+        "n": 150,
+        "zero": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          0.0,
+          0.025
+        ],
+        "abstain": 145,
+        "abstain_rate": 0.9667,
+        "outlet": 0,
+        "outlet_rate": 0.0
+      },
+      "in_operating_range_original": false,
+      "in_operating_range": true,
+      "window": "revised 2026-09-26: base in [0.10,0.90]; outlet condition dropped as unsatisfiable on a true-zero pool"
+    }
+  },
+  "verdicts": {
+    "InternVL3_5-8B": {
+      "base_zero_rates": {
+        "S-1": 0.98,
+        "S-2": 1.0
+      },
+      "permit_zero_rates": {
+        "S-1": 0.0,
+        "S-2": 0.0
+      },
+      "H1": true,
+      "H2": true,
+      "same_direction": true,
+      "H3": "两源同向，H3 未触发"
+    },
+    "Phi-3.5-vision-instruct": {
+      "base_zero_rates": {
+        "S-1": 0.9933,
+        "S-2": 0.6533
+      },
+      "permit_zero_rates": {
+        "S-1": 0.0,
+        "S-2": 0.0
+      },
+      "H1": true,
+      "H2": true,
+      "same_direction": true,
+      "H3": "两源同向，H3 未触发"
+    },
+    "Qwen3-VL-32B-Instruct": {
+      "base_zero_rates": {
+        "S-1": 1.0,
+        "S-2": 0.9933
+      },
+      "permit_zero_rates": {
+        "S-1": 0.0133,
+        "S-2": 0.9733
+      },
+      "H1": true,
+      "H2": false,
+      "same_direction": true,
+      "H3": "两源同向，H3 未触发"
+    },
+    "gemma-3-12b-it": {
+      "base_zero_rates": {
+        "S-1": 0.34,
+        "S-2": 0.8867
+      },
+      "permit_zero_rates": {
+        "S-1": 0.0,
+        "S-2": 0.0
+      },
+      "H1": true,
+      "H2": true,
+      "same_direction": true,
+      "H3": "两源同向，H3 未触发"
+    }
+  },
+  "criteria": {
+    "H1": "both sources base zero rate >= 30%",
+    "H2": "permit zero rate <= 5% on both sources",
+    "H3": "sources disagree => report source dependence, no averaging",
+    "operating_range_revised": [
+      0.1,
+      0.9
+    ],
+    "operating_range_original": [
+      0.1,
+      0.9,
+      0.95
+    ],
+    "window_revision_note": "outlet<=95% condition dropped 2026-09-26: unsatisfiable by construction on a true-zero pool; original markings retained per cell as in_operating_range_original"
+  }
+}

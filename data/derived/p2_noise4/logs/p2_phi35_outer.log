@@ -1,0 +1,16 @@
+[04:30:11][phi35] === start ===  mid=Phi-3.5-vision-instruct port=8003 frac=0.30 maxlen=8192 limit=4
+[04:30:11][phi35] 服务 PID=35859，等待就绪…
+[04:32:11][phi35] 就绪（第 25 次探测）
+[04:32:11][phi35] 跑探针：arms=base,permit,channel workers=4 --limit 4
+  冻结探针 /root/19e_probe_multi.py ｜ md5 03edb14c98ffa3aea9ffa20f59b00bc8
+  池子 /root/p2/pool_all/pool_frozen_a800.csv ｜ 300 张 ｜ md5 25ee5c02109937753aa52c433fd8876a ｜ 分组 {'S-2': 4, 'S-1': 4}
+  计划调用数 = 24（= 图 8 × 臂 3 × 构建 1）
+  [Phi-3.5-vision-instruct/base] 待跑 8 张
+    → /root/p2_probe_results/p2_Phi-3.5-vision-instruct_base.csv（610 行）
+  [Phi-3.5-vision-instruct/permit] 待跑 8 张
+    → /root/p2_probe_results/p2_Phi-3.5-vision-instruct_permit.csv（154 行）
+  [Phi-3.5-vision-instruct/channel] 待跑 8 张
+    → /root/p2_probe_results/p2_Phi-3.5-vision-instruct_channel.csv（380 行）
+  用时 0.1 分钟 ｜ manifest → /root/p2_probe_results/p2_probe_manifest.json
+[04:32:16][phi35] 探针 rc=0
+[04:32:16][phi35] 停服 PID=35859

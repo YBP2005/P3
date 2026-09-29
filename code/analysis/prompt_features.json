@@ -1,0 +1,1654 @@
+[
+ {
+  "arm": "base",
+  "source": "19e(E2/E3 主实验)",
+  "text": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复，以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+  "n_clauses": 5,
+  "chars": 65,
+  "clauses": [
+   {
+    "text": "请数出图片中的人数（人群中的每个人头或人体）",
+    "types": [
+     "TASK"
+    ]
+   },
+   {
+    "text": "不要遗漏",
+    "types": [
+     "ENUM"
+    ]
+   },
+   {
+    "text": "不要重复",
+    "types": [
+     "ENUM"
+    ]
+   },
+   {
+    "text": "以JSON格式输出：{\"count\": 数量}",
+    "types": [
+     "FORMAT"
+    ]
+   },
+   {
+    "text": "只输出JSON",
+    "types": [
+     "FORMAT"
+    ]
+   }
+  ],
+  "n_TASK": 1,
+  "has_TASK": true,
+  "frac_TASK": 0.3385,
+  "pos_TASK": 0.0,
+  "first_TASK": true,
+  "last_TASK": false,
+  "n_ENUM": 2,
+  "has_ENUM": true,
+  "frac_ENUM": 0.1231,
+  "pos_ENUM": 0.25,
+  "first_ENUM": false,
+  "last_ENUM": false,
+  "n_ABSTAIN_PERMIT": 0,
+  "has_ABSTAIN_PERMIT": false,
+  "frac_ABSTAIN_PERMIT": 0.0,
+  "pos_ABSTAIN_PERMIT": -1.0,
+  "first_ABSTAIN_PERMIT": false,
+  "last_ABSTAIN_PERMIT": false,
+  "n_ZERO_FORBID": 0,
+  "has_ZERO_FORBID": false,
+  "frac_ZERO_FORBID": 0.0,
+  "pos_ZERO_FORBID": -1.0,
+  "first_ZERO_FORBID": false,
+  "last_ZERO_FORBID": false,
+  "n_FORMAT": 2,
+  "has_FORMAT": true,
+  "frac_FORMAT": 0.4615,
+  "pos_FORMAT": 0.75,
+  "first_FORMAT": false,
+  "last_FORMAT": true,
+  "n_PREMISE": 0,
+  "has_PREMISE": false,
+  "frac_PREMISE": 0.0,
+  "pos_PREMISE": -1.0,
+  "first_PREMISE": false,
+  "last_PREMISE": false,
+  "has_contract": false,
+  "contract_kind": "none",
+  "mentions_zero": false,
+  "mentions_noun": true,
+  "is_choice": false,
+  "is_english": false
+ },
+ {
+  "arm": "bestA",
+  "source": "19e(E2/E3 主实验)",
+  "text": "报告一个数值人数。即使无法精确计数，也请给出你最好的估计，并说明哪些部分你无法分辨。以JSON格式输出：{\"count\": 数量, \"unresolved\": \"说明\"}，只输出JSON。",
+  "n_clauses": 4,
+  "chars": 94,
+  "clauses": [
+   {
+    "text": "报告一个数值人数",
+    "types": [
+     "TASK"
+    ]
+   },
+   {
+    "text": "即使无法精确计数也请给出你最好的估计并说明哪些部分你无法分辨",
+    "types": [
+     "ABSTAIN_PERMIT",
+     "ZERO_FORBID"
+    ]
+   },
+   {
+    "text": "以JSON格式输出：{\"count\": 数量, \"unresolved\": \"说明\"}",
+    "types": [
+     "ABSTAIN_PERMIT",
+     "FORMAT"
+    ]
+   },
+   {
+    "text": "只输出JSON",
+    "types": [
+     "FORMAT"
+    ]
+   }
+  ],
+  "n_TASK": 1,
+  "has_TASK": true,
+  "frac_TASK": 0.0851,
+  "pos_TASK": 0.0,
+  "first_TASK": true,
+  "last_TASK": false,
+  "n_ENUM": 0,
+  "has_ENUM": false,
+  "frac_ENUM": 0.0,
+  "pos_ENUM": -1.0,
+  "first_ENUM": false,
+  "last_ENUM": false,
+  "n_ABSTAIN_PERMIT": 2,
+  "has_ABSTAIN_PERMIT": true,
+  "frac_ABSTAIN_PERMIT": 0.7766,
+  "pos_ABSTAIN_PERMIT": 0.3333,
+  "first_ABSTAIN_PERMIT": false,
+  "last_ABSTAIN_PERMIT": false,
+  "n_ZERO_FORBID": 1,
+  "has_ZERO_FORBID": true,
+  "frac_ZERO_FORBID": 0.3191,
+  "pos_ZERO_FORBID": 0.3333,
+  "first_ZERO_FORBID": false,
+  "last_ZERO_FORBID": false,
+  "n_FORMAT": 2,
+  "has_FORMAT": true,
+  "frac_FORMAT": 0.5319,
+  "pos_FORMAT": 0.6667,
+  "first_FORMAT": false,
+  "last_FORMAT": true,
+  "n_PREMISE": 0,
+  "has_PREMISE": false,
+  "frac_PREMISE": 0.0,
+  "pos_PREMISE": -1.0,
+  "first_PREMISE": false,
+  "last_PREMISE": false,
+  "has_contract": true,
+  "contract_kind": "mixed",
+  "mentions_zero": false,
+  "mentions_noun": true,
+  "is_choice": false,
+  "is_english": false
+ },
+ {
+  "arm": "bestB",
+  "source": "19e(E2/E3 主实验)",
+  "text": "你必须给出一个具体数字，不允许回答 0 或拒答。如果你看不清，请按画面中最可能的人数给出估计值。以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+  "n_clauses": 6,
+  "chars": 80,
+  "clauses": [
+   {
+    "text": "你必须给出一个具体数字",
+    "types": [
+     "ZERO_FORBID"
+    ]
+   },
+   {
+    "text": "不允许回答 0 或拒答",
+    "types": [
+     "ZERO_FORBID"
+    ]
+   },
+   {
+    "text": "如果你看不清",
+    "types": [
+     "PREMISE"
+    ]
+   },
+   {
+    "text": "请按画面中最可能的人数给出估计值",
+    "types": [
+     "ZERO_FORBID"
+    ]
+   },
+   {
+    "text": "以JSON格式输出：{\"count\": 数量}",
+    "types": [
+     "FORMAT"
+    ]
+   },
+   {
+    "text": "只输出JSON",
+    "types": [
+     "FORMAT"
+    ]
+   }
+  ],
+  "n_TASK": 0,
+  "has_TASK": false,
+  "frac_TASK": 0.0,
+  "pos_TASK": -1.0,
+  "first_TASK": false,
+  "last_TASK": false,
+  "n_ENUM": 0,
+  "has_ENUM": false,
+  "frac_ENUM": 0.0,
+  "pos_ENUM": -1.0,
+  "first_ENUM": false,
+  "last_ENUM": false,
+  "n_ABSTAIN_PERMIT": 0,
+  "has_ABSTAIN_PERMIT": false,
+  "frac_ABSTAIN_PERMIT": 0.0,
+  "pos_ABSTAIN_PERMIT": -1.0,
+  "first_ABSTAIN_PERMIT": false,
+  "last_ABSTAIN_PERMIT": false,
+  "n_ZERO_FORBID": 3,
+  "has_ZERO_FORBID": true,
+  "frac_ZERO_FORBID": 0.475,
+  "pos_ZERO_FORBID": 0.0,
+  "first_ZERO_FORBID": true,
+  "last_ZERO_FORBID": false,
+  "n_FORMAT": 2,
+  "has_FORMAT": true,
+  "frac_FORMAT": 0.375,
+  "pos_FORMAT": 0.8,
+  "first_FORMAT": false,
+  "last_FORMAT": true,
+  "n_PREMISE": 1,
+  "has_PREMISE": true,
+  "frac_PREMISE": 0.075,
+  "pos_PREMISE": 0.4,
+  "first_PREMISE": false,
+  "last_PREMISE": false,
+  "has_contract": true,
+  "contract_kind": "forbid",
+  "mentions_zero": true,
+  "mentions_noun": true,
+  "is_choice": false,
+  "is_english": false
+ },
+ {
+  "arm": "bestC",
+  "source": "19e(E2/E3 主实验)",
+  "text": "先逐块估计画面各区域的人数，再把它们相加，给出最终估计数字。不允许回答 0 或拒答，必须给出你最好的估计。以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+  "n_clauses": 6,
+  "chars": 85,
+  "clauses": [
+   {
+    "text": "先逐块估计画面各区域的人数再把它们相加",
+    "types": [
+     "ENUM",
+     "TASK"
+    ]
+   },
+   {
+    "text": "给出最终估计数字",
+    "types": [
+     "TASK"
+    ]
+   },
+   {
+    "text": "不允许回答 0 或拒答",
+    "types": [
+     "ZERO_FORBID"
+    ]
+   },
+   {
+    "text": "必须给出你最好的估计",
+    "types": [
+     "ZERO_FORBID"
+    ]
+   },
+   {
+    "text": "以JSON格式输出：{\"count\": 数量}",
+    "types": [
+     "FORMAT"
+    ]
+   },
+   {
+    "text": "只输出JSON",
+    "types": [
+     "FORMAT"
+    ]
+   }
+  ],
+  "n_TASK": 2,
+  "has_TASK": true,
+  "frac_TASK": 0.3176,
+  "pos_TASK": 0.0,
+  "first_TASK": true,
+  "last_TASK": false,
+  "n_ENUM": 1,
+  "has_ENUM": true,
+  "frac_ENUM": 0.2235,
+  "pos_ENUM": 0.0,
+  "first_ENUM": true,
+  "last_ENUM": false,
+  "n_ABSTAIN_PERMIT": 0,
+  "has_ABSTAIN_PERMIT": false,
+  "frac_ABSTAIN_PERMIT": 0.0,
+  "pos_ABSTAIN_PERMIT": -1.0,
+  "first_ABSTAIN_PERMIT": false,
+  "last_ABSTAIN_PERMIT": false,
+  "n_ZERO_FORBID": 2,
+  "has_ZERO_FORBID": true,
+  "frac_ZERO_FORBID": 0.2471,
+  "pos_ZERO_FORBID": 0.4,
+  "first_ZERO_FORBID": false,
+  "last_ZERO_FORBID": false,
+  "n_FORMAT": 2,
+  "has_FORMAT": true,
+  "frac_FORMAT": 0.3529,
+  "pos_FORMAT": 0.8,
+  "first_FORMAT": false,
+  "last_FORMAT": true,
+  "n_PREMISE": 0,
+  "has_PREMISE": false,
+  "frac_PREMISE": 0.0,
+  "pos_PREMISE": -1.0,
+  "first_PREMISE": false,
+  "last_PREMISE": false,
+  "has_contract": true,
+  "contract_kind": "forbid",
+  "mentions_zero": true,
+  "mentions_noun": true,
+  "is_choice": false,
+  "is_english": false
+ },
+ {
+  "arm": "channel",
+  "source": "19e(E2/E3 主实验)",
+  "text": "请判断这张图片中的人数。你可以：①给出数字；②回答 \"cannot_judge\" 表示无法判断；③回答 \"no_people\" 表示画面中没有可辨认的个体。以JSON格式输出：{\"response\": ...}，只输出JSON。",
+  "n_clauses": 6,
+  "chars": 114,
+  "clauses": [
+   {
+    "text": "请判断这张图片中的人数",
+    "types": [
+     "TASK"
+    ]
+   },
+   {
+    "text": "你可以：①给出数字",
+    "types": [
+     "TASK"
+    ]
+   },
+   {
+    "text": "②回答 \"cannot_judge\" 表示无法判断",
+    "types": [
+     "ABSTAIN_PERMIT"
+    ]
+   },
+   {
+    "text": "③回答 \"no_people\" 表示画面中没有可辨认的个体",
+    "types": [
+     "ABSTAIN_PERMIT"
+    ]
+   },
+   {
+    "text": "以JSON格式输出：{\"response\": ...}",
+    "types": [
+     "FORMAT"
+    ]
+   },
+   {
+    "text": "只输出JSON",
+    "types": [
+     "FORMAT"
+    ]
+   }
+  ],
+  "n_TASK": 2,
+  "has_TASK": true,
+  "frac_TASK": 0.1754,
+  "pos_TASK": 0.0,
+  "first_TASK": true,
+  "last_TASK": false,
+  "n_ENUM": 0,
+  "has_ENUM": false,
+  "frac_ENUM": 0.0,
+  "pos_ENUM": -1.0,
+  "first_ENUM": false,
+  "last_ENUM": false,
+  "n_ABSTAIN_PERMIT": 2,
+  "has_ABSTAIN_PERMIT": true,
+  "frac_ABSTAIN_PERMIT": 0.4737,
+  "pos_ABSTAIN_PERMIT": 0.4,
+  "first_ABSTAIN_PERMIT": false,
+  "last_ABSTAIN_PERMIT": false,
+  "n_ZERO_FORBID": 0,
+  "has_ZERO_FORBID": false,
+  "frac_ZERO_FORBID": 0.0,
+  "pos_ZERO_FORBID": -1.0,
+  "first_ZERO_FORBID": false,
+  "last_ZERO_FORBID": false,
+  "n_FORMAT": 2,
+  "has_FORMAT": true,
+  "frac_FORMAT": 0.2982,
+  "pos_FORMAT": 0.8,
+  "first_FORMAT": false,
+  "last_FORMAT": true,
+  "n_PREMISE": 0,
+  "has_PREMISE": false,
+  "frac_PREMISE": 0.0,
+  "pos_PREMISE": -1.0,
+  "first_PREMISE": false,
+  "last_PREMISE": false,
+  "has_contract": true,
+  "contract_kind": "permit",
+  "mentions_zero": false,
+  "mentions_noun": true,
+  "is_choice": false,
+  "is_english": false
+ },
+ {
+  "arm": "enum",
+  "source": "19e(E2/E3 主实验)",
+  "text": "请把图片中的每一个人**逐个**找出来并数出总数（不要遗漏、不要重复）。以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+  "n_clauses": 3,
+  "chars": 68,
+  "clauses": [
+   {
+    "text": "请把图片中的每一个人**逐个**找出来并数出总数（不要遗漏、不要重复）",
+    "types": [
+     "ENUM",
+     "TASK"
+    ]
+   },
+   {
+    "text": "以JSON格式输出：{\"count\": 数量}",
+    "types": [
+     "FORMAT"
+    ]
+   },
+   {
+    "text": "只输出JSON",
+    "types": [
+     "FORMAT"
+    ]
+   }
+  ],
+  "n_TASK": 1,
+  "has_TASK": true,
+  "frac_TASK": 0.5147,
+  "pos_TASK": 0.0,
+  "first_TASK": true,
+  "last_TASK": false,
+  "n_ENUM": 1,
+  "has_ENUM": true,
+  "frac_ENUM": 0.5147,
+  "pos_ENUM": 0.0,
+  "first_ENUM": true,
+  "last_ENUM": false,
+  "n_ABSTAIN_PERMIT": 0,
+  "has_ABSTAIN_PERMIT": false,
+  "frac_ABSTAIN_PERMIT": 0.0,
+  "pos_ABSTAIN_PERMIT": -1.0,
+  "first_ABSTAIN_PERMIT": false,
+  "last_ABSTAIN_PERMIT": false,
+  "n_ZERO_FORBID": 0,
+  "has_ZERO_FORBID": false,
+  "frac_ZERO_FORBID": 0.0,
+  "pos_ZERO_FORBID": -1.0,
+  "first_ZERO_FORBID": false,
+  "last_ZERO_FORBID": false,
+  "n_FORMAT": 2,
+  "has_FORMAT": true,
+  "frac_FORMAT": 0.4412,
+  "pos_FORMAT": 0.5,
+  "first_FORMAT": false,
+  "last_FORMAT": true,
+  "n_PREMISE": 0,
+  "has_PREMISE": false,
+  "frac_PREMISE": 0.0,
+  "pos_PREMISE": -1.0,
+  "first_PREMISE": false,
+  "last_PREMISE": false,
+  "has_contract": false,
+  "contract_kind": "none",
+  "mentions_zero": false,
+  "mentions_noun": true,
+  "is_choice": false,
+  "is_english": false
+ },
+ {
+  "arm": "enumAbstain",
+  "source": "19e(E2/E3 主实验)",
+  "text": "请把图片中的每一个人**逐个**找出来并数出总数；如果有任何一个人你无法确证，请回答 abstain，而不要猜测。以JSON格式输出：{\"count\": 数量} 或 {\"count\": \"abstain\"}，只输出JSON。",
+  "n_clauses": 5,
+  "chars": 112,
+  "clauses": [
+   {
+    "text": "请把图片中的每一个人**逐个**找出来并数出总数",
+    "types": [
+     "ENUM",
+     "TASK"
+    ]
+   },
+   {
+    "text": "如果有任何一个人你无法确证",
+    "types": [
+     "ABSTAIN_PERMIT"
+    ]
+   },
+   {
+    "text": "请回答 abstain而不要猜测",
+    "types": [
+     "ABSTAIN_PERMIT"
+    ]
+   },
+   {
+    "text": "以JSON格式输出：{\"count\": 数量} 或 {\"count\": \"abstain\"}",
+    "types": [
+     "ABSTAIN_PERMIT",
+     "FORMAT"
+    ]
+   },
+   {
+    "text": "只输出JSON",
+    "types": [
+     "FORMAT"
+    ]
+   }
+  ],
+  "n_TASK": 1,
+  "has_TASK": true,
+  "frac_TASK": 0.2143,
+  "pos_TASK": 0.0,
+  "first_TASK": true,
+  "last_TASK": false,
+  "n_ENUM": 1,
+  "has_ENUM": true,
+  "frac_ENUM": 0.2143,
+  "pos_ENUM": 0.0,
+  "first_ENUM": true,
+  "last_ENUM": false,
+  "n_ABSTAIN_PERMIT": 3,
+  "has_ABSTAIN_PERMIT": true,
+  "frac_ABSTAIN_PERMIT": 0.6696,
+  "pos_ABSTAIN_PERMIT": 0.25,
+  "first_ABSTAIN_PERMIT": false,
+  "last_ABSTAIN_PERMIT": false,
+  "n_ZERO_FORBID": 0,
+  "has_ZERO_FORBID": false,
+  "frac_ZERO_FORBID": 0.0,
+  "pos_ZERO_FORBID": -1.0,
+  "first_ZERO_FORBID": false,
+  "last_ZERO_FORBID": false,
+  "n_FORMAT": 2,
+  "has_FORMAT": true,
+  "frac_FORMAT": 0.4732,
+  "pos_FORMAT": 0.75,
+  "first_FORMAT": false,
+  "last_FORMAT": true,
+  "n_PREMISE": 0,
+  "has_PREMISE": false,
+  "frac_PREMISE": 0.0,
+  "pos_PREMISE": -1.0,
+  "first_PREMISE": false,
+  "last_PREMISE": false,
+  "has_contract": true,
+  "contract_kind": "permit",
+  "mentions_zero": false,
+  "mentions_noun": true,
+  "is_choice": false,
+  "is_english": false
+ },
+ {
+  "arm": "locate",
+  "source": "19e(E2/E3 主实验)",
+  "text": "请定位并数出图片中的每一个人（locate every person），对每个人都要给出位置与计数。以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+  "n_clauses": 4,
+  "chars": 82,
+  "clauses": [
+   {
+    "text": "请定位并数出图片中的每一个人（locate every person）",
+    "types": [
+     "ENUM",
+     "TASK"
+    ]
+   },
+   {
+    "text": "对每个人都要给出位置与计数",
+    "types": [
+     "ENUM",
+     "TASK"
+    ]
+   },
+   {
+    "text": "以JSON格式输出：{\"count\": 数量}",
+    "types": [
+     "FORMAT"
+    ]
+   },
+   {
+    "text": "只输出JSON",
+    "types": [
+     "FORMAT"
+    ]
+   }
+  ],
+  "n_TASK": 2,
+  "has_TASK": true,
+  "frac_TASK": 0.5854,
+  "pos_TASK": 0.0,
+  "first_TASK": true,
+  "last_TASK": false,
+  "n_ENUM": 2,
+  "has_ENUM": true,
+  "frac_ENUM": 0.5854,
+  "pos_ENUM": 0.0,
+  "first_ENUM": true,
+  "last_ENUM": false,
+  "n_ABSTAIN_PERMIT": 0,
+  "has_ABSTAIN_PERMIT": false,
+  "frac_ABSTAIN_PERMIT": 0.0,
+  "pos_ABSTAIN_PERMIT": -1.0,
+  "first_ABSTAIN_PERMIT": false,
+  "last_ABSTAIN_PERMIT": false,
+  "n_ZERO_FORBID": 0,
+  "has_ZERO_FORBID": false,
+  "frac_ZERO_FORBID": 0.0,
+  "pos_ZERO_FORBID": -1.0,
+  "first_ZERO_FORBID": false,
+  "last_ZERO_FORBID": false,
+  "n_FORMAT": 2,
+  "has_FORMAT": true,
+  "frac_FORMAT": 0.3659,
+  "pos_FORMAT": 0.6667,
+  "first_FORMAT": false,
+  "last_FORMAT": true,
+  "n_PREMISE": 0,
+  "has_PREMISE": false,
+  "frac_PREMISE": 0.0,
+  "pos_PREMISE": -1.0,
+  "first_PREMISE": false,
+  "last_PREMISE": false,
+  "has_contract": false,
+  "contract_kind": "none",
+  "mentions_zero": false,
+  "mentions_noun": true,
+  "is_choice": false,
+  "is_english": false
+ },
+ {
+  "arm": "permit",
+  "source": "19e(E2/E3 主实验)",
+  "text": "请数出图片中的人数（人群中的每个人头或人体）。如果你无法逐个确证，请回答 abstain，而不要猜测。以JSON格式输出：{\"count\": 数量} 或 {\"count\": \"abstain\"}，只输出JSON。",
+  "n_clauses": 5,
+  "chars": 106,
+  "clauses": [
+   {
+    "text": "请数出图片中的人数（人群中的每个人头或人体）",
+    "types": [
+     "TASK"
+    ]
+   },
+   {
+    "text": "如果你无法逐个确证",
+    "types": [
+     "ABSTAIN_PERMIT"
+    ]
+   },
+   {
+    "text": "请回答 abstain而不要猜测",
+    "types": [
+     "ABSTAIN_PERMIT"
+    ]
+   },
+   {
+    "text": "以JSON格式输出：{\"count\": 数量} 或 {\"count\": \"abstain\"}",
+    "types": [
+     "ABSTAIN_PERMIT",
+     "FORMAT"
+    ]
+   },
+   {
+    "text": "只输出JSON",
+    "types": [
+     "FORMAT"
+    ]
+   }
+  ],
+  "n_TASK": 1,
+  "has_TASK": true,
+  "frac_TASK": 0.2075,
+  "pos_TASK": 0.0,
+  "first_TASK": true,
+  "last_TASK": false,
+  "n_ENUM": 0,
+  "has_ENUM": false,
+  "frac_ENUM": 0.0,
+  "pos_ENUM": -1.0,
+  "first_ENUM": false,
+  "last_ENUM": false,
+  "n_ABSTAIN_PERMIT": 3,
+  "has_ABSTAIN_PERMIT": true,
+  "frac_ABSTAIN_PERMIT": 0.6698,
+  "pos_ABSTAIN_PERMIT": 0.25,
+  "first_ABSTAIN_PERMIT": false,
+  "last_ABSTAIN_PERMIT": false,
+  "n_ZERO_FORBID": 0,
+  "has_ZERO_FORBID": false,
+  "frac_ZERO_FORBID": 0.0,
+  "pos_ZERO_FORBID": -1.0,
+  "first_ZERO_FORBID": false,
+  "last_ZERO_FORBID": false,
+  "n_FORMAT": 2,
+  "has_FORMAT": true,
+  "frac_FORMAT": 0.5,
+  "pos_FORMAT": 0.75,
+  "first_FORMAT": false,
+  "last_FORMAT": true,
+  "n_PREMISE": 0,
+  "has_PREMISE": false,
+  "frac_PREMISE": 0.0,
+  "pos_PREMISE": -1.0,
+  "first_PREMISE": false,
+  "last_PREMISE": false,
+  "has_contract": true,
+  "contract_kind": "permit",
+  "mentions_zero": false,
+  "mentions_noun": true,
+  "is_choice": false,
+  "is_english": false
+ },
+ {
+  "arm": "base",
+  "source": "probe_gen(语料普查)",
+  "text": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复，以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+  "n_clauses": 5,
+  "chars": 65,
+  "clauses": [
+   {
+    "text": "请数出图片中的人数（人群中的每个人头或人体）",
+    "types": [
+     "TASK"
+    ]
+   },
+   {
+    "text": "不要遗漏",
+    "types": [
+     "ENUM"
+    ]
+   },
+   {
+    "text": "不要重复",
+    "types": [
+     "ENUM"
+    ]
+   },
+   {
+    "text": "以JSON格式输出：{\"count\": 数量}",
+    "types": [
+     "FORMAT"
+    ]
+   },
+   {
+    "text": "只输出JSON",
+    "types": [
+     "FORMAT"
+    ]
+   }
+  ],
+  "n_TASK": 1,
+  "has_TASK": true,
+  "frac_TASK": 0.3385,
+  "pos_TASK": 0.0,
+  "first_TASK": true,
+  "last_TASK": false,
+  "n_ENUM": 2,
+  "has_ENUM": true,
+  "frac_ENUM": 0.1231,
+  "pos_ENUM": 0.25,
+  "first_ENUM": false,
+  "last_ENUM": false,
+  "n_ABSTAIN_PERMIT": 0,
+  "has_ABSTAIN_PERMIT": false,
+  "frac_ABSTAIN_PERMIT": 0.0,
+  "pos_ABSTAIN_PERMIT": -1.0,
+  "first_ABSTAIN_PERMIT": false,
+  "last_ABSTAIN_PERMIT": false,
+  "n_ZERO_FORBID": 0,
+  "has_ZERO_FORBID": false,
+  "frac_ZERO_FORBID": 0.0,
+  "pos_ZERO_FORBID": -1.0,
+  "first_ZERO_FORBID": false,
+  "last_ZERO_FORBID": false,
+  "n_FORMAT": 2,
+  "has_FORMAT": true,
+  "frac_FORMAT": 0.4615,
+  "pos_FORMAT": 0.75,
+  "first_FORMAT": false,
+  "last_FORMAT": true,
+  "n_PREMISE": 0,
+  "has_PREMISE": false,
+  "frac_PREMISE": 0.0,
+  "pos_PREMISE": -1.0,
+  "first_PREMISE": false,
+  "last_PREMISE": false,
+  "has_contract": false,
+  "contract_kind": "none",
+  "mentions_zero": false,
+  "mentions_noun": true,
+  "is_choice": false,
+  "is_english": false
+ },
+ {
+  "arm": "cells",
+  "source": "probe_gen(语料普查)",
+  "text": "请数出图片中的细胞个数，不要遗漏，不要重复，以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+  "n_clauses": 5,
+  "chars": 54,
+  "clauses": [
+   {
+    "text": "请数出图片中的细胞个数",
+    "types": [
+     "TASK"
+    ]
+   },
+   {
+    "text": "不要遗漏",
+    "types": [
+     "ENUM"
+    ]
+   },
+   {
+    "text": "不要重复",
+    "types": [
+     "ENUM"
+    ]
+   },
+   {
+    "text": "以JSON格式输出：{\"count\": 数量}",
+    "types": [
+     "FORMAT"
+    ]
+   },
+   {
+    "text": "只输出JSON",
+    "types": [
+     "FORMAT"
+    ]
+   }
+  ],
+  "n_TASK": 1,
+  "has_TASK": true,
+  "frac_TASK": 0.2037,
+  "pos_TASK": 0.0,
+  "first_TASK": true,
+  "last_TASK": false,
+  "n_ENUM": 2,
+  "has_ENUM": true,
+  "frac_ENUM": 0.1481,
+  "pos_ENUM": 0.25,
+  "first_ENUM": false,
+  "last_ENUM": false,
+  "n_ABSTAIN_PERMIT": 0,
+  "has_ABSTAIN_PERMIT": false,
+  "frac_ABSTAIN_PERMIT": 0.0,
+  "pos_ABSTAIN_PERMIT": -1.0,
+  "first_ABSTAIN_PERMIT": false,
+  "last_ABSTAIN_PERMIT": false,
+  "n_ZERO_FORBID": 0,
+  "has_ZERO_FORBID": false,
+  "frac_ZERO_FORBID": 0.0,
+  "pos_ZERO_FORBID": -1.0,
+  "first_ZERO_FORBID": false,
+  "last_ZERO_FORBID": false,
+  "n_FORMAT": 2,
+  "has_FORMAT": true,
+  "frac_FORMAT": 0.5556,
+  "pos_FORMAT": 0.75,
+  "first_FORMAT": false,
+  "last_FORMAT": true,
+  "n_PREMISE": 0,
+  "has_PREMISE": false,
+  "frac_PREMISE": 0.0,
+  "pos_PREMISE": -1.0,
+  "first_PREMISE": false,
+  "last_PREMISE": false,
+  "has_contract": false,
+  "contract_kind": "none",
+  "mentions_zero": false,
+  "mentions_noun": true,
+  "is_choice": false,
+  "is_english": false
+ },
+ {
+  "arm": "choice",
+  "source": "probe_gen(语料普查)",
+  "text": "请从以下选项中选择最接近图片中实际人数的选项：0, 10, 50, 100, 500, 1000。以JSON格式输出：{\"choice\": 选项}，只输出JSON。",
+  "n_clauses": 3,
+  "chars": 82,
+  "clauses": [
+   {
+    "text": "请从以下选项中选择最接近图片中实际人数的选项：0, 10, 50, 100, 500, 1000",
+    "types": [
+     "TASK"
+    ]
+   },
+   {
+    "text": "以JSON格式输出：{\"choice\": 选项}",
+    "types": [
+     "FORMAT"
+    ]
+   },
+   {
+    "text": "只输出JSON",
+    "types": [
+     "FORMAT"
+    ]
+   }
+  ],
+  "n_TASK": 1,
+  "has_TASK": true,
+  "frac_TASK": 0.5854,
+  "pos_TASK": 0.0,
+  "first_TASK": true,
+  "last_TASK": false,
+  "n_ENUM": 0,
+  "has_ENUM": false,
+  "frac_ENUM": 0.0,
+  "pos_ENUM": -1.0,
+  "first_ENUM": false,
+  "last_ENUM": false,
+  "n_ABSTAIN_PERMIT": 0,
+  "has_ABSTAIN_PERMIT": false,
+  "frac_ABSTAIN_PERMIT": 0.0,
+  "pos_ABSTAIN_PERMIT": -1.0,
+  "first_ABSTAIN_PERMIT": false,
+  "last_ABSTAIN_PERMIT": false,
+  "n_ZERO_FORBID": 0,
+  "has_ZERO_FORBID": false,
+  "frac_ZERO_FORBID": 0.0,
+  "pos_ZERO_FORBID": -1.0,
+  "first_ZERO_FORBID": false,
+  "last_ZERO_FORBID": false,
+  "n_FORMAT": 2,
+  "has_FORMAT": true,
+  "frac_FORMAT": 0.378,
+  "pos_FORMAT": 0.5,
+  "first_FORMAT": false,
+  "last_FORMAT": true,
+  "n_PREMISE": 0,
+  "has_PREMISE": false,
+  "frac_PREMISE": 0.0,
+  "pos_PREMISE": -1.0,
+  "first_PREMISE": false,
+  "last_PREMISE": false,
+  "has_contract": false,
+  "contract_kind": "none",
+  "mentions_zero": true,
+  "mentions_noun": true,
+  "is_choice": true,
+  "is_english": false
+ },
+ {
+  "arm": "forbid0",
+  "source": "probe_gen(语料普查)",
+  "text": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复。注意：**不要回答 0**；如果你认为可能是 0，请给出你最接近的估计值。以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+  "n_clauses": 8,
+  "chars": 102,
+  "clauses": [
+   {
+    "text": "请数出图片中的人数（人群中的每个人头或人体）",
+    "types": [
+     "TASK"
+    ]
+   },
+   {
+    "text": "不要遗漏",
+    "types": [
+     "ENUM"
+    ]
+   },
+   {
+    "text": "不要重复",
+    "types": [
+     "ENUM"
+    ]
+   },
+   {
+    "text": "注意：**不要回答 0**",
+    "types": [
+     "ZERO_FORBID"
+    ]
+   },
+   {
+    "text": "如果你认为可能是 0",
+    "types": [
+     "ZERO_FORBID"
+    ]
+   },
+   {
+    "text": "请给出你最接近的估计值",
+    "types": [
+     "ZERO_FORBID"
+    ]
+   },
+   {
+    "text": "以JSON格式输出：{\"count\": 数量}",
+    "types": [
+     "FORMAT"
+    ]
+   },
+   {
+    "text": "只输出JSON",
+    "types": [
+     "FORMAT"
+    ]
+   }
+  ],
+  "n_TASK": 1,
+  "has_TASK": true,
+  "frac_TASK": 0.2157,
+  "pos_TASK": 0.0,
+  "first_TASK": true,
+  "last_TASK": false,
+  "n_ENUM": 2,
+  "has_ENUM": true,
+  "frac_ENUM": 0.0784,
+  "pos_ENUM": 0.1429,
+  "first_ENUM": false,
+  "last_ENUM": false,
+  "n_ABSTAIN_PERMIT": 0,
+  "has_ABSTAIN_PERMIT": false,
+  "frac_ABSTAIN_PERMIT": 0.0,
+  "pos_ABSTAIN_PERMIT": -1.0,
+  "first_ABSTAIN_PERMIT": false,
+  "last_ABSTAIN_PERMIT": false,
+  "n_ZERO_FORBID": 3,
+  "has_ZERO_FORBID": true,
+  "frac_ZERO_FORBID": 0.3333,
+  "pos_ZERO_FORBID": 0.4286,
+  "first_ZERO_FORBID": false,
+  "last_ZERO_FORBID": false,
+  "n_FORMAT": 2,
+  "has_FORMAT": true,
+  "frac_FORMAT": 0.2941,
+  "pos_FORMAT": 0.8571,
+  "first_FORMAT": false,
+  "last_FORMAT": true,
+  "n_PREMISE": 0,
+  "has_PREMISE": false,
+  "frac_PREMISE": 0.0,
+  "pos_PREMISE": -1.0,
+  "first_PREMISE": false,
+  "last_PREMISE": false,
+  "has_contract": true,
+  "contract_kind": "forbid",
+  "mentions_zero": true,
+  "mentions_noun": true,
+  "is_choice": false,
+  "is_english": false
+ },
+ {
+  "arm": "objects",
+  "source": "probe_gen(语料普查)",
+  "text": "请数出图片中的物体个数（图中出现的可数物体），不要遗漏，不要重复，以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+  "n_clauses": 5,
+  "chars": 65,
+  "clauses": [
+   {
+    "text": "请数出图片中的物体个数（图中出现的可数物体）",
+    "types": [
+     "TASK"
+    ]
+   },
+   {
+    "text": "不要遗漏",
+    "types": [
+     "ENUM"
+    ]
+   },
+   {
+    "text": "不要重复",
+    "types": [
+     "ENUM"
+    ]
+   },
+   {
+    "text": "以JSON格式输出：{\"count\": 数量}",
+    "types": [
+     "FORMAT"
+    ]
+   },
+   {
+    "text": "只输出JSON",
+    "types": [
+     "FORMAT"
+    ]
+   }
+  ],
+  "n_TASK": 1,
+  "has_TASK": true,
+  "frac_TASK": 0.3385,
+  "pos_TASK": 0.0,
+  "first_TASK": true,
+  "last_TASK": false,
+  "n_ENUM": 2,
+  "has_ENUM": true,
+  "frac_ENUM": 0.1231,
+  "pos_ENUM": 0.25,
+  "first_ENUM": false,
+  "last_ENUM": false,
+  "n_ABSTAIN_PERMIT": 0,
+  "has_ABSTAIN_PERMIT": false,
+  "frac_ABSTAIN_PERMIT": 0.0,
+  "pos_ABSTAIN_PERMIT": -1.0,
+  "first_ABSTAIN_PERMIT": false,
+  "last_ABSTAIN_PERMIT": false,
+  "n_ZERO_FORBID": 0,
+  "has_ZERO_FORBID": false,
+  "frac_ZERO_FORBID": 0.0,
+  "pos_ZERO_FORBID": -1.0,
+  "first_ZERO_FORBID": false,
+  "last_ZERO_FORBID": false,
+  "n_FORMAT": 2,
+  "has_FORMAT": true,
+  "frac_FORMAT": 0.4615,
+  "pos_FORMAT": 0.75,
+  "first_FORMAT": false,
+  "last_FORMAT": true,
+  "n_PREMISE": 0,
+  "has_PREMISE": false,
+  "frac_PREMISE": 0.0,
+  "pos_PREMISE": -1.0,
+  "first_PREMISE": false,
+  "last_PREMISE": false,
+  "has_contract": false,
+  "contract_kind": "none",
+  "mentions_zero": false,
+  "mentions_noun": true,
+  "is_choice": false,
+  "is_english": false
+ },
+ {
+  "arm": "range",
+  "source": "probe_gen(语料普查)",
+  "text": "请估计图片中的人数范围（人群中的每个人头或人体）。以JSON格式输出：{\"low\": 下界, \"high\": 上界}，只输出JSON。",
+  "n_clauses": 3,
+  "chars": 67,
+  "clauses": [
+   {
+    "text": "请估计图片中的人数范围（人群中的每个人头或人体）",
+    "types": [
+     "TASK"
+    ]
+   },
+   {
+    "text": "以JSON格式输出：{\"low\": 下界, \"high\": 上界}",
+    "types": [
+     "FORMAT"
+    ]
+   },
+   {
+    "text": "只输出JSON",
+    "types": [
+     "FORMAT"
+    ]
+   }
+  ],
+  "n_TASK": 1,
+  "has_TASK": true,
+  "frac_TASK": 0.3582,
+  "pos_TASK": 0.0,
+  "first_TASK": true,
+  "last_TASK": false,
+  "n_ENUM": 0,
+  "has_ENUM": false,
+  "frac_ENUM": 0.0,
+  "pos_ENUM": -1.0,
+  "first_ENUM": false,
+  "last_ENUM": false,
+  "n_ABSTAIN_PERMIT": 0,
+  "has_ABSTAIN_PERMIT": false,
+  "frac_ABSTAIN_PERMIT": 0.0,
+  "pos_ABSTAIN_PERMIT": -1.0,
+  "first_ABSTAIN_PERMIT": false,
+  "last_ABSTAIN_PERMIT": false,
+  "n_ZERO_FORBID": 0,
+  "has_ZERO_FORBID": false,
+  "frac_ZERO_FORBID": 0.0,
+  "pos_ZERO_FORBID": -1.0,
+  "first_ZERO_FORBID": false,
+  "last_ZERO_FORBID": false,
+  "n_FORMAT": 2,
+  "has_FORMAT": true,
+  "frac_FORMAT": 0.597,
+  "pos_FORMAT": 0.5,
+  "first_FORMAT": false,
+  "last_FORMAT": true,
+  "n_PREMISE": 0,
+  "has_PREMISE": false,
+  "frac_PREMISE": 0.0,
+  "pos_PREMISE": -1.0,
+  "first_PREMISE": false,
+  "last_PREMISE": false,
+  "has_contract": false,
+  "contract_kind": "none",
+  "mentions_zero": false,
+  "mentions_noun": true,
+  "is_choice": false,
+  "is_english": false
+ },
+ {
+  "arm": "channelB",
+  "source": "19c(换措辞臂) md5=7c72e7a20799",
+  "text": "这张图里有多少人？如果你无法判断，请回答 cannot_judge；如果画面中没有可辨认的个体，请回答 no_people；否则给出数字。以JSON格式输出：{\"response\": ...}，只输出JSON。",
+  "n_clauses": 8,
+  "chars": 105,
+  "clauses": [
+   {
+    "text": "这张图里有多少人",
+    "types": [
+     "TASK"
+    ]
+   },
+   {
+    "text": "如果你无法判断",
+    "types": [
+     "ABSTAIN_PERMIT"
+    ]
+   },
+   {
+    "text": "请回答 cannot_judge",
+    "types": [
+     "ABSTAIN_PERMIT"
+    ]
+   },
+   {
+    "text": "如果画面中没有可辨认的个体",
+    "types": [
+     "ABSTAIN_PERMIT"
+    ]
+   },
+   {
+    "text": "请回答 no_people",
+    "types": [
+     "ABSTAIN_PERMIT"
+    ]
+   },
+   {
+    "text": "否则给出数字",
+    "types": [
+     "TASK"
+    ]
+   },
+   {
+    "text": "以JSON格式输出：{\"response\": ...}",
+    "types": [
+     "FORMAT"
+    ]
+   },
+   {
+    "text": "只输出JSON",
+    "types": [
+     "FORMAT"
+    ]
+   }
+  ],
+  "n_TASK": 2,
+  "has_TASK": true,
+  "frac_TASK": 0.1333,
+  "pos_TASK": 0.0,
+  "first_TASK": true,
+  "last_TASK": false,
+  "n_ENUM": 0,
+  "has_ENUM": false,
+  "frac_ENUM": 0.0,
+  "pos_ENUM": -1.0,
+  "first_ENUM": false,
+  "last_ENUM": false,
+  "n_ABSTAIN_PERMIT": 4,
+  "has_ABSTAIN_PERMIT": true,
+  "frac_ABSTAIN_PERMIT": 0.4667,
+  "pos_ABSTAIN_PERMIT": 0.1429,
+  "first_ABSTAIN_PERMIT": false,
+  "last_ABSTAIN_PERMIT": false,
+  "n_ZERO_FORBID": 0,
+  "has_ZERO_FORBID": false,
+  "frac_ZERO_FORBID": 0.0,
+  "pos_ZERO_FORBID": -1.0,
+  "first_ZERO_FORBID": false,
+  "last_ZERO_FORBID": false,
+  "n_FORMAT": 2,
+  "has_FORMAT": true,
+  "frac_FORMAT": 0.3238,
+  "pos_FORMAT": 0.8571,
+  "first_FORMAT": false,
+  "last_FORMAT": true,
+  "n_PREMISE": 0,
+  "has_PREMISE": false,
+  "frac_PREMISE": 0.0,
+  "pos_PREMISE": -1.0,
+  "first_PREMISE": false,
+  "last_PREMISE": false,
+  "has_contract": true,
+  "contract_kind": "permit",
+  "mentions_zero": false,
+  "mentions_noun": true,
+  "is_choice": false,
+  "is_english": false
+ },
+ {
+  "arm": "permitB",
+  "source": "19c(换措辞臂) md5=7c72e7a20799",
+  "text": "请报告这张图片中的人数。只有当你能够逐个确证每个个体时才给出数字；只要存在你无法确认的个体，请回答 abstain，而不要猜测。以JSON格式输出：{\"count\": 数量} 或 {\"count\": \"abstain\"}，只输出JSON。",
+  "n_clauses": 6,
+  "chars": 119,
+  "clauses": [
+   {
+    "text": "请报告这张图片中的人数",
+    "types": [
+     "TASK"
+    ]
+   },
+   {
+    "text": "只有当你能够逐个确证每个个体时才给出数字",
+    "types": [
+     "ENUM",
+     "TASK"
+    ]
+   },
+   {
+    "text": "只要存在你无法确认的个体",
+    "types": [
+     "ABSTAIN_PERMIT"
+    ]
+   },
+   {
+    "text": "请回答 abstain而不要猜测",
+    "types": [
+     "ABSTAIN_PERMIT"
+    ]
+   },
+   {
+    "text": "以JSON格式输出：{\"count\": 数量} 或 {\"count\": \"abstain\"}",
+    "types": [
+     "ABSTAIN_PERMIT",
+     "FORMAT"
+    ]
+   },
+   {
+    "text": "只输出JSON",
+    "types": [
+     "FORMAT"
+    ]
+   }
+  ],
+  "n_TASK": 2,
+  "has_TASK": true,
+  "frac_TASK": 0.2605,
+  "pos_TASK": 0.0,
+  "first_TASK": true,
+  "last_TASK": false,
+  "n_ENUM": 1,
+  "has_ENUM": true,
+  "frac_ENUM": 0.1681,
+  "pos_ENUM": 0.2,
+  "first_ENUM": false,
+  "last_ENUM": false,
+  "n_ABSTAIN_PERMIT": 3,
+  "has_ABSTAIN_PERMIT": true,
+  "frac_ABSTAIN_PERMIT": 0.6218,
+  "pos_ABSTAIN_PERMIT": 0.4,
+  "first_ABSTAIN_PERMIT": false,
+  "last_ABSTAIN_PERMIT": false,
+  "n_ZERO_FORBID": 0,
+  "has_ZERO_FORBID": false,
+  "frac_ZERO_FORBID": 0.0,
+  "pos_ZERO_FORBID": -1.0,
+  "first_ZERO_FORBID": false,
+  "last_ZERO_FORBID": false,
+  "n_FORMAT": 2,
+  "has_FORMAT": true,
+  "frac_FORMAT": 0.4454,
+  "pos_FORMAT": 0.8,
+  "first_FORMAT": false,
+  "last_FORMAT": true,
+  "n_PREMISE": 0,
+  "has_PREMISE": false,
+  "frac_PREMISE": 0.0,
+  "pos_PREMISE": -1.0,
+  "first_PREMISE": false,
+  "last_PREMISE": false,
+  "has_contract": true,
+  "contract_kind": "permit",
+  "mentions_zero": false,
+  "mentions_noun": true,
+  "is_choice": false,
+  "is_english": false
+ },
+ {
+  "arm": "permitC",
+  "source": "19c(换措辞臂) md5=7c72e7a20799",
+  "text": "Count the people in this image. Give a number only if you can verify every individual; if any individual cannot be confirmed, answer abstain rather than guessing. Output only JSON: {\"count\": <number>} or {\"count\": \"abstain\"}.",
+  "n_clauses": 5,
+  "chars": 225,
+  "clauses": [
+   {
+    "text": "Count the people in this image",
+    "types": [
+     "TASK"
+    ]
+   },
+   {
+    "text": "Give a number only if you can verify every individual",
+    "types": [
+     "ENUM",
+     "TASK"
+    ]
+   },
+   {
+    "text": "if any individual cannot be confirmed",
+    "types": [
+     "ABSTAIN_PERMIT"
+    ]
+   },
+   {
+    "text": "answer abstain rather than guessing",
+    "types": [
+     "ABSTAIN_PERMIT"
+    ]
+   },
+   {
+    "text": "Output only JSON: {\"count\": <number>} or {\"count\": \"abstain\"}",
+    "types": [
+     "ABSTAIN_PERMIT",
+     "FORMAT"
+    ]
+   }
+  ],
+  "n_TASK": 2,
+  "has_TASK": true,
+  "frac_TASK": 0.3689,
+  "pos_TASK": 0.0,
+  "first_TASK": true,
+  "last_TASK": false,
+  "n_ENUM": 1,
+  "has_ENUM": true,
+  "frac_ENUM": 0.2356,
+  "pos_ENUM": 0.25,
+  "first_ENUM": false,
+  "last_ENUM": false,
+  "n_ABSTAIN_PERMIT": 3,
+  "has_ABSTAIN_PERMIT": true,
+  "frac_ABSTAIN_PERMIT": 0.5911,
+  "pos_ABSTAIN_PERMIT": 0.5,
+  "first_ABSTAIN_PERMIT": false,
+  "last_ABSTAIN_PERMIT": true,
+  "n_ZERO_FORBID": 0,
+  "has_ZERO_FORBID": false,
+  "frac_ZERO_FORBID": 0.0,
+  "pos_ZERO_FORBID": -1.0,
+  "first_ZERO_FORBID": false,
+  "last_ZERO_FORBID": false,
+  "n_FORMAT": 1,
+  "has_FORMAT": true,
+  "frac_FORMAT": 0.2711,
+  "pos_FORMAT": 1.0,
+  "first_FORMAT": false,
+  "last_FORMAT": true,
+  "n_PREMISE": 0,
+  "has_PREMISE": false,
+  "frac_PREMISE": 0.0,
+  "pos_PREMISE": -1.0,
+  "first_PREMISE": false,
+  "last_PREMISE": false,
+  "has_contract": true,
+  "contract_kind": "permit",
+  "mentions_zero": false,
+  "mentions_noun": true,
+  "is_choice": false,
+  "is_english": true
+ },
+ {
+  "arm": "exemplar3",
+  "source": "w1_prereg(FSC 示例臂)",
+  "text": "请参考图中给出的 3 个示例目标的框（左上与右下坐标，已归一化到 0-1000）：{boxes}。请数出整幅图中与这些示例**同类**目标的总数，不要遗漏、不要重复。以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+  "n_clauses": 5,
+  "chars": 115,
+  "clauses": [
+   {
+    "text": "请参考图中给出的 3 个示例目标的框（左上与右下坐标，已归一化到 0-1000）：{boxes}",
+    "types": [
+     "TASK"
+    ]
+   },
+   {
+    "text": "请数出整幅图中与这些示例**同类**目标的总数",
+    "types": [
+     "TASK"
+    ]
+   },
+   {
+    "text": "不要遗漏、不要重复",
+    "types": [
+     "ENUM"
+    ]
+   },
+   {
+    "text": "以JSON格式输出：{\"count\": 数量}",
+    "types": [
+     "FORMAT"
+    ]
+   },
+   {
+    "text": "只输出JSON",
+    "types": [
+     "FORMAT"
+    ]
+   }
+  ],
+  "n_TASK": 2,
+  "has_TASK": true,
+  "frac_TASK": 0.6174,
+  "pos_TASK": 0.0,
+  "first_TASK": true,
+  "last_TASK": false,
+  "n_ENUM": 1,
+  "has_ENUM": true,
+  "frac_ENUM": 0.0783,
+  "pos_ENUM": 0.5,
+  "first_ENUM": false,
+  "last_ENUM": false,
+  "n_ABSTAIN_PERMIT": 0,
+  "has_ABSTAIN_PERMIT": false,
+  "frac_ABSTAIN_PERMIT": 0.0,
+  "pos_ABSTAIN_PERMIT": -1.0,
+  "first_ABSTAIN_PERMIT": false,
+  "last_ABSTAIN_PERMIT": false,
+  "n_ZERO_FORBID": 0,
+  "has_ZERO_FORBID": false,
+  "frac_ZERO_FORBID": 0.0,
+  "pos_ZERO_FORBID": -1.0,
+  "first_ZERO_FORBID": false,
+  "last_ZERO_FORBID": false,
+  "n_FORMAT": 2,
+  "has_FORMAT": true,
+  "frac_FORMAT": 0.2609,
+  "pos_FORMAT": 0.75,
+  "first_FORMAT": false,
+  "last_FORMAT": true,
+  "n_PREMISE": 0,
+  "has_PREMISE": false,
+  "frac_PREMISE": 0.0,
+  "pos_PREMISE": -1.0,
+  "first_PREMISE": false,
+  "last_PREMISE": false,
+  "has_contract": false,
+  "contract_kind": "none",
+  "mentions_zero": false,
+  "mentions_noun": true,
+  "is_choice": false,
+  "is_english": false
+ },
+ {
+  "arm": "exemplar3permit",
+  "source": "w1_prereg(FSC 示例臂)",
+  "text": "请参考图中给出的 3 个示例目标的框（左上与右下坐标，已归一化到 0-1000）：{boxes}。请数出整幅图中与这些示例**同类**目标的总数；如果你无法逐个确证，请回答 abstain，而不要猜测。以JSON格式输出：{\"count\": 数量} 或 {\"count\": \"abstain\"}，只输出JSON。",
+  "n_clauses": 6,
+  "chars": 156,
+  "clauses": [
+   {
+    "text": "请参考图中给出的 3 个示例目标的框（左上与右下坐标，已归一化到 0-1000）：{boxes}",
+    "types": [
+     "TASK"
+    ]
+   },
+   {
+    "text": "请数出整幅图中与这些示例**同类**目标的总数",
+    "types": [
+     "TASK"
+    ]
+   },
+   {
+    "text": "如果你无法逐个确证",
+    "types": [
+     "ABSTAIN_PERMIT"
+    ]
+   },
+   {
+    "text": "请回答 abstain而不要猜测",
+    "types": [
+     "ABSTAIN_PERMIT"
+    ]
+   },
+   {
+    "text": "以JSON格式输出：{\"count\": 数量} 或 {\"count\": \"abstain\"}",
+    "types": [
+     "ABSTAIN_PERMIT",
+     "FORMAT"
+    ]
+   },
+   {
+    "text": "只输出JSON",
+    "types": [
+     "FORMAT"
+    ]
+   }
+  ],
+  "n_TASK": 2,
+  "has_TASK": true,
+  "frac_TASK": 0.4551,
+  "pos_TASK": 0.0,
+  "first_TASK": true,
+  "last_TASK": false,
+  "n_ENUM": 0,
+  "has_ENUM": false,
+  "frac_ENUM": 0.0,
+  "pos_ENUM": -1.0,
+  "first_ENUM": false,
+  "last_ENUM": false,
+  "n_ABSTAIN_PERMIT": 3,
+  "has_ABSTAIN_PERMIT": true,
+  "frac_ABSTAIN_PERMIT": 0.4551,
+  "pos_ABSTAIN_PERMIT": 0.4,
+  "first_ABSTAIN_PERMIT": false,
+  "last_ABSTAIN_PERMIT": false,
+  "n_ZERO_FORBID": 0,
+  "has_ZERO_FORBID": false,
+  "frac_ZERO_FORBID": 0.0,
+  "pos_ZERO_FORBID": -1.0,
+  "first_ZERO_FORBID": false,
+  "last_ZERO_FORBID": false,
+  "n_FORMAT": 2,
+  "has_FORMAT": true,
+  "frac_FORMAT": 0.3397,
+  "pos_FORMAT": 0.8,
+  "first_FORMAT": false,
+  "last_FORMAT": true,
+  "n_PREMISE": 0,
+  "has_PREMISE": false,
+  "frac_PREMISE": 0.0,
+  "pos_PREMISE": -1.0,
+  "first_PREMISE": false,
+  "last_PREMISE": false,
+  "has_contract": true,
+  "contract_kind": "permit",
+  "mentions_zero": false,
+  "mentions_noun": true,
+  "is_choice": false,
+  "is_english": false
+ }
+]

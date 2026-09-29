@@ -1,0 +1,65 @@
+[10:28:21] ########## A5 家族 phi-3.5-vision 开始（Phi-3.5-vision-instruct；extra='--trust-remote-code'）##########
+[10:29:39]   起服就绪（75s）
+[10:29:39] == Phi-3.5-vision-instruct / st_a 零池 6 臂 ==
+  base 臂 pred==0 的 item 共 103 个；本次抽 103 个（gt 从 138 到 2256）
+  [base] 103 行；pred==0 的 0 个；-> /root/e1_results/e1_Phi-3.5-vision-instruct_st_a_base.csv
+  [permit] 103 行；pred==0 的 0 个；-> /root/e1_results/e1_Phi-3.5-vision-instruct_st_a_permit.csv
+  [bestA] 103 行；pred==0 的 0 个；-> /root/e1_results/e1_Phi-3.5-vision-instruct_st_a_bestA.csv
+  [bestB] 103 行；pred==0 的 0 个；-> /root/e1_results/e1_Phi-3.5-vision-instruct_st_a_bestB.csv
+  [bestC] 103 行；pred==0 的 0 个；-> /root/e1_results/e1_Phi-3.5-vision-instruct_st_a_bestC.csv
+  [channel] 103 行；pred==0 的 0 个；-> /root/e1_results/e1_Phi-3.5-vision-instruct_st_a_channel.csv
+[10:30:15]    rc=0 用时 36s
+[10:30:15] == Phi-3.5-vision-instruct / st_a 非零池 3 臂 ==
+  base 臂 pred==0 的 item 共 79 个；本次抽 79 个（gt 从 66 到 823）
+  [base] 79 行；pred==0 的 0 个；-> /root/e1_results_nonzero/e1_Phi-3.5-vision-instruct_st_a_base.csv
+  [permit] 79 行；pred==0 的 0 个；-> /root/e1_results_nonzero/e1_Phi-3.5-vision-instruct_st_a_permit.csv
+  [channel] 79 行；pred==0 的 0 个；-> /root/e1_results_nonzero/e1_Phi-3.5-vision-instruct_st_a_channel.csv
+[10:30:27]    rc=0 用时 12s
+[10:30:27] == Phi-3.5-vision-instruct / ucf 零池 6 臂 ==
+  base 臂 pred==0 的 item 共 180 个；本次抽 150 个（gt 从 137 到 1798）
+  [base] 150 行；pred==0 的 0 个；-> /root/e1_results/e1_Phi-3.5-vision-instruct_ucf_base.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/e1_results/e1_Phi-3.5-vision-instruct_ucf_permit.csv
+  [bestA] 150 行；pred==0 的 0 个；-> /root/e1_results/e1_Phi-3.5-vision-instruct_ucf_bestA.csv
+  [bestB] 150 行；pred==0 的 0 个；-> /root/e1_results/e1_Phi-3.5-vision-instruct_ucf_bestB.csv
+  [bestC] 150 行；pred==0 的 0 个；-> /root/e1_results/e1_Phi-3.5-vision-instruct_ucf_bestC.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/e1_results/e1_Phi-3.5-vision-instruct_ucf_channel.csv
+[10:31:44]    rc=0 用时 77s
+[10:31:44] == Phi-3.5-vision-instruct / ucf 非零池 3 臂 ==
+  base 臂 pred==0 的 item 共 154 个；本次抽 150 个（gt 从 65 到 737）
+  [base] 150 行；pred==0 的 0 个；-> /root/e1_results_nonzero/e1_Phi-3.5-vision-instruct_ucf_base.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/e1_results_nonzero/e1_Phi-3.5-vision-instruct_ucf_permit.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/e1_results_nonzero/e1_Phi-3.5-vision-instruct_ucf_channel.csv
+[10:32:22]    rc=0 用时 38s
+[10:32:22] == Phi-3.5-vision-instruct / visdrone 零池 6 臂 ==
+  base 臂 pred==0 的 item 共 273 个；本次抽 150 个（gt 从 1 到 8）
+  [base] 150 行；pred==0 的 92 个；-> /root/e1_results/e1_Phi-3.5-vision-instruct_visdrone_base.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/e1_results/e1_Phi-3.5-vision-instruct_visdrone_permit.csv
+  [bestA] 150 行；pred==0 的 0 个；-> /root/e1_results/e1_Phi-3.5-vision-instruct_visdrone_bestA.csv
+  [bestB] 150 行；pred==0 的 0 个；-> /root/e1_results/e1_Phi-3.5-vision-instruct_visdrone_bestB.csv
+  [bestC] 150 行；pred==0 的 2 个；-> /root/e1_results/e1_Phi-3.5-vision-instruct_visdrone_bestC.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/e1_results/e1_Phi-3.5-vision-instruct_visdrone_channel.csv
+[10:33:14]    rc=0 用时 52s
+[10:33:14] == Phi-3.5-vision-instruct / visdrone 非零池 3 臂 ==
+  base 臂 pred==0 的 item 共 127 个；本次抽 127 个（gt 从 1 到 262）
+  [base] 127 行；pred==0 的 10 个；-> /root/e1_results_nonzero/e1_Phi-3.5-vision-instruct_visdrone_base.csv
+  [permit] 127 行；pred==0 的 0 个；-> /root/e1_results_nonzero/e1_Phi-3.5-vision-instruct_visdrone_permit.csv
+  [channel] 127 行；pred==0 的 0 个；-> /root/e1_results_nonzero/e1_Phi-3.5-vision-instruct_visdrone_channel.csv
+[10:33:33]    rc=0 用时 19s
+[10:33:33] == Phi-3.5-vision-instruct / aitod 零池 6 臂 ==
+  base 臂 pred==0 的 item 共 154 个；本次抽 150 个（gt 从 1 到 61）
+  [base] 150 行；pred==0 的 105 个；-> /root/e1_results/e1_Phi-3.5-vision-instruct_aitod_base.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/e1_results/e1_Phi-3.5-vision-instruct_aitod_permit.csv
+  [bestA] 150 行；pred==0 的 16 个；-> /root/e1_results/e1_Phi-3.5-vision-instruct_aitod_bestA.csv
+  [bestB] 150 行；pred==0 的 0 个；-> /root/e1_results/e1_Phi-3.5-vision-instruct_aitod_bestB.csv
+  [bestC] 150 行；pred==0 的 4 个；-> /root/e1_results/e1_Phi-3.5-vision-instruct_aitod_bestC.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/e1_results/e1_Phi-3.5-vision-instruct_aitod_channel.csv
+[10:34:32]    rc=0 用时 59s
+[10:34:32] == Phi-3.5-vision-instruct / aitod 非零池 3 臂 ==
+  base 臂 pred==0 的 item 共 72 个；本次抽 72 个（gt 从 1 到 123）
+  [base] 72 行；pred==0 的 12 个；-> /root/e1_results_nonzero/e1_Phi-3.5-vision-instruct_aitod_base.csv
+  [permit] 72 行；pred==0 的 0 个；-> /root/e1_results_nonzero/e1_Phi-3.5-vision-instruct_aitod_permit.csv
+  [channel] 72 行；pred==0 的 0 个；-> /root/e1_results_nonzero/e1_Phi-3.5-vision-instruct_aitod_channel.csv
+[10:34:44]    rc=0 用时 12s
+[10:34:44] 零池文件 72 个；非零池 36 个
+[10:34:44] ########## A5 家族 phi-3.5-vision 结束 ##########
+A5_phi-3.5-vision_DONE

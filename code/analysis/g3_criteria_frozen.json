@@ -1,0 +1,68 @@
+{
+ "round": "g3",
+ "frozen_at": "2026-09-27",
+ "frozen_by": "P3 owner (author side)",
+ "requester": "dsflash A5-2（v0573 盲审）",
+ "quote_verbatim": "第三方可复跑的协议外验：一个本稿未用的密集语料（NWPU-Crowd / JHU-Crowd++）+ 一个非 FSC-147 的公开基准；≥4 家族（≥2 个未测）× 2 域 × 300 图 × 3 臂；判据：残差 ≤5% 在 ≥3/4 族成立 ⇒ 协议可迁移；若 <3/4，则\"契约决定通道\"是作者栈的性质",
+ "design": {
+  "domains": {
+   "jhu": "**JHU-Crowd++（test 划分）** —— 本稿未用的密集语料。图：`/root/g3_corpora/jhu/images/`；gt：`image_labels.txt` 第 2 列（该数据集的逐图人数标签）。**取文件名排序后的前 300 张**（确定性、不抽样）。",
+   "tallyqa": "**TallyQA-short** —— 非 FSC-147 的公开基准（VQA 式计数）。图与问答取自 `/root/g3_corpora/tallyqa/`；只取\"答数为数字\"的项，**按确定性顺序取前 300 项**。"
+  },
+  "arms": [
+   "base",
+   "permit",
+   "channel"
+  ],
+  "families": {
+   "Qwen2.5-VL-3B-Instruct": "★ **未测**家族（本机在卷）",
+   "Qwen3-VL-4B-Instruct": "★ **未测**家族（本机在卷）",
+   "Qwen3-VL-32B-Instruct": "已测的锚定家族（对照组）",
+   "InternVL3_5-8B": "已测家族（对照组；本机 `/root/models/`）"
+  },
+  "why_these_families": "评审要求 **≥4 家族且 ≥2 个未测**：上面 4 个里 **2 个未测**、2 个已测作对照。★ 本机卷上还有 `Qwen2.5-VL-72B-Instruct`，但 **BF16 下放不进 80 GB 卡** ⇒ **不用它**、也不拿量化版冒充（如实标注）。",
+  "calls": "4 家族 × 2 域 × 300 项 × 3 臂 = **7,200 次调用**（与评审自报规模一致）",
+  "serving": "vLLM 0.29.0，一卡一次一个家族；temperature 0、max_tokens 128、一请求一图；`--mm-processor-kwargs max_pixels=1048576, min_pixels=3136`（与本稿语料同一套上限）。"
+ },
+ "prompts_verbatim": {
+  "base": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复，以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+  "permit": "请数出图片中的人数（人群中的每个人头或人体）。如果你无法逐个确证，请回答 abstain，而不要猜测。以JSON格式输出：{\"count\": 数量} 或 {\"count\": \"abstain\"}，只输出JSON。",
+  "channel": "请判断这张图片中的人数。你可以：①给出数字；②回答 \"cannot_judge\" 表示无法判断；③回答 \"no_people\" 表示画面中没有可辨认的个体。以JSON格式输出：{\"response\": ...}，只输出JSON。"
+ },
+ "tallyqa_arm_adaptation_★": {
+  "why": "TallyQA 是**问答式**基准（问题各不相同，如 \"How many tourists can be seen?\"），而冻结三臂的中文原文是\"数人数\"的整句 ⇒ 直接把整句搬过去问的不是同一个问题。",
+  "rule": "**只把问题绑在前面，契约句逐字保留**；并把\"人群/每个人头或人体\"这一名词短语去掉（它在 TallyQA 上不成立）。三臂的**契约子句逐字节相同**，逐条列在下面。",
+  "templates": {
+   "base": "{q} Do not miss any and do not double-count. Output in JSON format: {\"count\": number}, output JSON only.",
+   "permit": "{q} If you cannot confirm each one individually, answer abstain rather than guessing. Output in JSON format: {\"count\": number} or {\"count\": \"abstain\"}, output JSON only.",
+   "channel": "{q} You may: (1) give a number; (2) answer \"cannot_judge\" if you cannot judge; (3) answer \"no_people\" if there are no recognizable individuals in the image. Output in JSON format: {\"response\": ...}, output JSON only."
+  },
+  "language_note": "TallyQA 的问题是**英文** ⇒ 该域用英文契约句（取自冻结件 `20b_probe_lang.py::EN`）；JHU 那域用**中文**原文。**语言差异属于域差异**，如实声明，不作为被检验的因子。",
+  "declared_deviation": "★ 这是\"**最小改写**\"，不是逐字原样：名词短语被删除。评审若要求零改写，则该域须换成\"数人\"的问答式语料——本机没有，如实标为偏差。"
+ },
+ "estimands": {
+  "answered_zero": "pred == 0",
+  "residual_★": "**本稿自己的配方（§M.22 第 5 步）**：residual = （`base` 臂答 0 且 `permit` 臂也答 0 的项数）÷（`base` 臂答 0 的项数）；分母为 0 时**记为不可算**，不填数。",
+  "channel_composition": "`channel` 臂三通道占比（数字 / `cannot_judge` / `no_people`），按 §M.22 第 3–4 步。",
+  "abstention_mass_w": "作答份额 w = 解析出数字的项数 ÷ 全部项数；以及双口径（池化 / 仅作答）的偏差。",
+  "gate_reproduces": "§M.19.2 的家族级判据（`base` 臂答零率 ≥30% 且该率在族内可复现）在**新语料**上是否成立。"
+ },
+ "criteria_fixed_in_advance": {
+  "C1_reviewer": {
+   "statement": "★ 评审原文判据。",
+   "rule": "**每个家族**把两域并起来的 residual ≤ **5%**；**≥ 3/4 个家族**满足 ⇒ \"契约决定通道\"这条协议**可迁移**；若 < 3/4 ⇒ 它是**作者栈的性质**，须在主稿里改写成后者。",
+   "note": "两域分开的 residual 一并报出（不只用并起来的那个数）。"
+  },
+  "C2_no_imputation": {
+   "rule": "任何 (家族, 域) 格若分母为 0（该家族在该语料上一个 0 都没答）⇒ **报\"不可算\"**，不插补、不用代理。"
+  },
+  "C3_parse": {
+   "rule": "解析失败/HTTP 400 的项**单列报出**（按家族与域），不计入分母；若某格解析率 < 80%，该格标\"不可信\"并同时报两个分母。"
+  }
+ },
+ "declared_in_advance": [
+  "语料来源与许可是**第三方公开镜像**（HuggingFace），获取脚本与 md5 一并发布；本实验**不新增任何标注**（JHU 用其自带逐图人数标签；TallyQA 用其自带答数）。",
+  "两个新域与已发表四域**不可逐项配对**（item 不同）⇒ 家族级率的比较是**跨语料**的，不是配对的。",
+  "门的\"可复现\"一律按 §M.19.2 的家族级判据报，不新造判据。"
+ ]
+}

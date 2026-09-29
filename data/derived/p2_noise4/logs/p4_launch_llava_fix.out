@@ -1,0 +1,9 @@
+[02:11:48] == P4 llava 开始 ｜ 显存 0 MiB ｜ 每格 6 线程 ==
+[02:11:48] [llava-onevision-qwen2-7b-ov] 起服 frac=0.26 maxlen=8192
+[02:12:59] [llava-onevision-qwen2-7b-ov] 就绪（70 s）｜显存 20501 MiB
+[02:12:59] [llava-onevision-qwen2-7b-ov] 256 完成（ERR 行 0/600）
+[02:13:00] [llava-onevision-qwen2-7b-ov] 768 完成（ERR 行 38/600）
+/root/p4_run.sh: line 44: 15217 Killed                  nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization "$FRAC" --max-num-seqs 24 --port "$PORT" < /dev/null > "$LOG" 2>&1
+[02:13:04] [llava-onevision-qwen2-7b-ov] 停服；产物：4 个文件
+[02:13:07] == P4 llava 结束 ｜ 显存 0 MiB ==
+[02:13:07] P4_llava_DONE

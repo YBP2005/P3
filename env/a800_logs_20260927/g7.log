@@ -1,0 +1,16 @@
+[08:13:56] ########## G7 开始 ##########
+[08:15:41]   起服就绪 R_s1（100s, maxlen=8192）
+[08:25:13]   起服就绪 R_s2（100s, maxlen=8192）
+[08:28:25]   起服就绪 R_s3（100s, maxlen=8192）
+[08:31:36]   起服就绪 F2_4096（100s, maxlen=4096）
+[08:34:48]   起服就绪 F2_16384（100s, maxlen=16384）
+[08:36:14] ########## G7 结束 ##########
+  total 336
+  -rw-r--r-- 1 root root 48559 Sep 27 08:36 g7_F2_16384.csv
+  -rw-r--r-- 1 root root 47980 Sep 27 08:33 g7_F2_4096.csv
+  -rw-r--r-- 1 root root 47281 Sep 27 08:18 g7_F3_sys.csv
+  -rw-r--r-- 1 root root 46753 Sep 27 08:23 g7_F4_w1.csv
+  -rw-r--r-- 1 root root 46175 Sep 27 08:17 g7_R_s1.csv
+  -rw-r--r-- 1 root root 46168 Sep 27 08:26 g7_R_s2.csv
+  -rw-r--r-- 1 root root 46168 Sep 27 08:29 g7_R_s3.csv
+G7_ALL_DONE

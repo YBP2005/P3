@@ -1,0 +1,696 @@
+{
+  "criteria_md5": "fa22a7e17235",
+  "per_family": {
+    "InternVL3.5-8B": {
+      "base": {
+        "n_items": 675,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 675,
+        "zeros": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          0.0,
+          0.005659052126445992
+        ],
+        "abstain_rate": 0.0
+      },
+      "permit": {
+        "n_items": 675,
+        "parse_fail": 509,
+        "parse_fail_rate": 0.7540740740740741,
+        "n_parsed": 166,
+        "zeros": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          1.69548624725715e-18,
+          0.022618722386034986
+        ],
+        "abstain_rate": 0.0
+      }
+    },
+    "LLaVA-OneVision-7B": {
+      "base": {
+        "n_items": 675,
+        "parse_fail": 30,
+        "parse_fail_rate": 0.044444444444444446,
+        "n_parsed": 645,
+        "zeros": 45,
+        "zero_rate": 0.06976744186046512,
+        "zero_ci": [
+          0.052547524526749816,
+          0.0920819197012405
+        ],
+        "abstain_rate": 0.0
+      },
+      "permit": {
+        "n_items": 675,
+        "parse_fail": 265,
+        "parse_fail_rate": 0.3925925925925926,
+        "n_parsed": 410,
+        "zeros": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          0.0,
+          0.009282778725000097
+        ],
+        "abstain_rate": 0.0
+      }
+    },
+    "Phi-3.5-Vision": {
+      "base": {
+        "n_items": 675,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 675,
+        "zeros": 91,
+        "zero_rate": 0.1348148148148148,
+        "zero_ci": [
+          0.1111065949556472,
+          0.16265623867152001
+        ],
+        "abstain_rate": 0.0
+      },
+      "permit": {
+        "n_items": 675,
+        "parse_fail": 660,
+        "parse_fail_rate": 0.9777777777777777,
+        "n_parsed": 15,
+        "zeros": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          -2.2096511667503485e-17,
+          0.20388926630434784
+        ],
+        "abstain_rate": 0.0
+      }
+    },
+    "Qwen3-VL-32B": {
+      "base": {
+        "n_items": 675,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 675,
+        "zeros": 104,
+        "zero_rate": 0.15407407407407409,
+        "zero_ci": [
+          0.1288029109095699,
+          0.18326046293198608
+        ],
+        "abstain_rate": 0.0
+      },
+      "permit": {
+        "n_items": 675,
+        "parse_fail": 609,
+        "parse_fail_rate": 0.9022222222222223,
+        "n_parsed": 66,
+        "zeros": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          0.0,
+          0.05500446725160935
+        ],
+        "abstain_rate": 0.0
+      }
+    },
+    "Qwen3-VL-8B": {
+      "base": {
+        "n_items": 675,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 675,
+        "zeros": 67,
+        "zero_rate": 0.09925925925925926,
+        "zero_ci": [
+          0.07891952793790297,
+          0.12413461606270039
+        ],
+        "abstain_rate": 0.0
+      },
+      "permit": {
+        "n_items": 675,
+        "parse_fail": 675,
+        "parse_fail_rate": 1.0,
+        "n_parsed": 0,
+        "zeros": 0,
+        "zero_rate": NaN,
+        "zero_ci": [
+          NaN,
+          NaN
+        ],
+        "abstain_rate": NaN
+      }
+    },
+    "gemma-3-12b": {
+      "base": {
+        "n_items": 675,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 675,
+        "zeros": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          0.0,
+          0.005659052126445992
+        ],
+        "abstain_rate": 0.0
+      },
+      "permit": {
+        "n_items": 675,
+        "parse_fail": 442,
+        "parse_fail_rate": 0.6548148148148148,
+        "n_parsed": 233,
+        "zeros": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          0.0,
+          0.016220123491819
+        ],
+        "abstain_rate": 0.0
+      }
+    }
+  },
+  "by_sigma": {
+    "InternVL3.5-8B": {
+      "0": {
+        "n_items": 135,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 135,
+        "zeros": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          1.6867255149527877e-18,
+          0.027668940720936664
+        ],
+        "abstain_rate": 0.0
+      },
+      "1": {
+        "n_items": 135,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 135,
+        "zeros": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          1.6867255149527877e-18,
+          0.027668940720936664
+        ],
+        "abstain_rate": 0.0
+      },
+      "2": {
+        "n_items": 135,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 135,
+        "zeros": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          1.6867255149527877e-18,
+          0.027668940720936664
+        ],
+        "abstain_rate": 0.0
+      },
+      "4": {
+        "n_items": 135,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 135,
+        "zeros": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          1.6867255149527877e-18,
+          0.027668940720936664
+        ],
+        "abstain_rate": 0.0
+      },
+      "8": {
+        "n_items": 135,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 135,
+        "zeros": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          1.6867255149527877e-18,
+          0.027668940720936664
+        ],
+        "abstain_rate": 0.0
+      }
+    },
+    "LLaVA-OneVision-7B": {
+      "0": {
+        "n_items": 135,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 135,
+        "zeros": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          1.6867255149527877e-18,
+          0.027668940720936664
+        ],
+        "abstain_rate": 0.0
+      },
+      "1": {
+        "n_items": 135,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 135,
+        "zeros": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          1.6867255149527877e-18,
+          0.027668940720936664
+        ],
+        "abstain_rate": 0.0
+      },
+      "2": {
+        "n_items": 135,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 135,
+        "zeros": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          1.6867255149527877e-18,
+          0.027668940720936664
+        ],
+        "abstain_rate": 0.0
+      },
+      "4": {
+        "n_items": 135,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 135,
+        "zeros": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          1.6867255149527877e-18,
+          0.027668940720936664
+        ],
+        "abstain_rate": 0.0
+      },
+      "8": {
+        "n_items": 135,
+        "parse_fail": 30,
+        "parse_fail_rate": 0.2222222222222222,
+        "n_parsed": 105,
+        "zeros": 45,
+        "zero_rate": 0.42857142857142855,
+        "zero_ci": [
+          0.33808655708889324,
+          0.5240984898049413
+        ],
+        "abstain_rate": 0.0
+      }
+    },
+    "Phi-3.5-Vision": {
+      "0": {
+        "n_items": 135,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 135,
+        "zeros": 15,
+        "zero_rate": 0.1111111111111111,
+        "zero_ci": [
+          0.06849976817434965,
+          0.17524274127526782
+        ],
+        "abstain_rate": 0.0
+      },
+      "1": {
+        "n_items": 135,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 135,
+        "zeros": 7,
+        "zero_rate": 0.05185185185185185,
+        "zero_ci": [
+          0.025340849260581774,
+          0.10316242353373924
+        ],
+        "abstain_rate": 0.0
+      },
+      "2": {
+        "n_items": 135,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 135,
+        "zeros": 8,
+        "zero_rate": 0.05925925925925926,
+        "zero_ci": [
+          0.030329997338257482,
+          0.11257818003797558
+        ],
+        "abstain_rate": 0.0
+      },
+      "4": {
+        "n_items": 135,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 135,
+        "zeros": 15,
+        "zero_rate": 0.1111111111111111,
+        "zero_ci": [
+          0.06849976817434965,
+          0.17524274127526782
+        ],
+        "abstain_rate": 0.0
+      },
+      "8": {
+        "n_items": 135,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 135,
+        "zeros": 46,
+        "zero_rate": 0.34074074074074073,
+        "zero_ci": [
+          0.2661860749532783,
+          0.42410847653561273
+        ],
+        "abstain_rate": 0.0
+      }
+    },
+    "Qwen3-VL-32B": {
+      "0": {
+        "n_items": 135,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 135,
+        "zeros": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          1.6867255149527877e-18,
+          0.027668940720936664
+        ],
+        "abstain_rate": 0.0
+      },
+      "1": {
+        "n_items": 135,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 135,
+        "zeros": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          1.6867255149527877e-18,
+          0.027668940720936664
+        ],
+        "abstain_rate": 0.0
+      },
+      "2": {
+        "n_items": 135,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 135,
+        "zeros": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          1.6867255149527877e-18,
+          0.027668940720936664
+        ],
+        "abstain_rate": 0.0
+      },
+      "4": {
+        "n_items": 135,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 135,
+        "zeros": 13,
+        "zero_rate": 0.0962962962962963,
+        "zero_ci": [
+          0.05714127513323818,
+          0.15779142515255515
+        ],
+        "abstain_rate": 0.0
+      },
+      "8": {
+        "n_items": 135,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 135,
+        "zeros": 91,
+        "zero_rate": 0.674074074074074,
+        "zero_ci": [
+          0.5911422329154048,
+          0.7473730247595284
+        ],
+        "abstain_rate": 0.0
+      }
+    },
+    "Qwen3-VL-8B": {
+      "0": {
+        "n_items": 135,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 135,
+        "zeros": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          1.6867255149527877e-18,
+          0.027668940720936664
+        ],
+        "abstain_rate": 0.0
+      },
+      "1": {
+        "n_items": 135,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 135,
+        "zeros": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          1.6867255149527877e-18,
+          0.027668940720936664
+        ],
+        "abstain_rate": 0.0
+      },
+      "2": {
+        "n_items": 135,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 135,
+        "zeros": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          1.6867255149527877e-18,
+          0.027668940720936664
+        ],
+        "abstain_rate": 0.0
+      },
+      "4": {
+        "n_items": 135,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 135,
+        "zeros": 9,
+        "zero_rate": 0.06666666666666667,
+        "zero_ci": [
+          0.03546649508631035,
+          0.12184658687183475
+        ],
+        "abstain_rate": 0.0
+      },
+      "8": {
+        "n_items": 135,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 135,
+        "zeros": 58,
+        "zero_rate": 0.42962962962962964,
+        "zero_ci": [
+          0.34921160149343466,
+          0.513941804978401
+        ],
+        "abstain_rate": 0.0
+      }
+    },
+    "gemma-3-12b": {
+      "0": {
+        "n_items": 135,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 135,
+        "zeros": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          1.6867255149527877e-18,
+          0.027668940720936664
+        ],
+        "abstain_rate": 0.0
+      },
+      "1": {
+        "n_items": 135,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 135,
+        "zeros": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          1.6867255149527877e-18,
+          0.027668940720936664
+        ],
+        "abstain_rate": 0.0
+      },
+      "2": {
+        "n_items": 135,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 135,
+        "zeros": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          1.6867255149527877e-18,
+          0.027668940720936664
+        ],
+        "abstain_rate": 0.0
+      },
+      "4": {
+        "n_items": 135,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 135,
+        "zeros": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          1.6867255149527877e-18,
+          0.027668940720936664
+        ],
+        "abstain_rate": 0.0
+      },
+      "8": {
+        "n_items": 135,
+        "parse_fail": 0,
+        "parse_fail_rate": 0.0,
+        "n_parsed": 135,
+        "zeros": 0,
+        "zero_rate": 0.0,
+        "zero_ci": [
+          1.6867255149527877e-18,
+          0.027668940720936664
+        ],
+        "abstain_rate": 0.0
+      }
+    }
+  },
+  "paired": {
+    "InternVL3.5-8B": {
+      "base_zeros": 0,
+      "still_zero_under_permit": 0,
+      "residual": NaN,
+      "residual_ci": [
+        NaN,
+        NaN
+      ]
+    },
+    "LLaVA-OneVision-7B": {
+      "base_zeros": 45,
+      "still_zero_under_permit": 0,
+      "residual": 0.0,
+      "residual_ci": [
+        0.0,
+        0.07865426194064076
+      ]
+    },
+    "Phi-3.5-Vision": {
+      "base_zeros": 91,
+      "still_zero_under_permit": 0,
+      "residual": 0.0,
+      "residual_ci": [
+        0.0,
+        0.04050543221539915
+      ]
+    },
+    "Qwen3-VL-32B": {
+      "base_zeros": 104,
+      "still_zero_under_permit": 0,
+      "residual": 0.0,
+      "residual_ci": [
+        0.0,
+        0.03562261687512055
+      ]
+    },
+    "Qwen3-VL-8B": {
+      "base_zeros": 67,
+      "still_zero_under_permit": 0,
+      "residual": 0.0,
+      "residual_ci": [
+        0.0,
+        0.05422802421176257
+      ]
+    },
+    "gemma-3-12b": {
+      "base_zeros": 0,
+      "still_zero_under_permit": 0,
+      "residual": NaN,
+      "residual_ci": [
+        NaN,
+        NaN
+      ]
+    }
+  },
+  "template_axis": null,
+  "verdicts": {
+    "H1": {
+      "rates_at_sigma8": {
+        "gemma-3-12b": 0.0,
+        "Phi-3.5-Vision": 0.34074074074074073,
+        "LLaVA-OneVision-7B": 0.42857142857142855
+      },
+      "families_at_or_above": [
+        "Phi-3.5-Vision",
+        "LLaVA-OneVision-7B"
+      ],
+      "need": 2,
+      "passed": true,
+      "status": "evaluated"
+    },
+    "H1b": {
+      "spearman_by_family": {
+        "gemma-3-12b": NaN,
+        "Phi-3.5-Vision": 0.5642880936468347,
+        "LLaVA-OneVision-7B": 0.7071067811865475
+      },
+      "families_monotone": [],
+      "role": "secondary"
+    },
+    "H2": {
+      "families_within_5pct": [
+        "Phi-3.5-Vision",
+        "LLaVA-OneVision-7B"
+      ],
+      "counterexamples": [],
+      "need": 2,
+      "passed": true,
+      "status": "evaluated",
+      "missing_families": []
+    },
+    "H3": {
+      "triggered": false,
+      "status": "evaluated",
+      "means": "lineage-specific ⇒ 收窄 §5.7 的跨家族读法"
+    },
+    "H4": {
+      "status": "evaluated",
+      "family": "Qwen3-VL-32B",
+      "sigma": 8.0,
+      "n": 800,
+      "measured": 1.0,
+      "published": 1.0,
+      "abs_diff_pp": 0.0,
+      "max_pp": 10.0,
+      "passed": true,
+      "n_items": 45
+    }
+  },
+  "flags": [
+    "InternVL3.5-8B/permit 解析失败 75.4% > 2%",
+    "LLaVA-OneVision-7B/base 解析失败 4.4% > 2%",
+    "LLaVA-OneVision-7B/permit 解析失败 39.3% > 2%",
+    "Phi-3.5-Vision/permit 解析失败 97.8% > 2%",
+    "Qwen3-VL-32B/permit 解析失败 90.2% > 2%",
+    "Qwen3-VL-8B/permit 解析失败 100.0% > 2%",
+    "gemma-3-12b/permit 解析失败 65.5% > 2%"
+  ]
+}

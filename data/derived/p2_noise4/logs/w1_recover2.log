@@ -1,0 +1,73 @@
+[01:21:06] ########## ① 安装 timm（deepseek-vl2 缺的包）##########
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 25.2 -> 26.2.1
+[notice] To update, run: /usr/local/miniconda3/bin/python -m pip install --upgrade pip
+[01:21:16] timm 版本：1.0.30
+[01:21:16] 等待 FSC 段结束（W1_FSC_DONE）…
+[03:16:16] 开始环境修复后的重试
+[03:16:16] ===== 重试家族 dsvl2_tiny（deepseek-vl2-tiny）=====
+[03:17:34]   [dsvl2_tiny] 起服就绪 75s
+  base 臂 pred==0 的 item 共 103 个；本次抽 2 个（gt 从 138 到 452）
+  [base] 2 行；pred==0 的 0 个；-> /root/w1_results/smoke/e1_deepseek-vl2-tiny_st_a_base_native.csv
+  base 臂 pred==0 的 item 共 273 个；本次抽 2 个（gt 从 1 到 7）
+  [base] 2 行；pred==0 的 0 个；-> /root/w1_results/smoke/e1_deepseek-vl2-tiny_visdrone_base_native.csv
+[03:17:36]   [dsvl2_tiny] smoke：可解析 2 / 4 条
+  base 臂 pred==0 的 item 共 103 个；本次抽 103 个（gt 从 138 到 2256）
+  [base] 103 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_deepseek-vl2-tiny_st_a_base_native.csv
+  [permit] 103 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_deepseek-vl2-tiny_st_a_permit_native.csv
+  [channel] 103 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_deepseek-vl2-tiny_st_a_channel_native.csv
+  base 臂 pred==0 的 item 共 103 个；本次抽 103 个（gt 从 138 到 2256）
+  [base] 103 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_deepseek-vl2-tiny_st_a_base_s640.csv
+  base 臂 pred==0 的 item 共 79 个；本次抽 79 个（gt 从 66 到 823）
+  [base] 79 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_deepseek-vl2-tiny_st_a_base_native.csv
+  [permit] 79 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_deepseek-vl2-tiny_st_a_permit_native.csv
+  [channel] 79 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_deepseek-vl2-tiny_st_a_channel_native.csv
+[03:18:06]     [dsvl2_tiny] st_a 完成
+  base 臂 pred==0 的 item 共 180 个；本次抽 150 个（gt 从 137 到 1798）
+  [base] 150 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_deepseek-vl2-tiny_ucf_base_native.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_deepseek-vl2-tiny_ucf_permit_native.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_deepseek-vl2-tiny_ucf_channel_native.csv
+  base 臂 pred==0 的 item 共 180 个；本次抽 150 个（gt 从 137 到 1798）
+  [base] 150 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_deepseek-vl2-tiny_ucf_base_s640.csv
+  base 臂 pred==0 的 item 共 154 个；本次抽 150 个（gt 从 65 到 737）
+  [base] 150 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_deepseek-vl2-tiny_ucf_base_native.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_deepseek-vl2-tiny_ucf_permit_native.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_deepseek-vl2-tiny_ucf_channel_native.csv
+[03:19:41]     [dsvl2_tiny] ucf 完成
+  base 臂 pred==0 的 item 共 273 个；本次抽 150 个（gt 从 1 到 8）
+  [base] 150 行；pred==0 的 107 个；-> /root/w1_results/zero/e1_deepseek-vl2-tiny_visdrone_base_native.csv
+  [permit] 150 行；pred==0 的 137 个；-> /root/w1_results/zero/e1_deepseek-vl2-tiny_visdrone_permit_native.csv
+  [channel] 150 行；pred==0 的 12 个；-> /root/w1_results/zero/e1_deepseek-vl2-tiny_visdrone_channel_native.csv
+  base 臂 pred==0 的 item 共 273 个；本次抽 150 个（gt 从 1 到 8）
+  [base] 150 行；pred==0 的 59 个；-> /root/w1_results/zero/e1_deepseek-vl2-tiny_visdrone_base_s640.csv
+  base 臂 pred==0 的 item 共 127 个；本次抽 127 个（gt 从 1 到 262）
+  [base] 127 行；pred==0 的 4 个；-> /root/w1_results/nonzero/e1_deepseek-vl2-tiny_visdrone_base_native.csv
+  [permit] 127 行；pred==0 的 11 个；-> /root/w1_results/nonzero/e1_deepseek-vl2-tiny_visdrone_permit_native.csv
+  [channel] 127 行；pred==0 的 26 个；-> /root/w1_results/nonzero/e1_deepseek-vl2-tiny_visdrone_channel_native.csv
+[03:20:27]     [dsvl2_tiny] visdrone 完成
+  base 臂 pred==0 的 item 共 154 个；本次抽 150 个（gt 从 1 到 61）
+  [base] 150 行；pred==0 的 76 个；-> /root/w1_results/zero/e1_deepseek-vl2-tiny_aitod_base_native.csv
+  [permit] 150 行；pred==0 的 130 个；-> /root/w1_results/zero/e1_deepseek-vl2-tiny_aitod_permit_native.csv
+  [channel] 150 行；pred==0 的 10 个；-> /root/w1_results/zero/e1_deepseek-vl2-tiny_aitod_channel_native.csv
+  base 臂 pred==0 的 item 共 154 个；本次抽 150 个（gt 从 1 到 61）
+  [base] 150 行；pred==0 的 61 个；-> /root/w1_results/zero/e1_deepseek-vl2-tiny_aitod_base_s640.csv
+  base 臂 pred==0 的 item 共 72 个；本次抽 72 个（gt 从 1 到 123）
+  [base] 72 行；pred==0 的 3 个；-> /root/w1_results/nonzero/e1_deepseek-vl2-tiny_aitod_base_native.csv
+  [permit] 72 行；pred==0 的 19 个；-> /root/w1_results/nonzero/e1_deepseek-vl2-tiny_aitod_permit_native.csv
+  [channel] 72 行；pred==0 的 6 个；-> /root/w1_results/nonzero/e1_deepseek-vl2-tiny_aitod_channel_native.csv
+[03:21:10]     [dsvl2_tiny] aitod 完成
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 已完成，跳过
+  [permit] 已完成，跳过
+  [exemplar3] 已完成，跳过
+  [exemplar3permit] 已完成，跳过
+[03:21:10]   [dsvl2_tiny] 普查 16/16 + 12/12；FSC 4/4
+[03:21:13] Phi-4-mm 普查格不足 ⇒ 重试（--trust-remote-code）
+[03:21:13] ===== 重试家族 phi4mm_retry（Phi-4-mm）=====
+[03:21:46]   [phi4mm_retry] !! 起服报错（早停）
+      (APIServer pid=11283)     raise ImportError(
+      (APIServer pid=11283) ImportError: This modeling file requires the following packages that were not found in your environment: scipy. Run `pip install scipy`
+[03:21:46] !! phi4mm_retry 起服仍失败 ⇒ 最终排除（理由写入 frame 表）
+[03:21:50] ########## 重试段结束 ##########
+W1_RECOVER2_DONE

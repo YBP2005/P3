@@ -1,0 +1,9 @@
+(APIServer pid=1208) INFO 09-25 04:19:17 [api_utils.py:347] 
+(APIServer pid=1208) INFO 09-25 04:19:17 [api_utils.py:347]        █     █     █▄   ▄█
+(APIServer pid=1208) INFO 09-25 04:19:17 [api_utils.py:347]  ▄▄ ▄█ █     █     █ ▀▄▀ █  version 0.29.0
+(APIServer pid=1208) INFO 09-25 04:19:17 [api_utils.py:347]   █▄█▀ █     █     █     █  model   /model/ModelScope/Qwen/Qwen3-VL-8B-Instruct
+(APIServer pid=1208) INFO 09-25 04:19:17 [api_utils.py:347]    ▀▀  ▀▀▀▀▀ ▀▀▀▀▀ ▀     ▀
+(APIServer pid=1208) INFO 09-25 04:19:17 [api_utils.py:347] 
+(APIServer pid=1208) INFO 09-25 04:19:17 [api_utils.py:286] non-default args: {'model_tag': '/model/ModelScope/Qwen/Qwen3-VL-8B-Instruct', 'port': 8043, 'model': '/model/ModelScope/Qwen/Qwen3-VL-8B-Instruct', 'max_model_len': 16384, 'served_model_name': ['Qwen3-VL-8B-Instruct'], 'gpu_memory_utilization': 0.45, 'limit_mm_per_prompt': {'image': 1}, 'max_num_seqs': 24}
+(APIServer pid=1208) INFO 09-25 04:19:17 [model.py:684] Resolved architecture: Qwen3VLForConditionalGeneration
+(APIServer pid=1208) INFO 09-25 04:19:17 [model.py:2021] Using max model len 16384

@@ -1,0 +1,7 @@
+item,gt,pred,parse_ok,raw,latency_s
+img_00126.jpg,5,0,1,"{""count"": 0, ""unresolved"": ""图像显示为'No Photo'占位符，无法分辨任何实际内容或人数。""}",0.89
+img_00281.jpg,2,0,1,"{""count"": 0, ""unresolved"": ""图像内容为一个相机图标被斜线划掉的符号，无法识别任何人物或与人数相关的信息。""}",0.98
+img_00174.jpg,6,0,1,"{""count"": 0, ""unresolved"": ""图像内容为一个相机图标被斜线划掉的符号，无法识别任何人物或与人数相关的信息。""}",0.98
+img_00406.jpg,6,0,1,"{""count"": 0, ""unresolved"": ""图像内容为一个相机图标被斜线划掉的符号，无法识别任何人物或与人数相关的信息。""}",0.98
+img_00433.jpg,2,0,1,"{""count"": 0, ""unresolved"": ""图像中未显示任何人物，仅展示了一个室内客厅场景，包含壁炉、窗户、装饰品和地毯，无可见的人类个体。""}",1.16
+img_00512.jpg,3,0,1,"{""count"": 0, ""unresolved"": ""图像中未显示任何可计数的人数或人物，仅包含一个关于‘Intranet User Satisfaction Three factor model’的金字塔结构图，其中列出了不同层级的因素，如Primary、Secondary、Tertiary Factors及其子项，无任何人物或可计数的实体。""}",1.81

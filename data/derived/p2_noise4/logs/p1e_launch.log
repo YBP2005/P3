@@ -1,0 +1,27 @@
+[07:37:21][p1e] == p1e placebo100 探索轨开始（卡0，逐族独占）｜臂：placebo100 ==
+[07:37:21][p1e] [GPU0] 显存已回落（0 MiB）
+[07:37:21][p1e] [Qwen3-VL-32B-Instruct] GPU0 port=8006 frac=0.85 maxlen=4096 起服
+[07:38:41][p1e] [Qwen3-VL-32B-Instruct] 就绪（80s）
+[07:42:59][p1e] [Qwen3-VL-32B-Instruct/placebo100] 675 行
+/root/p1e_run.sh: line 40: 14914 Killed                  CUDA_VISIBLE_DEVICES="$G" nohup $VLLM serve "$MP" --served-model-name "$NAME" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization "$FRAC" --max-num-seqs 24 --port "$PORT" $EXTRA < /dev/null > "$LOG" 2>&1
+[07:43:07][p1e] 回收孤儿 EngineCore pid=15032
+[07:43:07][p1e] [Qwen3-VL-32B-Instruct] 完成并已停自己的服务
+[07:43:17][p1e] [GPU0] 显存已回落（0 MiB）
+[07:43:17][p1e] [Qwen3-VL-8B-Instruct] GPU0 port=8005 frac=0.45 maxlen=8192 起服
+[07:44:29][p1e] [Qwen3-VL-8B-Instruct] 就绪（72s）
+[07:45:55][p1e] [Qwen3-VL-8B-Instruct/placebo100] 675 行
+/root/p1e_run.sh: line 40: 15533 Killed                  CUDA_VISIBLE_DEVICES="$G" nohup $VLLM serve "$MP" --served-model-name "$NAME" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization "$FRAC" --max-num-seqs 24 --port "$PORT" $EXTRA < /dev/null > "$LOG" 2>&1
+[07:46:03][p1e] [Qwen3-VL-8B-Instruct] 完成并已停自己的服务
+[07:46:03][p1e] [GPU0] 显存已回落（0 MiB）
+[07:46:03][p1e] [llava-onevision-qwen2-7b-ov] GPU0 port=8004 frac=0.26 maxlen=8192 起服
+[07:47:07][p1e] [llava-onevision-qwen2-7b-ov] 就绪（64s）
+[07:53:23][p1e] [llava-onevision-qwen2-7b-ov/placebo100] 675 行
+/root/p1e_run.sh: line 40: 16594 Killed                  CUDA_VISIBLE_DEVICES="$G" nohup $VLLM serve "$MP" --served-model-name "$NAME" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization "$FRAC" --max-num-seqs 24 --port "$PORT" $EXTRA < /dev/null > "$LOG" 2>&1
+[07:53:31][p1e] [llava-onevision-qwen2-7b-ov] 完成并已停自己的服务
+[07:53:31][p1e] [GPU0] 显存已回落（0 MiB）
+[07:53:31][p1e] [gemma3-12b] GPU0 port=8001 frac=0.40 maxlen=8192 起服
+[07:55:31][p1e] [gemma3-12b] 就绪（120s）
+[07:56:38][p1e] [gemma3-12b/placebo100] 675 行
+/root/p1e_run.sh: line 40: 17851 Killed                  CUDA_VISIBLE_DEVICES="$G" nohup $VLLM serve "$MP" --served-model-name "$NAME" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization "$FRAC" --max-num-seqs 24 --port "$PORT" $EXTRA < /dev/null > "$LOG" 2>&1
+[07:56:46][p1e] [gemma3-12b] 完成并已停自己的服务
+[07:56:46][p1e] P1E_DONE

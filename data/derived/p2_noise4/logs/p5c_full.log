@@ -1,0 +1,23 @@
+  ① 19e_probe_multi.py md5 03edb14c98ff ✓
+  ② p1d_prompts.json   md5 d35ec04a163e ✓（新增臂 ['forbid0', 'neutral0']）
+  提示词（圆点版）就绪；尾串比对：True
+  载入模型 /model/ModelScope/Qwen/Qwen3-VL-8B-Instruct（bf16，device 0）
+Loading weights:   0%|          | 0/750 [00:00<?, ?it/s]Loading weights:   0%|          | 2/750 [00:00<01:32,  8.07it/s]Loading weights:   2%|▏         | 17/750 [00:00<00:12, 59.79it/s]Loading weights:   5%|▌         | 39/750 [00:00<00:06, 109.24it/s]Loading weights:   8%|▊         | 58/750 [00:00<00:05, 126.25it/s]Loading weights:  11%|█         | 83/750 [00:00<00:04, 156.12it/s]Loading weights:  14%|█▍        | 104/750 [00:00<00:03, 168.07it/s]Loading weights:  17%|█▋        | 125/750 [00:00<00:03, 180.05it/s]Loading weights:  19%|█▉        | 144/750 [00:01<00:03, 181.52it/s]Loading weights:  22%|██▏       | 163/750 [00:01<00:03, 180.04it/s]Loading weights:  24%|██▍       | 182/750 [00:01<00:03, 176.83it/s]Loading weights:  27%|██▋       | 204/750 [00:01<00:02, 185.37it/s]Loading weights:  30%|███       | 226/750 [00:01<00:02, 189.93it/s]Loading weights:  33%|███▎      | 248/750 [00:01<00:02, 189.60it/s]Loading weights:  36%|███▌      | 270/750 [00:01<00:02, 197.40it/s]Loading weights:  39%|███▉      | 292/750 [00:01<00:02, 198.43it/s]Loading weights:  42%|████▏     | 314/750 [00:01<00:02, 202.50it/s]Loading weights:  45%|████▍     | 336/750 [00:01<00:02, 205.66it/s]Loading weights:  48%|████▊     | 357/750 [00:02<00:01, 204.41it/s]Loading weights:  51%|█████     | 380/750 [00:02<00:01, 206.70it/s]Loading weights:  62%|██████▏   | 463/750 [00:02<00:00, 385.79it/s]Loading weights:  90%|█████████ | 678/750 [00:02<00:00, 896.89it/s]Loading weights: 100%|██████████| 750/750 [00:02<00:00, 303.83it/s]
+  载入完成 4.9 s
+  token "0" id=15 ｜ u0 范数 1.422
+  σ=8 层：135 项 ｜ 臂 ['base', 'forbid0', 'neutral0']
+  已完成 0 / 本次 135
+    10/135  0.66 it/s
+    20/135  0.69 it/s
+    30/135  0.71 it/s
+    40/135  0.71 it/s
+    50/135  0.71 it/s
+    60/135  0.72 it/s
+    70/135  0.73 it/s
+    80/135  0.73 it/s
+    90/135  0.73 it/s
+    100/135  0.74 it/s
+    110/135  0.74 it/s
+    120/135  0.75 it/s
+    130/135  0.75 it/s
+  DONE：135 项 → /root/p5c_results.jsonl

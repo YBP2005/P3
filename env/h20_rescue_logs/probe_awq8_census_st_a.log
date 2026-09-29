@@ -1,0 +1,7 @@
+  base 臂 pred==0 的 item 共 103 个；本次抽 103 个（gt 从 138 到 2256）
+  [base] 103 行；pred==0 的 0 个；-> /root/e1_results/e1_qwen3-vl-8b-awq_st_a_base.csv
+  [permit] 103 行；pred==0 的 0 个；-> /root/e1_results/e1_qwen3-vl-8b-awq_st_a_permit.csv
+  [bestA] 103 行；pred==0 的 0 个；-> /root/e1_results/e1_qwen3-vl-8b-awq_st_a_bestA.csv
+  [bestB] 103 行；pred==0 的 0 个；-> /root/e1_results/e1_qwen3-vl-8b-awq_st_a_bestB.csv
+  [bestC] 103 行；pred==0 的 0 个；-> /root/e1_results/e1_qwen3-vl-8b-awq_st_a_bestC.csv
+  [channel] 103 行；pred==0 的 0 个；-> /root/e1_results/e1_qwen3-vl-8b-awq_st_a_channel.csv

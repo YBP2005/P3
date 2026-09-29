@@ -1,0 +1,9 @@
+  冻结探针 19e_probe_multi.py md5 03edb14c98ff ✓（提示词/解析/传输逐字复用）
+  [gemma3-12b/base] 网格 675 项 / 已完成 0 / 本次 675 ｜ model=gemma3-12b
+    200/675  3.05 it/s  zero=0 abstain=0 parse_fail=0
+    400/675  2.65 it/s  zero=0 abstain=0 parse_fail=0
+    600/675  3.05 it/s  zero=0 abstain=0 parse_fail=0
+  [gemma3-12b/base] DONE：675 行写入 /root/p1_results/p1_gemma3-12b_base.csv（zero=0 abstain=0 parse_fail=0）
+  冻结探针 19e_probe_multi.py md5 03edb14c98ff ✓（提示词/解析/传输逐字复用）
+  [gemma3-12b/base] 网格 675 项 / 已完成 675 / 本次 0 ｜ model=gemma3-12b
+  已完成，跳过

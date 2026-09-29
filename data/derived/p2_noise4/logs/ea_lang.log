@@ -1,0 +1,99 @@
+[15:07:46] ########## E-C 开始（英文提示词，同 item 配对）##########
+[15:07:46] ===== E-C 家族 ivl8b（InternVL3_5-8B，英文提示词）=====
+[15:08:34]   [ivl8b] 起服就绪 45s
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0easy：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/lang_results/e1_InternVL3_5-8B_z0easy_base_en.csv
+  [channel/EN] 153 行 -> /root/lang_results/e1_InternVL3_5-8B_z0easy_channel_en.csv
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0hard：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/lang_results/e1_InternVL3_5-8B_z0hard_base_en.csv
+  [channel/EN] 153 行 -> /root/lang_results/e1_InternVL3_5-8B_z0hard_channel_en.csv
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 d0st_a：103 条（同 item 配对）
+  [base/EN] 103 行 -> /root/lang_results/e1_InternVL3_5-8B_d0st_a_base_en.csv
+  [channel/EN] 103 行 -> /root/lang_results/e1_InternVL3_5-8B_d0st_a_channel_en.csv
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 d0ucf：150 条（同 item 配对）
+  [base/EN] 150 行 -> /root/lang_results/e1_InternVL3_5-8B_d0ucf_base_en.csv
+  [channel/EN] 150 行 -> /root/lang_results/e1_InternVL3_5-8B_d0ucf_channel_en.csv
+[15:10:40]   [ivl8b] 完成
+[15:10:40] ===== E-C 家族 phi35（Phi-3.5-vision-instruct，英文提示词）=====
+[15:11:28]   [phi35] 起服就绪 45s
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0easy：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/lang_results/e1_Phi-3.5-vision-instruct_z0easy_base_en.csv
+  [channel/EN] 153 行 -> /root/lang_results/e1_Phi-3.5-vision-instruct_z0easy_channel_en.csv
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0hard：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/lang_results/e1_Phi-3.5-vision-instruct_z0hard_base_en.csv
+  [channel/EN] 153 行 -> /root/lang_results/e1_Phi-3.5-vision-instruct_z0hard_channel_en.csv
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 d0st_a：103 条（同 item 配对）
+  [base/EN] 103 行 -> /root/lang_results/e1_Phi-3.5-vision-instruct_d0st_a_base_en.csv
+  [channel/EN] 103 行 -> /root/lang_results/e1_Phi-3.5-vision-instruct_d0st_a_channel_en.csv
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 d0ucf：150 条（同 item 配对）
+  [base/EN] 150 行 -> /root/lang_results/e1_Phi-3.5-vision-instruct_d0ucf_base_en.csv
+  [channel/EN] 150 行 -> /root/lang_results/e1_Phi-3.5-vision-instruct_d0ucf_channel_en.csv
+[15:12:34]   [phi35] 完成
+[15:12:34] ===== E-C 家族 llavaov（llava-onevision-qwen2-7b-ov，英文提示词）=====
+[15:13:38]   [llavaov] 起服就绪 60s
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0easy：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/lang_results/e1_llava-onevision-qwen2-7b-ov_z0easy_base_en.csv
+  [channel/EN] 153 行 -> /root/lang_results/e1_llava-onevision-qwen2-7b-ov_z0easy_channel_en.csv
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0hard：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/lang_results/e1_llava-onevision-qwen2-7b-ov_z0hard_base_en.csv
+  [channel/EN] 153 行 -> /root/lang_results/e1_llava-onevision-qwen2-7b-ov_z0hard_channel_en.csv
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 d0st_a：103 条（同 item 配对）
+  [base/EN] 103 行 -> /root/lang_results/e1_llava-onevision-qwen2-7b-ov_d0st_a_base_en.csv
+  [channel/EN] 103 行 -> /root/lang_results/e1_llava-onevision-qwen2-7b-ov_d0st_a_channel_en.csv
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 d0ucf：150 条（同 item 配对）
+  [base/EN] 150 行 -> /root/lang_results/e1_llava-onevision-qwen2-7b-ov_d0ucf_base_en.csv
+  [channel/EN] 150 行 -> /root/lang_results/e1_llava-onevision-qwen2-7b-ov_d0ucf_channel_en.csv
+[15:19:34]   [llavaov] 完成
+[15:19:34] ===== E-C 家族 gemma12b（gemma3-12b，英文提示词）=====
+[15:21:37]   [gemma12b] 起服就绪 120s
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0easy：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/lang_results/e1_gemma3-12b_z0easy_base_en.csv
+  [channel/EN] 153 行 -> /root/lang_results/e1_gemma3-12b_z0easy_channel_en.csv
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0hard：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/lang_results/e1_gemma3-12b_z0hard_base_en.csv
+  [channel/EN] 153 行 -> /root/lang_results/e1_gemma3-12b_z0hard_channel_en.csv
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 d0st_a：103 条（同 item 配对）
+  [base/EN] 103 行 -> /root/lang_results/e1_gemma3-12b_d0st_a_base_en.csv
+  [channel/EN] 103 行 -> /root/lang_results/e1_gemma3-12b_d0st_a_channel_en.csv
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 d0ucf：150 条（同 item 配对）
+  [base/EN] 150 行 -> /root/lang_results/e1_gemma3-12b_d0ucf_base_en.csv
+  [channel/EN] 150 行 -> /root/lang_results/e1_gemma3-12b_d0ucf_channel_en.csv
+[15:23:24]   [gemma12b] 完成
+[15:23:24] ===== E-C 家族 qwen32b（Qwen3-VL-32B-Instruct，英文提示词）=====
+[15:24:42]   [qwen32b] 起服就绪 75s
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0easy：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/lang_results/e1_Qwen3-VL-32B-Instruct_z0easy_base_en.csv
+  [channel/EN] 153 行 -> /root/lang_results/e1_Qwen3-VL-32B-Instruct_z0easy_channel_en.csv
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0hard：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/lang_results/e1_Qwen3-VL-32B-Instruct_z0hard_base_en.csv
+  [channel/EN] 153 行 -> /root/lang_results/e1_Qwen3-VL-32B-Instruct_z0hard_channel_en.csv
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 d0st_a：103 条（同 item 配对）
+  [base/EN] 103 行 -> /root/lang_results/e1_Qwen3-VL-32B-Instruct_d0st_a_base_en.csv
+  [channel/EN] 103 行 -> /root/lang_results/e1_Qwen3-VL-32B-Instruct_d0st_a_channel_en.csv
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 d0ucf：0 条（同 item 配对）
+  [base/EN] 已完成，跳过
+  [channel/EN] 已完成，跳过
+[15:27:47]   [qwen32b] 完成
+[15:27:47] ########## E-C 结束 ##########
+  产物文件数：38
+EC_DONE

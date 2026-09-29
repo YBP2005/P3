@@ -1,0 +1,87 @@
+[11:53:18] ########## A5 追加实验（第二批）开始 ##########
+[11:53:18] ---- 阶段 A：InternVL3.5-8B ----
+[11:54:06]   [extra2_ivl] 起服就绪（45s）
+[11:54:06] == [extra2_ivl] 机制臂 enum,enumAbstain,locate / st_a ==
+  base 臂 pred==0 的 item 共 103 个；本次抽 103 个（gt 从 138 到 2256）
+  [enum] 103 行；pred==0 的 4 个；-> /root/e1_results/e1_InternVL3_5-8B_st_a_enum.csv
+  [enumAbstain] 103 行；pred==0 的 0 个；-> /root/e1_results/e1_InternVL3_5-8B_st_a_enumAbstain.csv
+  [locate] 103 行；pred==0 的 33 个；-> /root/e1_results/e1_InternVL3_5-8B_st_a_locate.csv
+[11:54:37]    rc=0 用时 31s
+[11:54:37] == [extra2_ivl] 机制臂 enum,enumAbstain,locate / ucf ==
+  base 臂 pred==0 的 item 共 180 个；本次抽 150 个（gt 从 137 到 1798）
+  [enum] 150 行；pred==0 的 9 个；-> /root/e1_results/e1_InternVL3_5-8B_ucf_enum.csv
+  [enumAbstain] 150 行；pred==0 的 0 个；-> /root/e1_results/e1_InternVL3_5-8B_ucf_enumAbstain.csv
+  [locate] 150 行；pred==0 的 44 个；-> /root/e1_results/e1_InternVL3_5-8B_ucf_locate.csv
+[11:55:34]    rc=0 用时 57s
+[11:55:34] == [extra2_ivl] 机制臂 enum,enumAbstain,locate / visdrone ==
+  base 臂 pred==0 的 item 共 273 个；本次抽 150 个（gt 从 1 到 8）
+  [enum] 150 行；pred==0 的 89 个；-> /root/e1_results/e1_InternVL3_5-8B_visdrone_enum.csv
+  [enumAbstain] 150 行；pred==0 的 0 个；-> /root/e1_results/e1_InternVL3_5-8B_visdrone_enumAbstain.csv
+  [locate] 150 行；pred==0 的 113 个；-> /root/e1_results/e1_InternVL3_5-8B_visdrone_locate.csv
+[11:56:55]    rc=0 用时 81s
+[11:56:55] == [extra2_ivl] 模板变体 sys / st_a ==
+  base 臂 pred==0 的 item 共 103 个；本次抽 103 个（gt 从 138 到 2256）
+  [base] 103 行；pred==0 的 0 个；-> /root/e1_results_ablate/e1_InternVL3_5-8B_st_a_base_native_sys.csv
+  [permit] 103 行；pred==0 的 0 个；-> /root/e1_results_ablate/e1_InternVL3_5-8B_st_a_permit_native_sys.csv
+  [channel] 103 行；pred==0 的 0 个；-> /root/e1_results_ablate/e1_InternVL3_5-8B_st_a_channel_native_sys.csv
+[11:57:26]    rc=0 用时 31s
+[11:57:26] == [extra2_ivl] 模板变体 sys / ucf ==
+  base 臂 pred==0 的 item 共 180 个；本次抽 150 个（gt 从 137 到 1798）
+  [base] 150 行；pred==0 的 1 个；-> /root/e1_results_ablate/e1_InternVL3_5-8B_ucf_base_native_sys.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/e1_results_ablate/e1_InternVL3_5-8B_ucf_permit_native_sys.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/e1_results_ablate/e1_InternVL3_5-8B_ucf_channel_native_sys.csv
+[11:58:21]    rc=0 用时 55s
+[11:58:21] ---- 阶段 B：Phi-3.5-Vision ----
+[11:59:09]   [extra2_phi] 起服就绪（45s）
+[11:59:09] == [extra2_phi] 机制臂 enum,enumAbstain,locate / st_a ==
+  base 臂 pred==0 的 item 共 103 个；本次抽 103 个（gt 从 138 到 2256）
+  [enum] 103 行；pred==0 的 2 个；-> /root/e1_results/e1_Phi-3.5-vision-instruct_st_a_enum.csv
+  [enumAbstain] 103 行；pred==0 的 0 个；-> /root/e1_results/e1_Phi-3.5-vision-instruct_st_a_enumAbstain.csv
+  [locate] 103 行；pred==0 的 9 个；-> /root/e1_results/e1_Phi-3.5-vision-instruct_st_a_locate.csv
+[11:59:36]    rc=0 用时 27s
+[11:59:36] == [extra2_phi] 机制臂 enum,enumAbstain,locate / ucf ==
+  base 臂 pred==0 的 item 共 180 个；本次抽 150 个（gt 从 137 到 1798）
+  [enum] 150 行；pred==0 的 5 个；-> /root/e1_results/e1_Phi-3.5-vision-instruct_ucf_enum.csv
+  [enumAbstain] 150 行；pred==0 的 0 个；-> /root/e1_results/e1_Phi-3.5-vision-instruct_ucf_enumAbstain.csv
+  [locate] 150 行；pred==0 的 14 个；-> /root/e1_results/e1_Phi-3.5-vision-instruct_ucf_locate.csv
+[12:00:24]    rc=0 用时 48s
+[12:00:24] == [extra2_phi] 机制臂 enum,enumAbstain,locate / visdrone ==
+  base 臂 pred==0 的 item 共 273 个；本次抽 150 个（gt 从 1 到 8）
+  [enum] 150 行；pred==0 的 35 个；-> /root/e1_results/e1_Phi-3.5-vision-instruct_visdrone_enum.csv
+  [enumAbstain] 150 行；pred==0 的 0 个；-> /root/e1_results/e1_Phi-3.5-vision-instruct_visdrone_enumAbstain.csv
+  [locate] 150 行；pred==0 的 127 个；-> /root/e1_results/e1_Phi-3.5-vision-instruct_visdrone_locate.csv
+[12:00:53]    rc=0 用时 29s
+[12:00:53] ---- 阶段 C：LLaVA-OneVision（模板变体）----
+[12:01:56]   [extra2_lov] 起服就绪（60s）
+[12:01:56] == [extra2_lov] 模板变体 sys / st_a ==
+  base 臂 pred==0 的 item 共 103 个；本次抽 103 个（gt 从 138 到 2256）
+  [base] 103 行；pred==0 的 0 个；-> /root/e1_results_ablate/e1_llava-onevision-qwen2-7b-ov_st_a_base_native_sys.csv
+  [permit] 103 行；pred==0 的 0 个；-> /root/e1_results_ablate/e1_llava-onevision-qwen2-7b-ov_st_a_permit_native_sys.csv
+  [channel] 103 行；pred==0 的 0 个；-> /root/e1_results_ablate/e1_llava-onevision-qwen2-7b-ov_st_a_channel_native_sys.csv
+[12:02:46]    rc=0 用时 50s
+[12:02:46] == [extra2_lov] 模板变体 sys / ucf ==
+  base 臂 pred==0 的 item 共 180 个；本次抽 150 个（gt 从 137 到 1798）
+  [base] 150 行；pred==0 的 0 个；-> /root/e1_results_ablate/e1_llava-onevision-qwen2-7b-ov_ucf_base_native_sys.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/e1_results_ablate/e1_llava-onevision-qwen2-7b-ov_ucf_permit_native_sys.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/e1_results_ablate/e1_llava-onevision-qwen2-7b-ov_ucf_channel_native_sys.csv
+[12:06:32]    rc=0 用时 226s
+[12:06:32] ---- 阶段 D：构建轴（Gemma-3-12B）----
+[12:16:35]   [extra2_gemma_fp8] !! 起服失败：
+      (APIServer pid=7267)     ^
+      (APIServer pid=7267)   File "/usr/local/miniconda3/lib/python3.13/site-packages/vllm/v1/engine/utils.py", line 1320, in wait_for_engine_startup
+      (APIServer pid=7267)     raise RuntimeError(
+      (APIServer pid=7267)     ...<8 lines>...
+      (APIServer pid=7267)     )
+      (APIServer pid=7267) RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+[12:26:39]   [extra2_gemma_fp16] !! 起服失败：
+      (APIServer pid=7776)   File "/usr/local/miniconda3/lib/python3.13/site-packages/pydantic/_internal/_dataclasses.py", line 121, in __init__
+      (APIServer pid=7776)     s.__pydantic_validator__.validate_python(ArgsKwargs(args, kwargs), self_instance=s)
+      (APIServer pid=7776)     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      (APIServer pid=7776) pydantic_core._pydantic_core.ValidationError: 1 validation error for ModelConfig
+      (APIServer pid=7776)   Value error, The model type 'gemma3' does not support float16. Reason: Numerical instability. Please use bfloat16 or float32 instead. [type=value_error, input_value=ArgsKwargs((), {'model': ...nderer_num_workers': 1}), input_type=ArgsKwargs]
+      (APIServer pid=7776)     For further information visit https://errors.pydantic.dev/2.13/v/value_error
+[12:26:39]   !! 构建轴起服全部失败（fp8 / fp16）
+[12:26:39] 文件清点：主目录 123、ablate 36、build 0
+[12:26:39] 构建轴实际使用的构建：无
+[12:26:39] ########## A5 追加实验（第二批）结束 ##########
+A5_EXTRA2_DONE

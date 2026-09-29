@@ -1,0 +1,8 @@
+[07:59:59][p5b-32b] == P5b ucf 全覆盖补跑：Qwen3-VL-32B-Instruct ｜ maxlen 16384 frac 0.90 max-num-seqs 4 ｜ GPU1 ==
+[07:59:59][p5b-32b] [GPU1] 显存已回落（0 MiB）
+[08:02:15][p5b-32b] 就绪（136s）
+[08:17:21][p5b-32b] [Qwen3-VL-32B-Instruct/base] 行=180 ERR=1
+[08:17:21][p5b-32b] [Qwen3-VL-32B-Instruct/forbid0] 行=180 ERR=1
+[08:17:21][p5b-32b] [Qwen3-VL-32B-Instruct/permit] 行=180 ERR=1
+[08:17:29][p5b-32b] 回收孤儿 EngineCore pid=20575
+[08:17:29][p5b-32b] P5B_32b_DONE

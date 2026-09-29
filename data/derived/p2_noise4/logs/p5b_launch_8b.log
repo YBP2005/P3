@@ -1,0 +1,8 @@
+[07:58:17][p5b-8b] == P5b ucf 全覆盖补跑：Qwen3-VL-8B-Instruct ｜ maxlen 16384 frac 0.85 max-num-seqs 24 ｜ GPU0 ==
+[07:58:17][p5b-8b] [GPU0] 显存已回落（0 MiB）
+[08:00:09][p5b-8b] 就绪（112s）
+[08:06:54][p5b-8b] [Qwen3-VL-8B-Instruct/base] 行=180 ERR=1
+[08:06:54][p5b-8b] [Qwen3-VL-8B-Instruct/forbid0] 行=180 ERR=1
+[08:06:54][p5b-8b] [Qwen3-VL-8B-Instruct/permit] 行=180 ERR=1
+/root/p5b_run.sh: line 92: 19705 Killed                  CUDA_VISIBLE_DEVICES="$GPU" nohup $VLLM serve "$MP" --served-model-name "$M" --max-model-len 16384 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization "$FRAC" --max-num-seqs "$SEQ" --port "$PORT" < /dev/null > "/root/logs/p5b_serve_${KEY}.log" 2>&1
+[08:07:02][p5b-8b] P5B_8b_DONE

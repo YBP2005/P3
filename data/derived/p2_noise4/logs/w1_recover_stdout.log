@@ -1,0 +1,37 @@
+[01:11:04] 等待主面板结束（W1_PANEL_DONE）…
+[02:23:04] 主面板已结束（或等待超时），开始回收序列
+[02:23:04] ===== 回收家族 step3vl10b_retry（Step3-VL-10B）=====
+[02:25:22]   [step3vl10b_retry] 起服就绪 135s
+[02:25:27]   [step3vl10b_retry] smoke：可解析 1 / 4 条
+[02:25:27]   [step3vl10b_retry] st_a 零池 base,permit,channel（native）
+[02:26:46]   [step3vl10b_retry] st_a 零池 base@s640
+[02:27:18]   [step3vl10b_retry] st_a 非零池 base,permit,channel
+[02:28:24]   [step3vl10b_retry] ucf 零池 base,permit,channel（native）
+[02:33:13]   [step3vl10b_retry] ucf 零池 base@s640
+[02:34:02]   [step3vl10b_retry] ucf 非零池 base,permit,channel
+[02:40:00]   [step3vl10b_retry] visdrone 零池 base,permit,channel（native）
+[02:42:22]   [step3vl10b_retry] visdrone 零池 base@s640
+[02:43:17]   [step3vl10b_retry] visdrone 非零池 base,permit,channel
+[02:45:22]   [step3vl10b_retry] aitod 零池 base,permit,channel（native）
+[02:48:03]   [step3vl10b_retry] aitod 零池 base@s640
+[02:48:45]   [step3vl10b_retry] aitod 非零池 base,permit,channel
+[02:50:05]   [step3vl10b_retry] 面板完成：零池 16 / 非零池 12（期望 16 / 12）
+/root/w1_recover.sh: line 26:  6319 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 4096 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 16 --port 8000 "$@" < /dev/null > "/root/logs/serve_w1r_${TAG}.log" 2>&1
+[02:50:08] ===== 回收家族 minicpmv45（MiniCPM-V-4_5）=====
+[02:52:41]   [minicpmv45] 起服就绪 150s
+[02:52:42]   [minicpmv45] smoke：可解析 4 / 4 条
+[02:52:42]   [minicpmv45] st_a 零池 base,permit,channel（native）
+[02:52:56]   [minicpmv45] st_a 零池 base@s640
+[02:53:02]   [minicpmv45] st_a 非零池 base,permit,channel
+[02:53:12]   [minicpmv45] ucf 零池 base,permit,channel（native）
+[02:54:11]   [minicpmv45] ucf 零池 base@s640
+[02:54:22]   [minicpmv45] ucf 非零池 base,permit,channel
+[02:55:27]   [minicpmv45] visdrone 零池 base,permit,channel（native）
+[02:56:02]   [minicpmv45] visdrone 零池 base@s640
+[02:56:11]   [minicpmv45] visdrone 非零池 base,permit,channel
+[02:56:42]   [minicpmv45] aitod 零池 base,permit,channel（native）
+[02:57:00]   [minicpmv45] aitod 零池 base@s640
+[02:57:12]   [minicpmv45] aitod 非零池 base,permit,channel
+[02:57:21]   [minicpmv45] 面板完成：零池 16 / 非零池 12（期望 16 / 12）
+/root/w1_recover.sh: line 26:  7674 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 4096 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 16 --port 8000 "$@" < /dev/null > "/root/logs/serve_w1r_${TAG}.log" 2>&1
+[02:57:24] ########## W1 回收结束 ##########

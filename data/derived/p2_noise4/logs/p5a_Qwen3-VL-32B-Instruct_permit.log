@@ -1,0 +1,9 @@
+  冻结探针 19e_probe_multi.py md5 ✓
+  零池：283 项（st_a,ucf）｜臂 permit
+  待跑 283 项 → /root/p5a_results/p5a_Qwen3-VL-32B-Instruct_permit.csv
+    50/283  3.20 it/s  err=0
+    100/283  3.32 it/s  err=2
+    150/283  2.87 it/s  err=30
+    200/283  2.52 it/s  err=60
+    250/283  2.37 it/s  err=82
+  [permit] DONE：283 行（err=102）→ /root/p5a_results/p5a_Qwen3-VL-32B-Instruct_permit.csv

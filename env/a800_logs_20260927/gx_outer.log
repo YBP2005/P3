@@ -1,0 +1,48 @@
+[08:41:30] ########## 收官批开始 ONLY=全部 ##########
+[08:41:30] ===== G8b：另三格（英文/中文 base，同构建 BF16）=====
+[08:43:15]   起服就绪 Qwen3-VL-32B-Instruct（100s）
+[gx/g8b] 冻结件 md5 OK：129005a8a7c1326519c3f63260cbb3ae ｜ model=Qwen3-VL-32B-Instruct port=8013
+[gx/g8b] 待跑 1616 项（已完成 0）
+  200/1616 (6.71/s bad=0 err=0)
+  400/1616 (6.62/s bad=0 err=0)
+  600/1616 (5.81/s bad=0 err=0)
+  800/1616 (5.47/s bad=0 err=0)
+  1000/1616 (5.28/s bad=0 err=0)
+  1200/1616 (5.21/s bad=0 err=0)
+  1400/1616 (5.35/s bad=0 err=0)
+  1600/1616 (5.45/s bad=0 err=0)
+[gx/g8b] DONE n=1616 unparsed=0 err=0
+[08:48:10]   g8b 完成
+[08:48:10] ===== placebo anchors（5/50/100/800）=====
+/root/gx_all.sh: line 25: 25406 Killed                  setsid nohup $VLLM serve "$1" --served-model-name "$2" --max-model-len 8192 --gpu-memory-utilization 0.93 --limit-mm-per-prompt '{"image": 1}' --mm-processor-kwargs "$3" --trust-remote-code --port $PORT < /dev/null > "/root/gx_serve_$2.log" 2>&1
+[08:49:56]   起服就绪 Qwen3-VL-32B-Instruct（100s）
+[gx/placebo] 冻结件 md5 OK：129005a8a7c1326519c3f63260cbb3ae ｜ model=Qwen3-VL-32B-Instruct port=8013
+[gx/placebo] 待跑 600 项（已完成 0）
+  200/600 (9.45/s bad=0 err=0)
+  400/600 (9.54/s bad=0 err=0)
+  600/600 (9.61/s bad=0 err=0)
+[gx/placebo] DONE n=600 unparsed=0 err=0
+[08:50:58]   placebo 完成
+[08:50:58] ===== G10：同批 vs 分侧（两个本机有同款权重的构建）=====
+[08:50:58]   ---- 构建 InternVL3_5-8B ----
+/root/gx_all.sh: line 25: 25771 Killed                  setsid nohup $VLLM serve "$1" --served-model-name "$2" --max-model-len 8192 --gpu-memory-utilization 0.93 --limit-mm-per-prompt '{"image": 1}' --mm-processor-kwargs "$3" --trust-remote-code --port $PORT < /dev/null > "/root/gx_serve_$2.log" 2>&1
+[08:52:03]   起服就绪 InternVL3_5-8B（60s）
+[gx/g10mix] 冻结件 md5 OK：129005a8a7c1326519c3f63260cbb3ae ｜ model=InternVL3_5-8B port=8013
+[gx/g10mix] 待跑 564 项（已完成 0）
+  200/564 (176.69/s bad=200 err=0)
+  400/564 (216.47/s bad=400 err=0)
+[gx/g10mix] DONE n=564 unparsed=564 err=0
+[08:52:06]   InternVL3_5-8B 完成
+[08:52:06]   ---- 构建 gemma3-12b ----
+/root/gx_all.sh: line 25: 26113 Killed                  setsid nohup $VLLM serve "$1" --served-model-name "$2" --max-model-len 8192 --gpu-memory-utilization 0.93 --limit-mm-per-prompt '{"image": 1}' --trust-remote-code --port $PORT < /dev/null > "/root/gx_serve_$2.log" 2>&1
+[08:56:02]   起服就绪 gemma3-12b（230s）
+[gx/g10mix] 冻结件 md5 OK：129005a8a7c1326519c3f63260cbb3ae ｜ model=gemma3-12b port=8013
+[gx/g10mix] 待跑 564 项（已完成 0）
+  200/564 (170.05/s bad=200 err=0)
+  400/564 (214.61/s bad=400 err=0)
+[gx/g10mix] DONE n=564 unparsed=564 err=0
+[08:56:05]   gemma3-12b 完成
+[08:56:05] ===== G9b：新阈值（15%）重开 —— 先闸门、后测量 =====
+[09:02:17]   !! G9b 闸门仍未过 ⇒ 仍报不可测
+[09:02:17] ########## 收官批结束 ##########
+/root/gx_all.sh: line 25: 26480 Killed                  setsid nohup $VLLM serve "$1" --served-model-name "$2" --max-model-len 8192 --gpu-memory-utilization 0.93 --limit-mm-per-prompt '{"image": 1}' --trust-remote-code --port $PORT < /dev/null > "/root/gx_serve_$2.log" 2>&1

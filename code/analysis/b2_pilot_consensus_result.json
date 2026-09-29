@@ -1,0 +1,191 @@
+{
+ "InternVL3_5-8B|ucf": {
+  "n": 80,
+  "n_big": 60,
+  "auc_big": 0.5225,
+  "auc_zero": null,
+  "clipmae_all": 0.6217501533948477,
+  "clipmae_20": 0.5985327622984624,
+  "usable": false
+ },
+ "Phi-3.5-vision-instruct|ucf": {
+  "n": 80,
+  "n_big": 68,
+  "auc_big": 0.5759803921568627,
+  "auc_zero": null,
+  "clipmae_all": 0.7751887239944578,
+  "clipmae_20": 0.6745399933977136,
+  "usable": false
+ },
+ "gemma3-12b|ucf": {
+  "n": 80,
+  "n_big": 30,
+  "auc_big": 0.8273333333333334,
+  "auc_zero": null,
+  "clipmae_all": 0.45928631867066416,
+  "clipmae_20": 0.343612513428461,
+  "usable": false
+ },
+ "internvl25-8b-awq|ucf": {
+  "n": 80,
+  "n_big": 70,
+  "auc_big": 0.6642857142857143,
+  "auc_zero": null,
+  "clipmae_all": 0.6898926030081987,
+  "clipmae_20": 0.71550471095694,
+  "usable": false
+ },
+ "llava-onevision-qwen2-7b-ov|ucf": {
+  "n": 80,
+  "n_big": 77,
+  "auc_big": 0.6753246753246753,
+  "auc_zero": null,
+  "clipmae_all": 0.8088125427385812,
+  "clipmae_20": 0.7108593182524298,
+  "usable": false
+ },
+ "qwen25vl-72b-awq|ucf": {
+  "n": 80,
+  "n_big": 18,
+  "auc_big": 0.4175627240143369,
+  "auc_zero": null,
+  "clipmae_all": 0.338868701569541,
+  "clipmae_20": 0.42126767659670994,
+  "usable": false
+ },
+ "qwen3-vl-32b-awq|ucf": {
+  "n": 80,
+  "n_big": 74,
+  "auc_big": 0.49324324324324326,
+  "auc_zero": 0.5,
+  "clipmae_all": 0.9448190143324314,
+  "clipmae_20": 0.8733209546211834,
+  "usable": false
+ },
+ "InternVL3_5-8B|visdrone": {
+  "n": 146,
+  "n_big": 120,
+  "auc_big": 0.19615384615384615,
+  "auc_zero": 0.06662640901771337,
+  "clipmae_all": 0.828163731245923,
+  "clipmae_20": 0.9367816091954022,
+  "usable": false
+ },
+ "Phi-3.5-vision-instruct|visdrone": {
+  "n": 146,
+  "n_big": 142,
+  "auc_big": 0.198943661971831,
+  "auc_zero": 0.010775862068965518,
+  "clipmae_all": 0.9709719504240054,
+  "clipmae_20": 1.0,
+  "usable": false
+ },
+ "gemma3-12b|visdrone": {
+  "n": 146,
+  "n_big": 144,
+  "auc_big": 0.9513888888888888,
+  "auc_zero": 0.0,
+  "clipmae_all": 0.9853228962818004,
+  "clipmae_20": 0.9367816091954022,
+  "usable": false
+ },
+ "internvl25-8b-awq|visdrone": {
+  "n": 146,
+  "n_big": 135,
+  "auc_big": 0.25387205387205386,
+  "auc_zero": 0.20271260997067447,
+  "clipmae_all": 0.9186073059360729,
+  "clipmae_20": 0.9540229885057471,
+  "usable": false
+ },
+ "llava-onevision-qwen2-7b-ov|visdrone": {
+  "n": 146,
+  "n_big": 138,
+  "auc_big": 0.31521739130434784,
+  "auc_zero": 0.3445273631840796,
+  "clipmae_all": 0.9538812785388127,
+  "clipmae_20": 0.9540229885057471,
+  "usable": false
+ },
+ "qwen25vl-72b-awq|visdrone": {
+  "n": 146,
+  "n_big": 132,
+  "auc_big": 0.1920995670995671,
+  "auc_zero": 0.1317418213969938,
+  "clipmae_all": 0.9091568819308544,
+  "clipmae_20": 0.9540229885057471,
+  "usable": false
+ },
+ "qwen3-vl-32b-awq|visdrone": {
+  "n": 146,
+  "n_big": 145,
+  "auc_big": 0.2827586206896552,
+  "auc_zero": 0.2827586206896552,
+  "clipmae_all": 0.9931506849315068,
+  "clipmae_20": 1.0,
+  "usable": false
+ },
+ "InternVL3_5-8B|aitod": {
+  "n": 144,
+  "n_big": 99,
+  "auc_big": 0.27497194163860833,
+  "auc_zero": 0.05945616883116883,
+  "clipmae_all": 0.7164059409166882,
+  "clipmae_20": 0.9260057471264368,
+  "usable": false
+ },
+ "Phi-3.5-vision-instruct|aitod": {
+  "n": 144,
+  "n_big": 123,
+  "auc_big": 0.3097173828881146,
+  "auc_zero": 0.16293183940242764,
+  "clipmae_all": 0.873731658842196,
+  "clipmae_20": 1.0,
+  "usable": false
+ },
+ "gemma3-12b|aitod": {
+  "n": 144,
+  "n_big": 121,
+  "auc_big": 0.6776859504132231,
+  "auc_zero": 0.0,
+  "clipmae_all": 0.850990657098345,
+  "clipmae_20": 0.7091858716017553,
+  "usable": false
+ },
+ "internvl25-8b-awq|aitod": {
+  "n": 144,
+  "n_big": 132,
+  "auc_big": 0.3327020202020202,
+  "auc_zero": 0.18338945005611673,
+  "clipmae_all": 0.8943096590413349,
+  "clipmae_20": 1.0,
+  "usable": false
+ },
+ "llava-onevision-qwen2-7b-ov|aitod": {
+  "n": 144,
+  "n_big": 127,
+  "auc_big": 0.4349235757295044,
+  "auc_zero": 0.28545454545454546,
+  "clipmae_all": 0.8816561192780664,
+  "clipmae_20": 0.9502017608217168,
+  "usable": false
+ },
+ "qwen25vl-72b-awq|aitod": {
+  "n": 144,
+  "n_big": 105,
+  "auc_big": 0.1623931623931624,
+  "auc_zero": 0.11193415637860082,
+  "clipmae_all": 0.7690933656119934,
+  "clipmae_20": 0.9870689655172413,
+  "usable": false
+ },
+ "qwen3-vl-32b-awq|aitod": {
+  "n": 144,
+  "n_big": 141,
+  "auc_big": 0.4373522458628842,
+  "auc_zero": 0.4446428571428571,
+  "clipmae_all": 0.986314165042235,
+  "clipmae_20": 1.0,
+  "usable": false
+ }
+}

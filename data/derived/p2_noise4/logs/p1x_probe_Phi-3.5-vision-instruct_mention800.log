@@ -1,0 +1,10 @@
+  p1f_probe：提示词来源 /root/p1f_prompts.json（期望 md5 ceaa67e4a597…）
+  ① 19e_probe_multi.py md5 03edb14c98ff ✓
+  ② p1d_prompts.json   md5 ceaa67e4a597 ✓（新增臂 ['mention5', 'mention50', 'mention800']）
+  ④ 交叉自检：base/permit 与 p1_probe.circle_prompts() 逐字节相同 ✓
+  ③ 网格 manifest md5 9eef8a074cf1（63135 字节）
+  [Phi-3.5-vision-instruct/mention800] 网格 675 / 已完成 0 / 本次 675 ｜ model=Phi-3.5-vision-instruct
+    200/675  13.41 it/s  zero=0 abstain=0 parse_fail=0
+    400/675  13.50 it/s  zero=0 abstain=0 parse_fail=0
+    600/675  13.34 it/s  zero=0 abstain=0 parse_fail=0
+  [Phi-3.5-vision-instruct/mention800] DONE：675 行 → /root/p1d_results/p1d_Phi-3.5-vision-instruct_mention800.csv（zero=0 abstain=0 parse_fail=0）

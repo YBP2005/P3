@@ -1,0 +1,26 @@
+源 ModelScope 可用，共 18 个文件，合计 35.53 GB
+  OK  model-00002-of-00007.safetensors                       5365.0 MB
+  OK  model-00003-of-00007.safetensors                       5365.0 MB
+  OK  model-00004-of-00007.safetensors                       5365.0 MB
+  OK  model-00005-of-00007.safetensors                       5365.0 MB
+  OK  model-00006-of-00007.safetensors                       5365.0 MB
+  OK  model-00001-of-00007.safetensors                       5324.8 MB
+  OK  model-00007-of-00007.safetensors                       3367.0 MB
+  OK  tokenizer.json                                           10.2 MB
+  OK  vocab.json                                                5.0 MB
+  OK  model.safetensors.index.json                              0.1 MB
+  OK  config.json                                               0.0 MB
+  OK  tokenizer_config.json                                     0.0 MB
+  OK  README.md                                                 0.0 MB
+  OK  chat_template.json                                        0.0 MB
+  OK  preprocessor_config.json                                  0.0 MB
+  OK  video_preprocessor_config.json                            0.0 MB
+  OK  generation_config.json                                    0.0 MB
+  OK  configuration.json                                        0.0 MB
+
+=== 下载结束：成功 18，失败 0，用时 2147s ===
+总量 35.53 GB → /root/models/Qwen3-VL-32B-Instruct-FP8
+34G	/root/models/Qwen3-VL-32B-Instruct-FP8
+Filesystem      Size  Used Avail Use% Mounted on
+overlay         182G  102G   73G  59% /
+FP8_DOWNLOAD_DONE

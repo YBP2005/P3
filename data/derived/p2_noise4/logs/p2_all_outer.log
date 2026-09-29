@@ -1,0 +1,31 @@
+[04:33:15][qwen32b] === start ===  mid=Qwen3-VL-32B-Instruct port=8006 frac=0.85 maxlen=4096 limit=full
+[04:33:15][qwen32b] 服务 PID=36379，等待就绪…
+[04:35:25][qwen32b] !! 服务进程已退出，看 /root/logs/p2_qwen32b_serve.log
+(APIServer pid=36379)     ) as engine_launch:
+(APIServer pid=36379)     ^
+(APIServer pid=36379)   File "/usr/local/miniconda3/lib/python3.13/contextlib.py", line 148, in __exit__
+(APIServer pid=36379)     next(self.gen)
+(APIServer pid=36379)     ~~~~^^^^^^^^^^
+(APIServer pid=36379)   File "/usr/local/miniconda3/lib/python3.13/site-packages/vllm/v1/engine/utils.py", line 1240, in launch_core_engines
+(APIServer pid=36379)     wait_for_engine_startup(
+(APIServer pid=36379)     ~~~~~~~~~~~~~~~~~~~~~~~^
+(APIServer pid=36379)         handshake_socket,
+(APIServer pid=36379)         ^^^^^^^^^^^^^^^^^
+(APIServer pid=36379)     ...<4 lines>...
+(APIServer pid=36379)         launch,
+(APIServer pid=36379)         ^^^^^^^
+(APIServer pid=36379)     )
+(APIServer pid=36379)     ^
+(APIServer pid=36379)   File "/usr/local/miniconda3/lib/python3.13/site-packages/vllm/v1/engine/utils.py", line 1320, in wait_for_engine_startup
+(APIServer pid=36379)     raise RuntimeError(
+(APIServer pid=36379)     ...<8 lines>...
+(APIServer pid=36379)     )
+(APIServer pid=36379) RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+[04:35:25][gemma12b] === start ===  mid=gemma-3-12b-it port=8001 frac=0.40 maxlen=8192 limit=full
+[04:35:25][gemma12b] 服务 PID=36840，等待就绪…
+/root/p2_run.sh: line 71: syntax error near unexpected token `)'
+/root/p2_run.sh: line 71: `r,nounits -i 0 | tr -d ' ')'
+[04:39:21][internvl] === start ===  mid=InternVL3_5-8B port=8002 frac=0.28 maxlen=8192 limit=full
+[04:39:21][internvl] !! 已有 vllm 在跑 —— 单卡不能并发，先清卡
+[04:39:21][phi35] === start ===  mid=Phi-3.5-vision-instruct port=8003 frac=0.30 maxlen=8192 limit=full
+[04:39:21][phi35] !! 已有 vllm 在跑 —— 单卡不能并发，先清卡

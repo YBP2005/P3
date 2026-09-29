@@ -1,0 +1,7 @@
+  base 臂 pred==0 的 item 共 154 个；本次抽 150 个（gt 从 1 到 61）
+  [base] 150 行；pred==0 的 93 个；-> /root/e1_results/e1_qwen25vl-72b-awq_aitod_base.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/e1_results/e1_qwen25vl-72b-awq_aitod_permit.csv
+  [bestA] 150 行；pred==0 的 84 个；-> /root/e1_results/e1_qwen25vl-72b-awq_aitod_bestA.csv
+  [bestB] 150 行；pred==0 的 0 个；-> /root/e1_results/e1_qwen25vl-72b-awq_aitod_bestB.csv
+  [bestC] 150 行；pred==0 的 0 个；-> /root/e1_results/e1_qwen25vl-72b-awq_aitod_bestC.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/e1_results/e1_qwen25vl-72b-awq_aitod_channel.csv

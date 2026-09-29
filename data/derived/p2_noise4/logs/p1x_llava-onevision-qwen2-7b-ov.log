@@ -1,0 +1,8 @@
+[08:17:29][llava-onevision-qwen2-7b-ov] == 起服 llava-onevision-qwen2-7b-ov ｜ GPU1 port=8004 frac=0.26 maxlen=8192 extra='' ｜ 探针 /root/p1f_probe.py ==
+[08:17:39][llava-onevision-qwen2-7b-ov] [GPU1] 显存已回落（0 MiB）
+[08:18:43][llava-onevision-qwen2-7b-ov] 就绪（64s）
+[08:31:48][llava-onevision-qwen2-7b-ov] [llava-onevision-qwen2-7b-ov/mention5] 行=675
+[08:31:48][llava-onevision-qwen2-7b-ov] [llava-onevision-qwen2-7b-ov/mention50] 行=675
+[08:31:48][llava-onevision-qwen2-7b-ov] [llava-onevision-qwen2-7b-ov/mention800] 行=675
+[08:31:56][llava-onevision-qwen2-7b-ov] 回收孤儿 EngineCore pid=24832
+[08:31:56][llava-onevision-qwen2-7b-ov] P1X_llava-onevision-qwen2-7b-ov_DONE

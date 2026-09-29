@@ -1,0 +1,3 @@
+# The package is delivered byte-for-byte so that the MD5 values in
+# MANIFEST.csv verify on clone. Disable all text/EOL conversion.
+* -text

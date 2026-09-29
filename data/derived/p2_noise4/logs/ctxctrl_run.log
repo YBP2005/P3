@@ -1,0 +1,208 @@
+[07:15:52] ########## S1 服务栈对照：max-model-len 4096 vs 8192 × 3 次全新起服 ##########
+[07:15:52] ① 前置：探针与样本 md5
+9c091be2a2c8b196a56443dd71fe2698  /root/ctxctrl_probe.py
+03edb14c98ffa3aea9ffa20f59b00bc8  /root/19e_probe_multi.py
+d7d30474dc8357e2c67b39d0c23b5516  /root/fsc147/sample_test_ids.txt
+[07:15:52]   图像：300 张；样本：299 行
+[07:15:52]   GPU：NVIDIA A800-SXM4-80GB, 0 MiB
+[07:15:52] --- ctxctrl phi35 ｜ ctx=4096 ｜ start=1 ｜ /root/w1_results/ctxctrl_phi35_ml4096_s1
+[07:17:40]   [phi35 ml4096] 起服就绪 105s
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 254 个；-> /root/w1_results/ctxctrl_phi35_ml4096_s1/fsc_Phi-3.5-vision-instruct_base.csv
+  [permit] 300 行；答 0 的 3 个；-> /root/w1_results/ctxctrl_phi35_ml4096_s1/fsc_Phi-3.5-vision-instruct_permit.csv
+  [channel] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_phi35_ml4096_s1/fsc_Phi-3.5-vision-instruct_channel.csv
+  [enumAbstain] 300 行；答 0 的 6 个；-> /root/w1_results/ctxctrl_phi35_ml4096_s1/fsc_Phi-3.5-vision-instruct_enumAbstain.csv
+[07:19:39]   完成：4 个臂文件
+[07:19:42] --- ctxctrl phi35 ｜ ctx=8192 ｜ start=1 ｜ /root/w1_results/ctxctrl_phi35_ml8192_s1
+[07:20:45]   [phi35 ml8192] 起服就绪 60s
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 264 个；-> /root/w1_results/ctxctrl_phi35_ml8192_s1/fsc_Phi-3.5-vision-instruct_base.csv
+  [permit] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_phi35_ml8192_s1/fsc_Phi-3.5-vision-instruct_permit.csv
+  [channel] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_phi35_ml8192_s1/fsc_Phi-3.5-vision-instruct_channel.csv
+  [enumAbstain] 300 行；答 0 的 17 个；-> /root/w1_results/ctxctrl_phi35_ml8192_s1/fsc_Phi-3.5-vision-instruct_enumAbstain.csv
+[07:22:37]   完成：4 个臂文件
+[07:22:40] --- ctxctrl phi35 ｜ ctx=4096 ｜ start=2 ｜ /root/w1_results/ctxctrl_phi35_ml4096_s2
+[07:23:43]   [phi35 ml4096] 起服就绪 60s
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 255 个；-> /root/w1_results/ctxctrl_phi35_ml4096_s2/fsc_Phi-3.5-vision-instruct_base.csv
+  [permit] 300 行；答 0 的 4 个；-> /root/w1_results/ctxctrl_phi35_ml4096_s2/fsc_Phi-3.5-vision-instruct_permit.csv
+  [channel] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_phi35_ml4096_s2/fsc_Phi-3.5-vision-instruct_channel.csv
+  [enumAbstain] 300 行；答 0 的 6 个；-> /root/w1_results/ctxctrl_phi35_ml4096_s2/fsc_Phi-3.5-vision-instruct_enumAbstain.csv
+[07:25:40]   完成：4 个臂文件
+[07:25:43] --- ctxctrl phi35 ｜ ctx=8192 ｜ start=2 ｜ /root/w1_results/ctxctrl_phi35_ml8192_s2
+[07:26:31]   [phi35 ml8192] 起服就绪 45s
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 264 个；-> /root/w1_results/ctxctrl_phi35_ml8192_s2/fsc_Phi-3.5-vision-instruct_base.csv
+  [permit] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_phi35_ml8192_s2/fsc_Phi-3.5-vision-instruct_permit.csv
+  [channel] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_phi35_ml8192_s2/fsc_Phi-3.5-vision-instruct_channel.csv
+  [enumAbstain] 300 行；答 0 的 16 个；-> /root/w1_results/ctxctrl_phi35_ml8192_s2/fsc_Phi-3.5-vision-instruct_enumAbstain.csv
+[07:28:23]   完成：4 个臂文件
+[07:28:26] --- ctxctrl phi35 ｜ ctx=4096 ｜ start=3 ｜ /root/w1_results/ctxctrl_phi35_ml4096_s3
+[07:29:29]   [phi35 ml4096] 起服就绪 60s
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 254 个；-> /root/w1_results/ctxctrl_phi35_ml4096_s3/fsc_Phi-3.5-vision-instruct_base.csv
+  [permit] 300 行；答 0 的 3 个；-> /root/w1_results/ctxctrl_phi35_ml4096_s3/fsc_Phi-3.5-vision-instruct_permit.csv
+  [channel] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_phi35_ml4096_s3/fsc_Phi-3.5-vision-instruct_channel.csv
+  [enumAbstain] 300 行；答 0 的 6 个；-> /root/w1_results/ctxctrl_phi35_ml4096_s3/fsc_Phi-3.5-vision-instruct_enumAbstain.csv
+[07:31:28]   完成：4 个臂文件
+[07:31:31] --- ctxctrl phi35 ｜ ctx=8192 ｜ start=3 ｜ /root/w1_results/ctxctrl_phi35_ml8192_s3
+[07:32:19]   [phi35 ml8192] 起服就绪 45s
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 265 个；-> /root/w1_results/ctxctrl_phi35_ml8192_s3/fsc_Phi-3.5-vision-instruct_base.csv
+  [permit] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_phi35_ml8192_s3/fsc_Phi-3.5-vision-instruct_permit.csv
+  [channel] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_phi35_ml8192_s3/fsc_Phi-3.5-vision-instruct_channel.csv
+  [enumAbstain] 300 行；答 0 的 16 个；-> /root/w1_results/ctxctrl_phi35_ml8192_s3/fsc_Phi-3.5-vision-instruct_enumAbstain.csv
+[07:34:10]   完成：4 个臂文件
+[07:34:13] --- ctxctrl ivl8b ｜ ctx=4096 ｜ start=1 ｜ /root/w1_results/ctxctrl_ivl8b_ml4096_s1
+[07:36:16]   [ivl8b ml4096] 起服就绪 120s
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 273 个；-> /root/w1_results/ctxctrl_ivl8b_ml4096_s1/fsc_InternVL3_5-8B_base.csv
+  [permit] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_ivl8b_ml4096_s1/fsc_InternVL3_5-8B_permit.csv
+  [channel] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_ivl8b_ml4096_s1/fsc_InternVL3_5-8B_channel.csv
+  [enumAbstain] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_ivl8b_ml4096_s1/fsc_InternVL3_5-8B_enumAbstain.csv
+[07:39:47]   完成：4 个臂文件
+[07:39:50] --- ctxctrl ivl8b ｜ ctx=8192 ｜ start=1 ｜ /root/w1_results/ctxctrl_ivl8b_ml8192_s1
+[07:40:38]   [ivl8b ml8192] 起服就绪 45s
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 273 个；-> /root/w1_results/ctxctrl_ivl8b_ml8192_s1/fsc_InternVL3_5-8B_base.csv
+  [permit] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_ivl8b_ml8192_s1/fsc_InternVL3_5-8B_permit.csv
+  [channel] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_ivl8b_ml8192_s1/fsc_InternVL3_5-8B_channel.csv
+  [enumAbstain] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_ivl8b_ml8192_s1/fsc_InternVL3_5-8B_enumAbstain.csv
+[07:44:08]   完成：4 个臂文件
+[07:44:11] --- ctxctrl ivl8b ｜ ctx=4096 ｜ start=2 ｜ /root/w1_results/ctxctrl_ivl8b_ml4096_s2
+[07:44:59]   [ivl8b ml4096] 起服就绪 45s
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 273 个；-> /root/w1_results/ctxctrl_ivl8b_ml4096_s2/fsc_InternVL3_5-8B_base.csv
+  [permit] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_ivl8b_ml4096_s2/fsc_InternVL3_5-8B_permit.csv
+  [channel] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_ivl8b_ml4096_s2/fsc_InternVL3_5-8B_channel.csv
+  [enumAbstain] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_ivl8b_ml4096_s2/fsc_InternVL3_5-8B_enumAbstain.csv
+[07:48:31]   完成：4 个臂文件
+[07:48:34] --- ctxctrl ivl8b ｜ ctx=8192 ｜ start=2 ｜ /root/w1_results/ctxctrl_ivl8b_ml8192_s2
+[07:49:22]   [ivl8b ml8192] 起服就绪 45s
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 273 个；-> /root/w1_results/ctxctrl_ivl8b_ml8192_s2/fsc_InternVL3_5-8B_base.csv
+  [permit] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_ivl8b_ml8192_s2/fsc_InternVL3_5-8B_permit.csv
+  [channel] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_ivl8b_ml8192_s2/fsc_InternVL3_5-8B_channel.csv
+  [enumAbstain] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_ivl8b_ml8192_s2/fsc_InternVL3_5-8B_enumAbstain.csv
+[07:52:53]   完成：4 个臂文件
+[07:52:56] --- ctxctrl ivl8b ｜ ctx=4096 ｜ start=3 ｜ /root/w1_results/ctxctrl_ivl8b_ml4096_s3
+[07:53:44]   [ivl8b ml4096] 起服就绪 45s
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 273 个；-> /root/w1_results/ctxctrl_ivl8b_ml4096_s3/fsc_InternVL3_5-8B_base.csv
+  [permit] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_ivl8b_ml4096_s3/fsc_InternVL3_5-8B_permit.csv
+  [channel] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_ivl8b_ml4096_s3/fsc_InternVL3_5-8B_channel.csv
+  [enumAbstain] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_ivl8b_ml4096_s3/fsc_InternVL3_5-8B_enumAbstain.csv
+[07:57:14]   完成：4 个臂文件
+[07:57:17] --- ctxctrl ivl8b ｜ ctx=8192 ｜ start=3 ｜ /root/w1_results/ctxctrl_ivl8b_ml8192_s3
+[07:58:05]   [ivl8b ml8192] 起服就绪 45s
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 273 个；-> /root/w1_results/ctxctrl_ivl8b_ml8192_s3/fsc_InternVL3_5-8B_base.csv
+  [permit] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_ivl8b_ml8192_s3/fsc_InternVL3_5-8B_permit.csv
+  [channel] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_ivl8b_ml8192_s3/fsc_InternVL3_5-8B_channel.csv
+  [enumAbstain] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_ivl8b_ml8192_s3/fsc_InternVL3_5-8B_enumAbstain.csv
+[08:01:36]   完成：4 个臂文件
+[08:01:39] --- ctxctrl gemma12b ｜ ctx=4096 ｜ start=1 ｜ /root/w1_results/ctxctrl_gemma12b_ml4096_s1
+[08:04:27]   [gemma12b ml4096] 起服就绪 165s
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 249 个；-> /root/w1_results/ctxctrl_gemma12b_ml4096_s1/fsc_gemma3-12b_base.csv
+  [permit] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_gemma12b_ml4096_s1/fsc_gemma3-12b_permit.csv
+  [channel] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_gemma12b_ml4096_s1/fsc_gemma3-12b_channel.csv
+  [enumAbstain] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_gemma12b_ml4096_s1/fsc_gemma3-12b_enumAbstain.csv
+[08:05:46]   完成：4 个臂文件
+[08:05:49] --- ctxctrl gemma12b ｜ ctx=8192 ｜ start=1 ｜ /root/w1_results/ctxctrl_gemma12b_ml8192_s1
+[08:07:52]   [gemma12b ml8192] 起服就绪 120s
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 249 个；-> /root/w1_results/ctxctrl_gemma12b_ml8192_s1/fsc_gemma3-12b_base.csv
+  [permit] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_gemma12b_ml8192_s1/fsc_gemma3-12b_permit.csv
+  [channel] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_gemma12b_ml8192_s1/fsc_gemma3-12b_channel.csv
+  [enumAbstain] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_gemma12b_ml8192_s1/fsc_gemma3-12b_enumAbstain.csv
+[08:09:11]   完成：4 个臂文件
+[08:09:14] --- ctxctrl gemma12b ｜ ctx=4096 ｜ start=2 ｜ /root/w1_results/ctxctrl_gemma12b_ml4096_s2
+[08:11:17]   [gemma12b ml4096] 起服就绪 120s
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 249 个；-> /root/w1_results/ctxctrl_gemma12b_ml4096_s2/fsc_gemma3-12b_base.csv
+  [permit] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_gemma12b_ml4096_s2/fsc_gemma3-12b_permit.csv
+  [channel] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_gemma12b_ml4096_s2/fsc_gemma3-12b_channel.csv
+  [enumAbstain] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_gemma12b_ml4096_s2/fsc_gemma3-12b_enumAbstain.csv
+[08:12:35]   完成：4 个臂文件
+[08:12:38] --- ctxctrl gemma12b ｜ ctx=8192 ｜ start=2 ｜ /root/w1_results/ctxctrl_gemma12b_ml8192_s2
+[08:14:26]   [gemma12b ml8192] 起服就绪 105s
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 249 个；-> /root/w1_results/ctxctrl_gemma12b_ml8192_s2/fsc_gemma3-12b_base.csv
+  [permit] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_gemma12b_ml8192_s2/fsc_gemma3-12b_permit.csv
+  [channel] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_gemma12b_ml8192_s2/fsc_gemma3-12b_channel.csv
+  [enumAbstain] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_gemma12b_ml8192_s2/fsc_gemma3-12b_enumAbstain.csv
+[08:15:45]   完成：4 个臂文件
+[08:15:48] --- ctxctrl gemma12b ｜ ctx=4096 ｜ start=3 ｜ /root/w1_results/ctxctrl_gemma12b_ml4096_s3
+[08:17:51]   [gemma12b ml4096] 起服就绪 120s
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 249 个；-> /root/w1_results/ctxctrl_gemma12b_ml4096_s3/fsc_gemma3-12b_base.csv
+  [permit] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_gemma12b_ml4096_s3/fsc_gemma3-12b_permit.csv
+  [channel] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_gemma12b_ml4096_s3/fsc_gemma3-12b_channel.csv
+  [enumAbstain] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_gemma12b_ml4096_s3/fsc_gemma3-12b_enumAbstain.csv
+[08:19:09]   完成：4 个臂文件
+[08:19:12] --- ctxctrl gemma12b ｜ ctx=8192 ｜ start=3 ｜ /root/w1_results/ctxctrl_gemma12b_ml8192_s3
+[08:21:15]   [gemma12b ml8192] 起服就绪 120s
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 249 个；-> /root/w1_results/ctxctrl_gemma12b_ml8192_s3/fsc_gemma3-12b_base.csv
+  [permit] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_gemma12b_ml8192_s3/fsc_gemma3-12b_permit.csv
+  [channel] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_gemma12b_ml8192_s3/fsc_gemma3-12b_channel.csv
+  [enumAbstain] 300 行；答 0 的 0 个；-> /root/w1_results/ctxctrl_gemma12b_ml8192_s3/fsc_gemma3-12b_enumAbstain.csv
+[08:22:33]   完成：4 个臂文件
+[08:22:36] ########## S1 主跑完成，开始汇总 ##########
+======================================================================================================================
+■ S1 服务栈对照：`--max-model-len` 4096 vs 8192（每格 3 次全新起服；同 300 图 / 同 384 px / 同探针）
+======================================================================================================================
+构建                         臂              本轮 4096（均值[极差]）        本轮 8192（均值[极差]）        冻结面板(4096)       E1列(8192)       
+Phi-3.5-vision-instruct    base             0.0 [0.0–0.0]          0.0 [0.0–0.0]          0.0              0.0           
+Phi-3.5-vision-instruct    permit          95.1 [95.0–95.3]       99.7 [99.7–99.7]       95.0             99.7           
+Phi-3.5-vision-instruct    channel          0.0 [0.0–0.0]          0.0 [0.0–0.0]          0.0              0.0           
+Phi-3.5-vision-instruct    enumAbstain     48.8 [48.7–49.0]       12.4 [12.3–12.7]       48.7             12.7           
+InternVL3_5-8B             base             0.0 [0.0–0.0]          0.0 [0.0–0.0]          0.0              0.0           
+InternVL3_5-8B             permit          94.0 [94.0–94.0]       94.0 [94.0–94.0]       94.0             94.0           
+InternVL3_5-8B             channel          0.0 [0.0–0.0]          0.0 [0.0–0.0]          0.0              0.0           
+InternVL3_5-8B             enumAbstain     91.8 [91.7–92.0]       91.9 [91.7–92.0]       92.0             91.7           
+gemma3-12b                 base             0.0 [0.0–0.0]          0.0 [0.0–0.0]          0.0              0.0           
+gemma3-12b                 permit          91.2 [91.0–91.3]       91.3 [91.0–91.7]       91.3             91.3           
+gemma3-12b                 channel          0.0 [0.0–0.0]          0.0 [0.0–0.0]          0.0              0.0           
+gemma3-12b                 enumAbstain     81.0 [81.0–81.0]       81.0 [81.0–81.0]       81.0             81.0           
+
+■ 关键格：Phi-3.5-vision-instruct / `enumAbstain` 的**弃权率**（36.0 pp 分歧所在）
+  本轮 ctx=4096：均值  48.8%  三次 [48.7, 48.7, 49.0]  极差 0.3 pp
+  本轮 ctx=8192：均值  12.4%  三次 [12.7, 12.3, 12.3]  极差 0.4 pp
+  历史：冻结面板(4096) 48.7 ；E1 列(8192) 12.7
+
+■ 判定：4096 与 8192 的弃权率差 **36.4 pp**；同上下文内 3 次起服极差 4096 0.3 pp / 8192 0.4 pp
+  ⇒ 服务配置（上下文长度）可解释
+
+■ 与历史件的差（同上下文的那一对应当最小）
+  ctx=4096 vs frozen_panel_ml4096：
+    Phi-3.5-vision-instruct    base             +0.0 pp
+    Phi-3.5-vision-instruct    permit           +0.1 pp
+    Phi-3.5-vision-instruct    channel          +0.0 pp
+    Phi-3.5-vision-instruct    enumAbstain      +0.1 pp
+    InternVL3_5-8B             base             +0.0 pp
+    InternVL3_5-8B             permit           +0.0 pp
+    InternVL3_5-8B             channel          +0.0 pp
+    InternVL3_5-8B             enumAbstain      -0.2 pp
+    gemma3-12b                 base             +0.0 pp
+    gemma3-12b                 permit           -0.1 pp
+    gemma3-12b                 channel          +0.0 pp
+    gemma3-12b                 enumAbstain      +0.0 pp
+  ctx=8192 vs e1_sweep384_ml8192：
+    Phi-3.5-vision-instruct    base             +0.0 pp
+    Phi-3.5-vision-instruct    permit           +0.0 pp
+    Phi-3.5-vision-instruct    channel          +0.0 pp
+    Phi-3.5-vision-instruct    enumAbstain      -0.3 pp
+    InternVL3_5-8B             base             +0.0 pp
+    InternVL3_5-8B             permit           +0.0 pp
+    InternVL3_5-8B             channel          +0.0 pp
+    InternVL3_5-8B             enumAbstain      +0.2 pp
+    gemma3-12b                 base             +0.0 pp
+    gemma3-12b                 permit           +0.0 pp
+    gemma3-12b                 channel          +0.0 pp
+    gemma3-12b                 enumAbstain      +0.0 pp
+
+已写出 /root/w1_results/ctxctrl_result.json
+[08:22:37] ########## S1 完成 ##########
+[08:22:37] CTXCTRL_DONE

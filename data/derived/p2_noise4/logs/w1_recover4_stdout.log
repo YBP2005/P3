@@ -1,0 +1,12 @@
+[04:21:09] ===== Molmo 第三次尝试（缺件已修复：trust_remote_code + tensorflow）=====
+[04:22:57] 起服就绪 105s
+[04:22:59] smoke：可解析 4 / 4 条
+[04:23:39]   st_a 完成
+[04:26:16]   ucf 完成
+[04:27:21]   visdrone 完成
+[04:28:13]   aitod 完成
+[04:29:02] Molmo 完成：零池 16/16，非零池 12/12，FSC 4/4
+/root/w1_recover4.sh: line 22: 13255 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 4096 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 16 --port 8000 --trust-remote-code < /dev/null > "/root/logs/serve_w1r4_molmo.log" 2>&1
+[04:29:05] 重新打包（覆盖上一版 bundle）
+[04:29:05] 打包完成：620K  25308f6fbbbb7b8e1a780de501b36e0c
+[04:29:05] 最终产物计数：zero=96 nonzero=72 fsc=24 hosted=12

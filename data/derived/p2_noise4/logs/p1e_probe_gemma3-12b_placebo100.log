@@ -1,0 +1,10 @@
+  p1e_probe：提示词来源 /root/p1e_prompts.json（期望 md5 24e3af806db3…）
+  ① 19e_probe_multi.py md5 03edb14c98ff ✓
+  ② p1d_prompts.json   md5 24e3af806db3 ✓（新增臂 ['placebo100']）
+  ④ 交叉自检：base/permit 与 p1_probe.circle_prompts() 逐字节相同 ✓
+  ③ 网格 manifest md5 9eef8a074cf1（63135 字节）
+  [gemma3-12b/placebo100] 网格 675 / 已完成 0 / 本次 675 ｜ model=gemma3-12b
+    200/675  9.72 it/s  zero=0 abstain=0 parse_fail=0
+    400/675  10.01 it/s  zero=0 abstain=0 parse_fail=0
+    600/675  10.23 it/s  zero=0 abstain=0 parse_fail=0
+  [gemma3-12b/placebo100] DONE：675 行 → /root/p1d_results/p1d_gemma3-12b_placebo100.csv（zero=0 abstain=0 parse_fail=0）

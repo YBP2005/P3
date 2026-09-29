@@ -1,0 +1,211 @@
+{
+  "title": "F.9 ten (knob x domain) units — verifiable transcription record",
+  "kind": "transcription (Q3 path B)",
+  "transcribed_into": "PaperB_英文补充材料_PR_20260919.md",
+  "transcribed_from": "PaperB_章节骨架_v3_可确证性_20260911.md",
+  "transcribed_from_md5": "e295a8c9a4648a2083379240cebc8b02",
+  "transcribed_from_location": "§8.10 ③ 「更强校准族（保序回归 / 分位数映射）…」主表",
+  "literal_script_fix_ten_units": "fix_ten_units.py",
+  "literal_script_note": "fix_ten_units.py L46–74 以字面量写入 F.9；本记录的作用是把\"手打\"升级为\"可核验转录\"。",
+  "columns": [
+    "shared_affine",
+    "isotonic",
+    "quantile_map",
+    "isotonic_CI"
+  ],
+  "rows": [
+    {
+      "unit": "Detection, in-domain / VisDrone",
+      "src_line_key": "检测·域内 VisDrone",
+      "f9": [
+        103.9,
+        150.7,
+        254.8,
+        98.3,
+        172.2
+      ],
+      "upstream": [
+        103.9,
+        150.7,
+        254.8,
+        98.3,
+        172.2
+      ],
+      "ok": true
+    },
+    {
+      "unit": "VLM, output contract / InternVL",
+      "src_line_key": "VLM·输出契约 / ivl",
+      "f9": [
+        23.0,
+        97.7,
+        87.9,
+        74.0,
+        179.2
+      ],
+      "upstream": [
+        23.0,
+        97.7,
+        87.9,
+        74.0,
+        179.2
+      ],
+      "ok": true
+    },
+    {
+      "unit": "VLM, output contract / Qwen3-VL-32B",
+      "src_line_key": "VLM·输出契约 / q32",
+      "f9": [
+        58.5,
+        85.9,
+        90.0,
+        71.1,
+        109.0
+      ],
+      "upstream": [
+        58.5,
+        85.9,
+        90.0,
+        71.1,
+        109.0
+      ],
+      "ok": true
+    },
+    {
+      "unit": "Detection, zero-shot COCO",
+      "src_line_key": "检测·零样本 COCO",
+      "f9": [
+        56.0,
+        54.2,
+        283.1,
+        43.3,
+        93.0
+      ],
+      "upstream": [
+        56.0,
+        54.2,
+        283.1,
+        43.3,
+        93.0
+      ],
+      "ok": true
+    },
+    {
+      "unit": "Detection, in-domain / BBBC005",
+      "src_line_key": "检测·域内 BBBC005",
+      "f9": [
+        79.4,
+        49.0,
+        61.2,
+        45.0,
+        57.7
+      ],
+      "upstream": [
+        79.4,
+        49.0,
+        61.2,
+        45.0,
+        57.7
+      ],
+      "ok": true
+    },
+    {
+      "unit": "Density regression, official DM-Count / UCF-QNRF",
+      "src_line_key": "密度·官方 DM / ucf",
+      "f9": [
+        31.9,
+        36.6,
+        37.5,
+        24.0,
+        48.7
+      ],
+      "upstream": [
+        31.9,
+        36.6,
+        37.5,
+        24.0,
+        48.7
+      ],
+      "ok": true
+    },
+    {
+      "unit": "Density regression, official DM-Count / ShanghaiTech-A",
+      "src_line_key": "密度·官方 DM / st_a",
+      "f9": [
+        32.5,
+        33.5,
+        34.3,
+        29.5,
+        42.3
+      ],
+      "upstream": [
+        32.5,
+        33.5,
+        34.3,
+        29.5,
+        42.3
+      ],
+      "ok": true
+    },
+    {
+      "unit": "VLM, pixel budget / UCF-QNRF",
+      "src_line_key": "VLM·像素预算 / ucf",
+      "f9": [
+        8.6,
+        17.2,
+        4.7,
+        4.5,
+        19.6
+      ],
+      "upstream": [
+        8.6,
+        17.2,
+        4.7,
+        4.5,
+        19.6
+      ],
+      "ok": true
+    },
+    {
+      "unit": "VLM, pixel budget / VisDrone",
+      "src_line_key": "VLM·像素预算 / visdrone",
+      "f9": [
+        14.2,
+        16.8,
+        32.9,
+        11.4,
+        22.4
+      ],
+      "upstream": [
+        14.2,
+        16.8,
+        32.9,
+        11.4,
+        22.4
+      ],
+      "ok": true
+    },
+    {
+      "unit": "VLM, pixel budget / ShanghaiTech-A",
+      "src_line_key": "VLM·像素预算 / st_a",
+      "f9": [
+        1.5,
+        1.1,
+        1.4,
+        0.4,
+        4.2
+      ],
+      "upstream": [
+        1.5,
+        1.1,
+        1.4,
+        0.4,
+        4.2
+      ],
+      "ok": true
+    }
+  ],
+  "verification": "所有 10 行 × 4 数值列（含 ISO 95% CI 两端）与上游骨架表逐值一致（脚本 f9_transcribe_check.py，assert 通过）。",
+  "deployability_disclosure": "NOT independently reproduced. The upstream computation of the ISO column is not recoverable from the released records: f9_repro.py shows that under the pooled caliber declared in F.9 the in-sample isotonic calibration is identically equal to C0 in the oracle direction (PAVA preserves the sum) and identically zero in the deployable direction, and no family x caliber combination available in this repository reproduces the printed ISO values (mismatches of 1.4-3x). Citations of this table must therefore state the calibration caliber and mark the table as transcribed.",
+  "reproduction": "python -u analysis/work/f9_transcribe_check.py   (exit 0 = all 10 rows match; asserts)"
+}

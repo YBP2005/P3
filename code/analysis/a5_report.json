@@ -1,0 +1,1205 @@
+{
+ "zero_files": 228,
+ "families": {
+  "InternVL3_5-8B": {
+   "model": "InternVL3_5-8B",
+   "domains": {
+    "st_a": {
+     "n": 103,
+     "zero_n": 1,
+     "zero_rate": 0.009708737864077669,
+     "unparsed_n": 0,
+     "anomaly_n": 0,
+     "base_permit_pair_n": 1,
+     "permit_still_zero": 0
+    },
+    "ucf": {
+     "n": 150,
+     "zero_n": 1,
+     "zero_rate": 0.006666666666666667,
+     "unparsed_n": 0,
+     "anomaly_n": 0,
+     "base_permit_pair_n": 1,
+     "permit_still_zero": 0
+    },
+    "visdrone": {
+     "n": 150,
+     "zero_n": 95,
+     "zero_rate": 0.6333333333333333,
+     "unparsed_n": 0,
+     "anomaly_n": 0,
+     "base_permit_pair_n": 95,
+     "permit_still_zero": 0
+    },
+    "aitod": {
+     "n": 150,
+     "zero_n": 59,
+     "zero_rate": 0.3933333333333333,
+     "unparsed_n": 0,
+     "anomaly_n": 0,
+     "base_permit_pair_n": 59,
+     "permit_still_zero": 0
+    }
+   },
+   "p1": {
+    "pooled_n": 156,
+    "still_zero": 0,
+    "ratio": 0.0,
+    "ci": [
+     0.0,
+     0.0240329314484235
+    ],
+    "per_domain": {
+     "st_a": {
+      "n_zero": 1,
+      "still_zero": 0,
+      "ratio": 0.0,
+      "ci": [
+       0.0,
+       0.7934506856996815
+      ]
+     },
+     "ucf": {
+      "n_zero": 1,
+      "still_zero": 0,
+      "ratio": 0.0,
+      "ci": [
+       0.0,
+       0.7934506856996815
+      ]
+     },
+     "visdrone": {
+      "n_zero": 95,
+      "still_zero": 0,
+      "ratio": 0.0,
+      "ci": [
+       0.0,
+       0.03886485355700491
+      ]
+     },
+     "aitod": {
+      "n_zero": 59,
+      "still_zero": 0,
+      "ratio": 0.0,
+      "ci": [
+       0.0,
+       0.061129370553725075
+      ]
+     }
+    }
+   },
+   "p2": {
+    "dense": {
+     "k": 2,
+     "n": 253,
+     "rate": 0.007905138339920948,
+     "ci": [
+      0.0021705577509125804,
+      0.028359789095919123
+     ]
+    },
+    "aerial": {
+     "k": 154,
+     "n": 300,
+     "rate": 0.5133333333333333,
+     "ci": [
+      0.4569640167487391,
+      0.5693655040184501
+     ]
+    },
+    "full_pool": {
+     "dense": {
+      "k": 2,
+      "n": 253,
+      "rate": 0.007905138339920948
+     },
+     "aerial": {
+      "k": 154,
+      "n": 300,
+      "rate": 0.5133333333333333
+     }
+    },
+    "paired_subset": true,
+    "gap_pp": -50.54281949934124,
+    "gap_ci_pp": [
+     -56.1753052438575,
+     -44.54624331808242
+    ],
+    "gap_abs_pp": 50.54281949934124,
+    "gap_aerial_minus_dense_pp": 50.54281949934124,
+    "gap_dense_minus_aerial_pp": -50.54281949934124,
+    "paired": false
+   },
+   "p3": {
+    "per_domain": [
+     {
+      "ds": "st_a",
+      "base_zero_rate": 0.009708737864077669,
+      "permit_zero_rate_on_base_items": 0.0,
+      "delta_pp": -0.9708737864077669
+     },
+     {
+      "ds": "ucf",
+      "base_zero_rate": 0.006666666666666667,
+      "permit_zero_rate_on_base_items": 0.0,
+      "delta_pp": -0.6666666666666667
+     },
+     {
+      "ds": "visdrone",
+      "base_zero_rate": 0.6333333333333333,
+      "permit_zero_rate_on_base_items": 0.0,
+      "delta_pp": -63.33333333333333
+     },
+     {
+      "ds": "aitod",
+      "base_zero_rate": 0.3933333333333333,
+      "permit_zero_rate_on_base_items": 0.0,
+      "delta_pp": -39.33333333333333
+     }
+    ],
+    "all_negative": true
+   },
+   "nonzero_pool": {
+    "st_a": {
+     "n_nonzero": 79,
+     "permit_still_nonzero": 0.0,
+     "permit_abstain": 1.0,
+     "channel_still_nonzero": 0.08860759493670886
+    },
+    "ucf": {
+     "n_nonzero": 150,
+     "permit_still_nonzero": 0.0,
+     "permit_abstain": 1.0,
+     "channel_still_nonzero": 0.04666666666666667
+    },
+    "visdrone": {
+     "n_nonzero": 126,
+     "permit_still_nonzero": 0.5476190476190477,
+     "permit_abstain": 0.4523809523809524,
+     "channel_still_nonzero": 0.30158730158730157
+    },
+    "aitod": {
+     "n_nonzero": 71,
+     "permit_still_nonzero": 0.6901408450704225,
+     "permit_abstain": 0.30985915492957744,
+     "channel_still_nonzero": 0.4647887323943662
+    }
+   }
+  },
+  "Phi-3.5-vision-instruct": {
+   "model": "Phi-3.5-vision-instruct",
+   "domains": {
+    "visdrone": {
+     "n": 150,
+     "zero_n": 92,
+     "zero_rate": 0.6133333333333333,
+     "unparsed_n": 0,
+     "anomaly_n": 0,
+     "base_permit_pair_n": 92,
+     "permit_still_zero": 0
+    },
+    "aitod": {
+     "n": 150,
+     "zero_n": 105,
+     "zero_rate": 0.7,
+     "unparsed_n": 3,
+     "anomaly_n": 0,
+     "base_permit_pair_n": 105,
+     "permit_still_zero": 0
+    }
+   },
+   "p1": {
+    "pooled_n": 197,
+    "still_zero": 0,
+    "ratio": 0.0,
+    "ci": [
+     0.0,
+     0.01912682194711674
+    ],
+    "per_domain": {
+     "st_a": null,
+     "ucf": null,
+     "visdrone": {
+      "n_zero": 92,
+      "still_zero": 0,
+      "ratio": 0.0,
+      "ci": [
+       0.0,
+       0.04008138930367956
+      ]
+     },
+     "aitod": {
+      "n_zero": 105,
+      "still_zero": 0,
+      "ratio": 0.0,
+      "ci": [
+       3.469446951953614e-18,
+       0.03529407694509021
+      ]
+     }
+    }
+   },
+   "p2": {
+    "dense": {
+     "k": 0,
+     "n": 253,
+     "rate": 0.0,
+     "ci": [
+      0.0,
+      0.014956537157624185
+     ]
+    },
+    "aerial": {
+     "k": 197,
+     "n": 300,
+     "rate": 0.6566666666666666,
+     "ci": [
+      0.601259804172809,
+      0.7081120648416641
+     ]
+    },
+    "full_pool": {
+     "dense": {
+      "k": 0,
+      "n": 253,
+      "rate": 0.0
+     },
+     "aerial": {
+      "k": 197,
+      "n": 300,
+      "rate": 0.6566666666666666
+     }
+    },
+    "paired_subset": true,
+    "gap_pp": -65.66666666666666,
+    "gap_ci_pp": [
+     -70.8112064841664,
+     -59.927661164699764
+    ],
+    "gap_abs_pp": 65.66666666666666,
+    "gap_aerial_minus_dense_pp": 65.66666666666666,
+    "gap_dense_minus_aerial_pp": -65.66666666666666,
+    "paired": false
+   },
+   "p3": {
+    "per_domain": [
+     {
+      "ds": "visdrone",
+      "base_zero_rate": 0.6133333333333333,
+      "permit_zero_rate_on_base_items": 0.0,
+      "delta_pp": -61.33333333333333
+     },
+     {
+      "ds": "aitod",
+      "base_zero_rate": 0.7,
+      "permit_zero_rate_on_base_items": 0.0,
+      "delta_pp": -70.0
+     }
+    ],
+    "all_negative": true
+   },
+   "nonzero_pool": {
+    "st_a": {
+     "n_nonzero": 78,
+     "permit_still_nonzero": 0.0,
+     "permit_abstain": 1.0,
+     "channel_still_nonzero": 0.0
+    },
+    "ucf": {
+     "n_nonzero": 146,
+     "permit_still_nonzero": 0.0,
+     "permit_abstain": 1.0,
+     "channel_still_nonzero": 0.0
+    },
+    "visdrone": {
+     "n_nonzero": 116,
+     "permit_still_nonzero": 0.0,
+     "permit_abstain": 1.0,
+     "channel_still_nonzero": 0.0
+    },
+    "aitod": {
+     "n_nonzero": 59,
+     "permit_still_nonzero": 0.0,
+     "permit_abstain": 1.0,
+     "channel_still_nonzero": 0.0
+    }
+   }
+  },
+  "gemma3-12b": {
+   "model": "gemma3-12b",
+   "domains": {
+    "visdrone": {
+     "n": 158,
+     "zero_n": 5,
+     "zero_rate": 0.03164556962025317,
+     "unparsed_n": 0,
+     "anomaly_n": 0,
+     "base_permit_pair_n": 5,
+     "permit_still_zero": 0
+    },
+    "aitod": {
+     "n": 150,
+     "zero_n": 4,
+     "zero_rate": 0.02666666666666667,
+     "unparsed_n": 0,
+     "anomaly_n": 0,
+     "base_permit_pair_n": 4,
+     "permit_still_zero": 0
+    }
+   },
+   "p1": {
+    "pooled_n": 9,
+    "still_zero": 0,
+    "ratio": 0.0,
+    "ci": [
+     2.7755575615628914e-17,
+     0.2991450485179449
+    ],
+    "per_domain": {
+     "st_a": null,
+     "ucf": null,
+     "visdrone": {
+      "n_zero": 5,
+      "still_zero": 0,
+      "ratio": 0.0,
+      "ci": [
+       0.0,
+       0.4344824648984954
+      ]
+     },
+     "aitod": {
+      "n_zero": 4,
+      "still_zero": 0,
+      "ratio": 0.0,
+      "ci": [
+       0.0,
+       0.48989083657188465
+      ]
+     }
+    }
+   },
+   "p2": {
+    "dense": {
+     "k": 0,
+     "n": 253,
+     "rate": 0.0,
+     "ci": [
+      0.0,
+      0.014956537157624185
+     ]
+    },
+    "aerial": {
+     "k": 9,
+     "n": 300,
+     "rate": 0.03,
+     "ci": [
+      0.015861853807125847,
+      0.05602253914945472
+     ]
+    },
+    "full_pool": {
+     "dense": {
+      "k": 0,
+      "n": 253,
+      "rate": 0.0
+     },
+     "aerial": {
+      "k": 9,
+      "n": 308,
+      "rate": 0.02922077922077922
+     }
+    },
+    "paired_subset": true,
+    "gap_pp": -3.0,
+    "gap_ci_pp": [
+     -5.602253914945472,
+     -0.9418814866036629
+    ],
+    "gap_abs_pp": 3.0,
+    "gap_aerial_minus_dense_pp": 3.0,
+    "gap_dense_minus_aerial_pp": -3.0,
+    "paired": false
+   },
+   "p3": {
+    "per_domain": [
+     {
+      "ds": "visdrone",
+      "base_zero_rate": 0.03164556962025317,
+      "permit_zero_rate_on_base_items": 0.0,
+      "delta_pp": -3.1645569620253164
+     },
+     {
+      "ds": "aitod",
+      "base_zero_rate": 0.02666666666666667,
+      "permit_zero_rate_on_base_items": 0.0,
+      "delta_pp": -2.666666666666667
+     }
+    ],
+    "all_negative": true
+   },
+   "nonzero_pool": {
+    "st_a": {
+     "n_nonzero": 79,
+     "permit_still_nonzero": 0.02531645569620253,
+     "permit_abstain": 0.9746835443037974,
+     "channel_still_nonzero": 0.0
+    },
+    "ucf": {
+     "n_nonzero": 150,
+     "permit_still_nonzero": 0.006666666666666667,
+     "permit_abstain": 0.9933333333333333,
+     "channel_still_nonzero": 0.0
+    },
+    "visdrone": {
+     "n_nonzero": 127,
+     "permit_still_nonzero": 0.5275590551181102,
+     "permit_abstain": 0.47244094488188976,
+     "channel_still_nonzero": 0.2047244094488189
+    },
+    "aitod": {
+     "n_nonzero": 72,
+     "permit_still_nonzero": 0.6111111111111112,
+     "permit_abstain": 0.3888888888888889,
+     "channel_still_nonzero": 0.4027777777777778
+    }
+   }
+  },
+  "internvl25-8b-awq": {
+   "model": "internvl25-8b-awq",
+   "domains": {
+    "visdrone": {
+     "n": 150,
+     "zero_n": 128,
+     "zero_rate": 0.8533333333333334,
+     "unparsed_n": 0,
+     "anomaly_n": 0,
+     "base_permit_pair_n": 128,
+     "permit_still_zero": 0
+    },
+    "aitod": {
+     "n": 150,
+     "zero_n": 102,
+     "zero_rate": 0.68,
+     "unparsed_n": 0,
+     "anomaly_n": 0,
+     "base_permit_pair_n": 102,
+     "permit_still_zero": 0
+    }
+   },
+   "p1": {
+    "pooled_n": 230,
+    "still_zero": 0,
+    "ratio": 0.0,
+    "ci": [
+     0.0,
+     0.016427620841234277
+    ],
+    "per_domain": {
+     "st_a": null,
+     "ucf": null,
+     "visdrone": {
+      "n_zero": 128,
+      "still_zero": 0,
+      "ratio": 0.0,
+      "ci": [
+       0.0,
+       0.029136956286785136
+      ]
+     },
+     "aitod": {
+      "n_zero": 102,
+      "still_zero": 0,
+      "ratio": 0.0,
+      "ci": [
+       0.0,
+       0.03629446216287942
+      ]
+     }
+    }
+   },
+   "p2": {
+    "dense": {
+     "k": 0,
+     "n": 253,
+     "rate": 0.0,
+     "ci": [
+      0.0,
+      0.014956537157624185
+     ]
+    },
+    "aerial": {
+     "k": 230,
+     "n": 300,
+     "rate": 0.7666666666666667,
+     "ci": [
+      0.7156186535659715,
+      0.8109717617778126
+     ]
+    },
+    "full_pool": {
+     "dense": {
+      "k": 0,
+      "n": 283,
+      "rate": 0.0
+     },
+     "aerial": {
+      "k": 230,
+      "n": 300,
+      "rate": 0.7666666666666667
+     }
+    },
+    "paired_subset": true,
+    "gap_pp": -76.66666666666667,
+    "gap_ci_pp": [
+     -81.09717617778126,
+     -71.34727041777137
+    ],
+    "gap_abs_pp": 76.66666666666667,
+    "gap_aerial_minus_dense_pp": 76.66666666666667,
+    "gap_dense_minus_aerial_pp": -76.66666666666667,
+    "paired": false
+   },
+   "p3": {
+    "per_domain": [
+     {
+      "ds": "visdrone",
+      "base_zero_rate": 0.8533333333333334,
+      "permit_zero_rate_on_base_items": 0.0,
+      "delta_pp": -85.33333333333334
+     },
+     {
+      "ds": "aitod",
+      "base_zero_rate": 0.68,
+      "permit_zero_rate_on_base_items": 0.0,
+      "delta_pp": -68.0
+     }
+    ],
+    "all_negative": true
+   },
+   "nonzero_pool": {
+    "st_a": {
+     "n_nonzero": 79,
+     "permit_still_nonzero": 0.0,
+     "permit_abstain": 1.0,
+     "channel_still_nonzero": 0.0
+    },
+    "st_b": {
+     "n_nonzero": 316,
+     "permit_still_nonzero": 0.0031645569620253164,
+     "permit_abstain": 0.9968354430379747,
+     "channel_still_nonzero": 0.0
+    },
+    "ucf": {
+     "n_nonzero": 152,
+     "permit_still_nonzero": 0.0,
+     "permit_abstain": 1.0,
+     "channel_still_nonzero": 0.0
+    },
+    "visdrone": {
+     "n_nonzero": 126,
+     "permit_still_nonzero": 0.1984126984126984,
+     "permit_abstain": 0.8015873015873016,
+     "channel_still_nonzero": 0.023809523809523808
+    },
+    "aitod": {
+     "n_nonzero": 67,
+     "permit_still_nonzero": 0.23880597014925373,
+     "permit_abstain": 0.7611940298507462,
+     "channel_still_nonzero": 0.04477611940298507
+    }
+   }
+  },
+  "llava-onevision-qwen2-7b-ov": {
+   "model": "llava-onevision-qwen2-7b-ov",
+   "domains": {
+    "visdrone": {
+     "n": 150,
+     "zero_n": 134,
+     "zero_rate": 0.8933333333333333,
+     "unparsed_n": 4,
+     "anomaly_n": 0,
+     "base_permit_pair_n": 134,
+     "permit_still_zero": 2
+    },
+    "aitod": {
+     "n": 150,
+     "zero_n": 101,
+     "zero_rate": 0.6733333333333333,
+     "unparsed_n": 3,
+     "anomaly_n": 0,
+     "base_permit_pair_n": 101,
+     "permit_still_zero": 3
+    }
+   },
+   "p1": {
+    "pooled_n": 235,
+    "still_zero": 5,
+    "ratio": 0.02127659574468085,
+    "ci": [
+     0.009121515008680914,
+     0.0488309815584407
+    ],
+    "per_domain": {
+     "st_a": null,
+     "ucf": null,
+     "visdrone": {
+      "n_zero": 134,
+      "still_zero": 2,
+      "ratio": 0.014925373134328358,
+      "ci": [
+       0.004102664368123947,
+       0.05278485618978585
+      ]
+     },
+     "aitod": {
+      "n_zero": 101,
+      "still_zero": 3,
+      "ratio": 0.0297029702970297,
+      "ci": [
+       0.010152480648236338,
+       0.08371743429790407
+      ]
+     }
+    }
+   },
+   "p2": {
+    "dense": {
+     "k": 0,
+     "n": 253,
+     "rate": 0.0,
+     "ci": [
+      0.0,
+      0.014956537157624185
+     ]
+    },
+    "aerial": {
+     "k": 235,
+     "n": 300,
+     "rate": 0.7833333333333333,
+     "ci": [
+      0.7332901513634335,
+      0.8262121649393371
+     ]
+    },
+    "full_pool": {
+     "dense": {
+      "k": 0,
+      "n": 253,
+      "rate": 0.0
+     },
+     "aerial": {
+      "k": 235,
+      "n": 300,
+      "rate": 0.7833333333333333
+     }
+    },
+    "paired_subset": true,
+    "gap_pp": -78.33333333333333,
+    "gap_ci_pp": [
+     -82.62121649393372,
+     -73.11029009646471
+    ],
+    "gap_abs_pp": 78.33333333333333,
+    "gap_aerial_minus_dense_pp": 78.33333333333333,
+    "gap_dense_minus_aerial_pp": -78.33333333333333,
+    "paired": false
+   },
+   "p3": {
+    "per_domain": [
+     {
+      "ds": "visdrone",
+      "base_zero_rate": 0.8933333333333333,
+      "permit_zero_rate_on_base_items": 0.013333333333333334,
+      "delta_pp": -88.0
+     },
+     {
+      "ds": "aitod",
+      "base_zero_rate": 0.6733333333333333,
+      "permit_zero_rate_on_base_items": 0.02,
+      "delta_pp": -65.33333333333333
+     }
+    ],
+    "all_negative": true
+   },
+   "nonzero_pool": {
+    "st_a": {
+     "n_nonzero": 72,
+     "permit_still_nonzero": 0.1388888888888889,
+     "permit_abstain": 0.6944444444444444,
+     "channel_still_nonzero": 0.013888888888888888
+    },
+    "ucf": {
+     "n_nonzero": 142,
+     "permit_still_nonzero": 0.2112676056338028,
+     "permit_abstain": 0.7464788732394366,
+     "channel_still_nonzero": 0.0
+    },
+    "visdrone": {
+     "n_nonzero": 123,
+     "permit_still_nonzero": 0.983739837398374,
+     "permit_abstain": 0.008130081300813009,
+     "channel_still_nonzero": 0.17073170731707318
+    },
+    "aitod": {
+     "n_nonzero": 69,
+     "permit_still_nonzero": 0.8985507246376812,
+     "permit_abstain": 0.08695652173913043,
+     "channel_still_nonzero": 0.08695652173913043
+    }
+   }
+  },
+  "qwen25vl-72b-awq": {
+   "model": "qwen25vl-72b-awq",
+   "domains": {
+    "visdrone": {
+     "n": 150,
+     "zero_n": 121,
+     "zero_rate": 0.8066666666666666,
+     "unparsed_n": 0,
+     "anomaly_n": 0,
+     "base_permit_pair_n": 121,
+     "permit_still_zero": 0
+    },
+    "aitod": {
+     "n": 150,
+     "zero_n": 93,
+     "zero_rate": 0.62,
+     "unparsed_n": 0,
+     "anomaly_n": 0,
+     "base_permit_pair_n": 93,
+     "permit_still_zero": 0
+    }
+   },
+   "p1": {
+    "pooled_n": 214,
+    "still_zero": 0,
+    "ratio": 0.0,
+    "ci": [
+     0.0,
+     0.017634195268712377
+    ],
+    "per_domain": {
+     "st_a": null,
+     "ucf": null,
+     "visdrone": {
+      "n_zero": 121,
+      "still_zero": 0,
+      "ratio": 0.0,
+      "ci": [
+       0.0,
+       0.03077069796147583
+      ]
+     },
+     "aitod": {
+      "n_zero": 93,
+      "still_zero": 0,
+      "ratio": 0.0,
+      "ci": [
+       0.0,
+       0.039667502629614215
+      ]
+     }
+    }
+   },
+   "p2": {
+    "dense": {
+     "k": 0,
+     "n": 253,
+     "rate": 0.0,
+     "ci": [
+      0.0,
+      0.014956537157624185
+     ]
+    },
+    "aerial": {
+     "k": 214,
+     "n": 300,
+     "rate": 0.7133333333333334,
+     "ci": [
+      0.659718371114144,
+      0.7615539611608834
+     ]
+    },
+    "full_pool": {
+     "dense": {
+      "k": 0,
+      "n": 283,
+      "rate": 0.0
+     },
+     "aerial": {
+      "k": 214,
+      "n": 300,
+      "rate": 0.7133333333333334
+     }
+    },
+    "paired_subset": true,
+    "gap_pp": -71.33333333333334,
+    "gap_ci_pp": [
+     -76.15539611608834,
+     -65.76712979994319
+    ],
+    "gap_abs_pp": 71.33333333333334,
+    "gap_aerial_minus_dense_pp": 71.33333333333334,
+    "gap_dense_minus_aerial_pp": -71.33333333333334,
+    "paired": false
+   },
+   "p3": {
+    "per_domain": [
+     {
+      "ds": "visdrone",
+      "base_zero_rate": 0.8066666666666666,
+      "permit_zero_rate_on_base_items": 0.0,
+      "delta_pp": -80.66666666666666
+     },
+     {
+      "ds": "aitod",
+      "base_zero_rate": 0.62,
+      "permit_zero_rate_on_base_items": 0.0,
+      "delta_pp": -62.0
+     }
+    ],
+    "all_negative": true
+   },
+   "nonzero_pool": {
+    "st_a": {
+     "n_nonzero": 79,
+     "permit_still_nonzero": 0.0,
+     "permit_abstain": 1.0,
+     "channel_still_nonzero": 0.0
+    },
+    "ucf": {
+     "n_nonzero": 154,
+     "permit_still_nonzero": 0.0,
+     "permit_abstain": 1.0,
+     "channel_still_nonzero": 0.0
+    },
+    "visdrone": {
+     "n_nonzero": 126,
+     "permit_still_nonzero": 0.16666666666666666,
+     "permit_abstain": 0.8333333333333334,
+     "channel_still_nonzero": 0.5476190476190477
+    },
+    "aitod": {
+     "n_nonzero": 68,
+     "permit_still_nonzero": 0.39705882352941174,
+     "permit_abstain": 0.6029411764705882,
+     "channel_still_nonzero": 0.8088235294117647
+    }
+   }
+  },
+  "qwen3-vl-32b-awq": {
+   "model": "qwen3-vl-32b-awq",
+   "domains": {
+    "st_a": {
+     "n": 103,
+     "zero_n": 102,
+     "zero_rate": 0.9902912621359223,
+     "unparsed_n": 0,
+     "anomaly_n": 0,
+     "base_permit_pair_n": 102,
+     "permit_still_zero": 0
+    },
+    "ucf": {
+     "n": 180,
+     "zero_n": 166,
+     "zero_rate": 0.9222222222222223,
+     "unparsed_n": 0,
+     "anomaly_n": 0,
+     "base_permit_pair_n": 166,
+     "permit_still_zero": 0
+    },
+    "visdrone": {
+     "n": 273,
+     "zero_n": 268,
+     "zero_rate": 0.9816849816849816,
+     "unparsed_n": 0,
+     "anomaly_n": 0,
+     "base_permit_pair_n": 268,
+     "permit_still_zero": 0
+    },
+    "aitod": {
+     "n": 154,
+     "zero_n": 149,
+     "zero_rate": 0.9675324675324676,
+     "unparsed_n": 0,
+     "anomaly_n": 0,
+     "base_permit_pair_n": 149,
+     "permit_still_zero": 1
+    }
+   },
+   "p1": {
+    "pooled_n": 685,
+    "still_zero": 1,
+    "ratio": 0.00145985401459854,
+    "ci": [
+     0.00025774657851126027,
+     0.008222374279026043
+    ],
+    "per_domain": {
+     "st_a": {
+      "n_zero": 102,
+      "still_zero": 0,
+      "ratio": 0.0,
+      "ci": [
+       0.0,
+       0.03629446216287942
+      ]
+     },
+     "ucf": {
+      "n_zero": 166,
+      "still_zero": 0,
+      "ratio": 0.0,
+      "ci": [
+       0.0,
+       0.022617909956318884
+      ]
+     },
+     "visdrone": {
+      "n_zero": 268,
+      "still_zero": 0,
+      "ratio": 0.0,
+      "ci": [
+       0.0,
+       0.014131247084740735
+      ]
+     },
+     "aitod": {
+      "n_zero": 149,
+      "still_zero": 1,
+      "ratio": 0.006711409395973154,
+      "ci": [
+       0.0011857126129616105,
+       0.03703336006208448
+      ]
+     }
+    }
+   },
+   "p2": {
+    "dense": {
+     "k": 241,
+     "n": 253,
+     "rate": 0.9525691699604744,
+     "ci": [
+      0.9189382275332025,
+      0.9726623771739282
+     ]
+    },
+    "aerial": {
+     "k": 295,
+     "n": 300,
+     "rate": 0.9833333333333333,
+     "ci": [
+      0.9615846051598969,
+      0.9928605226507115
+     ]
+    },
+    "full_pool": {
+     "dense": {
+      "k": 268,
+      "n": 283,
+      "rate": 0.9469964664310954
+     },
+     "aerial": {
+      "k": 417,
+      "n": 427,
+      "rate": 0.9765807962529274
+     }
+    },
+    "paired_subset": true,
+    "gap_pp": -3.076416337285892,
+    "gap_ci_pp": [
+     -6.571852826246372,
+     -0.11542975628823088
+    ],
+    "gap_abs_pp": 3.076416337285892,
+    "gap_aerial_minus_dense_pp": 3.076416337285892,
+    "gap_dense_minus_aerial_pp": -3.076416337285892,
+    "paired": false
+   },
+   "p3": {
+    "per_domain": [
+     {
+      "ds": "st_a",
+      "base_zero_rate": 0.9902912621359223,
+      "permit_zero_rate_on_base_items": 0.0,
+      "delta_pp": -99.02912621359224
+     },
+     {
+      "ds": "ucf",
+      "base_zero_rate": 0.9222222222222223,
+      "permit_zero_rate_on_base_items": 0.0,
+      "delta_pp": -92.22222222222223
+     },
+     {
+      "ds": "visdrone",
+      "base_zero_rate": 0.9816849816849816,
+      "permit_zero_rate_on_base_items": 0.0,
+      "delta_pp": -98.16849816849816
+     },
+     {
+      "ds": "aitod",
+      "base_zero_rate": 0.9675324675324676,
+      "permit_zero_rate_on_base_items": 0.006493506493506494,
+      "delta_pp": -96.10389610389612
+     },
+     {
+      "ds": "countbench",
+      "base_zero_rate": 1.0,
+      "permit_zero_rate_on_base_items": 0.3333333333333333,
+      "delta_pp": -66.66666666666667
+     }
+    ],
+    "all_negative": true
+   },
+   "nonzero_pool": {
+    "st_a": {
+     "n_nonzero": 79,
+     "permit_still_nonzero": 0.012658227848101266,
+     "permit_abstain": 0.9873417721518988,
+     "channel_still_nonzero": 0.012658227848101266
+    },
+    "ucf": {
+     "n_nonzero": 151,
+     "permit_still_nonzero": 0.0,
+     "permit_abstain": 1.0,
+     "channel_still_nonzero": 0.0
+    },
+    "visdrone": {
+     "n_nonzero": 126,
+     "permit_still_nonzero": 0.3412698412698413,
+     "permit_abstain": 0.6587301587301587,
+     "channel_still_nonzero": 0.23809523809523808
+    },
+    "aitod": {
+     "n_nonzero": 69,
+     "permit_still_nonzero": 0.463768115942029,
+     "permit_abstain": 0.5217391304347826,
+     "channel_still_nonzero": 0.3188405797101449
+    },
+    "countbench": {
+     "n_nonzero": 134,
+     "permit_still_nonzero": 0.9850746268656716,
+     "permit_abstain": 0.014925373134328358,
+     "channel_still_nonzero": 0.9253731343283582
+    }
+   }
+  }
+ },
+ "item_set_check": {
+  "st_a": {
+   "n_families": 7,
+   "n_ref": 103,
+   "all_equal": true,
+   "per_family_n": {
+    "InternVL3_5-8B": 103,
+    "Phi-3.5-vision-instruct": 103,
+    "gemma3-12b": 103,
+    "internvl25-8b-awq": 103,
+    "llava-onevision-qwen2-7b-ov": 103,
+    "qwen25vl-72b-awq": 103,
+    "qwen3-vl-32b-awq": 103
+   }
+  },
+  "ucf": {
+   "n_families": 7,
+   "n_ref": 150,
+   "all_equal": false,
+   "per_family_n": {
+    "InternVL3_5-8B": 150,
+    "Phi-3.5-vision-instruct": 150,
+    "gemma3-12b": 150,
+    "internvl25-8b-awq": 180,
+    "llava-onevision-qwen2-7b-ov": 150,
+    "qwen25vl-72b-awq": 180,
+    "qwen3-vl-32b-awq": 180
+   }
+  },
+  "visdrone": {
+   "n_families": 7,
+   "n_ref": 150,
+   "all_equal": false,
+   "per_family_n": {
+    "InternVL3_5-8B": 150,
+    "Phi-3.5-vision-instruct": 150,
+    "gemma3-12b": 158,
+    "internvl25-8b-awq": 150,
+    "llava-onevision-qwen2-7b-ov": 150,
+    "qwen25vl-72b-awq": 150,
+    "qwen3-vl-32b-awq": 273
+   }
+  },
+  "aitod": {
+   "n_families": 7,
+   "n_ref": 150,
+   "all_equal": false,
+   "per_family_n": {
+    "InternVL3_5-8B": 150,
+    "Phi-3.5-vision-instruct": 150,
+    "gemma3-12b": 150,
+    "internvl25-8b-awq": 150,
+    "llava-onevision-qwen2-7b-ov": 150,
+    "qwen25vl-72b-awq": 150,
+    "qwen3-vl-32b-awq": 154
+   }
+  }
+ },
+ "anchor_note": null,
+ "criteria_md5": "eaeafbc4ad4602e0a0f092d1306aea3c",
+ "scope_domains": [
+  "st_a",
+  "ucf",
+  "visdrone",
+  "aitod"
+ ],
+ "ds_all_diagnostic_only": [
+  "st_a",
+  "st_b",
+  "ucf",
+  "visdrone",
+  "aitod",
+  "countbench"
+ ],
+ "verdict": {
+  "n_families": 7,
+  "p1_pass": [
+   "InternVL3_5-8B",
+   "Phi-3.5-vision-instruct",
+   "gemma3-12b",
+   "internvl25-8b-awq",
+   "llava-onevision-qwen2-7b-ov",
+   "qwen25vl-72b-awq",
+   "qwen3-vl-32b-awq"
+  ],
+  "p1_counterexample": [],
+  "p1_partial": [],
+  "p2_pass_abs": [
+   "InternVL3_5-8B",
+   "Phi-3.5-vision-instruct",
+   "internvl25-8b-awq",
+   "llava-onevision-qwen2-7b-ov",
+   "qwen25vl-72b-awq"
+  ],
+  "p2_pass_aerial_minus_dense": [
+   "InternVL3_5-8B",
+   "Phi-3.5-vision-instruct",
+   "internvl25-8b-awq",
+   "llava-onevision-qwen2-7b-ov",
+   "qwen25vl-72b-awq"
+  ],
+  "p2_pass_dense_minus_aerial": [],
+  "p3_pass": [
+   "InternVL3_5-8B",
+   "Phi-3.5-vision-instruct",
+   "gemma3-12b",
+   "internvl25-8b-awq",
+   "llava-onevision-qwen2-7b-ov",
+   "qwen25vl-72b-awq",
+   "qwen3-vl-32b-awq"
+  ],
+  "p1_verdict_literal_ge5": true,
+  "p2_verdict_literal_ge5": true,
+  "p1_verdict_fractional": true,
+  "p2_verdict_fractional": false,
+  "note_p2_sign": "冻结文件的\"密集域与航拍域之差\"字面为 密-航；实测方向以\"航>密\"为主（与 E2 §11.2 的两类主张一致），故同时报出两个方向与绝对差。"
+ }
+}

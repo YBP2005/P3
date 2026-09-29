@@ -1,0 +1,111 @@
+[08:54:09] ########## v4 开始 08:54:09 ##########
+[08:54:09] === FP8 32B ===
+[08:54:19]   起服务 qwen3-vl-32b-fp8（尝试1，mm-kwargs=有）
+[08:58:20]     尝试1 READY 显存 81515 MiB
+[08:58:20]     跑 19b_e1_probe.py / qwen3-vl-32b-fp8 / st_a / base,permit,bestA,bestB,bestC,channel
+[08:59:40]       rc=0 行数 15438→16056 去重item 283→283 用时 80s
+[08:59:40]     跑 19b_e1_probe.py / qwen3-vl-32b-fp8 / ucf / base,permit,bestA,bestB,bestC,channel
+[09:02:56]       rc=0 行数 16056→17136 去重item 283→283 用时 196s
+[09:02:56]     跑 19d_probe_nonzero.py / qwen3-vl-32b-fp8 / st_a / base,permit,channel
+[09:03:23]       rc=0 行数 4443→4680 去重item 470→470 用时 27s
+[09:03:23]     跑 19d_probe_nonzero.py / qwen3-vl-32b-fp8 / ucf / base,permit,channel
+[09:04:50]       rc=0 行数 4680→5142 去重item 470→470 用时 87s
+[09:04:50]     跑 19c_probe_paraphrase.py / qwen3-vl-32b-fp8 / st_a / permitB,permitC,channelB
+[09:05:27]       rc=0 行数 17136→17445 去重item 283→283 用时 37s
+[09:05:27]     跑 19c_probe_paraphrase.py / qwen3-vl-32b-fp8 / ucf / permitB,permitC,channelB
+[09:07:09]       rc=0 行数 17445→17985 去重item 283→283 用时 102s
+[09:07:09] === GPTQ-W4 32B ===
+[09:07:19]   起服务 qwen3-vl-32b-gptq（尝试1，mm-kwargs=有）
+[09:09:49]     尝试1 READY 显存 71593 MiB
+[09:09:50]     跑 19b_e1_probe.py / qwen3-vl-32b-gptq / st_a / base,permit,bestA,bestB,bestC,channel
+[09:11:29]       rc=0 行数 17985→18603 去重item 283→283 用时 99s
+[09:11:29]     跑 19b_e1_probe.py / qwen3-vl-32b-gptq / ucf / base,permit,bestA,bestB,bestC,channel
+[09:15:32]       rc=0 行数 18603→19683 去重item 283→283 用时 243s
+[09:15:32]     跑 19d_probe_nonzero.py / qwen3-vl-32b-gptq / st_a / base,permit,channel
+[09:16:13]       rc=0 行数 5142→5379 去重item 470→470 用时 41s
+[09:16:13]     跑 19d_probe_nonzero.py / qwen3-vl-32b-gptq / ucf / base,permit,channel
+[09:18:18]       rc=0 行数 5379→5841 去重item 470→470 用时 125s
+[09:18:18] === 重下 AWQ-8bit（之前被并发下载破坏，已删除）===
+  ModelScope 取清单失败: <urlopen error _ssl.c:993: The handshake operation timed out>
+  [hf-mirror] cyankiwi/Qwen3-VL-32B-Instruct-AWQ-8bit：22 文件 37.48 GB
+    OK  model-00004-of-00008.safetensors                     4941.3 MB  (496s)
+    OK  model-00006-of-00008.safetensors                     4941.3 MB  (908s)
+    OK  model-00002-of-00008.safetensors                     4941.3 MB  (1353s)
+    OK  model-00001-of-00008.safetensors                     4919.0 MB  (1815s)
+    !!  model-00003-of-00008.safetensors                   期望 4902335448 实得 598827236
+    OK  model-00005-of-00008.safetensors                     4902.3 MB  (2323s)
+    OK  model-00007-of-00008.safetensors                     4902.3 MB  (2742s)
+    OK  model-00008-of-00008.safetensors                     3009.8 MB  (3020s)
+    OK  tokenizer.json                                         11.4 MB  (3023s)
+    OK  vocab.json                                              2.8 MB  (3037s)
+    OK  merges.txt                                              1.7 MB  (3056s)
+    OK  model.safetensors.index.json                            0.2 MB  (3060s)
+    OK  README.md                                               0.0 MB  (3061s)
+    OK  config.json                                             0.0 MB  (3062s)
+    OK  tokenizer_config.json                                   0.0 MB  (3065s)
+    OK  chat_template.jinja                                     0.0 MB  (3067s)
+    OK  processor_config.json                                   0.0 MB  (3070s)
+    OK  .gitattributes                                          0.0 MB  (3081s)
+    OK  recipe.yaml                                             0.0 MB  (3083s)
+    OK  added_tokens.json                                       0.0 MB  (3085s)
+    OK  special_tokens_map.json                                 0.0 MB  (3088s)
+    OK  generation_config.json                                  0.0 MB  (3091s)
+  → cyankiwi/Qwen3-VL-32B-Instruct-AWQ-8bit 成功 21 失败 1  32.57 GB  3091s
+Filesystem              Size  Used Avail Use% Mounted on
+overlay                 389G  189G  184G  51% /
+UPFS:upfs-13n5o97wrrr4   40T   27T   13T  68% /model
+DL_ALL_PARTIAL
+[10:11:43]   下载结束：31G
+[10:11:43] === AWQ-8bit 32B ===
+[10:11:53]   起服务 qwen3-vl-32b-awq8（尝试1，mm-kwargs=有）
+[10:12:38]     尝试1 第 45s 进程消失
+[10:12:38]     尝试1 失败，日志尾：
+        (APIServer pid=16146)     next(self.gen)
+        (APIServer pid=16146)   File "/root/vllm312/lib/python3.12/site-packages/vllm/v1/engine/utils.py", line 1240, in launch_core_engines
+        (APIServer pid=16146)     wait_for_engine_startup(
+        (APIServer pid=16146)   File "/root/vllm312/lib/python3.12/site-packages/vllm/v1/engine/utils.py", line 1320, in wait_for_engine_startup
+        (APIServer pid=16146)     raise RuntimeError(
+        (APIServer pid=16146) RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+[10:12:48]   起服务 qwen3-vl-32b-awq8（尝试2，mm-kwargs=有）
+[10:13:34]     尝试2 第 45s 进程消失
+[10:13:34]     尝试2 失败，日志尾：
+        (APIServer pid=16431)     next(self.gen)
+        (APIServer pid=16431)   File "/root/vllm312/lib/python3.12/site-packages/vllm/v1/engine/utils.py", line 1240, in launch_core_engines
+        (APIServer pid=16431)     wait_for_engine_startup(
+        (APIServer pid=16431)   File "/root/vllm312/lib/python3.12/site-packages/vllm/v1/engine/utils.py", line 1320, in wait_for_engine_startup
+        (APIServer pid=16431)     raise RuntimeError(
+        (APIServer pid=16431) RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+[10:13:34]   !! qwen3-vl-32b-awq8 两次尝试都起不来
+[10:13:34] === InternVL2.5-8B-AWQ 重跑（修正图像处理器参数）===
+[10:13:44]   起服务 internvl25-8b-awq（尝试1，**不传 mm-processor-kwargs**）
+[10:14:59]     尝试1 READY 显存 72439 MiB
+[10:14:59]     跑 19b_e1_probe.py / internvl25-8b-awq / st_a / base,permit,bestA,bestB,bestC,channel
+[10:16:10]       rc=0 行数 19683→20301 去重item 283→283 用时 71s
+[10:16:10]     跑 19b_e1_probe.py / internvl25-8b-awq / ucf / base,permit,bestA,bestB,bestC,channel
+[10:18:33]       rc=0 行数 20301→21381 去重item 283→283 用时 143s
+[10:18:33]     跑 19d_probe_nonzero.py / internvl25-8b-awq / st_a / base,permit,channel
+[10:19:06]       rc=0 行数 5841→6078 去重item 470→470 用时 33s
+[10:19:06]     跑 19d_probe_nonzero.py / internvl25-8b-awq / ucf / base,permit,channel
+[10:20:24]       rc=0 行数 6078→6540 去重item 470→470 用时 78s
+[10:20:24]     跑 19d_probe_nonzero.py / internvl25-8b-awq / st_b / base,permit,channel
+[10:28:14]       rc=0 行数 6540→7488 去重item 470→470 用时 470s
+[10:28:14] === 等 72B 权重（最多 90 分钟）===
+[10:28:14] === Qwen2.5-VL-72B-AWQ（规模检验；代际+规模混合变量）===
+[10:28:24]   起服务 qwen25vl-72b-awq（尝试1，mm-kwargs=有）
+[10:30:54]     尝试1 READY 显存 86061 MiB
+[10:30:54]     跑 19b_e1_probe.py / qwen25vl-72b-awq / st_a / base,permit,bestA,bestB,bestC,channel
+[10:34:13]       rc=0 行数 21381→21999 去重item 283→283 用时 199s
+[10:34:13]     跑 19b_e1_probe.py / qwen25vl-72b-awq / ucf / base,permit,bestA,bestB,bestC,channel
+[11:00:36]       rc=0 行数 21999→23079 去重item 283→283 用时 1583s
+[11:00:36]     跑 19d_probe_nonzero.py / qwen25vl-72b-awq / st_a / base,permit,channel
+[11:02:14]       rc=0 行数 7488→7725 去重item 470→470 用时 98s
+[11:02:14]     跑 19d_probe_nonzero.py / qwen25vl-72b-awq / ucf / base,permit,channel
+[11:13:44]       rc=0 行数 7725→8187 去重item 470→470 用时 690s
+[11:13:44]     跑 19c_probe_paraphrase.py / qwen25vl-72b-awq / st_a / permitB,permitC,channelB
+[11:15:50]       rc=0 行数 23079→23388 去重item 283→283 用时 126s
+[11:15:50]     跑 19c_probe_paraphrase.py / qwen25vl-72b-awq / ucf / permitB,permitC,channelB
+[11:28:37]       rc=0 行数 23388→23928 去重item 283→283 用时 767s
+[11:28:37] ########## v4 结束 11:28:37 ##########
+[11:28:37]   零池：总行数 23928，去重 item 283
+[11:28:37]   非零池：总行数 8187，去重 item 470
+EXP_V4_DONE

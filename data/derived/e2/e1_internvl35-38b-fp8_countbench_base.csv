@@ -1,0 +1,17 @@
+item,gt,pred,parse_ok,raw,latency_s
+img_00512.jpg,3,0,1,"{""count"": 0}",4.08
+img_00174.jpg,6,0,1,"```json
+{""count"": 0}
+```",4.11
+img_00281.jpg,2,0,1,"```json
+{""count"": 0}
+```",4.11
+img_00126.jpg,5,0,1,"```json
+{""count"": 0}
+```",4.13
+img_00433.jpg,2,0,1,"```json
+{""count"": 0}
+```",4.14
+img_00406.jpg,6,0,1,"```json
+{""count"": 0}
+```",4.14

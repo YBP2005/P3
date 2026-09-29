@@ -1,0 +1,600 @@
+[08:41:30] ########## 收官批开始 ONLY=全部 ##########
+[08:41:30] ===== G8b：另三格（英文/中文 base，同构建 BF16）=====
+[08:43:15]   起服就绪 Qwen3-VL-32B-Instruct（100s）
+[08:48:10]   g8b 完成
+[08:48:10] ===== placebo anchors（5/50/100/800）=====
+[08:49:56]   起服就绪 Qwen3-VL-32B-Instruct（100s）
+[08:50:58]   placebo 完成
+[08:50:58] ===== G10：同批 vs 分侧（两个本机有同款权重的构建）=====
+[08:50:58]   ---- 构建 InternVL3_5-8B ----
+[08:52:03]   起服就绪 InternVL3_5-8B（60s）
+[08:52:06]   InternVL3_5-8B 完成
+[08:52:06]   ---- 构建 gemma3-12b ----
+[08:56:02]   起服就绪 gemma3-12b（230s）
+[08:56:05]   gemma3-12b 完成
+[08:56:05] ===== G9b：新阈值（15%）重开 —— 先闸门、后测量 =====
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:   0%|          | 2/1058 [00:00<01:02, 16.84it/s]Loading weights:   1%|          | 6/1058 [00:00<00:40, 26.04it/s]Loading weights:  67%|██████▋   | 710/1058 [00:00<00:00, 2886.34it/s]Loading weights:  98%|█████████▊| 1033/1058 [00:00<00:00, 2926.77it/s]Loading weights: 100%|██████████| 1058/1058 [00:00<00:00, 2122.86it/s]
+Some parameters are on the meta device because they were offloaded to the cpu.
+[W927 09:02:15.608373171 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 1556086784 bytes (free: 1165819904, total: 85293072384).
+[W927 09:02:15.616160735 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 1556086784 bytes (free: 1167917056, total: 85293072384).
+Traceback (most recent call last):
+  File "/root/g9_guard.py", line 146, in <module>
+    main()
+    ~~~~^^
+  File "/root/g9_guard.py", line 80, in main
+    pair = decode([p, os.path.join(IMG, fs[j])], prompt)
+  File "/root/g9_guard.py", line 66, in decode
+    g = model.generate(**inp, max_new_tokens=8, do_sample=False)
+  File "/usr/local/miniconda3/lib/python3.13/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+  File "/usr/local/miniconda3/lib/python3.13/site-packages/transformers/generation/utils.py", line 2802, in generate
+    result = decoding_method(
+        self,
+    ...<5 lines>...
+        **model_kwargs,
+    )
+  File "/usr/local/miniconda3/lib/python3.13/site-packages/transformers/generation/utils.py", line 3002, in _sample
+    outputs = self._prefill(
+        input_ids,
+    ...<2 lines>...
+        is_first_iteration=not generation_config.is_assistant,
+    )
+  File "/usr/local/miniconda3/lib/python3.13/site-packages/transformers/generation/utils.py", line 4109, in _prefill
+    return self(**model_inputs, return_dict=True)
+  File "/usr/local/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/local/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/miniconda3/lib/python3.13/site-packages/accelerate/hooks.py", line 192, in new_forward
+    output = module._old_forward(*args, **kwargs)
+  File "/usr/local/miniconda3/lib/python3.13/site-packages/transformers/utils/generic.py", line 939, in wrapper
+    output = func(self, *args, **kwargs)
+  File "/usr/local/miniconda3/lib/python3.13/site-packages/transformers/models/qwen3_vl/modeling_qwen3_vl.py", line 1379, in forward
+    logits = self.lm_head(hidden_states[:, slice_indices, :])
+  File "/usr/local/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/local/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/miniconda3/lib/python3.13/site-packages/accelerate/hooks.py", line 187, in new_forward
+    args, kwargs = module._hf_hook.pre_forward(module, *args, **kwargs)
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/miniconda3/lib/python3.13/site-packages/accelerate/hooks.py", line 50, in wrapper
+    return wrapper._compiled_fn(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/local/miniconda3/lib/python3.13/site-packages/torch/_dynamo/eval_frame.py", line 1446, in _fn
+    return fn(*args, **kwargs)
+  File "/usr/local/miniconda3/lib/python3.13/site-packages/accelerate/hooks.py", line 388, in pre_forward
+    set_module_tensor_to_device(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        module,
+        ^^^^^^^
+    ...<4 lines>...
+        tied_params_map=self.tied_params_map,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/miniconda3/lib/python3.13/site-packages/accelerate/utils/modeling.py", line 353, in set_module_tensor_to_device
+    new_value = value.to(device, non_blocking=non_blocking)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.45 GiB. GPU 0 has a total capacity of 79.44 GiB of which 1.09 GiB is free. Process 74364 has 72.85 GiB memory in use. Process 75220 has 5.48 GiB memory in use. Of the allocated memory 3.89 GiB is allocated by PyTorch, and 1.10 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+[09:02:17]   !! G9b 闸门仍未过 ⇒ 仍报不可测
+[09:02:17] ########## 收官批结束 ##########
+total 276
+-rw-r--r-- 1 root root  38825 Sep 27 08:52 gx_g10mix_InternVL3_5-8B.csv
+-rw-r--r-- 1 root root  36569 Sep 27 08:56 gx_g10mix_gemma3-12b.csv
+-rw-r--r-- 1 root root 147727 Sep 27 08:48 gx_g8b_Qwen3-VL-32B-Instruct.csv
+-rw-r--r-- 1 root root  47951 Sep 27 08:50 gx_placebo_Qwen3-VL-32B-Instruct.csv
+GX_ALL_DONE
+[09:08:28] ########## 收官批开始 ONLY=g10mix,g9b ##########
+[09:08:28] ########## 收官批开始 ONLY=g10mix,g9b ##########
+[09:08:28] ===== G10：同批 vs 分侧（两个本机有同款权重的构建）=====
+[09:08:28] ===== G10：同批 vs 分侧（两个本机有同款权重的构建）=====
+[09:08:28]   ---- 构建 InternVL3_5-8B ----
+[09:08:28]   ---- 构建 InternVL3_5-8B ----
+[09:09:33]   起服就绪 InternVL3_5-8B（60s）
+[09:09:33]   起服就绪 InternVL3_5-8B（60s）
+[gx/g10mix] 冻结件 md5 OK：129005a8a7c1326519c3f63260cbb3ae ｜ model=InternVL3_5-8B port=8013
+[gx/g10mix] 待跑 564 项（已完成 0）
+  200/564 (5.36/s bad=0 err=0)
+  400/564 (7.60/s bad=0 err=0)
+[gx/g10mix] DONE n=564 unparsed=0 err=0
+[09:10:58]   InternVL3_5-8B 完成
+[09:10:58]   InternVL3_5-8B 完成
+[09:10:58]   ---- 构建 gemma3-12b ----
+[09:10:58]   ---- 构建 gemma3-12b ----
+/root/gx_all.sh: line 25: 27252 Killed                  setsid nohup $VLLM serve "$1" --served-model-name "$2" --max-model-len 8192 --gpu-memory-utilization 0.93 --limit-mm-per-prompt '{"image": 1}' --trust-remote-code --port $PORT < /dev/null > "/root/gx_serve_$2.log" 2>&1
+[09:13:13]   起服就绪 gemma3-12b（130s）
+[09:13:13]   起服就绪 gemma3-12b（130s）
+[gx/g10mix] 冻结件 md5 OK：129005a8a7c1326519c3f63260cbb3ae ｜ model=gemma3-12b port=8013
+[gx/g10mix] 待跑 564 项（已完成 0）
+  200/564 (8.74/s bad=0 err=0)
+  400/564 (11.36/s bad=0 err=0)
+[gx/g10mix] DONE n=564 unparsed=0 err=0
+[09:13:55]   gemma3-12b 完成
+[09:13:55]   gemma3-12b 完成
+/root/gx_all.sh: line 25: 27650 Killed                  setsid nohup $VLLM serve "$1" --served-model-name "$2" --max-model-len 8192 --gpu-memory-utilization 0.93 --limit-mm-per-prompt '{"image": 1}' --trust-remote-code --port $PORT < /dev/null > "/root/gx_serve_$2.log" 2>&1
+[09:14:00] ===== G9b：新阈值（15%）重开 —— 先闸门、后测量 =====
+[09:14:00] ===== G9b：新阈值（15%）重开 —— 先闸门、后测量 =====
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:   0%|          | 1/1058 [00:00<06:34,  2.68it/s]Loading weights:   1%|          | 6/1058 [00:00<01:10, 14.92it/s]Loading weights:   2%|▏         | 16/1058 [00:00<00:28, 36.78it/s]Loading weights:   2%|▏         | 26/1058 [00:00<00:19, 52.76it/s]Loading weights:   3%|▎         | 33/1058 [00:00<00:18, 56.36it/s]Loading weights:   4%|▍         | 40/1058 [00:00<00:18, 56.20it/s]Loading weights:   5%|▍         | 49/1058 [00:01<00:15, 63.44it/s]Loading weights:   6%|▌         | 59/1058 [00:01<00:13, 71.85it/s]Loading weights:   6%|▋         | 67/1058 [00:01<00:13, 72.29it/s]Loading weights:   7%|▋         | 75/1058 [00:01<00:14, 69.42it/s]Loading weights:   8%|▊         | 83/1058 [00:01<00:15, 64.39it/s]Loading weights:   9%|▉         | 93/1058 [00:01<00:13, 71.51it/s]Loading weights:  10%|▉         | 102/1058 [00:01<00:12, 75.10it/s]Loading weights:  10%|█         | 111/1058 [00:01<00:12, 77.00it/s]Loading weights:  11%|█         | 119/1058 [00:02<00:12, 72.68it/s]Loading weights:  12%|█▏        | 127/1058 [00:02<00:14, 65.53it/s]Loading weights:  13%|█▎        | 137/1058 [00:02<00:12, 72.05it/s]Loading weights:  14%|█▍        | 147/1058 [00:02<00:11, 76.56it/s]Loading weights:  15%|█▍        | 155/1058 [00:02<00:11, 75.39it/s]Loading weights:  15%|█▌        | 163/1058 [00:02<00:12, 71.82it/s]Loading weights:  16%|█▌        | 171/1058 [00:02<00:13, 65.73it/s]Loading weights:  17%|█▋        | 181/1058 [00:02<00:12, 72.42it/s]Loading weights:  18%|█▊        | 191/1058 [00:02<00:11, 77.38it/s]Loading weights:  19%|█▉        | 199/1058 [00:03<00:11, 76.02it/s]Loading weights:  20%|█▉        | 207/1058 [00:03<00:11, 71.86it/s]Loading weights:  20%|██        | 215/1058 [00:03<00:12, 65.65it/s]Loading weights:  21%|██▏       | 225/1058 [00:03<00:11, 72.40it/s]Loading weights:  22%|██▏       | 235/1058 [00:03<00:10, 77.41it/s]Loading weights:  23%|██▎       | 243/1058 [00:03<00:10, 76.72it/s]Loading weights:  24%|██▎       | 251/1058 [00:03<00:11, 73.20it/s]Loading weights:  24%|██▍       | 259/1058 [00:03<00:12, 65.78it/s]Loading weights:  25%|██▌       | 269/1058 [00:04<00:10, 72.25it/s]Loading weights:  26%|██▋       | 279/1058 [00:04<00:10, 76.79it/s]Loading weights:  27%|██▋       | 287/1058 [00:04<00:09, 77.32it/s]Loading weights:  28%|██▊       | 295/1058 [00:04<00:10, 73.46it/s]Loading weights:  29%|██▊       | 303/1058 [00:04<00:11, 66.90it/s]Loading weights:  29%|██▉       | 312/1058 [00:04<00:10, 70.84it/s]Loading weights:  31%|███       | 323/1058 [00:04<00:10, 71.86it/s]Loading weights:  32%|███▏      | 334/1058 [00:04<00:09, 79.11it/s]Loading weights:  32%|███▏      | 343/1058 [00:05<00:08, 79.70it/s]Loading weights:  33%|███▎      | 352/1058 [00:05<00:09, 75.47it/s]Loading weights:  34%|███▍      | 360/1058 [00:05<00:09, 70.37it/s]Loading weights:  35%|███▍      | 368/1058 [00:05<00:09, 70.72it/s]Loading weights:  36%|███▌      | 378/1058 [00:05<00:08, 76.68it/s]Loading weights:  36%|███▋      | 386/1058 [00:05<00:08, 76.43it/s]Loading weights:  37%|███▋      | 394/1058 [00:05<00:09, 72.23it/s]Loading weights:  38%|███▊      | 402/1058 [00:05<00:09, 66.95it/s]Loading weights:  39%|███▉      | 412/1058 [00:06<00:08, 73.27it/s]Loading weights:  40%|███▉      | 422/1058 [00:06<00:08, 78.85it/s]Loading weights:  41%|████      | 431/1058 [00:06<00:07, 79.36it/s]Loading weights:  42%|████▏     | 440/1058 [00:06<00:08, 75.30it/s]Loading weights:  42%|████▏     | 448/1058 [00:06<00:08, 70.22it/s]Loading weights:  43%|████▎     | 456/1058 [00:06<00:08, 70.91it/s]Loading weights:  44%|████▍     | 466/1058 [00:06<00:07, 76.65it/s]Loading weights:  45%|████▍     | 474/1058 [00:06<00:07, 75.49it/s]Loading weights:  46%|████▌     | 482/1058 [00:06<00:08, 71.19it/s]Loading weights:  46%|████▋     | 490/1058 [00:07<00:08, 63.50it/s]Loading weights:  47%|████▋     | 500/1058 [00:07<00:07, 70.61it/s]Loading weights:  48%|████▊     | 510/1058 [00:07<00:07, 75.32it/s]Loading weights:  49%|████▉     | 518/1058 [00:07<00:07, 72.68it/s]Loading weights:  50%|████▉     | 526/1058 [00:07<00:07, 70.35it/s]Loading weights:  50%|█████     | 534/1058 [00:07<00:08, 63.69it/s]Loading weights:  51%|█████▏    | 544/1058 [00:07<00:07, 70.73it/s]Loading weights:  52%|█████▏    | 554/1058 [00:07<00:06, 75.95it/s]Loading weights:  53%|█████▎    | 562/1058 [00:08<00:06, 74.50it/s]Loading weights:  54%|█████▍    | 570/1058 [00:08<00:06, 70.65it/s]Loading weights:  55%|█████▍    | 578/1058 [00:08<00:07, 65.06it/s]Loading weights:  56%|█████▌    | 588/1058 [00:08<00:06, 71.96it/s]Loading weights:  57%|█████▋    | 598/1058 [00:08<00:06, 76.52it/s]Loading weights:  57%|█████▋    | 606/1058 [00:08<00:05, 75.64it/s]Loading weights:  58%|█████▊    | 614/1058 [00:08<00:06, 71.19it/s]Loading weights:  59%|█████▉    | 622/1058 [00:08<00:06, 64.10it/s]Loading weights:  60%|█████▉    | 632/1058 [00:09<00:06, 70.46it/s]Loading weights:  61%|██████    | 641/1058 [00:09<00:05, 74.08it/s]Loading weights:  61%|██████▏   | 649/1058 [00:09<00:05, 75.46it/s]Loading weights:  62%|██████▏   | 657/1058 [00:09<00:05, 70.13it/s]Loading weights:  63%|██████▎   | 665/1058 [00:09<00:05, 70.62it/s]Loading weights:  64%|██████▍   | 675/1058 [00:09<00:05, 76.28it/s]Loading weights:  65%|██████▍   | 683/1058 [00:09<00:05, 74.36it/s]Loading weights:  65%|██████▌   | 691/1058 [00:09<00:05, 71.19it/s]Loading weights:  66%|██████▌   | 699/1058 [00:10<00:05, 63.57it/s]Loading weights:  81%|████████  | 859/1058 [00:10<00:00, 443.61it/s]Loading weights:  98%|█████████▊| 1039/1058 [00:10<00:00, 796.15it/s]Loading weights: 100%|██████████| 1058/1058 [00:10<00:00, 102.83it/s]
+Traceback (most recent call last):
+  File "/root/g9_guard.py", line 146, in <module>
+    main()
+    ~~~~^^
+  File "/root/g9_guard.py", line 84, in main
+    print('G_a 批内不变性：%d/%d 不一致 = %.1f%%（阈值 5%%）⇒ %s'
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          % (dis, len(fs), 100 * rate_a, 100 * A.tol, 'PASS' if rate_a <= A.tol else 'FAIL'))
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TypeError: not all arguments converted during string formatting
+[09:14:58]   !! G9b 闸门仍未过 ⇒ 仍报不可测
+[09:14:58]   !! G9b 闸门仍未过 ⇒ 仍报不可测
+[09:14:58] ########## 收官批结束 ##########
+[09:14:58] ########## 收官批结束 ##########
+total 292
+-rw-r--r-- 1 root root  44273 Sep 27 09:10 gx_g10mix_InternVL3_5-8B.csv
+-rw-r--r-- 1 root root  48177 Sep 27 09:13 gx_g10mix_gemma3-12b.csv
+-rw-r--r-- 1 root root 147727 Sep 27 08:48 gx_g8b_Qwen3-VL-32B-Instruct.csv
+-rw-r--r-- 1 root root  47951 Sep 27 08:50 gx_placebo_Qwen3-VL-32B-Instruct.csv
+GX_ALL_DONE
+[09:18:11] ########## 收官批开始 ONLY=g9b ##########
+[09:18:11] ########## 收官批开始 ONLY=g9b ##########
+[09:18:16] ===== G9b：新阈值（15%）重开 —— 先闸门、后测量 =====
+[09:18:16] ===== G9b：新阈值（15%）重开 —— 先闸门、后测量 =====
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:   0%|          | 1/1058 [00:00<02:30,  7.03it/s]Loading weights:   0%|          | 2/1058 [00:00<03:32,  4.97it/s]Loading weights:   1%|          | 6/1058 [00:00<01:13, 14.29it/s]Loading weights:   2%|▏         | 16/1058 [00:00<00:28, 36.93it/s]Loading weights:   2%|▏         | 26/1058 [00:00<00:19, 53.79it/s]Loading weights:   3%|▎         | 33/1058 [00:00<00:17, 57.20it/s]Loading weights:   4%|▍         | 40/1058 [00:00<00:17, 57.02it/s]Loading weights:   5%|▍         | 49/1058 [00:01<00:15, 64.76it/s]Loading weights:   6%|▌         | 59/1058 [00:01<00:13, 72.05it/s]Loading weights:   6%|▋         | 67/1058 [00:01<00:13, 73.22it/s]Loading weights:   7%|▋         | 75/1058 [00:01<00:13, 70.82it/s]Loading weights:   8%|▊         | 83/1058 [00:01<00:15, 64.88it/s]Loading weights:   9%|▉         | 93/1058 [00:01<00:13, 71.79it/s]Loading weights:  10%|▉         | 103/1058 [00:01<00:12, 77.07it/s]Loading weights:  10%|█         | 111/1058 [00:01<00:12, 74.51it/s]Loading weights:  11%|█         | 119/1058 [00:02<00:13, 70.13it/s]Loading weights:  12%|█▏        | 127/1058 [00:02<00:14, 62.36it/s]Loading weights:  13%|█▎        | 136/1058 [00:02<00:13, 67.37it/s]Loading weights:  14%|█▍        | 147/1058 [00:02<00:11, 76.41it/s]Loading weights:  15%|█▍        | 155/1058 [00:02<00:11, 75.94it/s]Loading weights:  15%|█▌        | 163/1058 [00:02<00:12, 72.56it/s]Loading weights:  16%|█▌        | 171/1058 [00:02<00:13, 65.83it/s]Loading weights:  17%|█▋        | 180/1058 [00:02<00:12, 69.51it/s]Loading weights:  18%|█▊        | 191/1058 [00:03<00:12, 70.69it/s]Loading weights:  19%|█▉        | 202/1058 [00:03<00:10, 78.29it/s]Loading weights:  20%|█▉        | 211/1058 [00:03<00:10, 79.11it/s]Loading weights:  21%|██        | 220/1058 [00:03<00:11, 74.64it/s]Loading weights:  22%|██▏       | 228/1058 [00:03<00:11, 69.94it/s]Loading weights:  22%|██▏       | 236/1058 [00:03<00:11, 69.99it/s]Loading weights:  23%|██▎       | 246/1058 [00:03<00:10, 75.66it/s]Loading weights:  24%|██▍       | 254/1058 [00:03<00:10, 74.68it/s]Loading weights:  25%|██▍       | 262/1058 [00:04<00:11, 68.62it/s]Loading weights:  26%|██▌       | 270/1058 [00:04<00:12, 65.02it/s]Loading weights:  26%|██▋       | 280/1058 [00:04<00:10, 71.59it/s]Loading weights:  27%|██▋       | 290/1058 [00:04<00:11, 69.30it/s]Loading weights:  28%|██▊       | 301/1058 [00:04<00:09, 76.61it/s]Loading weights:  29%|██▉       | 309/1058 [00:04<00:09, 75.42it/s]Loading weights:  30%|██▉       | 317/1058 [00:04<00:10, 72.29it/s]Loading weights:  31%|███       | 325/1058 [00:04<00:11, 65.24it/s]Loading weights:  32%|███▏      | 335/1058 [00:05<00:10, 71.65it/s]Loading weights:  33%|███▎      | 345/1058 [00:05<00:09, 76.71it/s]Loading weights:  33%|███▎      | 353/1058 [00:05<00:09, 75.42it/s]Loading weights:  34%|███▍      | 361/1058 [00:05<00:09, 71.13it/s]Loading weights:  35%|███▍      | 369/1058 [00:05<00:10, 64.60it/s]Loading weights:  36%|███▌      | 379/1058 [00:05<00:09, 71.43it/s]Loading weights:  37%|███▋      | 389/1058 [00:05<00:08, 76.24it/s]Loading weights:  38%|███▊      | 397/1058 [00:05<00:08, 74.71it/s]Loading weights:  38%|███▊      | 405/1058 [00:06<00:09, 69.92it/s]Loading weights:  39%|███▉      | 413/1058 [00:06<00:10, 63.06it/s]Loading weights:  40%|███▉      | 423/1058 [00:06<00:09, 69.30it/s]Loading weights:  41%|████      | 433/1058 [00:06<00:08, 74.62it/s]Loading weights:  42%|████▏     | 441/1058 [00:06<00:08, 73.39it/s]Loading weights:  42%|████▏     | 449/1058 [00:06<00:08, 69.31it/s]Loading weights:  43%|████▎     | 457/1058 [00:06<00:09, 63.08it/s]Loading weights:  44%|████▍     | 467/1058 [00:06<00:08, 68.16it/s]Loading weights:  45%|████▌     | 477/1058 [00:07<00:07, 73.75it/s]Loading weights:  46%|████▌     | 485/1058 [00:07<00:07, 73.15it/s]Loading weights:  47%|████▋     | 493/1058 [00:07<00:08, 69.18it/s]Loading weights:  47%|████▋     | 501/1058 [00:07<00:08, 63.77it/s]Loading weights:  48%|████▊     | 511/1058 [00:07<00:07, 69.18it/s]Loading weights:  49%|████▉     | 521/1058 [00:07<00:07, 74.48it/s]Loading weights:  50%|█████     | 529/1058 [00:07<00:07, 72.76it/s]Loading weights:  51%|█████     | 537/1058 [00:07<00:07, 69.93it/s]Loading weights:  52%|█████▏    | 545/1058 [00:08<00:07, 64.15it/s]Loading weights:  52%|█████▏    | 555/1058 [00:08<00:07, 70.12it/s]Loading weights:  53%|█████▎    | 565/1058 [00:08<00:06, 74.18it/s]Loading weights:  54%|█████▍    | 573/1058 [00:08<00:06, 73.61it/s]Loading weights:  55%|█████▍    | 581/1058 [00:08<00:06, 68.37it/s]Loading weights:  56%|█████▌    | 588/1058 [00:08<00:06, 68.77it/s]Loading weights:  57%|█████▋    | 598/1058 [00:08<00:06, 73.27it/s]Loading weights:  57%|█████▋    | 606/1058 [00:08<00:06, 73.03it/s]Loading weights:  58%|█████▊    | 614/1058 [00:09<00:06, 69.00it/s]Loading weights:  59%|█████▊    | 621/1058 [00:09<00:06, 67.74it/s]Loading weights:  60%|█████▉    | 631/1058 [00:09<00:05, 73.60it/s]Loading weights:  60%|██████    | 639/1058 [00:09<00:05, 73.05it/s]Loading weights:  61%|██████    | 647/1058 [00:09<00:05, 69.79it/s]Loading weights:  62%|██████▏   | 655/1058 [00:09<00:06, 62.85it/s]Loading weights:  63%|██████▎   | 665/1058 [00:09<00:05, 69.26it/s]Loading weights:  64%|██████▎   | 673/1058 [00:09<00:05, 68.55it/s]Loading weights:  64%|██████▍   | 681/1058 [00:09<00:05, 71.14it/s]Loading weights:  65%|██████▌   | 689/1058 [00:10<00:05, 67.13it/s]Loading weights:  66%|██████▌   | 698/1058 [00:10<00:05, 70.34it/s]Loading weights:  72%|███████▏  | 762/1058 [00:10<00:01, 219.77it/s]Loading weights:  94%|█████████▍| 999/1058 [00:10<00:00, 804.02it/s]Loading weights: 100%|██████████| 1058/1058 [00:10<00:00, 101.03it/s]
+G_a 批内不变性：1/20 不一致 = 5.0%（阈值 15%）⇒ PASS
+G_b 参考来源：g56_arms.csv（**同机同构建 BF16 vLLM**） ｜ 可用 182 项
+G_b 逐项比对：20/20 张图在冻结记录里找到
+G_b 逐项不一致：2/20 = 10.0%（阈值 15%）⇒ PASS ｜ 答零率 HF 0.300 vs 冻结 0.300
+GUARD_OK：可以继续跑 g9_hidden_l2.py
+[g9] 冻结件 md5 OK：cd4d138bfe50a51c172d8648933bf955
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:   0%|          | 1/1058 [00:00<02:16,  7.73it/s]Loading weights:   0%|          | 2/1058 [00:00<03:14,  5.43it/s]Loading weights:   1%|          | 6/1058 [00:00<01:08, 15.38it/s]Loading weights:   2%|▏         | 16/1058 [00:00<00:26, 38.90it/s]Loading weights:   2%|▏         | 25/1058 [00:00<00:19, 52.68it/s]Loading weights:   3%|▎         | 33/1058 [00:00<00:17, 59.77it/s]Loading weights:   4%|▍         | 40/1058 [00:00<00:16, 59.97it/s]Loading weights:   5%|▍         | 48/1058 [00:01<00:15, 64.73it/s]Loading weights:   5%|▌         | 58/1058 [00:01<00:13, 73.35it/s]Loading weights:   6%|▋         | 67/1058 [00:01<00:12, 77.02it/s]Loading weights:   7%|▋         | 75/1058 [00:01<00:13, 75.27it/s]Loading weights:   8%|▊         | 83/1058 [00:01<00:14, 67.92it/s]Loading weights:   9%|▉         | 93/1058 [00:01<00:12, 74.62it/s]Loading weights:  10%|▉         | 103/1058 [00:01<00:12, 79.38it/s]Loading weights:  11%|█         | 112/1058 [00:01<00:11, 81.76it/s]Loading weights:  11%|█▏        | 121/1058 [00:01<00:12, 74.18it/s]Loading weights:  12%|█▏        | 129/1058 [00:02<00:13, 70.91it/s]Loading weights:  13%|█▎        | 137/1058 [00:02<00:12, 72.05it/s]Loading weights:  14%|█▍        | 147/1058 [00:02<00:11, 77.84it/s]Loading weights:  15%|█▍        | 155/1058 [00:02<00:11, 77.64it/s]Loading weights:  15%|█▌        | 163/1058 [00:02<00:11, 75.06it/s]Loading weights:  16%|█▌        | 171/1058 [00:02<00:13, 67.78it/s]Loading weights:  17%|█▋        | 181/1058 [00:02<00:11, 75.32it/s]Loading weights:  18%|█▊        | 191/1058 [00:02<00:10, 80.62it/s]Loading weights:  19%|█▉        | 200/1058 [00:02<00:10, 81.68it/s]Loading weights:  20%|█▉        | 209/1058 [00:03<00:11, 77.08it/s]Loading weights:  21%|██        | 217/1058 [00:03<00:11, 70.58it/s]Loading weights:  21%|██▏       | 225/1058 [00:03<00:11, 71.42it/s]Loading weights:  22%|██▏       | 235/1058 [00:03<00:10, 77.72it/s]Loading weights:  23%|██▎       | 243/1058 [00:03<00:10, 77.57it/s]Loading weights:  24%|██▎       | 251/1058 [00:03<00:10, 73.96it/s]Loading weights:  24%|██▍       | 259/1058 [00:03<00:11, 67.79it/s]Loading weights:  25%|██▌       | 269/1058 [00:03<00:10, 75.61it/s]Loading weights:  26%|██▋       | 279/1058 [00:04<00:09, 81.11it/s]Loading weights:  27%|██▋       | 288/1058 [00:04<00:09, 82.58it/s]Loading weights:  28%|██▊       | 297/1058 [00:04<00:10, 75.90it/s]Loading weights:  29%|██▉       | 305/1058 [00:04<00:10, 73.81it/s]Loading weights:  30%|██▉       | 313/1058 [00:04<00:10, 74.37it/s]Loading weights:  31%|███       | 323/1058 [00:04<00:09, 80.19it/s]Loading weights:  31%|███▏      | 332/1058 [00:04<00:09, 73.50it/s]Loading weights:  32%|███▏      | 340/1058 [00:04<00:09, 74.77it/s]Loading weights:  33%|███▎      | 348/1058 [00:04<00:09, 72.38it/s]Loading weights:  34%|███▎      | 357/1058 [00:05<00:09, 75.85it/s]Loading weights:  35%|███▍      | 367/1058 [00:05<00:08, 81.70it/s]Loading weights:  36%|███▌      | 376/1058 [00:05<00:08, 82.66it/s]Loading weights:  36%|███▋      | 385/1058 [00:05<00:08, 77.96it/s]Loading weights:  37%|███▋      | 393/1058 [00:05<00:09, 72.62it/s]Loading weights:  38%|███▊      | 401/1058 [00:05<00:08, 73.76it/s]Loading weights:  39%|███▉      | 411/1058 [00:05<00:08, 79.76it/s]Loading weights:  40%|███▉      | 420/1058 [00:05<00:07, 81.80it/s]Loading weights:  41%|████      | 429/1058 [00:06<00:08, 75.77it/s]Loading weights:  41%|████▏     | 437/1058 [00:06<00:08, 73.30it/s]Loading weights:  42%|████▏     | 445/1058 [00:06<00:08, 73.07it/s]Loading weights:  43%|████▎     | 455/1058 [00:06<00:07, 79.91it/s]Loading weights:  44%|████▍     | 464/1058 [00:06<00:07, 81.05it/s]Loading weights:  45%|████▍     | 473/1058 [00:06<00:07, 74.98it/s]Loading weights:  45%|████▌     | 481/1058 [00:06<00:07, 72.56it/s]Loading weights:  46%|████▌     | 489/1058 [00:06<00:07, 72.96it/s]Loading weights:  47%|████▋     | 499/1058 [00:06<00:07, 72.07it/s]Loading weights:  48%|████▊     | 510/1058 [00:07<00:06, 79.61it/s]Loading weights:  49%|████▉     | 519/1058 [00:07<00:06, 82.03it/s]Loading weights:  50%|████▉     | 528/1058 [00:07<00:06, 77.54it/s]Loading weights:  51%|█████     | 536/1058 [00:07<00:07, 72.25it/s]Loading weights:  51%|█████▏    | 544/1058 [00:07<00:07, 71.79it/s]Loading weights:  52%|█████▏    | 554/1058 [00:07<00:07, 69.86it/s]Loading weights:  53%|█████▎    | 565/1058 [00:07<00:06, 77.26it/s]Loading weights:  54%|█████▍    | 573/1058 [00:07<00:06, 77.34it/s]Loading weights:  55%|█████▍    | 581/1058 [00:08<00:06, 73.51it/s]Loading weights:  56%|█████▌    | 589/1058 [00:08<00:07, 66.68it/s]Loading weights:  57%|█████▋    | 598/1058 [00:08<00:06, 72.10it/s]Loading weights:  58%|█████▊    | 609/1058 [00:08<00:05, 80.91it/s]Loading weights:  58%|█████▊    | 618/1058 [00:08<00:05, 81.83it/s]Loading weights:  59%|█████▉    | 627/1058 [00:08<00:05, 76.22it/s]Loading weights:  60%|██████    | 635/1058 [00:08<00:05, 70.54it/s]Loading weights:  61%|██████    | 643/1058 [00:08<00:05, 72.03it/s]Loading weights:  62%|██████▏   | 653/1058 [00:08<00:05, 77.82it/s]Loading weights:  62%|██████▏   | 661/1058 [00:09<00:05, 76.98it/s]Loading weights:  63%|██████▎   | 669/1058 [00:09<00:05, 72.91it/s]Loading weights:  64%|██████▍   | 677/1058 [00:09<00:05, 65.57it/s]Loading weights:  65%|██████▍   | 687/1058 [00:09<00:05, 73.51it/s]Loading weights:  66%|██████▌   | 697/1058 [00:09<00:04, 79.63it/s]Loading weights:  67%|██████▋   | 706/1058 [00:09<00:04, 81.38it/s]Loading weights:  86%|████████▌ | 905/1058 [00:09<00:00, 608.77it/s]Loading weights:  99%|█████████▉| 1047/1058 [00:09<00:00, 828.23it/s]Loading weights: 100%|██████████| 1058/1058 [00:09<00:00, 106.86it/s]
+[g9] 模型加载 13s ｜ transformers 5.17.0 ｜ torch 2.13.0+cu130
+Traceback (most recent call last):
+  File "/root/g9_hidden_l2.py", line 137, in <module>
+    main()
+    ~~~~^^
+  File "/root/g9_hidden_l2.py", line 80, in main
+    PROMPT = {'base': M.P['base'], 'forbid0': M.P['forbid0'], 'neutral0': M.P['neutral0']}
+                                              ~~~^^^^^^^^^^^
+KeyError: 'forbid0'
+[09:19:34] ########## 收官批结束 ##########
+[09:19:34] ########## 收官批结束 ##########
+total 292
+-rw-r--r-- 1 root root  44273 Sep 27 09:10 gx_g10mix_InternVL3_5-8B.csv
+-rw-r--r-- 1 root root  48177 Sep 27 09:13 gx_g10mix_gemma3-12b.csv
+-rw-r--r-- 1 root root 147727 Sep 27 08:48 gx_g8b_Qwen3-VL-32B-Instruct.csv
+-rw-r--r-- 1 root root  47951 Sep 27 08:50 gx_placebo_Qwen3-VL-32B-Instruct.csv
+GX_ALL_DONE
+[09:23:45] ########## 收官批开始 ONLY=g9b ##########
+[09:23:45] ########## 收官批开始 ONLY=g9b ##########
+[09:23:50] ===== G9b：新阈值（15%）重开 —— 先闸门、后测量 =====
+[09:23:50] ===== G9b：新阈值（15%）重开 —— 先闸门、后测量 =====
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:   0%|          | 1/1058 [00:00<02:12,  7.99it/s]Loading weights:   0%|          | 2/1058 [00:00<02:51,  6.16it/s]Loading weights:   1%|          | 6/1058 [00:00<01:01, 17.17it/s]Loading weights:   2%|▏         | 16/1058 [00:00<00:27, 37.64it/s]Loading weights:   3%|▎         | 28/1058 [00:00<00:18, 56.60it/s]Loading weights:   4%|▎         | 39/1058 [00:00<00:15, 66.58it/s]Loading weights:   5%|▍         | 50/1058 [00:00<00:13, 72.09it/s]Loading weights:   6%|▌         | 60/1058 [00:01<00:12, 77.64it/s]Loading weights:   7%|▋         | 71/1058 [00:01<00:13, 73.76it/s]Loading weights:   8%|▊         | 80/1058 [00:01<00:13, 70.46it/s]Loading weights:   9%|▊         | 92/1058 [00:01<00:11, 81.67it/s]Loading weights:  10%|▉         | 102/1058 [00:01<00:11, 85.32it/s]Loading weights:  10%|█         | 111/1058 [00:01<00:11, 85.43it/s]Loading weights:  11%|█▏        | 120/1058 [00:01<00:11, 80.86it/s]Loading weights:  12%|█▏        | 129/1058 [00:01<00:11, 78.81it/s]Loading weights:  13%|█▎        | 138/1058 [00:02<00:12, 75.90it/s]Loading weights:  14%|█▍        | 149/1058 [00:02<00:11, 78.33it/s]Loading weights:  15%|█▌        | 160/1058 [00:02<00:10, 81.82it/s]Loading weights:  16%|█▌        | 171/1058 [00:02<00:10, 82.95it/s]Loading weights:  17%|█▋        | 182/1058 [00:02<00:10, 82.97it/s]Loading weights:  18%|█▊        | 193/1058 [00:02<00:10, 83.04it/s]Loading weights:  19%|█▉        | 204/1058 [00:02<00:10, 81.00it/s]Loading weights:  20%|██        | 214/1058 [00:02<00:09, 84.74it/s]Loading weights:  21%|██        | 224/1058 [00:03<00:09, 88.39it/s]Loading weights:  22%|██▏       | 233/1058 [00:03<00:09, 86.71it/s]Loading weights:  23%|██▎       | 242/1058 [00:03<00:10, 81.20it/s]Loading weights:  24%|██▎       | 251/1058 [00:03<00:10, 79.53it/s]Loading weights:  25%|██▍       | 260/1058 [00:03<00:10, 75.74it/s]Loading weights:  25%|██▌       | 269/1058 [00:03<00:10, 78.28it/s]Loading weights:  26%|██▋       | 280/1058 [00:03<00:09, 79.87it/s]Loading weights:  28%|██▊       | 291/1058 [00:03<00:09, 82.20it/s]Loading weights:  29%|██▊       | 302/1058 [00:04<00:08, 84.37it/s]Loading weights:  30%|██▉       | 313/1058 [00:04<00:08, 86.23it/s]Loading weights:  31%|███       | 323/1058 [00:04<00:08, 88.94it/s]Loading weights:  32%|███▏      | 334/1058 [00:04<00:08, 87.86it/s]Loading weights:  33%|███▎      | 344/1058 [00:04<00:08, 82.35it/s]Loading weights:  33%|███▎      | 353/1058 [00:04<00:08, 84.06it/s]Loading weights:  34%|███▍      | 362/1058 [00:04<00:08, 78.72it/s]Loading weights:  35%|███▍      | 370/1058 [00:04<00:09, 76.23it/s]Loading weights:  36%|███▌      | 380/1058 [00:05<00:08, 76.81it/s]Loading weights:  37%|███▋      | 390/1058 [00:05<00:08, 81.44it/s]Loading weights:  38%|███▊      | 401/1058 [00:05<00:07, 83.69it/s]Loading weights:  39%|███▉      | 411/1058 [00:05<00:07, 86.74it/s]Loading weights:  40%|███▉      | 420/1058 [00:05<00:07, 85.82it/s]Loading weights:  41%|████      | 429/1058 [00:05<00:07, 80.70it/s]Loading weights:  41%|████▏     | 438/1058 [00:05<00:07, 80.71it/s]Loading weights:  42%|████▏     | 447/1058 [00:05<00:08, 73.15it/s]Loading weights:  43%|████▎     | 456/1058 [00:05<00:07, 77.26it/s]Loading weights:  44%|████▍     | 466/1058 [00:06<00:07, 82.30it/s]Loading weights:  45%|████▍     | 475/1058 [00:06<00:07, 82.21it/s]Loading weights:  46%|████▌     | 484/1058 [00:06<00:07, 78.13it/s]Loading weights:  47%|████▋     | 492/1058 [00:06<00:07, 72.79it/s]Loading weights:  47%|████▋     | 500/1058 [00:06<00:07, 73.98it/s]Loading weights:  48%|████▊     | 510/1058 [00:06<00:07, 71.27it/s]Loading weights:  49%|████▉     | 521/1058 [00:06<00:06, 80.51it/s]Loading weights:  50%|█████     | 532/1058 [00:06<00:06, 81.69it/s]Loading weights:  51%|█████     | 541/1058 [00:07<00:06, 78.07it/s]Loading weights:  52%|█████▏    | 551/1058 [00:07<00:06, 83.48it/s]Loading weights:  53%|█████▎    | 560/1058 [00:07<00:06, 81.48it/s]Loading weights:  54%|█████▍    | 569/1058 [00:07<00:06, 80.88it/s]Loading weights:  55%|█████▍    | 578/1058 [00:07<00:06, 76.06it/s]Loading weights:  56%|█████▌    | 589/1058 [00:07<00:06, 77.87it/s]Loading weights:  57%|█████▋    | 599/1058 [00:07<00:05, 82.59it/s]Loading weights:  58%|█████▊    | 609/1058 [00:07<00:05, 78.35it/s]Loading weights:  59%|█████▊    | 620/1058 [00:07<00:05, 84.12it/s]Loading weights:  59%|█████▉    | 629/1058 [00:08<00:05, 81.50it/s]Loading weights:  60%|██████    | 638/1058 [00:08<00:05, 76.49it/s]Loading weights:  61%|██████    | 646/1058 [00:08<00:05, 73.79it/s]Loading weights:  62%|██████▏   | 655/1058 [00:08<00:05, 72.51it/s]Loading weights:  63%|██████▎   | 665/1058 [00:08<00:04, 79.47it/s]Loading weights:  64%|██████▍   | 676/1058 [00:08<00:04, 80.99it/s]Loading weights:  65%|██████▍   | 686/1058 [00:08<00:04, 84.25it/s]Loading weights:  66%|██████▌   | 695/1058 [00:08<00:04, 85.44it/s]Loading weights:  67%|██████▋   | 704/1058 [00:09<00:04, 77.60it/s]Loading weights:  86%|████████▌ | 911/1058 [00:09<00:00, 594.07it/s]Loading weights:  99%|█████████▉| 1051/1058 [00:09<00:00, 802.61it/s]Loading weights: 100%|██████████| 1058/1058 [00:09<00:00, 113.89it/s]
+G_a 批内不变性：1/20 不一致 = 5.0%（阈值 15%）⇒ PASS
+G_b 参考来源：g56_arms.csv（**同机同构建 BF16 vLLM**） ｜ 可用 182 项
+G_b 逐项比对：20/20 张图在冻结记录里找到
+G_b 逐项不一致：2/20 = 10.0%（阈值 15%）⇒ PASS ｜ 答零率 HF 0.300 vs 冻结 0.300
+GUARD_OK：可以继续跑 g9_hidden_l2.py
+[g9] 冻结件 md5 OK：cd4d138bfe50a51c172d8648933bf955
+Loading weights:   0%|          | 0/1058 [00:00<?, ?it/s]Loading weights:   0%|          | 1/1058 [00:00<04:58,  3.55it/s]Loading weights:   1%|          | 6/1058 [00:00<00:56, 18.63it/s]Loading weights:   2%|▏         | 16/1058 [00:00<00:24, 43.19it/s]Loading weights:   2%|▏         | 26/1058 [00:00<00:17, 59.32it/s]Loading weights:   3%|▎         | 37/1058 [00:00<00:15, 66.37it/s]Loading weights:   5%|▍         | 48/1058 [00:00<00:13, 72.49it/s]Loading weights:   5%|▌         | 56/1058 [00:01<00:14, 67.77it/s]Loading weights:   6%|▌         | 66/1058 [00:01<00:13, 75.24it/s]Loading weights:   7%|▋         | 74/1058 [00:01<00:13, 73.86it/s]Loading weights:   8%|▊         | 82/1058 [00:01<00:12, 75.24it/s]Loading weights:   9%|▊         | 92/1058 [00:01<00:12, 80.13it/s]Loading weights:  10%|▉         | 101/1058 [00:01<00:11, 82.45it/s]Loading weights:  10%|█         | 110/1058 [00:01<00:12, 77.96it/s]Loading weights:  11%|█         | 118/1058 [00:01<00:12, 74.56it/s]Loading weights:  12%|█▏        | 126/1058 [00:01<00:12, 75.56it/s]Loading weights:  13%|█▎        | 137/1058 [00:02<00:11, 78.94it/s]Loading weights:  14%|█▍        | 148/1058 [00:02<00:11, 81.92it/s]Loading weights:  15%|█▌        | 159/1058 [00:02<00:10, 83.96it/s]Loading weights:  16%|█▌        | 170/1058 [00:02<00:10, 84.99it/s]Loading weights:  17%|█▋        | 180/1058 [00:02<00:10, 81.64it/s]Loading weights:  18%|█▊        | 190/1058 [00:02<00:10, 85.90it/s]Loading weights:  19%|█▉        | 202/1058 [00:02<00:09, 87.19it/s]Loading weights:  20%|██        | 213/1058 [00:02<00:09, 85.59it/s]Loading weights:  21%|██        | 223/1058 [00:03<00:11, 72.41it/s]Loading weights:  22%|██▏       | 236/1058 [00:03<00:09, 84.10it/s]Loading weights:  23%|██▎       | 247/1058 [00:03<00:09, 85.38it/s]Loading weights:  24%|██▍       | 258/1058 [00:03<00:09, 85.62it/s]Loading weights:  25%|██▌       | 269/1058 [00:03<00:09, 84.13it/s]Loading weights:  26%|██▋       | 279/1058 [00:03<00:08, 87.99it/s]Loading weights:  27%|██▋       | 290/1058 [00:03<00:09, 80.85it/s]Loading weights:  29%|██▊       | 302/1058 [00:03<00:08, 85.86it/s]Loading weights:  30%|██▉       | 313/1058 [00:04<00:08, 86.64it/s]Loading weights:  31%|███       | 323/1058 [00:04<00:08, 89.60it/s]Loading weights:  32%|███▏      | 334/1058 [00:04<00:08, 89.43it/s]Loading weights:  33%|███▎      | 344/1058 [00:04<00:10, 70.13it/s]Loading weights:  34%|███▍      | 358/1058 [00:04<00:08, 79.03it/s]Loading weights:  35%|███▍      | 368/1058 [00:04<00:08, 83.30it/s]Loading weights:  36%|███▌      | 378/1058 [00:04<00:08, 84.22it/s]Loading weights:  37%|███▋      | 387/1058 [00:05<00:07, 84.86it/s]Loading weights:  37%|███▋      | 396/1058 [00:05<00:08, 80.64it/s]Loading weights:  38%|███▊      | 405/1058 [00:05<00:08, 76.97it/s]Loading weights:  39%|███▉      | 413/1058 [00:05<00:09, 70.13it/s]Loading weights:  40%|███▉      | 423/1058 [00:05<00:08, 76.72it/s]Loading weights:  41%|████      | 434/1058 [00:05<00:07, 79.81it/s]Loading weights:  42%|████▏     | 444/1058 [00:05<00:07, 76.84it/s]Loading weights:  43%|████▎     | 456/1058 [00:05<00:07, 80.29it/s]Loading weights:  44%|████▍     | 466/1058 [00:06<00:07, 83.65it/s]Loading weights:  45%|████▍     | 475/1058 [00:06<00:06, 85.15it/s]Loading weights:  46%|████▌     | 484/1058 [00:06<00:07, 79.09it/s]Loading weights:  47%|████▋     | 493/1058 [00:06<00:07, 78.27it/s]Loading weights:  47%|████▋     | 501/1058 [00:06<00:07, 72.64it/s]Loading weights:  48%|████▊     | 511/1058 [00:06<00:06, 78.64it/s]Loading weights:  49%|████▉     | 522/1058 [00:06<00:06, 78.72it/s]Loading weights:  50%|█████     | 533/1058 [00:06<00:06, 79.67it/s]Loading weights:  51%|█████▏    | 544/1058 [00:07<00:06, 79.94it/s]Loading weights:  52%|█████▏    | 555/1058 [00:07<00:06, 80.18it/s]Loading weights:  53%|█████▎    | 566/1058 [00:07<00:06, 81.81it/s]Loading weights:  54%|█████▍    | 576/1058 [00:07<00:06, 79.24it/s]Loading weights:  56%|█████▌    | 588/1058 [00:07<00:06, 76.83it/s]Loading weights:  57%|█████▋    | 600/1058 [00:07<00:05, 78.40it/s]Loading weights:  58%|█████▊    | 611/1058 [00:07<00:05, 79.08it/s]Loading weights:  59%|█████▉    | 622/1058 [00:08<00:05, 79.69it/s]Loading weights:  60%|█████▉    | 632/1058 [00:08<00:05, 83.39it/s]Loading weights:  61%|██████    | 643/1058 [00:08<00:04, 83.95it/s]Loading weights:  62%|██████▏   | 654/1058 [00:08<00:04, 84.09it/s]Loading weights:  63%|██████▎   | 663/1058 [00:08<00:04, 84.93it/s]Loading weights:  64%|██████▍   | 675/1058 [00:08<00:04, 85.87it/s]Loading weights:  65%|██████▍   | 684/1058 [00:08<00:04, 85.80it/s]Loading weights:  66%|██████▌   | 693/1058 [00:08<00:04, 81.54it/s]Loading weights:  66%|██████▋   | 702/1058 [00:08<00:04, 76.41it/s]Loading weights:  80%|████████  | 850/1058 [00:09<00:00, 432.31it/s]Loading weights:  97%|█████████▋| 1031/1058 [00:09<00:00, 797.46it/s]Loading weights: 100%|██████████| 1058/1058 [00:09<00:00, 114.65it/s]
+[g9] 模型加载 13s ｜ transformers 5.17.0 ｜ torch 2.13.0+cu130
+[g9] item 数 135（全跑）
+  IMG_1.jpg                          base      pred=100    l2_pen=1719.386 cos=1.0000
+  IMG_1.jpg                          forbid0   pred=200    l2_pen=1683.131 cos=0.9926
+  IMG_1.jpg                          neutral0  pred=0      l2_pen=1714.291 cos=0.9954
+  IMG_10.jpg                         base      pred=300    l2_pen=1733.128 cos=1.0000
+  IMG_10.jpg                         forbid0   pred=300    l2_pen=1695.900 cos=0.9925
+  IMG_10.jpg                         neutral0  pred=0      l2_pen=1730.912 cos=0.9952
+  IMG_100.jpg                        base      pred=0      l2_pen=1752.446 cos=1.0000
+  IMG_100.jpg                        forbid0   pred=1000   l2_pen=1702.462 cos=0.9892
+  IMG_100.jpg                        neutral0  pred=0      l2_pen=1733.765 cos=0.9944
+  IMG_101.jpg                        base      pred=100    l2_pen=1690.675 cos=1.0000
+  IMG_101.jpg                        forbid0   pred=150    l2_pen=1665.774 cos=0.9935
+  IMG_101.jpg                        neutral0  pred=0      l2_pen=1688.970 cos=0.9952
+  IMG_102.jpg                        base      pred=200    l2_pen=1690.202 cos=1.0000
+  IMG_102.jpg                        forbid0   pred=200    l2_pen=1656.109 cos=0.9942
+  IMG_102.jpg                        neutral0  pred=198    l2_pen=1674.415 cos=0.9947
+  IMG_103.jpg                        base      pred=200    l2_pen=1734.262 cos=1.0000
+  IMG_103.jpg                        forbid0   pred=300    l2_pen=1696.597 cos=0.9919
+  IMG_103.jpg                        neutral0  pred=0      l2_pen=1726.190 cos=0.9949
+  IMG_104.jpg                        base      pred=0      l2_pen=1780.781 cos=1.0000
+  IMG_104.jpg                        forbid0   pred=1000   l2_pen=1733.752 cos=0.9904
+  IMG_104.jpg                        neutral0  pred=0      l2_pen=1739.636 cos=0.9926
+  IMG_105.jpg                        base      pred=100    l2_pen=1722.862 cos=1.0000
+  IMG_105.jpg                        forbid0   pred=200    l2_pen=1693.436 cos=0.9936
+  IMG_105.jpg                        neutral0  pred=0      l2_pen=1721.427 cos=0.9954
+  IMG_106.jpg                        base      pred=0      l2_pen=1751.143 cos=1.0000
+  IMG_106.jpg                        forbid0   pred=1000   l2_pen=1714.161 cos=0.9896
+  IMG_106.jpg                        neutral0  pred=0      l2_pen=1726.023 cos=0.9933
+  IMG_107.jpg                        base      pred=10     l2_pen=1671.842 cos=1.0000
+  IMG_107.jpg                        forbid0   pred=200    l2_pen=1646.851 cos=0.9950
+  IMG_107.jpg                        neutral0  pred=0      l2_pen=1684.879 cos=0.9949
+  IMG_108.jpg                        base      pred=150    l2_pen=1738.626 cos=1.0000
+  IMG_108.jpg                        forbid0   pred=200    l2_pen=1713.956 cos=0.9933
+  IMG_108.jpg                        neutral0  pred=0      l2_pen=1734.581 cos=0.9949
+  IMG_109.jpg                        base      pred=300    l2_pen=1742.713 cos=1.0000
+  IMG_109.jpg                        forbid0   pred=300    l2_pen=1700.129 cos=0.9914
+  IMG_109.jpg                        neutral0  pred=0      l2_pen=1730.653 cos=0.9955
+  IMG_11.jpg                         base      pred=1000   l2_pen=1771.996 cos=1.0000
+  IMG_11.jpg                         forbid0   pred=1500   l2_pen=1732.303 cos=0.9903
+  IMG_11.jpg                         neutral0  pred=0      l2_pen=1744.559 cos=0.9945
+  IMG_110.jpg                        base      pred=1000   l2_pen=1770.022 cos=1.0000
+  IMG_110.jpg                        forbid0   pred=1000   l2_pen=1728.641 cos=0.9910
+  IMG_110.jpg                        neutral0  pred=0      l2_pen=1739.704 cos=0.9943
+  IMG_111.jpg                        base      pred=0      l2_pen=1754.858 cos=1.0000
+  IMG_111.jpg                        forbid0   pred=1000   l2_pen=1715.196 cos=0.9907
+  IMG_111.jpg                        neutral0  pred=0      l2_pen=1725.919 cos=0.9929
+  IMG_112.jpg                        base      pred=300    l2_pen=1691.091 cos=1.0000
+  IMG_112.jpg                        forbid0   pred=300    l2_pen=1655.630 cos=0.9936
+  IMG_112.jpg                        neutral0  pred=0      l2_pen=1687.210 cos=0.9951
+  IMG_113.jpg                        base      pred=50     l2_pen=1631.573 cos=1.0000
+  IMG_113.jpg                        forbid0   pred=50     l2_pen=1630.950 cos=0.9969
+  IMG_113.jpg                        neutral0  pred=0      l2_pen=1675.140 cos=0.9939
+  IMG_114.jpg                        base      pred=108    l2_pen=1635.507 cos=1.0000
+  IMG_114.jpg                        forbid0   pred=120    l2_pen=1619.140 cos=0.9960
+  IMG_114.jpg                        neutral0  pred=0      l2_pen=1654.926 cos=0.9942
+  IMG_115.jpg                        base      pred=0      l2_pen=1785.999 cos=1.0000
+  IMG_115.jpg                        forbid0   pred=1000   l2_pen=1728.836 cos=0.9885
+  IMG_115.jpg                        neutral0  pred=0      l2_pen=1733.550 cos=0.9917
+  IMG_116.jpg                        base      pred=0      l2_pen=1769.658 cos=1.0000
+  IMG_116.jpg                        forbid0   pred=1000   l2_pen=1721.879 cos=0.9896
+  IMG_116.jpg                        neutral0  pred=0      l2_pen=1733.292 cos=0.9937
+  IMG_117.jpg                        base      pred=0      l2_pen=1784.415 cos=1.0000
+  IMG_117.jpg                        forbid0   pred=1000   l2_pen=1737.571 cos=0.9903
+  IMG_117.jpg                        neutral0  pred=0      l2_pen=1744.387 cos=0.9929
+  IMG_118.jpg                        base      pred=150    l2_pen=1725.640 cos=1.0000
+  IMG_118.jpg                        forbid0   pred=200    l2_pen=1689.210 cos=0.9938
+  IMG_118.jpg                        neutral0  pred=0      l2_pen=1715.832 cos=0.9953
+  IMG_119.jpg                        base      pred=250    l2_pen=1753.494 cos=1.0000
+  IMG_119.jpg                        forbid0   pred=250    l2_pen=1718.461 cos=0.9933
+  IMG_119.jpg                        neutral0  pred=0      l2_pen=1741.038 cos=0.9949
+  IMG_12.jpg                         base      pred=0      l2_pen=1734.150 cos=1.0000
+  IMG_12.jpg                         forbid0   pred=500    l2_pen=1690.280 cos=0.9888
+  IMG_12.jpg                         neutral0  pred=0      l2_pen=1728.011 cos=0.9941
+  IMG_120.jpg                        base      pred=100    l2_pen=1646.901 cos=1.0000
+  IMG_120.jpg                        forbid0   pred=100    l2_pen=1623.621 cos=0.9958
+  IMG_120.jpg                        neutral0  pred=100    l2_pen=1652.338 cos=0.9943
+  IMG_121.jpg                        base      pred=1000   l2_pen=1771.554 cos=1.0000
+  IMG_121.jpg                        forbid0   pred=1000   l2_pen=1726.308 cos=0.9909
+  IMG_121.jpg                        neutral0  pred=0      l2_pen=1733.974 cos=0.9934
+  IMG_122.jpg                        base      pred=0      l2_pen=1766.808 cos=1.0000
+  IMG_122.jpg                        forbid0   pred=1000   l2_pen=1733.371 cos=0.9921
+  IMG_122.jpg                        neutral0  pred=0      l2_pen=1735.506 cos=0.9925
+  IMG_123.jpg                        base      pred=88     l2_pen=1616.028 cos=1.0000
+  IMG_123.jpg                        forbid0   pred=84     l2_pen=1611.172 cos=0.9971
+  IMG_123.jpg                        neutral0  pred=80     l2_pen=1609.727 cos=0.9954
+  IMG_124.jpg                        base      pred=100    l2_pen=1740.662 cos=1.0000
+  IMG_124.jpg                        forbid0   pred=200    l2_pen=1695.986 cos=0.9923
+  IMG_124.jpg                        neutral0  pred=0      l2_pen=1719.904 cos=0.9946
+  IMG_125.jpg                        base      pred=300    l2_pen=1752.574 cos=1.0000
+  IMG_125.jpg                        forbid0   pred=300    l2_pen=1706.168 cos=0.9913
+  IMG_125.jpg                        neutral0  pred=0      l2_pen=1731.445 cos=0.9952
+  IMG_126.jpg                        base      pred=200    l2_pen=1742.561 cos=1.0000
+  IMG_126.jpg                        forbid0   pred=500    l2_pen=1711.937 cos=0.9938
+  IMG_126.jpg                        neutral0  pred=0      l2_pen=1737.715 cos=0.9954
+  IMG_127.jpg                        base      pred=0      l2_pen=1764.612 cos=1.0000
+  IMG_127.jpg                        forbid0   pred=1000   l2_pen=1726.031 cos=0.9911
+  IMG_127.jpg                        neutral0  pred=0      l2_pen=1734.282 cos=0.9933
+  IMG_128.jpg                        base      pred=0      l2_pen=1751.163 cos=1.0000
+  IMG_128.jpg                        forbid0   pred=1000   l2_pen=1707.094 cos=0.9907
+  IMG_128.jpg                        neutral0  pred=0      l2_pen=1732.711 cos=0.9944
+  IMG_129.jpg                        base      pred=0      l2_pen=1745.713 cos=1.0000
+  IMG_129.jpg                        forbid0   pred=500    l2_pen=1691.512 cos=0.9882
+  IMG_129.jpg                        neutral0  pred=0      l2_pen=1719.688 cos=0.9940
+  IMG_13.jpg                         base      pred=0      l2_pen=1777.542 cos=1.0000
+  IMG_13.jpg                         forbid0   pred=1000   l2_pen=1737.119 cos=0.9908
+  IMG_13.jpg                         neutral0  pred=0      l2_pen=1748.375 cos=0.9943
+  IMG_130.jpg                        base      pred=1000   l2_pen=1752.597 cos=1.0000
+  IMG_130.jpg                        forbid0   pred=1000   l2_pen=1700.090 cos=0.9906
+  IMG_130.jpg                        neutral0  pred=0      l2_pen=1726.704 cos=0.9948
+  IMG_131.jpg                        base      pred=300    l2_pen=1745.662 cos=1.0000
+  IMG_131.jpg                        forbid0   pred=300    l2_pen=1696.037 cos=0.9891
+  IMG_131.jpg                        neutral0  pred=0      l2_pen=1725.240 cos=0.9950
+  IMG_132.jpg                        base      pred=0      l2_pen=1742.483 cos=1.0000
+  IMG_132.jpg                        forbid0   pred=500    l2_pen=1700.536 cos=0.9923
+  IMG_132.jpg                        neutral0  pred=0      l2_pen=1723.587 cos=0.9945
+  IMG_133.jpg                        base      pred=100    l2_pen=1705.116 cos=1.0000
+  IMG_133.jpg                        forbid0   pred=100    l2_pen=1666.626 cos=0.9949
+  IMG_133.jpg                        neutral0  pred=0      l2_pen=1701.821 cos=0.9954
+  IMG_134.jpg                        base      pred=150    l2_pen=1664.774 cos=1.0000
+  IMG_134.jpg                        forbid0   pred=150    l2_pen=1650.510 cos=0.9961
+  IMG_134.jpg                        neutral0  pred=150    l2_pen=1677.731 cos=0.9943
+  IMG_135.jpg                        base      pred=45     l2_pen=1646.795 cos=1.0000
+  IMG_135.jpg                        forbid0   pred=45     l2_pen=1613.775 cos=0.9942
+  IMG_135.jpg                        neutral0  pred=40     l2_pen=1638.801 cos=0.9947
+  IMG_136.jpg                        base      pred=50     l2_pen=1680.252 cos=1.0000
+  IMG_136.jpg                        forbid0   pred=78     l2_pen=1634.081 cos=0.9919
+  IMG_136.jpg                        neutral0  pred=0      l2_pen=1677.586 cos=0.9949
+  IMG_137.jpg                        base      pred=0      l2_pen=1763.106 cos=1.0000
+  IMG_137.jpg                        forbid0   pred=1000   l2_pen=1712.531 cos=0.9905
+  IMG_137.jpg                        neutral0  pred=0      l2_pen=1743.557 cos=0.9940
+  IMG_138.jpg                        base      pred=300    l2_pen=1729.559 cos=1.0000
+  IMG_138.jpg                        forbid0   pred=300    l2_pen=1681.686 cos=0.9915
+  IMG_138.jpg                        neutral0  pred=0      l2_pen=1715.346 cos=0.9943
+  IMG_139.jpg                        base      pred=200    l2_pen=1753.686 cos=1.0000
+  IMG_139.jpg                        forbid0   pred=300    l2_pen=1714.323 cos=0.9915
+  IMG_139.jpg                        neutral0  pred=0      l2_pen=1738.329 cos=0.9943
+  IMG_14.jpg                         base      pred=1000   l2_pen=1757.655 cos=1.0000
+  IMG_14.jpg                         forbid0   pred=1000   l2_pen=1701.709 cos=0.9901
+  IMG_14.jpg                         neutral0  pred=0      l2_pen=1731.306 cos=0.9948
+  IMG_140.jpg                        base      pred=50     l2_pen=1628.805 cos=1.0000
+  IMG_140.jpg                        forbid0   pred=58     l2_pen=1621.423 cos=0.9965
+  IMG_140.jpg                        neutral0  pred=50     l2_pen=1638.897 cos=0.9936
+  IMG_141.jpg                        base      pred=0      l2_pen=1761.103 cos=1.0000
+  IMG_141.jpg                        forbid0   pred=500    l2_pen=1714.788 cos=0.9916
+  IMG_141.jpg                        neutral0  pred=0      l2_pen=1734.030 cos=0.9941
+  IMG_142.jpg                        base      pred=200    l2_pen=1739.071 cos=1.0000
+  IMG_142.jpg                        forbid0   pred=200    l2_pen=1683.757 cos=0.9903
+  IMG_142.jpg                        neutral0  pred=0      l2_pen=1718.919 cos=0.9942
+  IMG_143.jpg                        base      pred=0      l2_pen=1752.738 cos=1.0000
+  IMG_143.jpg                        forbid0   pred=300    l2_pen=1700.449 cos=0.9904
+  IMG_143.jpg                        neutral0  pred=0      l2_pen=1723.179 cos=0.9939
+  IMG_144.jpg                        base      pred=250    l2_pen=1733.115 cos=1.0000
+  IMG_144.jpg                        forbid0   pred=300    l2_pen=1697.790 cos=0.9932
+  IMG_144.jpg                        neutral0  pred=0      l2_pen=1717.862 cos=0.9952
+  IMG_145.jpg                        base      pred=200    l2_pen=1747.547 cos=1.0000
+  IMG_145.jpg                        forbid0   pred=250    l2_pen=1709.446 cos=0.9924
+  IMG_145.jpg                        neutral0  pred=0      l2_pen=1733.325 cos=0.9952
+  IMG_146.jpg                        base      pred=0      l2_pen=1754.896 cos=1.0000
+  IMG_146.jpg                        forbid0   pred=1000   l2_pen=1719.755 cos=0.9919
+  IMG_146.jpg                        neutral0  pred=0      l2_pen=1725.278 cos=0.9937
+  IMG_147.jpg                        base      pred=0      l2_pen=1755.972 cos=1.0000
+  IMG_147.jpg                        forbid0   pred=1000   l2_pen=1709.607 cos=0.9909
+  IMG_147.jpg                        neutral0  pred=0      l2_pen=1733.388 cos=0.9942
+  IMG_148.jpg                        base      pred=150    l2_pen=1704.477 cos=1.0000
+  IMG_148.jpg                        forbid0   pred=200    l2_pen=1655.001 cos=0.9935
+  IMG_148.jpg                        neutral0  pred=0      l2_pen=1698.064 cos=0.9948
+  IMG_149.jpg                        base      pred=150    l2_pen=1724.828 cos=1.0000
+  IMG_149.jpg                        forbid0   pred=250    l2_pen=1692.241 cos=0.9941
+  IMG_149.jpg                        neutral0  pred=0      l2_pen=1720.060 cos=0.9951
+  IMG_15.jpg                         base      pred=300    l2_pen=1741.730 cos=1.0000
+  IMG_15.jpg                         forbid0   pred=500    l2_pen=1692.654 cos=0.9898
+  IMG_15.jpg                         neutral0  pred=0      l2_pen=1721.638 cos=0.9944
+  IMG_150.jpg                        base      pred=1000   l2_pen=1781.960 cos=1.0000
+  IMG_150.jpg                        forbid0   pred=1000   l2_pen=1720.601 cos=0.9883
+  IMG_150.jpg                        neutral0  pred=0      l2_pen=1739.723 cos=0.9935
+  IMG_151.jpg                        base      pred=200    l2_pen=1706.235 cos=1.0000
+  IMG_151.jpg                        forbid0   pred=200    l2_pen=1682.938 cos=0.9938
+  IMG_151.jpg                        neutral0  pred=0      l2_pen=1702.499 cos=0.9946
+  IMG_152.jpg                        base      pred=300    l2_pen=1723.095 cos=1.0000
+  IMG_152.jpg                        forbid0   pred=300    l2_pen=1693.565 cos=0.9917
+  IMG_152.jpg                        neutral0  pred=0      l2_pen=1725.343 cos=0.9946
+  IMG_153.jpg                        base      pred=300    l2_pen=1716.391 cos=1.0000
+  IMG_153.jpg                        forbid0   pred=300    l2_pen=1672.877 cos=0.9921
+  IMG_153.jpg                        neutral0  pred=0      l2_pen=1702.191 cos=0.9953
+  IMG_154.jpg                        base      pred=0      l2_pen=1750.956 cos=1.0000
+  IMG_154.jpg                        forbid0   pred=1000   l2_pen=1710.884 cos=0.9885
+  IMG_154.jpg                        neutral0  pred=0      l2_pen=1733.421 cos=0.9935
+  IMG_155.jpg                        base      pred=150    l2_pen=1682.373 cos=1.0000
+  IMG_155.jpg                        forbid0   pred=150    l2_pen=1674.702 cos=0.9968
+  IMG_155.jpg                        neutral0  pred=0      l2_pen=1694.661 cos=0.9939
+  IMG_156.jpg                        base      pred=100    l2_pen=1718.787 cos=1.0000
+  IMG_156.jpg                        forbid0   pred=150    l2_pen=1670.297 cos=0.9912
+  IMG_156.jpg                        neutral0  pred=0      l2_pen=1707.564 cos=0.9951
+  IMG_157.jpg                        base      pred=0      l2_pen=1743.882 cos=1.0000
+  IMG_157.jpg                        forbid0   pred=500    l2_pen=1710.527 cos=0.9915
+  IMG_157.jpg                        neutral0  pred=0      l2_pen=1732.953 cos=0.9946
+  IMG_158.jpg                        base      pred=0      l2_pen=1754.151 cos=1.0000
+  IMG_158.jpg                        forbid0   pred=500    l2_pen=1712.296 cos=0.9920
+  IMG_158.jpg                        neutral0  pred=0      l2_pen=1729.085 cos=0.9945
+  IMG_159.jpg                        base      pred=256    l2_pen=1733.246 cos=1.0000
+  IMG_159.jpg                        forbid0   pred=256    l2_pen=1684.661 cos=0.9921
+  IMG_159.jpg                        neutral0  pred=0      l2_pen=1721.017 cos=0.9957
+  IMG_16.jpg                         base      pred=0      l2_pen=1747.468 cos=1.0000
+  IMG_16.jpg                         forbid0   pred=500    l2_pen=1692.371 cos=0.9885
+  IMG_16.jpg                         neutral0  pred=0      l2_pen=1711.588 cos=0.9936
+  IMG_160.jpg                        base      pred=100    l2_pen=1598.540 cos=1.0000
+  IMG_160.jpg                        forbid0   pred=100    l2_pen=1585.672 cos=0.9972
+  IMG_160.jpg                        neutral0  pred=100    l2_pen=1604.165 cos=0.9952
+  IMG_161.jpg                        base      pred=158    l2_pen=1657.999 cos=1.0000
+  IMG_161.jpg                        forbid0   pred=150    l2_pen=1630.039 cos=0.9942
+  IMG_161.jpg                        neutral0  pred=0      l2_pen=1668.141 cos=0.9949
+  IMG_162.jpg                        base      pred=200    l2_pen=1756.754 cos=1.0000
+  IMG_162.jpg                        forbid0   pred=500    l2_pen=1713.149 cos=0.9918
+  IMG_162.jpg                        neutral0  pred=0      l2_pen=1726.158 cos=0.9946
+  IMG_163.jpg                        base      pred=0      l2_pen=1718.183 cos=1.0000
+  IMG_163.jpg                        forbid0   pred=200    l2_pen=1677.591 cos=0.9929
+  IMG_163.jpg                        neutral0  pred=0      l2_pen=1706.943 cos=0.9954
+  IMG_164.jpg                        base      pred=300    l2_pen=1740.338 cos=1.0000
+  IMG_164.jpg                        forbid0   pred=300    l2_pen=1694.331 cos=0.9896
+  IMG_164.jpg                        neutral0  pred=0      l2_pen=1717.864 cos=0.9944
+  IMG_165.jpg                        base      pred=1000   l2_pen=1745.139 cos=1.0000
+  IMG_165.jpg                        forbid0   pred=1000   l2_pen=1709.067 cos=0.9915
+  IMG_165.jpg                        neutral0  pred=0      l2_pen=1718.644 cos=0.9940
+  IMG_166.jpg                        base      pred=150    l2_pen=1700.188 cos=1.0000
+  IMG_166.jpg                        forbid0   pred=150    l2_pen=1669.081 cos=0.9944
+  IMG_166.jpg                        neutral0  pred=0      l2_pen=1701.772 cos=0.9951
+  IMG_167.jpg                        base      pred=100    l2_pen=1656.630 cos=1.0000
+  IMG_167.jpg                        forbid0   pred=100    l2_pen=1633.329 cos=0.9962
+  IMG_167.jpg                        neutral0  pred=100    l2_pen=1657.022 cos=0.9948
+  IMG_168.jpg                        base      pred=0      l2_pen=1756.237 cos=1.0000
+  IMG_168.jpg                        forbid0   pred=500    l2_pen=1729.091 cos=0.9928
+  IMG_168.jpg                        neutral0  pred=0      l2_pen=1734.070 cos=0.9947
+  IMG_169.jpg                        base      pred=256    l2_pen=1720.125 cos=1.0000
+  IMG_169.jpg                        forbid0   pred=250    l2_pen=1677.282 cos=0.9930
+  IMG_169.jpg                        neutral0  pred=0      l2_pen=1718.986 cos=0.9945
+  IMG_17.jpg                         base      pred=1000   l2_pen=1773.726 cos=1.0000
+  IMG_17.jpg                         forbid0   pred=1000   l2_pen=1724.450 cos=0.9886
+  IMG_17.jpg                         neutral0  pred=0      l2_pen=1737.098 cos=0.9933
+  IMG_170.jpg                        base      pred=1000   l2_pen=1762.649 cos=1.0000
+  IMG_170.jpg                        forbid0   pred=1000   l2_pen=1732.153 cos=0.9926
+  IMG_170.jpg                        neutral0  pred=0      l2_pen=1743.968 cos=0.9948
+  IMG_171.jpg                        base      pred=200    l2_pen=1730.722 cos=1.0000
+  IMG_171.jpg                        forbid0   pred=250    l2_pen=1700.185 cos=0.9943
+  IMG_171.jpg                        neutral0  pred=0      l2_pen=1734.343 cos=0.9949
+  IMG_172.jpg                        base      pred=1000   l2_pen=1769.383 cos=1.0000
+  IMG_172.jpg                        forbid0   pred=1500   l2_pen=1717.830 cos=0.9898
+  IMG_172.jpg                        neutral0  pred=0      l2_pen=1729.709 cos=0.9939
+  IMG_173.jpg                        base      pred=0      l2_pen=1777.761 cos=1.0000
+  IMG_173.jpg                        forbid0   pred=1000   l2_pen=1735.157 cos=0.9907
+  IMG_173.jpg                        neutral0  pred=0      l2_pen=1739.278 cos=0.9928
+  IMG_174.jpg                        base      pred=100    l2_pen=1696.211 cos=1.0000
+  IMG_174.jpg                        forbid0   pred=150    l2_pen=1653.131 cos=0.9937
+  IMG_174.jpg                        neutral0  pred=0      l2_pen=1707.492 cos=0.9939
+  IMG_175.jpg                        base      pred=0      l2_pen=1739.790 cos=1.0000
+  IMG_175.jpg                        forbid0   pred=1000   l2_pen=1709.251 cos=0.9910
+  IMG_175.jpg                        neutral0  pred=0      l2_pen=1733.560 cos=0.9945
+  IMG_176.jpg                        base      pred=0      l2_pen=1741.639 cos=1.0000
+  IMG_176.jpg                        forbid0   pred=500    l2_pen=1679.408 cos=0.9901
+  IMG_176.jpg                        neutral0  pred=0      l2_pen=1718.879 cos=0.9943
+  IMG_177.jpg                        base      pred=200    l2_pen=1751.266 cos=1.0000
+  IMG_177.jpg                        forbid0   pred=500    l2_pen=1715.552 cos=0.9926
+  IMG_177.jpg                        neutral0  pred=0      l2_pen=1732.716 cos=0.9947
+  IMG_178.jpg                        base      pred=0      l2_pen=1759.551 cos=1.0000
+  IMG_178.jpg                        forbid0   pred=500    l2_pen=1716.859 cos=0.9921
+  IMG_178.jpg                        neutral0  pred=0      l2_pen=1736.366 cos=0.9948
+  IMG_179.jpg                        base      pred=100    l2_pen=1760.163 cos=1.0000
+  IMG_179.jpg                        forbid0   pred=500    l2_pen=1720.840 cos=0.9929
+  IMG_179.jpg                        neutral0  pred=0      l2_pen=1738.496 cos=0.9946
+  IMG_18.jpg                         base      pred=100    l2_pen=1737.298 cos=1.0000
+  IMG_18.jpg                         forbid0   pred=100    l2_pen=1698.280 cos=0.9912
+  IMG_18.jpg                         neutral0  pred=0      l2_pen=1721.725 cos=0.9946
+  IMG_180.jpg                        base      pred=0      l2_pen=1741.278 cos=1.0000
+  IMG_180.jpg                        forbid0   pred=500    l2_pen=1705.166 cos=0.9914
+  IMG_180.jpg                        neutral0  pred=0      l2_pen=1730.038 cos=0.9944
+  IMG_181.jpg                        base      pred=256    l2_pen=1718.238 cos=1.0000
+  IMG_181.jpg                        forbid0   pred=250    l2_pen=1677.433 cos=0.9939
+  IMG_181.jpg                        neutral0  pred=0      l2_pen=1708.974 cos=0.9950
+  IMG_182.jpg                        base      pred=100    l2_pen=1731.431 cos=1.0000
+  IMG_182.jpg                        forbid0   pred=150    l2_pen=1692.178 cos=0.9919
+  IMG_182.jpg                        neutral0  pred=0      l2_pen=1726.065 cos=0.9950
+  IMG_19.jpg                         base      pred=0      l2_pen=1741.532 cos=1.0000
+  IMG_19.jpg                         forbid0   pred=200    l2_pen=1706.604 cos=0.9915
+  IMG_19.jpg                         neutral0  pred=0      l2_pen=1729.718 cos=0.9939
+  IMG_2.jpg                          base      pred=0      l2_pen=1782.674 cos=1.0000
+  IMG_2.jpg                          forbid0   pred=1000   l2_pen=1733.621 cos=0.9904
+  IMG_2.jpg                          neutral0  pred=0      l2_pen=1739.026 cos=0.9935
+  IMG_20.jpg                         base      pred=1000   l2_pen=1770.814 cos=1.0000
+  IMG_20.jpg                         forbid0   pred=1024   l2_pen=1727.993 cos=0.9910
+  IMG_20.jpg                         neutral0  pred=0      l2_pen=1747.663 cos=0.9948
+  IMG_21.jpg                         base      pred=0      l2_pen=1764.969 cos=1.0000
+  IMG_21.jpg                         forbid0   pred=1000   l2_pen=1720.365 cos=0.9911
+  IMG_21.jpg                         neutral0  pred=0      l2_pen=1741.541 cos=0.9941
+  IMG_22.jpg                         base      pred=0      l2_pen=1742.738 cos=1.0000
+  IMG_22.jpg                         forbid0   pred=500    l2_pen=1694.165 cos=0.9901
+  IMG_22.jpg                         neutral0  pred=0      l2_pen=1718.202 cos=0.9941
+  IMG_23.jpg                         base      pred=0      l2_pen=1766.472 cos=1.0000
+  IMG_23.jpg                         forbid0   pred=1000   l2_pen=1722.500 cos=0.9914
+  IMG_23.jpg                         neutral0  pred=0      l2_pen=1733.289 cos=0.9936
+  IMG_24.jpg                         base      pred=500    l2_pen=1710.192 cos=1.0000
+  IMG_24.jpg                         forbid0   pred=500    l2_pen=1677.978 cos=0.9934
+  IMG_24.jpg                         neutral0  pred=0      l2_pen=1709.016 cos=0.9946
+  IMG_25.jpg                         base      pred=100    l2_pen=1721.453 cos=1.0000
+  IMG_25.jpg                         forbid0   pred=150    l2_pen=1674.480 cos=0.9920
+  IMG_25.jpg                         neutral0  pred=0      l2_pen=1716.675 cos=0.9952
+  IMG_26.jpg                         base      pred=0      l2_pen=1760.774 cos=1.0000
+  IMG_26.jpg                         forbid0   pred=500    l2_pen=1710.002 cos=0.9898
+  IMG_26.jpg                         neutral0  pred=0      l2_pen=1726.468 cos=0.9937
+  IMG_27.jpg                         base      pred=0      l2_pen=1758.864 cos=1.0000
+  IMG_27.jpg                         forbid0   pred=1000   l2_pen=1707.614 cos=0.9916
+  IMG_27.jpg                         neutral0  pred=0      l2_pen=1726.558 cos=0.9945
+  IMG_28.jpg                         base      pred=0      l2_pen=1771.648 cos=1.0000
+  IMG_28.jpg                         forbid0   pred=1000   l2_pen=1726.979 cos=0.9920
+  IMG_28.jpg                         neutral0  pred=0      l2_pen=1736.345 cos=0.9942
+  IMG_29.jpg                         base      pred=100    l2_pen=1740.015 cos=1.0000
+  IMG_29.jpg                         forbid0   pred=100    l2_pen=1708.585 cos=0.9926
+  IMG_29.jpg                         neutral0  pred=0      l2_pen=1720.571 cos=0.9947
+  IMG_3.jpg                          base      pred=0      l2_pen=1765.117 cos=1.0000
+  IMG_3.jpg                          forbid0   pred=1000   l2_pen=1714.418 cos=0.9918
+  IMG_3.jpg                          neutral0  pred=0      l2_pen=1728.520 cos=0.9944
+  IMG_30.jpg                         base      pred=300    l2_pen=1717.666 cos=1.0000
+  IMG_30.jpg                         forbid0   pred=300    l2_pen=1689.416 cos=0.9942
+  IMG_30.jpg                         neutral0  pred=0      l2_pen=1712.552 cos=0.9942
+  IMG_31.jpg                         base      pred=250    l2_pen=1760.813 cos=1.0000
+  IMG_31.jpg                         forbid0   pred=300    l2_pen=1725.333 cos=0.9920
+  IMG_31.jpg                         neutral0  pred=0      l2_pen=1739.487 cos=0.9951
+  IMG_32.jpg                         base      pred=0      l2_pen=1763.563 cos=1.0000
+  IMG_32.jpg                         forbid0   pred=1000   l2_pen=1721.562 cos=0.9916
+  IMG_32.jpg                         neutral0  pred=0      l2_pen=1736.073 cos=0.9943
+  IMG_33.jpg                         base      pred=0      l2_pen=1755.600 cos=1.0000
+  IMG_33.jpg                         forbid0   pred=500    l2_pen=1709.719 cos=0.9906
+  IMG_33.jpg                         neutral0  pred=0      l2_pen=1734.089 cos=0.9937
+  IMG_34.jpg                         base      pred=100    l2_pen=1683.911 cos=1.0000
+  IMG_34.jpg                         forbid0   pred=100    l2_pen=1642.564 cos=0.9935
+  IMG_34.jpg                         neutral0  pred=0      l2_pen=1666.433 cos=0.9946
+  IMG_35.jpg                         base      pred=1000   l2_pen=1763.435 cos=1.0000
+  IMG_35.jpg                         forbid0   pred=1000   l2_pen=1724.125 cos=0.9928
+  IMG_35.jpg                         neutral0  pred=0      l2_pen=1734.329 cos=0.9948
+  IMG_36.jpg                         base      pred=0      l2_pen=1766.834 cos=1.0000
+  IMG_36.jpg                         forbid0   pred=1000   l2_pen=1717.644 cos=0.9891
+  IMG_36.jpg                         neutral0  pred=0      l2_pen=1733.213 cos=0.9936
+  IMG_37.jpg                         base      pred=0      l2_pen=1738.964 cos=1.0000
+  IMG_37.jpg                         forbid0   pred=200    l2_pen=1707.941 cos=0.9930
+  IMG_37.jpg                         neutral0  pred=0      l2_pen=1723.768 cos=0.9950
+  IMG_38.jpg                         base      pred=1000   l2_pen=1759.900 cos=1.0000
+  IMG_38.jpg                         forbid0   pred=1000   l2_pen=1718.489 cos=0.9914
+  IMG_38.jpg                         neutral0  pred=0      l2_pen=1731.629 cos=0.9939
+  IMG_39.jpg                         base      pred=150    l2_pen=1719.321 cos=1.0000
+  IMG_39.jpg                         forbid0   pred=150    l2_pen=1683.481 cos=0.9942
+  IMG_39.jpg                         neutral0  pred=0      l2_pen=1717.234 cos=0.9950
+  IMG_4.jpg                          base      pred=150    l2_pen=1699.553 cos=1.0000
+  IMG_4.jpg                          forbid0   pred=150    l2_pen=1657.470 cos=0.9933
+  IMG_4.jpg                          neutral0  pred=0      l2_pen=1683.071 cos=0.9950
+  IMG_40.jpg                         base      pred=100    l2_pen=1739.039 cos=1.0000
+  IMG_40.jpg                         forbid0   pred=500    l2_pen=1714.197 cos=0.9923
+  IMG_40.jpg                         neutral0  pred=0      l2_pen=1725.753 cos=0.9947
+  IMG_41.jpg                         base      pred=100    l2_pen=1732.448 cos=1.0000
+  IMG_41.jpg                         forbid0   pred=100    l2_pen=1692.982 cos=0.9913
+  IMG_41.jpg                         neutral0  pred=0      l2_pen=1726.110 cos=0.9948
+  IMG_42.jpg                         base      pred=0      l2_pen=1769.248 cos=1.0000
+  IMG_42.jpg                         forbid0   pred=1000   l2_pen=1722.188 cos=0.9898
+  IMG_42.jpg                         neutral0  pred=0      l2_pen=1727.533 cos=0.9934
+  IMG_43.jpg                         base      pred=45     l2_pen=1641.609 cos=1.0000
+  IMG_43.jpg                         forbid0   pred=50     l2_pen=1628.070 cos=0.9964
+  IMG_43.jpg                         neutral0  pred=40     l2_pen=1673.007 cos=0.9944
+  IMG_44.jpg                         base      pred=300    l2_pen=1749.995 cos=1.0000
+  IMG_44.jpg                         forbid0   pred=300    l2_pen=1711.544 cos=0.9925
+  IMG_44.jpg                         neutral0  pred=0      l2_pen=1733.976 cos=0.9953
+  IMG_45.jpg                         base      pred=0      l2_pen=1704.679 cos=1.0000
+  IMG_45.jpg                         forbid0   pred=150    l2_pen=1672.166 cos=0.9931
+  IMG_45.jpg                         neutral0  pred=0      l2_pen=1704.419 cos=0.9947
+  IMG_46.jpg                         base      pred=300    l2_pen=1725.822 cos=1.0000
+  IMG_46.jpg                         forbid0   pred=300    l2_pen=1693.358 cos=0.9921
+  IMG_46.jpg                         neutral0  pred=0      l2_pen=1722.662 cos=0.9950
+  IMG_47.jpg                         base      pred=1024   l2_pen=1748.526 cos=1.0000
+  IMG_47.jpg                         forbid0   pred=1024   l2_pen=1702.744 cos=0.9897
+  IMG_47.jpg                         neutral0  pred=0      l2_pen=1724.923 cos=0.9939
+  IMG_48.jpg                         base      pred=500    l2_pen=1729.715 cos=1.0000
+  IMG_48.jpg                         forbid0   pred=500    l2_pen=1691.921 cos=0.9924
+  IMG_48.jpg                         neutral0  pred=0      l2_pen=1720.608 cos=0.9950
+  IMG_49.jpg                         base      pred=0      l2_pen=1732.620 cos=1.0000
+  IMG_49.jpg                         forbid0   pred=500    l2_pen=1691.901 cos=0.9923
+  IMG_49.jpg                         neutral0  pred=0      l2_pen=1703.897 cos=0.9948
+  IMG_5.jpg                          base      pred=1000   l2_pen=1749.936 cos=1.0000
+  IMG_5.jpg                          forbid0   pred=1000   l2_pen=1715.100 cos=0.9916
+  IMG_5.jpg                          neutral0  pred=0      l2_pen=1733.866 cos=0.9948
+  IMG_50.jpg                         base      pred=0      l2_pen=1762.383 cos=1.0000
+  IMG_50.jpg                         forbid0   pred=1000   l2_pen=1719.165 cos=0.9919
+  IMG_50.jpg                         neutral0  pred=0      l2_pen=1727.047 cos=0.9940
+  IMG_51.jpg                         base      pred=300    l2_pen=1749.420 cos=1.0000
+  IMG_51.jpg                         forbid0   pred=300    l2_pen=1714.915 cos=0.9923
+  IMG_51.jpg                         neutral0  pred=0      l2_pen=1735.880 cos=0.9949
+  IMG_52.jpg                         base      pred=100    l2_pen=1687.486 cos=1.0000
+  IMG_52.jpg                         forbid0   pred=100    l2_pen=1653.200 cos=0.9943
+  IMG_52.jpg                         neutral0  pred=0      l2_pen=1690.025 cos=0.9949
+  IMG_53.jpg                         base      pred=0      l2_pen=1735.312 cos=1.0000
+  IMG_53.jpg                         forbid0   pred=200    l2_pen=1691.346 cos=0.9922
+  IMG_53.jpg                         neutral0  pred=0      l2_pen=1712.762 cos=0.9947
+  IMG_54.jpg                         base      pred=0      l2_pen=1750.157 cos=1.0000
+  IMG_54.jpg                         forbid0   pred=1000   l2_pen=1712.355 cos=0.9907
+  IMG_54.jpg                         neutral0  pred=0      l2_pen=1719.247 cos=0.9931
+  IMG_55.jpg                         base      pred=100    l2_pen=1711.417 cos=1.0000
+  IMG_55.jpg                         forbid0   pred=100    l2_pen=1682.451 cos=0.9951
+  IMG_55.jpg                         neutral0  pred=0      l2_pen=1713.671 cos=0.9942
+  IMG_56.jpg                         base      pred=0      l2_pen=1740.096 cos=1.0000
+  IMG_56.jpg                         forbid0   pred=500    l2_pen=1687.068 cos=0.9896
+  IMG_56.jpg                         neutral0  pred=0      l2_pen=1720.641 cos=0.9947
+
+[g9] 逐项结果 -> /root/g9_res/g9_hidden.csv
+[g9] ★ 下一步是**污染闸门**：把 pred_greedy 与冻结的 vLLM 记录逐项比对；不一致率 >5%% 则整节报"不可测"（见 g9_criteria_frozen.json::corruption_guard）。
+[09:30:04]   G9b 测量完成
+[09:30:04]   G9b 测量完成
+[09:30:04] ########## 收官批结束 ##########
+[09:30:04] ########## 收官批结束 ##########
+total 292
+-rw-r--r-- 1 root root  44273 Sep 27 09:10 gx_g10mix_InternVL3_5-8B.csv
+-rw-r--r-- 1 root root  48177 Sep 27 09:13 gx_g10mix_gemma3-12b.csv
+-rw-r--r-- 1 root root 147727 Sep 27 08:48 gx_g8b_Qwen3-VL-32B-Instruct.csv
+-rw-r--r-- 1 root root  47951 Sep 27 08:50 gx_placebo_Qwen3-VL-32B-Instruct.csv
+GX_ALL_DONE

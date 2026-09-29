@@ -1,0 +1,576 @@
+{
+  "study": "E-A true-zero identification control",
+  "instrument": "19f_probe_ablation.py md5 28e82b20a7f468680da11b2e9855cff9 (UNCHANGED); driver 20a_probe_truezero.py imports it and reuses P/parse/b64_of/call_img",
+  "serving": "aligned to E3 (max-model-len 8192, max-num-seqs 24; Qwen3-VL-32B: 4096/8; --trust-remote-code for InternVL/Phi)",
+  "z0_pool": "webcrop of UCF-QNRF test images; window expanded by 48px contains ZERO annotated head points => gt=0 by the dataset's own annotation; 153 easy + 153 hard stratified by a Laplacian-std clutter proxy (easy median 8.76, hard median 27.79)",
+  "parsing_convention": "raw-text matching (frozen parse() mis-records standard JSON {\"response\": ...} as a parse failure; documented in the paper §8.1/§11.2)",
+  "families": {
+    "InternVL3_5-8B": {
+      "z0easy": {
+        "base": {
+          "n": 153,
+          "zero": 120,
+          "no_people": 0,
+          "cannot_judge": 0,
+          "abstain": 0,
+          "rate": {
+            "zero": 0.7843,
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "abstain": 0.0
+          }
+        },
+        "channel": {
+          "n": 153,
+          "zero": 0,
+          "no_people": 133,
+          "cannot_judge": 13,
+          "abstain": 0,
+          "rate": {
+            "zero": 0.0,
+            "no_people": 0.8693,
+            "cannot_judge": 0.085,
+            "abstain": 0.0
+          }
+        },
+        "permit": {
+          "n": 153,
+          "zero": 0,
+          "no_people": 0,
+          "cannot_judge": 0,
+          "abstain": 147,
+          "rate": {
+            "zero": 0.0,
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "abstain": 0.9608
+          }
+        }
+      },
+      "z0hard": {
+        "base": {
+          "n": 153,
+          "zero": 119,
+          "no_people": 0,
+          "cannot_judge": 0,
+          "abstain": 0,
+          "rate": {
+            "zero": 0.7778,
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "abstain": 0.0
+          }
+        },
+        "channel": {
+          "n": 153,
+          "zero": 0,
+          "no_people": 136,
+          "cannot_judge": 8,
+          "abstain": 0,
+          "rate": {
+            "zero": 0.0,
+            "no_people": 0.8889,
+            "cannot_judge": 0.0523,
+            "abstain": 0.0
+          }
+        }
+      },
+      "d0": {
+        "st_a_channel": {
+          "n": 103,
+          "zero": 0,
+          "no_people": 1,
+          "cannot_judge": 102,
+          "abstain": 0,
+          "rate": {
+            "zero": 0.0,
+            "no_people": 0.0097,
+            "cannot_judge": 0.9903,
+            "abstain": 0.0
+          }
+        },
+        "ucf_channel": {
+          "n": 150,
+          "zero": 0,
+          "no_people": 0,
+          "cannot_judge": 150,
+          "abstain": 0,
+          "rate": {
+            "zero": 0.0,
+            "no_people": 0.0,
+            "cannot_judge": 1.0,
+            "abstain": 0.0
+          }
+        },
+        "st_a_permit": {
+          "n": 103,
+          "zero": 0,
+          "no_people": 0,
+          "cannot_judge": 0,
+          "abstain": 103,
+          "rate": {
+            "zero": 0.0,
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "abstain": 1.0
+          }
+        }
+      }
+    },
+    "Phi-3.5-vision-instruct": {
+      "z0easy": {
+        "base": {
+          "n": 153,
+          "zero": 119,
+          "no_people": 0,
+          "cannot_judge": 0,
+          "abstain": 0,
+          "rate": {
+            "zero": 0.7778,
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "abstain": 0.0
+          }
+        },
+        "channel": {
+          "n": 153,
+          "zero": 0,
+          "no_people": 106,
+          "cannot_judge": 47,
+          "abstain": 0,
+          "rate": {
+            "zero": 0.0,
+            "no_people": 0.6928,
+            "cannot_judge": 0.3072,
+            "abstain": 0.0
+          }
+        },
+        "permit": {
+          "n": 153,
+          "zero": 0,
+          "no_people": 0,
+          "cannot_judge": 0,
+          "abstain": 153,
+          "rate": {
+            "zero": 0.0,
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "abstain": 1.0
+          }
+        }
+      },
+      "z0hard": {
+        "base": {
+          "n": 153,
+          "zero": 123,
+          "no_people": 0,
+          "cannot_judge": 0,
+          "abstain": 0,
+          "rate": {
+            "zero": 0.8039,
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "abstain": 0.0
+          }
+        },
+        "channel": {
+          "n": 153,
+          "zero": 0,
+          "no_people": 132,
+          "cannot_judge": 21,
+          "abstain": 0,
+          "rate": {
+            "zero": 0.0,
+            "no_people": 0.8627,
+            "cannot_judge": 0.1373,
+            "abstain": 0.0
+          }
+        }
+      },
+      "d0": {
+        "st_a_channel": {
+          "n": 103,
+          "zero": 0,
+          "no_people": 0,
+          "cannot_judge": 103,
+          "abstain": 0,
+          "rate": {
+            "zero": 0.0,
+            "no_people": 0.0,
+            "cannot_judge": 1.0,
+            "abstain": 0.0
+          }
+        },
+        "ucf_channel": {
+          "n": 150,
+          "zero": 0,
+          "no_people": 0,
+          "cannot_judge": 150,
+          "abstain": 0,
+          "rate": {
+            "zero": 0.0,
+            "no_people": 0.0,
+            "cannot_judge": 1.0,
+            "abstain": 0.0
+          }
+        },
+        "st_a_permit": {
+          "n": 103,
+          "zero": 0,
+          "no_people": 0,
+          "cannot_judge": 0,
+          "abstain": 103,
+          "rate": {
+            "zero": 0.0,
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "abstain": 1.0
+          }
+        }
+      }
+    },
+    "llava-onevision-qwen2-7b-ov": {
+      "z0easy": {
+        "base": {
+          "n": 153,
+          "zero": 110,
+          "no_people": 0,
+          "cannot_judge": 0,
+          "abstain": 0,
+          "rate": {
+            "zero": 0.719,
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "abstain": 0.0
+          }
+        },
+        "channel": {
+          "n": 153,
+          "zero": 0,
+          "no_people": 124,
+          "cannot_judge": 29,
+          "abstain": 0,
+          "rate": {
+            "zero": 0.0,
+            "no_people": 0.8105,
+            "cannot_judge": 0.1895,
+            "abstain": 0.0
+          }
+        },
+        "permit": {
+          "n": 153,
+          "zero": 0,
+          "no_people": 0,
+          "cannot_judge": 0,
+          "abstain": 140,
+          "rate": {
+            "zero": 0.0,
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "abstain": 0.915
+          }
+        }
+      },
+      "z0hard": {
+        "base": {
+          "n": 153,
+          "zero": 110,
+          "no_people": 0,
+          "cannot_judge": 0,
+          "abstain": 0,
+          "rate": {
+            "zero": 0.719,
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "abstain": 0.0
+          }
+        },
+        "channel": {
+          "n": 153,
+          "zero": 0,
+          "no_people": 138,
+          "cannot_judge": 12,
+          "abstain": 0,
+          "rate": {
+            "zero": 0.0,
+            "no_people": 0.902,
+            "cannot_judge": 0.0784,
+            "abstain": 0.0
+          }
+        }
+      },
+      "d0": {
+        "st_a_channel": {
+          "n": 103,
+          "zero": 0,
+          "no_people": 0,
+          "cannot_judge": 103,
+          "abstain": 0,
+          "rate": {
+            "zero": 0.0,
+            "no_people": 0.0,
+            "cannot_judge": 1.0,
+            "abstain": 0.0
+          }
+        },
+        "ucf_channel": {
+          "n": 150,
+          "zero": 0,
+          "no_people": 0,
+          "cannot_judge": 147,
+          "abstain": 0,
+          "rate": {
+            "zero": 0.0,
+            "no_people": 0.0,
+            "cannot_judge": 0.98,
+            "abstain": 0.0
+          }
+        },
+        "st_a_permit": {
+          "n": 103,
+          "zero": 0,
+          "no_people": 0,
+          "cannot_judge": 0,
+          "abstain": 56,
+          "rate": {
+            "zero": 0.0,
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "abstain": 0.5437
+          }
+        }
+      }
+    },
+    "gemma3-12b": {
+      "z0easy": {
+        "base": {
+          "n": 153,
+          "zero": 82,
+          "no_people": 0,
+          "cannot_judge": 0,
+          "abstain": 0,
+          "rate": {
+            "zero": 0.5359,
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "abstain": 0.0
+          }
+        },
+        "channel": {
+          "n": 153,
+          "zero": 0,
+          "no_people": 72,
+          "cannot_judge": 72,
+          "abstain": 0,
+          "rate": {
+            "zero": 0.0,
+            "no_people": 0.4706,
+            "cannot_judge": 0.4706,
+            "abstain": 0.0
+          }
+        },
+        "permit": {
+          "n": 153,
+          "zero": 0,
+          "no_people": 0,
+          "cannot_judge": 0,
+          "abstain": 142,
+          "rate": {
+            "zero": 0.0,
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "abstain": 0.9281
+          }
+        }
+      },
+      "z0hard": {
+        "base": {
+          "n": 153,
+          "zero": 71,
+          "no_people": 0,
+          "cannot_judge": 0,
+          "abstain": 0,
+          "rate": {
+            "zero": 0.4641,
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "abstain": 0.0
+          }
+        },
+        "channel": {
+          "n": 153,
+          "zero": 0,
+          "no_people": 59,
+          "cannot_judge": 79,
+          "abstain": 0,
+          "rate": {
+            "zero": 0.0,
+            "no_people": 0.3856,
+            "cannot_judge": 0.5163,
+            "abstain": 0.0
+          }
+        }
+      },
+      "d0": {
+        "st_a_channel": {
+          "n": 103,
+          "zero": 0,
+          "no_people": 0,
+          "cannot_judge": 103,
+          "abstain": 0,
+          "rate": {
+            "zero": 0.0,
+            "no_people": 0.0,
+            "cannot_judge": 1.0,
+            "abstain": 0.0
+          }
+        },
+        "ucf_channel": {
+          "n": 150,
+          "zero": 0,
+          "no_people": 0,
+          "cannot_judge": 150,
+          "abstain": 0,
+          "rate": {
+            "zero": 0.0,
+            "no_people": 0.0,
+            "cannot_judge": 1.0,
+            "abstain": 0.0
+          }
+        },
+        "st_a_permit": {
+          "n": 103,
+          "zero": 0,
+          "no_people": 0,
+          "cannot_judge": 0,
+          "abstain": 103,
+          "rate": {
+            "zero": 0.0,
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "abstain": 1.0
+          }
+        }
+      }
+    },
+    "Qwen3-VL-32B-Instruct": {
+      "z0easy": {
+        "base": {
+          "n": 153,
+          "zero": 129,
+          "no_people": 0,
+          "cannot_judge": 0,
+          "abstain": 0,
+          "rate": {
+            "zero": 0.8431,
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "abstain": 0.0
+          }
+        },
+        "channel": {
+          "n": 153,
+          "zero": 0,
+          "no_people": 121,
+          "cannot_judge": 20,
+          "abstain": 0,
+          "rate": {
+            "zero": 0.0,
+            "no_people": 0.7908,
+            "cannot_judge": 0.1307,
+            "abstain": 0.0
+          }
+        },
+        "permit": {
+          "n": 153,
+          "zero": 23,
+          "no_people": 0,
+          "cannot_judge": 0,
+          "abstain": 119,
+          "rate": {
+            "zero": 0.1503,
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "abstain": 0.7778
+          }
+        }
+      },
+      "z0hard": {
+        "base": {
+          "n": 153,
+          "zero": 128,
+          "no_people": 0,
+          "cannot_judge": 0,
+          "abstain": 0,
+          "rate": {
+            "zero": 0.8366,
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "abstain": 0.0
+          }
+        },
+        "channel": {
+          "n": 153,
+          "zero": 0,
+          "no_people": 128,
+          "cannot_judge": 10,
+          "abstain": 0,
+          "rate": {
+            "zero": 0.0,
+            "no_people": 0.8366,
+            "cannot_judge": 0.0654,
+            "abstain": 0.0
+          }
+        }
+      },
+      "d0": {
+        "st_a_channel": {
+          "n": 103,
+          "zero": 0,
+          "no_people": 0,
+          "cannot_judge": 103,
+          "abstain": 0,
+          "rate": {
+            "zero": 0.0,
+            "no_people": 0.0,
+            "cannot_judge": 1.0,
+            "abstain": 0.0
+          }
+        },
+        "ucf_channel": null,
+        "st_a_permit": {
+          "n": 103,
+          "zero": 0,
+          "no_people": 0,
+          "cannot_judge": 0,
+          "abstain": 103,
+          "rate": {
+            "zero": 0.0,
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "abstain": 1.0
+          }
+        }
+      }
+    }
+  },
+  "verdict_statistic_no_people_z0_minus_d0": {
+    "InternVL3_5-8B": 0.8596,
+    "Phi-3.5-vision-instruct": 0.6928,
+    "llava-onevision-qwen2-7b-ov": 0.8105,
+    "gemma3-12b": 0.4706,
+    "Qwen3-VL-32B-Instruct": 0.7908
+  },
+  "quoted_display": {
+    "z0_pool_n": "306",
+    "z0_easy_n": "153",
+    "z0_hard_n": "153",
+    "no_people_Z0": "47–87%",
+    "no_people_D0": "0–1%",
+    "cannot_judge_D0": "98–100%",
+    "permit_abstain_Z0": "78–100%",
+    "gap": "+0.471 to +0.860",
+    "note": "这些是正文/附录中出现的显示值；未舍入原值见 families.*.rate。"
+  },
+  "verdict": "PASS: on true-zero items the channel contract yields no_people at 39-90%; on dense items that the corpus had answered 0 the same models yield cannot_judge at 98-100% and no_people at ~0%. The three-way outlet is therefore used selectively and correctly, and the answered zero on a dense image is not a claim of emptiness."
+}

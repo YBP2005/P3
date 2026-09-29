@@ -1,0 +1,41 @@
+[11:36:12] ########## A5 消融开始（gemma3-12b @ /model/ModelScope/LLM-Research/gemma-3-12b-it）##########
+[11:38:15]   起服就绪（120s）
+[11:38:15] == 变体 native / st_a 零池 3 臂 ==
+  base 臂 pred==0 的 item 共 103 个；本次抽 103 个（gt 从 138 到 2256）
+  [base] 103 行；pred==0 的 0 个；-> /root/e1_results_ablate/e1_gemma3-12b_st_a_base_native.csv
+  [permit] 103 行；pred==0 的 0 个；-> /root/e1_results_ablate/e1_gemma3-12b_st_a_permit_native.csv
+  [channel] 103 行；pred==0 的 0 个；-> /root/e1_results_ablate/e1_gemma3-12b_st_a_channel_native.csv
+[11:38:37]    rc=0 用时 22s
+[11:38:37] == 变体 native / ucf 零池 3 臂 ==
+  base 臂 pred==0 的 item 共 180 个；本次抽 150 个（gt 从 137 到 1798）
+  [base] 150 行；pred==0 的 0 个；-> /root/e1_results_ablate/e1_gemma3-12b_ucf_base_native.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/e1_results_ablate/e1_gemma3-12b_ucf_permit_native.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/e1_results_ablate/e1_gemma3-12b_ucf_channel_native.csv
+[11:39:22]    rc=0 用时 45s
+[11:39:22] == 变体 s640 / st_a 零池 3 臂 ==
+  base 臂 pred==0 的 item 共 103 个；本次抽 103 个（gt 从 138 到 2256）
+  [base] 103 行；pred==0 的 0 个；-> /root/e1_results_ablate/e1_gemma3-12b_st_a_base_s640.csv
+  [permit] 103 行；pred==0 的 0 个；-> /root/e1_results_ablate/e1_gemma3-12b_st_a_permit_s640.csv
+  [channel] 103 行；pred==0 的 0 个；-> /root/e1_results_ablate/e1_gemma3-12b_st_a_channel_s640.csv
+[11:39:45]    rc=0 用时 23s
+[11:39:45] == 变体 s640 / ucf 零池 3 臂 ==
+  base 臂 pred==0 的 item 共 180 个；本次抽 150 个（gt 从 137 到 1798）
+  [base] 150 行；pred==0 的 0 个；-> /root/e1_results_ablate/e1_gemma3-12b_ucf_base_s640.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/e1_results_ablate/e1_gemma3-12b_ucf_permit_s640.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/e1_results_ablate/e1_gemma3-12b_ucf_channel_s640.csv
+[11:40:21]    rc=0 用时 36s
+[11:40:21] == 变体 sys / st_a 零池 3 臂 ==
+  base 臂 pred==0 的 item 共 103 个；本次抽 103 个（gt 从 138 到 2256）
+  [base] 103 行；pred==0 的 0 个；-> /root/e1_results_ablate/e1_gemma3-12b_st_a_base_native_sys.csv
+  [permit] 103 行；pred==0 的 0 个；-> /root/e1_results_ablate/e1_gemma3-12b_st_a_permit_native_sys.csv
+  [channel] 103 行；pred==0 的 0 个；-> /root/e1_results_ablate/e1_gemma3-12b_st_a_channel_native_sys.csv
+[11:40:43]    rc=0 用时 22s
+[11:40:43] == 变体 sys / ucf 零池 3 臂 ==
+  base 臂 pred==0 的 item 共 180 个；本次抽 150 个（gt 从 137 到 1798）
+  [base] 150 行；pred==0 的 0 个；-> /root/e1_results_ablate/e1_gemma3-12b_ucf_base_native_sys.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/e1_results_ablate/e1_gemma3-12b_ucf_permit_native_sys.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/e1_results_ablate/e1_gemma3-12b_ucf_channel_native_sys.csv
+[11:41:25]    rc=0 用时 42s
+[11:41:25] 消融文件 18 个
+[11:41:25] ########## A5 消融结束 ##########
+A5_ABLATION_DONE

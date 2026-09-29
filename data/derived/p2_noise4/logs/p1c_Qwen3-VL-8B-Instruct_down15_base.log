@@ -1,0 +1,4 @@
+  冻结探针 19e_probe_multi.py md5 03edb14c98ff ✓（提示词/解析/传输逐字复用）
+  [Qwen3-VL-8B-Instruct/base/down15] 网格 300 项 / 已完成 0 / 本次 300 ｜ model=Qwen3-VL-8B-Instruct ｜ system=无（冻结传输）
+    200/300  1.38 it/s  zero=42 abstain=0 parse_fail=0
+  [Qwen3-VL-8B-Instruct/base] DONE：300 行写入 /root/p1c_results/p1b_down15_Qwen3-VL-8B-Instruct_base.csv（zero=121 abstain=0 parse_fail=0）

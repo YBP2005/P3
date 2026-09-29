@@ -1,0 +1,6 @@
+[01:26:46] 等待 recover2 结束（W1_RECOVER2_DONE）…
+[03:22:46] 重下 Idefics3-8B（普查已完成，本次只为 FSC 四臂）
+[04:00:34]   [idefics3_8b] 起服就绪 60s
+[04:05:17] Idefics3 FSC 产物 4/4
+/root/w1_fsc_late.sh: line 17: 12215 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 4096 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 16 --port 8000 "$@" < /dev/null > "/root/logs/serve_w1fl_${TAG}.log" 2>&1
+[04:05:20] ########## FSC 补齐结束 ##########

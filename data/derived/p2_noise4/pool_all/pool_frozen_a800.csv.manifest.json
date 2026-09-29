@@ -1,0 +1,11 @@
+{
+  "frozen": "/root/p2/pool_all/pool_frozen.csv",
+  "frozen_md5": "432212b6a3fb16646e4b3a5c00816161",
+  "resolved": "/root/p2/pool_all/pool_frozen_a800.csv",
+  "resolved_md5": "25ee5c02109937753aa52c433fd8876a",
+  "rule": "image := <imagedir>/basename(frozen.image)",
+  "imagedir": "/root/p2_pool_imgs",
+  "rows": 300,
+  "missing": 0,
+  "missing_sample": []
+}

@@ -1,0 +1,32 @@
+[07:39:11] 等 FP8 下载结束
+[08:06:11] FP8 下载结束，空间：overlay         182G  102G   73G  59% /
+[08:06:11] 开始下载 GPTQ-W4 与 AWQ-8bit（到系统盘，已扩容）
+  ModelScope 取清单失败: HTTP Error 404: Not Found
+  [hf-mirror] LosCV29/Qwen3-VL-32B-Instruct-GPTQ-W4：22 文件 20.55 GB
+    OK  model-00005-of-00006.safetensors                     4287.3 MB  (358s)
+    OK  model-00002-of-00006.safetensors                     4278.9 MB  (730s)
+    OK  model-00004-of-00006.safetensors                     4242.4 MB  (1084s)
+    OK  model-00003-of-00006.safetensors                     4242.3 MB  (1438s)
+    OK  model-00001-of-00006.safetensors                     2747.8 MB  (1667s)
+    OK  model-00006-of-00006.safetensors                      732.7 MB  (1728s)
+    OK  tokenizer.json                                         11.4 MB  (1730s)
+    OK  vocab.json                                              2.8 MB  (1732s)
+    OK  merges.txt                                              1.7 MB  (1735s)
+    OK  model.safetensors.index.json                            0.2 MB  (1737s)
+    OK  quant_log.csv                                           0.0 MB  (1738s)
+    OK  chat_template.json                                      0.0 MB  (1739s)
+    OK  tokenizer_config.json                                   0.0 MB  (1740s)
+    OK  chat_template.jinja                                     0.0 MB  (1742s)
+    OK  config.json                                             0.0 MB  (1743s)
+    OK  .gitattributes                                          0.0 MB  (1744s)
+    OK  video_preprocessor_config.json                          0.0 MB  (1744s)
+    OK  added_tokens.json                                       0.0 MB  (1746s)
+    OK  special_tokens_map.json                                 0.0 MB  (1747s)
+    OK  quantize_config.json                                    0.0 MB  (1748s)
+    OK  preprocessor_config.json                                0.0 MB  (1749s)
+    OK  generation_config.json                                  0.0 MB  (1750s)
+  → LosCV29/Qwen3-VL-32B-Instruct-GPTQ-W4 成功 22 失败 0  20.55 GB  1750s
+  [ModelScope] cyankiwi/Qwen3-VL-32B-Instruct-AWQ-8bit：22 文件 37.48 GB
+    OK  model-00004-of-00008.safetensors                     4941.3 MB  (312s)
+    !!  model-00006-of-00008.safetensors                   期望 4941306616 实得 4945080320
+    !!  model-00002-of-00008.safetensors                   期望 4941306472 实得 0

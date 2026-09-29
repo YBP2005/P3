@@ -1,0 +1,45 @@
+item,gt,pred,parse_ok,raw,latency_s
+IMG_108,182,,0,"{""response"": ""cannot_judge""}",0.74
+IMG_22,212,,0,"{""response"": ""cannot_judge""}",0.75
+IMG_45,138,,0,"{""response"": ""cannot_judge""}",3.93
+IMG_124,226,,0,"{""response"": ""cannot_judge""}",0.63
+IMG_19,230,,0,"{""response"": ""cannot_judge""}",4.04
+IMG_1,172,,0,"{""response"": ""cannot_judge""}",10.91
+IMG_82,217,,0,"{""response"": ""cannot_judge""}",10.15
+IMG_168,240,,0,"{""response"": ""cannot_judge""}",4.15
+IMG_78,271,,0,"{""response"": ""cannot_judge""}",4.33
+IMG_116,288,,0,"{""response"": ""cannot_judge""}",3.89
+IMG_3,297,,0,"{""response"": ""cannot_judge""}",3.89
+IMG_29,309,,0,"{""response"": ""cannot_judge""}",4.15
+IMG_12,321,,0,"{""response"": ""cannot_judge""}",4.03
+IMG_139,355,,0,"{""response"": ""cannot_judge""}",1.33
+IMG_81,356,,0,"{""response"": ""cannot_judge""}",0.7
+IMG_177,363,,0,"{""response"": ""cannot_judge""}",0.72
+IMG_129,298,,0,"{""response"": ""cannot_judge""}",11.27
+IMG_15,341,,0,"{
+  ""response"": ""cannot_judge""
+}",10.2
+IMG_100,389,,0,"{""response"": ""cannot_judge""}",4.05
+IMG_46,373,,0,"{""response"": ""cannot_judge""}",10.24
+IMG_70,412,,0,"{
+  ""response"": ""cannot_judge""
+}",3.93
+IMG_128,419,,0,"{""response"": ""cannot_judge""}",3.89
+IMG_23,429,,0,"{""response"": ""cannot_judge""}",4.0
+IMG_180,398,,0,"{""response"": ""cannot_judge""}",10.29
+IMG_141,475,,0,"{""response"": ""cannot_judge""}",1.16
+IMG_175,442,,0,"{""response"": ""cannot_judge""}",4.04
+IMG_20,460,,0,"{""response"": ""cannot_judge""}",4.08
+IMG_76,485,,0,"{""response"": ""cannot_judge""}",3.94
+IMG_154,495,,0,"{""response"": ""cannot_judge""}",3.99
+IMG_49,511,,0,"{""response"": ""cannot_judge""}",3.87
+IMG_54,529,,0,"{""response"": ""cannot_judge""}",4.07
+IMG_146,479,,0,"{""response"": ""cannot_judge""}",11.06
+IMG_72,589,,0,"{""response"": ""cannot_judge""}",0.68
+IMG_75,665,,0,"{""response"": ""cannot_judge""}",0.76
+IMG_21,717,,0,"{""response"": ""cannot_judge""}",0.78
+IMG_27,760,,0,"{""response"": ""cannot_judge""}",4.17
+IMG_42,797,,0,"{""response"": ""cannot_judge""}",0.91
+IMG_13,584,,0,"{""response"": ""cannot_judge""}",10.3
+IMG_35,567,,0,"{""response"": ""cannot_judge""}",22.43
+IMG_37,195,,0,ERR:HTTP Error 429: Too Many Requests,76.65

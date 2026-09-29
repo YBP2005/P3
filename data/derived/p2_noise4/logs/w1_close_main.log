@@ -1,0 +1,9 @@
+[02:22:44] ===== 主面板收尾（w1_close_main.sh）=====
+[02:22:44] 已停止 Phi-4 下载进程
+[02:22:44] 已停止等待中的主驱动
+[02:22:47] 主面板家族产物盘点（零池文件数 / 非零池文件数）：
+[02:22:47]   Idefics3-8B-Llama3  零池 16 / 非零池 12
+[02:22:47]   gemma-4-31b-it  零池 16 / 非零池 12
+[02:22:47] 备选 Phi-4-multimodal-instruct 弃用：vision-lora(738MB)/speech-lora(922MB) 适配器与相关配置在 ModelScope 两轮重试后仍为 0 字节 ⇒ 缺视觉适配器，不构成可用视觉受试。
+[02:22:47] 后续由回收队列补齐：Step3-VL-10B(trust_remote_code) / MiniCPM-V-4_5 / deepseek-vl2-tiny(timm) / Molmo-7B-D(trust_remote_code)。
+[02:22:47] W1_PANEL_DONE（由 w1_close_main.sh 写入：主面板已收尾，非下载器信号）

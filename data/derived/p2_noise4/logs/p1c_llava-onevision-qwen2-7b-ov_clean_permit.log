@@ -1,0 +1,4 @@
+  冻结探针 19e_probe_multi.py md5 03edb14c98ff ✓（提示词/解析/传输逐字复用）
+  [llava-onevision-qwen2-7b-ov/permit/clean] 网格 300 项 / 已完成 0 / 本次 300 ｜ model=llava-onevision-qwen2-7b-ov ｜ system=无（冻结传输）
+    200/300  0.32 it/s  zero=2 abstain=155 parse_fail=154
+  [llava-onevision-qwen2-7b-ov/permit] DONE：300 行写入 /root/p1c_results/p1b_clean_llava-onevision-qwen2-7b-ov_permit.csv（zero=7 abstain=217 parse_fail=216）

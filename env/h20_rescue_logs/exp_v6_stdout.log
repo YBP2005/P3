@@ -1,0 +1,160 @@
+[10:44:55] ########## v6 开始，等 v4 结束 10:44:55 ##########
+[10:44:55]   等 v4…
+[10:49:55]   等 v4…
+[10:54:55]   等 v4…
+[10:59:55]   等 v4…
+[11:04:55]   等 v4…
+[11:09:55]   等 v4…
+[11:14:55]   等 v4…
+[11:19:55]   等 v4…
+[11:24:55]   等 v4…
+[11:29:55] v4 已结束
+[11:30:35]   起服务 qwen3-vl-32b-awq（尝试1）
+[11:33:20]     尝试1 READY 显存 71575 MiB
+[11:33:20] === ① AWQ-32B 新臂（§3.6(d) 检验）===
+[11:33:20]     跑 19e_probe_multi.py(zero) / qwen3-vl-32b-awq / st_a / base,permit,bestA,bestB,bestC,channel,enum,enumAbstain,locate
+[11:34:22]       rc=0 行数 23928→24237 去重item 283→283 用时 62s
+[11:34:22]     跑 19e_probe_multi.py(zero) / qwen3-vl-32b-awq / ucf / base,permit,bestA,bestB,bestC,channel,enum,enumAbstain,locate
+[11:37:13]       rc=0 行数 24237→24777 去重item 283→283 用时 171s
+[11:37:13] === ② AWQ-32B 三个新域（零池 9 臂 + 非零池 3 臂）===
+[11:37:13]     跑 19e_probe_multi.py(zero) / qwen3-vl-32b-awq / visdrone / base,permit,bestA,bestB,bestC,channel,enum,enumAbstain,locate
+[12:12:07]       rc=0 行数 24777→27234 去重item 283→556 用时 2094s
+[12:12:07]     跑 19e_probe_multi.py(zero) / qwen3-vl-32b-awq / aitod / base,permit,bestA,bestB,bestC,channel,enum,enumAbstain,locate
+[12:15:35]       rc=0 行数 27234→28620 去重item 556→710 用时 208s
+[12:15:35]     跑 19e_probe_multi.py(zero) / qwen3-vl-32b-awq / countbench / base,permit,bestA,bestB,bestC,channel,enum,enumAbstain,locate
+[12:15:40]       rc=0 行数 28620→28674 去重item 710→716 用时 5s
+[12:15:40]     跑 19e_probe_multi.py(nonzero) / qwen3-vl-32b-awq / visdrone / base,permit,channel
+[12:17:46]       rc=0 行数 8187→8568 去重item 470→597 用时 126s
+[12:17:46]     跑 19e_probe_multi.py(nonzero) / qwen3-vl-32b-awq / aitod / base,permit,channel
+[12:18:37]       rc=0 行数 8568→8784 去重item 597→669 用时 51s
+[12:18:37]     跑 19e_probe_multi.py(nonzero) / qwen3-vl-32b-awq / countbench / base,permit,channel
+[12:22:06]       rc=0 行数 8784→10239 去重item 669→1154 用时 209s
+/root/h20_exp_v6.sh: line 50: 20158 Killed                  nohup $VLLM serve "$M" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --mm-processor-kwargs '{"max_pixels": 1048576, "min_pixels": 200704}' --gpu-memory-utilization "$U" --max-num-seqs 24 --port 8000 $EXTRA "$@" > "$LG" 2>&1
+[12:22:16]   起服务 qwen3-vl-32b-bf16（尝试1）
+[12:25:47]     尝试1 READY 显存 86185 MiB
+[12:25:47] === ③ BF16-32B 新臂 ===
+[12:25:47]     跑 19e_probe_multi.py(zero) / qwen3-vl-32b-bf16 / st_a / base,permit,bestA,bestB,bestC,channel,enum,enumAbstain,locate
+[12:26:33]       rc=0 行数 28674→28983 去重item 716→716 用时 46s
+[12:26:33]     跑 19e_probe_multi.py(zero) / qwen3-vl-32b-bf16 / ucf / base,permit,bestA,bestB,bestC,channel,enum,enumAbstain,locate
+[12:31:15]       rc=0 行数 28983→29523 去重item 716→716 用时 282s
+[12:31:15] === ④ BF16-32B 三个新域 ===
+[12:31:16]     跑 19e_probe_multi.py(zero) / qwen3-vl-32b-bf16 / visdrone / base,permit,bestA,bestB,bestC,channel,enum,enumAbstain,locate
+[12:55:23]       rc=0 行数 29523→31980 去重item 716→716 用时 1447s
+[12:55:24]     跑 19e_probe_multi.py(zero) / qwen3-vl-32b-bf16 / aitod / base,permit,bestA,bestB,bestC,channel,enum,enumAbstain,locate
+[13:04:31]       rc=0 行数 31980→33366 去重item 716→716 用时 547s
+[13:04:31]     跑 19e_probe_multi.py(zero) / qwen3-vl-32b-bf16 / countbench / base,permit,bestA,bestB,bestC,channel,enum,enumAbstain,locate
+[13:04:36]       rc=0 行数 33366→33420 去重item 716→716 用时 5s
+[13:04:36]     跑 19e_probe_multi.py(nonzero) / qwen3-vl-32b-bf16 / visdrone / base,permit,channel
+[13:08:09]       rc=0 行数 10239→10620 去重item 1154→1154 用时 213s
+[13:08:09]     跑 19e_probe_multi.py(nonzero) / qwen3-vl-32b-bf16 / aitod / base,permit,channel
+[13:08:47]       rc=0 行数 10620→10836 去重item 1154→1154 用时 38s
+[13:08:47]     跑 19e_probe_multi.py(nonzero) / qwen3-vl-32b-bf16 / countbench / base,permit,channel
+[13:13:53]       rc=0 行数 10836→12291 去重item 1154→1154 用时 306s
+[13:13:53] === ⑤ 补 AWQ-8bit 32B 普查（v4 因分片截断跳过；现已修好）===
+/root/h20_exp_v6.sh: line 50: 21682 Killed                  nohup $VLLM serve "$M" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --mm-processor-kwargs '{"max_pixels": 1048576, "min_pixels": 200704}' --gpu-memory-utilization "$U" --max-num-seqs 24 --port 8000 $EXTRA "$@" > "$LG" 2>&1
+[13:14:03]   起服务 qwen3-vl-32b-awq8（尝试1）
+[13:17:33]     尝试1 READY 显存 81311 MiB
+[13:17:33]     跑 19e_probe_multi.py(zero) / qwen3-vl-32b-awq8 / st_a / base,permit,bestA,bestB,bestC,channel
+[13:19:28]       rc=0 行数 33420→34038 去重item 716→716 用时 115s
+[13:19:28]     跑 19e_probe_multi.py(zero) / qwen3-vl-32b-awq8 / ucf / base,permit,bestA,bestB,bestC,channel
+[13:26:19]       rc=0 行数 34038→35118 去重item 716→716 用时 411s
+[13:26:19]     跑 19e_probe_multi.py(nonzero) / qwen3-vl-32b-awq8 / st_a / base,permit,channel
+[13:27:10]       rc=0 行数 12291→12528 去重item 1154→1154 用时 51s
+[13:27:10]     跑 19e_probe_multi.py(nonzero) / qwen3-vl-32b-awq8 / ucf / base,permit,channel
+[13:29:53]       rc=0 行数 12528→12990 去重item 1154→1154 用时 163s
+[13:29:53]     跑 19e_probe_multi.py(zero) / qwen3-vl-32b-awq8 / visdrone / base,permit,bestA,bestB,bestC,channel
+[13:54:15]       rc=0 行数 35118→36756 去重item 716→716 用时 1462s
+[13:54:15]     跑 19e_probe_multi.py(zero) / qwen3-vl-32b-awq8 / aitod / base,permit,bestA,bestB,bestC,channel
+[13:57:17]       rc=0 行数 36756→37680 去重item 716→716 用时 182s
+[13:57:18]     跑 19e_probe_multi.py(zero) / qwen3-vl-32b-awq8 / countbench / base,permit,bestA,bestB,bestC,channel
+[13:57:22]       rc=0 行数 37680→37716 去重item 716→716 用时 4s
+[13:57:22] === qwen3-vl-4b 普查 ===
+/root/h20_exp_v6.sh: line 50: 23159 Killed                  nohup $VLLM serve "$M" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --mm-processor-kwargs '{"max_pixels": 1048576, "min_pixels": 200704}' --gpu-memory-utilization "$U" --max-num-seqs 24 --port 8000 $EXTRA "$@" > "$LG" 2>&1
+[13:57:32]   起服务 qwen3-vl-4b（尝试1）
+[13:59:47]     尝试1 READY 显存 72389 MiB
+[13:59:47]     跑 19e_probe_multi.py(zero) / qwen3-vl-4b / st_a / base,permit,bestA,bestB,bestC,channel
+[14:00:14]       rc=0 行数 37716→38334 去重item 716→716 用时 27s
+[14:00:14]     跑 19e_probe_multi.py(zero) / qwen3-vl-4b / ucf / base,permit,bestA,bestB,bestC,channel
+[14:01:40]       rc=0 行数 38334→39414 去重item 716→716 用时 86s
+[14:01:40]     跑 19e_probe_multi.py(zero) / qwen3-vl-4b / visdrone / base,permit,bestA,bestB,bestC,channel
+[14:03:14]       rc=0 行数 39414→41052 去重item 716→716 用时 94s
+[14:03:15]     跑 19e_probe_multi.py(zero) / qwen3-vl-4b / aitod / base,permit,bestA,bestB,bestC,channel
+[14:03:58]       rc=0 行数 41052→41976 去重item 716→716 用时 43s
+[14:03:59]     跑 19e_probe_multi.py(zero) / qwen3-vl-4b / countbench / base,permit,bestA,bestB,bestC,channel
+[14:04:00]       rc=0 行数 41976→42012 去重item 716→716 用时 1s
+[14:04:00]     跑 19e_probe_multi.py(nonzero) / qwen3-vl-4b / st_a / base,permit,channel
+[14:04:09]       rc=0 行数 12990→13227 去重item 1154→1154 用时 9s
+[14:04:09]     跑 19e_probe_multi.py(nonzero) / qwen3-vl-4b / ucf / base,permit,channel
+[14:04:51]       rc=0 行数 13227→13689 去重item 1154→1154 用时 42s
+[14:04:51] === qwen3-vl-2b 普查 ===
+/root/h20_exp_v6.sh: line 50: 24461 Killed                  nohup $VLLM serve "$M" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --mm-processor-kwargs '{"max_pixels": 1048576, "min_pixels": 200704}' --gpu-memory-utilization "$U" --max-num-seqs 24 --port 8000 $EXTRA "$@" > "$LG" 2>&1
+[14:05:01]   起服务 qwen3-vl-2b（尝试1）
+[14:07:02]     尝试1 READY 显存 72417 MiB
+[14:07:02]     跑 19e_probe_multi.py(zero) / qwen3-vl-2b / st_a / base,permit,bestA,bestB,bestC,channel
+[14:07:24]       rc=0 行数 42012→42630 去重item 716→716 用时 22s
+[14:07:24]     跑 19e_probe_multi.py(zero) / qwen3-vl-2b / ucf / base,permit,bestA,bestB,bestC,channel
+[14:08:40]       rc=0 行数 42630→43710 去重item 716→716 用时 76s
+[14:08:40]     跑 19e_probe_multi.py(zero) / qwen3-vl-2b / visdrone / base,permit,bestA,bestB,bestC,channel
+[14:09:58]       rc=0 行数 43710→45348 去重item 716→716 用时 78s
+[14:09:58]     跑 19e_probe_multi.py(zero) / qwen3-vl-2b / aitod / base,permit,bestA,bestB,bestC,channel
+[14:10:34]       rc=0 行数 45348→46272 去重item 716→716 用时 36s
+[14:10:35]     跑 19e_probe_multi.py(zero) / qwen3-vl-2b / countbench / base,permit,bestA,bestB,bestC,channel
+[14:10:35]       rc=0 行数 46272→46308 去重item 716→716 用时 0s
+[14:10:36]     跑 19e_probe_multi.py(nonzero) / qwen3-vl-2b / st_a / base,permit,channel
+[14:10:43]       rc=0 行数 13689→13926 去重item 1154→1154 用时 7s
+[14:10:43]     跑 19e_probe_multi.py(nonzero) / qwen3-vl-2b / ucf / base,permit,channel
+[14:11:22]       rc=0 行数 13926→14388 去重item 1154→1154 用时 39s
+[14:11:22] === qwen3-vl-30b-a3b-fp8 普查 ===
+/root/h20_exp_v6.sh: line 50: 25302 Killed                  nohup $VLLM serve "$M" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --mm-processor-kwargs '{"max_pixels": 1048576, "min_pixels": 200704}' --gpu-memory-utilization "$U" --max-num-seqs 24 --port 8000 $EXTRA "$@" > "$LG" 2>&1
+[14:11:32]   起服务 qwen3-vl-30b-a3b-fp8（尝试1）
+[14:16:48]     尝试1 READY 显存 82569 MiB
+[14:16:48]     跑 19e_probe_multi.py(zero) / qwen3-vl-30b-a3b-fp8 / st_a / base,permit,bestA,bestB,bestC,channel
+[14:17:34]       rc=0 行数 46308→46926 去重item 716→716 用时 46s
+[14:17:34]     跑 19e_probe_multi.py(zero) / qwen3-vl-30b-a3b-fp8 / ucf / base,permit,bestA,bestB,bestC,channel
+[14:19:23]       rc=0 行数 46926→48006 去重item 716→716 用时 109s
+[14:19:23]     跑 19e_probe_multi.py(zero) / qwen3-vl-30b-a3b-fp8 / visdrone / base,permit,bestA,bestB,bestC,channel
+[14:21:28]       rc=0 行数 48006→49644 去重item 716→716 用时 125s
+[14:21:28]     跑 19e_probe_multi.py(zero) / qwen3-vl-30b-a3b-fp8 / aitod / base,permit,bestA,bestB,bestC,channel
+[14:22:27]       rc=0 行数 49644→50568 去重item 716→716 用时 59s
+[14:22:27]     跑 19e_probe_multi.py(zero) / qwen3-vl-30b-a3b-fp8 / countbench / base,permit,bestA,bestB,bestC,channel
+[14:22:29]       rc=0 行数 50568→50604 去重item 716→716 用时 2s
+[14:22:29]     跑 19e_probe_multi.py(nonzero) / qwen3-vl-30b-a3b-fp8 / st_a / base,permit,channel
+[14:22:41]       rc=0 行数 14388→14625 去重item 1154→1154 用时 12s
+[14:22:41]     跑 19e_probe_multi.py(nonzero) / qwen3-vl-30b-a3b-fp8 / ucf / base,permit,channel
+[14:23:29]       rc=0 行数 14625→15087 去重item 1154→1154 用时 48s
+[14:23:29] === internvl35-38b-fp8 普查 ===
+/root/h20_exp_v6.sh: line 50: 26086 Killed                  nohup $VLLM serve "$M" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --mm-processor-kwargs '{"max_pixels": 1048576, "min_pixels": 200704}' --gpu-memory-utilization "$U" --max-num-seqs 24 --port 8000 $EXTRA "$@" > "$LG" 2>&1
+[14:23:39]   起服务 internvl35-38b-fp8（尝试1，**不传 mm-processor-kwargs**）
+[14:26:54]     尝试1 READY 显存 80483 MiB
+[14:26:54]     跑 19e_probe_multi.py(zero) / internvl35-38b-fp8 / st_a / base,permit,bestA,bestB,bestC,channel
+[14:41:55]       rc=0 行数 50604→51222 去重item 716→716 用时 901s
+[14:41:55]     跑 19e_probe_multi.py(zero) / internvl35-38b-fp8 / ucf / base,permit,bestA,bestB,bestC,channel
+[15:08:53]       rc=0 行数 51222→52302 去重item 716→716 用时 1618s
+[15:08:54]     跑 19e_probe_multi.py(zero) / internvl35-38b-fp8 / visdrone / base,permit,bestA,bestB,bestC,channel
+[15:54:48]       rc=0 行数 52302→53940 去重item 716→716 用时 2754s
+[15:54:48]     跑 19e_probe_multi.py(zero) / internvl35-38b-fp8 / aitod / base,permit,bestA,bestB,bestC,channel
+[16:08:48]       rc=0 行数 53940→54864 去重item 716→716 用时 840s
+[16:08:48]     跑 19e_probe_multi.py(zero) / internvl35-38b-fp8 / countbench / base,permit,bestA,bestB,bestC,channel
+[16:08:54]       rc=0 行数 54864→54900 去重item 716→716 用时 6s
+[16:08:54]     跑 19e_probe_multi.py(nonzero) / internvl35-38b-fp8 / st_a / base,permit,channel
+[16:14:27]       rc=0 行数 15087→15324 去重item 1154→1154 用时 333s
+[16:14:27]     跑 19e_probe_multi.py(nonzero) / internvl35-38b-fp8 / ucf / base,permit,channel
+[16:25:31]       rc=0 行数 15324→15786 去重item 1154→1154 用时 664s
+[16:25:31] ########## v6 结束 16:25:31 ##########
+[16:25:31]   零池：总行数 54900，去重 item 716
+[16:25:31]   非零池：总行数 15786，去重 item 1154
+[16:25:31] --- 各模型标签文件数 ---
+     12 internvl25-8b-awq
+     30 internvl35-38b-fp8
+     18 qwen25vl-72b-awq
+     12 qwen25vl-7b-awq
+     30 qwen3-vl-2b
+     30 qwen3-vl-30b-a3b-fp8
+     51 qwen3-vl-32b-awq
+     30 qwen3-vl-32b-awq8
+     51 qwen3-vl-32b-bf16
+     18 qwen3-vl-32b-fp8
+     12 qwen3-vl-32b-gptq
+     30 qwen3-vl-4b
+     18 qwen3-vl-8b-awq
+     12 qwen3-vl-8b-bf16

@@ -1,0 +1,9 @@
+item,gt,pred,parse_ok,raw,latency_s
+img_00281.jpg,2,,0,"{""response"": ""no_people""}",0.18
+img_00406.jpg,6,,0,"{""response"": ""no_people""}",0.18
+img_00512.jpg,3,,0,"{""response"": ""no_people""}",0.19
+img_00126.jpg,5,,0,"{""response"": ""no_people""}",0.19
+img_00174.jpg,6,,0,"{""response"": ""no_people""}",0.19
+img_00433.jpg,2,,0,"```json
+{""response"": ""no_people""}
+```",0.21

@@ -1,0 +1,34 @@
+[15:09:18] ########## B1 FSC-147 开始 ##########
+[15:13:36]   [fsc_gemma] 起服就绪（255s）
+[15:13:36] == [fsc_gemma] FSC-147 base+permit 两臂 ==
+仪器：复用 19e 的 P/parse/call_img（19e 未改动）
+  [base] 300 行；pred==0 的 248 个；-> /root/fsc_results/fsc_gemma3-12b_base.csv
+  [permit] 300 行；pred==0 的 0 个；-> /root/fsc_results/fsc_gemma3-12b_permit.csv
+[15:14:15]    rc=0 用时 39s
+[15:17:33]   [fsc_ivl] 起服就绪（195s）
+[15:17:33] == [fsc_ivl] FSC-147 base+permit 两臂 ==
+仪器：复用 19e 的 P/parse/call_img（19e 未改动）
+  [base] 300 行；pred==0 的 273 个；-> /root/fsc_results/fsc_InternVL3_5-8B_base.csv
+  [permit] 300 行；pred==0 的 0 个；-> /root/fsc_results/fsc_InternVL3_5-8B_permit.csv
+[15:19:19]    rc=0 用时 106s
+[15:21:23]   [fsc_phi] 起服就绪（120s）
+[15:21:23] == [fsc_phi] FSC-147 base+permit 两臂 ==
+仪器：复用 19e 的 P/parse/call_img（19e 未改动）
+  [base] 300 行；pred==0 的 255 个；-> /root/fsc_results/fsc_Phi-3.5-vision-instruct_base.csv
+  [permit] 300 行；pred==0 的 3 个；-> /root/fsc_results/fsc_Phi-3.5-vision-instruct_permit.csv
+[15:22:43]    rc=0 用时 80s
+[15:25:46]   [fsc_lov] 起服就绪（180s）
+[15:25:46] == [fsc_lov] FSC-147 base+permit 两臂 ==
+仪器：复用 19e 的 P/parse/call_img（19e 未改动）
+  [base] 300 行；pred==0 的 187 个；-> /root/fsc_results/fsc_llava-onevision-qwen2-7b-ov_base.csv
+  [permit] 300 行；pred==0 的 0 个；-> /root/fsc_results/fsc_llava-onevision-qwen2-7b-ov_permit.csv
+[15:26:33]    rc=0 用时 47s
+[15:30:21]   [fsc_q32] 起服就绪（225s）
+[15:30:21] == [fsc_q32] FSC-147 base+permit 两臂 ==
+仪器：复用 19e 的 P/parse/call_img（19e 未改动）
+  [base] 300 行；pred==0 的 277 个；-> /root/fsc_results/fsc_Qwen3-VL-32B-Instruct_base.csv
+  [permit] 300 行；pred==0 的 251 个；-> /root/fsc_results/fsc_Qwen3-VL-32B-Instruct_permit.csv
+[15:31:32]    rc=0 用时 71s
+[15:31:32] 文件清点：10 个
+[15:31:32] ########## B1 FSC-147 结束 ##########
+B1_FSC_DONE

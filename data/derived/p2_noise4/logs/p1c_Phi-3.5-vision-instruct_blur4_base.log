@@ -1,0 +1,4 @@
+  冻结探针 19e_probe_multi.py md5 03edb14c98ff ✓（提示词/解析/传输逐字复用）
+  [Phi-3.5-vision-instruct/base/blur4] 网格 300 项 / 已完成 0 / 本次 300 ｜ model=Phi-3.5-vision-instruct ｜ system=无（冻结传输）
+    200/300  0.56 it/s  zero=18 abstain=43 parse_fail=15
+  [Phi-3.5-vision-instruct/base] DONE：300 行写入 /root/p1c_results/p1b_blur4_Phi-3.5-vision-instruct_base.csv（zero=78 abstain=55 parse_fail=27）

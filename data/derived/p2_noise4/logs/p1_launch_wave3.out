@@ -1,0 +1,26 @@
+  判据 md5 fa22a7e17235 OK
+[23:55:16] == wave3 开始 ｜ 显存 0 MiB ｜ 线程 6 ｜ 时限 1500s ==
+[23:55:16] ① 起 gemma3-12b（0.44）
+[23:58:28] [gemma3-12b] 就绪（192 s）
+[23:58:28] ② 起 InternVL3_5-8B（0.28）
+[00:00:29] [InternVL3_5-8B] 就绪（120 s）
+[00:00:29] ③ 起 Phi-3.5-vision（0.20）
+[00:01:49] [Phi-3.5-vision-instruct] 就绪（80 s）
+[00:01:49] 起服阶段结束 ｜ 显存 71910 MiB
+[00:01:49] 采集进程： 1295 1296 1298 1299 1301 1302
+[00:02:19]   30s：存活 2 ｜ 显存 73786 MiB
+[00:02:49]   60s：存活 2 ｜ 显存 73786 MiB
+[00:03:19]   90s：存活 2 ｜ 显存 73788 MiB
+[00:03:49]   120s：存活 2 ｜ 显存 73788 MiB
+[00:04:19]   150s：存活 2 ｜ 显存 73788 MiB
+[00:04:49]   180s：存活 0 ｜ 显存 73788 MiB
+  p1_InternVL3_5-8B_base.csv                           唯一item=675  zero=  0  parse_fail=  0
+  p1_InternVL3_5-8B_permit.csv                         唯一item=675  zero=  0  parse_fail=509
+  p1_Phi-3.5-vision-instruct_base.csv                  唯一item=675  zero= 91  parse_fail=  0
+  p1_Phi-3.5-vision-instruct_permit.csv                唯一item=675  zero=  0  parse_fail=660
+  p1_gemma3-12b_base.csv                               唯一item=675  zero=  0  parse_fail=  0
+  p1_gemma3-12b_permit.csv                             唯一item=675  zero=  0  parse_fail=442
+  p1_llava-onevision-qwen2-7b-ov_base.csv              唯一item=675  zero= 45  parse_fail= 30
+  p1_llava-onevision-qwen2-7b-ov_permit.csv            唯一item=675  zero=  0  parse_fail=265
+[00:04:52] == wave3 结束 ｜ 显存 0 MiB ==
+[00:04:52] P1_wave3_DONE

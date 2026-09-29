@@ -1,0 +1,83 @@
+{
+ "round": "g7",
+ "frozen_at": "2026-09-27",
+ "frozen_by": "P3 owner (author side)",
+ "requester": "qwen38max E-2（v0573 盲审）",
+ "quote_verbatim": "服务栈因子实验：解释同一 32B checkpoint 五个 deployments 在 dense zero rate 差 90.3 pp；5 builds × 2 domains × 3 arms × 3 starts + 2 非 Qwen 家族；因子 = 精度/context limit/system/concurrency；判据：任一因子单独造成 >30 pp 变化即须把 answered-zero 定义为\"服务配置属性\"",
+ "target_quantity": "answered-zero rate（答零率）＝该 (域 × 臂) 格上 pred == 0 的占比；分母为**该格解析成功的 item**，HTTP 400 / 空解析单列、不填数。",
+ "design": {
+  "checkpoint": "Qwen3-VL-32B-Instruct（本稿头条格的锚定构建；BF16）",
+  "domains": {
+   "st_a": "ShanghaiTech part_A test（密集）",
+   "visdrone": "VisDrone（航拍）"
+  },
+  "item_set": "每域取**文件名排序后的前 100 项**（确定性、不抽样、不设种子）",
+  "arms": [
+   "base",
+   "permit",
+   "channel"
+  ],
+  "arms_source": "逐字复制自冻结探针 `19f_probe_ablation.py::P`（探针 md5 28e82b20a7f468680da11b2e9855cff9，runner 启动时断言；`parse()` / `b64_of()` / `call_img()` 由 importlib **逐字复用**）",
+  "reference_config": "R = max-model-len 8192、不加 system 消息、8 并发、temperature 0、max_tokens 128",
+  "factors_varied_one_at_a_time": {
+   "F2 context limit": [
+    "max-model-len 4096",
+    "max-model-len 8192 (= R)",
+    "max-model-len 16384"
+   ],
+   "F3 system message": [
+    "无 system（= R）",
+    "固定中性 system 消息（见 system_message）"
+   ],
+   "F4 concurrency": [
+    "1 并发（= R 之外的变体）",
+    "8 并发（= R）"
+   ]
+  },
+  "system_message": "You are a careful visual counting assistant. Report your best judgement in the requested JSON format.",
+  "starts": "R 配置**起服三次**（F2 的两个新档各起一次）⇒ 共 **5 次起服**；R 的三次起服给出**起服间离散度**（本实验的噪声底）。",
+  "configs": [
+   "R_s1",
+   "R_s2",
+   "R_s3",
+   "F2_4096",
+   "F2_16384",
+   "F3_sys",
+   "F4_w1"
+  ],
+  "calls": "7 个配置 × 2 域 × 3 臂 × 100 项 = **4,200 次调用**",
+  "why_not_5_builds": "评审写的「5 builds + 2 非 Qwen 家族」里，\"5 builds\"指的是**同一 checkpoint 的五个部署**（精度/上下文/系统/并发之别）——本机只能变后三者；第二个权重构建不在本机 ⇒ 见 not_measurable。2 个非 Qwen 家族本机其实齐备（见 `P3_A800第三批_未做项与阻塞_20260927.md`），但它们**不回答\"同一 checkpoint 内部哪个因子造成 90.3 pp\"**，故不混进本实验。",
+  "not_measurable": {
+   "F1 precision": "同一 checkpoint 的第二个权重构建（AWQ/GPTQ/FP8）**不在本机**；本机上的 FP8/abliterated 目录都是**别的 checkpoint**（Thinking / abliterated），用它们会把\"精度\"与\"换模型\"混为一谈 ⇒ **报为不可测，不做替代**。已发表的 90.3 pp（五个部署）与 M.41 的 36.4 pp（上下文限制）作为动机引用，不在本实验中重新测量。"
+  }
+ },
+ "prompts_verbatim": {
+  "base": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复，以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+  "permit": "请数出图片中的人数（人群中的每个人头或人体）。如果你无法逐个确证，请回答 abstain，而不要猜测。以JSON格式输出：{\"count\": 数量} 或 {\"count\": \"abstain\"}，只输出JSON。",
+  "channel": "请判断这张图片中的人数。你可以：①给出数字；②回答 \"cannot_judge\" 表示无法判断；③回答 \"no_people\" 表示画面中没有可辨认的个体。以JSON格式输出：{\"response\": ...}，只输出JSON。"
+ },
+ "criteria_fixed_in_advance": {
+  "C1_per_factor": {
+   "statement": "★ 评审原文判据。",
+   "rule": "对每个因子，取它与 R（同一次起服优先；跨起服则用 R 的三次起服打包）在 **6 个 (域 × 臂) 格**上的答零率之差的最大绝对值 max|Δ|；**max|Δ| > 30 pp ⇒ 该因子单独即可把 answered-zero 定性为\"服务配置属性\"**。",
+   "fail_reads_as": "全部因子 max|Δ| ≤ 30 pp ⇒ 本机可变的三个服务因子**都不足以**单独解释该离散度。"
+  },
+  "C2_between_start_floor": {
+   "statement": "R 三次起服之间的同格差，是本实验的**噪声底**；任何因子的 Δ 必须与它比较。",
+   "rule": "报 R 三次起服的逐格极差（max−min）与最大极差。"
+  },
+  "C3_pairing": {
+   "statement": "所有比较都在**共同的 item 交集**上做（同一批图、同一批臂），不做跨 item 集的率比较。"
+  }
+ },
+ "shared_discipline": {
+  "temperature": 0.0,
+  "max_tokens": 128,
+  "gt_source": {
+   "st_a": "/root/dense/shanghaitech/counts.csv（part_A / test）",
+   "visdrone": "/root/aerial/gt_visdrone.csv"
+  },
+  "http_400": "vLLM 因上下文超限返回的错误**单列报出**（按域），不计入分母、不插补。",
+  "serving": "vLLM 0.29.0；`--gpu-memory-utilization 0.93`、`--limit-mm-per-prompt {\"image\":1}`、`--mm-processor-kwargs max_pixels=1048576, min_pixels=3136`（与已发表语料同一套上限）；仅 `--max-model-len` 随因子变。"
+ }
+}

@@ -1,0 +1,462 @@
+{
+  "criteria_md5": "2b9e5a12d5d6",
+  "per_family": {
+    "LLaVA-OneVision-7B": {
+      "clean": {
+        "all": {
+          "n": 300,
+          "n_parsed": 235,
+          "zeros": 77,
+          "rate": 0.3276595744680851,
+          "ci": [
+            0.2708409838678668,
+            0.3900221153577287
+          ],
+          "parse_fail": 65
+        },
+        "paired": {
+          "base_zeros": 77,
+          "still_zero": 7,
+          "residual": 0.09090909090909091,
+          "ci": [
+            0.044735141893571646,
+            0.17596311247051816
+          ]
+        },
+        "st_a": {
+          "n": 150,
+          "n_parsed": 87,
+          "zeros": 0,
+          "rate": 0.0,
+          "ci": [
+            0.0,
+            0.04228899535014795
+          ],
+          "parse_fail": 63
+        },
+        "visdrone": {
+          "n": 150,
+          "n_parsed": 148,
+          "zeros": 77,
+          "rate": 0.5202702702702703,
+          "ci": [
+            0.44029121217108363,
+            0.599223650685999
+          ],
+          "parse_fail": 2
+        }
+      },
+      "blur4": {
+        "all": {
+          "n": 300,
+          "n_parsed": 57,
+          "zeros": 34,
+          "rate": 0.5964912280701754,
+          "ci": [
+            0.46697058444753836,
+            0.7138267647346
+          ],
+          "parse_fail": 243
+        },
+        "paired": {
+          "base_zeros": 34,
+          "still_zero": 0,
+          "residual": 0.0,
+          "ci": [
+            0.0,
+            0.10151790621961015
+          ]
+        },
+        "st_a": {
+          "n": 150,
+          "n_parsed": 1,
+          "zeros": 0,
+          "rate": 0.0,
+          "ci": [
+            0.0,
+            0.7934567085261071
+          ],
+          "parse_fail": 149
+        },
+        "visdrone": {
+          "n": 150,
+          "n_parsed": 56,
+          "zeros": 34,
+          "rate": 0.6071428571428571,
+          "ci": [
+            0.476331653784818,
+            0.7241977438248715
+          ],
+          "parse_fail": 94
+        }
+      },
+      "down15": {
+        "all": {
+          "n": 300,
+          "n_parsed": 209,
+          "zeros": 89,
+          "rate": 0.4258373205741627,
+          "ci": [
+            0.3607319619008659,
+            0.4936198189540046
+          ],
+          "parse_fail": 91
+        },
+        "paired": {
+          "base_zeros": 89,
+          "still_zero": 4,
+          "residual": 0.0449438202247191,
+          "ci": [
+            0.017614201033819138,
+            0.10993207132684678
+          ]
+        },
+        "st_a": {
+          "n": 150,
+          "n_parsed": 70,
+          "zeros": 0,
+          "rate": 0.0,
+          "ci": [
+            0.0,
+            0.05202487486728348
+          ],
+          "parse_fail": 80
+        },
+        "visdrone": {
+          "n": 150,
+          "n_parsed": 139,
+          "zeros": 89,
+          "rate": 0.6402877697841727,
+          "ci": [
+            0.5577209931844739,
+            0.7153087124474989
+          ],
+          "parse_fail": 11
+        }
+      }
+    },
+    "Phi-3.5-Vision": {
+      "clean": {
+        "all": {
+          "n": 300,
+          "n_parsed": 299,
+          "zeros": 58,
+          "rate": 0.1939799331103679,
+          "ci": [
+            0.15315817387207256,
+            0.24256553119354596
+          ],
+          "parse_fail": 1
+        },
+        "paired": {
+          "base_zeros": 58,
+          "still_zero": 0,
+          "residual": 0.0,
+          "ci": [
+            0.0,
+            0.062119996895293766
+          ]
+        },
+        "st_a": {
+          "n": 150,
+          "n_parsed": 150,
+          "zeros": 0,
+          "rate": 0.0,
+          "ci": [
+            0.0,
+            0.02497113914571871
+          ],
+          "parse_fail": 0
+        },
+        "visdrone": {
+          "n": 150,
+          "n_parsed": 149,
+          "zeros": 58,
+          "rate": 0.38926174496644295,
+          "ci": [
+            0.3146942539864292,
+            0.4693959413530595
+          ],
+          "parse_fail": 1
+        }
+      },
+      "blur4": {
+        "all": {
+          "n": 300,
+          "n_parsed": 273,
+          "zeros": 78,
+          "rate": 0.2857142857142857,
+          "ci": [
+            0.23538880024174766,
+            0.3419868542841618
+          ],
+          "parse_fail": 27
+        },
+        "paired": {
+          "base_zeros": 78,
+          "still_zero": 0,
+          "residual": 0.0,
+          "ci": [
+            0.0,
+            0.04693945377411976
+          ]
+        },
+        "st_a": {
+          "n": 150,
+          "n_parsed": 146,
+          "zeros": 2,
+          "rate": 0.0136986301369863,
+          "ci": [
+            0.0037646536254598143,
+            0.04856794292983591
+          ],
+          "parse_fail": 4
+        },
+        "visdrone": {
+          "n": 150,
+          "n_parsed": 127,
+          "zeros": 76,
+          "rate": 0.5984251968503937,
+          "ci": [
+            0.5114872119987304,
+            0.6795835177997436
+          ],
+          "parse_fail": 23
+        }
+      },
+      "down15": {
+        "all": {
+          "n": 300,
+          "n_parsed": 300,
+          "zeros": 66,
+          "rate": 0.22,
+          "ci": [
+            0.1768267220409591,
+            0.2702535987577729
+          ],
+          "parse_fail": 0
+        },
+        "paired": {
+          "base_zeros": 66,
+          "still_zero": 0,
+          "residual": 0.0,
+          "ci": [
+            0.0,
+            0.05500446725160935
+          ]
+        },
+        "st_a": {
+          "n": 150,
+          "n_parsed": 150,
+          "zeros": 0,
+          "rate": 0.0,
+          "ci": [
+            0.0,
+            0.02497113914571871
+          ],
+          "parse_fail": 0
+        },
+        "visdrone": {
+          "n": 150,
+          "n_parsed": 150,
+          "zeros": 66,
+          "rate": 0.44,
+          "ci": [
+            0.36304360950970455,
+            0.5199529271877817
+          ],
+          "parse_fail": 0
+        }
+      }
+    },
+    "Qwen3-VL-8B": {
+      "clean": {
+        "all": {
+          "n": 300,
+          "n_parsed": 300,
+          "zeros": 91,
+          "rate": 0.30333333333333334,
+          "ci": [
+            0.2540702792930653,
+            0.35756946983937743
+          ],
+          "parse_fail": 0
+        },
+        "paired": {
+          "base_zeros": 91,
+          "still_zero": 0,
+          "residual": 0.0,
+          "ci": [
+            0.0,
+            0.04050543221539915
+          ]
+        },
+        "st_a": {
+          "n": 150,
+          "n_parsed": 150,
+          "zeros": 2,
+          "rate": 0.013333333333333334,
+          "ci": [
+            0.0036640523882232085,
+            0.047307856380276334
+          ],
+          "parse_fail": 0
+        },
+        "visdrone": {
+          "n": 150,
+          "n_parsed": 150,
+          "zeros": 89,
+          "rate": 0.5933333333333334,
+          "ci": [
+            0.5133451744046799,
+            0.6686602129547861
+          ],
+          "parse_fail": 0
+        }
+      },
+      "blur4": {
+        "all": {
+          "n": 300,
+          "n_parsed": 300,
+          "zeros": 281,
+          "rate": 0.9366666666666666,
+          "ci": [
+            0.9032079605174259,
+            0.9590834439512183
+          ],
+          "parse_fail": 0
+        },
+        "paired": {
+          "base_zeros": 281,
+          "still_zero": 0,
+          "residual": 0.0,
+          "ci": [
+            -8.556638088493444e-19,
+            0.013486794063788433
+          ]
+        },
+        "st_a": {
+          "n": 150,
+          "n_parsed": 150,
+          "zeros": 141,
+          "rate": 0.94,
+          "ci": [
+            0.8899090795570952,
+            0.9681163179946722
+          ],
+          "parse_fail": 0
+        },
+        "visdrone": {
+          "n": 150,
+          "n_parsed": 150,
+          "zeros": 140,
+          "rate": 0.9333333333333333,
+          "ci": [
+            0.8816364734751868,
+            0.9633885392651903
+          ],
+          "parse_fail": 0
+        }
+      },
+      "down15": {
+        "all": {
+          "n": 300,
+          "n_parsed": 300,
+          "zeros": 121,
+          "rate": 0.4033333333333333,
+          "ci": [
+            0.3493812129140722,
+            0.45972985021882334
+          ],
+          "parse_fail": 0
+        },
+        "paired": {
+          "base_zeros": 121,
+          "still_zero": 0,
+          "residual": 0.0,
+          "ci": [
+            0.0,
+            0.03077179401737882
+          ]
+        },
+        "st_a": {
+          "n": 150,
+          "n_parsed": 150,
+          "zeros": 22,
+          "rate": 0.14666666666666667,
+          "ci": [
+            0.09889364963827856,
+            0.21208595535802935
+          ],
+          "parse_fail": 0
+        },
+        "visdrone": {
+          "n": 150,
+          "n_parsed": 150,
+          "zeros": 99,
+          "rate": 0.66,
+          "ci": [
+            0.5810413820559243,
+            0.7309678534174459
+          ],
+          "parse_fail": 0
+        }
+      }
+    }
+  },
+  "verdicts": {
+    "H8": {
+      "families_blur_above_clean": [
+        "Phi-3.5-Vision",
+        "Qwen3-VL-8B"
+      ],
+      "families_not": [
+        "LLaVA-OneVision-7B"
+      ],
+      "need": 2,
+      "passed": true,
+      "down15_vs_clean": {
+        "LLaVA-OneVision-7B": 0.0,
+        "Phi-3.5-Vision": 0.0,
+        "Qwen3-VL-8B": 0.13333333333333333
+      }
+    },
+    "H9": {
+      "checked": [
+        "LLaVA-OneVision-7B/clean(77)",
+        "LLaVA-OneVision-7B/blur4(34)",
+        "LLaVA-OneVision-7B/down15(89)",
+        "Phi-3.5-Vision/clean(58)",
+        "Phi-3.5-Vision/blur4(78)",
+        "Phi-3.5-Vision/down15(66)",
+        "Qwen3-VL-8B/clean(91)",
+        "Qwen3-VL-8B/blur4(281)",
+        "Qwen3-VL-8B/down15(121)"
+      ],
+      "violations": [
+        "LLaVA-OneVision-7B/clean=0.091"
+      ],
+      "passed": false,
+      "status": "evaluated"
+    },
+    "H10": {
+      "dense_base_zero_counts": {
+        "LLaVA-OneVision-7B/clean/st_a": 0,
+        "LLaVA-OneVision-7B/blur4/st_a": 0,
+        "LLaVA-OneVision-7B/down15/st_a": 0,
+        "Phi-3.5-Vision/clean/st_a": 0,
+        "Phi-3.5-Vision/blur4/st_a": 2,
+        "Phi-3.5-Vision/down15/st_a": 0,
+        "Qwen3-VL-8B/clean/st_a": 2,
+        "Qwen3-VL-8B/blur4/st_a": 141,
+        "Qwen3-VL-8B/down15/st_a": 22
+      },
+      "non_qwen_at_or_above": [],
+      "thresholds": 10,
+      "note": "只报数量，不设通过阈值"
+    }
+  },
+  "flags": [
+    "LLaVA-OneVision-7B/blur4 base 解析失败 81%"
+  ]
+}

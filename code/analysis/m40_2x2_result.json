@@ -1,0 +1,319 @@
+{
+  "purpose": "M.40 的逐项 2×2：出口 × 图像类型（v0539 盲审 dsflash 要求）",
+  "rule": "raw-match（同 a5_judge.cls()）；观测级池化：每个 (构建×语言×分层×启动×item) 一个观测",
+  "arms": {
+    "base": {
+      "truezero": {
+        "n": 9180,
+        "count": {
+          "zero": 6808,
+          "nonzero": 2134,
+          "no_people": 0,
+          "cannot_judge": 0,
+          "abstain": 0,
+          "unparsed": 238,
+          "other": 2372
+        },
+        "pct": {
+          "zero": 74.2,
+          "nonzero": 23.2,
+          "no_people": 0.0,
+          "cannot_judge": 0.0,
+          "abstain": 0.0,
+          "unparsed": 2.6,
+          "other": 25.8
+        },
+        "ci": {
+          "zero": [
+            73.26,
+            75.05
+          ],
+          "nonzero": [
+            22.39,
+            24.12
+          ],
+          "no_people": [
+            0.0,
+            0.04
+          ],
+          "cannot_judge": [
+            0.0,
+            0.04
+          ],
+          "abstain": [
+            0.0,
+            0.04
+          ],
+          "unparsed": [
+            2.29,
+            2.94
+          ],
+          "other": [
+            24.95,
+            26.74
+          ]
+        }
+      },
+      "nonzero_dense": {
+        "n": 916,
+        "count": {
+          "zero": 0,
+          "nonzero": 901,
+          "no_people": 0,
+          "cannot_judge": 0,
+          "abstain": 0,
+          "unparsed": 15,
+          "other": 916
+        },
+        "pct": {
+          "zero": 0.0,
+          "nonzero": 98.4,
+          "no_people": 0.0,
+          "cannot_judge": 0.0,
+          "abstain": 0.0,
+          "unparsed": 1.6,
+          "other": 100.0
+        },
+        "ci": {
+          "zero": [
+            0.0,
+            0.42
+          ],
+          "nonzero": [
+            97.32,
+            99.01
+          ],
+          "no_people": [
+            0.0,
+            0.42
+          ],
+          "cannot_judge": [
+            0.0,
+            0.42
+          ],
+          "abstain": [
+            0.0,
+            0.42
+          ],
+          "unparsed": [
+            0.99,
+            2.68
+          ],
+          "other": [
+            99.58,
+            100.0
+          ]
+        }
+      }
+    },
+    "permit": {
+      "truezero": {
+        "n": 9180,
+        "count": {
+          "zero": 277,
+          "nonzero": 591,
+          "no_people": 0,
+          "cannot_judge": 0,
+          "abstain": 8294,
+          "unparsed": 18,
+          "other": 8903
+        },
+        "pct": {
+          "zero": 3.0,
+          "nonzero": 6.4,
+          "no_people": 0.0,
+          "cannot_judge": 0.0,
+          "abstain": 90.3,
+          "unparsed": 0.2,
+          "other": 97.0
+        },
+        "ci": {
+          "zero": [
+            2.69,
+            3.39
+          ],
+          "nonzero": [
+            5.95,
+            6.96
+          ],
+          "no_people": [
+            0.0,
+            0.04
+          ],
+          "cannot_judge": [
+            0.0,
+            0.04
+          ],
+          "abstain": [
+            89.73,
+            90.94
+          ],
+          "unparsed": [
+            0.12,
+            0.31
+          ],
+          "other": [
+            96.61,
+            97.31
+          ]
+        }
+      },
+      "nonzero_dense": {
+        "n": 916,
+        "count": {
+          "zero": 0,
+          "nonzero": 43,
+          "no_people": 0,
+          "cannot_judge": 0,
+          "abstain": 845,
+          "unparsed": 28,
+          "other": 916
+        },
+        "pct": {
+          "zero": 0.0,
+          "nonzero": 4.7,
+          "no_people": 0.0,
+          "cannot_judge": 0.0,
+          "abstain": 92.2,
+          "unparsed": 3.1,
+          "other": 100.0
+        },
+        "ci": {
+          "zero": [
+            0.0,
+            0.42
+          ],
+          "nonzero": [
+            3.5,
+            6.26
+          ],
+          "no_people": [
+            0.0,
+            0.42
+          ],
+          "cannot_judge": [
+            0.0,
+            0.42
+          ],
+          "abstain": [
+            90.34,
+            93.81
+          ],
+          "unparsed": [
+            2.12,
+            4.38
+          ],
+          "other": [
+            99.58,
+            100.0
+          ]
+        }
+      }
+    },
+    "channel": {
+      "truezero": {
+        "n": 9180,
+        "count": {
+          "zero": 0,
+          "nonzero": 457,
+          "no_people": 6925,
+          "cannot_judge": 1771,
+          "abstain": 0,
+          "unparsed": 27,
+          "other": 484
+        },
+        "pct": {
+          "zero": 0.0,
+          "nonzero": 5.0,
+          "no_people": 75.4,
+          "cannot_judge": 19.3,
+          "abstain": 0.0,
+          "unparsed": 0.3,
+          "other": 5.3
+        },
+        "ci": {
+          "zero": [
+            0.0,
+            0.04
+          ],
+          "nonzero": [
+            4.55,
+            5.44
+          ],
+          "no_people": [
+            74.54,
+            76.31
+          ],
+          "cannot_judge": [
+            18.5,
+            20.11
+          ],
+          "abstain": [
+            0.0,
+            0.04
+          ],
+          "unparsed": [
+            0.2,
+            0.43
+          ],
+          "other": [
+            4.83,
+            5.75
+          ]
+        }
+      },
+      "nonzero_dense": {
+        "n": 916,
+        "count": {
+          "zero": 0,
+          "nonzero": 16,
+          "no_people": 4,
+          "cannot_judge": 889,
+          "abstain": 0,
+          "unparsed": 7,
+          "other": 23
+        },
+        "pct": {
+          "zero": 0.0,
+          "nonzero": 1.7,
+          "no_people": 0.4,
+          "cannot_judge": 97.1,
+          "abstain": 0.0,
+          "unparsed": 0.8,
+          "other": 2.5
+        },
+        "ci": {
+          "zero": [
+            0.0,
+            0.42
+          ],
+          "nonzero": [
+            1.08,
+            2.82
+          ],
+          "no_people": [
+            0.17,
+            1.12
+          ],
+          "cannot_judge": [
+            95.75,
+            97.97
+          ],
+          "abstain": [
+            0.0,
+            0.42
+          ],
+          "unparsed": [
+            0.37,
+            1.57
+          ],
+          "other": [
+            1.68,
+            3.74
+          ]
+        }
+      }
+    }
+  },
+  "markdown": "| arm | pool | n | `no_people` | `cannot_judge` | `zero` | other |\n|---|---|---|---|---|---|---|\n| `base` | true-zero crops | 9180 | **0** (0.0%, [0.00, 0.04]) | **0** (0.0%, [0.00, 0.04]) | **6808** (74.2%, [73.26, 75.05]) | 2372 |\n| `base` | non-zero dense items | 916 | **0** (0.0%, [0.00, 0.42]) | **0** (0.0%, [0.00, 0.42]) | **0** (0.0%, [0.00, 0.42]) | 916 |\n| `permit` | true-zero crops | 9180 | **0** (0.0%, [0.00, 0.04]) | **0** (0.0%, [0.00, 0.04]) | **277** (3.0%, [2.69, 3.39]) | 8903 |\n| `permit` | non-zero dense items | 916 | **0** (0.0%, [0.00, 0.42]) | **0** (0.0%, [0.00, 0.42]) | **0** (0.0%, [0.00, 0.42]) | 916 |\n| `channel` | true-zero crops | 9180 | **6925** (75.4%, [74.54, 76.31]) | **1771** (19.3%, [18.50, 20.11]) | **0** (0.0%, [0.00, 0.04]) | 484 |\n| `channel` | non-zero dense items | 916 | **4** (0.4%, [0.17, 1.12]) | **889** (97.1%, [95.75, 97.97]) | **0** (0.0%, [0.00, 0.42]) | 23 |"
+}

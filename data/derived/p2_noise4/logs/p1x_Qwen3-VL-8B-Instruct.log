@@ -1,0 +1,15 @@
+[08:08:55][Qwen3-VL-8B-Instruct] == 起服 Qwen3-VL-8B-Instruct ｜ GPU0 port=8005 frac=0.45 maxlen=8192 extra='' ｜ 探针 /root/p1f_probe.py ==
+[08:09:05][Qwen3-VL-8B-Instruct] [GPU0] 显存已回落（0 MiB）
+[08:10:17][Qwen3-VL-8B-Instruct] 就绪（72s）
+[08:11:47][Qwen3-VL-8B-Instruct] [Qwen3-VL-8B-Instruct/mention5] 行=675
+[08:11:47][Qwen3-VL-8B-Instruct] [Qwen3-VL-8B-Instruct/mention50] 行=675
+[08:11:47][Qwen3-VL-8B-Instruct] [Qwen3-VL-8B-Instruct/mention800] 行=675
+[08:11:55][Qwen3-VL-8B-Instruct] 回收孤儿 EngineCore pid=22461
+[08:11:55][Qwen3-VL-8B-Instruct] P1X_Qwen3-VL-8B-Instruct_DONE
+[08:11:55][Qwen3-VL-8B-Instruct] == 起服 Qwen3-VL-8B-Instruct ｜ GPU0 port=8005 frac=0.45 maxlen=8192 extra='' ｜ 探针 /root/p1d_probe.py ==
+[08:12:05][Qwen3-VL-8B-Instruct] [GPU0] 显存已回落（0 MiB）
+[08:13:09][Qwen3-VL-8B-Instruct] 就绪（64s）
+[08:14:38][Qwen3-VL-8B-Instruct] [Qwen3-VL-8B-Instruct/base/rep1] 行=675
+[08:14:38][Qwen3-VL-8B-Instruct] [Qwen3-VL-8B-Instruct/base/rep2] 行=675
+[08:14:38][Qwen3-VL-8B-Instruct] [Qwen3-VL-8B-Instruct/base/rep3] 行=675
+[08:14:46][Qwen3-VL-8B-Instruct] P1X_Qwen3-VL-8B-Instruct_DONE

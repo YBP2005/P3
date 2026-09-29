@@ -1,0 +1,167 @@
+[00:28:00] ########## W1 下载开始 ##########
+overlay         128G   51G   72G  42% /
+  [ModelScope] deepseek-ai/deepseek-vl2-tiny：9 文件 6.75 GB
+    OK  model-00001-of-000001.safetensors                    6741.3 MB  (366s)
+    OK  tokenizer.json                                          6.3 MB  (367s)
+    OK  model.safetensors.index.json                            0.2 MB  (368s)
+    OK  tokenizer_config.json                                   0.2 MB  (368s)
+    OK  README.md                                               0.0 MB  (368s)
+    OK  config.json                                             0.0 MB  (369s)
+    OK  processor_config.json                                   0.0 MB  (370s)
+    OK  special_tokens_map.json                                 0.0 MB  (370s)
+    OK  configuration.json                                      0.0 MB  (370s)
+  → deepseek-ai/deepseek-vl2-tiny 成功 9 失败 0  6.75 GB  370s
+Filesystem              Size  Used Avail Use% Mounted on
+overlay                 128G   58G   66G  47% /
+UPFS:upfs-13n5o97wrrr4   40T   27T   13T  68% /model
+DL_ALL_DONE
+[00:34:10] deepseek-vl2-tiny rc=0 ; 6.3G
+overlay         128G   58G   66G  47% /
+  [ModelScope] HuggingFaceM4/Idefics3-8B-Llama3：14 文件 16.93 GB
+    OK  model-00002-of-00004.safetensors                     4999.8 MB  (344s)
+    OK  model-00001-of-00004.safetensors                     4967.9 MB  (638s)
+    OK  model-00003-of-00004.safetensors                     4915.9 MB  (958s)
+    OK  model-00004-of-00004.safetensors                     2040.6 MB  (1338s)
+    OK  tokenizer.json                                          9.1 MB  (1340s)
+    OK  model.safetensors.index.json                            0.1 MB  (1340s)
+    OK  tokenizer_config.json                                   0.1 MB  (1340s)
+    OK  README.md                                               0.0 MB  (1341s)
+    OK  config.json                                             0.0 MB  (1341s)
+    OK  special_tokens_map.json                                 0.0 MB  (1341s)
+    OK  preprocessor_config.json                                0.0 MB  (1342s)
+    OK  chat_template.json                                      0.0 MB  (1342s)
+    OK  generation_config.json                                  0.0 MB  (1343s)
+    OK  configuration.json                                      0.0 MB  (1343s)
+  → HuggingFaceM4/Idefics3-8B-Llama3 成功 14 失败 0  16.93 GB  1343s
+Filesystem              Size  Used Avail Use% Mounted on
+overlay                 182G   74G  102G  42% /
+UPFS:upfs-13n5o97wrrr4   40T   27T   13T  68% /model
+DL_ALL_DONE
+[00:56:33] idefics3 rc=0 ; 16G
+overlay         182G   74G  102G  42% /
+  [ModelScope] allenai/Molmo-7B-D-0924：25 文件 32.10 GB
+    OK  model-00002-of-00007.safetensors                     4984.2 MB  (312s)
+    OK  model-00001-of-00007.safetensors                     4978.5 MB  (601s)
+    OK  model-00003-of-00007.safetensors                     4727.2 MB  (854s)
+    OK  model-00004-of-00007.safetensors                     4661.2 MB  (1299s)
+    OK  model-00005-of-00007.safetensors                     4661.2 MB  (1798s)
+    OK  model-00006-of-00007.safetensors                     4272.1 MB  (2251s)
+    OK  model-00007-of-00007.safetensors                     3799.8 MB  (2537s)
+    OK  tokenizer.json                                          7.1 MB  (2538s)
+    OK  vocab.json                                              2.8 MB  (2606s)
+    OK  merges.txt                                              1.7 MB  (2607s)
+    OK  modeling_molmo.py                                       0.1 MB  (2608s)
+    OK  tokenizer_config.json                                   0.1 MB  (2608s)
+    OK  model.safetensors.index.json                            0.1 MB  (2609s)
+    OK  molmo_logo.png                                          0.0 MB  (2609s)
+    OK  image_preprocessing_molmo.py                            0.0 MB  (2610s)
+    OK  added_tokens.json                                       0.0 MB  (2610s)
+    OK  special_tokens_map.json                                 0.0 MB  (2611s)
+    OK  README.md                                               0.0 MB  (2611s)
+    OK  preprocessing_molmo.py                                  0.0 MB  (2611s)
+    OK  config_molmo.py                                         0.0 MB  (2612s)
+    OK  config.json                                             0.0 MB  (2612s)
+    OK  preprocessor_config.json                                0.0 MB  (2613s)
+    OK  processor_config.json                                   0.0 MB  (2613s)
+    OK  configuration.json                                      0.0 MB  (2613s)
+    OK  generation_config.json                                  0.0 MB  (2614s)
+  → allenai/Molmo-7B-D-0924 成功 25 失败 0  32.10 GB  2614s
+Filesystem              Size  Used Avail Use% Mounted on
+overlay                 182G  103G   73G  59% /
+UPFS:upfs-13n5o97wrrr4   40T   27T   13T  68% /model
+DL_ALL_DONE
+[01:40:07] molmo rc=0 ; 30G
+overlay         182G  103G   73G  59% /
+  [ModelScope] microsoft/Phi-4-multimodal-instruct：55 文件 12.88 GB
+    OK  model-00001-of-00003.safetensors                     4997.5 MB  (376s)
+    OK  model-00002-of-00003.safetensors                     4952.3 MB  (669s)
+    OK  model-00003-of-00003.safetensors                     1199.4 MB  (733s)
+    !!  speech-lora/adapter_model.safetensors              0/922782296
+    !!  vision-lora/adapter_model.safetensors              0/738232904
+    OK  tokenizer.json                                         15.5 MB  (798s)
+    !!  vision-lora/tokenizer.json                         0/15524095
+    !!  speech-lora/tokenizer.json                         0/15524095
+    OK  phi_4_mm.tech_report.02252025.pdf                       5.3 MB  (861s)
+    !!  speech-lora/vocab.json                             0/3910310
+    OK  vocab.json                                              3.9 MB  (894s)
+    !!  vision-lora/vocab.json                             0/3910310
+    OK  merges.txt                                              2.4 MB  (925s)
+    !!  examples/what_is_the_traffic_sign_in_the_image.wav 0/741454
+    OK  model.safetensors.index.json                            0.2 MB  (958s)
+    !!  figures/multi_image.png                            0/191950
+    !!  figures/vision_radar.png                           0/173821
+    OK  modeling_phi4mm.py                                      0.1 MB  (1023s)
+    !!  examples/what_is_shown_in_this_image.wav           0/112844
+    OK  speech_conformer_encoder.py                             0.1 MB  (1056s)
+    !!  figures/speech_recog_by_lang.png                   0/90697
+    OK  vision_siglip_navit.py                                  0.1 MB  (1088s)
+    OK  README.md                                               0.1 MB  (1089s)
+    !!  figures/speech_recognition.png                     0/63547
+    !!  figures/speech_translate.png                       0/47677
+    !!  figures/speech_qa.png                              0/46754
+    !!  figures/speech_translate_2.png                     0/46342
+    !!  figures/audio_understand.png                       0/42645
+    !!  figures/speech_summarization.png                   0/40951
+    OK  processing_phi4mm.py                                    0.0 MB  (1283s)
+    OK  sample_finetune_vision.py                               0.0 MB  (1284s)
+    OK  sample_finetune_speech.py                               0.0 MB  (1284s)
+    OK  configuration_phi4mm.py                                 0.0 MB  (1284s)
+    OK  sample_inference_phi4mm.py                              0.0 MB  (1285s)
+    OK  config.json                                             0.0 MB  (1285s)
+    OK  data_summary_card.md                                    0.0 MB  (1286s)
+    !!  speech-lora/tokenizer_config.json                  0/3248
+    OK  tokenizer_config.json                                   0.0 MB  (1318s)
+    !!  vision-lora/tokenizer_config.json                  0/3248
+    OK  SECURITY.md                                             0.0 MB  (1351s)
+    OK  SUPPORT.md                                              0.0 MB  (1351s)
+    OK  LICENSE                                                 0.0 MB  (1352s)
+    OK  preprocessor_config.json                                0.0 MB  (1352s)
+    OK  special_tokens_map.json                                 0.0 MB  (1352s)
+    !!  speech-lora/special_tokens_map.json                0/473
+    !!  vision-lora/special_tokens_map.json                0/473
+    !!  speech-lora/adapter_config.json                    0/465
+    !!  vision-lora/adapter_config.json                    0/464
+    OK  CODE_OF_CONDUCT.md                                      0.0 MB  (1482s)
+    !!  vision-lora/added_tokens.json                      0/249
+    OK  added_tokens.json                                       0.0 MB  (1514s)
+    !!  speech-lora/added_tokens.json                      0/249
+    OK  generation_config.json                                  0.0 MB  (1547s)
+    OK  processor_config.json                                   0.0 MB  (1547s)
+    OK  configuration.json                                      0.0 MB  (1548s)
+  --- 第 1 轮补齐 25 个不合格文件（先删坏文件）---
+    !!  speech-lora/adapter_model.safetensors              仍不合格 0/922782296
+    !!  vision-lora/adapter_model.safetensors              仍不合格 0/738232904
+    !!  vision-lora/tokenizer.json                         仍不合格 0/15524095
+    !!  speech-lora/tokenizer.json                         仍不合格 0/15524095
+    !!  speech-lora/vocab.json                             仍不合格 0/3910310
+    !!  vision-lora/vocab.json                             仍不合格 0/3910310
+    !!  examples/what_is_the_traffic_sign_in_the_image.wav 仍不合格 0/741454
+    !!  figures/multi_image.png                            仍不合格 0/191950
+    !!  figures/vision_radar.png                           仍不合格 0/173821
+    !!  examples/what_is_shown_in_this_image.wav           仍不合格 0/112844
+    !!  figures/speech_recog_by_lang.png                   仍不合格 0/90697
+    !!  figures/speech_recognition.png                     仍不合格 0/63547
+    !!  figures/speech_translate.png                       仍不合格 0/47677
+    !!  figures/speech_qa.png                              仍不合格 0/46754
+    !!  figures/speech_translate_2.png                     仍不合格 0/46342
+    !!  figures/audio_understand.png                       仍不合格 0/42645
+    !!  figures/speech_summarization.png                   仍不合格 0/40951
+    !!  speech-lora/tokenizer_config.json                  仍不合格 0/3248
+    !!  vision-lora/tokenizer_config.json                  仍不合格 0/3248
+    !!  speech-lora/special_tokens_map.json                仍不合格 0/473
+    !!  vision-lora/special_tokens_map.json                仍不合格 0/473
+    !!  speech-lora/adapter_config.json                    仍不合格 0/465
+    !!  vision-lora/adapter_config.json                    仍不合格 0/464
+    !!  vision-lora/added_tokens.json                      仍不合格 0/249
+    !!  speech-lora/added_tokens.json                      仍不合格 0/249
+  --- 第 2 轮补齐 25 个不合格文件（先删坏文件）---
+    !!  speech-lora/adapter_model.safetensors              仍不合格 0/922782296
+    !!  vision-lora/adapter_model.safetensors              仍不合格 0/738232904
+    !!  vision-lora/tokenizer.json                         仍不合格 0/15524095
+    !!  speech-lora/tokenizer.json                         仍不合格 0/15524095
+    !!  speech-lora/vocab.json                             仍不合格 0/3910310
+    !!  vision-lora/vocab.json                             仍不合格 0/3910310
+[02:22:44] phi4-mm rc=143 ; 11G
+[02:22:44] ########## W1 下载结束 ##########
+overlay         182G  114G   61G  66% /
+W1_DL_DONE

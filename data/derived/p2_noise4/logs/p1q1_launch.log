@@ -1,0 +1,31 @@
+[07:59:59][q1] GPU1 队列开始（等显存回落中）
+[07:59:59][p5b-32b] == P5b ucf 全覆盖补跑：Qwen3-VL-32B-Instruct ｜ maxlen 16384 frac 0.90 max-num-seqs 4 ｜ GPU1 ==
+[07:59:59][p5b-32b] [GPU1] 显存已回落（0 MiB）
+[08:02:15][p5b-32b] 就绪（136s）
+[08:17:21][p5b-32b] [Qwen3-VL-32B-Instruct/base] 行=180 ERR=1
+[08:17:21][p5b-32b] [Qwen3-VL-32B-Instruct/forbid0] 行=180 ERR=1
+[08:17:21][p5b-32b] [Qwen3-VL-32B-Instruct/permit] 行=180 ERR=1
+/root/p5b_run.sh: line 92: 20397 Killed                  CUDA_VISIBLE_DEVICES="$GPU" nohup $VLLM serve "$MP" --served-model-name "$M" --max-model-len 16384 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization "$FRAC" --max-num-seqs "$SEQ" --port "$PORT" < /dev/null > "/root/logs/p5b_serve_${KEY}.log" 2>&1
+[08:17:29][p5b-32b] 回收孤儿 EngineCore pid=20575
+[08:17:29][p5b-32b] P5B_32b_DONE
+[08:17:29][q1] ① P5b 32B 完成
+[08:17:29][llava-onevision-qwen2-7b-ov] == 起服 llava-onevision-qwen2-7b-ov ｜ GPU1 port=8004 frac=0.26 maxlen=8192 extra='' ｜ 探针 /root/p1f_probe.py ==
+[08:17:39][llava-onevision-qwen2-7b-ov] [GPU1] 显存已回落（0 MiB）
+[08:18:43][llava-onevision-qwen2-7b-ov] 就绪（64s）
+[08:31:48][llava-onevision-qwen2-7b-ov] [llava-onevision-qwen2-7b-ov/mention5] 行=675
+[08:31:48][llava-onevision-qwen2-7b-ov] [llava-onevision-qwen2-7b-ov/mention50] 行=675
+[08:31:48][llava-onevision-qwen2-7b-ov] [llava-onevision-qwen2-7b-ov/mention800] 行=675
+/root/p1x_run.sh: line 111: 24652 Killed                  CUDA_VISIBLE_DEVICES="$GPU" nohup $VLLM serve "$MP" --served-model-name "$NAME" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization "$FRAC" --max-num-seqs 24 --port "$PORT" $EXTRA < /dev/null > "/root/logs/p1x_serve_${NAME}.log" 2>&1
+[08:31:56][llava-onevision-qwen2-7b-ov] 回收孤儿 EngineCore pid=24832
+[08:31:56][llava-onevision-qwen2-7b-ov] P1X_llava-onevision-qwen2-7b-ov_DONE
+[08:31:56][q1] ② llava 阶梯完成
+[08:31:56][gemma3-12b] == 起服 gemma3-12b ｜ GPU1 port=8001 frac=0.40 maxlen=8192 extra='' ｜ 探针 /root/p1f_probe.py ==
+[08:32:06][gemma3-12b] [GPU1] 显存已回落（0 MiB）
+[08:34:06][gemma3-12b] 就绪（120s）
+[08:35:55][gemma3-12b] [gemma3-12b/mention5] 行=675
+[08:35:55][gemma3-12b] [gemma3-12b/mention50] 行=675
+[08:35:55][gemma3-12b] [gemma3-12b/mention800] 行=675
+/root/p1x_run.sh: line 111: 27030 Killed                  CUDA_VISIBLE_DEVICES="$GPU" nohup $VLLM serve "$MP" --served-model-name "$NAME" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization "$FRAC" --max-num-seqs 24 --port "$PORT" $EXTRA < /dev/null > "/root/logs/p1x_serve_${NAME}.log" 2>&1
+[08:36:03][gemma3-12b] P1X_gemma3-12b_DONE
+[08:36:03][q1] ③ gemma 阶梯完成
+[08:36:03][q1] P1Q_GPU1_DONE

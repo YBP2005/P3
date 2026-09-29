@@ -1,0 +1,801 @@
+{
+ "A_pooling_diagnostic": {
+  "spearman_pooled_vs_itemmean": 0.9652464924700733,
+  "spearman_pooled_vs_itemmedian": 0.8884883485492657,
+  "spearman_itemmean_vs_L": 0.6985455013515253,
+  "spearman_itemmean_vs_rankcorr": 0.5867816473956453
+ },
+ "B_robustness": {
+  "全部 36": {
+   "n": 36,
+   "L": 0.6285236195134509,
+   "rankcorr": 0.5947615689000388,
+   "top_rho": "density·CSRNet / st",
+   "top_L": "VLM·prompt family / Qwen32B / ucf / base",
+   "top_R": "VLM·prompt family / Qwen32B / ucf / base"
+  },
+  "剔除 2 个已退役复现(D=34)": {
+   "n": 34,
+   "L": 0.580073349633252,
+   "rankcorr": 0.591030638137167,
+   "top_rho": "VLM·prompt family / Qwen32B / ucf / base",
+   "top_L": "VLM·prompt family / Qwen32B / ucf / base",
+   "top_R": "VLM·prompt family / Qwen32B / ucf / base"
+  },
+  "只留档位 ≥4(N=31)": {
+   "n": 31,
+   "L": 0.7309941520467836,
+   "rankcorr": 0.7474543842804627,
+   "top_rho": "density·CSRNet / st",
+   "top_L": "VLM·prompt family / Qwen32B / ucf / base",
+   "top_R": "VLM·prompt family / Qwen32B / ucf / base"
+  },
+  "两者都做": {
+   "n": 29,
+   "L": 0.682680463168268,
+   "rankcorr": 0.7535410822029841,
+   "top_rho": "VLM·prompt family / Qwen32B / ucf / base",
+   "top_L": "VLM·prompt family / Qwen32B / ucf / base",
+   "top_R": "VLM·prompt family / Qwen32B / ucf / base"
+  }
+ },
+ "C_own_levels": {
+  "spearman_L_own": 0.6321276869609989,
+  "n_L": 36,
+  "spearman_rankcorr_own": 0.5939893184318717,
+  "n_R": 36
+ },
+ "D_gt_support": {
+  "bins": [
+   [
+    1,
+    5
+   ],
+   [
+    5,
+    20
+   ],
+   [
+    20,
+    50
+   ],
+   [
+    50,
+    100
+   ],
+   [
+    100,
+    200
+   ],
+   [
+    200,
+    500
+   ],
+   [
+    500,
+    1000000000
+   ]
+  ],
+  "min_profile_target": [
+   0,
+   0,
+   0,
+   0,
+   9,
+   0,
+   0
+  ],
+  "gt_min_med_max": {
+   "VLM·output contract / ivl": [
+    1.0,
+    135.0,
+    2075.0
+   ],
+   "VLM·output contract / q32": [
+    1.0,
+    209.0,
+    4535.0
+   ],
+   "VLM·pixel budget / ivl / st_a": [
+    66.0,
+    251.5,
+    1232.0
+   ],
+   "VLM·pixel budget / ivl / ucf": [
+    65.0,
+    298.0,
+    1974.0
+   ],
+   "VLM·pixel budget / ivl / visdrone": [
+    1.0,
+    9.0,
+    286.0
+   ],
+   "VLM·pixel budget / q32 / st_a": [
+    66.0,
+    307.5,
+    2256.0
+   ],
+   "VLM·pixel budget / q32 / ucf": [
+    65.0,
+    434.0,
+    4535.0
+   ],
+   "VLM·pixel budget / q32 / visdrone": [
+    1.0,
+    9.0,
+    286.0
+   ],
+   "VLM·prompt family / IVL / ucf / base": [
+    65.0,
+    242.5,
+    1357.0
+   ],
+   "VLM·prompt family / IVL / ucf / over": [
+    65.0,
+    272.0,
+    2702.0
+   ],
+   "VLM·prompt family / IVL / ucf / under": [
+    65.0,
+    313.5,
+    4535.0
+   ],
+   "VLM·prompt family / Qwen32B / ucf / base": [
+    65.0,
+    425.5,
+    4535.0
+   ],
+   "VLM·prompt family / Qwen32B / ucf / over": [
+    65.0,
+    431.0,
+    4535.0
+   ],
+   "VLM·prompt family / Qwen32B / ucf / under": [
+    65.0,
+    434.0,
+    4535.0
+   ],
+   "VLM·tiling / Qwen32B / ucf / base": [
+    65.0,
+    434.0,
+    4535.0
+   ],
+   "VLM·tiling / Qwen32B(ctile) / ucf / base": [
+    65.0,
+    434.0,
+    4535.0
+   ],
+   "VLM·tiling / Qwen32B(ctile) / ucf / choice": [
+    65.0,
+    434.0,
+    4535.0
+   ],
+   "VLM·tiling / Qwen32B(ctile) / ucf / forbid0": [
+    65.0,
+    434.0,
+    4535.0
+   ],
+   "VLM·tiling / Qwen32B(ctile) / ucf / range": [
+    65.0,
+    434.0,
+    4535.0
+   ],
+   "VLM·tiling / Qwen8B(ctile) / ucf / base": [
+    65.0,
+    434.0,
+    4535.0
+   ],
+   "density·CSRNet / ladder": [
+    113.0,
+    357.0,
+    2371.0
+   ],
+   "density·CSRNet / st": [
+    66.0,
+    297.0,
+    2256.0
+   ],
+   "density·official DM-Count / st_a": [
+    66.0,
+    307.5,
+    2256.0
+   ],
+   "density·official DM-Count / ucf": [
+    65.0,
+    396.0,
+    3653.0
+   ],
+   "det·in-domain(micro)/BBBC005 (full grid)": [
+    1.0,
+    50.5,
+    100.0
+   ],
+   "det·in-domain(micro)/BBBC005 / tau@1024": [
+    1.0,
+    50.5,
+    100.0
+   ],
+   "det·in-domain(micro)/BBBC005 / tau@1536": [
+    1.0,
+    50.5,
+    100.0
+   ],
+   "det·in-domain(micro)/BBBC005 / tau@640": [
+    1.0,
+    50.5,
+    100.0
+   ],
+   "det·in-domain/VisDrone (full grid)": [
+    1.0,
+    9.0,
+    286.0
+   ],
+   "det·in-domain/VisDrone / tau@1024": [
+    1.0,
+    9.0,
+    286.0
+   ],
+   "det·in-domain/VisDrone / tau@1536": [
+    1.0,
+    9.0,
+    286.0
+   ],
+   "det·in-domain/VisDrone / tau@640": [
+    1.0,
+    9.0,
+    286.0
+   ],
+   "det·zero-shot COCO (full grid)": [
+    1.0,
+    18.0,
+    286.0
+   ],
+   "det·zero-shot COCO / tau@1024": [
+    1.0,
+    18.0,
+    286.0
+   ],
+   "det·zero-shot COCO / tau@1536": [
+    1.0,
+    18.0,
+    286.0
+   ],
+   "det·zero-shot COCO / tau@640": [
+    1.0,
+    18.0,
+    286.0
+   ]
+  },
+  "profile": {
+   "VLM·output contract / ivl": [
+    26,
+    78,
+    55,
+    36,
+    91,
+    129,
+    36
+   ],
+   "VLM·output contract / q32": [
+    26,
+    78,
+    55,
+    36,
+    92,
+    179,
+    116
+   ],
+   "VLM·pixel budget / ivl / st_a": [
+    0,
+    0,
+    0,
+    7,
+    36,
+    82,
+    17
+   ],
+   "VLM·pixel budget / ivl / ucf": [
+    0,
+    0,
+    0,
+    5,
+    54,
+    121,
+    42
+   ],
+   "VLM·pixel budget / ivl / visdrone": [
+    120,
+    155,
+    80,
+    30,
+    11,
+    4,
+    0
+   ],
+   "VLM·pixel budget / q32 / st_a": [
+    0,
+    0,
+    0,
+    7,
+    36,
+    93,
+    46
+   ],
+   "VLM·pixel budget / q32 / ucf": [
+    0,
+    0,
+    0,
+    5,
+    54,
+    129,
+    146
+   ],
+   "VLM·pixel budget / q32 / visdrone": [
+    120,
+    155,
+    80,
+    30,
+    11,
+    4,
+    0
+   ],
+   "VLM·prompt family / IVL / ucf / base": [
+    0,
+    0,
+    0,
+    5,
+    45,
+    76,
+    10
+   ],
+   "VLM·prompt family / IVL / ucf / over": [
+    0,
+    0,
+    0,
+    5,
+    49,
+    97,
+    32
+   ],
+   "VLM·prompt family / IVL / ucf / under": [
+    0,
+    0,
+    0,
+    5,
+    52,
+    114,
+    61
+   ],
+   "VLM·prompt family / Qwen32B / ucf / base": [
+    0,
+    0,
+    0,
+    5,
+    54,
+    129,
+    136
+   ],
+   "VLM·prompt family / Qwen32B / ucf / over": [
+    0,
+    0,
+    0,
+    5,
+    54,
+    129,
+    143
+   ],
+   "VLM·prompt family / Qwen32B / ucf / under": [
+    0,
+    0,
+    0,
+    5,
+    54,
+    129,
+    145
+   ],
+   "VLM·tiling / Qwen32B / ucf / base": [
+    0,
+    0,
+    0,
+    5,
+    54,
+    129,
+    146
+   ],
+   "VLM·tiling / Qwen32B(ctile) / ucf / base": [
+    0,
+    0,
+    0,
+    5,
+    54,
+    129,
+    146
+   ],
+   "VLM·tiling / Qwen32B(ctile) / ucf / choice": [
+    0,
+    0,
+    0,
+    5,
+    54,
+    129,
+    146
+   ],
+   "VLM·tiling / Qwen32B(ctile) / ucf / forbid0": [
+    0,
+    0,
+    0,
+    5,
+    54,
+    129,
+    146
+   ],
+   "VLM·tiling / Qwen32B(ctile) / ucf / range": [
+    0,
+    0,
+    0,
+    5,
+    54,
+    129,
+    145
+   ],
+   "VLM·tiling / Qwen8B(ctile) / ucf / base": [
+    0,
+    0,
+    0,
+    5,
+    54,
+    129,
+    145
+   ],
+   "density·CSRNet / ladder": [
+    0,
+    0,
+    0,
+    0,
+    9,
+    20,
+    22
+   ],
+   "density·CSRNet / st": [
+    0,
+    0,
+    0,
+    5,
+    33,
+    81,
+    34
+   ],
+   "density·official DM-Count / st_a": [
+    0,
+    0,
+    0,
+    7,
+    36,
+    93,
+    46
+   ],
+   "density·official DM-Count / ucf": [
+    0,
+    0,
+    0,
+    3,
+    21,
+    49,
+    56
+   ],
+   "det·in-domain(micro)/BBBC005 (full grid)": [
+    13,
+    52,
+    91,
+    143,
+    13,
+    0,
+    0
+   ],
+   "det·in-domain(micro)/BBBC005 / tau@1024": [
+    13,
+    52,
+    91,
+    143,
+    13,
+    0,
+    0
+   ],
+   "det·in-domain(micro)/BBBC005 / tau@1536": [
+    13,
+    52,
+    91,
+    143,
+    13,
+    0,
+    0
+   ],
+   "det·in-domain(micro)/BBBC005 / tau@640": [
+    13,
+    52,
+    91,
+    143,
+    13,
+    0,
+    0
+   ],
+   "det·in-domain/VisDrone (full grid)": [
+    120,
+    155,
+    80,
+    30,
+    11,
+    4,
+    0
+   ],
+   "det·in-domain/VisDrone / tau@1024": [
+    120,
+    155,
+    80,
+    30,
+    11,
+    4,
+    0
+   ],
+   "det·in-domain/VisDrone / tau@1536": [
+    120,
+    155,
+    80,
+    30,
+    11,
+    4,
+    0
+   ],
+   "det·in-domain/VisDrone / tau@640": [
+    120,
+    155,
+    80,
+    30,
+    11,
+    4,
+    0
+   ],
+   "det·zero-shot COCO (full grid)": [
+    26,
+    78,
+    55,
+    26,
+    11,
+    4,
+    0
+   ],
+   "det·zero-shot COCO / tau@1024": [
+    26,
+    78,
+    55,
+    26,
+    11,
+    4,
+    0
+   ],
+   "det·zero-shot COCO / tau@1536": [
+    26,
+    78,
+    55,
+    26,
+    11,
+    4,
+    0
+   ],
+   "det·zero-shot COCO / tau@640": [
+    26,
+    78,
+    55,
+    26,
+    11,
+    4,
+    0
+   ]
+  },
+  "absolute_matching_feasible": false
+ },
+ "E_shape_matched": {
+  "feasible": true,
+  "q": 10,
+  "items_per_unit": 50,
+  "spearman_vs_full": 0.9830748459767359,
+  "drop": 0.01692515402326411,
+  "threshold_drop": 0.2,
+  "artifact_shape": false,
+  "top_full": "density·CSRNet / st",
+  "top_matched": "density·CSRNet / st",
+  "spans_matched": {
+   "VLM·output contract / ivl": 147.86901763224182,
+   "VLM·output contract / q32": 247.35775789295963,
+   "VLM·pixel budget / ivl / st_a": 2.346424348042575,
+   "VLM·pixel budget / ivl / ucf": 3.3496082661519324,
+   "VLM·pixel budget / ivl / visdrone": 4.864091559370522,
+   "VLM·pixel budget / q32 / st_a": 7.216804845568973,
+   "VLM·pixel budget / q32 / ucf": 12.652183625600358,
+   "VLM·pixel budget / q32 / visdrone": 15.452151009657598,
+   "VLM·prompt family / IVL / ucf / base": 53.76589021970754,
+   "VLM·prompt family / IVL / ucf / over": 294.42119205298013,
+   "VLM·prompt family / IVL / ucf / under": 761.8925831202047,
+   "VLM·prompt family / Qwen32B / ucf / base": 322.88270090895975,
+   "VLM·prompt family / Qwen32B / ucf / over": 184.25102748710177,
+   "VLM·prompt family / Qwen32B / ucf / under": 181.48852171370083,
+   "VLM·tiling / Qwen32B / ucf / base": 23.88639502762431,
+   "VLM·tiling / Qwen32B(ctile) / ucf / base": 47.83411597108637,
+   "VLM·tiling / Qwen32B(ctile) / ucf / choice": 266.2831909825112,
+   "VLM·tiling / Qwen32B(ctile) / ucf / forbid0": 130.22519746792898,
+   "VLM·tiling / Qwen32B(ctile) / ucf / range": 138.19109887588894,
+   "VLM·tiling / Qwen8B(ctile) / ucf / base": 30.22734458080648,
+   "density·CSRNet / ladder": 389.5575613490753,
+   "density·CSRNet / st": 1368.5085018074706,
+   "density·official DM-Count / st_a": 34.02794124173435,
+   "density·official DM-Count / ucf": 42.05963430954531,
+   "det·in-domain(micro)/BBBC005 (full grid)": 86.95106649937264,
+   "det·in-domain(micro)/BBBC005 / tau@1024": 37.66447368421053,
+   "det·in-domain(micro)/BBBC005 / tau@1536": 122.0352892901108,
+   "det·in-domain(micro)/BBBC005 / tau@640": 29.689390883420735,
+   "det·in-domain/VisDrone (full grid)": 228.74779541446208,
+   "det·in-domain/VisDrone / tau@1024": 159.5744680851064,
+   "det·in-domain/VisDrone / tau@1536": 180.2092414995641,
+   "det·in-domain/VisDrone / tau@640": 88.9934148635936,
+   "det·zero-shot COCO (full grid)": 67.06199460916442,
+   "det·zero-shot COCO / tau@1024": 35.5,
+   "det·zero-shot COCO / tau@1536": 37.82894736842105,
+   "det·zero-shot COCO / tau@640": 16.804245283018872
+  }
+ },
+ "ranks": {
+  "rho": {
+   "density·CSRNet / st": 1,
+   "density·CSRNet / ladder": 2,
+   "VLM·prompt family / Qwen32B / ucf / base": 3,
+   "VLM·prompt family / IVL / ucf / under": 4,
+   "VLM·prompt family / IVL / ucf / over": 5,
+   "VLM·tiling / Qwen32B(ctile) / ucf / choice": 6,
+   "VLM·output contract / q32": 7,
+   "det·in-domain/VisDrone (full grid)": 8,
+   "det·in-domain/VisDrone / tau@1536": 9,
+   "VLM·prompt family / Qwen32B / ucf / under": 10,
+   "VLM·prompt family / Qwen32B / ucf / over": 11,
+   "VLM·output contract / ivl": 12,
+   "det·in-domain/VisDrone / tau@1024": 13,
+   "VLM·tiling / Qwen32B(ctile) / ucf / range": 14,
+   "det·in-domain(micro)/BBBC005 (full grid)": 15,
+   "det·in-domain(micro)/BBBC005 / tau@1536": 16,
+   "det·in-domain/VisDrone / tau@640": 17,
+   "VLM·prompt family / IVL / ucf / base": 18,
+   "det·zero-shot COCO (full grid)": 19,
+   "VLM·tiling / Qwen32B(ctile) / ucf / forbid0": 20,
+   "det·zero-shot COCO / tau@1536": 21,
+   "VLM·tiling / Qwen32B / ucf / base": 22,
+   "VLM·tiling / Qwen32B(ctile) / ucf / base": 23,
+   "det·in-domain(micro)/BBBC005 / tau@1024": 24,
+   "density·official DM-Count / ucf": 25,
+   "VLM·tiling / Qwen8B(ctile) / ucf / base": 26,
+   "density·official DM-Count / st_a": 27,
+   "det·zero-shot COCO / tau@1024": 28,
+   "det·in-domain(micro)/BBBC005 / tau@640": 29,
+   "det·zero-shot COCO / tau@640": 30,
+   "VLM·pixel budget / q32 / visdrone": 31,
+   "VLM·pixel budget / q32 / ucf": 32,
+   "VLM·pixel budget / ivl / visdrone": 33,
+   "VLM·pixel budget / q32 / st_a": 34,
+   "VLM·pixel budget / ivl / ucf": 35,
+   "VLM·pixel budget / ivl / st_a": 36
+  },
+  "L": {
+   "VLM·prompt family / Qwen32B / ucf / base": 1,
+   "VLM·prompt family / Qwen32B / ucf / under": 2,
+   "VLM·tiling / Qwen32B(ctile) / ucf / base": 3,
+   "density·CSRNet / st": 4,
+   "det·in-domain/VisDrone (full grid)": 5,
+   "density·CSRNet / ladder": 6,
+   "det·in-domain/VisDrone / tau@1536": 7,
+   "VLM·output contract / q32": 8,
+   "det·in-domain/VisDrone / tau@1024": 9,
+   "det·zero-shot COCO (full grid)": 10,
+   "VLM·output contract / ivl": 11,
+   "det·in-domain/VisDrone / tau@640": 12,
+   "VLM·pixel budget / q32 / ucf": 13,
+   "det·zero-shot COCO / tau@1536": 14,
+   "det·zero-shot COCO / tau@1024": 15,
+   "VLM·prompt family / IVL / ucf / under": 16,
+   "det·zero-shot COCO / tau@640": 17,
+   "VLM·prompt family / Qwen32B / ucf / over": 18,
+   "VLM·tiling / Qwen8B(ctile) / ucf / base": 19,
+   "VLM·tiling / Qwen32B(ctile) / ucf / choice": 20,
+   "VLM·prompt family / IVL / ucf / base": 21,
+   "det·in-domain(micro)/BBBC005 (full grid)": 22,
+   "det·in-domain(micro)/BBBC005 / tau@1536": 23,
+   "VLM·prompt family / IVL / ucf / over": 24,
+   "VLM·tiling / Qwen32B / ucf / base": 25,
+   "VLM·pixel budget / q32 / st_a": 26,
+   "VLM·pixel budget / q32 / visdrone": 27,
+   "VLM·tiling / Qwen32B(ctile) / ucf / forbid0": 28,
+   "VLM·tiling / Qwen32B(ctile) / ucf / range": 29,
+   "VLM·pixel budget / ivl / visdrone": 30,
+   "density·official DM-Count / ucf": 31,
+   "density·official DM-Count / st_a": 32,
+   "VLM·pixel budget / ivl / ucf": 33,
+   "det·in-domain(micro)/BBBC005 / tau@1024": 34,
+   "VLM·pixel budget / ivl / st_a": 35,
+   "det·in-domain(micro)/BBBC005 / tau@640": 36
+  },
+  "rankcorr": {
+   "VLM·prompt family / Qwen32B / ucf / base": 1,
+   "VLM·prompt family / Qwen32B / ucf / under": 2,
+   "VLM·prompt family / IVL / ucf / under": 3,
+   "VLM·output contract / q32": 4,
+   "VLM·tiling / Qwen32B(ctile) / ucf / base": 5,
+   "VLM·tiling / Qwen32B / ucf / base": 6,
+   "VLM·tiling / Qwen8B(ctile) / ucf / base": 7,
+   "det·in-domain/VisDrone (full grid)": 8,
+   "density·CSRNet / ladder": 9,
+   "det·in-domain/VisDrone / tau@1024": 10,
+   "det·in-domain/VisDrone / tau@1536": 11,
+   "VLM·prompt family / IVL / ucf / base": 12,
+   "det·in-domain/VisDrone / tau@640": 13,
+   "density·CSRNet / st": 14,
+   "det·zero-shot COCO (full grid)": 15,
+   "det·in-domain(micro)/BBBC005 (full grid)": 16,
+   "det·in-domain(micro)/BBBC005 / tau@1536": 17,
+   "VLM·prompt family / IVL / ucf / over": 18,
+   "VLM·tiling / Qwen32B(ctile) / ucf / choice": 19,
+   "det·zero-shot COCO / tau@1024": 20,
+   "det·zero-shot COCO / tau@1536": 21,
+   "VLM·pixel budget / q32 / ucf": 22,
+   "VLM·prompt family / Qwen32B / ucf / over": 23,
+   "VLM·pixel budget / ivl / visdrone": 24,
+   "VLM·pixel budget / q32 / visdrone": 25,
+   "det·in-domain(micro)/BBBC005 / tau@1024": 26,
+   "det·zero-shot COCO / tau@640": 27,
+   "density·official DM-Count / ucf": 28,
+   "VLM·pixel budget / ivl / ucf": 29,
+   "VLM·output contract / ivl": 30,
+   "det·in-domain(micro)/BBBC005 / tau@640": 31,
+   "VLM·tiling / Qwen32B(ctile) / ucf / forbid0": 32,
+   "VLM·pixel budget / q32 / st_a": 33,
+   "density·official DM-Count / st_a": 34,
+   "VLM·pixel budget / ivl / st_a": 35,
+   "VLM·tiling / Qwen32B(ctile) / ucf / range": 36
+  },
+  "rho_mean": {
+   "density·CSRNet / st": 1,
+   "VLM·prompt family / Qwen32B / ucf / base": 2,
+   "density·CSRNet / ladder": 3,
+   "VLM·tiling / Qwen32B(ctile) / ucf / choice": 4,
+   "VLM·output contract / ivl": 5,
+   "det·in-domain/VisDrone (full grid)": 6,
+   "det·in-domain/VisDrone / tau@1536": 7,
+   "VLM·prompt family / Qwen32B / ucf / over": 8,
+   "VLM·output contract / q32": 9,
+   "VLM·prompt family / IVL / ucf / over": 10,
+   "VLM·prompt family / Qwen32B / ucf / under": 11,
+   "det·in-domain/VisDrone / tau@1024": 12,
+   "VLM·prompt family / IVL / ucf / under": 13,
+   "det·in-domain(micro)/BBBC005 (full grid)": 14,
+   "det·in-domain(micro)/BBBC005 / tau@1536": 15,
+   "det·in-domain/VisDrone / tau@640": 16,
+   "VLM·tiling / Qwen32B(ctile) / ucf / range": 17,
+   "det·zero-shot COCO (full grid)": 18,
+   "det·zero-shot COCO / tau@1536": 19,
+   "VLM·prompt family / IVL / ucf / base": 20,
+   "VLM·tiling / Qwen8B(ctile) / ucf / base": 21,
+   "VLM·tiling / Qwen32B(ctile) / ucf / base": 22,
+   "VLM·tiling / Qwen32B / ucf / base": 23,
+   "VLM·tiling / Qwen32B(ctile) / ucf / forbid0": 24,
+   "det·zero-shot COCO / tau@1024": 25,
+   "det·in-domain(micro)/BBBC005 / tau@1024": 26,
+   "density·official DM-Count / st_a": 27,
+   "density·official DM-Count / ucf": 28,
+   "det·in-domain(micro)/BBBC005 / tau@640": 29,
+   "det·zero-shot COCO / tau@640": 30,
+   "VLM·pixel budget / q32 / visdrone": 31,
+   "VLM·pixel budget / q32 / ucf": 32,
+   "VLM·pixel budget / ivl / visdrone": 33,
+   "VLM·pixel budget / q32 / st_a": 34,
+   "VLM·pixel budget / ivl / ucf": 35,
+   "VLM·pixel budget / ivl / st_a": 36
+  }
+ }
+}

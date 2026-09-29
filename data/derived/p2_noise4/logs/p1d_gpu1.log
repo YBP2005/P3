@@ -1,0 +1,17 @@
+[07:22:05][gpu1] == gpu1 开始 ｜ 组：0 ｜ 臂：forbid0,neutral0,base ｜ workers=8 ==
+[07:22:05][gpu1] == 组 0 结束 ==
+[07:22:05][gpu1] P1D_gpu1_DONE
+[07:22:49][gpu1] == gpu1 开始 ｜ 组：B C ｜ 臂：forbid0,neutral0,base ｜ workers=8 ==
+[07:22:49][gpu1] [gemma3-12b] GPU1 port=8001 frac=0.40 maxlen=8192 extra='' 起服
+[07:22:49][gpu1] [llava-onevision-qwen2-7b-ov] GPU1 port=8004 frac=0.26 maxlen=8192 extra='' 起服
+[07:22:49][gpu1] [Phi-3.5-vision-instruct] GPU1 port=8003 frac=0.30 maxlen=8192 extra='--trust_remote_code' 起服
+[07:24:49][gpu1] [Phi-3.5-vision-instruct] !! 起服失败（见 /root/logs/p1d_serve_Phi-3.5-vision-instruct.log）
+[07:24:49][gpu1] [Phi-3.5-vision-instruct] !! 未就绪，跳过该族（其他族不受影响）
+[07:25:21][gpu1] [llava-onevision-qwen2-7b-ov] !! 起服失败（见 /root/logs/p1d_serve_llava-onevision-qwen2-7b-ov.log）
+[07:25:21][gpu1] [llava-onevision-qwen2-7b-ov] !! 未就绪，跳过该族（其他族不受影响）
+[07:25:37][gpu1] [gemma3-12b] 就绪（168s）
+[07:27:29][gpu1] [gemma3-12b/forbid0] 675 行
+[07:27:29][gpu1] [gemma3-12b/neutral0] 675 行
+[07:27:30][gpu1] [gemma3-12b/base] 675 行
+[07:27:35][gpu1] [gemma3-12b] 完成并已停自己的服务
+[07:27:35][gpu1] == 组 B 结束 ==

@@ -1,0 +1,9 @@
+{
+ "why": "P1d 中期读数显示 neutral0 大幅抬高零率、forbid0 符号随血统变 ⇒ 需区分 token 特异 vs 非特异",
+ "source": "p1d_prompts.json",
+ "source_md5": "d35ec04a163ecdcb021e1273bfc8e198",
+ "arms": {
+  "placebo100": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复。注意：**可能是 100**；如果你的判断确实是 100，请照实回答 100。以JSON格式输出：{\"count\": 数量}，只输出JSON。"
+ },
+ "single_variable_check": "placebo100 与 neutral0 仅被提及的数字不同（0 → 100），生成时已断言"
+}

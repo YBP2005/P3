@@ -1,0 +1,28 @@
+  判据 md5 fa22a7e17235 OK
+[16:12:32] == wave1 开始 ｜ 清场后显存 0 MiB ｜ 网格 675 项 ==
+[16:12:32] [InternVL3_5-8B] 起服 port=8002 frac=0.28 maxlen=8192 extra='--trust_remote_code'
+[16:12:32] [gemma3-12b] 起服 port=8001 frac=0.40 maxlen=8192 extra=''
+[16:12:32] [llava-onevision-qwen2-7b-ov] 起服 port=8004 frac=0.26 maxlen=8192 extra=''
+[16:13:36] [llava-onevision-qwen2-7b-ov] 就绪（64 s）｜显存 61970 MiB
+[16:13:52] [gemma3-12b] !! 起服失败（见 /root/logs/serve_p1_gemma3-12b.log）
+[16:13:52] [gemma3-12b] !! 未就绪，跳过该家族（其他家族不受影响）
+    (EngineCore pid=13091)     ^
+    (EngineCore pid=13091)   File "/usr/local/miniconda3/lib/python3.13/site-packages/vllm/v1/core/kv_cache_utils.py", line 879, in _check_enough_kv_cache_memory
+    (EngineCore pid=13091)     raise ValueError(
+    (EngineCore pid=13091)     ...<9 lines>...
+    (EngineCore pid=13091)     )
+    (EngineCore pid=13091) ValueError: To serve at least one request with the model's max seq len (8192), (3.0 GiB KV cache is needed, which is larger than the available KV cache memory (2.94 GiB). Based on the available memory, the estimated maximum model length is 8000. Try increasing `gpu_memory_utilization` (which also controls CPU memory on the CPU backend) or decreasing `max_model_len` when initializing the engine. See https://docs.vllm.ai/en/latest/configuration/conserving_memory/ for more details.
+[16:14:32] [InternVL3_5-8B] !! 起服失败（见 /root/logs/serve_p1_InternVL3_5-8B.log）
+[16:14:32] [InternVL3_5-8B] !! 未就绪，跳过该家族（其他家族不受影响）
+    (APIServer pid=12499)     ^
+    (APIServer pid=12499)   File "/usr/local/miniconda3/lib/python3.13/site-packages/vllm/v1/engine/utils.py", line 1320, in wait_for_engine_startup
+    (APIServer pid=12499)     raise RuntimeError(
+    (APIServer pid=12499)     ...<8 lines>...
+    (APIServer pid=12499)     )
+    (APIServer pid=12499) RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+[16:21:56] [llava-onevision-qwen2-7b-ov/base] 1965 行
+[16:21:56] [llava-onevision-qwen2-7b-ov/permit] 675 行
+/root/p1_run_parallel.sh: line 61: 12503 Killed                  nohup $VLLM serve "$MP" --served-model-name "$NAME" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization "$FRAC" --max-num-seqs 24 --port "$PORT" $EXTRA < /dev/null > "$LOG" 2>&1
+[16:21:59] [llava-onevision-qwen2-7b-ov] 完成并已停服 ｜ 显存 23091 MiB
+[16:22:02] == wave1 结束 ｜ 最终显存 0 MiB ==
+[16:22:02] P1_wave1_DONE

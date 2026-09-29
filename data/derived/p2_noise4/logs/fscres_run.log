@@ -1,0 +1,155 @@
+[01:21:46] ########## E1：FSC-147 分辨率敏感性 384 / 256 / 768up × 6 臂 ##########
+[01:21:46] !! 未见 E2_PANEL_DONE 标记 ⇒ 拒绝启动 E1（避免杀掉 E2 的服务）。
+[02:06:17] ########## E1：FSC-147 分辨率敏感性 384 / 256 / 768up × 6 臂 ##########
+[02:06:17] ① 图像：384=300 张（短边384）；256=300 张（短边256）；768=300 张（短边768）
+[02:06:17] ===== E1 模型 ivl8b（InternVL3_5-8B）=====
+[02:07:20]   [ivl8b] 起服就绪 60s
+[02:07:20]   [ivl8b] 256 px × base,permit,channel,enumAbstain,exemplar3,exemplar3permit
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 273 个；-> /root/w1_results/fsc_sc256/fsc_InternVL3_5-8B_base.csv
+  [permit] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc256/fsc_InternVL3_5-8B_permit.csv
+  [channel] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc256/fsc_InternVL3_5-8B_channel.csv
+  [enumAbstain] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc256/fsc_InternVL3_5-8B_enumAbstain.csv
+  [exemplar3] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc256/fsc_InternVL3_5-8B_exemplar3.csv
+  [exemplar3permit] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc256/fsc_InternVL3_5-8B_exemplar3permit.csv
+[02:12:35]   [ivl8b] 256 px 完成：6 个臂文件
+[02:12:35]   [ivl8b] 768 px × base,permit,channel,enumAbstain,exemplar3,exemplar3permit
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 273 个；-> /root/w1_results/fsc_sc768/fsc_InternVL3_5-8B_base.csv
+  [permit] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc768/fsc_InternVL3_5-8B_permit.csv
+  [channel] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc768/fsc_InternVL3_5-8B_channel.csv
+  [enumAbstain] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc768/fsc_InternVL3_5-8B_enumAbstain.csv
+  [exemplar3] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc768/fsc_InternVL3_5-8B_exemplar3.csv
+  [exemplar3permit] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc768/fsc_InternVL3_5-8B_exemplar3permit.csv
+[02:18:44]   [ivl8b] 768 px 完成：6 个臂文件
+[02:18:44]   [ivl8b] 384 px × base,permit,channel,enumAbstain,exemplar3,exemplar3permit
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 273 个；-> /root/w1_results/fsc_sc384/fsc_InternVL3_5-8B_base.csv
+  [permit] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc384/fsc_InternVL3_5-8B_permit.csv
+  [channel] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc384/fsc_InternVL3_5-8B_channel.csv
+  [enumAbstain] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc384/fsc_InternVL3_5-8B_enumAbstain.csv
+  [exemplar3] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc384/fsc_InternVL3_5-8B_exemplar3.csv
+  [exemplar3permit] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc384/fsc_InternVL3_5-8B_exemplar3permit.csv
+[02:24:00]   [ivl8b] 384 px 完成：6 个臂文件
+[02:24:03]   [ivl8b] 完成
+[02:24:03] ===== E1 模型 phi35（Phi-3.5-vision-instruct）=====
+[02:24:51]   [phi35] 起服就绪 45s
+[02:24:51]   [phi35] 256 px × base,permit,channel,enumAbstain,exemplar3,exemplar3permit
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 267 个；-> /root/w1_results/fsc_sc256/fsc_Phi-3.5-vision-instruct_base.csv
+  [permit] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc256/fsc_Phi-3.5-vision-instruct_permit.csv
+  [channel] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc256/fsc_Phi-3.5-vision-instruct_channel.csv
+  [enumAbstain] 300 行；答 0 的 18 个；-> /root/w1_results/fsc_sc256/fsc_Phi-3.5-vision-instruct_enumAbstain.csv
+  [exemplar3] 300 行；答 0 的 77 个；-> /root/w1_results/fsc_sc256/fsc_Phi-3.5-vision-instruct_exemplar3.csv
+  [exemplar3permit] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc256/fsc_Phi-3.5-vision-instruct_exemplar3permit.csv
+[02:27:40]   [phi35] 256 px 完成：12 个臂文件
+[02:27:40]   [phi35] 768 px × base,permit,channel,enumAbstain,exemplar3,exemplar3permit
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 265 个；-> /root/w1_results/fsc_sc768/fsc_Phi-3.5-vision-instruct_base.csv
+  [permit] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc768/fsc_Phi-3.5-vision-instruct_permit.csv
+  [channel] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc768/fsc_Phi-3.5-vision-instruct_channel.csv
+  [enumAbstain] 300 行；答 0 的 18 个；-> /root/w1_results/fsc_sc768/fsc_Phi-3.5-vision-instruct_enumAbstain.csv
+  [exemplar3] 300 行；答 0 的 25 个；-> /root/w1_results/fsc_sc768/fsc_Phi-3.5-vision-instruct_exemplar3.csv
+  [exemplar3permit] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc768/fsc_Phi-3.5-vision-instruct_exemplar3permit.csv
+[02:30:29]   [phi35] 768 px 完成：12 个臂文件
+[02:30:29]   [phi35] 384 px × base,permit,channel,enumAbstain,exemplar3,exemplar3permit
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 264 个；-> /root/w1_results/fsc_sc384/fsc_Phi-3.5-vision-instruct_base.csv
+  [permit] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc384/fsc_Phi-3.5-vision-instruct_permit.csv
+  [channel] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc384/fsc_Phi-3.5-vision-instruct_channel.csv
+  [enumAbstain] 300 行；答 0 的 20 个；-> /root/w1_results/fsc_sc384/fsc_Phi-3.5-vision-instruct_enumAbstain.csv
+  [exemplar3] 300 行；答 0 的 58 个；-> /root/w1_results/fsc_sc384/fsc_Phi-3.5-vision-instruct_exemplar3.csv
+  [exemplar3permit] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc384/fsc_Phi-3.5-vision-instruct_exemplar3permit.csv
+[02:33:13]   [phi35] 384 px 完成：12 个臂文件
+[02:33:17]   [phi35] 完成
+[02:33:17] ===== E1 模型 gemma12b（gemma3-12b）=====
+[02:35:20]   [gemma12b] 起服就绪 120s
+[02:35:20]   [gemma12b] 256 px × base,permit,channel,enumAbstain,exemplar3,exemplar3permit
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 250 个；-> /root/w1_results/fsc_sc256/fsc_gemma3-12b_base.csv
+  [permit] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc256/fsc_gemma3-12b_permit.csv
+  [channel] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc256/fsc_gemma3-12b_channel.csv
+  [enumAbstain] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc256/fsc_gemma3-12b_enumAbstain.csv
+  [exemplar3] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc256/fsc_gemma3-12b_exemplar3.csv
+  [exemplar3permit] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc256/fsc_gemma3-12b_exemplar3permit.csv
+[02:37:34]   [gemma12b] 256 px 完成：18 个臂文件
+[02:37:34]   [gemma12b] 768 px × base,permit,channel,enumAbstain,exemplar3,exemplar3permit
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 248 个；-> /root/w1_results/fsc_sc768/fsc_gemma3-12b_base.csv
+  [permit] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc768/fsc_gemma3-12b_permit.csv
+  [channel] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc768/fsc_gemma3-12b_channel.csv
+  [enumAbstain] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc768/fsc_gemma3-12b_enumAbstain.csv
+  [exemplar3] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc768/fsc_gemma3-12b_exemplar3.csv
+  [exemplar3permit] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc768/fsc_gemma3-12b_exemplar3permit.csv
+[02:39:51]   [gemma12b] 768 px 完成：18 个臂文件
+[02:39:51]   [gemma12b] 384 px × base,permit,channel,enumAbstain,exemplar3,exemplar3permit
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 249 个；-> /root/w1_results/fsc_sc384/fsc_gemma3-12b_base.csv
+  [permit] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc384/fsc_gemma3-12b_permit.csv
+  [channel] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc384/fsc_gemma3-12b_channel.csv
+  [enumAbstain] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc384/fsc_gemma3-12b_enumAbstain.csv
+  [exemplar3] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc384/fsc_gemma3-12b_exemplar3.csv
+  [exemplar3permit] 300 行；答 0 的 0 个；-> /root/w1_results/fsc_sc384/fsc_gemma3-12b_exemplar3permit.csv
+[02:42:06]   [gemma12b] 384 px 完成：18 个臂文件
+[02:42:09]   [gemma12b] 完成
+[02:42:09] ########## E1 主跑完成，开始质检 ##########
+■ E1 质检：0 个 (分辨率, 模型, 臂) 单元
+  表头：零率 / 弃权率 / cannot_judge / no_people / unparsed
+  硬条件违规：0；缺件/异常：54
+   warn 384|InternVL3_5-8B|base MISSING
+   warn 384|InternVL3_5-8B|permit MISSING
+   warn 384|InternVL3_5-8B|channel MISSING
+   warn 384|InternVL3_5-8B|enumAbstain MISSING
+   warn 384|InternVL3_5-8B|exemplar3 MISSING
+   warn 384|InternVL3_5-8B|exemplar3permit MISSING
+   warn 384|Phi-3.5-vision-instruct|base MISSING
+   warn 384|Phi-3.5-vision-instruct|permit MISSING
+   warn 384|Phi-3.5-vision-instruct|channel MISSING
+   warn 384|Phi-3.5-vision-instruct|enumAbstain MISSING
+   warn 384|Phi-3.5-vision-instruct|exemplar3 MISSING
+   warn 384|Phi-3.5-vision-instruct|exemplar3permit MISSING
+   warn 384|gemma3-12b|base MISSING
+   warn 384|gemma3-12b|permit MISSING
+   warn 384|gemma3-12b|channel MISSING
+   warn 384|gemma3-12b|enumAbstain MISSING
+   warn 384|gemma3-12b|exemplar3 MISSING
+   warn 384|gemma3-12b|exemplar3permit MISSING
+   warn 256|InternVL3_5-8B|base MISSING
+   warn 256|InternVL3_5-8B|permit MISSING
+   warn 256|InternVL3_5-8B|channel MISSING
+   warn 256|InternVL3_5-8B|enumAbstain MISSING
+   warn 256|InternVL3_5-8B|exemplar3 MISSING
+   warn 256|InternVL3_5-8B|exemplar3permit MISSING
+   warn 256|Phi-3.5-vision-instruct|base MISSING
+   warn 256|Phi-3.5-vision-instruct|permit MISSING
+   warn 256|Phi-3.5-vision-instruct|channel MISSING
+   warn 256|Phi-3.5-vision-instruct|enumAbstain MISSING
+   warn 256|Phi-3.5-vision-instruct|exemplar3 MISSING
+   warn 256|Phi-3.5-vision-instruct|exemplar3permit MISSING
+   warn 256|gemma3-12b|base MISSING
+   warn 256|gemma3-12b|permit MISSING
+   warn 256|gemma3-12b|channel MISSING
+   warn 256|gemma3-12b|enumAbstain MISSING
+   warn 256|gemma3-12b|exemplar3 MISSING
+   warn 256|gemma3-12b|exemplar3permit MISSING
+   warn 768up|InternVL3_5-8B|base MISSING
+   warn 768up|InternVL3_5-8B|permit MISSING
+   warn 768up|InternVL3_5-8B|channel MISSING
+   warn 768up|InternVL3_5-8B|enumAbstain MISSING
+   warn 768up|InternVL3_5-8B|exemplar3 MISSING
+   warn 768up|InternVL3_5-8B|exemplar3permit MISSING
+   warn 768up|Phi-3.5-vision-instruct|base MISSING
+   warn 768up|Phi-3.5-vision-instruct|permit MISSING
+   warn 768up|Phi-3.5-vision-instruct|channel MISSING
+   warn 768up|Phi-3.5-vision-instruct|enumAbstain MISSING
+   warn 768up|Phi-3.5-vision-instruct|exemplar3 MISSING
+   warn 768up|Phi-3.5-vision-instruct|exemplar3permit MISSING
+   warn 768up|gemma3-12b|base MISSING
+   warn 768up|gemma3-12b|permit MISSING
+   warn 768up|gemma3-12b|channel MISSING
+   warn 768up|gemma3-12b|enumAbstain MISSING
+   warn 768up|gemma3-12b|exemplar3 MISSING
+   warn 768up|gemma3-12b|exemplar3permit MISSING
+  已写 /root/w1_results/e1_qc.json
+[02:42:09] ########## E1 完成 ##########
+[02:42:09] FSC_RES_DONE

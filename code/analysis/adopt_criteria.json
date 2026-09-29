@@ -1,0 +1,17 @@
+{
+  "instrument": "adopt_contract_probe.py + adopt_report.py",
+  "frozen_at": "2026-09-23",
+  "why": "把论文 §M.22 的五步配方固定成**跑前冻结**的判据，使第三方采用时不会事后挑口径；阈值取自论文正文与附录的口径。",
+  "P1_pass_max_residual": 0.05,
+  "P1_counterexample_above": 0.30,
+  "noise_floor_pp": 7.0,
+  "notes": {
+    "P1_pass_max_residual": "permit 臂在 base 答 0 的 item 上残留 ≤5% ⇒ 该零由输出契约决定（论文 §5.7/M.19）",
+    "P1_counterexample_above": ">30% ⇒ 记反例（家族依赖）；先按 §M.24.3 换成 channel（三选一）再判定",
+    "noise_floor_pp": "两口径 ρ 之差 ≤7 pp 视为口径无关（论文 §8.1 的噪声地板 2.15–6.46 pp，取保守上界）",
+    "arms_required": ["base", "permit"],
+    "arms_recommended": ["base", "permit", "channel"],
+    "serving": "temperature 0、单图单次、max_tokens 128；与论文固定栈一致",
+    "prompts": "三臂提示词与论文 19e 探针逐字相同（见 adopt_contract_probe.py 的 PROMPTS）"
+  }
+}

@@ -1,0 +1,49 @@
+{
+ "version": "p5c-v1",
+ "frozen_note": "阈值在任何激活/概率被计算之前写死；p5c_hidden.py 只读本文件。",
+ "design": {
+  "family": "Qwen3-VL-8B-Instruct",
+  "weights": "/model/ModelScope/Qwen/Qwen3-VL-8B-Instruct",
+  "strata": "P1 网格 σ=8（135 项）",
+  "arms": [
+   "base",
+   "forbid0",
+   "neutral0"
+  ],
+  "max_new_tokens": 12,
+  "value_position": "第一个数字 token 的**前一个位置**（教师强制前向里读该位置的 hidden_states 与 logits）",
+  "pass1": "贪婪生成（与 P5a 的 max_tokens=12 对齐）",
+  "pass2": "prompt+回答 教师强制前向，output_hidden_states=True",
+  "image_policy": "原生分辨率，不做任何缩放（与语料/P5a 一致）"
+ },
+ "H_P2a": {
+  "metric": "p0 at value position",
+  "rule": "p0(base) > p0(forbid0)",
+  "gate": "若不成立 ⇒ 口径不可比，H_P2b/c/d 全部作废，先报这条"
+ },
+ "H_P2b": {
+  "metric": "layer-wise mean cos(h_base, h_forbid0) on base-zero items",
+  "cos_threshold": 0.99,
+  "rule": "L*/L_total ≥ 0.5（分歧出现在后半深度）"
+ },
+ "H_P2c": {
+  "metric": "cos(Δh(L*), u0)",
+  "u0": "lm_head 中 token \"0\" 的反嵌入行",
+  "rule": "cos < 0 ⇒ 表示层重算；|cos| < 0.1 ⇒ 只能判读出口径变化"
+ },
+ "H_P2d": {
+  "metric": "cos(Δh_neutral(L*), u0)",
+  "rule": "> 0（锚定把表示推向 0 方向）"
+ },
+ "retraction_rules": [
+  "H_P2a 不成立 ⇒ 本块整体作废，不得与 P5a 并列引用",
+  "H_P2b 不成立 ⇒ 不能说\"分歧在深层\"，须报实测 L*",
+  "H_P2c 落在 |cos|<0.1 ⇒ \"重算\"这一说法必须撤回，改为\"读出层面变化\"",
+  "H_P2d 不成立 ⇒ 锚定效应的表示层签名与禁止效应同向，必须重新解释"
+ ],
+ "honesty": [
+  "单族单权重；不外推到 32B 或其它血统",
+  "σ=8 stratum 是刻意选取的高零率档，不代表全网格",
+  "transformers 与 vLLM 的数值口径不完全一致 ⇒ 只做**臂间**对比，不与 P5a 的绝对值比"
+ ]
+}

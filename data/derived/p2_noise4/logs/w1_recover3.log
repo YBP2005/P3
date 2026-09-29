@@ -1,0 +1,8 @@
+[01:52:39] 等待 FSC 补齐段结束（W1_FSC_LATE_DONE）…
+[04:05:40] 开始 Molmo 重试
+[04:06:13]   [molmo7b_retry] !! 起服报错（早停）
+      (APIServer pid=12741)     raise ImportError(
+      (APIServer pid=12741) ImportError: This modeling file requires the following packages that were not found in your environment: tensorflow. Run `pip install tensorflow`
+[04:06:13] !! Molmo 起服仍失败 ⇒ 最终排除（理由写入 frame 表）
+[04:06:13] ########## 第四段结束 ##########
+W1_RECOVER3_DONE

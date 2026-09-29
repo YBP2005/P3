@@ -1,0 +1,126 @@
+[01:11:04] 等待主面板结束（W1_PANEL_DONE）…
+[02:23:04] 主面板已结束（或等待超时），开始回收序列
+[02:23:04] ===== 回收家族 step3vl10b_retry（Step3-VL-10B）=====
+[02:25:22]   [step3vl10b_retry] 起服就绪 135s
+  base 臂 pred==0 的 item 共 103 个；本次抽 2 个（gt 从 138 到 452）
+  [base] 2 行；pred==0 的 0 个；-> /root/w1_results/smoke/e1_Step3-VL-10B_st_a_base_native.csv
+  base 臂 pred==0 的 item 共 273 个；本次抽 2 个（gt 从 1 到 7）
+  [base] 2 行；pred==0 的 1 个；-> /root/w1_results/smoke/e1_Step3-VL-10B_visdrone_base_native.csv
+[02:25:27]   [step3vl10b_retry] smoke：可解析 1 / 4 条
+[02:25:27]   [step3vl10b_retry] st_a 零池 base,permit,channel（native）
+  base 臂 pred==0 的 item 共 103 个；本次抽 103 个（gt 从 138 到 2256）
+  [base] 103 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_Step3-VL-10B_st_a_base_native.csv
+  [permit] 103 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_Step3-VL-10B_st_a_permit_native.csv
+  [channel] 103 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_Step3-VL-10B_st_a_channel_native.csv
+[02:26:46]   [step3vl10b_retry] st_a 零池 base@s640
+  base 臂 pred==0 的 item 共 103 个；本次抽 103 个（gt 从 138 到 2256）
+  [base] 103 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_Step3-VL-10B_st_a_base_s640.csv
+[02:27:18]   [step3vl10b_retry] st_a 非零池 base,permit,channel
+  base 臂 pred==0 的 item 共 79 个；本次抽 79 个（gt 从 66 到 823）
+  [base] 79 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_Step3-VL-10B_st_a_base_native.csv
+  [permit] 79 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_Step3-VL-10B_st_a_permit_native.csv
+  [channel] 79 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_Step3-VL-10B_st_a_channel_native.csv
+[02:28:24]   [step3vl10b_retry] ucf 零池 base,permit,channel（native）
+  base 臂 pred==0 的 item 共 180 个；本次抽 150 个（gt 从 137 到 1798）
+  [base] 150 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_Step3-VL-10B_ucf_base_native.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_Step3-VL-10B_ucf_permit_native.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_Step3-VL-10B_ucf_channel_native.csv
+[02:33:13]   [step3vl10b_retry] ucf 零池 base@s640
+  base 臂 pred==0 的 item 共 180 个；本次抽 150 个（gt 从 137 到 1798）
+  [base] 150 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_Step3-VL-10B_ucf_base_s640.csv
+[02:34:02]   [step3vl10b_retry] ucf 非零池 base,permit,channel
+  base 臂 pred==0 的 item 共 154 个；本次抽 150 个（gt 从 65 到 737）
+  [base] 150 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_Step3-VL-10B_ucf_base_native.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_Step3-VL-10B_ucf_permit_native.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_Step3-VL-10B_ucf_channel_native.csv
+[02:40:00]   [step3vl10b_retry] visdrone 零池 base,permit,channel（native）
+  base 臂 pred==0 的 item 共 273 个；本次抽 150 个（gt 从 1 到 8）
+  [base] 150 行；pred==0 的 61 个；-> /root/w1_results/zero/e1_Step3-VL-10B_visdrone_base_native.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_Step3-VL-10B_visdrone_permit_native.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_Step3-VL-10B_visdrone_channel_native.csv
+[02:42:22]   [step3vl10b_retry] visdrone 零池 base@s640
+  base 臂 pred==0 的 item 共 273 个；本次抽 150 个（gt 从 1 到 8）
+  [base] 150 行；pred==0 的 89 个；-> /root/w1_results/zero/e1_Step3-VL-10B_visdrone_base_s640.csv
+[02:43:17]   [step3vl10b_retry] visdrone 非零池 base,permit,channel
+  base 臂 pred==0 的 item 共 127 个；本次抽 127 个（gt 从 1 到 262）
+  [base] 127 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_Step3-VL-10B_visdrone_base_native.csv
+  [permit] 127 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_Step3-VL-10B_visdrone_permit_native.csv
+  [channel] 127 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_Step3-VL-10B_visdrone_channel_native.csv
+[02:45:22]   [step3vl10b_retry] aitod 零池 base,permit,channel（native）
+  base 臂 pred==0 的 item 共 154 个；本次抽 150 个（gt 从 1 到 61）
+  [base] 150 行；pred==0 的 37 个；-> /root/w1_results/zero/e1_Step3-VL-10B_aitod_base_native.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_Step3-VL-10B_aitod_permit_native.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_Step3-VL-10B_aitod_channel_native.csv
+[02:48:03]   [step3vl10b_retry] aitod 零池 base@s640
+  base 臂 pred==0 的 item 共 154 个；本次抽 150 个（gt 从 1 到 61）
+  [base] 150 行；pred==0 的 58 个；-> /root/w1_results/zero/e1_Step3-VL-10B_aitod_base_s640.csv
+[02:48:45]   [step3vl10b_retry] aitod 非零池 base,permit,channel
+  base 臂 pred==0 的 item 共 72 个；本次抽 72 个（gt 从 1 到 123）
+  [base] 72 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_Step3-VL-10B_aitod_base_native.csv
+  [permit] 72 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_Step3-VL-10B_aitod_permit_native.csv
+  [channel] 72 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_Step3-VL-10B_aitod_channel_native.csv
+[02:50:05]   [step3vl10b_retry] 面板完成：零池 16 / 非零池 12（期望 16 / 12）
+[02:50:08] ===== 回收家族 minicpmv45（MiniCPM-V-4_5）=====
+[02:52:41]   [minicpmv45] 起服就绪 150s
+  base 臂 pred==0 的 item 共 103 个；本次抽 2 个（gt 从 138 到 452）
+  [base] 2 行；pred==0 的 0 个；-> /root/w1_results/smoke/e1_MiniCPM-V-4_5_st_a_base_native.csv
+  base 臂 pred==0 的 item 共 273 个；本次抽 2 个（gt 从 1 到 7）
+  [base] 2 行；pred==0 的 1 个；-> /root/w1_results/smoke/e1_MiniCPM-V-4_5_visdrone_base_native.csv
+[02:52:42]   [minicpmv45] smoke：可解析 4 / 4 条
+[02:52:42]   [minicpmv45] st_a 零池 base,permit,channel（native）
+  base 臂 pred==0 的 item 共 103 个；本次抽 103 个（gt 从 138 到 2256）
+  [base] 103 行；pred==0 的 1 个；-> /root/w1_results/zero/e1_MiniCPM-V-4_5_st_a_base_native.csv
+  [permit] 103 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_MiniCPM-V-4_5_st_a_permit_native.csv
+  [channel] 103 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_MiniCPM-V-4_5_st_a_channel_native.csv
+[02:52:56]   [minicpmv45] st_a 零池 base@s640
+  base 臂 pred==0 的 item 共 103 个；本次抽 103 个（gt 从 138 到 2256）
+  [base] 103 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_MiniCPM-V-4_5_st_a_base_s640.csv
+[02:53:02]   [minicpmv45] st_a 非零池 base,permit,channel
+  base 臂 pred==0 的 item 共 79 个；本次抽 79 个（gt 从 66 到 823）
+  [base] 79 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_MiniCPM-V-4_5_st_a_base_native.csv
+  [permit] 79 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_MiniCPM-V-4_5_st_a_permit_native.csv
+  [channel] 79 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_MiniCPM-V-4_5_st_a_channel_native.csv
+[02:53:12]   [minicpmv45] ucf 零池 base,permit,channel（native）
+  base 臂 pred==0 的 item 共 180 个；本次抽 150 个（gt 从 137 到 1798）
+  [base] 150 行；pred==0 的 3 个；-> /root/w1_results/zero/e1_MiniCPM-V-4_5_ucf_base_native.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_MiniCPM-V-4_5_ucf_permit_native.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_MiniCPM-V-4_5_ucf_channel_native.csv
+[02:54:11]   [minicpmv45] ucf 零池 base@s640
+  base 臂 pred==0 的 item 共 180 个；本次抽 150 个（gt 从 137 到 1798）
+  [base] 150 行；pred==0 的 5 个；-> /root/w1_results/zero/e1_MiniCPM-V-4_5_ucf_base_s640.csv
+[02:54:22]   [minicpmv45] ucf 非零池 base,permit,channel
+  base 臂 pred==0 的 item 共 154 个；本次抽 150 个（gt 从 65 到 737）
+  [base] 150 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_MiniCPM-V-4_5_ucf_base_native.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_MiniCPM-V-4_5_ucf_permit_native.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_MiniCPM-V-4_5_ucf_channel_native.csv
+[02:55:27]   [minicpmv45] visdrone 零池 base,permit,channel（native）
+  base 臂 pred==0 的 item 共 273 个；本次抽 150 个（gt 从 1 到 8）
+  [base] 150 行；pred==0 的 123 个；-> /root/w1_results/zero/e1_MiniCPM-V-4_5_visdrone_base_native.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_MiniCPM-V-4_5_visdrone_permit_native.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_MiniCPM-V-4_5_visdrone_channel_native.csv
+[02:56:02]   [minicpmv45] visdrone 零池 base@s640
+  base 臂 pred==0 的 item 共 273 个；本次抽 150 个（gt 从 1 到 8）
+  [base] 150 行；pred==0 的 135 个；-> /root/w1_results/zero/e1_MiniCPM-V-4_5_visdrone_base_s640.csv
+[02:56:11]   [minicpmv45] visdrone 非零池 base,permit,channel
+  base 臂 pred==0 的 item 共 127 个；本次抽 127 个（gt 从 1 到 262）
+  [base] 127 行；pred==0 的 2 个；-> /root/w1_results/nonzero/e1_MiniCPM-V-4_5_visdrone_base_native.csv
+  [permit] 127 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_MiniCPM-V-4_5_visdrone_permit_native.csv
+  [channel] 127 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_MiniCPM-V-4_5_visdrone_channel_native.csv
+[02:56:42]   [minicpmv45] aitod 零池 base,permit,channel（native）
+  base 臂 pred==0 的 item 共 154 个；本次抽 150 个（gt 从 1 到 61）
+  [base] 150 行；pred==0 的 100 个；-> /root/w1_results/zero/e1_MiniCPM-V-4_5_aitod_base_native.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_MiniCPM-V-4_5_aitod_permit_native.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_MiniCPM-V-4_5_aitod_channel_native.csv
+[02:57:00]   [minicpmv45] aitod 零池 base@s640
+  base 臂 pred==0 的 item 共 154 个；本次抽 150 个（gt 从 1 到 61）
+  [base] 150 行；pred==0 的 104 个；-> /root/w1_results/zero/e1_MiniCPM-V-4_5_aitod_base_s640.csv
+[02:57:12]   [minicpmv45] aitod 非零池 base,permit,channel
+  base 臂 pred==0 的 item 共 72 个；本次抽 72 个（gt 从 1 到 123）
+  [base] 72 行；pred==0 的 1 个；-> /root/w1_results/nonzero/e1_MiniCPM-V-4_5_aitod_base_native.csv
+  [permit] 72 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_MiniCPM-V-4_5_aitod_permit_native.csv
+  [channel] 72 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_MiniCPM-V-4_5_aitod_channel_native.csv
+[02:57:21]   [minicpmv45] 面板完成：零池 16 / 非零池 12（期望 16 / 12）
+[02:57:24] ########## W1 回收结束 ##########
+64
+48
+W1_RECOVER_DONE

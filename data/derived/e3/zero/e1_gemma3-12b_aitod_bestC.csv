@@ -1,0 +1,441 @@
+item,gt,pred,parse_ok,raw,latency_s
+0000225_05003_d_0000016__600_0,1,100,1,"{""count"": 100}",0.54
+0000264_01801_d_0000203__600_0,1,35,1,"{""count"": 35}",0.54
+9999975_00000_d_0000025__0_0,1,15,1,"{""count"": 15}",0.53
+9999940_00000_d_0000033__600_0,1,15,1,"{""count"": 15}",0.56
+9999940_00000_d_0000064__600_0,1,15,1,"{""count"": 15}",0.56
+9999955_00000_d_0000346__600_0,1,250,1,"{""count"": 250}",0.55
+9999972_00000_d_0000050__0_278,1,125,1,"```json
+{""count"": 125}
+```",0.87
+9999955_00000_d_0000101__0_0,1,65,1,"```json
+{""count"": 65}
+```",0.87
+9999982_00000_d_0000009__600_0,1,15,1,"{""count"": 15}",0.53
+9999982_00000_d_0000015__0_0,1,35,1,"{""count"": 35}",0.53
+9999982_00000_d_0000053__0_250,1,35,1,"{""count"": 35}",0.53
+9999982_00000_d_0000091__0_250,1,15,1,"{""count"": 15}",0.52
+9999982_00000_d_0000069__0_0,1,35,1,"{""count"": 35}",0.53
+9999982_00000_d_0000085__0_250,1,35,1,"{""count"": 35}",0.38
+9999977_00000_d_0000039__1116_0,1,35,1,"```json
+{""count"": 35}
+```",0.72
+9999982_00000_d_0000130__600_0,1,150,1,"{""count"": 150}",0.56
+9999984_00000_d_0000162__600_0,1,35,1,"{""count"": 35}",0.54
+9999994_00000_d_0000036__0_0,1,15,1,"{""count"": 15}",0.54
+9999994_00000_d_0000027__0_250,1,150,1,"{""count"": 150}",0.56
+9999994_00000_d_0000033__0_250,1,15,1,"{""count"": 15}",0.45
+9999994_00000_d_0000029__0_0,1,10,1,"{""count"": 10}",0.45
+9999994_00000_d_0000037__600_0,1,150,1,"{""count"": 150}",0.49
+9999994_00000_d_0000002__0_250,1,12,1,"```json
+{""count"": 12}
+```",0.83
+9999994_00000_d_0000036__0_250,1,150,1,"{""count"": 150}",0.5
+9999997_00000_d_0000068__600_0,1,10,1,"{""count"": 10}",0.47
+9999997_00000_d_0000053__0_250,1,50,1,"{""count"": 50}",0.43
+9999994_00000_d_0000119__600_0,1,150,1,"{""count"": 150}",0.51
+0000225_03052_d_0000011__1120_280,2,1,1,"{""count"": 1}",0.34
+9999998_00208_d_0000165__1200_0,1,15,1,"{""count"": 15}",0.44
+9999998_00015_d_0000011__0_700,1,15,1,"```json
+{""count"": 15}
+```",0.7
+0000197_03351_d_0000154__1120_0,2,15,1,"{""count"": 15}",0.49
+9999945_00000_d_0000004__0_0,2,15000,1,"{""count"": 15000}",0.57
+9999982_00000_d_0000019__600_0,2,15,1,"{""count"": 15}",0.42
+9999982_00000_d_0000021__0_250,2,12,1,"```json
+{""count"": 12}
+```",0.67
+9999982_00000_d_0000015__600_250,2,15,1,"```json
+{""count"": 15}
+```",0.67
+9999982_00000_d_0000095__0_250,2,25,1,"```json
+{""count"": 25}
+```",0.62
+9999984_00000_d_0000174__600_0,2,35,1,"{""count"": 35}",0.41
+9999994_00000_d_0000080__0_0,2,15,1,"{""count"": 15}",0.37
+9999994_00000_d_0000075__0_0,2,15,1,"{""count"": 15}",0.37
+9999984_00000_d_0000122__600_0,2,45,1,"```json
+{""count"": 45}
+```",0.65
+9999994_00000_d_0000091__0_250,2,150,1,"{""count"": 150}",0.39
+9999984_00000_d_0000048__600_0,2,35,1,"Here's an estimation of the number of people in the image, presented in JSON format.
+
+{""count"": 35}",1.11
+9999997_00000_d_0000024__0_0,2,5,1,"{""count"": 5}",0.35
+9999997_00000_d_0000051__0_250,2,15,1,"{""count"": 15}",0.37
+9999977_00000_d_0000052__1200_0,3,15,1,"{""count"": 15}",0.32
+9999955_00000_d_0000006__600_0,3,150,1,"```json
+{""count"": 150}
+```",0.5
+9999977_00000_d_0000045__0_0,3,35,1,"```json
+{""count"": 35}
+```",0.5
+9999982_00000_d_0000029__600_250,3,15,1,"```json
+{""count"": 15}
+```",0.5
+9999982_00000_d_0000038__600_0,3,150,1,"{""count"": 150}",0.39
+9999982_00000_d_0000208__600_0,3,35,1,"{""count"": 35}",0.33
+9999982_00000_d_0000123__600_0,3,35,1,"```json
+{""count"": 35}
+```",0.51
+9999985_00000_d_0000025__600_250,3,35,1,"{""count"": 35}",0.33
+9999994_00000_d_0000028__0_250,3,25,1,"{""count"": 25}",0.33
+9999998_00059_d_0000045__1200_0,3,35,1,"```json
+{""count"": 35}
+```",0.47
+9999998_00067_d_0000052__0_0,3,150,1,"{""count"": 150}",0.31
+0000200_00297_d_0000169__0_0,4,35,1,"{""count"": 35}",0.33
+9999945_00000_d_0000078__0_250,4,15,1,"{""count"": 15}",0.33
+9999945_00000_d_0000171__600_0,4,15,1,"{""count"": 15}",0.31
+9999977_00000_d_0000057__600_278,4,13,1,"```json
+{""count"": 13}
+```",0.42
+9999982_00000_d_0000031__600_0,4,35,1,"{""count"": 35}",0.29
+9999984_00000_d_0000014__600_0,1,15,1,"Here's an estimation of the number of people in the image, presented in JSON format:
+
+```json
+{""count"": 15}
+```
+
+**Reasoning:**
+
+This is a challenging image due to the distance and scale. Here's how I arrived at the estimate:
+
+*   **Buildings in the distance:** I estimate there are a few people visible in the distant buildings, perhaps 5-7.
+*   **Near the construction site:** There appear to be a few workers near the construction equipment, around 5-8.
+*   **Cars on the road:** I assume there are",4.6
+9999982_00000_d_0000099__600_0,4,15,1,"```json
+{""count"": 15}
+```",0.47
+9999984_00000_d_0000029__0_0,4,150,1,"{""count"": 150}",0.39
+9999937_00000_d_0000005__544_0,5,150,1,"{""count"": 150}",0.39
+9999940_00000_d_0000026__0_0,5,150,1,"{""count"": 150}",0.39
+9999982_00000_d_0000025__0_0,5,35,1,"{""count"": 35}",0.33
+9999984_00000_d_0000110__600_0,5,15,1,"```json
+{""count"": 15}
+```",0.47
+9999984_00000_d_0000158__0_0,5,25,1,"{""count"": 25}",0.29
+9999984_00000_d_0000156__600_0,5,150,1,"{""count"": 150}",0.35
+9999984_00000_d_0000054__600_0,2,35,1,"Here's an estimation of the number of people in the image, presented in JSON format:
+
+```json
+{""count"": 35}
+```
+
+**Explanation of Estimation:**
+
+This is a challenging image due to the distance and perspective. Here's how I arrived at the estimate:
+
+*   **Roads:** I can see a few people walking along the roads and sidewalks. I estimate around 15-20 people in this area.
+*   **Buildings/Residential Areas:** It's difficult to see individuals clearly within the buildings. I'm estimating a few people visible near entrances or windows",4.08
+9999994_00000_d_0000092__600_0,5,150,1,"{""count"": 150}",0.35
+9999994_00000_d_0000100__600_0,5,150,1,"{""count"": 150}",0.35
+9999997_00000_d_0000031__600_0,5,15,1,"{""count"": 15}",0.37
+9999975_00000_d_0000005__600_0,6,15,1,"{""count"": 15}",0.37
+9999994_00000_d_0000095__600_250,2,150,1,"Here's an estimation of the number of people in the image, presented in JSON format.
+
+```json
+{""count"": 150}
+```
+
+**Reasoning:**
+
+This is a challenging image due to the distance and perspective. Here's how I arrived at the estimate:
+
+*   **Foreground (near the billboards):** Very few people are visible directly. I estimate around 5-10.
+*   **Midground (along the road):** This is where the majority of people are likely to be. I can see cars with what appear to be passengers. I estimate around 8",3.99
+9999937_00000_d_0000013__0_0,6,65,1,"```json
+{""count"": 65}
+```",0.51
+9999977_00000_d_0000049__0_0,6,15,1,"{""count"": 15}",0.3
+9999998_00066_d_0000051__600_0,2,150,1,"Here's an estimation of the number of people in the image, presented in JSON format:
+
+```json
+{""count"": 150}
+```
+
+**Explanation of Estimation:**
+
+This is a challenging image due to the distance and perspective. Here's how I arrived at the estimate:
+
+*   **Foreground (near the building):** I estimate around 10-15 people visible near the building entrance.
+*   **Midground (along the street):**  It's difficult to see individuals clearly, but I estimate there are around 50-70 people walking or standing along",4.04
+9999982_00000_d_0000222__0_0,6,35,1,"{""count"": 35}",0.41
+9999984_00000_d_0000156__600_250,6,25,1,"{""count"": 25}",0.41
+9999997_00000_d_0000031__0_250,6,15,1,"{""count"": 15}",0.34
+9999945_00000_d_0000042__600_0,7,35,1,"{""count"": 35}",0.37
+0000228_00001_d_0000001__1200_0,7,65,1,"```json
+{""count"": 65}
+```",0.56
+9999984_00000_d_0000085__0_250,7,35,1,"```json
+{""count"": 35}
+```",0.52
+9999999_00598_d_0000271__0_0,7,50,1,"```json
+{""count"": 50}
+```",0.49
+9999982_00000_d_0000179__0_0,3,55,1,"Here's an estimation of the number of people in the image, presented in JSON format.  It's challenging to be precise from an aerial view, so this is an educated guess.
+
+```json
+{""count"": 55}
+```
+
+**Reasoning:**
+
+*   **Building Area:** The building complex appears to have a few people moving around, likely construction workers or maintenance staff. I estimate around 15-20 people in this area.
+*   **Green Space/Park Area:** There are several areas with trees and paths. I estimate around 10-15 people scattered throughout",3.99
+0000339_02157_d_0000172__560_0,8,35,1,"```json
+{""count"": 35}
+```",0.5
+0000244_01500_d_0000004__160_0,8,150,1,"```json
+{""count"": 150}
+```",0.52
+9999982_00000_d_0000083__600_0,8,55,1,"{""count"": 55}",0.41
+9999984_00000_d_0000076__0_0,8,55,1,"```json
+{""count"": 55}
+```",0.55
+9999984_00000_d_0000125__0_0,8,75,1,"```json
+{""count"": 75}
+```",0.47
+9999994_00000_d_0000071__0_0,8,15,1,"{""count"": 15}",0.29
+9999984_00000_d_0000109__600_250,8,15,1,"```json
+{""count"": 15}
+```",0.48
+0000242_02400_d_0000009__160_0,9,35,1,"{""count"": 35}",0.37
+0000344_02941_d_0000308__560_0,9,35,1,"{""count"": 35}",0.39
+9999945_00000_d_0000099__600_0,9,35,1,"{""count"": 35}",0.37
+0000264_01401_d_0000201__560_0,9,1500,1,"{""count"": 1500}",0.41
+9999970_00000_d_0000010__0_0,9,8,1,"```json
+{""count"": 8}
+```",0.43
+9999982_00000_d_0000045__0_0,9,15,1,"{""count"": 15}",0.36
+0000303_03401_d_0000200__600_0,10,25,1,"{""count"": 25}",0.34
+9999977_00000_d_0000043__600_0,9,35,1,"```json
+{""count"": 35}
+```",0.55
+9999981_00000_d_0000096__600_250,10,8,1,"{""count"": 8}",0.31
+0000242_05059_d_0000015__0_0,11,15,1,"{""count"": 15}",0.32
+9999955_00000_d_0000001__600_0,5,55,1,"Here's an estimation of the number of people in the image, presented in JSON format.  It's challenging to be precise from this aerial view, so this is an educated guess.
+
+```json
+{""count"": 55}
+```
+
+**Reasoning:**
+
+*   **Highway:** I estimate around 15-20 people visible in the cars.
+*   **Street Level (near the buildings):** I see a few pedestrians and people near the shops, estimating around 10-15.
+*   **Building Entrances/Areas:**  I can spot a few people near",4.15
+9999955_00000_d_0000084__600_0,10,55,1,"```json
+{""count"": 55}
+```",0.51
+9999945_00000_d_0000052__0_0,11,25,1,"{""count"": 25}",0.41
+9999994_00000_d_0000077__600_250,11,150,1,"{""count"": 150}",0.43
+9999945_00000_d_0000158__600_0,11,6,1,"```json
+{""count"": 6}
+```",0.49
+0000239_07930_d_0000021__160_0,12,150,1,"```json
+{""count"": 150}
+```",0.59
+9999977_00000_d_0000054__600_0,12,15,1,"```json
+{""count"": 15}
+```",0.47
+9999982_00000_d_0000175__600_250,12,115,1,"```json
+{""count"": 115}
+```",0.49
+9999982_00000_d_0000247__0_0,13,35,1,"```json
+{""count"": 35}
+```",0.43
+9999998_00224_d_0000180__600_0,5,150,1,"Here's an estimation of the number of people in the image, presented in JSON format.  It's challenging to be precise due to the distance and perspective, but I'll do my best.
+
+```json
+{""count"": 150}
+```
+
+**Reasoning:**
+
+*   **Road/Traffic:** It's difficult to see individuals in the cars. I'm estimating an average of 1-2 people per vehicle, and there are roughly 30-40 vehicles visible. This gives a rough estimate of 30-80 people in the traffic.
+*   ",4.17
+9999984_00000_d_0000020__0_0,13,25,1,"```json
+{""count"": 25}
+```",0.47
+9999985_00000_d_0000054__0_0,13,35,1,"{""count"": 35}",0.33
+0000228_00500_d_0000002__1120_0,15,55,1,"```json
+{""count"": 55}
+```",0.47
+9999940_00000_d_0000076__600_0,16,15,1,"{""count"": 15}",0.27
+9999982_00000_d_0000178__600_0,15,35,1,"```json
+{""count"": 35}
+```",0.47
+9999984_00000_d_0000034__0_0,7,65,1,"Here's an estimation of the number of people in the image, presented in JSON format.  It's challenging to be precise due to the perspective and resolution, but I'll do my best.
+
+```json
+{""count"": 65}
+```
+
+**Reasoning:**
+
+Here's a breakdown of my estimation, area by area:
+
+*   **Foreground (Street with shops):** I see about 15-20 people in this area, including pedestrians and those on scooters/bikes.
+*   **Mid-ground (Wider Street):**  There are several vehicles, and",4.11
+9999981_00000_d_0000153__0_0,16,15,1,"{""count"": 15}",0.33
+9999984_00000_d_0000036__600_0,16,35,1,"```json
+{""count"": 35}
+```",0.5
+9999990_00000_d_0000060__600_250,16,250,1,"```json
+{""count"": 250}
+```",0.52
+9999994_00000_d_0000079__600_0,16,35,1,"```json
+{""count"": 35}
+```",0.47
+9999955_00000_d_0000431__0_0,8,55,1,"Here's an estimation of the number of people in the image, presented in JSON format.  It's challenging to be precise from an aerial view, so this is an educated guess.
+
+```json
+{""count"": 55}
+```
+
+**Reasoning:**
+
+*   **Large Apartment Buildings:** These appear to be high-density residential areas. I'm estimating an average of 2-3 people per apartment (assuming a mix of family sizes). Given the number of visible apartments, I estimate around 30-40 people in these buildings.
+*   **Lower Buildings/Complex:** The",4.07
+0000181_00000_d_0000028__160_0,19,35,1,"```json
+{""count"": 35}
+```",0.47
+0000315_00401_d_0000503__560_0,20,35,1,"```json
+{""count"": 35}
+```",0.47
+9999942_00000_d_0000254__600_250,20,55,1,"{""count"": 55}",0.31
+9999985_00000_d_0000063__0_0,20,115,1,"```json
+{""count"": 115}
+```",0.51
+0000182_01220_d_0000039__0_0,21,35,1,"```json
+{""count"": 35}
+```",0.47
+0000193_02606_d_0000117__0_0,25,45,1,"```json
+{""count"": 45}
+```",0.38
+9999982_00000_d_0000244__0_0,29,25,1,"```json
+{""count"": 25}
+```",0.38
+0000156_00154_d_0000077__0_0,31,45,1,"```json
+{""count"": 45}
+```",0.38
+9999982_00000_d_0000251__0_250,33,35,1,"```json
+{""count"": 35}
+```",0.38
+0000201_00000_d_0000171__0_0,12,35,1,"Here's an estimate of the number of people in the image, presented in JSON format:
+
+```json
+{""count"": 35}
+```
+
+**Explanation of the Estimate:**
+
+It's challenging to give a precise count due to the aerial perspective and the distance. Here's how I arrived at the estimate:
+
+*   **Bus:** I estimate around 30-40 people on the bus.
+*   **Motorbikes:** I see 2-3 motorbikes, each likely carrying 1-2 people, totaling 2-6 people.
+*   **Pedestrians:**",3.7
+9999982_00000_d_0000172__0_0,37,115,1,"{""count"": 115}",0.33
+0000239_08430_d_0000022__0_0,13,35,1,"Here's an estimation of the number of people in the image, presented in JSON format:
+
+```json
+{""count"": 35}
+```
+
+**Explanation of Estimation:**
+
+It's challenging to give a precise count due to the high-angle perspective and the presence of many small figures. Here's a breakdown of how I arrived at the estimate:
+
+*   **Roadway:** I estimated around 15-20 people on the road, including pedestrians and those on bicycles/motorcycles.
+*   **Sidewalks/Green Areas:** I estimated around 10-15 people",3.64
+0000133_00078_d_0000141__0_0,38,115,1,"```json
+{""count"": 115}
+```",0.47
+9999945_00000_d_0000133__600_0,38,150,1,"```json
+{""count"": 150}
+```",0.5
+9999982_00000_d_0000245__600_0,41,35,1,"```json
+{""count"": 35}
+```",0.43
+9999982_00000_d_0000170__0_0,48,150,1,"{""count"": 150}",0.35
+0000257_04349_d_0000067__560_0,47,150,1,"```json
+{""count"": 150}
+```",0.52
+9999982_00000_d_0000171__0_250,51,115,1,"```json
+{""count"": 115}
+```",0.48
+9999955_00000_d_0000018__0_0,58,55,1,"{""count"": 55}",0.29
+0000194_00998_d_0000124__160_0,16,35,1,"Here's an estimation of the number of people in the image, presented in JSON format:
+
+```json
+{""count"": 35}
+```
+
+**Explanation of Estimation:**
+
+I've broken down the image into areas and estimated the number of people in each:
+
+*   **Street with Floodwater:** Approximately 20 people are visible navigating the flooded street.
+*   **Sidewalk Area:** Around 8 people are on the sidewalks.
+*   **Near the Building Entrance:** About 7 people are near the building entrance.
+
+Adding these estimates together gives a total of 35 people.",3.62
+9999981_00000_d_0000154__600_0,58,120,1,"{""count"": 120}",0.3
+9999999_00727_d_0000331__600_0,16,150,1,"Here's an estimate of the number of people in the image, presented in JSON format.  It's challenging to be precise from an aerial view, so this is an educated guess.
+
+```json
+{""count"": 150}
+```
+
+**Reasoning:**
+
+*   **Main Road Area:** I estimate around 70-80 people visible in the vehicles and along the roadside.
+*   **Intersection/Market Area (further back):**  There appears to be a busy intersection or market area. I estimate 50-70 people in this area.
+*   **Smaller",3.42
+9999945_00000_d_0000004__600_0,22,1500,1,"Here's an estimation of the number of people in the image, presented in JSON format.  It's challenging to be precise from an aerial view, so this is an educated guess.
+
+```json
+{""count"": 1500}
+```
+
+**Reasoning:**
+
+*   **Large Apartment Blocks:** The numerous apartment buildings likely house many residents. I've estimated an average of 50-100 people per apartment building, and there are dozens visible.
+*   **Shopping Mall Area:** The shopping mall area has some visible activity. I've estimated around 50-1",3.17
+0000199_00303_d_0000163__160_0,23,35,1,"Here's an estimation of the number of people in the image, presented in JSON format:
+
+```json
+{""count"": 35}
+```
+
+**Explanation of Estimation:**
+
+Here's how I arrived at this estimate, breaking down the image into regions:
+
+*   **Crosswalk (near the bottom left):** I estimate 4 people crossing the street.
+*   **Crosswalk (further down the road):** I estimate 3 people crossing the street.
+*   **Area near the sports field (background):** I estimate 28 people are visible in the background.
+*   ",3.12
+9999945_00000_d_0000004__600_250,50,150,1,"Here's an estimation of the number of people in the image, presented in JSON format.  It's challenging to be precise from this aerial view, so this is an educated guess.
+
+```json
+{""count"": 150}
+```
+
+**Reasoning:**
+
+*   **Large Buildings/Apartments:** These areas likely contain many people, but are obscured. I'm estimating a few dozen people per building, but it's hard to be sure.
+*   **Shopping Mall Area:** This area seems to have the most visible activity. I estimate around 30-40 people in",2.52
+9999965_00000_d_0000033__600_0,61,150,1,"Here's an estimation of the number of people in the image, presented in JSON format:
+
+```json
+{""count"": 150}
+```
+
+**Explanation of Estimation:**
+
+It's challenging to give a precise count due to the high-angle perspective and the density of people. Here's how I arrived at the estimate:
+
+*   **Street Level:** I estimated around 80-100 people on the street, considering the density of pedestrians and those near the stalls.
+*   **Stall Area:** The area around the stalls appears to have a significant number of people, roughly",2.33

@@ -1,0 +1,54 @@
+[01:48:35] 端点=https://api.ofox.io/v1/chat/completions
+[01:48:35] ########## ① 冒烟门：每模型 2 条（base 臂）##########
+仪器：复用 19e 的 P/parse/b64_of（19e 未改动）；端点=https://api.ofox.io/v1/chat/completions
+===== 托管端点 gemini-3.8-flash（Google）=====
+  [st_a] 零池 103 条，取 2 条（gt 138..452）
+  [gemini-3.8-flash/st_a/base] 2 行；答0 0；本次可解析 2；被额度截断(finish=length) 0 -> /root/w1_results/hosted/gemini-3.8-flash__st_a__base.csv
+  [gemini-3.8-flash] 本次可解析合计 2
+===== 托管端点 gpt-5.6-luna（OpenAI）=====
+  [st_a] 零池 103 条，取 2 条（gt 138..452）
+  [gpt-5.6-luna/st_a/base] 2 行；答0 0；本次可解析 2；被额度截断(finish=length) 0 -> /root/w1_results/hosted/gpt-5.6-luna__st_a__base.csv
+  [gpt-5.6-luna] 本次可解析合计 2
+===== 托管端点 grok-4.6（xAI）=====
+  [st_a] 零池 103 条，取 2 条（gt 138..452）
+  [grok-4.6/st_a/base] 2 行；答0 0；本次可解析 2；被额度截断(finish=length) 0 -> /root/w1_results/hosted/grok-4.6__st_a__base.csv
+  [grok-4.6] 本次可解析合计 2
+[01:49:21] 冒烟结果：
+[01:49:21]   gemini-3.8-flash__st_a__base.csv：可解析 2
+[01:49:21]   gpt-5.6-luna__st_a__base.csv：可解析 2
+[01:49:21]   grok-4.6__st_a__base.csv：可解析 2
+[01:49:21] ########## ② 正跑：st_a + ucf 零池，arms base,permit ##########
+仪器：复用 19e 的 P/parse/b64_of（19e 未改动）；端点=https://api.ofox.io/v1/chat/completions
+===== 托管端点 gemini-3.8-flash（Google）=====
+  [st_a] 零池 103 条，取 103 条（gt 138..2256）
+  [gemini-3.8-flash/st_a/base] 103 行；答0 0；本次可解析 101；被额度截断(finish=length) 0 -> /root/w1_results/hosted/gemini-3.8-flash__st_a__base.csv
+  [st_a] 零池 103 条，取 103 条（gt 138..2256）
+  [gemini-3.8-flash/st_a/permit] 103 行；答0 0；本次可解析 0；被额度截断(finish=length) 0 -> /root/w1_results/hosted/gemini-3.8-flash__st_a__permit.csv
+  [ucf] 零池 180 条，取 150 条（gt 137..1798）
+  [gemini-3.8-flash/ucf/base] 150 行；答0 0；本次可解析 150；被额度截断(finish=length) 0 -> /root/w1_results/hosted/gemini-3.8-flash__ucf__base.csv
+  [ucf] 零池 180 条，取 150 条（gt 137..1798）
+  [gemini-3.8-flash/ucf/permit] 150 行；答0 0；本次可解析 0；被额度截断(finish=length) 0 -> /root/w1_results/hosted/gemini-3.8-flash__ucf__permit.csv
+  [gemini-3.8-flash] 本次可解析合计 251
+===== 托管端点 gpt-5.6-luna（OpenAI）=====
+  [st_a] 零池 103 条，取 103 条（gt 138..2256）
+  [gpt-5.6-luna/st_a/base] 103 行；答0 0；本次可解析 101；被额度截断(finish=length) 0 -> /root/w1_results/hosted/gpt-5.6-luna__st_a__base.csv
+  [st_a] 零池 103 条，取 103 条（gt 138..2256）
+  [gpt-5.6-luna/st_a/permit] 103 行；答0 0；本次可解析 0；被额度截断(finish=length) 0 -> /root/w1_results/hosted/gpt-5.6-luna__st_a__permit.csv
+  [ucf] 零池 180 条，取 150 条（gt 137..1798）
+  [gpt-5.6-luna/ucf/base] 150 行；答0 0；本次可解析 150；被额度截断(finish=length) 0 -> /root/w1_results/hosted/gpt-5.6-luna__ucf__base.csv
+  [ucf] 零池 180 条，取 150 条（gt 137..1798）
+  [gpt-5.6-luna/ucf/permit] 150 行；答0 0；本次可解析 0；被额度截断(finish=length) 0 -> /root/w1_results/hosted/gpt-5.6-luna__ucf__permit.csv
+  [gpt-5.6-luna] 本次可解析合计 251
+===== 托管端点 grok-4.6（xAI）=====
+  [st_a] 零池 103 条，取 103 条（gt 138..2256）
+  [grok-4.6/st_a/base] 103 行；答0 0；本次可解析 101；被额度截断(finish=length) 0 -> /root/w1_results/hosted/grok-4.6__st_a__base.csv
+  [st_a] 零池 103 条，取 103 条（gt 138..2256）
+  [grok-4.6/st_a/permit] 103 行；答0 0；本次可解析 0；被额度截断(finish=length) 0 -> /root/w1_results/hosted/grok-4.6__st_a__permit.csv
+  [ucf] 零池 180 条，取 150 条（gt 137..1798）
+  [grok-4.6/ucf/base] 150 行；答0 0；本次可解析 150；被额度截断(finish=length) 0 -> /root/w1_results/hosted/grok-4.6__ucf__base.csv
+  [ucf] 零池 180 条，取 150 条（gt 137..1798）
+  [grok-4.6/ucf/permit] 150 行；答0 0；本次可解析 0；被额度截断(finish=length) 0 -> /root/w1_results/hosted/grok-4.6__ucf__permit.csv
+  [grok-4.6] 本次可解析合计 251
+[02:55:52] 产物：12 个文件
+W1_HOSTED_DONE
+[02:55:52] ########## W2 结束 ##########

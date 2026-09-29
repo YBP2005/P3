@@ -1,0 +1,238 @@
+item,gt,pred,parse_ok,raw,latency_s
+IMG_34,89,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.61
+IMG_113,66,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.64
+IMG_85,97,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.63
+IMG_94,69,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.64
+IMG_88,86,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.64
+IMG_135,72,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.64
+IMG_91,101,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.64
+IMG_140,93,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.69
+IMG_136,102,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.61
+IMG_123,115,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.61
+IMG_166,126,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.61
+IMG_167,112,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.61
+IMG_160,121,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.61
+IMG_84,122,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.63
+IMG_174,129,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.58
+IMG_43,116,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.63
+IMG_120,133,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.63
+IMG_52,134,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.63
+IMG_114,141,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.63
+IMG_98,153,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.61
+IMG_55,149,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.63
+IMG_133,135,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.63
+IMG_80,157,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.63
+IMG_73,153,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.63
+IMG_95,190,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.63
+IMG_4,170,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.65
+IMG_39,196,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.63
+IMG_69,166,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.65
+IMG_67,192,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.63
+IMG_134,165,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.68
+IMG_79,186,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.65
+IMG_155,165,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.66
+IMG_58,198,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.64
+IMG_159,199,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.64
+IMG_148,208,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.64
+IMG_156,199,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.65
+IMG_182,199,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.64
+IMG_68,212,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.65
+IMG_101,211,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.65
+IMG_77,207,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.66
+IMG_65,214,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.63
+IMG_169,218,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.63
+IMG_102,223,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.62
+IMG_181,216,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.65
+IMG_83,218,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.65
+IMG_149,230,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.64
+IMG_171,239,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.64
+IMG_118,241,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.65
+IMG_96,246,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.61
+IMG_25,243,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.65
+IMG_93,255,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.6
+IMG_151,253,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.61
+IMG_41,249,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.64
+IMG_31,250,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.63
+IMG_119,250,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.63
+IMG_112,256,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.61
+IMG_145,261,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.64
+IMG_107,289,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.62
+IMG_144,262,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.64
+IMG_138,292,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.62
+IMG_125,269,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.64
+IMG_105,265,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.64
+IMG_161,266,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.64
+IMG_152,277,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.67
+IMG_164,302,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.61
+IMG_30,307,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.61
+IMG_89,383,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.61
+IMG_48,384,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.62
+IMG_9,371,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.63
+IMG_6,361,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.63
+IMG_153,395,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.58
+IMG_109,379,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.63
+IMG_87,417,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.59
+IMG_103,431,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.59
+IMG_10,502,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.59
+IMG_24,553,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.58
+IMG_131,604,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.59
+IMG_66,823,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.59
+IMG_86,579,,0,"```json
+{""response"": ""cannot_judge""}
+```",0.59

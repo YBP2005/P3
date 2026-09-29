@@ -1,0 +1,9 @@
+  ① 19e_probe_multi.py md5 03edb14c98ff ✓
+  ② p1d_prompts.json   md5 d35ec04a163e ✓（新增臂 ['forbid0', 'neutral0']）
+  ④ 交叉自检：base/permit 与 p1_probe.circle_prompts() 逐字节相同 ✓
+  ③ 网格 manifest md5 9eef8a074cf1（63135 字节）
+  [InternVL3_5-8B/base] 网格 675 / 已完成 0 / 本次 675 ｜ model=InternVL3_5-8B
+    200/675  3.03 it/s  zero=0 abstain=0 parse_fail=0
+    400/675  3.04 it/s  zero=0 abstain=0 parse_fail=0
+    600/675  3.05 it/s  zero=0 abstain=0 parse_fail=0
+  [InternVL3_5-8B/base] DONE：675 行 → /root/p1d_results/p1d_InternVL3_5-8B_base.csv（zero=0 abstain=0 parse_fail=0）

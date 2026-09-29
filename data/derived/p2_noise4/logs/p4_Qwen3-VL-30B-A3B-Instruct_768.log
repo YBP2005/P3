@@ -1,0 +1,3 @@
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 193 个；-> /root/w1_results/fsc_sc768/fsc_Qwen3-VL-30B-A3B-Instruct_base.csv
+  [permit] 300 行；答 0 的 9 个；-> /root/w1_results/fsc_sc768/fsc_Qwen3-VL-30B-A3B-Instruct_permit.csv

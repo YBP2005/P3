@@ -1,0 +1,119 @@
+[00:52:32] ########## E2 开始：真零池 × 5 构建 × 双语言 × 3 次服务 ##########
+[00:52:32] ① 池就绪：307 行
+[00:52:32] ===== E2 构建 ivl8b（InternVL3_5-8B）=====
+[00:55:05]   [ivl8b_s1] 起服就绪 150s
+[00:55:05]     [ivl8b_s1] CN z0easy × base,permit,channel
+[00:55:34]     [ivl8b_s1] EN z0easy × base,permit,channel
+[00:55:50]     [ivl8b_s1] CN z0hard × base,permit,channel
+[00:56:16]     [ivl8b_s1] EN z0hard × base,permit,channel
+[00:56:31]   [ivl8b] 第 1 次服务完成
+/root/ea2_run.sh: line 26:   365 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ea2_${TAG}.log" 2>&1
+[00:57:20]   [ivl8b_s2] 起服就绪 45s
+[00:57:20]     [ivl8b_s2] CN z0easy × base,permit,channel
+[00:57:47]     [ivl8b_s2] EN z0easy × base,permit,channel
+[00:58:03]     [ivl8b_s2] CN z0hard × base,permit,channel
+[00:58:29]     [ivl8b_s2] EN z0hard × base,permit,channel
+[00:58:44]   [ivl8b] 第 2 次服务完成
+/root/ea2_run.sh: line 26:   938 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ea2_${TAG}.log" 2>&1
+[00:59:32]   [ivl8b_s3] 起服就绪 45s
+[00:59:32]     [ivl8b_s3] CN z0easy × base,permit,channel
+[01:00:01]     [ivl8b_s3] EN z0easy × base,permit,channel
+[01:00:17]     [ivl8b_s3] CN z0hard × base,permit,channel
+[01:00:42]     [ivl8b_s3] EN z0hard × base,permit,channel
+[01:00:57]   [ivl8b] 第 3 次服务完成
+/root/ea2_run.sh: line 26:  1527 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ea2_${TAG}.log" 2>&1
+[01:01:00]   [ivl8b] 构建完成
+[01:01:00] ===== E2 构建 phi35（Phi-3.5-vision-instruct）=====
+[01:02:33]   [phi35_s1] 起服就绪 90s
+[01:02:33]     [phi35_s1] CN z0easy × base,permit,channel
+[01:03:15]     [phi35_s1] EN z0easy × base,permit,channel
+[01:03:29]     [phi35_s1] CN z0hard × base,permit,channel
+[01:04:05]     [phi35_s1] EN z0hard × base,permit,channel
+[01:04:18]   [phi35] 第 1 次服务完成
+/root/ea2_run.sh: line 26:  2107 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ea2_${TAG}.log" 2>&1
+[01:05:21]   [phi35_s2] 起服就绪 60s
+[01:05:21]     [phi35_s2] CN z0easy × base,permit,channel
+[01:06:04]     [phi35_s2] EN z0easy × base,permit,channel
+[01:06:17]     [phi35_s2] CN z0hard × base,permit,channel
+[01:06:54]     [phi35_s2] EN z0hard × base,permit,channel
+[01:07:07]   [phi35] 第 2 次服务完成
+/root/ea2_run.sh: line 26:  2741 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ea2_${TAG}.log" 2>&1
+[01:08:10]   [phi35_s3] 起服就绪 60s
+[01:08:10]     [phi35_s3] CN z0easy × base,permit,channel
+[01:08:52]     [phi35_s3] EN z0easy × base,permit,channel
+[01:09:06]     [phi35_s3] CN z0hard × base,permit,channel
+[01:09:42]     [phi35_s3] EN z0hard × base,permit,channel
+[01:09:56]   [phi35] 第 3 次服务完成
+/root/ea2_run.sh: line 26:  3336 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ea2_${TAG}.log" 2>&1
+[01:09:59]   [phi35] 构建完成
+[01:09:59] ===== E2 构建 llavaov（llava-onevision-qwen2-7b-ov）=====
+[01:12:32]   [llavaov_s1] 起服就绪 150s
+[01:12:32]     [llavaov_s1] CN z0easy × base,permit,channel
+[01:14:09]     [llavaov_s1] EN z0easy × base,permit,channel
+[01:15:06]     [llavaov_s1] CN z0hard × base,permit,channel
+[01:16:20]     [llavaov_s1] EN z0hard × base,permit,channel
+[01:16:43]   [llavaov] 第 1 次服务完成
+/root/ea2_run.sh: line 26:  4100 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ea2_${TAG}.log" 2>&1
+[01:17:46]   [llavaov_s2] 起服就绪 60s
+[01:17:46]     [llavaov_s2] CN z0easy × base,permit,channel
+[01:19:23]     [llavaov_s2] EN z0easy × base,permit,channel
+[01:20:20]     [llavaov_s2] CN z0hard × base,permit,channel
+[01:21:34]     [llavaov_s2] EN z0hard × base,permit,channel
+[01:21:58]   [llavaov] 第 2 次服务完成
+/root/ea2_run.sh: line 26:  4839 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ea2_${TAG}.log" 2>&1
+[01:23:01]   [llavaov_s3] 起服就绪 60s
+[01:23:01]     [llavaov_s3] CN z0easy × base,permit,channel
+[01:24:38]     [llavaov_s3] EN z0easy × base,permit,channel
+[01:25:35]     [llavaov_s3] CN z0hard × base,permit,channel
+[01:26:49]     [llavaov_s3] EN z0hard × base,permit,channel
+[01:27:13]   [llavaov] 第 3 次服务完成
+/root/ea2_run.sh: line 26:  5715 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ea2_${TAG}.log" 2>&1
+[01:27:16]   [llavaov] 构建完成
+[01:27:16] ===== E2 构建 gemma12b（gemma3-12b）=====
+[01:29:49]   [gemma12b_s1] 起服就绪 150s
+[01:29:49]     [gemma12b_s1] CN z0easy × base,permit,channel
+[01:30:20]     [gemma12b_s1] EN z0easy × base,permit,channel
+[01:30:46]     [gemma12b_s1] CN z0hard × base,permit,channel
+[01:31:17]     [gemma12b_s1] EN z0hard × base,permit,channel
+[01:31:43]   [gemma12b] 第 1 次服务完成
+/root/ea2_run.sh: line 26:  6369 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ea2_${TAG}.log" 2>&1
+[01:33:46]   [gemma12b_s2] 起服就绪 120s
+[01:33:46]     [gemma12b_s2] CN z0easy × base,permit,channel
+[01:34:17]     [gemma12b_s2] EN z0easy × base,permit,channel
+[01:34:43]     [gemma12b_s2] CN z0hard × base,permit,channel
+[01:35:15]     [gemma12b_s2] EN z0hard × base,permit,channel
+[01:35:41]   [gemma12b] 第 2 次服务完成
+/root/ea2_run.sh: line 26:  6926 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ea2_${TAG}.log" 2>&1
+[01:37:44]   [gemma12b_s3] 起服就绪 120s
+[01:37:44]     [gemma12b_s3] CN z0easy × base,permit,channel
+[01:38:15]     [gemma12b_s3] EN z0easy × base,permit,channel
+[01:38:41]     [gemma12b_s3] CN z0hard × base,permit,channel
+[01:39:13]     [gemma12b_s3] EN z0hard × base,permit,channel
+[01:39:39]   [gemma12b] 第 3 次服务完成
+/root/ea2_run.sh: line 26:  7622 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ea2_${TAG}.log" 2>&1
+[01:39:42]   [gemma12b] 构建完成
+[01:39:42] ===== E2 构建 q32（Qwen3-VL-32B-Instruct）=====
+[01:42:30]   [q32_s1] 起服就绪 165s
+[01:42:30]     [q32_s1] CN z0easy × base,permit,channel
+[01:44:15]     [q32_s1] EN z0easy × base,permit,channel
+[01:46:01]     [q32_s1] CN z0hard × base,permit,channel
+[01:47:40]     [q32_s1] EN z0hard × base,permit,channel
+[01:49:19]   [q32] 第 1 次服务完成
+/root/ea2_run.sh: line 26:  8159 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ea2_${TAG}.log" 2>&1
+[01:50:52]   [q32_s2] 起服就绪 90s
+[01:50:52]     [q32_s2] CN z0easy × base,permit,channel
+[01:52:37]     [q32_s2] EN z0easy × base,permit,channel
+[01:54:23]     [q32_s2] CN z0hard × base,permit,channel
+[01:56:02]     [q32_s2] EN z0hard × base,permit,channel
+[01:57:41]   [q32] 第 2 次服务完成
+/root/ea2_run.sh: line 26:  8884 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ea2_${TAG}.log" 2>&1
+[01:59:15]   [q32_s3] 起服就绪 90s
+[01:59:15]     [q32_s3] CN z0easy × base,permit,channel
+[02:01:00]     [q32_s3] EN z0easy × base,permit,channel
+[02:02:45]     [q32_s3] CN z0hard × base,permit,channel
+[02:04:24]     [q32_s3] EN z0hard × base,permit,channel
+[02:06:04]   [q32] 第 3 次服务完成
+/root/ea2_run.sh: line 26:  9620 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ea2_${TAG}.log" 2>&1
+[02:06:07]   [q32] 构建完成
+[02:06:07] ########## E2 完成 ##########
+[02:06:07] E2_PANEL_DONE

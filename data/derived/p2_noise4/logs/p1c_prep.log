@@ -1,0 +1,4 @@
+  ShanghaiTech-A 150 张（GT 66–2256）｜VisDrone 150 张（GT 1–270）
+  clean   → /root/p1c/clean（300 项，manifest md5 7789d98a9afb）
+  blur4   → /root/p1c/blur4（300 项，manifest md5 911f5970dbf7）
+  down15  → /root/p1c/down15（300 项，manifest md5 8f9e5d373fa0）

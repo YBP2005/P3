@@ -1,0 +1,11 @@
+[07:59:57][Phi-3.5-vision-instruct] == 起服 Phi-3.5-vision-instruct ｜ GPU0 port=8003 frac=0.30 maxlen=8192 extra='--trust_remote_code' ｜ 探针 /root/p1f_probe.py ==
+[08:01:47][Phi-3.5-vision-instruct] [GPU0] 等显存…（现 72619 MiB）
+[08:03:48][Phi-3.5-vision-instruct] [GPU0] 等显存…（现 72623 MiB）
+[08:05:48][Phi-3.5-vision-instruct] [GPU0] 等显存…（现 72623 MiB）
+[08:07:08][Phi-3.5-vision-instruct] [GPU0] 显存已回落（0 MiB）
+[08:07:56][Phi-3.5-vision-instruct] 就绪（48s）
+[08:08:47][Phi-3.5-vision-instruct] [Phi-3.5-vision-instruct/mention5] 行=675
+[08:08:47][Phi-3.5-vision-instruct] [Phi-3.5-vision-instruct/mention50] 行=675
+[08:08:47][Phi-3.5-vision-instruct] [Phi-3.5-vision-instruct/mention800] 行=675
+[08:08:55][Phi-3.5-vision-instruct] 回收孤儿 EngineCore pid=21745
+[08:08:55][Phi-3.5-vision-instruct] P1X_Phi-3.5-vision-instruct_DONE

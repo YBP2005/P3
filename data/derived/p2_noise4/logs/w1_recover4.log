@@ -1,0 +1,61 @@
+[04:21:09] ===== Molmo 第三次尝试（缺件已修复：trust_remote_code + tensorflow）=====
+[04:22:57] 起服就绪 105s
+  base 臂 pred==0 的 item 共 103 个；本次抽 2 个（gt 从 138 到 452）
+  [base] 2 行；pred==0 的 0 个；-> /root/w1_results/smoke/e1_Molmo-7B-D-0924_st_a_base_native.csv
+  base 臂 pred==0 的 item 共 273 个；本次抽 2 个（gt 从 1 到 7）
+  [base] 2 行；pred==0 的 1 个；-> /root/w1_results/smoke/e1_Molmo-7B-D-0924_visdrone_base_native.csv
+[04:22:59] smoke：可解析 4 / 4 条
+  base 臂 pred==0 的 item 共 103 个；本次抽 103 个（gt 从 138 到 2256）
+  [base] 103 行；pred==0 的 2 个；-> /root/w1_results/zero/e1_Molmo-7B-D-0924_st_a_base_native.csv
+  [permit] 103 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_Molmo-7B-D-0924_st_a_permit_native.csv
+  [channel] 103 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_Molmo-7B-D-0924_st_a_channel_native.csv
+  base 臂 pred==0 的 item 共 103 个；本次抽 103 个（gt 从 138 到 2256）
+  [base] 103 行；pred==0 的 2 个；-> /root/w1_results/zero/e1_Molmo-7B-D-0924_st_a_base_s640.csv
+  base 臂 pred==0 的 item 共 79 个；本次抽 79 个（gt 从 66 到 823）
+  [base] 79 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_Molmo-7B-D-0924_st_a_base_native.csv
+  [permit] 79 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_Molmo-7B-D-0924_st_a_permit_native.csv
+  [channel] 79 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_Molmo-7B-D-0924_st_a_channel_native.csv
+[04:23:39]   st_a 完成
+  base 臂 pred==0 的 item 共 180 个；本次抽 150 个（gt 从 137 到 1798）
+  [base] 150 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_Molmo-7B-D-0924_ucf_base_native.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_Molmo-7B-D-0924_ucf_permit_native.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_Molmo-7B-D-0924_ucf_channel_native.csv
+  base 臂 pred==0 的 item 共 180 个；本次抽 150 个（gt 从 137 到 1798）
+  [base] 150 行；pred==0 的 1 个；-> /root/w1_results/zero/e1_Molmo-7B-D-0924_ucf_base_s640.csv
+  base 臂 pred==0 的 item 共 154 个；本次抽 150 个（gt 从 65 到 737）
+  [base] 150 行；pred==0 的 1 个；-> /root/w1_results/nonzero/e1_Molmo-7B-D-0924_ucf_base_native.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_Molmo-7B-D-0924_ucf_permit_native.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_Molmo-7B-D-0924_ucf_channel_native.csv
+[04:26:16]   ucf 完成
+  base 臂 pred==0 的 item 共 273 个；本次抽 150 个（gt 从 1 到 8）
+  [base] 150 行；pred==0 的 113 个；-> /root/w1_results/zero/e1_Molmo-7B-D-0924_visdrone_base_native.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_Molmo-7B-D-0924_visdrone_permit_native.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_Molmo-7B-D-0924_visdrone_channel_native.csv
+  base 臂 pred==0 的 item 共 273 个；本次抽 150 个（gt 从 1 到 8）
+  [base] 150 行；pred==0 的 118 个；-> /root/w1_results/zero/e1_Molmo-7B-D-0924_visdrone_base_s640.csv
+  base 臂 pred==0 的 item 共 127 个；本次抽 127 个（gt 从 1 到 262）
+  [base] 127 行；pred==0 的 6 个；-> /root/w1_results/nonzero/e1_Molmo-7B-D-0924_visdrone_base_native.csv
+  [permit] 127 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_Molmo-7B-D-0924_visdrone_permit_native.csv
+  [channel] 127 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_Molmo-7B-D-0924_visdrone_channel_native.csv
+[04:27:21]   visdrone 完成
+  base 臂 pred==0 的 item 共 154 个；本次抽 150 个（gt 从 1 到 61）
+  [base] 150 行；pred==0 的 91 个；-> /root/w1_results/zero/e1_Molmo-7B-D-0924_aitod_base_native.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_Molmo-7B-D-0924_aitod_permit_native.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_Molmo-7B-D-0924_aitod_channel_native.csv
+  base 臂 pred==0 的 item 共 154 个；本次抽 150 个（gt 从 1 到 61）
+  [base] 150 行；pred==0 的 89 个；-> /root/w1_results/zero/e1_Molmo-7B-D-0924_aitod_base_s640.csv
+  base 臂 pred==0 的 item 共 72 个；本次抽 72 个（gt 从 1 到 123）
+  [base] 72 行；pred==0 的 9 个；-> /root/w1_results/nonzero/e1_Molmo-7B-D-0924_aitod_base_native.csv
+  [permit] 72 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_Molmo-7B-D-0924_aitod_permit_native.csv
+  [channel] 72 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_Molmo-7B-D-0924_aitod_channel_native.csv
+[04:28:13]   aitod 完成
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 174 个；-> /root/w1_results/fsc/fsc_Molmo-7B-D-0924_base.csv
+  [permit] 300 行；答 0 的 0 个；-> /root/w1_results/fsc/fsc_Molmo-7B-D-0924_permit.csv
+  [exemplar3] 300 行；答 0 的 0 个；-> /root/w1_results/fsc/fsc_Molmo-7B-D-0924_exemplar3.csv
+  [exemplar3permit] 300 行；答 0 的 0 个；-> /root/w1_results/fsc/fsc_Molmo-7B-D-0924_exemplar3permit.csv
+[04:29:02] Molmo 完成：零池 16/16，非零池 12/12，FSC 4/4
+[04:29:05] 重新打包（覆盖上一版 bundle）
+[04:29:05] 打包完成：620K  25308f6fbbbb7b8e1a780de501b36e0c
+[04:29:05] 最终产物计数：zero=96 nonzero=72 fsc=24 hosted=12
+W1_RECOVER4_DONE

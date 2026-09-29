@@ -1,0 +1,7 @@
+[08:31:56][gemma3-12b] == 起服 gemma3-12b ｜ GPU1 port=8001 frac=0.40 maxlen=8192 extra='' ｜ 探针 /root/p1f_probe.py ==
+[08:32:06][gemma3-12b] [GPU1] 显存已回落（0 MiB）
+[08:34:06][gemma3-12b] 就绪（120s）
+[08:35:55][gemma3-12b] [gemma3-12b/mention5] 行=675
+[08:35:55][gemma3-12b] [gemma3-12b/mention50] 行=675
+[08:35:55][gemma3-12b] [gemma3-12b/mention800] 行=675
+[08:36:03][gemma3-12b] P1X_gemma3-12b_DONE

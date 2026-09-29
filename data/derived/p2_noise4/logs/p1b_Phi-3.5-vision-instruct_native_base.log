@@ -1,0 +1,8 @@
+  冻结探针 19e_probe_multi.py md5 03edb14c98ff ✓（提示词/解析/传输逐字复用）
+  [Phi-3.5-vision-instruct/base] --only-sigma 8 ⇒ 135 项
+  [Phi-3.5-vision-instruct/base/native] 网格 135 项 / 已完成 0 / 本次 135 ｜ model=Phi-3.5-vision-instruct ｜ system=无（冻结传输）
+  [Phi-3.5-vision-instruct/base] DONE：135 行写入 /root/p1b_results/p1b_native_Phi-3.5-vision-instruct_base.csv（zero=45 abstain=1 parse_fail=0）
+  冻结探针 19e_probe_multi.py md5 03edb14c98ff ✓（提示词/解析/传输逐字复用）
+  [Phi-3.5-vision-instruct/base] --only-sigma 8 ⇒ 135 项
+  [Phi-3.5-vision-instruct/base/native] 网格 135 项 / 已完成 135 / 本次 0 ｜ model=Phi-3.5-vision-instruct ｜ system=无（冻结传输）
+  已完成，跳过

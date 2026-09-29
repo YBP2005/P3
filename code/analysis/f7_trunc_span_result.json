@@ -1,0 +1,136 @@
+{
+  "purpose": "固定分位数截尾后的跨度（v0547 盲审 gemini38flash −2.5）",
+  "design": "ISO 保序校准后的逐档 ρ；mid80/mid60 = 去掉两端各 10%/20% 档位后的极差",
+  "units": [
+    {
+      "lab": "检测·域内 VisDrone(全网格)",
+      "kind": "检测器 τ×尺寸",
+      "endpoint": 150.7,
+      "mean_abs": 33.8,
+      "n": 24,
+      "mid80": 94.0,
+      "mid60": 59.7,
+      "ratio80": 0.624,
+      "ratio60": 0.396
+    },
+    {
+      "lab": "检测·零样本 COCO(全网格)",
+      "kind": "检测器 τ×尺寸",
+      "endpoint": 54.2,
+      "mean_abs": 29.5,
+      "n": 24,
+      "mid80": 35.0,
+      "mid60": 18.8,
+      "ratio80": 0.645,
+      "ratio60": 0.347
+    },
+    {
+      "lab": "检测·域内 BBBC005(全网格)",
+      "kind": "检测器 τ×尺寸",
+      "endpoint": 49.0,
+      "mean_abs": 8.3,
+      "n": 18,
+      "mid80": 20.0,
+      "mid60": 13.5,
+      "ratio80": 0.409,
+      "ratio60": 0.275
+    },
+    {
+      "lab": "密度·官方DM/st_a",
+      "kind": "密度输入尺度",
+      "endpoint": 33.5,
+      "mean_abs": 7.8,
+      "n": 10,
+      "mid80": 18.9,
+      "mid60": 14.7,
+      "ratio80": 0.563,
+      "ratio60": 0.438
+    },
+    {
+      "lab": "密度·官方DM/ucf",
+      "kind": "密度输入尺度",
+      "endpoint": 36.6,
+      "mean_abs": 13.3,
+      "n": 10,
+      "mid80": 32.3,
+      "mid60": 16.5,
+      "ratio80": 0.883,
+      "ratio60": 0.452
+    },
+    {
+      "lab": "VLM·像素预算/visdrone",
+      "kind": "VLM·视觉侧",
+      "endpoint": 16.8,
+      "mean_abs": 28.6,
+      "n": 5,
+      "mid80": 16.8,
+      "mid60": 4.7,
+      "ratio80": 1.0,
+      "ratio60": 0.281
+    },
+    {
+      "lab": "VLM·像素预算/st_a",
+      "kind": "VLM·视觉侧",
+      "endpoint": 1.1,
+      "mean_abs": 1.4,
+      "n": 5,
+      "mid80": 1.1,
+      "mid60": 0.0,
+      "ratio80": 1.0,
+      "ratio60": 0.0
+    },
+    {
+      "lab": "VLM·像素预算/ucf",
+      "kind": "VLM·视觉侧",
+      "endpoint": 17.2,
+      "mean_abs": 32.9,
+      "n": 5,
+      "mid80": 17.2,
+      "mid60": 2.2,
+      "ratio80": 1.0,
+      "ratio60": 0.13
+    },
+    {
+      "lab": "VLM·输出契约/ivl",
+      "kind": "VLM·语言侧",
+      "endpoint": 97.7,
+      "mean_abs": 29.6,
+      "n": 4,
+      "mid80": 97.7,
+      "mid60": 97.7,
+      "ratio80": 1.0,
+      "ratio60": 1.0
+    },
+    {
+      "lab": "VLM·输出契约/q32",
+      "kind": "VLM·语言侧",
+      "endpoint": 85.9,
+      "mean_abs": 33.1,
+      "n": 4,
+      "mid80": 85.9,
+      "mid60": 85.9,
+      "ratio80": 1.0,
+      "ratio60": 1.0
+    }
+  ],
+  "summary": {
+    "median_ratio80": 0.942,
+    "min_ratio80": 0.409,
+    "median_ratio60": 0.371,
+    "min_ratio60": 0.0,
+    "n_units": 10,
+    "n_unchanged_at_80": 5,
+    "n_shrunk_below_060_at_80": 2,
+    "fine_grid": {
+      "n": 5,
+      "median_ratio80": 0.624,
+      "lo80": 0.409,
+      "hi80": 0.883,
+      "median_ratio60": 0.396
+    },
+    "coarse_grid": {
+      "n": 5,
+      "median_ratio80": 1.0
+    }
+  }
+}

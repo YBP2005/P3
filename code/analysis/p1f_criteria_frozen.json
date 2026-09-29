@@ -1,0 +1,50 @@
+{
+ "version": "p1f-v1",
+ "ladder": [
+  0,
+  5,
+  50,
+  100,
+  800
+ ],
+ "arms_new": [
+  "mention5",
+  "mention50",
+  "mention800"
+ ],
+ "arms_reused": [
+  "neutral0(anchor=0)",
+  "placebo100(anchor=100)"
+ ],
+ "families": [
+  "Phi-3.5-vision-instruct",
+  "Qwen3-VL-8B-Instruct",
+  "llava-onevision-qwen2-7b-ov",
+  "gemma3-12b"
+ ],
+ "H_L1": {
+  "metric": "zero_rate vs anchor",
+  "stat": "spearman",
+  "rho_max": -0.8,
+  "rule": "zero_rate 随锚递减：ρ ≤ -0.8（每族，5 个锚点）"
+ },
+ "H_L2": {
+  "metric": "rate(answer == v | mention v)",
+  "rule": "被提及值自身被捕获最多（≥ 相邻锚）"
+ },
+ "H_L3": {
+  "metric": "median(answer) vs anchor",
+  "stat": "spearman",
+  "rho_min": 0.8,
+  "rule": "整条答案分布随锚平移：ρ ≥ +0.8（每族）"
+ },
+ "H_L4": {
+  "family": "gemma3-12b",
+  "rule": "阴性对照：该族 base 零率恒 0，预期几乎不动；若被拉动需改口径"
+ },
+ "analysis_note": "台阶只有 5 点，Spearman 的 p 值不具说服力 ⇒ 只报 ρ 与逐点率，不做显著性宣称",
+ "honesty": [
+  "阶梯设计在看过 0 与 100 两点之后 ⇒ 属**探索性**延伸，不当作预注册验证",
+  "四族并非都跑全阶梯：gemma 作阴性对照，llava 含解析失败需单独处理"
+ ]
+}

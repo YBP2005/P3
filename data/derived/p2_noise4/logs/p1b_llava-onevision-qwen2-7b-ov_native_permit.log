@@ -1,0 +1,8 @@
+  冻结探针 19e_probe_multi.py md5 03edb14c98ff ✓（提示词/解析/传输逐字复用）
+  [llava-onevision-qwen2-7b-ov/permit] --only-sigma 8 ⇒ 135 项
+  [llava-onevision-qwen2-7b-ov/permit/native] 网格 135 项 / 已完成 0 / 本次 135 ｜ model=llava-onevision-qwen2-7b-ov ｜ system=无（冻结传输）
+  [llava-onevision-qwen2-7b-ov/permit] DONE：135 行写入 /root/p1b_results/p1b_native_llava-onevision-qwen2-7b-ov_permit.csv（zero=0 abstain=135 parse_fail=135）
+  冻结探针 19e_probe_multi.py md5 03edb14c98ff ✓（提示词/解析/传输逐字复用）
+  [llava-onevision-qwen2-7b-ov/permit] --only-sigma 8 ⇒ 135 项
+  [llava-onevision-qwen2-7b-ov/permit/native] 网格 135 项 / 已完成 135 / 本次 0 ｜ model=llava-onevision-qwen2-7b-ov ｜ system=无（冻结传输）
+  已完成，跳过

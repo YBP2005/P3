@@ -1,0 +1,32 @@
+[01:11:02] 开始下载 MiniCPM-V-4_5
+  [ModelScope] OpenBMB/MiniCPM-V-4_5：23 文件 17.41 GB
+    OK  model-00002-of-00004.safetensors                     5301.9 MB  (542s)
+    OK  model-00001-of-00004.safetensors                     5286.6 MB  (1013s)
+    OK  model-00003-of-00004.safetensors                     4546.9 MB  (1446s)
+    OK  model-00004-of-00004.safetensors                     2256.6 MB  (1839s)
+    OK  tokenizer.json                                         11.4 MB  (1907s)
+    OK  vocab.json                                              2.8 MB  (1908s)
+    OK  merges.txt                                              1.7 MB  (1909s)
+    OK  model.safetensors.index.json                            0.1 MB  (1909s)
+    OK  modeling_navit_siglip.py                                0.0 MB  (1909s)
+    OK  tokenizer_config.json                                   0.0 MB  (1910s)
+    OK  README.md                                               0.0 MB  (1910s)
+    OK  image_processing_minicpmv.py                            0.0 MB  (1911s)
+    OK  modeling_minicpmv.py                                    0.0 MB  (1911s)
+    OK  special_tokens_map.json                                 0.0 MB  (1911s)
+    OK  resampler.py                                            0.0 MB  (1912s)
+    OK  processing_minicpmv.py                                  0.0 MB  (1912s)
+    OK  configuration_minicpm.py                                0.0 MB  (1912s)
+    OK  added_tokens.json                                       0.0 MB  (1913s)
+    OK  tokenization_minicpmv_fast.py                           0.0 MB  (1913s)
+    OK  config.json                                             0.0 MB  (1914s)
+    OK  preprocessor_config.json                                0.0 MB  (1914s)
+    OK  generation_config.json                                  0.0 MB  (1914s)
+    OK  configuration.json                                      0.0 MB  (1915s)
+  → OpenBMB/MiniCPM-V-4_5 成功 23 失败 0  17.41 GB  1915s
+Filesystem              Size  Used Avail Use% Mounted on
+overlay                 182G  106G   70G  61% /
+UPFS:upfs-13n5o97wrrr4   40T   27T   13T  68% /model
+DL_ALL_DONE
+[01:42:58] 结束 rc=0 ; 17G
+overlay         182G  106G   70G  61% /

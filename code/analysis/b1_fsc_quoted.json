@@ -1,0 +1,89 @@
+{
+ "source": "b1_fsc_result.json（FSC-147 公开基准，300 张分层抽样测试图）",
+ "quoted_in_section_5_13": {
+  "gemma3-12b": {
+   "base_zero": 248,
+   "n": 300,
+   "permit_still_zero": 0,
+   "ratio_pct_one_decimal": 0.0,
+   "ci_pct_one_decimal": [
+    0.0,
+    1.5
+   ],
+   "rho_one_decimal": [
+    -94.3,
+    -50.3
+   ]
+  },
+  "InternVL3_5-8B": {
+   "base_zero": 273,
+   "n": 300,
+   "permit_still_zero": 0,
+   "ratio_pct_one_decimal": 0.0,
+   "ci_pct_one_decimal": [
+    0.0,
+    1.4
+   ],
+   "rho_one_decimal": [
+    -98.9,
+    -79.2
+   ]
+  },
+  "Phi-3.5-vision-instruct": {
+   "base_zero": 255,
+   "n": 300,
+   "permit_still_zero": 2,
+   "ratio_pct_one_decimal": 0.8,
+   "ci_pct_one_decimal": [
+    0.2,
+    2.8
+   ],
+   "rho_one_decimal": [
+    -98.2,
+    -72.3
+   ]
+  },
+  "llava-onevision-qwen2-7b-ov": {
+   "base_zero": 187,
+   "n": 300,
+   "permit_still_zero": 0,
+   "ratio_pct_one_decimal": 0.0,
+   "ci_pct_one_decimal": [
+    0.0,
+    2.0
+   ],
+   "rho_one_decimal": [
+    -99.7,
+    -91.7
+   ]
+  },
+  "Qwen3-VL-32B-Instruct": {
+   "base_zero": 277,
+   "n": 300,
+   "permit_still_zero": 251,
+   "ratio_pct_one_decimal": 90.6,
+   "ci_pct_one_decimal": [
+    86.6,
+    93.5
+   ],
+   "rho_one_decimal": [
+    -99.2,
+    -84.8
+   ]
+  },
+  "_summary": {
+   "max_abs_delta_rho_pp_one_decimal": 44.0,
+   "n_configs": 5,
+   "families_removing_all_or_all_but_two": 4
+  },
+  "nine_config_ranking": {
+   "n_configs": 9,
+   "spearman_three_decimals": 0.983,
+   "inversions": 1,
+   "pairs": 36,
+   "max_abs_delta_rho_pp_one_decimal": 44.0,
+   "top1_convention_A": "gemma3-12b",
+   "top1_convention_B": "gemma3-12b"
+  }
+ }
+}

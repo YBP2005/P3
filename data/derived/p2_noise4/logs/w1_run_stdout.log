@@ -1,0 +1,52 @@
+[00:48:43] ########## W1 主面板开始 ##########
+[00:48:43] 冻结判据 md5 75eeca6fa68c9be65c2b569d4237d8df；仪器 19f md5 28e82b20a7f4；本脚本不判定
+[00:48:43] ===== 家族 minicpmv26（MiniCPM-V-2_6）=====
+[00:51:31]   [minicpmv26] 起服就绪 165s
+[00:51:33]   [minicpmv26] smoke：可解析 0 / 4 条
+[00:51:33] !! minicpmv26 未过 smoke 门（base 臂产不出可解析 JSON）⇒ 排除；不调提示词、不改判据
+/root/w1_run.sh: line 26:   844 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 4096 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 16 --port 8000 "$@" < /dev/null > "/root/logs/serve_w1_${TAG}.log" 2>&1
+[00:51:36] ===== 家族 step3vl10b（Step3-VL-10B）=====
+[00:51:54]   [step3vl10b] !! 起服报错（早停）
+[00:51:54] !! step3vl10b 起服失败（vLLM 0.29 载入不了该架构）⇒ 排除并记入 frame 表
+[00:51:57] ===== 家族 gemma4_31b（gemma-4-31b-it）=====
+[00:57:16]   [gemma4_31b] 起服就绪 315s
+[00:57:21]   [gemma4_31b] smoke：可解析 4 / 4 条
+[00:57:21]   [gemma4_31b] st_a 零池 base,permit,channel（native）
+[00:58:29]   [gemma4_31b] st_a 零池 base@s640（分辨率旋钮臂）
+[00:58:56]   [gemma4_31b] st_a 非零池 base,permit,channel
+[00:59:46]   [gemma4_31b] ucf 零池 base,permit,channel（native）
+[01:01:28]   [gemma4_31b] ucf 零池 base@s640（分辨率旋钮臂）
+[01:02:06]   [gemma4_31b] ucf 非零池 base,permit,channel
+[01:03:45]   [gemma4_31b] visdrone 零池 base,permit,channel（native）
+[01:05:17]   [gemma4_31b] visdrone 零池 base@s640（分辨率旋钮臂）
+[01:05:49]   [gemma4_31b] visdrone 非零池 base,permit,channel
+[01:07:10]   [gemma4_31b] aitod 零池 base,permit,channel（native）
+[01:08:42]   [gemma4_31b] aitod 零池 base@s640（分辨率旋钮臂）
+[01:09:14]   [gemma4_31b] aitod 非零池 base,permit,channel
+[01:10:00]   [gemma4_31b] 面板完成：零池 16 个文件 / 非零池 12 个文件（期望 16 / 12）
+/root/w1_run.sh: line 26:  1354 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 4096 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 16 --port 8000 "$@" < /dev/null > "/root/logs/serve_w1_${TAG}.log" 2>&1
+[01:10:03] ===== 家族 dsvl2_tiny（dsvl2-tiny）=====
+[01:10:51]   [dsvl2_tiny] !! 起服报错（早停）
+[01:10:51] !! dsvl2_tiny 起服失败（vLLM 0.29 载入不了该架构）⇒ 排除并记入 frame 表
+[01:10:54] ===== 家族 idefics3_8b（Idefics3-8B-Llama3）=====
+[01:12:43]   [idefics3_8b] 起服就绪 105s
+[01:12:44]   [idefics3_8b] smoke：可解析 4 / 4 条
+[01:12:44]   [idefics3_8b] st_a 零池 base,permit,channel（native）
+[01:13:15]   [idefics3_8b] st_a 零池 base@s640（分辨率旋钮臂）
+[01:13:33]   [idefics3_8b] st_a 非零池 base,permit,channel
+[01:13:58]   [idefics3_8b] ucf 零池 base,permit,channel（native）
+[01:14:55]   [idefics3_8b] ucf 零池 base@s640（分辨率旋钮臂）
+[01:15:26]   [idefics3_8b] ucf 非零池 base,permit,channel
+[01:16:25]   [idefics3_8b] visdrone 零池 base,permit,channel（native）
+[01:17:12]   [idefics3_8b] visdrone 零池 base@s640（分辨率旋钮臂）
+[01:17:45]   [idefics3_8b] visdrone 非零池 base,permit,channel
+[01:18:25]   [idefics3_8b] aitod 零池 base,permit,channel（native）
+[01:20:31]   [idefics3_8b] aitod 零池 base@s640（分辨率旋钮臂）
+[01:21:13]   [idefics3_8b] aitod 非零池 base,permit,channel
+[01:21:42]   [idefics3_8b] 面板完成：零池 16 个文件 / 非零池 12 个文件（期望 16 / 12）
+/root/w1_run.sh: line 26:  2730 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 4096 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 16 --port 8000 "$@" < /dev/null > "/root/logs/serve_w1_${TAG}.log" 2>&1
+[01:21:45]   释放磁盘：删除已跑完的下载权重 /root/w1_models/idefics3-8b
+[01:41:46] ===== 家族 molmo7b（Molmo-7B-D-0924）=====
+[01:42:04]   [molmo7b] !! 起服报错（早停）
+[01:42:04] !! molmo7b 起服失败（vLLM 0.29 载入不了该架构）⇒ 排除并记入 frame 表
+[01:42:08] 已完成家族 2 < 6 ⇒ 启用备选 Phi-4-multimodal（Microsoft）

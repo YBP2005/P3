@@ -1,0 +1,46 @@
+[06:45:16] ########## G8 开始（预注册阶梯：16384 → 32768 → 65536，取第一个 0 个 400）##########
+[06:47:42]   !! maxlen=16384 起服报错
+(APIServer pid=15934)     raise RuntimeError(
+(APIServer pid=15934)     ...<8 lines>...
+(APIServer pid=15934)     )
+(APIServer pid=15934) RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+[06:47:42]   !! maxlen=16384 起服失败，继续下一档
+[06:50:07]   !! maxlen=32768 起服报错
+(APIServer pid=16446)     raise RuntimeError(
+(APIServer pid=16446)     ...<8 lines>...
+(APIServer pid=16446)     )
+(APIServer pid=16446) RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+[06:50:07]   !! maxlen=32768 起服失败，继续下一档
+[06:52:22]   !! maxlen=65536 起服报错
+(APIServer pid=16980)     raise RuntimeError(
+(APIServer pid=16980)     ...<8 lines>...
+(APIServer pid=16980)     )
+(APIServer pid=16980) RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+[06:52:22]   !! maxlen=65536 起服失败，继续下一档
+[06:52:22] ########## G8 结束 ##########
+total 0
+G8_ALL_DONE
+[06:52:51] ########## G8 开始（预注册阶梯删去 65536：见下）##########
+[06:54:26]   !! maxlen=16384 起服报错
+(APIServer pid=17540)     raise RuntimeError(
+(APIServer pid=17540)     ...<8 lines>...
+(APIServer pid=17540)     )
+(APIServer pid=17540) RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+[06:54:26]   !! maxlen=16384 起服失败，继续下一档
+[06:55:41]   !! maxlen=32768 起服报错
+(APIServer pid=17883)     raise RuntimeError(
+(APIServer pid=17883)     ...<8 lines>...
+(APIServer pid=17883)     )
+(APIServer pid=17883) RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+[06:55:41]   !! maxlen=32768 起服失败，继续下一档
+[06:55:41] ########## G8 结束 ##########
+total 0
+G8_ALL_DONE
+[06:59:36] ########## G8 开始（预注册阶梯删去 65536：见下）##########
+[07:02:22]   起服就绪 maxlen=16384（160s）
+[07:08:22]   maxlen=16384 跑完：HTTP 400 = 0
+[07:08:22]   ⇒ 该档 0 个 400，按预注册规则**停止**（不再试更高档）
+[07:08:22] ########## G8 结束 ##########
+total 60
+-rw-r--r-- 1 root root 56334 Sep 27 07:08 g8.csv
+G8_ALL_DONE

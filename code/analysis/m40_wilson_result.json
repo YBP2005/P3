@@ -1,0 +1,385 @@
+{
+  "purpose": "M.40 逐构建表每格的 Wilson 95% 区间（零格与非零格同一把尺子）",
+  "source": "ea2_contrast_result.json（raw-match 口径）；真零行取 cn 侧，非零行取 dense/aerial 池",
+  "rows": [
+    {
+      "model": "InternVL3.5-8B",
+      "pool": "true zero (z0easy)",
+      "n_people": 459,
+      "no_people": 86.9,
+      "no_people_ci": [
+        83.54,
+        89.71
+      ],
+      "cannot_judge": 8.7,
+      "cannot_judge_ci": [
+        6.46,
+        11.65
+      ],
+      "base_zero": 78.0,
+      "base_zero_ci": [
+        73.98,
+        81.54
+      ],
+      "base_n": 459
+    },
+    {
+      "model": "InternVL3.5-8B",
+      "pool": "true zero (z0hard)",
+      "n_people": 459,
+      "no_people": 88.9,
+      "no_people_ci": [
+        85.68,
+        91.45
+      ],
+      "cannot_judge": 4.6,
+      "cannot_judge_ci": [
+        3.01,
+        6.89
+      ],
+      "base_zero": 77.8,
+      "base_zero_ci": [
+        73.75,
+        81.34
+      ],
+      "base_n": 459
+    },
+    {
+      "model": "InternVL3.5-8B",
+      "pool": "non-zero (dense)",
+      "n_people": 229,
+      "no_people": 1.7,
+      "no_people_ci": [
+        0.68,
+        4.4
+      ],
+      "cannot_judge": 92.1,
+      "cannot_judge_ci": [
+        87.92,
+        94.97
+      ],
+      "base_zero": 0.0,
+      "base_zero_ci": [
+        0.0,
+        1.65
+      ],
+      "base_n": 229
+    },
+    {
+      "model": "InternVL3.5-8B",
+      "pool": "non-zero (aerial)",
+      "n_people": 199,
+      "no_people": 24.6,
+      "no_people_ci": [
+        19.16,
+        31.05
+      ],
+      "cannot_judge": 38.7,
+      "cannot_judge_ci": [
+        32.2,
+        45.61
+      ],
+      "base_zero": 1.0,
+      "base_zero_ci": [
+        0.28,
+        3.59
+      ],
+      "base_n": 199
+    },
+    {
+      "model": "Phi-3.5-vision-instruct",
+      "pool": "true zero (z0easy)",
+      "n_people": 459,
+      "no_people": 70.2,
+      "no_people_ci": [
+        65.81,
+        74.16
+      ],
+      "cannot_judge": 29.8,
+      "cannot_judge_ci": [
+        25.84,
+        34.19
+      ],
+      "base_zero": 78.4,
+      "base_zero_ci": [
+        74.44,
+        81.95
+      ],
+      "base_n": 459
+    },
+    {
+      "model": "Phi-3.5-vision-instruct",
+      "pool": "true zero (z0hard)",
+      "n_people": 459,
+      "no_people": 86.7,
+      "no_people_ci": [
+        83.3,
+        89.51
+      ],
+      "cannot_judge": 13.3,
+      "cannot_judge_ci": [
+        10.49,
+        16.7
+      ],
+      "base_zero": 81.0,
+      "base_zero_ci": [
+        77.21,
+        84.37
+      ],
+      "base_n": 459
+    },
+    {
+      "model": "Phi-3.5-vision-instruct",
+      "pool": "non-zero (dense)",
+      "n_people": 229,
+      "no_people": 0.0,
+      "no_people_ci": [
+        0.0,
+        1.65
+      ],
+      "cannot_judge": 100.0,
+      "cannot_judge_ci": [
+        98.35,
+        100.0
+      ],
+      "base_zero": 0.0,
+      "base_zero_ci": [
+        0.0,
+        1.65
+      ],
+      "base_n": 229
+    },
+    {
+      "model": "Phi-3.5-vision-instruct",
+      "pool": "non-zero (aerial)",
+      "n_people": 199,
+      "no_people": 33.2,
+      "no_people_ci": [
+        27.0,
+        39.97
+      ],
+      "cannot_judge": 66.8,
+      "cannot_judge_ci": [
+        60.03,
+        73.0
+      ],
+      "base_zero": 11.1,
+      "base_zero_ci": [
+        7.41,
+        16.17
+      ],
+      "base_n": 199
+    },
+    {
+      "model": "Qwen3-VL-32B-Instruct",
+      "pool": "true zero (z0easy)",
+      "n_people": 459,
+      "no_people": 79.1,
+      "no_people_ci": [
+        75.13,
+        82.56
+      ],
+      "cannot_judge": 13.1,
+      "cannot_judge_ci": [
+        10.29,
+        16.46
+      ],
+      "base_zero": 84.3,
+      "base_zero_ci": [
+        80.7,
+        87.35
+      ],
+      "base_n": 459
+    },
+    {
+      "model": "Qwen3-VL-32B-Instruct",
+      "pool": "true zero (z0hard)",
+      "n_people": 459,
+      "no_people": 83.7,
+      "no_people_ci": [
+        80.0,
+        86.76
+      ],
+      "cannot_judge": 6.8,
+      "cannot_judge_ci": [
+        4.8,
+        9.43
+      ],
+      "base_zero": 83.7,
+      "base_zero_ci": [
+        80.0,
+        86.76
+      ],
+      "base_n": 459
+    },
+    {
+      "model": "gemma-3-12b",
+      "pool": "true zero (z0easy)",
+      "n_people": 459,
+      "no_people": 47.9,
+      "no_people_ci": [
+        43.4,
+        52.5
+      ],
+      "cannot_judge": 46.2,
+      "cannot_judge_ci": [
+        41.68,
+        50.76
+      ],
+      "base_zero": 52.7,
+      "base_zero_ci": [
+        48.15,
+        57.25
+      ],
+      "base_n": 459
+    },
+    {
+      "model": "gemma-3-12b",
+      "pool": "true zero (z0hard)",
+      "n_people": 459,
+      "no_people": 37.5,
+      "no_people_ci": [
+        33.17,
+        41.99
+      ],
+      "cannot_judge": 52.7,
+      "cannot_judge_ci": [
+        48.15,
+        57.25
+      ],
+      "base_zero": 46.2,
+      "base_zero_ci": [
+        41.68,
+        50.76
+      ],
+      "base_n": 459
+    },
+    {
+      "model": "gemma-3-12b",
+      "pool": "non-zero (dense)",
+      "n_people": 229,
+      "no_people": 0.0,
+      "no_people_ci": [
+        0.0,
+        1.65
+      ],
+      "cannot_judge": 100.0,
+      "cannot_judge_ci": [
+        98.35,
+        100.0
+      ],
+      "base_zero": 0.0,
+      "base_zero_ci": [
+        0.0,
+        1.65
+      ],
+      "base_n": 229
+    },
+    {
+      "model": "gemma-3-12b",
+      "pool": "non-zero (aerial)",
+      "n_people": 199,
+      "no_people": 0.0,
+      "no_people_ci": [
+        0.0,
+        1.89
+      ],
+      "cannot_judge": 72.4,
+      "cannot_judge_ci": [
+        65.77,
+        78.11
+      ],
+      "base_zero": 0.0,
+      "base_zero_ci": [
+        0.0,
+        1.89
+      ],
+      "base_n": 199
+    },
+    {
+      "model": "LLaVA-OneVision-7B",
+      "pool": "true zero (z0easy)",
+      "n_people": 459,
+      "no_people": 81.0,
+      "no_people_ci": [
+        77.21,
+        84.37
+      ],
+      "cannot_judge": 19.0,
+      "cannot_judge_ci": [
+        15.63,
+        22.79
+      ],
+      "base_zero": 72.5,
+      "base_zero_ci": [
+        68.29,
+        76.43
+      ],
+      "base_n": 459
+    },
+    {
+      "model": "LLaVA-OneVision-7B",
+      "pool": "true zero (z0hard)",
+      "n_people": 459,
+      "no_people": 90.2,
+      "no_people_ci": [
+        87.13,
+        92.59
+      ],
+      "cannot_judge": 7.8,
+      "cannot_judge_ci": [
+        5.72,
+        10.67
+      ],
+      "base_zero": 73.9,
+      "base_zero_ci": [
+        69.65,
+        77.67
+      ],
+      "base_n": 459
+    },
+    {
+      "model": "LLaVA-OneVision-7B",
+      "pool": "non-zero (dense)",
+      "n_people": 229,
+      "no_people": 0.0,
+      "no_people_ci": [
+        0.0,
+        1.65
+      ],
+      "cannot_judge": 96.1,
+      "cannot_judge_ci": [
+        92.7,
+        97.92
+      ],
+      "base_zero": 0.0,
+      "base_zero_ci": [
+        0.0,
+        1.65
+      ],
+      "base_n": 229
+    },
+    {
+      "model": "LLaVA-OneVision-7B",
+      "pool": "non-zero (aerial)",
+      "n_people": 199,
+      "no_people": 43.7,
+      "no_people_ci": [
+        37.01,
+        50.66
+      ],
+      "cannot_judge": 42.7,
+      "cannot_judge_ci": [
+        36.04,
+        49.66
+      ],
+      "base_zero": 3.5,
+      "base_zero_ci": [
+        1.71,
+        7.08
+      ],
+      "base_n": 199
+    }
+  ],
+  "markdown": "| build | pool | `channel` → `no_people` | `channel` → `cannot_judge` | `base` answers `0` |\n|---|---|---|---|---|\n| InternVL3.5-8B | true zero (z0easy) | **86.9% [83.54, 89.71]** | 8.7% [6.46, 11.65] | 78.0% [73.98, 81.54] |\n| InternVL3.5-8B | true zero (z0hard) | **88.9% [85.68, 91.45]** | 4.6% [3.01, 6.89] | 77.8% [73.75, 81.34] |\n| InternVL3.5-8B | non-zero (dense) | **1.7% [0.68, 4.40]** | 92.1% [87.92, 94.97] | **0.0% [0.00, 1.65]** |\n| InternVL3.5-8B | non-zero (aerial) | **24.6% [19.16, 31.05]** | 38.7% [32.20, 45.61] | 1.0% [0.28, 3.59] |\n| Phi-3.5-vision-instruct | true zero (z0easy) | **70.2% [65.81, 74.16]** | 29.8% [25.84, 34.19] | 78.4% [74.44, 81.95] |\n| Phi-3.5-vision-instruct | true zero (z0hard) | **86.7% [83.30, 89.51]** | 13.3% [10.49, 16.70] | 81.0% [77.21, 84.37] |\n| Phi-3.5-vision-instruct | non-zero (dense) | **0.0% [0.00, 1.65]** | 100.0% [98.35, 100.00] | **0.0% [0.00, 1.65]** |\n| Phi-3.5-vision-instruct | non-zero (aerial) | **33.2% [27.00, 39.97]** | 66.8% [60.03, 73.00] | 11.1% [7.41, 16.17] |\n| Qwen3-VL-32B-Instruct | true zero (z0easy) | **79.1% [75.13, 82.56]** | 13.1% [10.29, 16.46] | 84.3% [80.70, 87.35] |\n| Qwen3-VL-32B-Instruct | true zero (z0hard) | **83.7% [80.00, 86.76]** | 6.8% [4.80, 9.43] | 83.7% [80.00, 86.76] |\n| gemma-3-12b | true zero (z0easy) | **47.9% [43.40, 52.50]** | 46.2% [41.68, 50.76] | 52.7% [48.15, 57.25] |\n| gemma-3-12b | true zero (z0hard) | **37.5% [33.17, 41.99]** | 52.7% [48.15, 57.25] | 46.2% [41.68, 50.76] |\n| gemma-3-12b | non-zero (dense) | **0.0% [0.00, 1.65]** | 100.0% [98.35, 100.00] | **0.0% [0.00, 1.65]** |\n| gemma-3-12b | non-zero (aerial) | **0.0% [0.00, 1.89]** | 72.4% [65.77, 78.11] | **0.0% [0.00, 1.89]** |\n| LLaVA-OneVision-7B | true zero (z0easy) | **81.0% [77.21, 84.37]** | 19.0% [15.63, 22.79] | 72.5% [68.29, 76.43] |\n| LLaVA-OneVision-7B | true zero (z0hard) | **90.2% [87.13, 92.59]** | 7.8% [5.72, 10.67] | 73.9% [69.65, 77.67] |\n| LLaVA-OneVision-7B | non-zero (dense) | **0.0% [0.00, 1.65]** | 96.1% [92.70, 97.92] | **0.0% [0.00, 1.65]** |\n| LLaVA-OneVision-7B | non-zero (aerial) | **43.7% [37.01, 50.66]** | 42.7% [36.04, 49.66] | 3.5% [1.71, 7.08] |"
+}

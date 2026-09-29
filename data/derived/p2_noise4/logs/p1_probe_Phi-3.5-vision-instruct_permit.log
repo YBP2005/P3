@@ -1,0 +1,9 @@
+  冻结探针 19e_probe_multi.py md5 03edb14c98ff ✓（提示词/解析/传输逐字复用）
+  [Phi-3.5-vision-instruct/permit] 网格 675 项 / 已完成 0 / 本次 675 ｜ model=Phi-3.5-vision-instruct
+    200/675  3.16 it/s  zero=0 abstain=185 parse_fail=185
+    400/675  3.46 it/s  zero=0 abstain=385 parse_fail=385
+    600/675  3.50 it/s  zero=0 abstain=585 parse_fail=585
+  [Phi-3.5-vision-instruct/permit] DONE：675 行写入 /root/p1_results/p1_Phi-3.5-vision-instruct_permit.csv（zero=0 abstain=660 parse_fail=660）
+  冻结探针 19e_probe_multi.py md5 03edb14c98ff ✓（提示词/解析/传输逐字复用）
+  [Phi-3.5-vision-instruct/permit] 网格 675 项 / 已完成 675 / 本次 0 ｜ model=Phi-3.5-vision-instruct
+  已完成，跳过

@@ -1,0 +1,13 @@
+usage: p5a_probe.py [-h] --model MODEL --arm {base,forbid0,permit}
+                    [--domains DOMAINS] [--n N] [--api API] [--outd OUTD]
+                    [--workers WORKERS] [--topk TOPK] [--tag TAG]
+p5a_probe.py: error: argument --n: invalid int value: 'Qwen3-VL-8B-Instruct'
+  冻结探针 19e_probe_multi.py md5 ✓
+  零池：283 项（st_a,ucf）｜臂 permit
+  待跑 283 项 → /root/p5a_results/p5a_Qwen3-VL-8B-Instruct_permit.csv
+    50/283  8.85 it/s  err=0
+    100/283  9.70 it/s  err=0
+    150/283  5.02 it/s  err=19
+    200/283  3.65 it/s  err=39
+    250/283  3.26 it/s  err=59
+  [permit] DONE：283 行（err=63）→ /root/p5a_results/p5a_Qwen3-VL-8B-Instruct_permit.csv

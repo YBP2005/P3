@@ -1,0 +1,373 @@
+{
+  "purpose": "S1 服务栈对照的独立重算（绕开 ctxctrl_analyze.py 直读原始逐项 CSV）",
+  "method": "raw-match 分类在本脚本内独立实现；每个 (构建×上下文×臂) 重算 3 次起服的弃权率",
+  "across": {
+    "InternVL3_5-8B|4096|base": {
+      "mean": 0.0,
+      "range_pp": 0.0,
+      "vals": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "InternVL3_5-8B|4096|channel": {
+      "mean": 0.0,
+      "range_pp": 0.0,
+      "vals": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "InternVL3_5-8B|4096|enumAbstain": {
+      "mean": 91.8,
+      "range_pp": 0.3,
+      "vals": [
+        91.7,
+        91.7,
+        92.0
+      ]
+    },
+    "InternVL3_5-8B|4096|permit": {
+      "mean": 94.0,
+      "range_pp": 0.0,
+      "vals": [
+        94.0,
+        94.0,
+        94.0
+      ]
+    },
+    "InternVL3_5-8B|8192|base": {
+      "mean": 0.0,
+      "range_pp": 0.0,
+      "vals": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "InternVL3_5-8B|8192|channel": {
+      "mean": 0.0,
+      "range_pp": 0.0,
+      "vals": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "InternVL3_5-8B|8192|enumAbstain": {
+      "mean": 91.9,
+      "range_pp": 0.3,
+      "vals": [
+        91.7,
+        92.0,
+        92.0
+      ]
+    },
+    "InternVL3_5-8B|8192|permit": {
+      "mean": 94.0,
+      "range_pp": 0.0,
+      "vals": [
+        94.0,
+        94.0,
+        94.0
+      ]
+    },
+    "Phi-3.5-vision-instruct|4096|base": {
+      "mean": 0.0,
+      "range_pp": 0.0,
+      "vals": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "Phi-3.5-vision-instruct|4096|channel": {
+      "mean": 0.0,
+      "range_pp": 0.0,
+      "vals": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "Phi-3.5-vision-instruct|4096|enumAbstain": {
+      "mean": 48.8,
+      "range_pp": 0.3,
+      "vals": [
+        48.7,
+        48.7,
+        49.0
+      ]
+    },
+    "Phi-3.5-vision-instruct|4096|permit": {
+      "mean": 95.1,
+      "range_pp": 0.3,
+      "vals": [
+        95.3,
+        95.0,
+        95.0
+      ]
+    },
+    "Phi-3.5-vision-instruct|8192|base": {
+      "mean": 0.0,
+      "range_pp": 0.0,
+      "vals": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "Phi-3.5-vision-instruct|8192|channel": {
+      "mean": 0.0,
+      "range_pp": 0.0,
+      "vals": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "Phi-3.5-vision-instruct|8192|enumAbstain": {
+      "mean": 12.43,
+      "range_pp": 0.4,
+      "vals": [
+        12.7,
+        12.3,
+        12.3
+      ]
+    },
+    "Phi-3.5-vision-instruct|8192|permit": {
+      "mean": 99.7,
+      "range_pp": 0.0,
+      "vals": [
+        99.7,
+        99.7,
+        99.7
+      ]
+    },
+    "gemma3-12b|4096|base": {
+      "mean": 0.0,
+      "range_pp": 0.0,
+      "vals": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "gemma3-12b|4096|channel": {
+      "mean": 0.0,
+      "range_pp": 0.0,
+      "vals": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "gemma3-12b|4096|enumAbstain": {
+      "mean": 81.0,
+      "range_pp": 0.0,
+      "vals": [
+        81.0,
+        81.0,
+        81.0
+      ]
+    },
+    "gemma3-12b|4096|permit": {
+      "mean": 91.2,
+      "range_pp": 0.3,
+      "vals": [
+        91.0,
+        91.3,
+        91.3
+      ]
+    },
+    "gemma3-12b|8192|base": {
+      "mean": 0.0,
+      "range_pp": 0.0,
+      "vals": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "gemma3-12b|8192|channel": {
+      "mean": 0.0,
+      "range_pp": 0.0,
+      "vals": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "gemma3-12b|8192|enumAbstain": {
+      "mean": 81.0,
+      "range_pp": 0.0,
+      "vals": [
+        81.0,
+        81.0,
+        81.0
+      ]
+    },
+    "gemma3-12b|8192|permit": {
+      "mean": 91.33,
+      "range_pp": 0.7,
+      "vals": [
+        91.7,
+        91.3,
+        91.0
+      ]
+    }
+  },
+  "history": {
+    "Phi-3.5-vision-instruct|base|4096": {
+      "hist": 0.0,
+      "live": 0.0,
+      "diff": 0.0
+    },
+    "Phi-3.5-vision-instruct|base|8192": {
+      "hist": 0.0,
+      "live": 0.0,
+      "diff": 0.0
+    },
+    "Phi-3.5-vision-instruct|permit|4096": {
+      "hist": 95.0,
+      "live": 95.1,
+      "diff": 0.1
+    },
+    "Phi-3.5-vision-instruct|permit|8192": {
+      "hist": 99.7,
+      "live": 99.7,
+      "diff": 0.0
+    },
+    "Phi-3.5-vision-instruct|channel|4096": {
+      "hist": 0.0,
+      "live": 0.0,
+      "diff": 0.0
+    },
+    "Phi-3.5-vision-instruct|channel|8192": {
+      "hist": 0.0,
+      "live": 0.0,
+      "diff": 0.0
+    },
+    "Phi-3.5-vision-instruct|enumAbstain|4096": {
+      "hist": 48.7,
+      "live": 48.8,
+      "diff": 0.1
+    },
+    "Phi-3.5-vision-instruct|enumAbstain|8192": {
+      "hist": 12.7,
+      "live": 12.4,
+      "diff": -0.27
+    },
+    "InternVL3_5-8B|base|4096": {
+      "hist": 0.0,
+      "live": 0.0,
+      "diff": 0.0
+    },
+    "InternVL3_5-8B|base|8192": {
+      "hist": 0.0,
+      "live": 0.0,
+      "diff": 0.0
+    },
+    "InternVL3_5-8B|permit|4096": {
+      "hist": 94.0,
+      "live": 94.0,
+      "diff": 0.0
+    },
+    "InternVL3_5-8B|permit|8192": {
+      "hist": 94.0,
+      "live": 94.0,
+      "diff": 0.0
+    },
+    "InternVL3_5-8B|channel|4096": {
+      "hist": 0.0,
+      "live": 0.0,
+      "diff": 0.0
+    },
+    "InternVL3_5-8B|channel|8192": {
+      "hist": 0.0,
+      "live": 0.0,
+      "diff": 0.0
+    },
+    "InternVL3_5-8B|enumAbstain|4096": {
+      "hist": 92.0,
+      "live": 91.8,
+      "diff": -0.2
+    },
+    "InternVL3_5-8B|enumAbstain|8192": {
+      "hist": 91.7,
+      "live": 91.9,
+      "diff": 0.2
+    },
+    "gemma3-12b|base|4096": {
+      "hist": 0.0,
+      "live": 0.0,
+      "diff": 0.0
+    },
+    "gemma3-12b|base|8192": {
+      "hist": 0.0,
+      "live": 0.0,
+      "diff": 0.0
+    },
+    "gemma3-12b|permit|4096": {
+      "hist": 91.3,
+      "live": 91.2,
+      "diff": -0.1
+    },
+    "gemma3-12b|permit|8192": {
+      "hist": 91.3,
+      "live": 91.3,
+      "diff": 0.03
+    },
+    "gemma3-12b|channel|4096": {
+      "hist": 0.0,
+      "live": 0.0,
+      "diff": 0.0
+    },
+    "gemma3-12b|channel|8192": {
+      "hist": 0.0,
+      "live": 0.0,
+      "diff": 0.0
+    },
+    "gemma3-12b|enumAbstain|4096": {
+      "hist": 81.0,
+      "live": 81.0,
+      "diff": 0.0
+    },
+    "gemma3-12b|enumAbstain|8192": {
+      "hist": 81.0,
+      "live": 81.0,
+      "diff": 0.0
+    }
+  },
+  "movers": {
+    "Phi-3.5-vision-instruct|base": 0.0,
+    "Phi-3.5-vision-instruct|permit": 4.6,
+    "Phi-3.5-vision-instruct|channel": 0.0,
+    "Phi-3.5-vision-instruct|enumAbstain": 36.37,
+    "InternVL3.5-8B|base": 0.0,
+    "InternVL3.5-8B|permit": 0.0,
+    "InternVL3.5-8B|channel": 0.0,
+    "InternVL3.5-8B|enumAbstain": 0.1,
+    "gemma-3-12b|base": 0.0,
+    "gemma-3-12b|permit": 0.13,
+    "gemma-3-12b|channel": 0.0,
+    "gemma-3-12b|enumAbstain": 0.0
+  },
+  "sample_n": 300,
+  "n_arm_files": 72,
+  "total_calls": 21600,
+  "history_max_abs_diff_pp": 0.27,
+  "key_cell": {
+    "build": "Phi-3.5-vision-instruct",
+    "arm": "enumAbstain",
+    "mean_4096": 48.8,
+    "range_4096_pp": 0.3,
+    "mean_8192": 12.43,
+    "range_8192_pp": 0.4,
+    "delta_ctx_pp": 36.37,
+    "verdict": "服务配置（上下文长度）可解释"
+  },
+  "max_within_context_range_pp": 0.7
+}

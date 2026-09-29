@@ -1,0 +1,10 @@
+{
+ "why": "P1 新增臂（forbid0 / neutral0）的人版提示词；圆点版由 p1d_probe.py 按\"只改对象名词\"生成",
+ "source_probe_gen": ".\\analysis\\pod_evidence\\scripts\\probe_gen.py",
+ "source_probe_gen_md5": "30e96f5e789585b8192794ada88da093",
+ "arms": {
+  "forbid0": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复。注意：**不要回答 0**；如果你认为可能是 0，请给出你最接近的估计值。以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+  "neutral0": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复。注意：**可能是 0**；如果你的判断确实是 0，请照实回答 0。以JSON格式输出：{\"count\": 数量}，只输出JSON。"
+ },
+ "single_variable_check": "neutral0 与 forbid0 仅目标子句不同（生成时已断言）"
+}

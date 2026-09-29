@@ -1,0 +1,4 @@
+  冻结探针 19e_probe_multi.py md5 03edb14c98ff ✓（提示词/解析/传输逐字复用）
+  [Phi-3.5-vision-instruct/base/clean] 网格 300 项 / 已完成 0 / 本次 300 ｜ model=Phi-3.5-vision-instruct ｜ system=无（冻结传输）
+    200/300  0.77 it/s  zero=8 abstain=6 parse_fail=0
+  [Phi-3.5-vision-instruct/base] DONE：300 行写入 /root/p1c_results/p1b_clean_Phi-3.5-vision-instruct_base.csv（zero=58 abstain=7 parse_fail=1）

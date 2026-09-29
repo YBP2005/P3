@@ -1,0 +1,20 @@
+[02:16:34] 等待下载进程退出…
+[02:23:04] 下载进程已退出（或等待超时）
+必需文件 37 个，齐全 23 个，缺失/尺寸不符 14 个
+   缺失 speech-lora/adapter_config.json                      期望 465 实得 -1
+   缺失 vision-lora/adapter_config.json                      期望 464 实得 -1
+   缺失 vision-lora/adapter_model.safetensors                期望 738232904 实得 -1
+   缺失 speech-lora/adapter_model.safetensors                期望 922782296 实得 -1
+   缺失 vision-lora/added_tokens.json                        期望 249 实得 -1
+   缺失 speech-lora/added_tokens.json                        期望 249 实得 -1
+   缺失 speech-lora/special_tokens_map.json                  期望 473 实得 -1
+   缺失 vision-lora/special_tokens_map.json                  期望 473 实得 -1
+   缺失 vision-lora/tokenizer.json                           期望 15524095 实得 -1
+   缺失 speech-lora/tokenizer.json                           期望 15524095 实得 -1
+   缺失 speech-lora/tokenizer_config.json                    期望 3248 实得 -1
+   缺失 vision-lora/tokenizer_config.json                    期望 3248 实得 -1
+   缺失 speech-lora/vocab.json                               期望 3910310 实得 -1
+   缺失 vision-lora/vocab.json                               期望 3910310 实得 -1
+被忽略的非加载资源 19 个（前缀 ('figures/', 'examples/', 'assets/', 'docs/')）
+GATE_VERDICT=FAIL
+[02:23:04] !! 必需文件不合格，**不**追加核验行（保持阻塞，需人工介入）；详见 /root/logs/w1_phi4_gate.log

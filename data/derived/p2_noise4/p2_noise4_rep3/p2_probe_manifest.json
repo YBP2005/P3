@@ -1,0 +1,23 @@
+{
+  "frozen_probe": "/root/19e_probe_multi.py",
+  "frozen_probe_md5": "03edb14c98ffa3aea9ffa20f59b00bc8",
+  "pool": "/root/p2/pool_all/pool_frozen_a800.csv",
+  "pool_md5": "25ee5c02109937753aa52c433fd8876a",
+  "models": [
+    "Qwen3-VL-32B-Instruct"
+  ],
+  "arms": [
+    "base"
+  ],
+  "api": "http://127.0.0.1:8006/v1/chat/completions",
+  "planned_calls": 300,
+  "elapsed_min": 1.15,
+  "outputs": [
+    {
+      "build": "Qwen3-VL-32B-Instruct",
+      "arm": "base",
+      "file": "p2_Qwen3-VL-32B-Instruct_base.csv",
+      "rows": 300
+    }
+  ]
+}

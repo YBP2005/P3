@@ -1,0 +1,23 @@
+[01:16:15] 等待回收序列结束（W1_RECOVER_DONE）…
+[02:58:16] 开始 FSC 示例臂序列
+[02:58:16] ===== FSC 臂：gemma4_31b（gemma-4-31b-it）=====
+[03:01:04]   [gemma4_31b] 起服就绪 165s
+[03:05:38]   [gemma4_31b] FSC 产物 4 个文件
+/root/w1_fsc_run.sh: line 14:  8580 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 4096 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 16 --port 8000 "$@" < /dev/null > "/root/logs/serve_w1fsc_${TAG}.log" 2>&1
+[03:05:41] ===== FSC 臂：minicpmv45（MiniCPM-V-4_5）=====
+[03:07:29]   [minicpmv45] 起服就绪 105s
+[03:08:08]   [minicpmv45] FSC 产物 4 个文件
+/root/w1_fsc_run.sh: line 14:  9182 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 4096 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 16 --port 8000 "$@" < /dev/null > "/root/logs/serve_w1fsc_${TAG}.log" 2>&1
+[03:08:11] ===== FSC 臂：step3vl10b（Step3-VL-10B）=====
+[03:08:59]   [step3vl10b] 起服就绪 45s
+[03:13:10]   [step3vl10b] FSC 产物 4 个文件
+/root/w1_fsc_run.sh: line 14:  9566 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 4096 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 16 --port 8000 "$@" < /dev/null > "/root/logs/serve_w1fsc_${TAG}.log" 2>&1
+[03:13:13] ===== FSC 臂：dsvl2_tiny（deepseek-vl2-tiny）=====
+[03:15:01]   [dsvl2_tiny] 起服就绪 105s
+[03:15:50]   [dsvl2_tiny] FSC 产物 4 个文件
+/root/w1_fsc_run.sh: line 14:  9976 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 4096 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 16 --port 8000 "$@" < /dev/null > "/root/logs/serve_w1fsc_${TAG}.log" 2>&1
+[03:15:53] 跳过 FSC idefics3_8b：无权重 /root/w1_models/idefics3-8b
+[03:15:53] ===== FSC 臂：molmo7b（Molmo-7B-D-0924）=====
+[03:16:12]   [molmo7b] !! 起服报错
+[03:16:12] !! molmo7b 起服失败，跳过 FSC
+[03:16:15] ########## W1d 结束 ##########

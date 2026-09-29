@@ -1,0 +1,398 @@
+{
+ "units": {
+  "st_a": {
+   "n_cfg": 14,
+   "spearman": 0.604,
+   "top1_all": "qwen25vl-72b-awq",
+   "top1_ans": "qwen25vl-72b-awq",
+   "top1_flip": false,
+   "rows": [
+    {
+     "cfg": "internvl25-8b-awq",
+     "n": 144,
+     "n_ans": 144,
+     "w": 100.0,
+     "rho_all": -53.09,
+     "rho_ans": -53.09
+    },
+    {
+     "cfg": "internvl35-38b-fp8",
+     "n": 144,
+     "n_ans": 142,
+     "w": 98.61,
+     "rho_all": -39.79,
+     "rho_ans": -37.82
+    },
+    {
+     "cfg": "qwen25vl-72b-awq",
+     "n": 144,
+     "n_ans": 144,
+     "w": 100.0,
+     "rho_all": -2.43,
+     "rho_ans": -2.43
+    },
+    {
+     "cfg": "qwen25vl-7b-awq",
+     "n": 144,
+     "n_ans": 144,
+     "w": 100.0,
+     "rho_all": -60.42,
+     "rho_ans": -60.42
+    },
+    {
+     "cfg": "qwen3-vl-2b",
+     "n": 144,
+     "n_ans": 144,
+     "w": 100.0,
+     "rho_all": -58.82,
+     "rho_ans": -58.82
+    },
+    {
+     "cfg": "qwen3-vl-30b-a3b-fp8",
+     "n": 144,
+     "n_ans": 144,
+     "w": 100.0,
+     "rho_all": -54.05,
+     "rho_ans": -54.05
+    },
+    {
+     "cfg": "qwen3-vl-32b-awq",
+     "n": 144,
+     "n_ans": 80,
+     "w": 55.56,
+     "rho_all": -64.71,
+     "rho_ans": -16.5
+    },
+    {
+     "cfg": "qwen3-vl-32b-awq8",
+     "n": 144,
+     "n_ans": 104,
+     "w": 72.22,
+     "rho_all": -44.85,
+     "rho_ans": -12.21
+    },
+    {
+     "cfg": "qwen3-vl-32b-bf16",
+     "n": 144,
+     "n_ans": 105,
+     "w": 72.92,
+     "rho_all": -42.2,
+     "rho_ans": -10.98
+    },
+    {
+     "cfg": "qwen3-vl-32b-fp8",
+     "n": 144,
+     "n_ans": 86,
+     "w": 59.72,
+     "rho_all": -54.51,
+     "rho_ans": -9.16
+    },
+    {
+     "cfg": "qwen3-vl-32b-gptq",
+     "n": 144,
+     "n_ans": 138,
+     "w": 95.83,
+     "rho_all": 14.58,
+     "rho_ans": 20.3
+    },
+    {
+     "cfg": "qwen3-vl-4b",
+     "n": 144,
+     "n_ans": 133,
+     "w": 92.36,
+     "rho_all": -30.16,
+     "rho_ans": -23.04
+    },
+    {
+     "cfg": "qwen3-vl-8b-awq",
+     "n": 144,
+     "n_ans": 144,
+     "w": 100.0,
+     "rho_all": -63.29,
+     "rho_ans": -63.29
+    },
+    {
+     "cfg": "qwen3-vl-8b-bf16",
+     "n": 144,
+     "n_ans": 144,
+     "w": 100.0,
+     "rho_all": -66.47,
+     "rho_ans": -66.47
+    }
+   ]
+  },
+  "ucf": {
+   "n_cfg": 14,
+   "spearman": 0.864,
+   "top1_all": "qwen3-vl-32b-gptq",
+   "top1_ans": "qwen3-vl-32b-gptq",
+   "top1_flip": false,
+   "rows": [
+    {
+     "cfg": "internvl25-8b-awq",
+     "n": 249,
+     "n_ans": 249,
+     "w": 100.0,
+     "rho_all": -72.02,
+     "rho_ans": -72.02
+    },
+    {
+     "cfg": "internvl35-38b-fp8",
+     "n": 249,
+     "n_ans": 249,
+     "w": 100.0,
+     "rho_all": -59.9,
+     "rho_ans": -59.9
+    },
+    {
+     "cfg": "qwen25vl-72b-awq",
+     "n": 249,
+     "n_ans": 249,
+     "w": 100.0,
+     "rho_all": -26.5,
+     "rho_ans": -26.5
+    },
+    {
+     "cfg": "qwen25vl-7b-awq",
+     "n": 249,
+     "n_ans": 241,
+     "w": 96.79,
+     "rho_all": -84.7,
+     "rho_ans": -84.0
+    },
+    {
+     "cfg": "qwen3-vl-2b",
+     "n": 249,
+     "n_ans": 249,
+     "w": 100.0,
+     "rho_all": -65.29,
+     "rho_ans": -65.29
+    },
+    {
+     "cfg": "qwen3-vl-30b-a3b-fp8",
+     "n": 249,
+     "n_ans": 249,
+     "w": 100.0,
+     "rho_all": -70.03,
+     "rho_ans": -70.03
+    },
+    {
+     "cfg": "qwen3-vl-32b-awq",
+     "n": 249,
+     "n_ans": 159,
+     "w": 63.86,
+     "rho_all": -68.31,
+     "rho_ans": -32.83
+    },
+    {
+     "cfg": "qwen3-vl-32b-awq8",
+     "n": 249,
+     "n_ans": 191,
+     "w": 76.71,
+     "rho_all": -56.78,
+     "rho_ans": -37.09
+    },
+    {
+     "cfg": "qwen3-vl-32b-bf16",
+     "n": 249,
+     "n_ans": 194,
+     "w": 77.91,
+     "rho_all": -56.34,
+     "rho_ans": -37.1
+    },
+    {
+     "cfg": "qwen3-vl-32b-fp8",
+     "n": 249,
+     "n_ans": 164,
+     "w": 65.86,
+     "rho_all": -54.14,
+     "rho_ans": -17.92
+    },
+    {
+     "cfg": "qwen3-vl-32b-gptq",
+     "n": 249,
+     "n_ans": 238,
+     "w": 95.58,
+     "rho_all": -17.44,
+     "rho_ans": -11.58
+    },
+    {
+     "cfg": "qwen3-vl-4b",
+     "n": 249,
+     "n_ans": 246,
+     "w": 98.8,
+     "rho_all": -48.69,
+     "rho_ans": -47.64
+    },
+    {
+     "cfg": "qwen3-vl-8b-awq",
+     "n": 249,
+     "n_ans": 249,
+     "w": 100.0,
+     "rho_all": -67.15,
+     "rho_ans": -67.15
+    },
+    {
+     "cfg": "qwen3-vl-8b-bf16",
+     "n": 249,
+     "n_ans": 248,
+     "w": 99.6,
+     "rho_all": -69.76,
+     "rho_ans": -69.62
+    }
+   ]
+  },
+  "visdrone": {
+   "n_cfg": 8,
+   "spearman": 1.0,
+   "top1_all": "qwen25vl-72b-awq",
+   "top1_ans": "qwen25vl-72b-awq",
+   "top1_flip": false,
+   "rows": [
+    {
+     "cfg": "internvl25-8b-awq",
+     "n": 277,
+     "n_ans": 148,
+     "w": 53.43,
+     "rho_all": -62.01,
+     "rho_ans": -57.53
+    },
+    {
+     "cfg": "qwen25vl-72b-awq",
+     "n": 277,
+     "n_ans": 155,
+     "w": 55.96,
+     "rho_all": -27.6,
+     "rho_ans": -19.61
+    },
+    {
+     "cfg": "qwen3-vl-32b-awq",
+     "n": 277,
+     "n_ans": 127,
+     "w": 45.85,
+     "rho_all": -38.77,
+     "rho_ans": -29.37
+    },
+    {
+     "cfg": "qwen3-vl-32b-awq8",
+     "n": 277,
+     "n_ans": 130,
+     "w": 46.93,
+     "rho_all": -41.28,
+     "rho_ans": -32.8
+    },
+    {
+     "cfg": "qwen3-vl-32b-bf16",
+     "n": 277,
+     "n_ans": 131,
+     "w": 47.29,
+     "rho_all": -41.44,
+     "rho_ans": -33.53
+    },
+    {
+     "cfg": "qwen3-vl-32b-fp8",
+     "n": 277,
+     "n_ans": 130,
+     "w": 46.93,
+     "rho_all": -42.31,
+     "rho_ans": -33.99
+    },
+    {
+     "cfg": "qwen3-vl-32b-gptq",
+     "n": 277,
+     "n_ans": 132,
+     "w": 47.65,
+     "rho_all": -41.77,
+     "rho_ans": -33.92
+    },
+    {
+     "cfg": "qwen3-vl-8b-awq",
+     "n": 277,
+     "n_ans": 138,
+     "w": 49.82,
+     "rho_all": -45.15,
+     "rho_ans": -37.5
+    }
+   ]
+  },
+  "aitod": {
+   "n_cfg": 8,
+   "spearman": 0.476,
+   "top1_all": "qwen25vl-72b-awq",
+   "top1_ans": "qwen25vl-72b-awq",
+   "top1_flip": false,
+   "rows": [
+    {
+     "cfg": "internvl25-8b-awq",
+     "n": 222,
+     "n_ans": 115,
+     "w": 51.8,
+     "rho_all": -73.38,
+     "rho_ans": -62.25
+    },
+    {
+     "cfg": "qwen25vl-72b-awq",
+     "n": 222,
+     "n_ans": 125,
+     "w": 56.31,
+     "rho_all": -30.25,
+     "rho_ans": -10.12
+    },
+    {
+     "cfg": "qwen3-vl-32b-awq",
+     "n": 222,
+     "n_ans": 73,
+     "w": 32.88,
+     "rho_all": -72.4,
+     "rho_ans": -34.91
+    },
+    {
+     "cfg": "qwen3-vl-32b-awq8",
+     "n": 222,
+     "n_ans": 83,
+     "w": 37.39,
+     "rho_all": -68.15,
+     "rho_ans": -40.08
+    },
+    {
+     "cfg": "qwen3-vl-32b-bf16",
+     "n": 222,
+     "n_ans": 82,
+     "w": 36.94,
+     "rho_all": -68.58,
+     "rho_ans": -40.25
+    },
+    {
+     "cfg": "qwen3-vl-32b-fp8",
+     "n": 222,
+     "n_ans": 83,
+     "w": 37.39,
+     "rho_all": -69.45,
+     "rho_ans": -41.95
+    },
+    {
+     "cfg": "qwen3-vl-32b-gptq",
+     "n": 222,
+     "n_ans": 89,
+     "w": 40.09,
+     "rho_all": -68.55,
+     "rho_ans": -43.87
+    },
+    {
+     "cfg": "qwen3-vl-8b-awq",
+     "n": 222,
+     "n_ans": 99,
+     "w": 44.59,
+     "rho_all": -62.29,
+     "rho_ans": -40.47
+    }
+   ]
+  }
+ },
+ "flip_units": [
+  "st_a",
+  "ucf",
+  "aitod"
+ ],
+ "n_units": 4
+}

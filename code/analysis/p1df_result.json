@@ -1,0 +1,254 @@
+{
+ "criteria_md5": {
+  "p1d": "cd7ed7085dd5",
+  "p1e": "600f5c90a211",
+  "p1f": "00c38a417196"
+ },
+ "H_A2p": {
+  "passed": false,
+  "n_pass": 1,
+  "n_families": 6,
+  "per_family": {
+   "Phi-3.5-vision-instruct": -5.48148148148148,
+   "Qwen3-VL-8B-Instruct": 3.9999999999999996,
+   "llava-onevision-qwen2-7b-ov": -3.851851851851852,
+   "gemma3-12b": 0.0,
+   "Qwen3-VL-32B-Instruct": -11.703703703703706,
+   "InternVL3_5-8B": 0.0
+  }
+ },
+ "H_A2rev": {
+  "triggered": false,
+  "families": {},
+  "max_delta_pp": 3.9999999999999996
+ },
+ "H_A2n": [
+  {
+   "family": "Qwen3-VL-32B-Instruct",
+   "d_forbid": -11.703703703703706,
+   "d_neutral": 48.2962962962963,
+   "ratio": 4.126582278481012,
+   "verdict": "针对\"提及\""
+  }
+ ],
+ "H_N0": [
+  {
+   "family": "Phi-3.5-vision-instruct",
+   "new": 0.1348148148148148,
+   "old": 0.1348148148148148,
+   "delta_pp": 0.0
+  },
+  {
+   "family": "Qwen3-VL-8B-Instruct",
+   "new": 0.09925925925925926,
+   "old": 0.09925925925925926,
+   "delta_pp": 0.0
+  },
+  {
+   "family": "llava-onevision-qwen2-7b-ov",
+   "new": 0.06666666666666667,
+   "old": 0.06666666666666667,
+   "delta_pp": 0.0
+  },
+  {
+   "family": "gemma3-12b",
+   "new": 0.0,
+   "old": 0.0,
+   "delta_pp": 0.0
+  },
+  {
+   "family": "Qwen3-VL-32B-Instruct",
+   "new": 0.15407407407407409,
+   "old": 0.15407407407407409,
+   "delta_pp": 0.0
+  },
+  {
+   "family": "InternVL3_5-8B",
+   "new": 0.0,
+   "old": 0.0,
+   "delta_pp": 0.0
+  }
+ ],
+ "H_Abst": {
+  "passed": true,
+  "n_pass": 6,
+  "per_family": {
+   "Phi-3.5-vision-instruct": 0.0,
+   "Qwen3-VL-8B-Instruct": 0.0,
+   "llava-onevision-qwen2-7b-ov": 0.0,
+   "gemma3-12b": 0.0,
+   "Qwen3-VL-32B-Instruct": 0.0,
+   "InternVL3_5-8B": 0.0
+  }
+ },
+ "P1e": [
+  {
+   "family": "Phi-3.5-vision-instruct",
+   "d_neutral": 86.51851851851852,
+   "d_placebo": -13.481481481481481,
+   "ratio": 0.15582191780821916,
+   "verdict": "token 特异"
+  },
+  {
+   "family": "Qwen3-VL-8B-Instruct",
+   "d_neutral": 68.74074074074073,
+   "d_placebo": -9.925925925925926,
+   "ratio": 0.14439655172413793,
+   "verdict": "token 特异"
+  },
+  {
+   "family": "llava-onevision-qwen2-7b-ov",
+   "d_neutral": 40.0,
+   "d_placebo": -5.9259259259259265,
+   "ratio": 0.14814814814814817,
+   "verdict": "token 特异"
+  },
+  {
+   "family": "gemma3-12b",
+   "d_neutral": 0.14814814814814814,
+   "d_placebo": 0.0,
+   "ratio": 0.0,
+   "verdict": "token 特异"
+  },
+  {
+   "family": "Qwen3-VL-32B-Instruct",
+   "d_neutral": 48.2962962962963,
+   "d_placebo": -15.407407407407408,
+   "ratio": 0.31901840490797545,
+   "verdict": "部分特异"
+  },
+  {
+   "family": "InternVL3_5-8B",
+   "d_neutral": 2.074074074074074,
+   "d_placebo": 0.0,
+   "ratio": 0.0,
+   "verdict": "token 特异"
+  }
+ ],
+ "P1f": {
+  "Phi-3.5-vision-instruct": {
+   "points": [
+    {
+     "anchor": 0,
+     "zero_pct": 100.0,
+     "median": 0
+    },
+    {
+     "anchor": 5,
+     "zero_pct": 0.0,
+     "median": 5
+    },
+    {
+     "anchor": 50,
+     "zero_pct": 0.0,
+     "median": 50
+    },
+    {
+     "anchor": 100,
+     "zero_pct": 0.0,
+     "median": 100
+    },
+    {
+     "anchor": 800,
+     "zero_pct": 0.0,
+     "median": 800
+    }
+   ],
+   "rho_zero": -0.7071067811865475,
+   "rho_median": 1.0
+  },
+  "Qwen3-VL-8B-Instruct": {
+   "points": [
+    {
+     "anchor": 0,
+     "zero_pct": 78.66666666666666,
+     "median": 0
+    },
+    {
+     "anchor": 5,
+     "zero_pct": 0.0,
+     "median": 5
+    },
+    {
+     "anchor": 50,
+     "zero_pct": 0.0,
+     "median": 50
+    },
+    {
+     "anchor": 100,
+     "zero_pct": 0.0,
+     "median": 100
+    },
+    {
+     "anchor": 800,
+     "zero_pct": 0.0,
+     "median": 800
+    }
+   ],
+   "rho_zero": -0.7071067811865475,
+   "rho_median": 1.0
+  },
+  "llava-onevision-qwen2-7b-ov": {
+   "points": [
+    {
+     "anchor": 0,
+     "zero_pct": 46.666666666666664,
+     "median": 52
+    },
+    {
+     "anchor": 5,
+     "zero_pct": 13.481481481481481,
+     "median": 72
+    },
+    {
+     "anchor": 50,
+     "zero_pct": 2.2222222222222223,
+     "median": 50
+    },
+    {
+     "anchor": 100,
+     "zero_pct": 0.7407407407407408,
+     "median": 100
+    },
+    {
+     "anchor": 800,
+     "zero_pct": 0.0,
+     "median": 800.0
+    }
+   ],
+   "rho_zero": -1.0,
+   "rho_median": 0.7
+  },
+  "gemma3-12b": {
+   "points": [
+    {
+     "anchor": 0,
+     "zero_pct": 0.14814814814814814,
+     "median": 246
+    },
+    {
+     "anchor": 5,
+     "zero_pct": 0.0,
+     "median": 5
+    },
+    {
+     "anchor": 50,
+     "zero_pct": 0.0,
+     "median": 50
+    },
+    {
+     "anchor": 100,
+     "zero_pct": 0.0,
+     "median": 100
+    },
+    {
+     "anchor": 800,
+     "zero_pct": 0.0,
+     "median": 800
+    }
+   ],
+   "rho_zero": -0.7071067811865475,
+   "rho_median": 0.4
+  }
+ }
+}

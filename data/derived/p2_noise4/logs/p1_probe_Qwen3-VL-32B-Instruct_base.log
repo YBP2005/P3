@@ -1,0 +1,6 @@
+  冻结探针 19e_probe_multi.py md5 03edb14c98ff ✓（提示词/解析/传输逐字复用）
+  [Qwen3-VL-32B-Instruct/base] 网格 675 项 / 已完成 0 / 本次 675 ｜ model=Qwen3-VL-32B-Instruct
+    200/675  2.39 it/s  zero=15 abstain=0 parse_fail=0
+    400/675  2.40 it/s  zero=45 abstain=0 parse_fail=0
+    600/675  2.41 it/s  zero=89 abstain=0 parse_fail=0
+  [Qwen3-VL-32B-Instruct/base] DONE：675 行写入 /root/p1_results/p1_Qwen3-VL-32B-Instruct_base.csv（zero=104 abstain=0 parse_fail=0）

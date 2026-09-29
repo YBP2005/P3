@@ -1,0 +1,20 @@
+[06:59:36] ########## G8 开始（预注册阶梯删去 65536：见下）##########
+[07:02:22]   起服就绪 maxlen=16384（160s）
+[g8] 冻结件 md5 OK：1fded0d37282c093a323325fff90106a ｜ 三条提示词逐字一致 ｜ 端口 8011 ｜ 臂 ['en:base', 'en:channel', 'cn:base']
+[g8] 334 项全部解析到图与 gt（/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test）
+[g8] 待跑 1002 项（已完成 0）
+  100/1002 (2.52/s bad=0 400=0)
+  200/1002 (2.64/s bad=0 400=0)
+  300/1002 (2.70/s bad=0 400=0)
+  400/1002 (2.73/s bad=66 400=0)
+  500/1002 (2.69/s bad=166 400=0)
+  600/1002 (2.71/s bad=266 400=0)
+  700/1002 (2.73/s bad=334 400=0)
+  800/1002 (2.75/s bad=334 400=0)
+  900/1002 (2.74/s bad=334 400=0)
+  1000/1002 (2.78/s bad=334 400=0)
+[g8] DONE n=1002 unparsed=334 http400=0
+[07:08:22]   maxlen=16384 跑完：HTTP 400 = 0
+[07:08:22]   ⇒ 该档 0 个 400，按预注册规则**停止**（不再试更高档）
+[07:08:22] ########## G8 结束 ##########
+/root/g8_all.sh: line 33: 18250 Killed                  setsid nohup $VLLM serve "$MODEL" --served-model-name Qwen3-VL-32B-Instruct --max-model-len "$1" --gpu-memory-utilization 0.93 --limit-mm-per-prompt '{"image": 1}' --mm-processor-kwargs '{"max_pixels": 1048576, "min_pixels": 3136}' --port $PORT < /dev/null > "/root/g8_serve_$1.log" 2>&1

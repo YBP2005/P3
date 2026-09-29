@@ -1,0 +1,6 @@
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 138 行；答 0 的 126 个；-> /root/w1_results/fsc_sc256/fsc_Qwen3-VL-32B-Instruct_base.csv
+  [permit] 444 行；答 0 的 385 个；-> /root/w1_results/fsc_sc256/fsc_Qwen3-VL-32B-Instruct_permit.csv
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 280 个；-> /root/w1_results/fsc_sc256/fsc_Qwen3-VL-32B-Instruct_base.csv
+  [permit] 446 行；答 0 的 387 个；-> /root/w1_results/fsc_sc256/fsc_Qwen3-VL-32B-Instruct_permit.csv

@@ -1,0 +1,7 @@
+  冻结探针 19e_probe_multi.py md5 ✓
+  零池：180 项（ucf）｜臂 forbid0
+  待跑 180 项 → /root/p5a_results/p5a_Qwen3-VL-32B-Instruct_ml16384_forbid0.csv
+    50/180  0.20 it/s  err=1
+    100/180  0.19 it/s  err=1
+    150/180  0.19 it/s  err=1
+  [forbid0] DONE：180 行（err=1）→ /root/p5a_results/p5a_Qwen3-VL-32B-Instruct_ml16384_forbid0.csv

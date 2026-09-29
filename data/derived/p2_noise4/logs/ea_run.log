@@ -1,0 +1,71 @@
+[14:37:28] ########## E-A 开始（真零池 306 图 × 3 臂；起服参数对齐 E3）##########
+overlay         182G  132G   43G  76% /
+[14:37:28] ===== E-A 家族 ivl8b（InternVL3_5-8B）=====
+[14:38:16]   [ivl8b] 起服就绪 45s
+[14:38:16]   [ivl8b] z0easy × base,permit,channel
+池 z0easy：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 120 个 -> /root/z0_results/e1_InternVL3_5-8B_z0easy_base_native.csv
+  [permit] 153 行；其中 pred==0 的 0 个 -> /root/z0_results/e1_InternVL3_5-8B_z0easy_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results/e1_InternVL3_5-8B_z0easy_channel_native.csv
+[14:38:44]   [ivl8b] z0hard × base,permit,channel
+池 z0hard：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 119 个 -> /root/z0_results/e1_InternVL3_5-8B_z0hard_base_native.csv
+  [permit] 153 行；其中 pred==0 的 0 个 -> /root/z0_results/e1_InternVL3_5-8B_z0hard_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results/e1_InternVL3_5-8B_z0hard_channel_native.csv
+[14:39:13]   [ivl8b] 完成
+[14:39:13] ===== E-A 家族 phi35（Phi-3.5-vision-instruct）=====
+[14:40:46]   [phi35] 起服就绪 90s
+[14:40:46]   [phi35] z0easy × base,permit,channel
+池 z0easy：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 119 个 -> /root/z0_results/e1_Phi-3.5-vision-instruct_z0easy_base_native.csv
+  [permit] 153 行；其中 pred==0 的 0 个 -> /root/z0_results/e1_Phi-3.5-vision-instruct_z0easy_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results/e1_Phi-3.5-vision-instruct_z0easy_channel_native.csv
+[14:41:27]   [phi35] z0hard × base,permit,channel
+池 z0hard：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 123 个 -> /root/z0_results/e1_Phi-3.5-vision-instruct_z0hard_base_native.csv
+  [permit] 153 行；其中 pred==0 的 0 个 -> /root/z0_results/e1_Phi-3.5-vision-instruct_z0hard_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results/e1_Phi-3.5-vision-instruct_z0hard_channel_native.csv
+[14:42:06]   [phi35] 完成
+[14:42:06] ===== E-A 家族 llavaov（llava-onevision-qwen2-7b-ov）=====
+[14:44:39]   [llavaov] 起服就绪 150s
+[14:44:39]   [llavaov] z0easy × base,permit,channel
+池 z0easy：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 111 个 -> /root/z0_results/e1_llava-onevision-qwen2-7b-ov_z0easy_base_native.csv
+  [permit] 153 行；其中 pred==0 的 0 个 -> /root/z0_results/e1_llava-onevision-qwen2-7b-ov_z0easy_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results/e1_llava-onevision-qwen2-7b-ov_z0easy_channel_native.csv
+[14:46:16]   [llavaov] z0hard × base,permit,channel
+池 z0hard：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 113 个 -> /root/z0_results/e1_llava-onevision-qwen2-7b-ov_z0hard_base_native.csv
+  [permit] 153 行；其中 pred==0 的 0 个 -> /root/z0_results/e1_llava-onevision-qwen2-7b-ov_z0hard_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results/e1_llava-onevision-qwen2-7b-ov_z0hard_channel_native.csv
+[14:47:33]   [llavaov] 完成
+[14:47:33] ===== E-A 家族 gemma12b（gemma3-12b）=====
+[14:50:07]   [gemma12b] 起服就绪 150s
+[14:50:07]   [gemma12b] z0easy × base,permit,channel
+池 z0easy：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 82 个 -> /root/z0_results/e1_gemma3-12b_z0easy_base_native.csv
+  [permit] 153 行；其中 pred==0 的 0 个 -> /root/z0_results/e1_gemma3-12b_z0easy_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results/e1_gemma3-12b_z0easy_channel_native.csv
+[14:50:38]   [gemma12b] z0hard × base,permit,channel
+池 z0hard：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 71 个 -> /root/z0_results/e1_gemma3-12b_z0hard_base_native.csv
+  [permit] 153 行；其中 pred==0 的 0 个 -> /root/z0_results/e1_gemma3-12b_z0hard_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results/e1_gemma3-12b_z0hard_channel_native.csv
+[14:51:12]   [gemma12b] 完成
+[14:51:12] ===== E-A 家族 qwen32b（Qwen3-VL-32B-Instruct）=====
+[14:54:00]   [qwen32b] 起服就绪 165s
+[14:54:00]   [qwen32b] z0easy × base,permit,channel
+池 z0easy：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 129 个 -> /root/z0_results/e1_Qwen3-VL-32B-Instruct_z0easy_base_native.csv
+  [permit] 153 行；其中 pred==0 的 23 个 -> /root/z0_results/e1_Qwen3-VL-32B-Instruct_z0easy_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results/e1_Qwen3-VL-32B-Instruct_z0easy_channel_native.csv
+[14:55:45]   [qwen32b] z0hard × base,permit,channel
+池 z0hard：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 128 个 -> /root/z0_results/e1_Qwen3-VL-32B-Instruct_z0hard_base_native.csv
+  [permit] 153 行；其中 pred==0 的 55 个 -> /root/z0_results/e1_Qwen3-VL-32B-Instruct_z0hard_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results/e1_Qwen3-VL-32B-Instruct_z0hard_channel_native.csv
+[14:57:26]   [qwen32b] 完成
+[14:57:26] ########## E-A 结束 ##########
+  产物文件数：30
+overlay         182G  132G   43G  76% /
+EA_DONE

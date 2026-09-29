@@ -1,0 +1,932 @@
+{
+  "purpose": "E2 的真零/非零对照（盲审 #1 的\"混合真零/非零\"要求）",
+  "rule": "raw-match，同 a5_judge.cls()",
+  "z0": {
+    "InternVL3_5-8B|cn|z0easy|base": {
+      "n": 459,
+      "pct": {
+        "zero": 78.0,
+        "nonzero": 22.0,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "InternVL3_5-8B|cn|z0easy|channel": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 4.4,
+        "no_people": 86.9,
+        "cannot_judge": 8.7,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "InternVL3_5-8B|cn|z0easy|permit": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 4.6,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 95.4,
+        "unparsed": 0.0
+      }
+    },
+    "InternVL3_5-8B|cn|z0hard|base": {
+      "n": 459,
+      "pct": {
+        "zero": 77.8,
+        "nonzero": 22.2,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "InternVL3_5-8B|cn|z0hard|channel": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 6.5,
+        "no_people": 88.9,
+        "cannot_judge": 4.6,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "InternVL3_5-8B|cn|z0hard|permit": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 13.5,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 86.5,
+        "unparsed": 0.0
+      }
+    },
+    "InternVL3_5-8B|en|z0easy|base": {
+      "n": 459,
+      "pct": {
+        "zero": 79.1,
+        "nonzero": 20.9,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "InternVL3_5-8B|en|z0easy|channel": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 7.2,
+        "no_people": 86.3,
+        "cannot_judge": 6.5,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "InternVL3_5-8B|en|z0easy|permit": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 7.2,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 92.8,
+        "unparsed": 0.0
+      }
+    },
+    "InternVL3_5-8B|en|z0hard|base": {
+      "n": 459,
+      "pct": {
+        "zero": 76.5,
+        "nonzero": 23.5,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "InternVL3_5-8B|en|z0hard|channel": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 10.5,
+        "no_people": 86.9,
+        "cannot_judge": 2.0,
+        "abstain": 0.0,
+        "unparsed": 0.7
+      }
+    },
+    "InternVL3_5-8B|en|z0hard|permit": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 11.1,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 88.9,
+        "unparsed": 0.0
+      }
+    },
+    "Phi-3.5-vision-instruct|cn|z0easy|base": {
+      "n": 459,
+      "pct": {
+        "zero": 78.4,
+        "nonzero": 17.6,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 0.0,
+        "unparsed": 3.9
+      }
+    },
+    "Phi-3.5-vision-instruct|cn|z0easy|channel": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 0.0,
+        "no_people": 70.2,
+        "cannot_judge": 29.8,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "Phi-3.5-vision-instruct|cn|z0easy|permit": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 0.0,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 100.0,
+        "unparsed": 0.0
+      }
+    },
+    "Phi-3.5-vision-instruct|cn|z0hard|base": {
+      "n": 459,
+      "pct": {
+        "zero": 81.0,
+        "nonzero": 18.3,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 0.0,
+        "unparsed": 0.7
+      }
+    },
+    "Phi-3.5-vision-instruct|cn|z0hard|channel": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 0.0,
+        "no_people": 86.7,
+        "cannot_judge": 13.3,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "Phi-3.5-vision-instruct|cn|z0hard|permit": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 1.3,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 98.7,
+        "unparsed": 0.0
+      }
+    },
+    "Phi-3.5-vision-instruct|en|z0easy|base": {
+      "n": 459,
+      "pct": {
+        "zero": 71.0,
+        "nonzero": 13.7,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 0.0,
+        "unparsed": 15.3
+      }
+    },
+    "Phi-3.5-vision-instruct|en|z0easy|channel": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 0.0,
+        "no_people": 69.5,
+        "cannot_judge": 30.5,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "Phi-3.5-vision-instruct|en|z0easy|permit": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 0.0,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 100.0,
+        "unparsed": 0.0
+      }
+    },
+    "Phi-3.5-vision-instruct|en|z0hard|base": {
+      "n": 459,
+      "pct": {
+        "zero": 76.9,
+        "nonzero": 14.6,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 0.0,
+        "unparsed": 8.5
+      }
+    },
+    "Phi-3.5-vision-instruct|en|z0hard|channel": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 0.0,
+        "no_people": 84.1,
+        "cannot_judge": 15.9,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "Phi-3.5-vision-instruct|en|z0hard|permit": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 0.0,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 100.0,
+        "unparsed": 0.0
+      }
+    },
+    "Qwen3-VL-32B-Instruct|cn|z0easy|base": {
+      "n": 459,
+      "pct": {
+        "zero": 84.3,
+        "nonzero": 15.7,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "Qwen3-VL-32B-Instruct|cn|z0easy|channel": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 7.8,
+        "no_people": 79.1,
+        "cannot_judge": 13.1,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "Qwen3-VL-32B-Instruct|cn|z0easy|permit": {
+      "n": 459,
+      "pct": {
+        "zero": 14.8,
+        "nonzero": 7.2,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 78.0,
+        "unparsed": 0.0
+      }
+    },
+    "Qwen3-VL-32B-Instruct|cn|z0hard|base": {
+      "n": 459,
+      "pct": {
+        "zero": 83.7,
+        "nonzero": 16.3,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "Qwen3-VL-32B-Instruct|cn|z0hard|channel": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 9.6,
+        "no_people": 83.7,
+        "cannot_judge": 6.8,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "Qwen3-VL-32B-Instruct|cn|z0hard|permit": {
+      "n": 459,
+      "pct": {
+        "zero": 34.9,
+        "nonzero": 10.5,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 54.7,
+        "unparsed": 0.0
+      }
+    },
+    "Qwen3-VL-32B-Instruct|en|z0easy|base": {
+      "n": 459,
+      "pct": {
+        "zero": 84.3,
+        "nonzero": 15.7,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "Qwen3-VL-32B-Instruct|en|z0easy|channel": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 2.2,
+        "no_people": 79.7,
+        "cannot_judge": 18.1,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "Qwen3-VL-32B-Instruct|en|z0easy|permit": {
+      "n": 459,
+      "pct": {
+        "zero": 2.8,
+        "nonzero": 8.5,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 88.7,
+        "unparsed": 0.0
+      }
+    },
+    "Qwen3-VL-32B-Instruct|en|z0hard|base": {
+      "n": 459,
+      "pct": {
+        "zero": 85.0,
+        "nonzero": 15.0,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "Qwen3-VL-32B-Instruct|en|z0hard|channel": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 7.2,
+        "no_people": 82.4,
+        "cannot_judge": 10.5,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "Qwen3-VL-32B-Instruct|en|z0hard|permit": {
+      "n": 459,
+      "pct": {
+        "zero": 7.8,
+        "nonzero": 9.8,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 82.4,
+        "unparsed": 0.0
+      }
+    },
+    "gemma3-12b|cn|z0easy|base": {
+      "n": 459,
+      "pct": {
+        "zero": 52.7,
+        "nonzero": 47.3,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "gemma3-12b|cn|z0easy|channel": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 5.9,
+        "no_people": 47.9,
+        "cannot_judge": 46.2,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "gemma3-12b|cn|z0easy|permit": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 7.0,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 93.0,
+        "unparsed": 0.0
+      }
+    },
+    "gemma3-12b|cn|z0hard|base": {
+      "n": 459,
+      "pct": {
+        "zero": 46.2,
+        "nonzero": 53.8,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "gemma3-12b|cn|z0hard|channel": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 9.8,
+        "no_people": 37.5,
+        "cannot_judge": 52.7,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "gemma3-12b|cn|z0hard|permit": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 11.8,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 88.2,
+        "unparsed": 0.0
+      }
+    },
+    "gemma3-12b|en|z0easy|base": {
+      "n": 459,
+      "pct": {
+        "zero": 63.2,
+        "nonzero": 36.8,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "gemma3-12b|en|z0easy|channel": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 10.2,
+        "no_people": 53.8,
+        "cannot_judge": 35.9,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "gemma3-12b|en|z0easy|permit": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 3.3,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 96.7,
+        "unparsed": 0.0
+      }
+    },
+    "gemma3-12b|en|z0hard|base": {
+      "n": 459,
+      "pct": {
+        "zero": 50.1,
+        "nonzero": 49.9,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "gemma3-12b|en|z0hard|channel": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 17.6,
+        "no_people": 44.0,
+        "cannot_judge": 38.3,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "gemma3-12b|en|z0hard|permit": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 7.6,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 92.4,
+        "unparsed": 0.0
+      }
+    },
+    "llava-onevision-qwen2-7b-ov|cn|z0easy|base": {
+      "n": 459,
+      "pct": {
+        "zero": 72.5,
+        "nonzero": 14.4,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 0.0,
+        "unparsed": 13.1
+      }
+    },
+    "llava-onevision-qwen2-7b-ov|cn|z0easy|channel": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 0.0,
+        "no_people": 81.0,
+        "cannot_judge": 19.0,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "llava-onevision-qwen2-7b-ov|cn|z0easy|permit": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 5.2,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 91.5,
+        "unparsed": 3.3
+      }
+    },
+    "llava-onevision-qwen2-7b-ov|cn|z0hard|base": {
+      "n": 459,
+      "pct": {
+        "zero": 73.9,
+        "nonzero": 15.7,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 0.0,
+        "unparsed": 10.5
+      }
+    },
+    "llava-onevision-qwen2-7b-ov|cn|z0hard|channel": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 0.7,
+        "no_people": 90.2,
+        "cannot_judge": 7.8,
+        "abstain": 0.0,
+        "unparsed": 1.3
+      }
+    },
+    "llava-onevision-qwen2-7b-ov|cn|z0hard|permit": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 8.5,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 90.8,
+        "unparsed": 0.7
+      }
+    },
+    "llava-onevision-qwen2-7b-ov|en|z0easy|base": {
+      "n": 459,
+      "pct": {
+        "zero": 84.3,
+        "nonzero": 15.7,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "llava-onevision-qwen2-7b-ov|en|z0easy|channel": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 0.0,
+        "no_people": 81.0,
+        "cannot_judge": 19.0,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "llava-onevision-qwen2-7b-ov|en|z0easy|permit": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 3.3,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 96.7,
+        "unparsed": 0.0
+      }
+    },
+    "llava-onevision-qwen2-7b-ov|en|z0hard|base": {
+      "n": 459,
+      "pct": {
+        "zero": 84.3,
+        "nonzero": 15.7,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "llava-onevision-qwen2-7b-ov|en|z0hard|channel": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 0.0,
+        "no_people": 88.9,
+        "cannot_judge": 7.2,
+        "abstain": 0.0,
+        "unparsed": 3.9
+      }
+    },
+    "llava-onevision-qwen2-7b-ov|en|z0hard|permit": {
+      "n": 459,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 8.5,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 91.5,
+        "unparsed": 0.0
+      }
+    }
+  },
+  "nonzero": {
+    "InternVL3_5-8B|aerial|base": {
+      "n": 199,
+      "pct": {
+        "zero": 1.0,
+        "nonzero": 99.0,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "InternVL3_5-8B|aerial|channel": {
+      "n": 199,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 35.7,
+        "no_people": 24.6,
+        "cannot_judge": 38.7,
+        "abstain": 0.0,
+        "unparsed": 1.0
+      }
+    },
+    "InternVL3_5-8B|aerial|permit": {
+      "n": 199,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 59.3,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 40.7,
+        "unparsed": 0.0
+      }
+    },
+    "InternVL3_5-8B|dense|base": {
+      "n": 229,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 100.0,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "InternVL3_5-8B|dense|channel": {
+      "n": 229,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 6.1,
+        "no_people": 1.7,
+        "cannot_judge": 92.1,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "InternVL3_5-8B|dense|permit": {
+      "n": 229,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 0.0,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 100.0,
+        "unparsed": 0.0
+      }
+    },
+    "Phi-3.5-vision-instruct|aerial|base": {
+      "n": 199,
+      "pct": {
+        "zero": 11.1,
+        "nonzero": 87.9,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 0.0,
+        "unparsed": 1.0
+      }
+    },
+    "Phi-3.5-vision-instruct|aerial|channel": {
+      "n": 199,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 0.0,
+        "no_people": 33.2,
+        "cannot_judge": 66.8,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "Phi-3.5-vision-instruct|aerial|permit": {
+      "n": 199,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 0.0,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 100.0,
+        "unparsed": 0.0
+      }
+    },
+    "Phi-3.5-vision-instruct|dense|base": {
+      "n": 229,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 100.0,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "Phi-3.5-vision-instruct|dense|channel": {
+      "n": 229,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 0.0,
+        "no_people": 0.0,
+        "cannot_judge": 100.0,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "Phi-3.5-vision-instruct|dense|permit": {
+      "n": 229,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 0.0,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 100.0,
+        "unparsed": 0.0
+      }
+    },
+    "gemma3-12b|aerial|base": {
+      "n": 199,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 100.0,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "gemma3-12b|aerial|channel": {
+      "n": 199,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 27.6,
+        "no_people": 0.0,
+        "cannot_judge": 72.4,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "gemma3-12b|aerial|permit": {
+      "n": 199,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 55.8,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 44.2,
+        "unparsed": 0.0
+      }
+    },
+    "gemma3-12b|dense|base": {
+      "n": 229,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 100.0,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "gemma3-12b|dense|channel": {
+      "n": 229,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 0.0,
+        "no_people": 0.0,
+        "cannot_judge": 100.0,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "gemma3-12b|dense|permit": {
+      "n": 229,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 1.3,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 98.7,
+        "unparsed": 0.0
+      }
+    },
+    "llava-onevision-qwen2-7b-ov|aerial|base": {
+      "n": 199,
+      "pct": {
+        "zero": 3.5,
+        "nonzero": 96.5,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "llava-onevision-qwen2-7b-ov|aerial|channel": {
+      "n": 199,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 13.6,
+        "no_people": 43.7,
+        "cannot_judge": 42.7,
+        "abstain": 0.0,
+        "unparsed": 0.0
+      }
+    },
+    "llava-onevision-qwen2-7b-ov|aerial|permit": {
+      "n": 199,
+      "pct": {
+        "zero": 0.5,
+        "nonzero": 92.5,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 6.5,
+        "unparsed": 0.5
+      }
+    },
+    "llava-onevision-qwen2-7b-ov|dense|base": {
+      "n": 229,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 93.4,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 0.0,
+        "unparsed": 6.6
+      }
+    },
+    "llava-onevision-qwen2-7b-ov|dense|channel": {
+      "n": 229,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 0.9,
+        "no_people": 0.0,
+        "cannot_judge": 96.1,
+        "abstain": 0.0,
+        "unparsed": 3.1
+      }
+    },
+    "llava-onevision-qwen2-7b-ov|dense|permit": {
+      "n": 229,
+      "pct": {
+        "zero": 0.0,
+        "nonzero": 17.5,
+        "no_people": 0.0,
+        "cannot_judge": 0.0,
+        "abstain": 70.3,
+        "unparsed": 12.2
+      }
+    }
+  }
+}

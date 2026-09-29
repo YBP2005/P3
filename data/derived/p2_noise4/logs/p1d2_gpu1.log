@@ -1,0 +1,26 @@
+[07:26:43][gpu1] == gpu1 补充轨开始（逐族独占）｜臂：forbid0,neutral0,base ｜workers=8 ==
+[07:28:33][gpu1] [GPU1] 等待显存回落…（现 34697 MiB）
+[07:30:34][gpu1] [GPU1] 等待显存回落…（现 34697 MiB）
+[07:32:34][gpu1] [GPU1] 等待显存回落…（现 34697 MiB）
+[07:32:44][gpu1] [GPU1] 显存已回落（0 MiB）
+[07:32:44][gpu1] [llava-onevision-qwen2-7b-ov] GPU1 port=8004 frac=0.26 maxlen=8192 起服
+[07:33:48][gpu1] [llava-onevision-qwen2-7b-ov] 就绪（64s）
+[07:44:49][gpu1] [llava-onevision-qwen2-7b-ov/forbid0] 675 行
+[07:44:49][gpu1] [llava-onevision-qwen2-7b-ov/neutral0] 675 行
+[07:44:49][gpu1] [llava-onevision-qwen2-7b-ov/base] 675 行
+[07:44:57][gpu1] [llava-onevision-qwen2-7b-ov] 完成并已停自己的服务
+[07:45:07][gpu1] [GPU1] 显存已回落（0 MiB）
+[07:45:07][gpu1] [Phi-3.5-vision-instruct] GPU1 port=8003 frac=0.30 maxlen=8192 起服
+[07:45:55][gpu1] [Phi-3.5-vision-instruct] 就绪（48s）
+[07:46:56][gpu1] [Phi-3.5-vision-instruct/forbid0] 675 行
+[07:46:56][gpu1] [Phi-3.5-vision-instruct/neutral0] 675 行
+[07:46:56][gpu1] [Phi-3.5-vision-instruct/base] 675 行
+[07:47:04][gpu1] [Phi-3.5-vision-instruct] 完成并已停自己的服务
+[07:47:04][gpu1] [GPU1] 显存已回落（0 MiB）
+[07:47:04][gpu1] [InternVL3_5-8B] GPU1 port=8002 frac=0.28 maxlen=8192 起服
+[07:49:04][gpu1] [InternVL3_5-8B] 就绪（120s）
+[07:52:47][gpu1] [InternVL3_5-8B/forbid0] 675 行
+[07:52:47][gpu1] [InternVL3_5-8B/neutral0] 675 行
+[07:52:47][gpu1] [InternVL3_5-8B/base] 675 行
+[07:52:55][gpu1] [InternVL3_5-8B] 完成并已停自己的服务
+[07:52:55][gpu1] P1D2_gpu1_DONE

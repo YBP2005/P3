@@ -1,0 +1,300 @@
+# A800 交接说明（2026-09-26 04:10 UTC）—— 交 P3 使用
+
+> **2026-09-26 09:50 UTC 状态更新（会议侧）**：机器**全空、GPU 0 MiB**，
+> 六个队列全部收尾。此后我只做了两件占卡工作：Step3-VL-10B 的加载器修复与预算扫，
+> 以及一次**默认路径回归探针**（见文末 §7）。**GPU 现已再次归零，可继续交回。**
+
+## 1. 当前状态：**机器全空，可以放心用**
+- `nvidia-smi`：**0 MiB / 0%**，没有任何进程占卡。
+- 我的**所有队列都已结束**（日志里都有 DONE 标记）：
+
+| 队列 | 结束标记 | 日志 |
+|---|---|---|
+| E · P2PNet 9 臂 | `E_P2P_ARMS_DONE` | `results/logs/e_p2p_arms_outer.log` |
+| 32B 面板第二批 | `B3_PANEL2_DONE` | `results/logs/b3_panel2.log` |
+| 32B 面板第三批 | `B3_PANEL3_DONE` | `results/logs/b3_panel3.log` |
+| 航拍专家矩阵 18 臂 | `E_AERIAL_ARMS_DONE` | `results/logs/e_aerial_arms_outer.log` |
+| 剂量-反应 12 臂 | `E_DOSE_ARMS_DONE` | `results/logs/e_dose_arms_outer.log` |
+
+- 我已停掉自己的状态监视脚本。**在你说"任务结束"之前，我不会在 A800 上起任何新任务。**
+
+## 2. 请勿覆盖的目录（都是我的产物）
+- `/root/cvpr_exp/`（整个工作目录：`cache/`、`maps/`、`manifests/`、`results/`、各脚本）
+- `/root/p2pnet/`（P2PNet 仓库 + SHTechA 权重，md5 `f2b448cc81137a78beae90fc119c70ef`）
+- `/root/dense/`、`/root/aerial/`、`/root/fsc147/`、`/root/z0/`（评测图，共 2064 项）
+- `/root/RUNNING.md`（本文件）
+
+可以自由使用的：`/model`（共享模型库，`df` 显示 40 T / 已用约 29 T）。
+
+## 3. 共享库里**没有** InternVL / Phi（今天我做过全量普查）
+`/root/_search_vlm.log` 里的结论，摘要：
+- `*InternVL*`、`*Phi-3*` **0 命中**（`/model` 下没有 `OpenGVLab` 这个组织）
+- 有：`Qwen3-VL-{4B,8B,32B,32B-Thinking,30B-A3B}`、`Qwen2.5-VL-{3B,72B}`、
+  `stepfun-ai/Step3-VL-10B`、`llava-hf/llava-onevision-qwen2-0.5b-ov-hf`
+- **A800 有完整公网**（modelscope 302 / huggingface 200 / github 200），真要 InternVL3.5-8B
+  可以 `modelscope download --model OpenGVLab/InternVL3_5-8B` 直接拉
+
+## 4. 本机可用的传输工具（今天实测过）
+`/usr/local/miniconda3/bin/python /root/cvpr_exp/bxfer.py pull|push|gets`，A800 主动连 B机 25046 一跳，
+**实测 10.4 MB/s（拉）/ 12.1 MB/s（推）**，自动核 md5；凭据只从环境变量读。
+> 注意：pod 只对外暴露 25046，**A800 反起 http.server 给别人 curl 是通不了的**。
+> paramiko 已装在 miniconda（5.0.0）。
+
+## 5. 三个容易踩的坑（我今天各踩了一次）
+1. **不要用全局 `pkill python`**；`pkill -f "关键词"` 会匹配到**执行它的那个 shell 自己**，
+   要用字符类绕开（例：`pkill -f 'run_arm\.p[y]'`）。清理请只按自己的 PID / 端口。
+2. **显存要按"最坏那一张图"算，不是按权重算**：P2PNet 的 VGG16 对 2500×1875 图的激活要 5–9 GB；
+   它的匈牙利匹配还会建 (锚点数 × 点数) 的代价矩阵（UCF-QNRF 最密的图 12,865 点 ⇒ 单次 2.25 GB）。
+3. **官方 P2PNet 把 anchor points 硬编码 `.cuda()`**（`models/p2pnet.py` 的 `AnchorPoints.forward`）
+   ⇒ 想用第二张卡必须 `CUDA_VISIBLE_DEVICES=1` 再用 `cuda:0`，直接 `--gpu 1` 会报
+   `Expected all tensors to be on the same device`。
+
+## 6. 你完工后我会做什么（只需要你一句"结束了"）
+我这边积压的 A800 任务（全部已写好脚本、可直接跑）：
+1. **密集域适配的对称矩阵**：B机正在训 UCF-QNRF 专家 ×2 seed，训完要拉过来建 cache + 跑臂
+   （`e_aerial_infer.py` + `e_aerial_arms.sh` 已经在机，改一行 tag 即可）。
+2. **剂量-反应补 field 接口**：现在剂量面板只跑了 `symbol_text`，
+   补 `dense_field` 才能把"场接口不随专家变好"这条画完整。
+3. 可选：32B 侧的 P2PNet 对照臂。
+
+请完工后告诉我，我会确认 GPU 真的空出来（`nvidia-smi` + `pgrep`）再起任务。
+
+---
+
+## P3（PaperB 分支）接手记录 —— 2026-09-26 04:25 UTC
+
+**接手人**：P3 / PaperB 分支（`D:\deepseek\PaperB\`）。
+**用途**：P2 实验包（PaperB 内部编号，对外任务号 P3）的"外部真零池"VLM 探针。
+
+### 我方会做什么
+
+* **只跑推理，不训练。** 单卡串行：一族起服 → 跑完 → 停服 → 起下一族。
+  **绝不并发**（单卡 0.85 利用率并发会 OOM —— 沿用机上既有纪律）。
+* 四个构建与既有语料**完全一致**（否则与已发表数字不可比）：
+  | 构建 | 路径 | 端口 | 显存比例 | maxlen |
+  |---|---|---|---|---|
+  | Qwen3-VL-32B-Instruct | `/model/ModelScope/Qwen/Qwen3-VL-32B-Instruct` | 8006 | 0.85 | 4096 |
+  | gemma3-12b | `/model/ModelScope/LLM-Research/gemma-3-12b-it` | 8001 | 0.40 | 8192 |
+  | InternVL3_5-8B | `/root/models/InternVL3_5-8B` | 8002 | 0.28 | 8192（`--trust_remote_code`）|
+  | Phi-3.5-vision-instruct | `/root/models/Phi-3.5-vision-instruct` | 8003 | 0.30 | 8192（`--trust_remote_code`）|
+* **停服纪律**：**不** `pkill -9 -i -f vllm`；只杀本脚本自己记下的 SPID。
+  每族前后用 `/root/_p1d_reaper.sh` 检查并回收 **PPID==1 的孤儿 `VLLM::EngineCore`**
+  （父进程被 -9 后子进程会被 init 收养并继续占显存——机上已有此教训记录）。
+
+### 我方不会动
+
+* `/root/cvpr_exp/` 及其下全部内容（你方工作目录），你方的 `*.pid` 与端口。
+* `/root/models/`、`/model/` 下任何文件（只读使用）。
+* 你方 `/root/RUNNING.md` 已有的内容（本段为**追加**，未改动上方任何一行）。
+
+### 我方产物位置
+
+* `/root/p2/`（池与判据留档）、`/root/p2_probe_results/`（探针逐条结果）、`/root/p2_pool_imgs/`（池图像）。
+* 日志：`/root/logs/p2_*.log`。
+
+### 结束时会做什么
+
+* 停掉全部我方服务、跑一次 `_p1d_reaper.sh`、确认 `nvidia-smi` 归零，并在本文件追加一行"P3 完成"。
+
+### P3（PaperB）完成 —— 2026-09-26 05:15 UTC
+
+**P2 实验包（对外任务号 P3）的 A800 段已全部结束。**
+
+* 已完成：**4 构建 × 3 臂 × 300 张 = 3,600 次调用**（Qwen3-VL-32B-Instruct / gemma-3-12b-it /
+  InternVL3_5-8B / Phi-3.5-vision-instruct）；
+  **噪声底自测**（锚构建 × 同一 20 张 × 两遍：pred 与 raw 均 20/20 一致 ⇒ 点估计 0.00 pp）；
+  产物 QA（12 个臂文件全部 n=300，其中 Phi 的 permit 臂有 2 条未解析，已如实记录）。
+* 唯一用到的起服参数变更：**32B 去掉 `--gpu-memory-utilization`**（用 vLLM 默认 0.90）。
+  原因：0.85 时 63 GB 权重装入后 KV cache 只剩 0.76 GiB，而 `--max-model-len 4096` 需 1.0 GiB
+  （`ValueError: … estimated maximum model length is 3104`）。
+  **`--max-model-len 4096` 未改**——它是与已发表语料可比的配置。
+* **机器状态**：`nvidia-smi` **0 MiB / 0%**、**无 vLLM 进程**、无我方残留脚本进程
+  （已核验；我方曾因本地超时留下过卡住的 `bash -c`，已全部清理）。
+* 我方产物：`/root/p2_probe_results/`（原始）、`/root/p2_probe_results_reparsed/`（**修正后，结论以这份为准**）、
+  `/root/p2_noise_rep{1,2}/`、`/root/p2/`、`/root/p2_pool_imgs/`、`/root/logs/p2_*.log`。
+  **全部已取回 P3 侧工作机**，A800 上的副本可随时删除。
+* **一条给后来者可复用的教训**：`/root/_p1d_reaper.sh` 是 `while true; … sleep 15; done` 的
+  **常驻守护**，**不能同步调用**（会让调用方永久挂住）。需要一次性回收时，用一次性扫描：
+  `ps -eo pid,ppid,comm | awk '$2==1 && $3 ~ /^VLLM::EngineCor/ {print $1}'` 后 `kill -9`。
+
+---
+
+## 7. 会议侧追加（2026-09-26 09:50 UTC）：Step3-VL-10B 查清 + 冻结判据机回归
+
+**GPU 状态：0 MiB，无残留进程。** 本节只追加，未改动上面任何一行。
+
+### 7.1 Step3-VL-10B 的三层结论（推翻了"这个模型不能用"）
+
+1. **HF `transformers` 进程内加载会静默损坏**：`model.safetensors` 用**去壳**键名
+   （`model.embed_tokens.weight` / `model.layers.*` / `vision_model.*` / `vit_large_projector.*`），
+   而模型类要**带壳**键名（`model.language_model.*` / `model.vision_model.*` / `model.vit_large_projector.*`）。
+   `from_pretrained` **不抛异常**，只报 **MISSING 1065 / UNEXPECTED 1065**（1066 个键里只有
+   `lm_head.weight` 对上），⇒ 随机初始化 ⇒ **前向照常跑完、输出乱码**。
+   修法：`exp/run_arm.py --key-mapping /root/step3_keymap.json`（新加，默认关），
+   表由 `exp/make_key_mapping.py` 生成（`--expect-entries 1066` 防半表）⇒ **MISSING 0 / UNEXPECTED 0**。
+2. **改它自己的源码也做了，但只在私有副本里做**：`/root/step3_local/`（19 GB 副本，
+   原文件备份 `modeling_step_vl.py.orig`），两处最小补丁（用 `model_inputs["cache_position"]`；
+   解码步丢弃 `pixel_values/patch_pixel_values/patch_newline_mask/num_patches`）。
+   **共享库 `/model/ModelScope/stepfun-ai/Step3-VL-10B` 一个字没动。**
+3. **但它在级联面板的提示词下进不了面板 —— 理由是预算，不是模型**：
+   冻结 16 token ⇒ 5/5 `format_violation`（0 个整数）；256/512/1024 token ⇒ `</think>` **都不闭合**
+   （1024 时 36 s/项）。而 **P-W1 面板**（`/root/w1_results/`）里同一个 checkpoint 走 **vLLM**
+   是正常的：`</think>` 正常闭合、JSON 契约满足、`parse_ok` 48–93%。
+   ⇒ **"预算够不够"是"提示词 × 预算 × 服务栈"的函数。**
+
+**顺带做的栈级体检**（这条对 P3 也有用）：对 `/root/w1_results/` 全部存档做乱码 QC
+（非 ASCII/非 CJK/非常见标点字符占比 > 30% 判乱码）⇒ **165 文件 / 66,174 行 / 乱码 0 行**，
+`results/report/w1_gibberish_qc.json`。**P-W1 面板没有被这条加载器缺陷污染。**
+
+### 7.2 冻结判据机 `run_arm.py` 的改动与回归
+
+新加 4 个**默认关**的开关：`--trust-remote-code`、`--model-class {image_text,causal}`、
+`--inject-cache-position`、`--key-mapping PATH`。
+**回归证据**（不给任何新开关，7B，3 项，`visdrone_aerial_vis_eval · symbol_text · base`）：
+`raw` = `69 / 2 / 3`、`score` = `1.000000`，与既有臂
+`results/arms_full/visdrone_aerial_vis_eval__symbol_text__base__qwen3vl8b.csv` 前 3 行
+**逐字段 IDENTICAL**。`key_mapping*` 三个新字段在 `logs/serving_*.json` 里为 `null`，
+**不进 CSV**，所以既有的 200+ 条臂语义一字未变。
+
+### 7.3 新增/更新的产物
+
+- `/root/step3_keymap.json`（1066 条，md5 `4f4356f739f0c51c3fe11dec1380cf8e`）
+- `/root/cvpr_exp/results/report/`：`w1_gibberish_qc.json`、`probe_step3_nt{16,128}.csv`、
+  `probe_step3_budget.log`、`_parse_step3.py`、`_step3_budget.py`、`w1_gibberish_qc.py`
+- `/root/cvpr_exp/exp/`→`make_key_mapping.py`（`run_arm.py` 已更新，md5 见 `md5sum`）
+
+**A800 可以继续交回。**
+
+**A800 现在可以交回会议侧。**
+
+---
+
+## 8. 正式交接回 P3（2026-09-26 10:00 UTC）
+
+**★ 请先读独立交接文档：`/root/A800交接说明_给P3_20260926.md`**（11 KB，
+覆盖机器现状 / 环境版本 / 共享模型库 / 我方目录 / 单卡纪律 / 磁盘回收表 /
+Step3-VL-10B 的两个坑 / 可复用工具 / 我还需不需要卡）。
+
+交接时的实测状态：
+
+| 项 | 状态 |
+|---|---|
+| GPU | **0 MiB / 0%**，`nvidia-smi -L` 仍是单卡 `GPU 0: A800-SXM4-80GB` |
+| 残留进程 | **无**（`run_arm.py` / `vllm` / 训练 / 我的脚本全部为空） |
+| 磁盘 | overlay **286 G，可用 113 G（59%）** —— 我清掉了 Step3 的 20 G 权重 |
+| 我回收了什么 | `/root/step3_local` 的 5 个 `*.safetensors` + 索引（20 G）。**源码补丁保留**（现 16 MB），权重在共享库里随时可重建副本 |
+| 我新增了什么 | `/root/bin/tectonic`（单文件 LaTeX 引擎，**纯 CPU**，30 MB）、`/root/paper_build`（论文编译目录，< 1 MB）、`pypdf` |
+| GPU 侧新增 | **无**。`run_arm.py` 加了 4 个**默认关**的开关，默认路径回归已验 `raw` = 69/2/3 逐字段 IDENTICAL |
+
+**我这边不再需要 GPU。** 只需保留 `/root/cvpr_exp/`（25 G，论文数字的唯一来源）与
+`/root/w1_results/`（374 个逐项 CSV）；其余按交接文档 §6 的回收表处理即可。
+
+**P3 可以接手了。**
+
+---
+
+## P3 / PaperB（期刊扩展版）接手段 —— 2026-09-26（P3 侧智能体追加，未改动上方任何内容）
+
+**结论：P3 侧已用完 A800，可再次交还会议侧。**
+
+### 我做了什么（全部单卡串行，**未并发**）
+
+| 实验 | 内容 | GPU 用量 | 结果 |
+|---|---|---|---|
+| ① `--workers 4` 噪声底 | 锚构建 × `base` 臂 × **全 300 项池** × **4 并发** × **3 遍** | ≈8 分钟（含起停服） | **900/900 逐项一致**；报单侧 Clopper–Pearson 界：按批 **3.92 pp** / 逐项 0.99 pp / 按池聚类 77.6 pp |
+| ③ 英文提示下的弃权份额 $S$ | 锚构建 × `base` × 四头条域 × **M.39 那张冻结英文表** | ≈6.6 分钟（0.7/2.0/3.0/0.9） | 中文侧口径先自证 **4/4 对上 J.1**；英文下 st_a 的 $S$ **越过 100%**（离开定义域）、两个航拍域 −4.1/−5.5 pp、**ucf 因 HTTP 400 不可测** |
+| ② 混合池真值 $\pi$ | —— | **0**（决定不做：瓶颈是标注人力，用户裁定） | 已记档，未跑 |
+
+**未使用的余额**：约 **160 GPU·h** 仍在，**我一分钟都没多占**。
+
+### 我用了哪些冻结件（**一个字节都没改**）
+
+| 文件 | md5 | 用途 |
+|---|---|---|
+| `/root/19e_probe_multi.py` | `03edb14c98ffa3aea9ffa20f59b00bc8` | ① 与 ③ 的探针（与交接件 §5 记录一致） |
+| `/root/p2/pool_all/pool_frozen_a800.csv` | `25ee5c02109937753aa52c433fd8876a` | ① 的 300 项池 |
+| M.39 英文提示词表（在 `ec3_run_en.py` 内，逐字复制自 `20b_probe_lang.py`） | `a31bd97c6b70` | ③（与补充材料 M.39 记录的表 md5 一致） |
+
+### 我在 A800 上新增的文件（**都与会议侧目录不重名**）
+
+- `/root/ec3_run_en.py`、`/root/ec3_share3.py`、`/root/ec3_compare2.py`、`/root/ec3_share2.py`
+- `/root/p2_noise4.sh`、`/root/p2_noise3_cmp.py`
+- `/root/ec3_en/`（64 KB，四域英文臂记录）
+- `/root/p2_noise4_rep{1,2,3}/`（各 ~25 KB）
+- `/root/logs/p2_noise4.log`、`/root/logs/ec3_serve.log` 等日志
+
+**⇒ 这些全部是我的产物，可随时删；会议侧的 `/root/cvpr_exp/`、`/root/w1_*`、`/root/models/`
+（InternVL3_5-8B / Phi-3.5-vision）**我一行未动**。**
+
+### 交接时的实测状态（2026-09-26 10:26 UTC）
+
+| 项 | 状态 |
+|---|---|
+| GPU | **0 MiB / 81920 MiB，利用率 0%** |
+| 计算进程 | **空**（`nvidia-smi --query-compute-apps` 权威判据） |
+| 残留 | 无 `python` / `vllm` / `VLLM::EngineCore`（已按下文 §5 的有界扫描回收） |
+| 磁盘 | overlay **286 G，可用 113 G（59%）** —— 与接收时**一致**（我的产物共 < 1 MB） |
+
+### 两条给下一位的操作提醒（我实际踩到过）
+
+1. **`/root/...` 作为参数传给 Windows 侧的 python 会被 Git Bash 改写成
+   `D:/腾讯电脑管家软件搬家/…/Git/root/...`** ⇒ 传远端路径前必须
+   `export MSYS_NO_PATHCONV=1 MSYS2_ARG_CONV_EXCL='*'`。
+2. **A800 上 `python3` 没有 PIL**；要用 **`/usr/local/miniconda3/bin/python`**。
+   否则 `b64_of` 会**每一条都失败**，而脚本**仍然正常退出**（"看起来跑完了、其实全失败"）。
+
+**P3 侧完毕，卡可交还会议侧。**
+
+---
+
+## 9. 会议侧接手：末批单卡任务（2026-09-26 10:39 UTC 起）
+
+**P3 已交还（GPU 0 MiB、无残留进程），会议侧正在跑最后一批单卡任务。**
+5 个 job 全部自动接力，**一次启动、后面自动排队**：
+
+| # | job | 内容 | 依赖 |
+|---|---|---|---|
+| 1 | `b2_xdom_extract.sh` | **B2 跨域**：16 个池各用**自己的专家符号**重抽冻结特征（prefill-only） | — |
+| 2 | `e_final_queue.sh` | **补表**：18 条 8B 臂（`dense_field`×2 专家 + `symbol_image`×4 新专家）+ 5 条 32B 臂 | 等 1 |
+| 3 | `b5_pipeline.sh` | **B5 航拍 adapter**：专家打符号 → 训 real/shuf 两个 adapter → 4 条臂 | 等 2 |
+| 4 | `b2_xdom_head_watch.sh` | B2 跨域**判据**（纯 CPU，不占卡） | 等 1 |
+| 5 | `e_report_after_final.sh` | **全套判据自动重算**（纯 CPU） | 等 2+3 |
+
+**为什么串行**：单卡。1/2/3 各占满显存；4/5 只读 CSV/npz，不占卡。
+
+### 9.1 ★ 新增的一条纪律：汇总表必须**由脚本自己写文件**
+
+今天发现论文 §3/§6/§7/§8 引用的三口径 w 表是**手工重定向留下的过期快照**
+（`results/report/wdef_table.txt` 停在 05:37 的 **26 桶**，而臂清单早已是 **35 桶**：
+w1 = 27/35、w2 = 0/35、w3 = 0/35）。
+根因是 `b64_wdef.py` **只 print、不写文件**。
+
+**已修**：`b64_wdef.py` 现在把 stdout **tee** 进 `results/report/wdef_table.txt`，
+并在末尾写**输入指纹**（臂文件数 + 名字与大小 md5 + 生成时间）。
+`e_report_all.sh` 也新增了第 7/8/9 节，把这张表和两个新判据都纳进来。
+⇒ **教训：凡被论文引用的汇总表，必须由脚本自己写文件；"我跑过了"可能只是打到了屏幕上。**
+
+### 9.2 跑臂前的预检结论（省下的是白跑的时间）
+
+* `maps/{ucf,fsc}_index.csv` / `maps/bay_eval_index.csv` 与 cache **2064 = 2064**，
+  `count_cached` 与 cache `count` 相对差 **中位/p90/max 全为 0.0000**，抽样 200 个 PNG **全在**。
+* **`maps/*_index.csv` 的 `bad` 列不是布尔，是 QC 代码，且不是阻断项**：
+  论文自己在用的 `dmcount_eval` 索引有 **61.8%** 行 `bad=2`，`bay_eval` 有 70.0%，
+  而 `bad!=0` 行的 `rel_err_png_vs_clamped` 中位只有 **6.4e-7 / 7.6e-7**
+  ⇒ 渲染 PNG 忠实重建了被截断的场。
+  **判据**：只要 `rel_err_png_vs_clamped` 在 1e-5 量级且 PNG 存在即可用；
+  **不能因为 `bad != 0` 就跳过**——那会把论文里已经用着的臂一起否掉。
+
+### 9.3 后台作业的启动方式（今天踩到的）
+
+`nohup bash x.sh &` 在 SSH 会话里**会被会话退出带走**（第一次启动的作业连日志都没建）。
+必须 **`setsid nohup bash x.sh > /dev/null 2>&1 < /dev/null &`**，
+并立刻用 `pgrep -af "x.s[h]"`（字符类，避免匹配到自己）确认进程活着。
+另外：`cd A && nohup B & sleep 10; tail C` 里 **`cd` 也在后台子壳内**，
+前台用的是原工作目录 ⇒ 后续命令要用**绝对路径**或另起一行 `cd`。
+
+### 9.4 仍需保留的目录（会议侧还要用）
+
+`/root/cvpr_exp/`（含 `cache/`、`maps/`、`results/`、脚本）、`/root/w1_results/`、
+`/root/aerial_train_vis/`（B5 训练图 2000 张，409 MB）、`/root/aerial`、`/root/dense`、
+`/root/fsc147`、`/root/z0`。可回收项见 §6 的回收表。

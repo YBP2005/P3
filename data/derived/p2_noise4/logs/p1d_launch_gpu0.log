@@ -1,0 +1,10 @@
+[07:22:47][gpu0] == gpu0 开始 ｜ 组：A ｜ 臂：forbid0,neutral0,base ｜ workers=8 ==
+[07:22:47][gpu0] [Qwen3-VL-32B-Instruct] GPU0 port=8006 frac=0.85 maxlen=4096 extra='' 起服
+[07:25:43][gpu0] [Qwen3-VL-32B-Instruct] 就绪（176s）
+[07:32:36][gpu0] [Qwen3-VL-32B-Instruct/forbid0] 675 行
+[07:32:36][gpu0] [Qwen3-VL-32B-Instruct/neutral0] 675 行
+[07:32:36][gpu0] [Qwen3-VL-32B-Instruct/base] 675 行
+/root/p1d_run.sh: line 70: 10528 Killed                  CUDA_VISIBLE_DEVICES="$G" nohup $VLLM serve "$MP" --served-model-name "$NAME" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization "$FRAC" --max-num-seqs 24 --port "$PORT" $EXTRA < /dev/null > "$LOG" 2>&1
+[07:32:41][gpu0] [Qwen3-VL-32B-Instruct] 完成并已停自己的服务
+[07:32:41][gpu0] == 组 A 结束 ==
+[07:32:41][gpu0] P1D_gpu0_DONE

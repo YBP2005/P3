@@ -1,0 +1,33 @@
+[14:37:28] ########## E-A 开始（真零池 306 图 × 3 臂；起服参数对齐 E3）##########
+[14:37:28] ===== E-A 家族 ivl8b（InternVL3_5-8B）=====
+[14:38:16]   [ivl8b] 起服就绪 45s
+[14:38:16]   [ivl8b] z0easy × base,permit,channel
+[14:38:44]   [ivl8b] z0hard × base,permit,channel
+/root/ea_run.sh: line 20:  1215 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ea_${TAG}.log" 2>&1
+[14:39:13]   [ivl8b] 完成
+[14:39:13] ===== E-A 家族 phi35（Phi-3.5-vision-instruct）=====
+[14:40:46]   [phi35] 起服就绪 90s
+[14:40:46]   [phi35] z0easy × base,permit,channel
+[14:41:27]   [phi35] z0hard × base,permit,channel
+/root/ea_run.sh: line 20:  1619 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ea_${TAG}.log" 2>&1
+[14:42:06]   [phi35] 完成
+[14:42:06] ===== E-A 家族 llavaov（llava-onevision-qwen2-7b-ov）=====
+[14:44:39]   [llavaov] 起服就绪 150s
+[14:44:39]   [llavaov] z0easy × base,permit,channel
+[14:46:16]   [llavaov] z0hard × base,permit,channel
+/root/ea_run.sh: line 20:  1995 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ea_${TAG}.log" 2>&1
+[14:47:33]   [llavaov] 完成
+[14:47:33] ===== E-A 家族 gemma12b（gemma3-12b）=====
+[14:50:07]   [gemma12b] 起服就绪 150s
+[14:50:07]   [gemma12b] z0easy × base,permit,channel
+[14:50:38]   [gemma12b] z0hard × base,permit,channel
+/root/ea_run.sh: line 20:  2444 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ea_${TAG}.log" 2>&1
+[14:51:12]   [gemma12b] 完成
+[14:51:12] ===== E-A 家族 qwen32b（Qwen3-VL-32B-Instruct）=====
+[14:54:00]   [qwen32b] 起服就绪 165s
+[14:54:00]   [qwen32b] z0easy × base,permit,channel
+[14:55:45]   [qwen32b] z0hard × base,permit,channel
+/root/ea_run.sh: line 20:  2892 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 8192 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 24 --port 8000 "$@" < /dev/null > "/root/logs/serve_ea_${TAG}.log" 2>&1
+[14:57:26]   [qwen32b] 完成
+[14:57:26] ########## E-A 结束 ##########
+  产物文件数：30

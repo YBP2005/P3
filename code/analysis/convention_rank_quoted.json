@@ -1,0 +1,64 @@
+{
+ "source": "convention_rank_result.json（域内共同 item 交集上算）",
+ "per_domain": {
+  "st_a": {
+   "n_config": 14,
+   "common_n": 144,
+   "spearman_three_decimals": 0.604,
+   "max_abs_delta_rho_pp_one_decimal": 48.2,
+   "max_delta_config": "qwen3-vl-32b-awq",
+   "inversions": 17,
+   "pairs": 91
+  },
+  "ucf": {
+   "n_config": 14,
+   "common_n": 249,
+   "spearman_three_decimals": 0.864,
+   "max_abs_delta_rho_pp_one_decimal": 36.2,
+   "max_delta_config": "qwen3-vl-32b-fp8",
+   "inversions": 11,
+   "pairs": 91
+  },
+  "visdrone": {
+   "n_config": 8,
+   "common_n": 277,
+   "spearman_three_decimals": 1.0,
+   "max_abs_delta_rho_pp_one_decimal": 9.4,
+   "max_delta_config": "qwen3-vl-32b-awq",
+   "inversions": 0,
+   "pairs": 28
+  },
+  "aitod": {
+   "n_config": 8,
+   "common_n": 222,
+   "spearman_three_decimals": 0.476,
+   "max_abs_delta_rho_pp_one_decimal": 37.5,
+   "max_delta_config": "qwen3-vl-32b-awq",
+   "inversions": 9,
+   "pairs": 28
+  }
+ },
+ "quoted_in_section_5_12": {
+  "spearman_range_three_decimals": [
+   0.476,
+   1.0
+  ],
+  "max_abs_delta_rho_pp_one_decimal_overall": 48.2,
+  "inversions_dense": 28,
+  "pairs_dense": 182,
+  "inversions_all": 37,
+  "pairs_all": 238,
+  "common_n": {
+   "st_a": 144,
+   "ucf": 249,
+   "visdrone": 277,
+   "aitod": 222
+  },
+  "n_config": {
+   "st_a": 14,
+   "ucf": 14,
+   "visdrone": 8,
+   "aitod": 8
+  }
+ }
+}

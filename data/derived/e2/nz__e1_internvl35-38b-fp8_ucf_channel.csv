@@ -1,0 +1,433 @@
+item,gt,pred,parse_ok,raw,latency_s
+img_0039,88,,0,"```json
+{""response"": ""cannot_judge""}
+```",12.02
+img_0047,100,,0,"```json
+{""response"": ""cannot_judge""}
+```",12.03
+img_0007,77,,0,"```json
+{""response"": ""cannot_judge""}
+```",12.08
+img_0250,65,,0,"```json
+{""response"": ""cannot_judge""}
+```",12.08
+img_0008,92,,0,"```json
+{""response"": ""cannot_judge""}
+```",12.07
+img_0198,104,,0,"```json
+{""response"": ""cannot_judge""}
+```",12.08
+img_0005,103,,0,"```json
+{""response"": ""cannot_judge""}
+```",12.08
+img_0249,83,,0,"```json
+{""response"": ""cannot_judge""}
+```",13.32
+img_0235,125,,0,"{""response"": ""cannot_judge""}",10.38
+img_0175,117,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.47
+img_0026,113,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.54
+img_0021,127,,0,"```json
+{""response"": ""cannot_judge""}
+```",9.3
+img_0172,110,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.55
+img_0189,122,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.5
+img_0096,107,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.57
+img_0081,121,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.53
+img_0170,148,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.14
+img_0168,138,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.16
+img_0094,146,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.16
+img_0147,135,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.16
+img_0033,129,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.37
+img_0018,141,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.83
+img_0042,130,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.95
+img_0020,133,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.89
+img_0194,159,,0,"{""response"": ""cannot_judge""}",9.02
+img_0121,150,,0,"```json
+{""response"": ""cannot_judge""}
+```",9.77
+img_0045,153,,0,"```json
+{""response"": ""cannot_judge""}
+```",9.78
+img_0134,152,,0,"```json
+{""response"": ""cannot_judge""}
+```",9.78
+img_0111,157,,0,"```json
+{""response"": ""cannot_judge""}
+```",9.72
+img_0186,158,,0,"```json
+{""response"": ""cannot_judge""}
+```",9.12
+img_0043,155,,0,"```json
+{""response"": ""cannot_judge""}
+```",9.81
+img_0145,161,,0,"```json
+{""response"": ""cannot_judge""}
+```",9.11
+img_0238,170,,0,"{""response"": ""cannot_judge""}",12.85
+img_0299,165,,0,"```json
+{""response"": ""cannot_judge""}
+```",12.92
+img_0253,163,,0,"```json
+{""response"": ""cannot_judge""}
+```",13.02
+img_0044,169,,0,"```json
+{""response"": ""cannot_judge""}
+```",12.93
+img_0326,165,,0,"```json
+{""response"": ""cannot_judge""}
+```",12.96
+img_0197,165,,0,"```json
+{""response"": ""cannot_judge""}
+```",13.02
+img_0105,166,,0,"```json
+{""response"": ""cannot_judge""}
+```",12.98
+img_0141,171,,0,"```json
+{""response"": ""cannot_judge""}
+```",12.98
+img_0101,175,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.17
+img_0169,174,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.21
+img_0228,172,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.27
+img_0046,177,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.17
+img_0086,176,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.21
+img_0237,178,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.19
+img_0027,181,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.19
+img_0004,183,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.17
+img_0017,191,,0,"{""response"": ""cannot_judge""}",10.75
+img_0051,187,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.88
+img_0077,203,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.82
+img_0040,201,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.82
+img_0165,198,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.84
+img_0056,194,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.91
+img_0108,188,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.92
+img_0192,195,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.89
+img_0208,204,,0,"{""response"": ""cannot_judge""}",11.55
+img_0195,211,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.45
+img_0212,218,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.45
+img_0193,210,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.48
+img_0247,214,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.48
+img_0248,205,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.55
+img_0241,207,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.55
+img_0288,216,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.5
+img_0300,236,,0,"{""response"": ""cannot_judge""}",10.17
+img_0100,232,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.26
+img_0070,233,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.26
+img_0060,227,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.31
+img_0244,228,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.33
+img_0061,236,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.3
+img_0014,225,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.36
+img_0034,221,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.41
+img_0283,241,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.94
+img_0234,244,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.95
+img_0289,251,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.89
+img_0265,245,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.96
+img_0009,237,,0,"```json
+{""response"": ""cannot_judge""}
+```",12.04
+img_0158,247,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.94
+img_0098,249,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.94
+img_0075,253,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.94
+img_0177,272,,0,"{""response"": ""cannot_judge""}",10.05
+img_0312,270,,0,"{""response"": ""cannot_judge""}",10.08
+img_0199,263,,0,"{""response"": ""cannot_judge""}",10.12
+img_0263,258,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.18
+img_0277,259,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.19
+img_0213,266,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.19
+img_0182,269,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.19
+img_0067,255,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.25
+img_0188,275,,0,"{""response"": ""cannot_judge""}",11.92
+img_0243,289,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.9
+img_0115,291,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.9
+img_0162,279,,0,"```json
+{""response"": ""cannot_judge""}
+```",12.0
+img_0038,297,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.9
+img_0085,283,,0,"```json
+{""response"": ""cannot_judge""}
+```",12.01
+img_0196,287,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.96
+img_0132,294,,0,"```json
+{""response"": ""cannot_judge""}
+```",15.49
+img_0099,304,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.8
+img_0200,299,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.89
+img_0239,306,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.81
+img_0245,308,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.81
+img_0276,302,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.84
+img_0129,311,,0,"```json
+{""response"": ""cannot_judge""}
+```",8.27
+img_0036,302,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.89
+img_0126,305,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.85
+img_0302,315,,0,"```json
+{""response"": ""cannot_judge""}
+```",9.78
+img_0135,314,,0,"```json
+{""response"": ""cannot_judge""}
+```",9.81
+img_0161,313,,0,"```json
+{""response"": ""cannot_judge""}
+```",9.85
+img_0176,326,,0,"```json
+{""response"": ""cannot_judge""}
+```",9.81
+img_0240,329,,0,"```json
+{""response"": ""cannot_judge""}
+```",9.82
+img_0233,332,,0,"```json
+{""response"": ""cannot_judge""}
+```",9.8
+img_0259,338,,0,"```json
+{""response"": ""cannot_judge""}
+```",9.8
+img_0107,335,,0,"```json
+{""response"": ""cannot_judge""}
+```",9.8
+img_0284,376,,0,"{""response"": ""cannot_judge""}",10.77
+img_0068,363,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.84
+img_0030,367,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.85
+img_0142,353,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.88
+img_0024,385,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.87
+img_0055,361,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.9
+img_0261,343,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.95
+img_0095,370,,0,"```json
+{""response"": ""cannot_judge""}
+```",10.89
+img_0150,396,,0,"```json
+{""response"": ""cannot_judge""}
+```",13.06
+img_0146,387,,0,"```json
+{""response"": ""cannot_judge""}
+```",13.15
+img_0127,408,,0,"```json
+{""response"": ""cannot_judge""}
+```",13.04
+img_0149,390,,0,"```json
+{""response"": ""cannot_judge""}
+```",13.11
+img_0232,419,,0,"```json
+{""response"": ""cannot_judge""}
+```",14.25
+img_0050,425,,0,"```json
+{""response"": ""cannot_judge""}
+```",14.24
+img_0015,413,,0,"```json
+{""response"": ""cannot_judge""}
+```",14.26
+img_0140,398,,0,"```json
+{""response"": ""cannot_judge""}
+```",18.82
+img_0274,457,,0,"{""response"": ""cannot_judge""}",8.16
+img_0328,426,,0,"```json
+{""response"": ""cannot_judge""}
+```",13.92
+img_0109,441,,0,"```json
+{""response"": ""cannot_judge""}
+```",13.91
+img_0097,431,,0,"```json
+{""response"": ""cannot_judge""}
+```",13.95
+img_0130,456,,0,"```json
+{""response"": ""cannot_judge""}
+```",12.73
+img_0144,446,,0,"```json
+{""response"": ""cannot_judge""}
+```",12.74
+img_0211,434,,0,"```json
+{""response"": ""cannot_judge""}
+```",13.98
+img_0029,450,,0,"```json
+{""response"": ""cannot_judge""}
+```",12.76
+img_0110,460,,0,"{""response"": ""cannot_judge""}",11.81
+img_0285,582,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.79
+img_0207,463,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.9
+img_0131,475,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.9
+img_0262,550,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.88
+img_0123,485,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.89
+img_0069,547,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.91
+img_0181,466,,0,"```json
+{""response"": ""cannot_judge""}
+```",11.96
+img_0117,737,,0,"{""response"": ""cannot_judge""}",12.03
+img_0138,632,,0,"```json
+{""response"": ""cannot_judge""}
+```",12.21
+img_0218,712,,0,"```json
+{""response"": ""cannot_judge""}
+```",12.06
+img_0091,636,,0,"```json
+{""response"": ""cannot_judge""}
+```",12.14
+img_0136,652,,0,"{""response"": ""cannot_judge""}",12.14
+img_0114,800,,0,"```json
+{""response"": ""cannot_judge""}
+```",12.08
+img_0057,687,,0,"```json
+{""response"": ""cannot_judge""}
+```",12.1
+img_0124,757,,0,"```json
+{""response"": ""cannot_judge""}
+```",12.1
+img_0064,1357,,0,"```json
+{""response"": ""cannot_judge""}
+```",3.91
+img_0246,1036,,0,"```json
+{""response"": ""cannot_judge""}
+```",3.95

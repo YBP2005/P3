@@ -1,0 +1,25 @@
+[15:43:24] ########## FSC 面板扩展开始（等机制臂结束）##########
+[15:49:24]   机制臂已完成，开始扩展
+[15:51:42]   [fsc3_q8] 起服就绪（135s）
+仪器：复用 19e 的 P/parse/call_img（19e 未改动）
+  [base] 300 行；pred==0 的 283 个；-> /root/fsc_results/fsc_Qwen3-VL-8B-Instruct_base.csv
+  [permit] 300 行；pred==0 的 0 个；-> /root/fsc_results/fsc_Qwen3-VL-8B-Instruct_permit.csv
+[15:51:59]   [fsc3_q8] rc=0 用时 17s
+[15:54:18]   [fsc3_q4] 起服就绪（135s）
+仪器：复用 19e 的 P/parse/call_img（19e 未改动）
+  [base] 300 行；pred==0 的 276 个；-> /root/fsc_results/fsc_Qwen3-VL-4B-Instruct_base.csv
+  [permit] 300 行；pred==0 的 9 个；-> /root/fsc_results/fsc_Qwen3-VL-4B-Instruct_permit.csv
+[15:54:31]   [fsc3_q4] rc=0 用时 13s
+[15:58:34]   [fsc3_q30m] 起服就绪（240s）
+仪器：复用 19e 的 P/parse/call_img（19e 未改动）
+  [base] 300 行；pred==0 的 201 个；-> /root/fsc_results/fsc_Qwen3-VL-30B-A3B-Instruct_base.csv
+  [permit] 300 行；pred==0 的 14 个；-> /root/fsc_results/fsc_Qwen3-VL-30B-A3B-Instruct_permit.csv
+[15:59:12]   [fsc3_q30m] rc=0 用时 38s
+[16:01:00]   [fsc3_q253] 起服就绪（105s）
+仪器：复用 19e 的 P/parse/call_img（19e 未改动）
+  [base] 300 行；pred==0 的 277 个；-> /root/fsc_results/fsc_Qwen2.5-VL-3B-Instruct_base.csv
+  [permit] 300 行；pred==0 的 0 个；-> /root/fsc_results/fsc_Qwen2.5-VL-3B-Instruct_permit.csv
+[16:01:19]   [fsc3_q253] rc=0 用时 19s
+[16:01:19] 文件清点：28 个
+[16:01:19] ########## FSC 面板扩展结束 ##########
+FSC3_DONE

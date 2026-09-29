@@ -1,0 +1,164 @@
+[00:48:43] ########## W1 主面板开始 ##########
+[00:48:43] 冻结判据 md5 75eeca6fa68c9be65c2b569d4237d8df；仪器 19f md5 28e82b20a7f4；本脚本不判定
+overlay         128G   70G   53G  57% /
+[00:48:43] ===== 家族 minicpmv26（MiniCPM-V-2_6）=====
+[00:51:31]   [minicpmv26] 起服就绪 165s
+  base 臂 pred==0 的 item 共 103 个；本次抽 2 个（gt 从 138 到 452）
+  [base] 2 行；pred==0 的 0 个；-> /root/w1_results/smoke/e1_MiniCPM-V-2_6_st_a_base_native.csv
+  base 臂 pred==0 的 item 共 273 个；本次抽 2 个（gt 从 1 到 7）
+  [base] 2 行；pred==0 的 0 个；-> /root/w1_results/smoke/e1_MiniCPM-V-2_6_visdrone_base_native.csv
+[00:51:33]   [minicpmv26] smoke：可解析 0 / 4 条
+[00:51:33] !! minicpmv26 未过 smoke 门（base 臂产不出可解析 JSON）⇒ 排除；不调提示词、不改判据
+[00:51:36] ===== 家族 step3vl10b（Step3-VL-10B）=====
+[00:51:54]   [step3vl10b] !! 起服报错（早停）
+      (APIServer pid=1287)   Value error, The repository /model/ModelScope/stepfun-ai/Step3-VL-10B contains custom code which must be executed to correctly load the model. You can inspect the repository content at /model/ModelScope/stepfun-ai/Step3-VL-10B .
+      (APIServer pid=1287)  You can inspect the repository content at https://hf.co//model/ModelScope/stepfun-ai/Step3-VL-10B.
+      (APIServer pid=1287) Please pass the argument `trust_remote_code=True` to allow custom code to be run. [type=value_error, input_value=ArgsKwargs((), {'model': ...nderer_num_workers': 1}), input_type=ArgsKwargs]
+      (APIServer pid=1287)     For further information visit https://errors.pydantic.dev/2.13/v/value_error
+[00:51:54] !! step3vl10b 起服失败（vLLM 0.29 载入不了该架构）⇒ 排除并记入 frame 表
+[00:51:57] ===== 家族 gemma4_31b（gemma-4-31b-it）=====
+[00:57:16]   [gemma4_31b] 起服就绪 315s
+  base 臂 pred==0 的 item 共 103 个；本次抽 2 个（gt 从 138 到 452）
+  [base] 2 行；pred==0 的 0 个；-> /root/w1_results/smoke/e1_gemma-4-31b-it_st_a_base_native.csv
+  base 臂 pred==0 的 item 共 273 个；本次抽 2 个（gt 从 1 到 7）
+  [base] 2 行；pred==0 的 0 个；-> /root/w1_results/smoke/e1_gemma-4-31b-it_visdrone_base_native.csv
+[00:57:21]   [gemma4_31b] smoke：可解析 4 / 4 条
+[00:57:21]   [gemma4_31b] st_a 零池 base,permit,channel（native）
+  base 臂 pred==0 的 item 共 103 个；本次抽 103 个（gt 从 138 到 2256）
+  [base] 103 行；pred==0 的 2 个；-> /root/w1_results/zero/e1_gemma-4-31b-it_st_a_base_native.csv
+  [permit] 103 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_gemma-4-31b-it_st_a_permit_native.csv
+  [channel] 103 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_gemma-4-31b-it_st_a_channel_native.csv
+[00:58:29]   [gemma4_31b] st_a 零池 base@s640（分辨率旋钮臂）
+  base 臂 pred==0 的 item 共 103 个；本次抽 103 个（gt 从 138 到 2256）
+  [base] 103 行；pred==0 的 7 个；-> /root/w1_results/zero/e1_gemma-4-31b-it_st_a_base_s640.csv
+[00:58:56]   [gemma4_31b] st_a 非零池 base,permit,channel
+  base 臂 pred==0 的 item 共 79 个；本次抽 79 个（gt 从 66 到 823）
+  [base] 79 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_gemma-4-31b-it_st_a_base_native.csv
+  [permit] 79 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_gemma-4-31b-it_st_a_permit_native.csv
+  [channel] 79 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_gemma-4-31b-it_st_a_channel_native.csv
+[00:59:46]   [gemma4_31b] ucf 零池 base,permit,channel（native）
+  base 臂 pred==0 的 item 共 180 个；本次抽 150 个（gt 从 137 到 1798）
+  [base] 150 行；pred==0 的 12 个；-> /root/w1_results/zero/e1_gemma-4-31b-it_ucf_base_native.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_gemma-4-31b-it_ucf_permit_native.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_gemma-4-31b-it_ucf_channel_native.csv
+[01:01:28]   [gemma4_31b] ucf 零池 base@s640（分辨率旋钮臂）
+  base 臂 pred==0 的 item 共 180 个；本次抽 150 个（gt 从 137 到 1798）
+  [base] 150 行；pred==0 的 20 个；-> /root/w1_results/zero/e1_gemma-4-31b-it_ucf_base_s640.csv
+[01:02:06]   [gemma4_31b] ucf 非零池 base,permit,channel
+  base 臂 pred==0 的 item 共 154 个；本次抽 150 个（gt 从 65 到 737）
+  [base] 150 行；pred==0 的 1 个；-> /root/w1_results/nonzero/e1_gemma-4-31b-it_ucf_base_native.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_gemma-4-31b-it_ucf_permit_native.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_gemma-4-31b-it_ucf_channel_native.csv
+[01:03:45]   [gemma4_31b] visdrone 零池 base,permit,channel（native）
+  base 臂 pred==0 的 item 共 273 个；本次抽 150 个（gt 从 1 到 8）
+  [base] 150 行；pred==0 的 87 个；-> /root/w1_results/zero/e1_gemma-4-31b-it_visdrone_base_native.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_gemma-4-31b-it_visdrone_permit_native.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_gemma-4-31b-it_visdrone_channel_native.csv
+[01:05:17]   [gemma4_31b] visdrone 零池 base@s640（分辨率旋钮臂）
+  base 臂 pred==0 的 item 共 273 个；本次抽 150 个（gt 从 1 到 8）
+  [base] 150 行；pred==0 的 95 个；-> /root/w1_results/zero/e1_gemma-4-31b-it_visdrone_base_s640.csv
+[01:05:49]   [gemma4_31b] visdrone 非零池 base,permit,channel
+  base 臂 pred==0 的 item 共 127 个；本次抽 127 个（gt 从 1 到 262）
+  [base] 127 行；pred==0 的 1 个；-> /root/w1_results/nonzero/e1_gemma-4-31b-it_visdrone_base_native.csv
+  [permit] 127 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_gemma-4-31b-it_visdrone_permit_native.csv
+  [channel] 127 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_gemma-4-31b-it_visdrone_channel_native.csv
+[01:07:10]   [gemma4_31b] aitod 零池 base,permit,channel（native）
+  base 臂 pred==0 的 item 共 154 个；本次抽 150 个（gt 从 1 到 61）
+  [base] 150 行；pred==0 的 60 个；-> /root/w1_results/zero/e1_gemma-4-31b-it_aitod_base_native.csv
+  [permit] 150 行；pred==0 的 1 个；-> /root/w1_results/zero/e1_gemma-4-31b-it_aitod_permit_native.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_gemma-4-31b-it_aitod_channel_native.csv
+[01:08:42]   [gemma4_31b] aitod 零池 base@s640（分辨率旋钮臂）
+  base 臂 pred==0 的 item 共 154 个；本次抽 150 个（gt 从 1 到 61）
+  [base] 150 行；pred==0 的 62 个；-> /root/w1_results/zero/e1_gemma-4-31b-it_aitod_base_s640.csv
+[01:09:14]   [gemma4_31b] aitod 非零池 base,permit,channel
+  base 臂 pred==0 的 item 共 72 个；本次抽 72 个（gt 从 1 到 123）
+  [base] 72 行；pred==0 的 1 个；-> /root/w1_results/nonzero/e1_gemma-4-31b-it_aitod_base_native.csv
+  [permit] 72 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_gemma-4-31b-it_aitod_permit_native.csv
+  [channel] 72 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_gemma-4-31b-it_aitod_channel_native.csv
+[01:10:00]   [gemma4_31b] 面板完成：零池 16 个文件 / 非零池 12 个文件（期望 16 / 12）
+[01:10:03] ===== 家族 dsvl2_tiny（dsvl2-tiny）=====
+[01:10:51]   [dsvl2_tiny] !! 起服报错（早停）
+      (APIServer pid=2461)     raise RuntimeError(
+      (APIServer pid=2461)     ...<8 lines>...
+      (APIServer pid=2461)     )
+      (APIServer pid=2461) RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+[01:10:51] !! dsvl2_tiny 起服失败（vLLM 0.29 载入不了该架构）⇒ 排除并记入 frame 表
+[01:10:54] ===== 家族 idefics3_8b（Idefics3-8B-Llama3）=====
+[01:12:43]   [idefics3_8b] 起服就绪 105s
+  base 臂 pred==0 的 item 共 103 个；本次抽 2 个（gt 从 138 到 452）
+  [base] 2 行；pred==0 的 0 个；-> /root/w1_results/smoke/e1_Idefics3-8B-Llama3_st_a_base_native.csv
+  base 臂 pred==0 的 item 共 273 个；本次抽 2 个（gt 从 1 到 7）
+  [base] 2 行；pred==0 的 1 个；-> /root/w1_results/smoke/e1_Idefics3-8B-Llama3_visdrone_base_native.csv
+[01:12:44]   [idefics3_8b] smoke：可解析 4 / 4 条
+[01:12:44]   [idefics3_8b] st_a 零池 base,permit,channel（native）
+  base 臂 pred==0 的 item 共 103 个；本次抽 103 个（gt 从 138 到 2256）
+  [base] 103 行；pred==0 的 5 个；-> /root/w1_results/zero/e1_Idefics3-8B-Llama3_st_a_base_native.csv
+  [permit] 103 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_Idefics3-8B-Llama3_st_a_permit_native.csv
+  [channel] 103 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_Idefics3-8B-Llama3_st_a_channel_native.csv
+[01:13:15]   [idefics3_8b] st_a 零池 base@s640（分辨率旋钮臂）
+  base 臂 pred==0 的 item 共 103 个；本次抽 103 个（gt 从 138 到 2256）
+  [base] 103 行；pred==0 的 7 个；-> /root/w1_results/zero/e1_Idefics3-8B-Llama3_st_a_base_s640.csv
+[01:13:33]   [idefics3_8b] st_a 非零池 base,permit,channel
+  base 臂 pred==0 的 item 共 79 个；本次抽 79 个（gt 从 66 到 823）
+  [base] 79 行；pred==0 的 2 个；-> /root/w1_results/nonzero/e1_Idefics3-8B-Llama3_st_a_base_native.csv
+  [permit] 79 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_Idefics3-8B-Llama3_st_a_permit_native.csv
+  [channel] 79 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_Idefics3-8B-Llama3_st_a_channel_native.csv
+[01:13:58]   [idefics3_8b] ucf 零池 base,permit,channel（native）
+  base 臂 pred==0 的 item 共 180 个；本次抽 150 个（gt 从 137 到 1798）
+  [base] 150 行；pred==0 的 6 个；-> /root/w1_results/zero/e1_Idefics3-8B-Llama3_ucf_base_native.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_Idefics3-8B-Llama3_ucf_permit_native.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_Idefics3-8B-Llama3_ucf_channel_native.csv
+[01:14:55]   [idefics3_8b] ucf 零池 base@s640（分辨率旋钮臂）
+  base 臂 pred==0 的 item 共 180 个；本次抽 150 个（gt 从 137 到 1798）
+  [base] 150 行；pred==0 的 7 个；-> /root/w1_results/zero/e1_Idefics3-8B-Llama3_ucf_base_s640.csv
+[01:15:26]   [idefics3_8b] ucf 非零池 base,permit,channel
+  base 臂 pred==0 的 item 共 154 个；本次抽 150 个（gt 从 65 到 737）
+  [base] 150 行；pred==0 的 2 个；-> /root/w1_results/nonzero/e1_Idefics3-8B-Llama3_ucf_base_native.csv
+  [permit] 150 行；pred==0 的 1 个；-> /root/w1_results/nonzero/e1_Idefics3-8B-Llama3_ucf_permit_native.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_Idefics3-8B-Llama3_ucf_channel_native.csv
+[01:16:25]   [idefics3_8b] visdrone 零池 base,permit,channel（native）
+  base 臂 pred==0 的 item 共 273 个；本次抽 150 个（gt 从 1 到 8）
+  [base] 150 行；pred==0 的 78 个；-> /root/w1_results/zero/e1_Idefics3-8B-Llama3_visdrone_base_native.csv
+  [permit] 150 行；pred==0 的 19 个；-> /root/w1_results/zero/e1_Idefics3-8B-Llama3_visdrone_permit_native.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/w1_results/zero/e1_Idefics3-8B-Llama3_visdrone_channel_native.csv
+[01:17:12]   [idefics3_8b] visdrone 零池 base@s640（分辨率旋钮臂）
+  base 臂 pred==0 的 item 共 273 个；本次抽 150 个（gt 从 1 到 8）
+  [base] 150 行；pred==0 的 94 个；-> /root/w1_results/zero/e1_Idefics3-8B-Llama3_visdrone_base_s640.csv
+[01:17:45]   [idefics3_8b] visdrone 非零池 base,permit,channel
+  base 臂 pred==0 的 item 共 127 个；本次抽 127 个（gt 从 1 到 262）
+  [base] 127 行；pred==0 的 1 个；-> /root/w1_results/nonzero/e1_Idefics3-8B-Llama3_visdrone_base_native.csv
+  [permit] 127 行；pred==0 的 1 个；-> /root/w1_results/nonzero/e1_Idefics3-8B-Llama3_visdrone_permit_native.csv
+  [channel] 127 行；pred==0 的 0 个；-> /root/w1_results/nonzero/e1_Idefics3-8B-Llama3_visdrone_channel_native.csv
+[01:18:25]   [idefics3_8b] aitod 零池 base,permit,channel（native）
+  base 臂 pred==0 的 item 共 154 个；本次抽 150 个（gt 从 1 到 61）
+  [base] 150 行；pred==0 的 51 个；-> /root/w1_results/zero/e1_Idefics3-8B-Llama3_aitod_base_native.csv
+  [permit] 150 行；pred==0 的 21 个；-> /root/w1_results/zero/e1_Idefics3-8B-Llama3_aitod_permit_native.csv
+  [channel] 150 行；pred==0 的 1 个；-> /root/w1_results/zero/e1_Idefics3-8B-Llama3_aitod_channel_native.csv
+[01:20:31]   [idefics3_8b] aitod 零池 base@s640（分辨率旋钮臂）
+  base 臂 pred==0 的 item 共 154 个；本次抽 150 个（gt 从 1 到 61）
+  [base] 150 行；pred==0 的 52 个；-> /root/w1_results/zero/e1_Idefics3-8B-Llama3_aitod_base_s640.csv
+[01:21:13]   [idefics3_8b] aitod 非零池 base,permit,channel
+  base 臂 pred==0 的 item 共 72 个；本次抽 72 个（gt 从 1 到 123）
+  [base] 72 行；pred==0 的 1 个；-> /root/w1_results/nonzero/e1_Idefics3-8B-Llama3_aitod_base_native.csv
+  [permit] 72 行；pred==0 的 1 个；-> /root/w1_results/nonzero/e1_Idefics3-8B-Llama3_aitod_permit_native.csv
+  [channel] 72 行；pred==0 的 1 个；-> /root/w1_results/nonzero/e1_Idefics3-8B-Llama3_aitod_channel_native.csv
+[01:21:42]   [idefics3_8b] 面板完成：零池 16 个文件 / 非零池 12 个文件（期望 16 / 12）
+[01:21:45]   释放磁盘：删除已跑完的下载权重 /root/w1_models/idefics3-8b
+overlay         182G   84G   92G  48% /
+[01:41:46] ===== 家族 molmo7b（Molmo-7B-D-0924）=====
+[01:42:04]   [molmo7b] !! 起服报错（早停）
+      (APIServer pid=4441)   Value error, The repository /root/w1_models/molmo-7b-d contains custom code which must be executed to correctly load the model. You can inspect the repository content at /root/w1_models/molmo-7b-d .
+      (APIServer pid=4441)  You can inspect the repository content at https://hf.co//root/w1_models/molmo-7b-d.
+      (APIServer pid=4441) Please pass the argument `trust_remote_code=True` to allow custom code to be run. [type=value_error, input_value=ArgsKwargs((), {'model': ...nderer_num_workers': 1}), input_type=ArgsKwargs]
+      (APIServer pid=4441)     For further information visit https://errors.pydantic.dev/2.13/v/value_error
+[01:42:04] !! molmo7b 起服失败（vLLM 0.29 载入不了该架构）⇒ 排除并记入 frame 表
+[01:42:08] 已完成家族 2 < 6 ⇒ 启用备选 Phi-4-multimodal（Microsoft）
+[02:22:44] ===== 主面板收尾（w1_close_main.sh）=====
+[02:22:44] 已停止 Phi-4 下载进程
+[02:22:44] 已停止等待中的主驱动
+[02:22:47] 主面板家族产物盘点（零池文件数 / 非零池文件数）：
+[02:22:47]   Idefics3-8B-Llama3  零池 16 / 非零池 12
+[02:22:47]   gemma-4-31b-it  零池 16 / 非零池 12
+[02:22:47] 备选 Phi-4-multimodal-instruct 弃用：vision-lora(738MB)/speech-lora(922MB) 适配器与相关配置在 ModelScope 两轮重试后仍为 0 字节 ⇒ 缺视觉适配器，不构成可用视觉受试。
+[02:22:47] 后续由回收队列补齐：Step3-VL-10B(trust_remote_code) / MiniCPM-V-4_5 / deepseek-vl2-tiny(timm) / Molmo-7B-D(trust_remote_code)。
+[02:22:47] W1_PANEL_DONE（由 w1_close_main.sh 写入：主面板已收尾，非下载器信号）

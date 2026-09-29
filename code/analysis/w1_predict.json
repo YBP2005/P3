@@ -1,0 +1,325 @@
+{
+  "models": {
+    "M0": {
+      "loo_mae": 24.3,
+      "corr": -0.321
+    },
+    "M1": {
+      "loo_mae": 11.7,
+      "corr": 0.673
+    },
+    "M2": {
+      "loo_mae": 17.4,
+      "corr": 0.607
+    }
+  },
+  "criterion_met": false,
+  "domain_features": {
+    "st_a": {
+      "gt_mean": 585.0,
+      "n": 103
+    },
+    "ucf": {
+      "gt_mean": 771.8,
+      "n": 150
+    },
+    "visdrone": {
+      "gt_mean": 3.4,
+      "n": 150
+    },
+    "aitod": {
+      "gt_mean": 9.9,
+      "n": 150
+    }
+  },
+  "cells": [
+    {
+      "fam": "Idefics3-8B-Llama3",
+      "ds": "st_a",
+      "arm": "base",
+      "y": 4.9
+    },
+    {
+      "fam": "Idefics3-8B-Llama3",
+      "ds": "st_a",
+      "arm": "permit",
+      "y": 0.0
+    },
+    {
+      "fam": "Idefics3-8B-Llama3",
+      "ds": "ucf",
+      "arm": "base",
+      "y": 4.0
+    },
+    {
+      "fam": "Idefics3-8B-Llama3",
+      "ds": "ucf",
+      "arm": "permit",
+      "y": 0.0
+    },
+    {
+      "fam": "Idefics3-8B-Llama3",
+      "ds": "visdrone",
+      "arm": "base",
+      "y": 52.0
+    },
+    {
+      "fam": "Idefics3-8B-Llama3",
+      "ds": "visdrone",
+      "arm": "permit",
+      "y": 12.7
+    },
+    {
+      "fam": "Idefics3-8B-Llama3",
+      "ds": "aitod",
+      "arm": "base",
+      "y": 34.0
+    },
+    {
+      "fam": "Idefics3-8B-Llama3",
+      "ds": "aitod",
+      "arm": "permit",
+      "y": 14.0
+    },
+    {
+      "fam": "MiniCPM-V-4_5",
+      "ds": "st_a",
+      "arm": "base",
+      "y": 1.0
+    },
+    {
+      "fam": "MiniCPM-V-4_5",
+      "ds": "st_a",
+      "arm": "permit",
+      "y": 0.0
+    },
+    {
+      "fam": "MiniCPM-V-4_5",
+      "ds": "ucf",
+      "arm": "base",
+      "y": 2.0
+    },
+    {
+      "fam": "MiniCPM-V-4_5",
+      "ds": "ucf",
+      "arm": "permit",
+      "y": 0.0
+    },
+    {
+      "fam": "MiniCPM-V-4_5",
+      "ds": "visdrone",
+      "arm": "base",
+      "y": 82.0
+    },
+    {
+      "fam": "MiniCPM-V-4_5",
+      "ds": "visdrone",
+      "arm": "permit",
+      "y": 0.0
+    },
+    {
+      "fam": "MiniCPM-V-4_5",
+      "ds": "aitod",
+      "arm": "base",
+      "y": 66.7
+    },
+    {
+      "fam": "MiniCPM-V-4_5",
+      "ds": "aitod",
+      "arm": "permit",
+      "y": 0.0
+    },
+    {
+      "fam": "Molmo-7B-D-0924",
+      "ds": "st_a",
+      "arm": "base",
+      "y": 1.9
+    },
+    {
+      "fam": "Molmo-7B-D-0924",
+      "ds": "st_a",
+      "arm": "permit",
+      "y": 0.0
+    },
+    {
+      "fam": "Molmo-7B-D-0924",
+      "ds": "ucf",
+      "arm": "base",
+      "y": 0.0
+    },
+    {
+      "fam": "Molmo-7B-D-0924",
+      "ds": "ucf",
+      "arm": "permit",
+      "y": 0.0
+    },
+    {
+      "fam": "Molmo-7B-D-0924",
+      "ds": "visdrone",
+      "arm": "base",
+      "y": 75.3
+    },
+    {
+      "fam": "Molmo-7B-D-0924",
+      "ds": "visdrone",
+      "arm": "permit",
+      "y": 0.0
+    },
+    {
+      "fam": "Molmo-7B-D-0924",
+      "ds": "aitod",
+      "arm": "base",
+      "y": 60.7
+    },
+    {
+      "fam": "Molmo-7B-D-0924",
+      "ds": "aitod",
+      "arm": "permit",
+      "y": 0.0
+    },
+    {
+      "fam": "Step3-VL-10B",
+      "ds": "st_a",
+      "arm": "base",
+      "y": 0.0
+    },
+    {
+      "fam": "Step3-VL-10B",
+      "ds": "st_a",
+      "arm": "permit",
+      "y": 0.0
+    },
+    {
+      "fam": "Step3-VL-10B",
+      "ds": "ucf",
+      "arm": "base",
+      "y": 0.0
+    },
+    {
+      "fam": "Step3-VL-10B",
+      "ds": "ucf",
+      "arm": "permit",
+      "y": 0.0
+    },
+    {
+      "fam": "Step3-VL-10B",
+      "ds": "visdrone",
+      "arm": "base",
+      "y": 40.7
+    },
+    {
+      "fam": "Step3-VL-10B",
+      "ds": "visdrone",
+      "arm": "permit",
+      "y": 0.0
+    },
+    {
+      "fam": "Step3-VL-10B",
+      "ds": "aitod",
+      "arm": "base",
+      "y": 24.7
+    },
+    {
+      "fam": "Step3-VL-10B",
+      "ds": "aitod",
+      "arm": "permit",
+      "y": 0.0
+    },
+    {
+      "fam": "deepseek-vl2-tiny",
+      "ds": "st_a",
+      "arm": "base",
+      "y": 0.0
+    },
+    {
+      "fam": "deepseek-vl2-tiny",
+      "ds": "st_a",
+      "arm": "permit",
+      "y": 0.0
+    },
+    {
+      "fam": "deepseek-vl2-tiny",
+      "ds": "ucf",
+      "arm": "base",
+      "y": 0.0
+    },
+    {
+      "fam": "deepseek-vl2-tiny",
+      "ds": "ucf",
+      "arm": "permit",
+      "y": 0.0
+    },
+    {
+      "fam": "deepseek-vl2-tiny",
+      "ds": "visdrone",
+      "arm": "base",
+      "y": 71.3
+    },
+    {
+      "fam": "deepseek-vl2-tiny",
+      "ds": "visdrone",
+      "arm": "permit",
+      "y": 91.3
+    },
+    {
+      "fam": "deepseek-vl2-tiny",
+      "ds": "aitod",
+      "arm": "base",
+      "y": 50.7
+    },
+    {
+      "fam": "deepseek-vl2-tiny",
+      "ds": "aitod",
+      "arm": "permit",
+      "y": 86.7
+    },
+    {
+      "fam": "gemma-4-31b-it",
+      "ds": "st_a",
+      "arm": "base",
+      "y": 1.9
+    },
+    {
+      "fam": "gemma-4-31b-it",
+      "ds": "st_a",
+      "arm": "permit",
+      "y": 0.0
+    },
+    {
+      "fam": "gemma-4-31b-it",
+      "ds": "ucf",
+      "arm": "base",
+      "y": 8.0
+    },
+    {
+      "fam": "gemma-4-31b-it",
+      "ds": "ucf",
+      "arm": "permit",
+      "y": 0.0
+    },
+    {
+      "fam": "gemma-4-31b-it",
+      "ds": "visdrone",
+      "arm": "base",
+      "y": 58.0
+    },
+    {
+      "fam": "gemma-4-31b-it",
+      "ds": "visdrone",
+      "arm": "permit",
+      "y": 0.0
+    },
+    {
+      "fam": "gemma-4-31b-it",
+      "ds": "aitod",
+      "arm": "base",
+      "y": 40.0
+    },
+    {
+      "fam": "gemma-4-31b-it",
+      "ds": "aitod",
+      "arm": "permit",
+      "y": 0.7
+    }
+  ]
+}

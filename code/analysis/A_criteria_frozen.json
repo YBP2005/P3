@@ -1,0 +1,164 @@
+{
+ "round": "A",
+ "frozen_at": "2026-09-28",
+ "frozen_by": "P3 owner (author side)",
+ "status": "DRAFT v2 — 改为**两域**（MTDC + GWHD）预注册；等用户过目后再上机。上机前本文件必须落盘且 md5 写入运行日志",
+ "why_this_file": "评审（gpt6sol #47 / dspro E-2 / hy4 F15）要求：**在一个预先冻结的新计数域上**复制『共同误差-成本预算下的单元排序』（§M.45 的对象）。§M.45 是在**本语料内**做的同构分析；本轮把同一支探针、同一套预注册尺搬到本文未用过的域上。**本轮做两个域**（用户 2026-09-28 决定）：两个域各自独立判定，**任一个不达标都照实报，不合并掩盖**。按项目纪律（经验库 36），设计、item 清单、臂、水平集、判据、阈值与『什么结果会改变哪句话』必须在任何一次调用之前写死，跑完只读不改。",
+
+ "question": "在**两个本文从未使用过**的公开计数域（玉米雄穗 MTDC、麦穗 GWHD）上，用**同一支探针**（/root/19e_probe_multi.py，md5 必须 03edb14c98ffa3aea9ffa20f59b00bc8）：(i) 契约臂对 `base` 答零的移除是否复现（门禁移植）；(ii) **共同误差-成本预算下的单元排序**是否保持（预注册判据 Spearman ≥ 0.90 且单元 bootstrap 下界 ≥ 0.80）；(iii) 按评审逐字要求同时报原始 ρ、逐项对数误差、以及 MAE ≤ 最优水平 1.10× 时的跨度。两个域**分别判定、分别报出**。",
+
+ "domain_chosen": {
+  "primary": [
+   {
+    "name": "MTDC — Maize Tassels Detection and Counting Dataset",
+    "source": "HuggingFace dataset `Project-AgML/MTDC_Maize_Tassels_Detection_Counting_Dataset`（gated=False，CC-BY-4.0）",
+    "citation": "Zou, H., Lu, H., Li, Y., Liu, L., Cao, Z. Maize tassels detection: a benchmark of the state of the art. Plant Methods 16(1), 2020. doi:10.1186/s13007-020-00651-1",
+    "scale": "361 images, 13,564 annotated tassel instances (single class `maize`), COCO bounding boxes; ≈38 instances/image ⇒ 密集，模型会真的 engage",
+    "gt_convention": "COCO 标注的 box 条数（每根雄穗一个框）；先与官方 13,564 对账后才冻结 item 清单",
+    "frozen_fingerprint": "HF 元数据 md5 `084e97ac2bfc799a0239f0f28f78aa53`；落点 /root/mtdc"
+   },
+   {
+    "name": "GWHD 2021 — Global Wheat Head Dataset 2021",
+    "source": "★ **引用**用 Zenodo record 5092309（concept 5092308，DOI 10.5281/zenodo.5092309，CC-BY-4.0）；**实际取数**走**第一作者本人的 HuggingFace 镜像** `Etienne-David/GlobalWheatHeadDataset2021` —— 因为 Zenodo 实测只有 **18 KB/s**（10.22 GB 需约 6 天），作者镜像 1.26 GB 且同许可同作者。两条指纹都记在下面。",
+    "citation": "David, E., Serouart, M., Smith, D., et al. Global Wheat Head Detection 2021: An Improved Dataset for Benchmarking Wheat Head Detection Methods. Plant Phenomics, 2021. doi:10.5281/zenodo.5092309",
+    "scale": "**6,512 图**（实测：test 1,381 + train 1,828 + 1,827 + validation 1,476），1024×1024 田间图，parquet 内含 `objects`（boxes + categories）⇒ GT 可导出；麦穗/图远高于本文语料的稀疏端",
+    "gt_convention": "parquet 的 `objects.boxes` 条数（每图麦穗数）",
+    "frozen_fingerprint": {
+     "zenodo_official_md5_of_zip": "22b4b542c9ae7e056d7fcdeae9ecaed5（`gwhd_2021.zip`，10,215,190,132 bytes）—— **未采用**（速率不可行），仅作官方对账记录",
+     "zenodo_meta_md5": "5607930131825e9b43f3934802ecbd5a",
+     "hf_mirror_repo": "Etienne-David/GlobalWheatHeadDataset2021",
+     "hf_mirror_commit_sha": "d223a227ee21fca3dbab9605d3fbcdcc2e33abc5",
+     "hf_mirror_meta_md5": "f142b2c6b056df40dc15d235d515bf68",
+     "hf_mirror_files_sha256_prefix": {
+      "data/train-00000-of-00002.parquet": "3ada1fb45d9a0c4c9eca032f47acee6d",
+      "data/train-00001-of-00002.parquet": "21a834eab7ca5a2b4bd2e2163dbde893",
+      "data/validation-00000-of-00001.parquet": "703d391e06743ca4341644acef4867e1",
+      "data/test-00000-of-00001.parquet": "74a937e2c8fb4b7a22287e4b49ee73be"
+     },
+     "verified_rows": "1381 + 1828 + 1827 + 1476 = 6512（与数据集卡一致）",
+     "local_path_on_A800": "/root/gwhd",
+     "full_md5_manifest": "/root/p3_gwhd_files.md5（21 个文件）"
+    }
+   }
+  ],
+  "why_not_the_alternatives": {
+   "CARPK (cars)": "官方 LPN 页的下载是 Google Drive 且**要求登录**（实测返回 `Google Drive: Sign-in`）；HF 上唯一的镜像是私有内部副本（MIRROR.md 自述 privátní interní kopie / 二次镜像 / 许可不明）⇒ 不可用于投稿级复制",
+   "新的人群语料": "HF 上找不到干净的公开源（CroHD / DroneCrowd / SenseCrowd / WorldExpo 均搜不到）"
+  },
+  "secondary": "JHU-Crowd++（/root/g3_corpora/jhu，中文、300 项）—— 语料见 §M.46，但**排序从未在其上测过**；零下载成本，作为同问法的第二外部点，**不参与两域主判定**"
+ },
+
+ "what_already_exists": {
+  "instrument": "/root/19e_probe_multi.py，md5 03edb14c98ffa3aea9ffa20f59b00bc8（实测与冻结件逐字相同；本地三份副本同 md5）",
+  "prompt_convention_for_a_new_domain": "§M.46(a) 已立纪律：对 TallyQA **『契约子句逐字保留，只换掉与人有关的名词短语』**。本轮对两个域照同一条做，且把替换逐字写进 deviation_declared，可审计",
+  "precedent": "§5.13 已用同一支探针跑过 FSC-147（300 张、5 族）；§M.45 已有预注册的排序判据（Spearman ≥ 0.90 / 下界 ≥ 0.80 / corrected p ≤ 0.01）",
+  "missing": "**MTDC 与 GWHD 都从未被本仪器跑过**；各域 `base` 臂的答零率、各契约臂残留、以及单元跨度与排序，全部未知"
+ },
+
+ "what_this_run_adds": "把 §7.3 的排序主张与 §M.45 的预算判据，在两个**物件词表与人无关**的公开域（玉米雄穗、麦穗）上做外部复制；并把评审逐字要的三项量（原始 ρ、逐项对数误差、MAE ≤ 1.10× 最优水平时的跨度）一并报出。两域同时通过比单域强得多；只通过一个也照实报。",
+
+ "deviation_declared": {
+  "prompt_adaptation": "★ **唯一的提示词改动是物件名词短语**，且两个域各改一处：`人数（人群中的每个人头或人体）` → MTDC: `玉米雄穗数（画面中的每一根雄穗）`｜GWHD: `麦穗数（画面中的每一根麦穗）`。**JSON 输出规格、弃权词、以及 outlet 的两个 token（`cannot_judge` / `no_people`）逐字不变** —— 保留 `no_people` 在作物域上语义别扭是**故意的**：outlet 的 token 属于契约本身，改它会把『契约』与『问法』两个因子混淆。该别扭本身是可报的观察。",
+  "domain_novelty": "MTDC 与 GWHD 均未出现在本文任何一版。",
+  "density_note": "两域都属于**密集**计数（雄穗 ≈38/图；麦穗更多），而本文语料的稀疏端才是弃权最严重的一端 ⇒ 这两域是「密集 + 非人」的外推，**不外推到稀疏端**。",
+  "serving_stack": "A800 ×2（会议侧在用）；本实验**只用一张卡**，vLLM 0.29.0，BF16 锚定构建 /model/ModelScope/Qwen/Qwen3-VL-32B-Instruct。会议侧仍在用卡 ⇒ 只在其空闲窗口跑，或与会议侧协商。",
+  "image_scaling": "沿用探针的 `max_pixels=1048576, min_pixels=3136`；两域原图不得预处理改动（否则像素预算旋钮不可比）。"
+ },
+
+ "design": {
+  "domains": ["mtdc", "gwhd", "jhu (secondary, 不入主判定)"],
+  "item_sets": {
+   "mtdc": "固定种子、按 GT 分层的 **≥200 张**（从 361 张里抽；分层规则同 §5.13 的 `sample_test_ids.txt`），清单落盘并记 md5",
+   "gwhd": "固定种子、按 GT 分层的 **≥200 张**（从 **6,512** 张里抽，parquet 的 `objects.boxes` 条数为 GT），清单落盘并记 md5；**两域的抽样规则必须同一条**",
+   "jhu": "沿用 /root/g3_corpora/jhu 的 300 项"
+  },
+  "arms": ["base", "permit", "bestA", "bestB", "bestC", "channel"],
+  "levels": {
+   "output_contract": ["base", "permit", "bestA", "bestB", "bestC", "channel"],
+   "pixel_budget": {
+    "values_px": [1048576, 489987, 228966, 106993, 50000],
+    "why": "§M.42 只印了该旋钮的两个端点（**1,048,576 → 50,000**，见补充材料 L4006），中间三档未印。**开跑前**把五档定为这两个端点之间的**等比梯**（公比 (50000/1048576)^(1/4) = 0.467286），使 5 档的几何间距一致；这五个值在此写定，跑完不改。"
+   }
+  },
+  "amendment_20260928": {
+   "what": "★ 开跑前修正：**去掉 tiling 旋钮**；预算由 16 水平改为 **11 水平**（契约 6 + 像素预算 5）。",
+   "why_budget": "切块协议（`_06_dense_remote.py::tiles`：k×k 块、20% 重叠、每块缩到 ≤1M px、聚合=逐块解析求和、任一块解析失败则该图记 None）的**单图调用数是 k²**。5 个水平（1/2/3/4/6）合计约 13.2 次/图，两域三启动下额外约 **79,200 次调用** —— 我原来写的 9,600/域是按「每水平一次调用」估的，**估错了**。与其默默超预算，不如去掉该旋钮并写明。",
+   "why_ok": "契约旋钮的 6 个臂本身已是 6 个水平；加上像素预算 5 档，两域各 11 个水平足以支撑 A1（门禁）、A3（三项量）与 A4（方向一致性）。",
+   "why_A2_changed": "★ 只有两个旋钮 ⇒ 每域只有**两个单元级对象**（契约谱、预算谱），**无法**在域内评估 M.45 那条 Spearman ≥0.90（那条需要 ≥3 个单元）。故 A2 改为**跨域方向预测**：本文语料里 **契约跨度 (26.8–53.7 pp) > 像素预算跨度 (4.0–14.6 pp)**（§F.2），预注册 A2 预测**每个新域上同样的不等式成立**。这条判据**与本修正同时写定，在看到任何新域数据之前**。",
+   "amended_call_budget": "每域 200 项 × 11 水平 × 3 启动 = **6,600**；两域合计 **13,200**"
+  },
+  "starts": 3,
+  "call_budget": "每域 200 项 × (6 + 5 + 5) 水平 × 3 启动 = **9,600**；两域合计 **19,200**；JHU（若跑）300 × 6 × 3 = 5,400",
+  "serving": "vLLM 0.29.0，temperature 0，每次 fresh service start 一个独立会话；逐条落盘可续跑",
+  "workers": 8,
+  "instrument": "/root/19e_probe_multi.py, md5 03edb14c98ffa3aea9ffa20f59b00bc8（启动时断言）",
+  "output_schema": "item, gt, pred, parse_ok, raw, latency_s（与 E2/E3 逐字一致）",
+  "output_dir": "/root/A_res/<domain>/"
+ },
+
+ "prompts_frozen": {
+  "rule": "只换物件名词短语；其余（含 outlet token）逐字不变。下表的 `original_19e` 是探针里的原文，`mtdc` / `gwhd` 是本轮实际发出的字符串 —— 两者之差**只允许**是被声明的那一处替换。",
+  "base": {
+   "original_19e": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复，以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+   "mtdc": "请数出图片中的玉米雄穗数（画面中的每一根雄穗），不要遗漏，不要重复，以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+   "gwhd": "请数出图片中的麦穗数（画面中的每一根麦穗），不要遗漏，不要重复，以JSON格式输出：{\"count\": 数量}，只输出JSON。"
+  },
+  "permit": {
+   "original_19e": "请数出图片中的人数（人群中的每个人头或人体）。如果你无法逐个确证，请回答 abstain，而不要猜测。以JSON格式输出：{\"count\": 数量} 或 {\"count\": \"abstain\"}，只输出JSON。",
+   "mtdc": "请数出图片中的玉米雄穗数（画面中的每一根雄穗）。如果你无法逐个确证，请回答 abstain，而不要猜测。以JSON格式输出：{\"count\": 数量} 或 {\"count\": \"abstain\"}，只输出JSON。",
+   "gwhd": "请数出图片中的麦穗数（画面中的每一根麦穗）。如果你无法逐个确证，请回答 abstain，而不要猜测。以JSON格式输出：{\"count\": 数量} 或 {\"count\": \"abstain\"}，只输出JSON。"
+  },
+  "channel": {
+   "original_19e": "请判断这张图片中的人数。你可以：①给出数字；②回答 \"cannot_judge\" 表示无法判断；③回答 \"no_people\" 表示画面中没有可辨认的个体。以JSON格式输出：{\"response\": ...}，只输出JSON。",
+   "mtdc": "请判断这张图片中的玉米雄穗数。你可以：①给出数字；②回答 \"cannot_judge\" 表示无法判断；③回答 \"no_people\" 表示画面中没有可辨认的个体。以JSON格式输出：{\"response\": ...}，只输出JSON。",
+   "gwhd": "请判断这张图片中的麦穗数。你可以：①给出数字；②回答 \"cannot_judge\" 表示无法判断；③回答 \"no_people\" 表示画面中没有可辨认的个体。以JSON格式输出：{\"response\": ...}，只输出JSON。"
+  },
+  "bestA_bestB_bestC": "同规则替换：`人数` → `玉米雄穗数` / `麦穗数`；`画面中最可能的人数` → `画面中最可能的雄穗数` / `麦穗数`；`画面各区域的人数` → `画面各区域的雄穗数` / `麦穗数`。其余逐字不变；替换后全文在运行前写入运行日志并记 md5。",
+  "single_variable_rule": "除上表声明的名词短语外，**任何字符都不得变动**；运行前脚本逐个断言差异位置仅落在被声明的区段内。"
+ },
+
+ "criteria_fixed_in_advance": {
+  "A1_gate_transfers": {
+   "statement": "契约臂把 `base` 的答零基本清掉，与 §M.22/§M.46 同一把尺。**两域各判一次**。",
+   "rule": "`permit` 与 `channel` 仍答零的比例 ≤ **5%**（分母 = 该域 `base` 臂答零项数）；同时报 Wilson 95% 上界。",
+   "pass": "该域 ≤5%",
+   "note": "§M.46 的做法：宽区间也照报，不因样本小而放宽。"
+  },
+  "A2_ordering_holds_across_domains": {
+   "statement": "★（2026-09-28 开跑前修正）本文语料里**契约谱的跨度大于像素预算谱的跨度**（§F.2：26.8–53.7 pp vs 4.0–14.6 pp）。预注册预测：**每个新域上同一不等式成立**。",
+   "rule": "每域报两个谱的池化 ρ 跨度（契约 6 臂、像素预算 5 档），判 `span(contract) > span(pixel budget)`。",
+   "pass": "该域不等式成立",
+   "note": "**为什么不是 M.45 那条 Spearman ≥0.90**：那条要在 ≥3 个单元上排序；本轮每域只有两个旋钮 ⇒ 只有两个单元级对象，域内 Spearman 不可评。这个限制**开跑前写明**，不事后解释。"
+  },
+  "A3_the_three_reported_quantities": {
+   "statement": "评审逐字要的三项必须同时报出（每域各一组）。",
+   "rule": "① 原始 ρ（逐单元逐水平）；② 逐项对数误差 median(ln(pred+1) − ln(gt+1))；③ MAE ≤ 最优水平 **1.10×** 时的跨度。",
+   "pass": "三项齐全且可复算"
+  },
+  "A4_direction_consistency": {
+   "statement": "方向的符号在水平与单元间一致（§M.19/M.46 的读法）。",
+   "rule": "报每个 (unit × level) 的 ρ 符号；若出现反号，照实列出而不是取平均。",
+   "pass": "一致，或有具名反号格"
+  },
+  "A5_two_domain_reporting_rule": {
+   "statement": "★ 两域**分别判定、分别报出**；合并只在两域都达标时才作为附加陈述。",
+   "rule": "(i) 两域都过 ⇒ 报『两个独立新域上预注册判据均通过』，并给合并读法；(ii) 只过一个 ⇒ **照实报一过一不过**，不得只报通过的那个，也不得用合并统计把它掩盖掉（先例：§M.46 明写『One cell is above the bar and is reported rather than pooled away』）；(iii) 两个都不过 ⇒ 报『未复制』，并按 §7.3 的 scope 再收一格。",
+   "pass": "n/a —— 这是报告规则，不是通过线"
+  }
+ },
+
+ "what_result_would_change": {
+  "A2_pass_both": "§7.3 的排序主张可加一句：『在两个本文未使用过的公开计数域上，预注册判据均通过』。",
+  "A2_pass_one": "§7.3 加一句『在一个新域上通过、另一个未通过』，并把未通过的那个域的读数一并印出。",
+  "A2_fail_both": "**照实报不达标**（先例：§M.45(b) 自报 0.7674 失败），并把 §7.3 的 scope 再收一格。",
+  "A1_pass": "§5.13『不是我们语料的性质』再得**两个不同物件**的支点。",
+  "A1_fail": "与 §5.13 的 FSC-147 反例合并，加强稿中**已写**的『gate 是 family × domain × wording 条件性的』表述。"
+ },
+
+ "analysis_discipline": {
+  "no_peeking": "判据与阈值本文件已冻结；跑完后不得修改本文件。",
+  "gt_source": "MTDC：官方 COCO `annotations.json` 的框条数（**实测 361 图 / 13,564 标注**，与论文 13,564 逐位吻合，类别单一是 `maize`）；GWHD：parquet `objects.boxes` 条数（**实测 6,512 图**）；JHU：发布自带的逐图计数文件。",
+  "classification": "答零 = 解析出的 pred 恰为 0；弃权 = 无解析值（parse_ok=0）或 outlet token。两者分开报。",
+  "report_undefined": "某单元水平样本不足（<3 水平或 <20 共同项）时，报『未测』，**不用代理量顶替**。"
+ }
+}

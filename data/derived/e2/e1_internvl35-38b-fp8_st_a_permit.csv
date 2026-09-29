@@ -1,0 +1,156 @@
+item,gt,pred,parse_ok,raw,latency_s
+IMG_53,175,,0,"{""count"": ""abstain""}",11.05
+IMG_61,193,,0,"{""count"": ""abstain""}",11.07
+IMG_108,182,,0,"{""count"": ""abstain""}",11.07
+IMG_142,211,,0,"{""count"": ""abstain""}",11.08
+IMG_1,172,,0,"{""count"": ""abstain""}",11.11
+IMG_163,162,,0,"```json
+{""count"": ""abstain""}
+```",15.19
+IMG_37,195,,0,"```json
+{""count"": ""abstain""}
+```",19.85
+IMG_45,138,,0,"```json
+{""count"": ""abstain""}
+```",19.85
+IMG_22,212,,0,"{""count"": ""abstain""}",12.89
+IMG_176,213,,0,"{""count"": ""abstain""}",12.87
+IMG_82,217,,0,"{""count"": ""abstain""}",12.89
+IMG_124,226,,0,"{""count"": ""abstain""}",12.88
+IMG_162,219,,0,"{""count"": ""abstain""}",12.9
+IMG_18,227,,0,"```json
+{""count"": ""abstain""}
+```",16.54
+IMG_19,230,,0,"```json
+{""count"": ""abstain""}
+```",11.92
+IMG_40,236,,0,"```json
+{""count"": ""abstain""}
+```",11.92
+IMG_99,242,,0,"{""count"": ""abstain""}",10.39
+IMG_116,288,,0,"{""count"": ""abstain""}",11.45
+IMG_64,287,,0,"{""count"": ""abstain""}",12.66
+IMG_78,271,,0,"{""count"": ""abstain""}",12.68
+IMG_168,240,,0,"```json
+{""count"": ""abstain""}
+```",18.41
+IMG_60,291,,0,"{""count"": ""abstain""}",10.68
+IMG_3,297,,0,"{""count"": ""abstain""}",11.86
+IMG_129,298,,0,"{""count"": ""abstain""}",13.26
+IMG_158,308,,0,"{""count"": ""abstain""}",12.76
+IMG_47,316,,0,"{""count"": ""abstain""}",12.21
+IMG_51,297,,0,"```json
+{""count"": ""abstain""}
+```",17.09
+IMG_29,309,,0,"```json
+{""count"": ""abstain""}
+```",15.16
+IMG_12,321,,0,"{""count"": ""abstain""}",9.46
+IMG_62,337,,0,"{""count"": ""abstain""}",9.43
+IMG_15,341,,0,"{""count"": ""abstain""}",9.43
+IMG_56,349,,0,"{""count"": ""abstain""}",9.6
+IMG_139,355,,0,"{""count"": ""abstain""}",10.58
+IMG_81,356,,0,"{""count"": ""abstain""}",10.95
+IMG_57,356,,0,"```json
+{""count"": ""abstain""}
+```",13.71
+IMG_143,357,,0,"{""count"": ""abstain""}",10.79
+IMG_44,366,,0,"{""count"": ""abstain""}",10.79
+IMG_132,375,,0,"{""count"": ""abstain""}",9.0
+IMG_177,363,,0,"```json
+{""count"": ""abstain""}
+```",15.48
+IMG_100,389,,0,"{""count"": ""abstain""}",8.52
+IMG_46,373,,0,"```json
+{""count"": ""abstain""}
+```",15.46
+IMG_157,390,,0,"{""count"": ""abstain""}",8.7
+IMG_180,398,,0,"{""count"": ""abstain""}",12.34
+IMG_179,400,,0,"{""count"": ""abstain""}",12.34
+IMG_70,412,,0,"{""count"": ""abstain""}",12.3
+IMG_16,416,,0,"{""count"": ""abstain""}",8.78
+IMG_28,423,,0,"{""count"": ""abstain""}",7.98
+IMG_126,440,,0,"{""count"": ""abstain""}",9.36
+IMG_128,419,,0,"```json
+{""count"": ""abstain""}
+```",13.68
+IMG_23,429,,0,"```json
+{""count"": ""abstain""}
+```",12.48
+IMG_59,466,,0,"{""count"": ""abstain""}",9.57
+IMG_141,475,,0,"{""count"": ""abstain""}",9.28
+IMG_33,475,,0,"{""count"": ""abstain""}",6.71
+IMG_175,442,,0,"```json
+{""count"": ""abstain""}
+```",10.33
+IMG_20,460,,0,"```json
+{""count"": ""abstain""}
+```",11.93
+IMG_111,452,,0,"```json
+{""count"": ""abstain""}
+```",11.93
+IMG_146,479,,0,"{""count"": ""abstain""}",11.43
+IMG_173,481,,0,"```json
+{""count"": ""abstain""}
+```",12.08
+IMG_76,485,,0,"{""count"": ""abstain""}",8.53
+IMG_137,489,,0,"{""count"": ""abstain""}",8.53
+IMG_154,495,,0,"{""count"": ""abstain""}",8.51
+IMG_97,521,,0,"{""count"": ""abstain""}",6.25
+IMG_26,497,,0,"```json
+{""count"": ""abstain""}
+```",13.7
+IMG_49,511,,0,"```json
+{""count"": ""abstain""}
+```",12.98
+IMG_54,529,,0,"{""count"": ""abstain""}",7.45
+IMG_178,549,,0,"{""count"": ""abstain""}",13.61
+IMG_35,567,,0,"{""count"": ""abstain""}",13.63
+IMG_7,568,,0,"{""count"": ""abstain""}",13.62
+IMG_147,587,,0,"{""count"": ""abstain""}",13.6
+IMG_72,589,,0,"{""count"": ""abstain""}",7.81
+IMG_75,665,,0,"{""count"": ""abstain""}",7.57
+IMG_13,584,,0,"```json
+{""count"": ""abstain""}
+```",14.34
+IMG_71,602,,0,"{""count"": ""abstain""}",10.1
+IMG_21,717,,0,"{""count"": ""abstain""}",13.9
+IMG_38,717,,0,"{""count"": ""abstain""}",13.9
+IMG_14,762,,0,"{""count"": ""abstain""}",13.85
+IMG_42,797,,0,"{""count"": ""abstain""}",13.22
+IMG_27,760,,0,"{""count"": ""abstain""}",13.93
+IMG_170,670,,0,"```json
+{""count"": ""abstain""}
+```",14.63
+IMG_5,817,,0,"{""count"": ""abstain""}",13.88
+IMG_74,855,,0,"{""count"": ""abstain""}",13.79
+IMG_130,921,,0,"{""count"": ""abstain""}",11.26
+IMG_32,961,,0,"{""count"": ""abstain""}",11.28
+IMG_127,986,,0,"{""count"": ""abstain""}",11.28
+IMG_110,1021,,0,"{""count"": ""abstain""}",11.25
+IMG_50,997,,0,"{""count"": ""abstain""}",11.27
+IMG_11,1068,,0,"{""count"": ""abstain""}",10.61
+IMG_63,1121,,0,"{""count"": ""abstain""}",8.19
+IMG_2,1111,,0,"```json
+{""count"": ""abstain""}
+```",17.07
+IMG_172,1171,,0,"{""count"": ""abstain""}",9.62
+IMG_17,1156,,0,"{""count"": ""abstain""}",9.62
+IMG_106,1232,,0,"{""count"": ""abstain""}",9.59
+IMG_115,1191,,0,"{""count"": ""abstain""}",9.6
+IMG_121,1210,,0,"{""count"": ""abstain""}",9.62
+IMG_122,1153,,0,"```json
+{""count"": ""abstain""}
+```",12.87
+IMG_36,1266,,0,"{""count"": ""abstain""}",6.35
+IMG_104,1175,,0,"```json
+{""count"": ""abstain""}
+```",15.97
+IMG_150,1303,,0,"{""count"": ""abstain""}",6.76
+IMG_8,1326,,0,"{""count"": ""abstain""}",6.77
+IMG_165,1581,,0,"{""count"": ""abstain""}",6.76
+IMG_92,1366,,0,"{""count"": ""abstain""}",6.76
+IMG_117,1603,,0,"{""count"": ""abstain""}",6.75
+IMG_90,2256,,0,"```json
+{""count"": ""abstain""}
+```",3.63

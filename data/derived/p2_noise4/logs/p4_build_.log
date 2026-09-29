@@ -1,0 +1,3 @@
+usage: fsc_build_sc.py [-h] [--src SRC] --out OUT --side SIDE
+                       [--only-ids ONLY_IDS]
+fsc_build_sc.py: error: argument --side: expected one argument

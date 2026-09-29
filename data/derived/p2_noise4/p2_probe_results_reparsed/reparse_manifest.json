@@ -1,0 +1,95 @@
+{
+  "indir": "/root/p2_probe_results",
+  "outdir": "/root/p2_probe_results_reparsed",
+  "R1": "fenced+quoted key",
+  "R2": "frozen-identical",
+  "R3": "first-int fallback",
+  "note": "不改冻结探针；仅从已存 raw 重新派生，逐行记录命中规则",
+  "per_file": {
+    "p2_InternVL3_5-8B_base.csv": {
+      "n": 300,
+      "rules": {
+        "R1": 300
+      },
+      "changed_vs_frozen": 0
+    },
+    "p2_InternVL3_5-8B_channel.csv": {
+      "n": 300,
+      "rules": {
+        "R1": 300
+      },
+      "changed_vs_frozen": 300
+    },
+    "p2_InternVL3_5-8B_permit.csv": {
+      "n": 300,
+      "rules": {
+        "R1": 300
+      },
+      "changed_vs_frozen": 300
+    },
+    "p2_Phi-3.5-vision-instruct_base.csv": {
+      "n": 300,
+      "rules": {
+        "R1": 300
+      },
+      "changed_vs_frozen": 0
+    },
+    "p2_Phi-3.5-vision-instruct_channel.csv": {
+      "n": 300,
+      "rules": {
+        "R1": 300
+      },
+      "changed_vs_frozen": 300
+    },
+    "p2_Phi-3.5-vision-instruct_permit.csv": {
+      "n": 300,
+      "rules": {
+        "R1": 298,
+        "none": 2
+      },
+      "changed_vs_frozen": 297
+    },
+    "p2_Qwen3-VL-32B-Instruct_base.csv": {
+      "n": 300,
+      "rules": {
+        "R1": 300
+      },
+      "changed_vs_frozen": 0
+    },
+    "p2_Qwen3-VL-32B-Instruct_channel.csv": {
+      "n": 300,
+      "rules": {
+        "R1": 300
+      },
+      "changed_vs_frozen": 300
+    },
+    "p2_Qwen3-VL-32B-Instruct_permit.csv": {
+      "n": 300,
+      "rules": {
+        "R1": 300
+      },
+      "changed_vs_frozen": 151
+    },
+    "p2_gemma-3-12b-it_base.csv": {
+      "n": 300,
+      "rules": {
+        "R1": 300
+      },
+      "changed_vs_frozen": 0
+    },
+    "p2_gemma-3-12b-it_channel.csv": {
+      "n": 300,
+      "rules": {
+        "R1": 300
+      },
+      "changed_vs_frozen": 299
+    },
+    "p2_gemma-3-12b-it_permit.csv": {
+      "n": 300,
+      "rules": {
+        "R1": 300
+      },
+      "changed_vs_frozen": 295
+    }
+  }
+}

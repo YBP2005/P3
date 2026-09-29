@@ -1,0 +1,1125 @@
+{
+ "files": [
+  {
+   "md5": "826534c3e343c7b12450f78d9bb8898e",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_InternVL3_5-8B_st_a_base.csv"
+  },
+  {
+   "md5": "c8e854b1288a4a4759b2ea0ee98d2eed",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_InternVL3_5-8B_st_a_permit.csv"
+  },
+  {
+   "md5": "51d6c9fe7a13036a51e4384ee00550b0",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_InternVL3_5-8B_ucf_base.csv"
+  },
+  {
+   "md5": "2956bb40fe45bd5fed9854e127fd97aa",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_InternVL3_5-8B_ucf_permit.csv"
+  },
+  {
+   "md5": "df025e07bf5b11ba397e454671fba04e",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_InternVL3_5-8B_visdrone_base.csv"
+  },
+  {
+   "md5": "95a3e48e4f1caeb979573d765556f2ec",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_InternVL3_5-8B_visdrone_permit.csv"
+  },
+  {
+   "md5": "539fac52a3b19b75f2e690c0fe84a97e",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_InternVL3_5-8B_aitod_base.csv"
+  },
+  {
+   "md5": "fd82c4ccfa33edf958a53cf05c4a1f2a",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_InternVL3_5-8B_aitod_permit.csv"
+  },
+  {
+   "md5": "4eab08184887957ccdadc28798646c89",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_Phi-3.5-vision-instruct_st_a_base.csv"
+  },
+  {
+   "md5": "9593c23c037caf9843aedb0f831bca1c",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_Phi-3.5-vision-instruct_st_a_permit.csv"
+  },
+  {
+   "md5": "bb27b7c73726bd4109c35042b15564cd",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_Phi-3.5-vision-instruct_ucf_base.csv"
+  },
+  {
+   "md5": "316d61c8316f592afe10187b0a4f5cf8",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_Phi-3.5-vision-instruct_ucf_permit.csv"
+  },
+  {
+   "md5": "d0729b231d205b3959e2558500a5a330",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_Phi-3.5-vision-instruct_visdrone_base.csv"
+  },
+  {
+   "md5": "c29d2c856902f7381a5916dd58674503",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_Phi-3.5-vision-instruct_visdrone_permit.csv"
+  },
+  {
+   "md5": "a4396a31c39a618d17f0b709a3fa335b",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_Phi-3.5-vision-instruct_aitod_base.csv"
+  },
+  {
+   "md5": "5e33af93e12e3a32589942d998a8a083",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_Phi-3.5-vision-instruct_aitod_permit.csv"
+  },
+  {
+   "md5": "3d3239756931718b0b6d5d4cb471a92b",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_gemma3-12b_st_a_base.csv"
+  },
+  {
+   "md5": "91854c8d456d5ca97c83edc990f6ba32",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_gemma3-12b_st_a_permit.csv"
+  },
+  {
+   "md5": "a79014f2ff92be83efc58560b7438453",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_gemma3-12b_ucf_base.csv"
+  },
+  {
+   "md5": "ff432b7ffcf4b8fc3850e0fb1a563d9f",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_gemma3-12b_ucf_permit.csv"
+  },
+  {
+   "md5": "0ae51dcc1dcfb8feb07f238c0e9e5dd4",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_gemma3-12b_visdrone_base.csv"
+  },
+  {
+   "md5": "884d07ce8c10309d2bede0416cbc53a5",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_gemma3-12b_visdrone_permit.csv"
+  },
+  {
+   "md5": "029ec5b06246f7c0935b48d1b562406a",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_gemma3-12b_aitod_base.csv"
+  },
+  {
+   "md5": "08ec7b710e99cd64694f0ffaa06451ff",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_gemma3-12b_aitod_permit.csv"
+  },
+  {
+   "md5": "b00c5321dedd79a6cfa261af7d057fd4",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_internvl25-8b-awq_st_a_base.csv"
+  },
+  {
+   "md5": "a9748640f49260b0096926371652ba77",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_internvl25-8b-awq_st_a_permit.csv"
+  },
+  {
+   "md5": "25248ec15672ecaa7a7b4a856e46a9ab",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_internvl25-8b-awq_ucf_base.csv"
+  },
+  {
+   "md5": "bf1f9cb6ec860de2e15de566fc20576c",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_internvl25-8b-awq_ucf_permit.csv"
+  },
+  {
+   "md5": "023f49410dac5b007b5f0ff9556e1b72",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_internvl25-8b-awq_visdrone_base.csv"
+  },
+  {
+   "md5": "c461680e7e5561a2faa5e8033416f943",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_internvl25-8b-awq_visdrone_permit.csv"
+  },
+  {
+   "md5": "a4e69524f1220debc2fbe2adacfda664",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_internvl25-8b-awq_aitod_base.csv"
+  },
+  {
+   "md5": "113bfdc24f397f20561cbb4ec655d945",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_internvl25-8b-awq_aitod_permit.csv"
+  },
+  {
+   "md5": "774433ad3ddc13ee7d22e52c4fb46b6b",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_llava-onevision-qwen2-7b-ov_st_a_base.csv"
+  },
+  {
+   "md5": "3f40e82fbfcfb1f0f4c0f33ec8179b6d",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_llava-onevision-qwen2-7b-ov_st_a_permit.csv"
+  },
+  {
+   "md5": "c65e5afb9e120124522b72f4a4553673",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_llava-onevision-qwen2-7b-ov_ucf_base.csv"
+  },
+  {
+   "md5": "a8e8349802afbe9d922ea271533d598d",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_llava-onevision-qwen2-7b-ov_ucf_permit.csv"
+  },
+  {
+   "md5": "c8ece6fb5bb98672998922d590aa195f",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_llava-onevision-qwen2-7b-ov_visdrone_base.csv"
+  },
+  {
+   "md5": "0e01b69a88cd0b736b2c41d0daa7e4eb",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_llava-onevision-qwen2-7b-ov_visdrone_permit.csv"
+  },
+  {
+   "md5": "a7dfeb92c0e316e58ea7a302f911671d",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_llava-onevision-qwen2-7b-ov_aitod_base.csv"
+  },
+  {
+   "md5": "6a310661000c53a9d32da9bc3d784d25",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_llava-onevision-qwen2-7b-ov_aitod_permit.csv"
+  },
+  {
+   "md5": "9c403c127acfe79232e045434206e15c",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_qwen25vl-72b-awq_st_a_base.csv"
+  },
+  {
+   "md5": "69cb4359e339cb056a3a8528dd996f54",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_qwen25vl-72b-awq_st_a_permit.csv"
+  },
+  {
+   "md5": "6aa85188b66bcd9e59beb0cfd6aa8362",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_qwen25vl-72b-awq_ucf_base.csv"
+  },
+  {
+   "md5": "e6bf7d47b98979a0215464a4bf28fda7",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_qwen25vl-72b-awq_ucf_permit.csv"
+  },
+  {
+   "md5": "e26378b8880de27c998c5f328cffa2d8",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_qwen25vl-72b-awq_visdrone_base.csv"
+  },
+  {
+   "md5": "41465c1658c0208323eb0d592055e627",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_qwen25vl-72b-awq_visdrone_permit.csv"
+  },
+  {
+   "md5": "1b5de6cde851ee8bcc607a056f9394ea",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_qwen25vl-72b-awq_aitod_base.csv"
+  },
+  {
+   "md5": "a549f7f5cd947be0436aa53bffc646cf",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_qwen25vl-72b-awq_aitod_permit.csv"
+  },
+  {
+   "md5": "802232f5ddfde03be111e3f582f56819",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_qwen3-vl-32b-awq_st_a_base.csv"
+  },
+  {
+   "md5": "65c5fe174b8fbcfc2001869315431953",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_qwen3-vl-32b-awq_st_a_permit.csv"
+  },
+  {
+   "md5": "d5e093658055946a916ee925199cf7c0",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_qwen3-vl-32b-awq_ucf_base.csv"
+  },
+  {
+   "md5": "b89895a5448c209a776cd586a710eb5d",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_qwen3-vl-32b-awq_ucf_permit.csv"
+  },
+  {
+   "md5": "4dc6c4fda74c1389322d42fd89c813c3",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_qwen3-vl-32b-awq_visdrone_base.csv"
+  },
+  {
+   "md5": "5b424298919dcc9c94cc379b002ba6db",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_qwen3-vl-32b-awq_visdrone_permit.csv"
+  },
+  {
+   "md5": "456ff6ecc67a19c1659cc2f8ef928ef5",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_qwen3-vl-32b-awq_aitod_base.csv"
+  },
+  {
+   "md5": "c44c7937cdc61c07e92d7afd2ab0e583",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2xt_a800\\merged\\e1_qwen3-vl-32b-awq_aitod_permit.csv"
+  },
+  {
+   "md5": "b00c5321dedd79a6cfa261af7d057fd4",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_internvl25-8b-awq_st_a_base.csv"
+  },
+  {
+   "md5": "a9748640f49260b0096926371652ba77",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_internvl25-8b-awq_st_a_permit.csv"
+  },
+  {
+   "md5": "6e1c6c6cee03dfbe4c50ddde18e32100",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_internvl25-8b-awq_st_a_channel.csv"
+  },
+  {
+   "md5": "25248ec15672ecaa7a7b4a856e46a9ab",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_internvl25-8b-awq_ucf_base.csv"
+  },
+  {
+   "md5": "bf1f9cb6ec860de2e15de566fc20576c",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_internvl25-8b-awq_ucf_permit.csv"
+  },
+  {
+   "md5": "2ca6139da417034558c24c1e5d4d6a30",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_internvl25-8b-awq_ucf_channel.csv"
+  },
+  {
+   "md5": "023f49410dac5b007b5f0ff9556e1b72",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_internvl25-8b-awq_visdrone_base.csv"
+  },
+  {
+   "md5": "c461680e7e5561a2faa5e8033416f943",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_internvl25-8b-awq_visdrone_permit.csv"
+  },
+  {
+   "md5": "74bb7c47ad950bd42e7d8f2a85df5030",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_internvl25-8b-awq_visdrone_channel.csv"
+  },
+  {
+   "md5": "a4e69524f1220debc2fbe2adacfda664",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_internvl25-8b-awq_aitod_base.csv"
+  },
+  {
+   "md5": "113bfdc24f397f20561cbb4ec655d945",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_internvl25-8b-awq_aitod_permit.csv"
+  },
+  {
+   "md5": "5f0102a0f42f800b324f0fd754d84553",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_internvl25-8b-awq_aitod_channel.csv"
+  },
+  {
+   "md5": "8ebe2a66a266efa3793c03a70dfce66c",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_internvl35-38b-fp8_st_a_base.csv"
+  },
+  {
+   "md5": "12ed62451978f3d7a0cc8eed53e5cd23",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_internvl35-38b-fp8_st_a_permit.csv"
+  },
+  {
+   "md5": "c9b69419018413aa54158adbf320b617",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_internvl35-38b-fp8_st_a_channel.csv"
+  },
+  {
+   "md5": "a38e36603f49d86e72638e5be46311e7",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_internvl35-38b-fp8_ucf_base.csv"
+  },
+  {
+   "md5": "f8a4184586802cb0970722b105ccd630",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_internvl35-38b-fp8_ucf_permit.csv"
+  },
+  {
+   "md5": "9cb98c0c751bad0201cf0aacb33ee0f8",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_internvl35-38b-fp8_ucf_channel.csv"
+  },
+  {
+   "md5": "7b3847ebbc5df4944ff4378fc14015de",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_internvl35-38b-fp8_visdrone_base.csv"
+  },
+  {
+   "md5": "2f00bc00e8fc58f47a9516b22c226fce",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_internvl35-38b-fp8_visdrone_permit.csv"
+  },
+  {
+   "md5": "5d9050ae0d777b4cbded47e683efc201",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_internvl35-38b-fp8_visdrone_channel.csv"
+  },
+  {
+   "md5": "f1c290fb9cd52d1c94a8ee7e431a747b",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_internvl35-38b-fp8_aitod_base.csv"
+  },
+  {
+   "md5": "860cfb130f75690e995341ca5f008b94",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_internvl35-38b-fp8_aitod_permit.csv"
+  },
+  {
+   "md5": "2734bf1101c618d975fef0550b1e6c63",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_internvl35-38b-fp8_aitod_channel.csv"
+  },
+  {
+   "md5": "9c403c127acfe79232e045434206e15c",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen25vl-72b-awq_st_a_base.csv"
+  },
+  {
+   "md5": "69cb4359e339cb056a3a8528dd996f54",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen25vl-72b-awq_st_a_permit.csv"
+  },
+  {
+   "md5": "d01f500ee3d89176fa54748fd852c4c3",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen25vl-72b-awq_st_a_channel.csv"
+  },
+  {
+   "md5": "6aa85188b66bcd9e59beb0cfd6aa8362",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen25vl-72b-awq_ucf_base.csv"
+  },
+  {
+   "md5": "e6bf7d47b98979a0215464a4bf28fda7",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen25vl-72b-awq_ucf_permit.csv"
+  },
+  {
+   "md5": "13e2709093cce79b5e95445f1d4c6f30",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen25vl-72b-awq_ucf_channel.csv"
+  },
+  {
+   "md5": "e26378b8880de27c998c5f328cffa2d8",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen25vl-72b-awq_visdrone_base.csv"
+  },
+  {
+   "md5": "41465c1658c0208323eb0d592055e627",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen25vl-72b-awq_visdrone_permit.csv"
+  },
+  {
+   "md5": "8bdfa0937d041db2105d17f6af390243",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen25vl-72b-awq_visdrone_channel.csv"
+  },
+  {
+   "md5": "1b5de6cde851ee8bcc607a056f9394ea",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen25vl-72b-awq_aitod_base.csv"
+  },
+  {
+   "md5": "a549f7f5cd947be0436aa53bffc646cf",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen25vl-72b-awq_aitod_permit.csv"
+  },
+  {
+   "md5": "751c4c7c8ee5b9bd498f4eaffb22b39a",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen25vl-72b-awq_aitod_channel.csv"
+  },
+  {
+   "md5": "b8c31ee2a948456b81a12f352b7f8837",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen25vl-7b-awq_st_a_base.csv"
+  },
+  {
+   "md5": "804b88c0fa1b56ecf51ba30a55b60381",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen25vl-7b-awq_st_a_permit.csv"
+  },
+  {
+   "md5": "de9ce478abb791d66e99b997e34921fc",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen25vl-7b-awq_st_a_channel.csv"
+  },
+  {
+   "md5": "23341490b5f968414307bda46901d04d",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen25vl-7b-awq_ucf_base.csv"
+  },
+  {
+   "md5": "8af383b834c1824a8c32ba3425b7639d",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen25vl-7b-awq_ucf_permit.csv"
+  },
+  {
+   "md5": "666422810e255eb3687829c9c931edd8",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen25vl-7b-awq_ucf_channel.csv"
+  },
+  {
+   "md5": "5b46072072eb41006f9af040ff42f75d",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-2b_st_a_base.csv"
+  },
+  {
+   "md5": "8a041c63836e16809de5f69ad5097760",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-2b_st_a_permit.csv"
+  },
+  {
+   "md5": "2926be4f3965d64aacd50d2cc0970873",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-2b_st_a_channel.csv"
+  },
+  {
+   "md5": "e301d42b32ebdfefafb36eec08916de6",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-2b_ucf_base.csv"
+  },
+  {
+   "md5": "a948b9a65f2f1c6ecd30d7fcd643f3d2",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-2b_ucf_permit.csv"
+  },
+  {
+   "md5": "6e1e24a42a76d0a807979054a6dcb7d5",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-2b_ucf_channel.csv"
+  },
+  {
+   "md5": "7b5fea0cf189ec10df7e1a7dec31a145",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-2b_visdrone_base.csv"
+  },
+  {
+   "md5": "6c67fb1789831bafa5c1b2fafc5780be",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-2b_visdrone_permit.csv"
+  },
+  {
+   "md5": "b3061b3e75d3a4a3acf350d7c00dd666",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-2b_visdrone_channel.csv"
+  },
+  {
+   "md5": "0bd5c4c347834ba78fdf1a71f4deeb48",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-2b_aitod_base.csv"
+  },
+  {
+   "md5": "7d86df674a275dfeba967b1b05ffbf39",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-2b_aitod_permit.csv"
+  },
+  {
+   "md5": "046177e0a6d74484c360de4160e8dc6b",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-2b_aitod_channel.csv"
+  },
+  {
+   "md5": "3ec77713def178734572cc2a9169419f",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-30b-a3b-fp8_st_a_base.csv"
+  },
+  {
+   "md5": "d59062845a6deac0c3d04aa81bf21ba8",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-30b-a3b-fp8_st_a_permit.csv"
+  },
+  {
+   "md5": "76bd22d5562509b90b9fbee5e19d8099",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-30b-a3b-fp8_st_a_channel.csv"
+  },
+  {
+   "md5": "63ead08eeab2ab1b197d8c20dddc6107",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-30b-a3b-fp8_ucf_base.csv"
+  },
+  {
+   "md5": "66b2ffc52009b5a3e8309f498df7d3b8",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-30b-a3b-fp8_ucf_permit.csv"
+  },
+  {
+   "md5": "9f42fbb3d60b3b4c42160d4f5076dfea",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-30b-a3b-fp8_ucf_channel.csv"
+  },
+  {
+   "md5": "c318e8902edf05a91cff61eca71562b2",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-30b-a3b-fp8_visdrone_base.csv"
+  },
+  {
+   "md5": "7a8ca761b7bde49923d533db3898aa2c",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-30b-a3b-fp8_visdrone_permit.csv"
+  },
+  {
+   "md5": "0326c0918de99724a85278628a2f9c9f",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-30b-a3b-fp8_visdrone_channel.csv"
+  },
+  {
+   "md5": "c3e39b5dab4775b33a96cccc9c5a2199",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-30b-a3b-fp8_aitod_base.csv"
+  },
+  {
+   "md5": "56adce66709f3d36d10fc8e96bb0fbed",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-30b-a3b-fp8_aitod_permit.csv"
+  },
+  {
+   "md5": "6cbe2286fa36431adf6ffa8e2079991c",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-30b-a3b-fp8_aitod_channel.csv"
+  },
+  {
+   "md5": "802232f5ddfde03be111e3f582f56819",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-awq_st_a_base.csv"
+  },
+  {
+   "md5": "65c5fe174b8fbcfc2001869315431953",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-awq_st_a_permit.csv"
+  },
+  {
+   "md5": "50c68e54e7b93fafbd616f2b76d48b6a",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-awq_st_a_channel.csv"
+  },
+  {
+   "md5": "d5e093658055946a916ee925199cf7c0",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-awq_ucf_base.csv"
+  },
+  {
+   "md5": "b89895a5448c209a776cd586a710eb5d",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-awq_ucf_permit.csv"
+  },
+  {
+   "md5": "9a57f764a5f693d0120b017df665a8d1",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-awq_ucf_channel.csv"
+  },
+  {
+   "md5": "4dc6c4fda74c1389322d42fd89c813c3",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-awq_visdrone_base.csv"
+  },
+  {
+   "md5": "5b424298919dcc9c94cc379b002ba6db",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-awq_visdrone_permit.csv"
+  },
+  {
+   "md5": "1173474b19d45c88d9e4d0c2f106c02a",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-awq_visdrone_channel.csv"
+  },
+  {
+   "md5": "456ff6ecc67a19c1659cc2f8ef928ef5",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-awq_aitod_base.csv"
+  },
+  {
+   "md5": "c44c7937cdc61c07e92d7afd2ab0e583",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-awq_aitod_permit.csv"
+  },
+  {
+   "md5": "cf200c14263405bd538d7bc1e677cb95",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-awq_aitod_channel.csv"
+  },
+  {
+   "md5": "11513c77321ce072b1052863426fae1f",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-awq8_st_a_base.csv"
+  },
+  {
+   "md5": "335d0350978a0f1c203ece69d4564aee",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-awq8_st_a_permit.csv"
+  },
+  {
+   "md5": "c3c397f3986cb085d7e6b34c465ca750",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-awq8_st_a_channel.csv"
+  },
+  {
+   "md5": "3f8a627e19897b3ee4d72e8896615386",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-awq8_ucf_base.csv"
+  },
+  {
+   "md5": "ffacaaa0af80724c56f83b5e7d5eb512",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-awq8_ucf_permit.csv"
+  },
+  {
+   "md5": "96bf4dff84cf41ce19259ea420a2b520",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-awq8_ucf_channel.csv"
+  },
+  {
+   "md5": "d4ddda4e4381ba756fc9eb91d59f2fa2",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-awq8_visdrone_base.csv"
+  },
+  {
+   "md5": "8b5e1398e887b4e239bb19560fa86f92",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-awq8_visdrone_permit.csv"
+  },
+  {
+   "md5": "f5c5f2e1b0f23fe8a3f149b9b438b5d8",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-awq8_visdrone_channel.csv"
+  },
+  {
+   "md5": "368aec51a6825d0eb44ff8a3a6731b24",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-awq8_aitod_base.csv"
+  },
+  {
+   "md5": "3abd691f0725673c752f2e4b3c7d7c23",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-awq8_aitod_permit.csv"
+  },
+  {
+   "md5": "36316b3a847689fe1b8ffaced864374c",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-awq8_aitod_channel.csv"
+  },
+  {
+   "md5": "fab99c9b8e16aa8576633b031bbcfe58",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-bf16_st_a_base.csv"
+  },
+  {
+   "md5": "301a6b4f31b18442526855283c65a05e",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-bf16_st_a_permit.csv"
+  },
+  {
+   "md5": "ce99a0d2beec95e4b06d26b53f6dc549",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-bf16_st_a_channel.csv"
+  },
+  {
+   "md5": "676d0347afcd3de86dd9e982aff1e134",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-bf16_ucf_base.csv"
+  },
+  {
+   "md5": "ce7fc83309c01b60c4d6b974d9992f4c",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-bf16_ucf_permit.csv"
+  },
+  {
+   "md5": "470d9f216dcbe79d06247f22b7be73d9",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-bf16_ucf_channel.csv"
+  },
+  {
+   "md5": "94b9055dc08efffab5ca5401fc703fcd",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-bf16_visdrone_base.csv"
+  },
+  {
+   "md5": "08d8ab5db21697f84a3219d6ca96e9be",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-bf16_visdrone_permit.csv"
+  },
+  {
+   "md5": "718849111f5f160b6ca6741d41cb86fc",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-bf16_visdrone_channel.csv"
+  },
+  {
+   "md5": "2fa452dabb77ffe508bd85bac53f0bc9",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-bf16_aitod_base.csv"
+  },
+  {
+   "md5": "282fff2d230ca4913440288452647d7f",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-bf16_aitod_permit.csv"
+  },
+  {
+   "md5": "fa62c71e33594c44ddcff9bd6537b949",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-bf16_aitod_channel.csv"
+  },
+  {
+   "md5": "b7636c5b99039231a859b60efcae87c7",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-fp8_st_a_base.csv"
+  },
+  {
+   "md5": "662d81d4875ce60f61c49f8143cb9b54",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-fp8_st_a_permit.csv"
+  },
+  {
+   "md5": "2c0de6d8521ec5533aa23898958d2913",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-fp8_st_a_channel.csv"
+  },
+  {
+   "md5": "75f4e4cb57401363e1e8d0077dcc3c4d",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-fp8_ucf_base.csv"
+  },
+  {
+   "md5": "f256299a75f713a192384cbfab17d0e4",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-fp8_ucf_permit.csv"
+  },
+  {
+   "md5": "e53bb62473cd9d14076c7149e874515a",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-fp8_ucf_channel.csv"
+  },
+  {
+   "md5": "ca35cceb3a716816e986e920e608ca92",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-fp8_visdrone_base.csv"
+  },
+  {
+   "md5": "2fe28a0b158a504df7e6ce7ee1264532",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-fp8_visdrone_permit.csv"
+  },
+  {
+   "md5": "234d00fcddbd37ce936267e41f3b0685",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-fp8_visdrone_channel.csv"
+  },
+  {
+   "md5": "d1faf5920281c60bd7e25d8edc68531a",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-fp8_aitod_base.csv"
+  },
+  {
+   "md5": "7d49d50286c9ae5debf6b8aceb2867c3",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-fp8_aitod_permit.csv"
+  },
+  {
+   "md5": "9dd19d1e6b2e6f38ea51a4b79d7ba4c0",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-fp8_aitod_channel.csv"
+  },
+  {
+   "md5": "f881e0945377ceaef74562ceac54136f",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-gptq_st_a_base.csv"
+  },
+  {
+   "md5": "a0f84e6fa3ae37c6b9aaf9e996a66e91",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-gptq_st_a_permit.csv"
+  },
+  {
+   "md5": "bc3df2c9c25114658c380fdb020feaf0",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-gptq_st_a_channel.csv"
+  },
+  {
+   "md5": "c8900be5fdbb619b4f6f1cc84122f739",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-gptq_ucf_base.csv"
+  },
+  {
+   "md5": "665a1cb5579c09b2a54d5789876f11b0",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-gptq_ucf_permit.csv"
+  },
+  {
+   "md5": "3985d9b99b3afd5ec71635bdb45161a9",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-gptq_ucf_channel.csv"
+  },
+  {
+   "md5": "fc34b289c74d024ccb96153c0dfa08e8",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-gptq_visdrone_base.csv"
+  },
+  {
+   "md5": "8e47f95ff9fc3313f8630114654f9de6",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-gptq_visdrone_permit.csv"
+  },
+  {
+   "md5": "03d7335d0cec2ecfd36bafeb4f8ae902",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-gptq_visdrone_channel.csv"
+  },
+  {
+   "md5": "6dad43fd70815e4a74163cb1583607c7",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-gptq_aitod_base.csv"
+  },
+  {
+   "md5": "b0acd7153f5eb05bc20228fa335042ff",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-gptq_aitod_permit.csv"
+  },
+  {
+   "md5": "ec3c5bd59f8c07fb263876b986ba6d25",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-32b-gptq_aitod_channel.csv"
+  },
+  {
+   "md5": "e5e128f5f174ec2ab9aebb176a3571d1",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-4b_st_a_base.csv"
+  },
+  {
+   "md5": "1f5cbf6ee40888e9bffd5dea861ada56",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-4b_st_a_permit.csv"
+  },
+  {
+   "md5": "9bf72c9e12acdbec479b3e08560ec7ef",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-4b_st_a_channel.csv"
+  },
+  {
+   "md5": "92f29de77ffdf8b995e2d907b6c16630",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-4b_ucf_base.csv"
+  },
+  {
+   "md5": "3994c91669c8f8b3a2d9f99cbc539b71",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-4b_ucf_permit.csv"
+  },
+  {
+   "md5": "de03bf6d6b842b3af6eb5e5c5bfd6f10",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-4b_ucf_channel.csv"
+  },
+  {
+   "md5": "bda6825d3dd542cdd1e752ab3224f13e",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-4b_visdrone_base.csv"
+  },
+  {
+   "md5": "e78f09e9085de9384caa7b38a8e7a403",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-4b_visdrone_permit.csv"
+  },
+  {
+   "md5": "96b092f9ba50c4dc86e08367f4d18c0e",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-4b_visdrone_channel.csv"
+  },
+  {
+   "md5": "7e4fe7711ac5a0ae9dae1af30b41aeb9",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-4b_aitod_base.csv"
+  },
+  {
+   "md5": "885a478601ef8dc6c08e25357a23cee2",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-4b_aitod_permit.csv"
+  },
+  {
+   "md5": "67ab593d64c80140febb952e2ea0aa29",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-4b_aitod_channel.csv"
+  },
+  {
+   "md5": "1c46e8a4f7cfbe5460b5b20a7c88e4cb",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-8b-awq_st_a_base.csv"
+  },
+  {
+   "md5": "30a65055f3cd331cbad5c1853c3dff5e",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-8b-awq_st_a_permit.csv"
+  },
+  {
+   "md5": "a7d12790b2c06b9df6ebcbbf1c5d9140",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-8b-awq_st_a_channel.csv"
+  },
+  {
+   "md5": "067b5ea976db95f53e97760ac984856f",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-8b-awq_ucf_base.csv"
+  },
+  {
+   "md5": "c98636af4cff2ed3057b63a9e758e551",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-8b-awq_ucf_permit.csv"
+  },
+  {
+   "md5": "12c4d6fc4fc6a0639901930674c45de3",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-8b-awq_ucf_channel.csv"
+  },
+  {
+   "md5": "dff1f711a7ee3fa527b82d5dd0c95bb1",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-8b-awq_visdrone_base.csv"
+  },
+  {
+   "md5": "8fea1703cecda27d0ba5f8c6524fdb11",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-8b-awq_visdrone_permit.csv"
+  },
+  {
+   "md5": "29134feb7e23d99db86569f73f71584a",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-8b-awq_visdrone_channel.csv"
+  },
+  {
+   "md5": "b02e2c50f369812566d9dcb8c899026c",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-8b-awq_aitod_base.csv"
+  },
+  {
+   "md5": "321999280a705765d8fc5e4c02e442ec",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-8b-awq_aitod_permit.csv"
+  },
+  {
+   "md5": "abcfcc963a7c11790c75863fdfda45af",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-8b-awq_aitod_channel.csv"
+  },
+  {
+   "md5": "afbd5948342eb6a2f0e9f578467c24ba",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-8b-bf16_st_a_base.csv"
+  },
+  {
+   "md5": "0000aafca885405ecbbf6f13bc25212b",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-8b-bf16_st_a_permit.csv"
+  },
+  {
+   "md5": "bfc912bb53a5fd1142b8537c20c4df63",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-8b-bf16_st_a_channel.csv"
+  },
+  {
+   "md5": "4533725a1f76e7c2a0003d95bb32655f",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-8b-bf16_ucf_base.csv"
+  },
+  {
+   "md5": "8bc2baa0c24eac9c4b490935a2e195b1",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-8b-bf16_ucf_permit.csv"
+  },
+  {
+   "md5": "3d89a5ed2ea7a4e72d7a473e8b06a3c8",
+   "path": "D:\\deepseek\\PaperB\\analysis\\e2_newh20\\e1_qwen3-vl-8b-bf16_ucf_channel.csv"
+  },
+  {
+   "md5": "12f8f659e07bec43ac4f5dda71f04632",
+   "path": "D:\\deepseek\\PaperB\\analysis\\p2_a800\\p2_probe_results_reparsed\\p2_InternVL3_5-8B_base.csv"
+  },
+  {
+   "md5": "5100ca3c7b017b87602dc033c864572c",
+   "path": "D:\\deepseek\\PaperB\\analysis\\p2_a800\\p2_probe_results_reparsed\\p2_InternVL3_5-8B_channel.csv"
+  },
+  {
+   "md5": "81a9d8cc39d329cbe76a9531839a0679",
+   "path": "D:\\deepseek\\PaperB\\analysis\\p2_a800\\p2_probe_results_reparsed\\p2_InternVL3_5-8B_permit.csv"
+  },
+  {
+   "md5": "5f04f4a57853132bd8a114191ec02497",
+   "path": "D:\\deepseek\\PaperB\\analysis\\p2_a800\\p2_probe_results_reparsed\\p2_Phi-3.5-vision-instruct_base.csv"
+  },
+  {
+   "md5": "cd2150182381af7c0df30c4d6eaf156a",
+   "path": "D:\\deepseek\\PaperB\\analysis\\p2_a800\\p2_probe_results_reparsed\\p2_Phi-3.5-vision-instruct_channel.csv"
+  },
+  {
+   "md5": "2c59b4af884ab701af3261c45fa50acc",
+   "path": "D:\\deepseek\\PaperB\\analysis\\p2_a800\\p2_probe_results_reparsed\\p2_Phi-3.5-vision-instruct_permit.csv"
+  },
+  {
+   "md5": "c38036519a66ee323cada3429ec3ed9a",
+   "path": "D:\\deepseek\\PaperB\\analysis\\p2_a800\\p2_probe_results_reparsed\\p2_Qwen3-VL-32B-Instruct_base.csv"
+  },
+  {
+   "md5": "768f313fe3aa0869a58597ffd84a2844",
+   "path": "D:\\deepseek\\PaperB\\analysis\\p2_a800\\p2_probe_results_reparsed\\p2_Qwen3-VL-32B-Instruct_channel.csv"
+  },
+  {
+   "md5": "0b16c99a0057ea0b331ff01296b69728",
+   "path": "D:\\deepseek\\PaperB\\analysis\\p2_a800\\p2_probe_results_reparsed\\p2_Qwen3-VL-32B-Instruct_permit.csv"
+  },
+  {
+   "md5": "dc19bdab06a06bef334e1c0d5896d7a8",
+   "path": "D:\\deepseek\\PaperB\\analysis\\p2_a800\\p2_probe_results_reparsed\\p2_gemma-3-12b-it_base.csv"
+  },
+  {
+   "md5": "0efc99d4ba46f36c8a1db2e575884b0c",
+   "path": "D:\\deepseek\\PaperB\\analysis\\p2_a800\\p2_probe_results_reparsed\\p2_gemma-3-12b-it_channel.csv"
+  },
+  {
+   "md5": "05a86dfad717da30eeef43dd415b138f",
+   "path": "D:\\deepseek\\PaperB\\analysis\\p2_a800\\p2_probe_results_reparsed\\p2_gemma-3-12b-it_permit.csv"
+  }
+ ],
+ "rules": [
+  "frozen_regex",
+  "json_loads",
+  "raw_keyword",
+  "first_int",
+  "r1_only",
+  "r1r2r3_pipeline"
+ ],
+ "cells_52": [
+  {
+   "model": "internvl25-8b-awq",
+   "dom": "st_a"
+  },
+  {
+   "model": "internvl25-8b-awq",
+   "dom": "ucf"
+  },
+  {
+   "model": "internvl25-8b-awq",
+   "dom": "visdrone"
+  },
+  {
+   "model": "internvl25-8b-awq",
+   "dom": "aitod"
+  },
+  {
+   "model": "internvl35-38b-fp8",
+   "dom": "st_a"
+  },
+  {
+   "model": "internvl35-38b-fp8",
+   "dom": "ucf"
+  },
+  {
+   "model": "internvl35-38b-fp8",
+   "dom": "visdrone"
+  },
+  {
+   "model": "internvl35-38b-fp8",
+   "dom": "aitod"
+  },
+  {
+   "model": "qwen25vl-72b-awq",
+   "dom": "st_a"
+  },
+  {
+   "model": "qwen25vl-72b-awq",
+   "dom": "ucf"
+  },
+  {
+   "model": "qwen25vl-72b-awq",
+   "dom": "visdrone"
+  },
+  {
+   "model": "qwen25vl-72b-awq",
+   "dom": "aitod"
+  },
+  {
+   "model": "qwen25vl-7b-awq",
+   "dom": "st_a"
+  },
+  {
+   "model": "qwen25vl-7b-awq",
+   "dom": "ucf"
+  },
+  {
+   "model": "qwen3-vl-2b",
+   "dom": "st_a"
+  },
+  {
+   "model": "qwen3-vl-2b",
+   "dom": "ucf"
+  },
+  {
+   "model": "qwen3-vl-2b",
+   "dom": "visdrone"
+  },
+  {
+   "model": "qwen3-vl-2b",
+   "dom": "aitod"
+  },
+  {
+   "model": "qwen3-vl-30b-a3b-fp8",
+   "dom": "st_a"
+  },
+  {
+   "model": "qwen3-vl-30b-a3b-fp8",
+   "dom": "ucf"
+  },
+  {
+   "model": "qwen3-vl-30b-a3b-fp8",
+   "dom": "visdrone"
+  },
+  {
+   "model": "qwen3-vl-30b-a3b-fp8",
+   "dom": "aitod"
+  },
+  {
+   "model": "qwen3-vl-32b-awq",
+   "dom": "st_a"
+  },
+  {
+   "model": "qwen3-vl-32b-awq",
+   "dom": "ucf"
+  },
+  {
+   "model": "qwen3-vl-32b-awq",
+   "dom": "visdrone"
+  },
+  {
+   "model": "qwen3-vl-32b-awq",
+   "dom": "aitod"
+  },
+  {
+   "model": "qwen3-vl-32b-awq8",
+   "dom": "st_a"
+  },
+  {
+   "model": "qwen3-vl-32b-awq8",
+   "dom": "ucf"
+  },
+  {
+   "model": "qwen3-vl-32b-awq8",
+   "dom": "visdrone"
+  },
+  {
+   "model": "qwen3-vl-32b-awq8",
+   "dom": "aitod"
+  },
+  {
+   "model": "qwen3-vl-32b-bf16",
+   "dom": "st_a"
+  },
+  {
+   "model": "qwen3-vl-32b-bf16",
+   "dom": "ucf"
+  },
+  {
+   "model": "qwen3-vl-32b-bf16",
+   "dom": "visdrone"
+  },
+  {
+   "model": "qwen3-vl-32b-bf16",
+   "dom": "aitod"
+  },
+  {
+   "model": "qwen3-vl-32b-fp8",
+   "dom": "st_a"
+  },
+  {
+   "model": "qwen3-vl-32b-fp8",
+   "dom": "ucf"
+  },
+  {
+   "model": "qwen3-vl-32b-fp8",
+   "dom": "visdrone"
+  },
+  {
+   "model": "qwen3-vl-32b-fp8",
+   "dom": "aitod"
+  },
+  {
+   "model": "qwen3-vl-32b-gptq",
+   "dom": "st_a"
+  },
+  {
+   "model": "qwen3-vl-32b-gptq",
+   "dom": "ucf"
+  },
+  {
+   "model": "qwen3-vl-32b-gptq",
+   "dom": "visdrone"
+  },
+  {
+   "model": "qwen3-vl-32b-gptq",
+   "dom": "aitod"
+  },
+  {
+   "model": "qwen3-vl-4b",
+   "dom": "st_a"
+  },
+  {
+   "model": "qwen3-vl-4b",
+   "dom": "ucf"
+  },
+  {
+   "model": "qwen3-vl-4b",
+   "dom": "visdrone"
+  },
+  {
+   "model": "qwen3-vl-4b",
+   "dom": "aitod"
+  },
+  {
+   "model": "qwen3-vl-8b-awq",
+   "dom": "st_a"
+  },
+  {
+   "model": "qwen3-vl-8b-awq",
+   "dom": "ucf"
+  },
+  {
+   "model": "qwen3-vl-8b-awq",
+   "dom": "visdrone"
+  },
+  {
+   "model": "qwen3-vl-8b-awq",
+   "dom": "aitod"
+  },
+  {
+   "model": "qwen3-vl-8b-bf16",
+   "dom": "st_a"
+  },
+  {
+   "model": "qwen3-vl-8b-bf16",
+   "dom": "ucf"
+  }
+ ],
+ "zero_disagreements": 0,
+ "p2_reverify": [
+  3600,
+  3600,
+  0
+ ],
+ "breach_7pp": []
+}

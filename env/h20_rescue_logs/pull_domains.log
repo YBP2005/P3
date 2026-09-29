@@ -1,0 +1,36 @@
+已连上 M机
+  OK aerial                     远端 311179709 B  实收 311.64 MB  17s
+  OK countbench                 远端 40948593 B  实收 41.32 MB  33s
+  OK aer_visdrone_base.csv      远端 22816 B  实收 0.03 MB  0s
+  OK aer_aitod_base.csv         远端 14181 B  实收 0.02 MB  0s
+  OK ext_countbench_base.csv    远端 22307 B  实收 0.03 MB  0s
+--- 落地检查 ---
+/root/aerial:
+total 40
+drwxr-xr-x 4 root root  4096 Sep 11 01:45 .
+drwx------ 1 root root  4096 Sep 21 10:23 ..
+drwxr-xr-x 3 root root  4096 Sep 11 01:45 aitod
+-rw-r--r-- 1 root root  7738 Sep 11 01:46 gt_aitod.csv
+-rw-r--r-- 1 root root 11020 Sep 11 01:45 gt_visdrone.csv
+drwxr-xr-x 3 root root  4096 Sep 11 01:45 visdrone
+
+/root/corpus_new:
+total 76
+drwxr-xr-x 2 root root  4096 Sep 21 10:25 .
+drwx------ 1 root root  4096 Sep 21 10:23 ..
+-rw-r--r-- 1 root root 14181 Sep 11 01:59 aer_aitod_base.csv
+-rw-r--r-- 1 root root 22816 Sep 11 01:53 aer_visdrone_base.csv
+-rw-r--r-- 1 root root 22307 Sep 11 01:09 ext_countbench_base.csv
+
+/root/ext/countbench:
+total 124
+drwxr-xr-x 3 root root  4096 Sep 10 07:56 .
+drwxr-xr-x 3 root root  4096 Sep 21 10:23 ..
+-rw-r--r-- 1 root root 48132 Sep 10 07:56 counts.csv
+-rw-r--r-- 1 root root 47632 Sep 10 06:12 counts.csv.broken
+drwxr-xr-x 2 root root 20480 Sep 10 06:12 images
+298M	/root/aerial
+41M	/root/ext
+68K	/root/corpus_new
+overlay         389G  195G  178G  53% /
+PULL_DOMAINS_DONE

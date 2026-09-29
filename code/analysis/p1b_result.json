@@ -1,0 +1,248 @@
+{
+  "criteria_md5": "67e06a0e7325",
+  "per_family": {
+    "LLaVA-OneVision-7B": {
+      "native": {
+        "base": {
+          "n": 135,
+          "n_parsed": 105,
+          "zeros": 45,
+          "rate": 0.42857142857142855,
+          "ci": [
+            0.33808655708889324,
+            0.5240984898049413
+          ],
+          "parse_fail": 30
+        },
+        "permit": {
+          "n": 135,
+          "n_parsed": 0,
+          "zeros": 0,
+          "rate": NaN,
+          "ci": [
+            NaN,
+            NaN
+          ],
+          "parse_fail": 135
+        },
+        "paired": {
+          "base_zeros": 45,
+          "still_zero": 0,
+          "residual": 0.0,
+          "ci": [
+            0.0,
+            0.07865426194064076
+          ]
+        }
+      },
+      "sys": {
+        "base": {
+          "n": 135,
+          "n_parsed": 105,
+          "zeros": 45,
+          "rate": 0.42857142857142855,
+          "ci": [
+            0.33808655708889324,
+            0.5240984898049413
+          ],
+          "parse_fail": 30
+        },
+        "permit": {
+          "n": 135,
+          "n_parsed": 0,
+          "zeros": 0,
+          "rate": NaN,
+          "ci": [
+            NaN,
+            NaN
+          ],
+          "parse_fail": 135
+        },
+        "paired": {
+          "base_zeros": 45,
+          "still_zero": 0,
+          "residual": 0.0,
+          "ci": [
+            0.0,
+            0.07865426194064076
+          ]
+        }
+      }
+    },
+    "Phi-3.5-Vision": {
+      "native": {
+        "base": {
+          "n": 135,
+          "n_parsed": 135,
+          "zeros": 45,
+          "rate": 0.3333333333333333,
+          "ci": [
+            0.2593959893776753,
+            0.4164936575293036
+          ],
+          "parse_fail": 0
+        },
+        "permit": {
+          "n": 135,
+          "n_parsed": 0,
+          "zeros": 0,
+          "rate": NaN,
+          "ci": [
+            NaN,
+            NaN
+          ],
+          "parse_fail": 135
+        },
+        "paired": {
+          "base_zeros": 45,
+          "still_zero": 0,
+          "residual": 0.0,
+          "ci": [
+            0.0,
+            0.07865426194064076
+          ]
+        }
+      },
+      "sys": {
+        "base": {
+          "n": 135,
+          "n_parsed": 135,
+          "zeros": 55,
+          "rate": 0.4074074074074074,
+          "ci": [
+            0.3281978223373858,
+            0.4917408703887136
+          ],
+          "parse_fail": 0
+        },
+        "permit": {
+          "n": 135,
+          "n_parsed": 1,
+          "zeros": 1,
+          "rate": 1.0,
+          "ci": [
+            0.20654329147389294,
+            1.0
+          ],
+          "parse_fail": 134
+        },
+        "paired": {
+          "base_zeros": 55,
+          "still_zero": 0,
+          "residual": 0.0,
+          "ci": [
+            0.0,
+            0.06528714378942788
+          ]
+        }
+      }
+    },
+    "Qwen3-VL-8B": {
+      "native": {
+        "base": {
+          "n": 135,
+          "n_parsed": 135,
+          "zeros": 59,
+          "rate": 0.43703703703703706,
+          "ci": [
+            0.35625290991304437,
+            0.5213054011407033
+          ],
+          "parse_fail": 0
+        },
+        "permit": {
+          "n": 135,
+          "n_parsed": 0,
+          "zeros": 0,
+          "rate": NaN,
+          "ci": [
+            NaN,
+            NaN
+          ],
+          "parse_fail": 135
+        },
+        "paired": {
+          "base_zeros": 59,
+          "still_zero": 0,
+          "residual": 0.0,
+          "ci": [
+            0.0,
+            0.061131479784092065
+          ]
+        }
+      },
+      "sys": {
+        "base": {
+          "n": 135,
+          "n_parsed": 135,
+          "zeros": 53,
+          "rate": 0.3925925925925926,
+          "ci": [
+            0.3142817963315327,
+            0.4768470872307427
+          ],
+          "parse_fail": 0
+        },
+        "permit": {
+          "n": 135,
+          "n_parsed": 0,
+          "zeros": 0,
+          "rate": NaN,
+          "ci": [
+            NaN,
+            NaN
+          ],
+          "parse_fail": 135
+        },
+        "paired": {
+          "base_zeros": 53,
+          "still_zero": 0,
+          "residual": 0.0,
+          "ci": [
+            -6.469933585737964e-18,
+            0.0675843044530766
+          ]
+        }
+      }
+    }
+  },
+  "verdicts": {
+    "H5": {
+      "families_both_templates_ok": [
+        "LLaVA-OneVision-7B",
+        "Phi-3.5-Vision",
+        "Qwen3-VL-8B"
+      ],
+      "failing": [],
+      "need": 2,
+      "passed": true
+    },
+    "H6": {
+      "delta_base_zero_rate_pp": {
+        "LLaVA-OneVision-7B": 0.0,
+        "Phi-3.5-Vision": 7.4074074074074066,
+        "Qwen3-VL-8B": -4.4444444444444455
+      },
+      "first_order_families": [],
+      "first_order_pp": 20.0
+    },
+    "H7": {
+      "interaction_measurable": [
+        "LLaVA-OneVision-7B",
+        "Phi-3.5-Vision",
+        "Qwen3-VL-8B"
+      ],
+      "not_measurable": [],
+      "base_zero_rate_min": 0.2,
+      "note": "不可测 = 该家族在 sys 下没有零可供门控，不得记作\"无交互\""
+    }
+  },
+  "flags": [
+    "LLaVA-OneVision-7B/native permit 解析失败 100.0%（散文式拒答，属预期）",
+    "LLaVA-OneVision-7B/sys permit 解析失败 100.0%（散文式拒答，属预期）",
+    "Phi-3.5-Vision/native permit 解析失败 100.0%（散文式拒答，属预期）",
+    "Phi-3.5-Vision/sys permit 解析失败 99.3%（散文式拒答，属预期）",
+    "Qwen3-VL-8B/native permit 解析失败 100.0%（散文式拒答，属预期）",
+    "Qwen3-VL-8B/sys permit 解析失败 100.0%（散文式拒答，属预期）"
+  ]
+}

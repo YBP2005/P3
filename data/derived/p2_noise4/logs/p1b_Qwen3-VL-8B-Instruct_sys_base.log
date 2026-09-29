@@ -1,0 +1,8 @@
+  冻结探针 19e_probe_multi.py md5 03edb14c98ff ✓（提示词/解析/传输逐字复用）
+  [Qwen3-VL-8B-Instruct/base] --only-sigma 8 ⇒ 135 项
+  [Qwen3-VL-8B-Instruct/base/sys] 网格 135 项 / 已完成 0 / 本次 135 ｜ model=Qwen3-VL-8B-Instruct ｜ system=（插入了 system 消息）
+  [Qwen3-VL-8B-Instruct/base] DONE：135 行写入 /root/p1b_results/p1b_sys_Qwen3-VL-8B-Instruct_base.csv（zero=0 abstain=0 parse_fail=135）
+  冻结探针 19e_probe_multi.py md5 03edb14c98ff ✓（提示词/解析/传输逐字复用）
+  [Qwen3-VL-8B-Instruct/base] --only-sigma 8 ⇒ 135 项
+  [Qwen3-VL-8B-Instruct/base/sys] 网格 135 项 / 已完成 0 / 本次 135 ｜ model=Qwen3-VL-8B-Instruct ｜ system=（插入了 system 消息）
+  [Qwen3-VL-8B-Instruct/base] DONE：135 行写入 /root/p1b_results/p1b_sys_Qwen3-VL-8B-Instruct_base.csv（zero=53 abstain=0 parse_fail=0）

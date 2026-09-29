@@ -1,0 +1,13 @@
+  P5a 判据 md5 d951f10eea2a OK
+[02:36:06] P4 已完成（或等待超时）⇒ 开始 P5a
+[02:36:06] [Qwen3-VL-8B-Instruct] 起服 frac=0.34 maxlen=8192
+[02:37:16] [Qwen3-VL-8B-Instruct] 就绪（70 s）｜显存 25811 MiB
+[02:38:53]   [Qwen3-VL-8B-Instruct/base] 283 行
+[02:38:53]   [Qwen3-VL-8B-Instruct/forbid0] 283 行
+[02:38:53]   [Qwen3-VL-8B-Instruct/permit] 283 行
+/root/p5a_run.sh: line 32: 17253 Killed                  nohup $VLLM serve "$MP" --served-model-name "$M" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization "$FRAC" --max-num-seqs 24 --port "$PORT" $E < /dev/null > "$LOG" 2>&1
+[02:38:57] [Qwen3-VL-8B-Instruct] 停服
+[02:38:57] [Qwen3-VL-32B-Instruct] 起服 frac=0.85 maxlen=4096
+[02:39:37] [Qwen3-VL-32B-Instruct] !! 起服失败
+[02:39:37] [Qwen3-VL-32B-Instruct] 跳过
+[02:39:37] P5A_DONE

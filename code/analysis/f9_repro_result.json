@@ -1,0 +1,141 @@
+{
+  "purpose": "F.9 十行跨度能否由已发布记录重算（盲审 #10/#25/#28 的决定性实验）",
+  "rule": "<5% 记为命中该族该口径；两族都 >20% 记为\"该口径组合在仓库内无实现\"",
+  "inputs": {
+    "det_ladder_visdrone": "analysis/data/pod_mirror/A/det_yolo_ladder_visdrone_det.csv",
+    "det_ladder_coco": "analysis/data/pod_mirror/A/det_yolo_ladder_yolo12n.csv",
+    "note": "像素预算与契约单元走 pod_mirror 下 res_ctrl__*/ 与 b2__out_*/E1.csv"
+  },
+  "units": {
+    "det/VisDrone": {
+      "f9": 150.7,
+      "computed": {
+        "ISO_oracle": 204.88,
+        "ISO_deploy": 0.0,
+        "ISO_oracle_med": 188.3,
+        "ISO_deploy_med": 87.2
+      },
+      "rel": {
+        "ISO_oracle": 0.36,
+        "ISO_deploy": 1.0,
+        "ISO_oracle_med": 0.25,
+        "ISO_deploy_med": 0.421
+      },
+      "hits": [],
+      "no_impl": true
+    },
+    "det/COCO": {
+      "f9": 54.2,
+      "computed": {
+        "ISO_oracle": 61.72,
+        "ISO_deploy": 0.0,
+        "ISO_oracle_med": 63.97,
+        "ISO_deploy_med": 28.8
+      },
+      "rel": {
+        "ISO_oracle": 0.139,
+        "ISO_deploy": 1.0,
+        "ISO_oracle_med": 0.18,
+        "ISO_deploy_med": 0.469
+      },
+      "hits": [],
+      "no_impl": false
+    },
+    "det/BBBC005": {
+      "f9": 49.0,
+      "computed": {
+        "ISO_oracle": 112.31,
+        "ISO_deploy": 0.0,
+        "ISO_oracle_med": 107.18,
+        "ISO_deploy_med": 2.86
+      },
+      "rel": {
+        "ISO_oracle": 1.292,
+        "ISO_deploy": 1.0,
+        "ISO_oracle_med": 1.187,
+        "ISO_deploy_med": 0.942
+      },
+      "hits": [],
+      "no_impl": true
+    },
+    "density/st_a": {
+      "f9": 33.5,
+      "computed": {
+        "ISO_oracle": 32.61,
+        "ISO_deploy": 0.0,
+        "ISO_oracle_med": 26.56,
+        "ISO_deploy_med": 4.24
+      },
+      "rel": {
+        "ISO_oracle": 0.026,
+        "ISO_deploy": 1.0,
+        "ISO_oracle_med": 0.207,
+        "ISO_deploy_med": 0.873
+      },
+      "hits": [
+        "ISO_oracle"
+      ],
+      "no_impl": false
+    },
+    "density/ucf": {
+      "f9": 36.6,
+      "computed": {
+        "ISO_oracle": 35.08,
+        "ISO_deploy": 0.0,
+        "ISO_oracle_med": 25.82,
+        "ISO_deploy_med": 6.48
+      },
+      "rel": {
+        "ISO_oracle": 0.042,
+        "ISO_deploy": 1.0,
+        "ISO_oracle_med": 0.295,
+        "ISO_deploy_med": 0.823
+      },
+      "hits": [
+        "ISO_oracle"
+      ],
+      "no_impl": false
+    },
+    "contract/ivl": {
+      "f9": 97.7,
+      "computed": {
+        "ISO_oracle": 160.73,
+        "ISO_deploy": 0.0,
+        "ISO_oracle_med": 200.99,
+        "ISO_deploy_med": 20.35
+      },
+      "rel": {
+        "ISO_oracle": 0.645,
+        "ISO_deploy": 1.0,
+        "ISO_oracle_med": 1.057,
+        "ISO_deploy_med": 0.792
+      },
+      "hits": [],
+      "no_impl": true
+    },
+    "contract/q32": {
+      "f9": 85.9,
+      "computed": {
+        "ISO_oracle": 259.41,
+        "ISO_deploy": 0.0,
+        "ISO_oracle_med": 170.66,
+        "ISO_deploy_med": 55.54
+      },
+      "rel": {
+        "ISO_oracle": 2.02,
+        "ISO_deploy": 1.0,
+        "ISO_oracle_med": 0.987,
+        "ISO_deploy_med": 0.353
+      },
+      "hits": [],
+      "no_impl": true
+    }
+  },
+  "verdict": "no_single_family_and_caliber_reproduces_all_units",
+  "hit_counts": {
+    "units_total": 7,
+    "units_with_any_hit": 2,
+    "units_no_implementation": 4
+  },
+  "conclusion": "F.9 的十行是**可核验转录**（逐行对过中文骨架 §8.10，见 f9_transcribe_check.py），不是 pooled 口径可复算表；正文的承重排序证据已改为 M.37 的 36 单元可复算集。"
+}

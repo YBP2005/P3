@@ -1,0 +1,10 @@
+{
+ "n": 20,
+ "batch_mismatch": 1,
+ "rate_a": 0.05,
+ "paired_with_frozen": 20,
+ "itemwise_mismatch_rate": 0.1,
+ "zero_rate_hf": 0.3,
+ "zero_rate_frozen": 0.3,
+ "pass": true
+}

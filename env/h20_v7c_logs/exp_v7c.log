@@ -1,0 +1,81 @@
+[22:48:32] ########## v7c 开始，等 v6 结束 22:48:32 ##########
+[22:48:32] v6 已结束
+[22:49:02] === qwen25vl-72b-awq（新域 6 臂 + 非零池 3 臂，n=150）===
+[22:53:13]     qwen25vl-72b-awq READY
+[22:53:13]     跑 qwen25vl-72b-awq / visdrone / base,permit,bestA,bestB,bestC,channel (zero, n=150)
+[23:17:24]       rc=0 文件 354→360 用时 1451s
+[23:17:24]     跑 qwen25vl-72b-awq / aitod / base,permit,bestA,bestB,bestC,channel (zero, n=150)
+[23:27:07]       rc=0 文件 360→366 用时 583s
+[23:27:07]     跑 qwen25vl-72b-awq / visdrone / base,permit,channel (nonzero, n=150)
+[23:37:13]       rc=0 文件 108→111 用时 606s
+[23:37:13]     跑 qwen25vl-72b-awq / aitod / base,permit,channel (nonzero, n=150)
+[23:38:57]       rc=0 文件 111→114 用时 104s
+[23:38:57] === qwen3-vl-32b-fp8（新域 6 臂 + 非零池 3 臂，n=150）===
+[23:42:22]     qwen3-vl-32b-fp8 READY
+[23:42:22]     跑 qwen3-vl-32b-fp8 / visdrone / base,permit,bestA,bestB,bestC,channel (zero, n=150)
+[23:44:48]       rc=0 文件 366→372 用时 146s
+[23:44:48]     跑 qwen3-vl-32b-fp8 / aitod / base,permit,bestA,bestB,bestC,channel (zero, n=150)
+[23:46:44]       rc=0 文件 372→378 用时 116s
+[23:46:44]     跑 qwen3-vl-32b-fp8 / visdrone / base,permit,channel (nonzero, n=150)
+[23:47:46]       rc=0 文件 114→117 用时 62s
+[23:47:46]     跑 qwen3-vl-32b-fp8 / aitod / base,permit,channel (nonzero, n=150)
+[23:48:13]       rc=0 文件 117→120 用时 27s
+[23:48:13] === qwen3-vl-32b-awq8（新域 6 臂 + 非零池 3 臂，n=150）===
+[23:51:53]     qwen3-vl-32b-awq8 READY
+[23:51:53]     跑 qwen3-vl-32b-awq8 / visdrone / base,permit,bestA,bestB,bestC,channel (zero, n=150)
+[23:51:53]       rc=0 文件 378→378 用时 0s
+[23:51:53]       !! 未增长，日志尾：
+            [permit] 已完成，跳过
+            [bestA] 已完成，跳过
+            [bestB] 已完成，跳过
+            [bestC] 已完成，跳过
+            [channel] 已完成，跳过
+[23:51:53]     跑 qwen3-vl-32b-awq8 / aitod / base,permit,bestA,bestB,bestC,channel (zero, n=150)
+[23:51:53]       rc=0 文件 378→378 用时 0s
+[23:51:53]       !! 未增长，日志尾：
+            [permit] 已完成，跳过
+            [bestA] 已完成，跳过
+            [bestB] 已完成，跳过
+            [bestC] 已完成，跳过
+            [channel] 已完成，跳过
+[23:51:53]     跑 qwen3-vl-32b-awq8 / visdrone / base,permit,channel (nonzero, n=150)
+[23:54:04]       rc=0 文件 120→123 用时 131s
+[23:54:04]     跑 qwen3-vl-32b-awq8 / aitod / base,permit,channel (nonzero, n=150)
+[23:54:56]       rc=0 文件 123→126 用时 52s
+[23:54:56] === qwen3-vl-32b-gptq（新域 6 臂 + 非零池 3 臂，n=150）===
+[23:57:37]     qwen3-vl-32b-gptq READY
+[23:57:37]     跑 qwen3-vl-32b-gptq / visdrone / base,permit,bestA,bestB,bestC,channel (zero, n=150)
+[00:00:45]       rc=0 文件 378→384 用时 188s
+[00:00:45]     跑 qwen3-vl-32b-gptq / aitod / base,permit,bestA,bestB,bestC,channel (zero, n=150)
+[00:03:13]       rc=0 文件 384→390 用时 148s
+[00:03:13]     跑 qwen3-vl-32b-gptq / visdrone / base,permit,channel (nonzero, n=150)
+[00:04:48]       rc=0 文件 126→129 用时 95s
+[00:04:48]     跑 qwen3-vl-32b-gptq / aitod / base,permit,channel (nonzero, n=150)
+[00:05:28]       rc=0 文件 129→132 用时 40s
+[00:05:28] === qwen3-vl-8b-awq（新域 6 臂 + 非零池 3 臂，n=150）===
+[00:07:09]     qwen3-vl-8b-awq READY
+[00:07:09]     跑 qwen3-vl-8b-awq / visdrone / base,permit,bestA,bestB,bestC,channel (zero, n=150)
+[00:08:33]       rc=0 文件 390→396 用时 84s
+[00:08:33]     跑 qwen3-vl-8b-awq / aitod / base,permit,bestA,bestB,bestC,channel (zero, n=150)
+[00:09:35]       rc=0 文件 396→402 用时 62s
+[00:09:35]     跑 qwen3-vl-8b-awq / visdrone / base,permit,channel (nonzero, n=150)
+[00:10:15]       rc=0 文件 132→135 用时 40s
+[00:10:15]     跑 qwen3-vl-8b-awq / aitod / base,permit,channel (nonzero, n=150)
+[00:10:32]       rc=0 文件 135→138 用时 17s
+[00:10:32] === internvl25-8b-awq（新域 6 臂 + 非零池 3 臂，n=150）===
+[00:11:43]     internvl25-8b-awq READY
+[00:11:43]     跑 internvl25-8b-awq / visdrone / base,permit,bestA,bestB,bestC,channel (zero, n=150)
+[00:13:40]       rc=0 文件 402→408 用时 117s
+[00:13:40]     跑 internvl25-8b-awq / aitod / base,permit,bestA,bestB,bestC,channel (zero, n=150)
+[00:14:52]       rc=0 文件 408→414 用时 72s
+[00:14:52]     跑 internvl25-8b-awq / visdrone / base,permit,channel (nonzero, n=150)
+[00:15:59]       rc=0 文件 138→141 用时 67s
+[00:15:59]     跑 internvl25-8b-awq / aitod / base,permit,channel (nonzero, n=150)
+[00:16:20]       rc=0 文件 141→144 用时 21s
+[00:16:20] === 收尾：推送全部结果到 M机 ===
+[00:18:20]   零池 414 个文件；非零池 144 个文件
+[00:18:20] M机 侧数量见 push_final.log
+  本次推送条数: 559
+[00:18:20] ########## v7c 结束 00:18:20 ##########
+EXP_V7C_DONE
+ALL_EXPERIMENTS_DONE

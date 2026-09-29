@@ -1,0 +1,202 @@
+{
+  "purpose": "v0527 盲审条目 #2/#4/#6/#23 的零 GPU 分析：ordering 的置换 p 与 bootstrap CI、逐旋钮敏感性、M.37 留出区间（引用）、10 单元下的最小可检出分离",
+  "inputs": {
+    "equalcount36": "equalcount36_result.json",
+    "a39": "a39_unit_calib_heldout_result.json",
+    "equalcount36_md5": "bd70867b1453cc5e3ceeb97572d26eea",
+    "a39_md5": "392369af65f13dcbf7720bc612fbf5ee"
+  },
+  "methods": {
+    "boot": "对单元有放回重采样 2000 次，取 2.5/97.5 分位",
+    "perm": "随机置换一侧标签，p=(1+#{≥obs})/(1+N)，N=20000",
+    "power": "十单元两侧各 5，Δ 为真实间隙，观测=真值+N(0,σ)；按本文规则枚举 9 个分割点并 Bonferroni 校正；α=0.05，2000 次模拟，功率 0.8 对应 Δ"
+  },
+  "ordering": {
+    "36unit_k3": {
+      "n": 36,
+      "boot_ci": {
+        "obs": 0.9324881740039196,
+        "p025": 0.8362896474108009,
+        "p975": 0.9834305991652087
+      },
+      "perm": {
+        "obs": 0.9324881740039196,
+        "p": 4.999750012499375e-05,
+        "n_perm": 20000
+      },
+      "quoted": {
+        "obs": 0.932
+      }
+    },
+    "31unit_k4": {
+      "n": 31,
+      "boot_ci": {
+        "obs": 0.9820813939117907,
+        "p025": 0.9390905416017907,
+        "p975": 0.995845707414122
+      },
+      "perm": {
+        "obs": 0.9820813939117907,
+        "p": 4.999750012499375e-05,
+        "n_perm": 20000
+      },
+      "quoted": {
+        "obs": 0.982
+      }
+    }
+  },
+  "leave_one_knob_out": {
+    "output contract": {
+      "n_dropped": 2,
+      "rho_36": 0.939
+    },
+    "pixel budget": {
+      "n_dropped": 6,
+      "rho_36": 0.883
+    },
+    "prompt family": {
+      "n_dropped": 6,
+      "rho_36": 0.97
+    },
+    "tiling": {
+      "n_dropped": 6,
+      "rho_36": 0.928
+    },
+    "CSRNet": {
+      "n_dropped": 2,
+      "rho_36": 0.92
+    },
+    "official DM-Count": {
+      "n_dropped": 2,
+      "rho_36": 0.92
+    },
+    "in-domain(micro)": {
+      "n_dropped": 4,
+      "rho_36": 0.937
+    },
+    "in-domain": {
+      "n_dropped": 4,
+      "rho_36": 0.947
+    },
+    "zero-shot COCO": {
+      "n_dropped": 3,
+      "rho_36": 0.917
+    }
+  },
+  "heldout_intervals": {
+    "C1u": {
+      "median": 0.536,
+      "p05": 0.428,
+      "p95": 0.647,
+      "frac_ge_090": 0.0,
+      "frac_ge_080": 0.0
+    },
+    "C2l": {
+      "median": 0.523,
+      "p05": 0.348,
+      "p95": 0.682,
+      "frac_ge_090": 0.0,
+      "frac_ge_080": 0.0
+    },
+    "Cg": {
+      "median": 0.995,
+      "p05": 0.984,
+      "p95": 0.998,
+      "frac_ge_090": 1.0,
+      "frac_ge_080": 1.0
+    },
+    "ISO": {
+      "median": 0.521,
+      "p05": 0.354,
+      "p95": 0.662,
+      "frac_ge_090": 0.0,
+      "frac_ge_080": 0.0
+    },
+    "QNT": {
+      "median": 0.41,
+      "p05": 0.278,
+      "p95": 0.535,
+      "frac_ge_090": 0.0,
+      "frac_ge_080": 0.0
+    },
+    "C0e": {
+      "median": 0.995,
+      "p05": 0.984,
+      "p95": 0.998,
+      "frac_ge_090": 1.0,
+      "frac_ge_080": 1.0
+    }
+  },
+  "power": {
+    "obs_split_3v7_sigma_2.15": {
+      "min_detectable_pp": null,
+      "power_at_that_delta": 0.0,
+      "attainable": "不可达（×9 校正后最小 p=0.0750>0.05）"
+    },
+    "best_split_5v5_sigma_2.15": {
+      "min_detectable_pp": 6.48,
+      "power_at_that_delta": 0.805,
+      "attainable": null
+    },
+    "uncorrected_3v7_sigma_2.15": {
+      "min_detectable_pp": 3.95,
+      "power_at_that_delta": 0.805
+    },
+    "obs_split_3v7_sigma_6.46": {
+      "min_detectable_pp": null,
+      "power_at_that_delta": 0.0,
+      "attainable": "不可达（×9 校正后最小 p=0.0750>0.05）"
+    },
+    "best_split_5v5_sigma_6.46": {
+      "min_detectable_pp": 19.45,
+      "power_at_that_delta": 0.802,
+      "attainable": null
+    },
+    "uncorrected_3v7_sigma_6.46": {
+      "min_detectable_pp": 11.84,
+      "power_at_that_delta": 0.805
+    }
+  },
+  "split_shape_attainable_p": {
+    "3": {
+      "n_assign": 120,
+      "min_uncorrected_p": 0.008333333333333333,
+      "min_corrected_p": 0.075
+    },
+    "4": {
+      "n_assign": 210,
+      "min_uncorrected_p": 0.004761904761904762,
+      "min_corrected_p": 0.04285714285714286
+    },
+    "5": {
+      "n_assign": 252,
+      "min_uncorrected_p": 0.003968253968253968,
+      "min_corrected_p": 0.03571428571428571
+    }
+  },
+  "quoted_display": {
+    "rho_36_k3": 0.932,
+    "rho_36_k3_ci": [
+      0.836,
+      0.983
+    ],
+    "rho_31_k4": 0.982,
+    "rho_31_k4_ci": [
+      0.939,
+      0.996
+    ],
+    "perm_p_36": 4.999750012499375e-05,
+    "loo_range": [
+      0.883,
+      0.97
+    ],
+    "min_corrected_p_3v7": 0.075,
+    "min_corrected_p_5v5": 0.036,
+    "mds_3v7_sigma215": null,
+    "mds_uncorr_3v7_sigma215": 3.95,
+    "cg_ci": [
+      0.984,
+      0.998
+    ]
+  }
+}

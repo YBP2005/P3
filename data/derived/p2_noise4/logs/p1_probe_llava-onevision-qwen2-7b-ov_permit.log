@@ -1,0 +1,6 @@
+  冻结探针 19e_probe_multi.py md5 03edb14c98ff ✓（提示词/解析/传输逐字复用）
+  [llava-onevision-qwen2-7b-ov/permit] 网格 675 项 / 已完成 0 / 本次 675 ｜ model=llava-onevision-qwen2-7b-ov
+    200/675  1.23 it/s  zero=0 abstain=46 parse_fail=46
+    400/675  1.36 it/s  zero=0 abstain=121 parse_fail=121
+    600/675  1.44 it/s  zero=0 abstain=220 parse_fail=220
+  [llava-onevision-qwen2-7b-ov/permit] DONE：675 行写入 /root/p1_results/p1_llava-onevision-qwen2-7b-ov_permit.csv（zero=0 abstain=265 parse_fail=265）

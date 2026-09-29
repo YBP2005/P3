@@ -1,0 +1,140 @@
+{
+  "family_definition": "A39 (analysis/work/a39_calib3.py): fit_a = lstsq([P,1],G) => pred'=a*pred+b (regression G on P, deployable). C1=one (a,b) per unit over all its levels; C2=per-level refit; both fitted on the held-out calibration fold.",
+  "scope": {
+    "n_units": 8,
+    "units": [
+      "pxbudget(res_ctrl) / ivl / st_a",
+      "pxbudget(res_ctrl) / ivl / ucf",
+      "pxbudget(res_ctrl) / ivl / visdrone",
+      "pxbudget(res_ctrl) / q32 / st_a",
+      "pxbudget(res_ctrl) / q32 / ucf",
+      "pxbudget(res_ctrl) / q32 / visdrone",
+      "tiling / st_a / base",
+      "tiling / ucf / base"
+    ],
+    "nsplit": 200,
+    "seed": 20260923,
+    "calib_frac": 0.3333333333333333,
+    "note": "A39 original used a 1/2 fold; this run follows the handoff instruction of 1/3.",
+    "excluded_16_units": "density/*(4), pxbudget(threeway)/*(6), detector tau*(6) come from precomputed rho tables (threeway_curves*.csv) with no per-item records"
+  },
+  "repro_gate": "passed: reconstructed full-item spans equal span_equalcount_result.json bit-for-bit",
+  "arms": {
+    "C1u": {
+      "median": 0.8095238095238095,
+      "p05": 0.6428571428571429,
+      "p95": 0.9523809523809523,
+      "frac_ge_090": 0.18,
+      "frac_ge_080": 0.52
+    },
+    "C2l": {
+      "median": 0.5476190476190477,
+      "p05": -0.07142857142857142,
+      "p95": 0.8571428571428571,
+      "frac_ge_090": 0.03,
+      "frac_ge_080": 0.105
+    },
+    "Cg": {
+      "median": 0.9761904761904762,
+      "p05": 0.9523809523809523,
+      "p95": 1.0,
+      "frac_ge_090": 1.0,
+      "frac_ge_080": 1.0
+    },
+    "ISO": {
+      "median": 0.5714285714285714,
+      "p05": 0.21428571428571427,
+      "p95": 0.8333333333333334,
+      "frac_ge_090": 0.01,
+      "frac_ge_080": 0.085
+    },
+    "QNT": {
+      "median": 0.6904761904761905,
+      "p05": 0.30952380952380953,
+      "p95": 0.9285714285714286,
+      "frac_ge_090": 0.125,
+      "frac_ge_080": 0.295
+    },
+    "C0e": {
+      "median": 0.9761904761904762,
+      "p05": 0.9523809523809523,
+      "p95": 1.0,
+      "frac_ge_090": 1.0,
+      "frac_ge_080": 1.0
+    }
+  },
+  "per_unit": {
+    "pxbudget(res_ctrl) / ivl / st_a": {
+      "slope_median_C1": 2.0141491518656554,
+      "C1u": 2.014149151865665,
+      "C2l": 2.490425881982494,
+      "Cg": 0.7889089422804042,
+      "ISO": 2.373353893963781,
+      "QNT": 2.2636363636363614,
+      "span_full": 1.0226074196358965
+    },
+    "pxbudget(res_ctrl) / ivl / ucf": {
+      "slope_median_C1": 2.351839015109394,
+      "C1u": 2.3518390151094217,
+      "C2l": 1.2775545477346193,
+      "Cg": 0.7889089422804334,
+      "ISO": 1.5238629809744788,
+      "QNT": 1.922705314009665,
+      "span_full": 2.8053290230940604
+    },
+    "pxbudget(res_ctrl) / ivl / visdrone": {
+      "slope_median_C1": 1.6369196781714035,
+      "C1u": 1.6369196781714044,
+      "C2l": 0.45614332042280986,
+      "Cg": 0.7889089422804713,
+      "ISO": 0.754854297723912,
+      "QNT": 1.2316513761467887,
+      "span_full": 7.1308818598412955
+    },
+    "pxbudget(res_ctrl) / q32 / st_a": {
+      "slope_median_C1": -0.5016382077465444,
+      "C1u": 0.5024661393816277,
+      "C2l": 1.0719955857523105,
+      "Cg": 0.7889089422804321,
+      "ISO": 0.16951208817795263,
+      "QNT": 2.4732484076433163,
+      "span_full": 3.994319190484646
+    },
+    "pxbudget(res_ctrl) / q32 / ucf": {
+      "slope_median_C1": -0.17353567423512575,
+      "C1u": 0.23661410524647877,
+      "C2l": 0.34055353353596496,
+      "Cg": 0.788908942280432,
+      "ISO": 0.15232203625733146,
+      "QNT": 0.962815064478312,
+      "span_full": 14.076301290567073
+    },
+    "pxbudget(res_ctrl) / q32 / visdrone": {
+      "slope_median_C1": 0.9266170646954061,
+      "C1u": 0.9266170646953985,
+      "C2l": 0.38459301468074947,
+      "Cg": 0.7889089422804418,
+      "ISO": 0.4115212790273764,
+      "QNT": 1.0807600950118759,
+      "span_full": 14.597071644126515
+    },
+    "tiling / st_a / base": {
+      "slope_median_C1": 0.5472509777981756,
+      "C1u": 0.5472509777981724,
+      "C2l": 0.17832501260291872,
+      "Cg": 0.7889089422804291,
+      "ISO": 0.21811280307808023,
+      "QNT": 0.40231806530703224,
+      "span_full": 33.33798280540691
+    },
+    "tiling / ucf / base": {
+      "slope_median_C1": 0.8002573108975306,
+      "C1u": 0.8002573108975298,
+      "C2l": 0.22107831382469928,
+      "Cg": 0.7889089422804288,
+      "ISO": 0.25199463765329394,
+      "QNT": 0.39279588336192117,
+      "span_full": 40.531885210742644
+    }
+  }
+}

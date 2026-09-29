@@ -1,0 +1,41 @@
+[04:33:15][qwen32b] === start ===  mid=Qwen3-VL-32B-Instruct port=8006 frac=0.85 maxlen=4096 limit=full
+[04:33:15][qwen32b] 服务 PID=36379，等待就绪…
+[04:35:25][qwen32b] !! 服务进程已退出，看 /root/logs/p2_qwen32b_serve.log
+(APIServer pid=36379)     ) as engine_launch:
+(APIServer pid=36379)     ^
+(APIServer pid=36379)   File "/usr/local/miniconda3/lib/python3.13/contextlib.py", line 148, in __exit__
+(APIServer pid=36379)     next(self.gen)
+(APIServer pid=36379)     ~~~~^^^^^^^^^^
+(APIServer pid=36379)   File "/usr/local/miniconda3/lib/python3.13/site-packages/vllm/v1/engine/utils.py", line 1240, in launch_core_engines
+(APIServer pid=36379)     wait_for_engine_startup(
+(APIServer pid=36379)     ~~~~~~~~~~~~~~~~~~~~~~~^
+(APIServer pid=36379)         handshake_socket,
+(APIServer pid=36379)         ^^^^^^^^^^^^^^^^^
+(APIServer pid=36379)     ...<4 lines>...
+(APIServer pid=36379)         launch,
+(APIServer pid=36379)         ^^^^^^^
+(APIServer pid=36379)     )
+(APIServer pid=36379)     ^
+(APIServer pid=36379)   File "/usr/local/miniconda3/lib/python3.13/site-packages/vllm/v1/engine/utils.py", line 1320, in wait_for_engine_startup
+(APIServer pid=36379)     raise RuntimeError(
+(APIServer pid=36379)     ...<8 lines>...
+(APIServer pid=36379)     )
+(APIServer pid=36379) RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+[05:02:43][qwen32b] === start ===  mid=Qwen3-VL-32B-Instruct port=8006 frac=default maxlen=4096 limit=full
+[05:02:43][qwen32b] 服务 PID=39349，等待就绪…
+[05:04:34][qwen32b] 就绪（第 23 次探测）
+[05:04:34][qwen32b] 跑探针：arms=base,permit,channel workers=4 
+  冻结探针 /root/19e_probe_multi.py ｜ md5 03edb14c98ffa3aea9ffa20f59b00bc8
+  池子 /root/p2/pool_all/pool_frozen_a800.csv ｜ 300 张 ｜ md5 25ee5c02109937753aa52c433fd8876a ｜ 分组 {'S-2': 150, 'S-1': 150}
+  计划调用数 = 900（= 图 300 × 臂 3 × 构建 1）
+  [Qwen3-VL-32B-Instruct/base] 待跑 300 张
+    → /root/p2_probe_results/p2_Qwen3-VL-32B-Instruct_base.csv（300 行）
+  [Qwen3-VL-32B-Instruct/permit] 待跑 300 张
+    → /root/p2_probe_results/p2_Qwen3-VL-32B-Instruct_permit.csv（300 行）
+  [Qwen3-VL-32B-Instruct/channel] 待跑 300 张
+    → /root/p2_probe_results/p2_Qwen3-VL-32B-Instruct_channel.csv（300 行）
+  用时 3.7 分钟 ｜ manifest → /root/p2_probe_results/p2_probe_manifest.json
+[05:08:14][qwen32b] 探针 rc=0
+[05:08:14][qwen32b] 停服 PID=39349
+[05:08:22][qwen32b] 结束显存：0 MiB
+[05:08:22][qwen32b] === done ===

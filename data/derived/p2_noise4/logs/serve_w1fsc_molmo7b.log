@@ -1,0 +1,89 @@
+(APIServer pid=10395) INFO 09-23 03:16:07 [api_utils.py:347] 
+(APIServer pid=10395) INFO 09-23 03:16:07 [api_utils.py:347]        █     █     █▄   ▄█
+(APIServer pid=10395) INFO 09-23 03:16:07 [api_utils.py:347]  ▄▄ ▄█ █     █     █ ▀▄▀ █  version 0.29.0
+(APIServer pid=10395) INFO 09-23 03:16:07 [api_utils.py:347]   █▄█▀ █     █     █     █  model   /root/w1_models/molmo-7b-d
+(APIServer pid=10395) INFO 09-23 03:16:07 [api_utils.py:347]    ▀▀  ▀▀▀▀▀ ▀▀▀▀▀ ▀     ▀
+(APIServer pid=10395) INFO 09-23 03:16:07 [api_utils.py:347] 
+(APIServer pid=10395) INFO 09-23 03:16:07 [api_utils.py:286] non-default args: {'model_tag': '/root/w1_models/molmo-7b-d', 'model': '/root/w1_models/molmo-7b-d', 'max_model_len': 4096, 'served_model_name': ['Molmo-7B-D-0924'], 'gpu_memory_utilization': 0.85, 'limit_mm_per_prompt': {'image': 1}, 'max_num_seqs': 16}
+(APIServer pid=10395) ERROR 09-23 03:16:07 [repo_utils.py:119] Error parsing config for /root/w1_models/molmo-7b-d: The repository /root/w1_models/molmo-7b-d contains custom code which must be executed to correctly load the model. You can inspect the repository content at /root/w1_models/molmo-7b-d .
+(APIServer pid=10395) ERROR 09-23 03:16:07 [repo_utils.py:119]  You can inspect the repository content at https://hf.co//root/w1_models/molmo-7b-d.
+(APIServer pid=10395) ERROR 09-23 03:16:07 [repo_utils.py:119] Please pass the argument `trust_remote_code=True` to allow custom code to be run., retrying 1 of 2
+(APIServer pid=10395) ERROR 09-23 03:16:09 [repo_utils.py:117] Error parsing config for /root/w1_models/molmo-7b-d: The repository /root/w1_models/molmo-7b-d contains custom code which must be executed to correctly load the model. You can inspect the repository content at /root/w1_models/molmo-7b-d .
+(APIServer pid=10395) ERROR 09-23 03:16:09 [repo_utils.py:117]  You can inspect the repository content at https://hf.co//root/w1_models/molmo-7b-d.
+(APIServer pid=10395) ERROR 09-23 03:16:09 [repo_utils.py:117] Please pass the argument `trust_remote_code=True` to allow custom code to be run.
+(APIServer pid=10395) Traceback (most recent call last):
+(APIServer pid=10395)   File "/usr/local/miniconda3/bin/vllm", line 7, in <module>
+(APIServer pid=10395)     sys.exit(main())
+(APIServer pid=10395)              ~~~~^^
+(APIServer pid=10395)   File "/usr/local/miniconda3/lib/python3.13/site-packages/vllm/entrypoints/cli/main.py", line 97, in main
+(APIServer pid=10395)     args.dispatch_function(args)
+(APIServer pid=10395)     ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+(APIServer pid=10395)   File "/usr/local/miniconda3/lib/python3.13/site-packages/vllm/entrypoints/cli/serve.py", line 153, in cmd
+(APIServer pid=10395)     uvloop.run(run_server(args))
+(APIServer pid=10395)     ~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+(APIServer pid=10395)   File "/usr/local/miniconda3/lib/python3.13/site-packages/uvloop/__init__.py", line 96, in run
+(APIServer pid=10395)     return __asyncio.run(
+(APIServer pid=10395)            ~~~~~~~~~~~~~^
+(APIServer pid=10395)         wrapper(),
+(APIServer pid=10395)         ^^^^^^^^^^
+(APIServer pid=10395)     ...<2 lines>...
+(APIServer pid=10395)         **run_kwargs
+(APIServer pid=10395)         ^^^^^^^^^^^^
+(APIServer pid=10395)     )
+(APIServer pid=10395)     ^
+(APIServer pid=10395)   File "/usr/local/miniconda3/lib/python3.13/asyncio/runners.py", line 195, in run
+(APIServer pid=10395)     return runner.run(main)
+(APIServer pid=10395)            ~~~~~~~~~~^^^^^^
+(APIServer pid=10395)   File "/usr/local/miniconda3/lib/python3.13/asyncio/runners.py", line 118, in run
+(APIServer pid=10395)     return self._loop.run_until_complete(task)
+(APIServer pid=10395)            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+(APIServer pid=10395)   File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+(APIServer pid=10395)   File "/usr/local/miniconda3/lib/python3.13/site-packages/uvloop/__init__.py", line 48, in wrapper
+(APIServer pid=10395)     return await main
+(APIServer pid=10395)            ^^^^^^^^^^
+(APIServer pid=10395)   File "/usr/local/miniconda3/lib/python3.13/site-packages/vllm/entrypoints/launchers/api_server/entry.py", line 176, in run_server
+(APIServer pid=10395)     await run_server_worker(listen_address, sock, args, **uvicorn_kwargs)
+(APIServer pid=10395)   File "/usr/local/miniconda3/lib/python3.13/site-packages/vllm/entrypoints/launchers/api_server/entry.py", line 190, in run_server_worker
+(APIServer pid=10395)     async with build_async_engine_client(
+(APIServer pid=10395)                ~~~~~~~~~~~~~~~~~~~~~~~~~^
+(APIServer pid=10395)         args,
+(APIServer pid=10395)         ^^^^^
+(APIServer pid=10395)         client_config=client_config,
+(APIServer pid=10395)         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=10395)     ) as engine_client:
+(APIServer pid=10395)     ^
+(APIServer pid=10395)   File "/usr/local/miniconda3/lib/python3.13/contextlib.py", line 214, in __aenter__
+(APIServer pid=10395)     return await anext(self.gen)
+(APIServer pid=10395)            ^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=10395)   File "/usr/local/miniconda3/lib/python3.13/site-packages/vllm/entrypoints/launchers/api_server/entry.py", line 58, in build_async_engine_client
+(APIServer pid=10395)     async with build_async_engine_client_from_engine_args(
+(APIServer pid=10395)                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+(APIServer pid=10395)         engine_args,
+(APIServer pid=10395)         ^^^^^^^^^^^^
+(APIServer pid=10395)         usage_context=usage_context,
+(APIServer pid=10395)         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=10395)         client_config=client_config,
+(APIServer pid=10395)         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=10395)     ) as engine:
+(APIServer pid=10395)     ^
+(APIServer pid=10395)   File "/usr/local/miniconda3/lib/python3.13/contextlib.py", line 214, in __aenter__
+(APIServer pid=10395)     return await anext(self.gen)
+(APIServer pid=10395)            ^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=10395)   File "/usr/local/miniconda3/lib/python3.13/site-packages/vllm/entrypoints/launchers/api_server/entry.py", line 82, in build_async_engine_client_from_engine_args
+(APIServer pid=10395)     vllm_config = engine_args.create_engine_config(usage_context=usage_context)
+(APIServer pid=10395)   File "/usr/local/miniconda3/lib/python3.13/site-packages/vllm/engine/arg_utils.py", line 2053, in create_engine_config
+(APIServer pid=10395)     model_config = self.create_model_config()
+(APIServer pid=10395)   File "/usr/local/miniconda3/lib/python3.13/site-packages/vllm/engine/arg_utils.py", line 1809, in create_model_config
+(APIServer pid=10395)     return ModelConfig(
+(APIServer pid=10395)         model=self.model,
+(APIServer pid=10395)     ...<66 lines>...
+(APIServer pid=10395)         renderer_num_workers=self.renderer_num_workers,
+(APIServer pid=10395)     )
+(APIServer pid=10395)   File "/usr/local/miniconda3/lib/python3.13/site-packages/pydantic/_internal/_dataclasses.py", line 121, in __init__
+(APIServer pid=10395)     s.__pydantic_validator__.validate_python(ArgsKwargs(args, kwargs), self_instance=s)
+(APIServer pid=10395)     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(APIServer pid=10395) pydantic_core._pydantic_core.ValidationError: 1 validation error for ModelConfig
+(APIServer pid=10395)   Value error, The repository /root/w1_models/molmo-7b-d contains custom code which must be executed to correctly load the model. You can inspect the repository content at /root/w1_models/molmo-7b-d .
+(APIServer pid=10395)  You can inspect the repository content at https://hf.co//root/w1_models/molmo-7b-d.
+(APIServer pid=10395) Please pass the argument `trust_remote_code=True` to allow custom code to be run. [type=value_error, input_value=ArgsKwargs((), {'model': ...nderer_num_workers': 1}), input_type=ArgsKwargs]
+(APIServer pid=10395)     For further information visit https://errors.pydantic.dev/2.13/v/value_error

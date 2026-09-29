@@ -1,0 +1,6 @@
+  冻结探针 19e_probe_multi.py md5 03edb14c98ff ✓（提示词/解析/传输逐字复用）
+  [InternVL3_5-8B/permit] 网格 675 项 / 已完成 0 / 本次 675 ｜ model=InternVL3_5-8B
+    200/675  3.86 it/s  zero=0 abstain=91 parse_fail=91
+    400/675  3.89 it/s  zero=0 abstain=246 parse_fail=246
+    600/675  3.90 it/s  zero=0 abstain=434 parse_fail=434
+  [InternVL3_5-8B/permit] DONE：675 行写入 /root/p1_results/p1_InternVL3_5-8B_permit.csv（zero=0 abstain=509 parse_fail=509）

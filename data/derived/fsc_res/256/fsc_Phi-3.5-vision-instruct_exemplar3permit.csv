@@ -1,0 +1,596 @@
+item,gt,pred,parse_ok,raw,latency_s
+2.jpg,8,,0, abstain,0.43
+286.jpg,10,,0, abstain,0.43
+301.jpg,28,,0, abstain,0.42
+292.jpg,32,,0, abstain,0.43
+289.jpg,26,,0, abstain,0.43
+298.jpg,33,,0, abstain,0.42
+295.jpg,64,,0, abstain,0.43
+311.jpg,55,,0, abstain,0.39
+319.jpg,12,,0, abstain,0.38
+322.jpg,27,,0, abstain,0.39
+308.jpg,27,,0, abstain,0.4
+305.jpg,11,,0, abstain,0.4
+315.jpg,53,,0, abstain,0.4
+325.jpg,33,,0, abstain,0.4
+5.jpg,113,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.86
+331.jpg,33,,0, abstain,0.42
+328.jpg,35,,0, abstain,0.42
+334.jpg,35,,0, abstain,0.42
+337.jpg,13,,0, abstain,0.42
+341.jpg,13,,0, abstain,0.42
+344.jpg,43,,0, abstain,0.42
+347.jpg,41,,0, abstain,0.41
+350.jpg,17,,0, abstain,0.39
+710.jpg,16,,0, abstain,0.4
+681.jpg,24,,0, abstain,0.42
+698.jpg,154,,0, abstain,0.41
+691.jpg,109,,0, abstain,0.41
+703.jpg,44,,0, abstain,0.41
+706.jpg,90,,0, abstain,0.41
+713.jpg,24,,0, abstain,0.31
+716.jpg,182,,0, abstain,0.32
+907.jpg,29,,0, abstain,0.32
+911.jpg,85,,0, abstain,0.32
+989.jpg,69,,0, abstain,0.32
+686.jpg,47,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.83
+694.jpg,80,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.99
+1456.jpg,184,,0, abstain,0.37
+1123.jpg,3701,,0, abstain,0.37
+1462.jpg,409,,0, abstain,0.31
+1467.jpg,70,,0, abstain,0.17
+904.jpg,12,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.87
+1509.jpg,50,,0, abstain,0.28
+1873.jpg,12,,0, abstain,0.28
+1881.jpg,11,,0, abstain,0.28
+2004.jpg,226,,0, abstain,0.23
+993.jpg,17,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.84
+998.jpg,24,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.86
+1053.jpg,207,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.86
+2014.jpg,18,,0, abstain,0.37
+2017.jpg,104,,0, abstain,0.28
+2020.jpg,36,,0, abstain,0.25
+1887.jpg,10,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.81
+2032.jpg,12,,0, abstain,0.2
+2036.jpg,27,,0, abstain,0.19
+2039.jpg,81,,0, abstain,0.2
+2008.jpg,42,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.8
+2011.jpg,79,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.8
+2042.jpg,81,,0, abstain,0.24
+2052.jpg,8,,0, abstain,0.29
+2026.jpg,16,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.77
+2029.jpg,79,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.77
+2138.jpg,29,,0, abstain,0.33
+2150.jpg,9,,0, abstain,0.25
+2153.jpg,12,,0, abstain,0.24
+2157.jpg,116,,0, abstain,0.24
+2045.jpg,22,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.79
+2048.jpg,43,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.79
+2166.jpg,119,,0, abstain,0.22
+2171.jpg,20,,0, abstain,0.21
+2141.jpg,11,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.8
+2145.jpg,14,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.79
+2177.jpg,27,,0, abstain,0.24
+2180.jpg,223,,0, abstain,0.24
+2184.jpg,33,,0, abstain,0.26
+2191.jpg,42,,0, abstain,0.26
+2163.jpg,13,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.8
+2194.jpg,38,,0, abstain,0.33
+2203.jpg,22,,0, abstain,0.32
+2198.jpg,27,,0, abstain,0.33
+2210.jpg,41,,0, abstain,0.29
+2174.jpg,41,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.76
+2215.jpg,55,,0, abstain,0.29
+2218.jpg,15,,0, abstain,0.38
+2223.jpg,30,,0, abstain,0.39
+2227.jpg,11,,0, abstain,0.38
+2236.jpg,98,,0, abstain,0.37
+2233.jpg,64,,0, abstain,0.38
+2239.jpg,17,,0, abstain,0.35
+2243.jpg,544,,0, abstain,0.35
+2207.jpg,10,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",1.05
+2246.jpg,37,,0, abstain,0.38
+2264.jpg,12,,0, abstain,0.38
+2252.jpg,82,,0, abstain,0.38
+2268.jpg,74,,0, abstain,0.37
+2271.jpg,42,,0, abstain,0.37
+2260.jpg,11,,0, abstain,0.38
+2274.jpg,66,,0, abstain,0.38
+2285.jpg,48,,0, abstain,0.37
+2277.jpg,49,,0, abstain,0.38
+2288.jpg,18,,0, abstain,0.37
+2615.jpg,9,,0, abstain,0.37
+2612.jpg,28,,0, abstain,0.38
+2257.jpg,23,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",1.07
+2912.jpg,72,,0, abstain,0.33
+2915.jpg,61,,0, abstain,0.33
+2281.jpg,22,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.88
+2928.jpg,45,,0, abstain,0.2
+2934.jpg,56,,0, abstain,0.2
+2907.jpg,28,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.71
+2922.jpg,19,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.71
+2941.jpg,17,,0, abstain,0.19
+2925.jpg,65,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.71
+2918.jpg,25,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.71
+2937.jpg,78,,0, abstain,0.2
+2947.jpg,36,,0, abstain,0.33
+2931.jpg,43,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.71
+3111.jpg,20,,0, abstain,0.33
+3156.jpg,50,,0, abstain,0.33
+2954.jpg,38,,0, abstain,0.33
+3153.jpg,24,,0, abstain,0.33
+2944.jpg,68,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.79
+3159.jpg,58,,0, abstain,0.29
+3269.jpg,20,,0, abstain,0.29
+3278.jpg,30,,0, abstain,0.29
+3282.jpg,31,,0, abstain,0.3
+3285.jpg,34,,0, abstain,0.3
+3274.jpg,9,,0, abstain,0.3
+2951.jpg,14,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.97
+3310.jpg,31,,0, abstain,0.41
+3313.jpg,63,,0, abstain,0.41
+3320.jpg,159,,0, abstain,0.43
+3327.jpg,33,,0, abstain,0.43
+3323.jpg,9,,0, abstain,0.43
+3330.jpg,57,,0, abstain,0.43
+3317.jpg,43,,0, abstain,0.43
+3333.jpg,113,,0, abstain,0.42
+3339.jpg,25,,0, abstain,0.39
+3424.jpg,12,,0, abstain,0.39
+3498.jpg,96,,0, abstain,0.39
+3501.jpg,60,,0, abstain,0.39
+3495.jpg,107,,0, abstain,0.39
+3644.jpg,13,,0, abstain,0.39
+3647.jpg,87,,0, abstain,0.37
+3650.jpg,14,,0, abstain,0.37
+3693.jpg,36,,0, abstain,0.36
+3657.jpg,24,,0, abstain,0.36
+4061.jpg,95,,0, abstain,0.36
+3653.jpg,65,,0, abstain,0.37
+4064.jpg,119,,0, abstain,0.32
+3336.jpg,72,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",1.08
+4067.jpg,42,,0, abstain,0.32
+4070.jpg,76,,0, abstain,0.3
+4073.jpg,25,,0, abstain,0.31
+4082.jpg,108,,0, abstain,0.3
+4078.jpg,58,,0, abstain,0.31
+4085.jpg,86,,0, abstain,0.38
+4118.jpg,13,,0, abstain,0.37
+4088.jpg,28,,0, abstain,0.38
+4111.jpg,24,,0, abstain,0.38
+3696.jpg,8,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",1.04
+4170.jpg,34,,0, abstain,0.37
+4175.jpg,21,,0, abstain,0.32
+4285.jpg,115,,0, abstain,0.32
+4295.jpg,110,,0, abstain,0.32
+4291.jpg,323,,0, abstain,0.32
+4288.jpg,118,,0, abstain,0.33
+4298.jpg,44,,0, abstain,0.32
+4302.jpg,131,,0, abstain,0.33
+4121.jpg,10,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",1.01
+4114.jpg,12,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",1.01
+4407.jpg,69,,0, abstain,0.33
+4305.jpg,77,,0, abstain,0.33
+4422.jpg,10,,0, abstain,0.29
+4499.jpg,10,,0, abstain,0.29
+4502.jpg,21,,0, abstain,0.29
+4493.jpg,18,,0, abstain,0.3
+4418.jpg,30,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.84
+4415.jpg,16,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.84
+4412.jpg,10,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.84
+4876.jpg,42,,0, abstain,0.24
+4882.jpg,28,,0, abstain,0.24
+4885.jpg,11,,0, abstain,0.24
+4879.jpg,76,,0, abstain,0.24
+4496.jpg,13,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.91
+4888.jpg,14,,0, abstain,0.39
+4894.jpg,11,,0, abstain,0.39
+4891.jpg,27,,0, abstain,0.39
+4901.jpg,16,,0, abstain,0.37
+4909.jpg,16,,0, abstain,0.37
+4919.jpg,31,,0, abstain,0.35
+4922.jpg,8,,0, abstain,0.35
+4897.jpg,35,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.85
+4905.jpg,250,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.85
+4931.jpg,58,,0, abstain,0.24
+4934.jpg,19,,0, abstain,0.24
+4938.jpg,58,,0, abstain,0.24
+4941.jpg,175,,0, abstain,0.24
+4916.jpg,91,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.74
+4912.jpg,39,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.74
+4925.jpg,142,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.76
+4928.jpg,40,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.76
+4947.jpg,205,,0, abstain,0.24
+4953.jpg,51,,0, abstain,0.38
+4956.jpg,102,,0, abstain,0.37
+4959.jpg,31,,0, abstain,0.37
+4962.jpg,30,,0, abstain,0.35
+4969.jpg,109,,0, abstain,0.3
+5142.jpg,193,,0, abstain,0.29
+5358.jpg,25,,0, abstain,0.28
+5145.jpg,15,,0, abstain,0.29
+5149.jpg,111,,0, abstain,0.29
+4944.jpg,49,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.8
+5361.jpg,27,,0, abstain,0.26
+4950.jpg,33,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.97
+4965.jpg,15,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.96
+5377.jpg,9,,0, abstain,0.36
+5367.jpg,150,,0, abstain,0.37
+5380.jpg,9,,0, abstain,0.36
+5371.jpg,44,,0, abstain,0.37
+5374.jpg,16,,0, abstain,0.37
+5387.jpg,8,,0, abstain,0.31
+5464.jpg,54,,0, abstain,0.28
+5460.jpg,131,,0, abstain,0.28
+5508.jpg,84,,0, abstain,0.28
+5511.jpg,18,,0, abstain,0.24
+5364.jpg,23,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.89
+5564.jpg,16,,0, abstain,0.23
+5514.jpg,112,,0, abstain,0.24
+5383.jpg,10,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.8
+5505.jpg,89,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.8
+5391.jpg,12,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.8
+5581.jpg,8,,0, abstain,0.29
+5578.jpg,32,,0, abstain,0.29
+5584.jpg,51,,0, abstain,0.19
+5567.jpg,51,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.79
+5588.jpg,49,,0, abstain,0.29
+5592.jpg,93,,0, abstain,0.29
+5595.jpg,15,,0, abstain,0.29
+5598.jpg,23,,0, abstain,0.29
+5601.jpg,22,,0, abstain,0.24
+5575.jpg,12,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.82
+5572.jpg,9,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.82
+5798.jpg,45,,0, abstain,0.25
+5801.jpg,157,,0, abstain,0.24
+5795.jpg,84,,0, abstain,0.25
+5804.jpg,43,,0, abstain,0.24
+5807.jpg,110,,0, abstain,0.22
+5813.jpg,12,,0, abstain,0.37
+5816.jpg,101,,0, abstain,0.37
+5810.jpg,90,,0, abstain,0.38
+5825.jpg,14,,0, abstain,0.37
+5822.jpg,128,,0, abstain,0.37
+5819.jpg,9,,0, abstain,0.38
+5828.jpg,12,,0, abstain,0.35
+5792.jpg,21,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.98
+5831.jpg,101,,0, abstain,0.38
+5846.jpg,34,,0, abstain,0.39
+5849.jpg,38,,0, abstain,0.38
+5843.jpg,74,,0, abstain,0.39
+5837.jpg,18,,0, abstain,0.4
+5840.jpg,111,,0, abstain,0.4
+5852.jpg,42,,0, abstain,0.37
+5855.jpg,135,,0, abstain,0.37
+5916.jpg,38,,0, abstain,0.37
+5922.jpg,35,,0, abstain,0.36
+5919.jpg,39,,0, abstain,0.37
+5928.jpg,58,,0, abstain,0.37
+5925.jpg,22,,0, abstain,0.37
+5931.jpg,9,,0, abstain,0.34
+5934.jpg,17,,0, abstain,0.34
+5834.jpg,27,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",1.11
+5940.jpg,27,,0, abstain,0.34
+5937.jpg,10,,0, abstain,0.34
+6046.jpg,60,,0, abstain,0.34
+6043.jpg,102,,0, abstain,0.34
+6049.jpg,82,,0, abstain,0.37
+6052.jpg,47,,0, abstain,0.37
+6246.jpg,35,,0, abstain,0.35
+6252.jpg,89,,0, abstain,0.34
+6249.jpg,111,,0, abstain,0.35
+6243.jpg,24,,0, abstain,0.35
+6258.jpg,13,,0, abstain,0.33
+6255.jpg,49,,0, abstain,0.34
+6261.jpg,324,,0, abstain,0.33
+6264.jpg,16,,0, abstain,0.33
+5943.jpg,48,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",1.02
+6270.jpg,92,,0, abstain,0.33
+6267.jpg,95,,0, abstain,0.33
+6273.jpg,34,,0, abstain,0.38
+6240.jpg,34,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",1.04
+6276.jpg,36,,0, abstain,0.38
+6282.jpg,66,,0, abstain,0.37
+6644.jpg,500,,0, abstain,0.37
+6285.jpg,101,,0, abstain,0.38
+6279.jpg,10,,0, abstain,0.38
+6647.jpg,199,,0, abstain,0.25
+6653.jpg,309,,0, abstain,0.24
+6549.jpg,16,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.66
+6656.jpg,100,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.34
+6650.jpg,20,,0," 
+```json
+
+{""count"": ""abstain""}
+
+```",0.35

@@ -1,0 +1,10 @@
+  p1e_probe：提示词来源 /root/p1e_prompts.json（期望 md5 24e3af806db3…）
+  ① 19e_probe_multi.py md5 03edb14c98ff ✓
+  ② p1d_prompts.json   md5 24e3af806db3 ✓（新增臂 ['placebo100']）
+  ④ 交叉自检：base/permit 与 p1_probe.circle_prompts() 逐字节相同 ✓
+  ③ 网格 manifest md5 9eef8a074cf1（63135 字节）
+  [llava-onevision-qwen2-7b-ov/placebo100] 网格 675 / 已完成 0 / 本次 675 ｜ model=llava-onevision-qwen2-7b-ov
+    200/675  1.75 it/s  zero=0 abstain=0 parse_fail=0
+    400/675  1.78 it/s  zero=0 abstain=0 parse_fail=0
+    600/675  1.79 it/s  zero=5 abstain=23 parse_fail=10
+  [llava-onevision-qwen2-7b-ov/placebo100] DONE：675 行 → /root/p1d_results/p1d_llava-onevision-qwen2-7b-ov_placebo100.csv（zero=5 abstain=40 parse_fail=10）

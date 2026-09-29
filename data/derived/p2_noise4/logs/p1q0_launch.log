@@ -1,0 +1,34 @@
+[07:59:57][q0] GPU0 队列开始（等显存回落中）
+[07:59:57][Phi-3.5-vision-instruct] == 起服 Phi-3.5-vision-instruct ｜ GPU0 port=8003 frac=0.30 maxlen=8192 extra='--trust_remote_code' ｜ 探针 /root/p1f_probe.py ==
+[08:01:47][Phi-3.5-vision-instruct] [GPU0] 等显存…（现 72619 MiB）
+[08:03:48][Phi-3.5-vision-instruct] [GPU0] 等显存…（现 72623 MiB）
+[08:05:48][Phi-3.5-vision-instruct] [GPU0] 等显存…（现 72623 MiB）
+[08:07:08][Phi-3.5-vision-instruct] [GPU0] 显存已回落（0 MiB）
+[08:07:56][Phi-3.5-vision-instruct] 就绪（48s）
+[08:08:47][Phi-3.5-vision-instruct] [Phi-3.5-vision-instruct/mention5] 行=675
+[08:08:47][Phi-3.5-vision-instruct] [Phi-3.5-vision-instruct/mention50] 行=675
+[08:08:47][Phi-3.5-vision-instruct] [Phi-3.5-vision-instruct/mention800] 行=675
+/root/p1x_run.sh: line 111: 21595 Killed                  CUDA_VISIBLE_DEVICES="$GPU" nohup $VLLM serve "$MP" --served-model-name "$NAME" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization "$FRAC" --max-num-seqs 24 --port "$PORT" $EXTRA < /dev/null > "/root/logs/p1x_serve_${NAME}.log" 2>&1
+[08:08:55][Phi-3.5-vision-instruct] 回收孤儿 EngineCore pid=21745
+[08:08:55][Phi-3.5-vision-instruct] P1X_Phi-3.5-vision-instruct_DONE
+[08:08:55][q0] ① Phi 阶梯完成
+[08:08:55][Qwen3-VL-8B-Instruct] == 起服 Qwen3-VL-8B-Instruct ｜ GPU0 port=8005 frac=0.45 maxlen=8192 extra='' ｜ 探针 /root/p1f_probe.py ==
+[08:09:05][Qwen3-VL-8B-Instruct] [GPU0] 显存已回落（0 MiB）
+[08:10:17][Qwen3-VL-8B-Instruct] 就绪（72s）
+[08:11:47][Qwen3-VL-8B-Instruct] [Qwen3-VL-8B-Instruct/mention5] 行=675
+[08:11:47][Qwen3-VL-8B-Instruct] [Qwen3-VL-8B-Instruct/mention50] 行=675
+[08:11:47][Qwen3-VL-8B-Instruct] [Qwen3-VL-8B-Instruct/mention800] 行=675
+/root/p1x_run.sh: line 111: 22307 Killed                  CUDA_VISIBLE_DEVICES="$GPU" nohup $VLLM serve "$MP" --served-model-name "$NAME" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization "$FRAC" --max-num-seqs 24 --port "$PORT" $EXTRA < /dev/null > "/root/logs/p1x_serve_${NAME}.log" 2>&1
+[08:11:55][Qwen3-VL-8B-Instruct] 回收孤儿 EngineCore pid=22461
+[08:11:55][Qwen3-VL-8B-Instruct] P1X_Qwen3-VL-8B-Instruct_DONE
+[08:11:55][q0] ② 8B 阶梯完成
+[08:11:55][Qwen3-VL-8B-Instruct] == 起服 Qwen3-VL-8B-Instruct ｜ GPU0 port=8005 frac=0.45 maxlen=8192 extra='' ｜ 探针 /root/p1d_probe.py ==
+[08:12:05][Qwen3-VL-8B-Instruct] [GPU0] 显存已回落（0 MiB）
+[08:13:09][Qwen3-VL-8B-Instruct] 就绪（64s）
+[08:14:38][Qwen3-VL-8B-Instruct] [Qwen3-VL-8B-Instruct/base/rep1] 行=675
+[08:14:38][Qwen3-VL-8B-Instruct] [Qwen3-VL-8B-Instruct/base/rep2] 行=675
+[08:14:38][Qwen3-VL-8B-Instruct] [Qwen3-VL-8B-Instruct/base/rep3] 行=675
+/root/p1x_run.sh: line 111: 23222 Killed                  CUDA_VISIBLE_DEVICES="$GPU" nohup $VLLM serve "$MP" --served-model-name "$NAME" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization "$FRAC" --max-num-seqs 24 --port "$PORT" $EXTRA < /dev/null > "/root/logs/p1x_serve_${NAME}.log" 2>&1
+[08:14:46][Qwen3-VL-8B-Instruct] P1X_Qwen3-VL-8B-Instruct_DONE
+[08:14:46][q0] ③ 同会话噪声底完成
+[08:14:46][q0] P1Q_GPU0_DONE

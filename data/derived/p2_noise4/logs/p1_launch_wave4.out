@@ -1,0 +1,25 @@
+[00:06:08] == wave4 开始 ｜ 显存 0 MiB ==
+[00:06:08] [Qwen3-VL-8B-Instruct] 起服 port=8005 frac=0.45 maxlen=8192
+[00:07:48] [Qwen3-VL-8B-Instruct] 就绪（100 s）｜显存 34759 MiB
+[00:08:18]   [Qwen3-VL-8B-Instruct] 30s 存活 2 ｜ 显存 36375 MiB
+[00:08:48]   [Qwen3-VL-8B-Instruct] 60s 存活 2 ｜ 显存 36511 MiB
+[00:09:18]   [Qwen3-VL-8B-Instruct] 90s 存活 2 ｜ 显存 36511 MiB
+[00:09:48]   [Qwen3-VL-8B-Instruct] 120s 存活 0 ｜ 显存 36511 MiB
+/root/p1_run_wave4.sh: line 23:  1522 Killed                  nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization "$F" --max-num-seqs 24 --port "$P" $E < /dev/null > "/root/logs/serve_p1_${N}.log" 2>&1
+[00:09:52] [Qwen3-VL-8B-Instruct] 完成并停服
+[00:09:52] [Qwen3-VL-32B-Instruct] 起服 port=8006 frac=0.85 maxlen=4096
+[00:10:32] [Qwen3-VL-32B-Instruct] !! 起服失败
+    (EngineCore pid=1950) ValueError: Free memory on device cuda:0 (43.37/79.44 GiB) on startup is less than desired GPU memory utilization (0.85, 67.52 GiB). Decrease GPU memory utilization or reduce GPU
+[00:10:32] [Qwen3-VL-32B-Instruct] 跳过
+  p1_InternVL3_5-8B_base.csv                           唯一item=675 zero=  0
+  p1_InternVL3_5-8B_permit.csv                         唯一item=675 zero=  0
+  p1_Phi-3.5-vision-instruct_base.csv                  唯一item=675 zero= 91
+  p1_Phi-3.5-vision-instruct_permit.csv                唯一item=675 zero=  0
+  p1_Qwen3-VL-8B-Instruct_base.csv                     唯一item=675 zero= 67
+  p1_Qwen3-VL-8B-Instruct_permit.csv                   唯一item=675 zero=  0
+  p1_gemma3-12b_base.csv                               唯一item=675 zero=  0
+  p1_gemma3-12b_permit.csv                             唯一item=675 zero=  0
+  p1_llava-onevision-qwen2-7b-ov_base.csv              唯一item=675 zero= 45
+  p1_llava-onevision-qwen2-7b-ov_permit.csv            唯一item=675 zero=  0
+[00:10:35] == wave4 结束 ｜ 显存 0 MiB ==
+[00:10:35] P1_wave4_DONE

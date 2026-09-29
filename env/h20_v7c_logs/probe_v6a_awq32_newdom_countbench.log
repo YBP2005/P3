@@ -1,0 +1,10 @@
+  base 臂 pred==0 的 item 共 6 个；本次抽 6 个（gt 从 2 到 6）
+  [base] 6 行；pred==0 的 6 个；-> /root/e1_results/e1_qwen3-vl-32b-awq_countbench_base.csv
+  [permit] 6 行；pred==0 的 2 个；-> /root/e1_results/e1_qwen3-vl-32b-awq_countbench_permit.csv
+  [bestA] 6 行；pred==0 的 6 个；-> /root/e1_results/e1_qwen3-vl-32b-awq_countbench_bestA.csv
+  [bestB] 6 行；pred==0 的 6 个；-> /root/e1_results/e1_qwen3-vl-32b-awq_countbench_bestB.csv
+  [bestC] 6 行；pred==0 的 2 个；-> /root/e1_results/e1_qwen3-vl-32b-awq_countbench_bestC.csv
+  [channel] 6 行；pred==0 的 0 个；-> /root/e1_results/e1_qwen3-vl-32b-awq_countbench_channel.csv
+  [enum] 6 行；pred==0 的 6 个；-> /root/e1_results/e1_qwen3-vl-32b-awq_countbench_enum.csv
+  [enumAbstain] 6 行；pred==0 的 6 个；-> /root/e1_results/e1_qwen3-vl-32b-awq_countbench_enumAbstain.csv
+  [locate] 6 行；pred==0 的 6 个；-> /root/e1_results/e1_qwen3-vl-32b-awq_countbench_locate.csv

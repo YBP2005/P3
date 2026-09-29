@@ -1,0 +1,10 @@
+  base 臂 pred==0 的 item 共 180 个；本次抽 180 个（gt 从 137 到 4535）
+  [base] 已完成，跳过
+  [permit] 已完成，跳过
+  [bestA] 已完成，跳过
+  [bestB] 已完成，跳过
+  [bestC] 已完成，跳过
+  [channel] 已完成，跳过
+  [enum] 180 行；pred==0 的 180 个；-> /root/e1_results/e1_qwen3-vl-32b-bf16_ucf_enum.csv
+  [enumAbstain] 180 行；pred==0 的 0 个；-> /root/e1_results/e1_qwen3-vl-32b-bf16_ucf_enumAbstain.csv
+  [locate] 180 行；pred==0 的 119 个；-> /root/e1_results/e1_qwen3-vl-32b-bf16_ucf_locate.csv

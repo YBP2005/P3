@@ -1,0 +1,1147 @@
+{
+  "purpose": "E1（盲审 #5）：FSC-147 的分辨率敏感性；并记录\"384 是发布件的短边约束\"这一事实",
+  "fact_official_release": "FSC-147 官方发布件 images_384_VarV2：6146 张图**短边恒为 384**（100%），长边随长宽比在 384–1918 之间（本批样本长边 384–1229，长宽比 1.00–3.20）；原始分辨率无官方下载点 ⇒ 384 由数据集决定，不是本文管道的选择",
+  "design": "同一族探针（副本只差图像/输出目录常量，提示词与解析器 import 自冻结的 19e_probe_multi.py）；同一 300 张冻结样本；三档 = 短边 384（发布）/ 256（scale 0.6667，面积 0.444×）/768（scale 2.0，面积 4.0×，upsampled）× 六臂",
+  "rule": "raw-match（abstain → 数字 → unparsed），与 a5_judge.cls() 同源",
+  "arms": [
+    "base",
+    "permit",
+    "channel",
+    "enumAbstain",
+    "exemplar3",
+    "exemplar3permit"
+  ],
+  "by_model": {
+    "gemma3-12b": {
+      "384|base": {
+        "n": 300,
+        "zero": 83.0,
+        "abstain": 0.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 17.0,
+        "unparsed": 0.0,
+        "median_pred": 0.0
+      },
+      "384|channel": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 0.0,
+        "cannot_judge": 14.0,
+        "no_people": 81.3,
+        "nonzero": 4.7,
+        "unparsed": 0.0,
+        "median_pred": 1.0
+      },
+      "384|enumAbstain": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 81.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 19.0,
+        "unparsed": 0.0,
+        "median_pred": 16.0
+      },
+      "384|exemplar3": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 0.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 100.0,
+        "unparsed": 0.0,
+        "median_pred": 25.0
+      },
+      "384|exemplar3permit": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 1.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 99.0,
+        "unparsed": 0.0,
+        "median_pred": 24.0
+      },
+      "384|permit": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 91.3,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 8.7,
+        "unparsed": 0.0,
+        "median_pred": 3.0
+      },
+      "256|base": {
+        "n": 300,
+        "zero": 83.3,
+        "abstain": 0.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 16.7,
+        "unparsed": 0.0,
+        "median_pred": 0.0
+      },
+      "256|channel": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 0.0,
+        "cannot_judge": 14.0,
+        "no_people": 81.0,
+        "nonzero": 5.0,
+        "unparsed": 0.0,
+        "median_pred": 1.0
+      },
+      "256|enumAbstain": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 82.3,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 17.7,
+        "unparsed": 0.0,
+        "median_pred": 19.0
+      },
+      "256|exemplar3": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 0.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 100.0,
+        "unparsed": 0.0,
+        "median_pred": 24.0
+      },
+      "256|exemplar3permit": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 2.7,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 97.3,
+        "unparsed": 0.0,
+        "median_pred": 24.0
+      },
+      "256|permit": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 91.7,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 8.3,
+        "unparsed": 0.0,
+        "median_pred": 2.0
+      },
+      "768up|base": {
+        "n": 300,
+        "zero": 82.7,
+        "abstain": 0.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 17.3,
+        "unparsed": 0.0,
+        "median_pred": 0.0
+      },
+      "768up|channel": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 0.0,
+        "cannot_judge": 15.3,
+        "no_people": 80.3,
+        "nonzero": 4.3,
+        "unparsed": 0.0,
+        "median_pred": 1.0
+      },
+      "768up|enumAbstain": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 81.3,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 18.7,
+        "unparsed": 0.0,
+        "median_pred": 15.5
+      },
+      "768up|exemplar3": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 0.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 100.0,
+        "unparsed": 0.0,
+        "median_pred": 26.0
+      },
+      "768up|exemplar3permit": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 1.3,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 98.7,
+        "unparsed": 0.0,
+        "median_pred": 25.0
+      },
+      "768up|permit": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 91.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 9.0,
+        "unparsed": 0.0,
+        "median_pred": 3.0
+      },
+      "frozen384|base": {
+        "n": 300,
+        "zero": 82.7,
+        "abstain": 0.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 17.3,
+        "unparsed": 0.0,
+        "median_pred": 0.0
+      },
+      "frozen384|channel": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 0.0,
+        "cannot_judge": 14.0,
+        "no_people": 81.3,
+        "nonzero": 4.7,
+        "unparsed": 0.0,
+        "median_pred": 1.0
+      },
+      "frozen384|enumAbstain": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 81.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 19.0,
+        "unparsed": 0.0,
+        "median_pred": 16.0
+      },
+      "frozen384|permit": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 91.3,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 8.7,
+        "unparsed": 0.0,
+        "median_pred": 3.0
+      }
+    },
+    "InternVL3_5-8B": {
+      "384|base": {
+        "n": 300,
+        "zero": 91.0,
+        "abstain": 0.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 9.0,
+        "unparsed": 0.0,
+        "median_pred": 0.0
+      },
+      "384|channel": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 0.0,
+        "cannot_judge": 1.0,
+        "no_people": 94.7,
+        "nonzero": 4.3,
+        "unparsed": 0.0,
+        "median_pred": 1.0
+      },
+      "384|enumAbstain": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 91.7,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 8.3,
+        "unparsed": 0.0,
+        "median_pred": 2.0
+      },
+      "384|exemplar3": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 0.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 100.0,
+        "unparsed": 0.0,
+        "median_pred": 30.0
+      },
+      "384|exemplar3permit": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 17.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 83.0,
+        "unparsed": 0.0,
+        "median_pred": 27.0
+      },
+      "384|permit": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 94.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 6.0,
+        "unparsed": 0.0,
+        "median_pred": 1.0
+      },
+      "256|base": {
+        "n": 300,
+        "zero": 91.0,
+        "abstain": 0.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 9.0,
+        "unparsed": 0.0,
+        "median_pred": 0.0
+      },
+      "256|channel": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 0.0,
+        "cannot_judge": 1.3,
+        "no_people": 94.7,
+        "nonzero": 4.0,
+        "unparsed": 0.0,
+        "median_pred": 1.0
+      },
+      "256|enumAbstain": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 92.7,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 7.3,
+        "unparsed": 0.0,
+        "median_pred": 1.5
+      },
+      "256|exemplar3": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 0.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 100.0,
+        "unparsed": 0.0,
+        "median_pred": 28.0
+      },
+      "256|exemplar3permit": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 27.7,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 72.3,
+        "unparsed": 0.0,
+        "median_pred": 25.0
+      },
+      "256|permit": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 94.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 6.0,
+        "unparsed": 0.0,
+        "median_pred": 1.0
+      },
+      "768up|base": {
+        "n": 300,
+        "zero": 91.0,
+        "abstain": 0.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 9.0,
+        "unparsed": 0.0,
+        "median_pred": 0.0
+      },
+      "768up|channel": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 0.0,
+        "cannot_judge": 1.3,
+        "no_people": 94.3,
+        "nonzero": 4.3,
+        "unparsed": 0.0,
+        "median_pred": 1.0
+      },
+      "768up|enumAbstain": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 90.7,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 9.3,
+        "unparsed": 0.0,
+        "median_pred": 2.5
+      },
+      "768up|exemplar3": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 0.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 100.0,
+        "unparsed": 0.0,
+        "median_pred": 30.0
+      },
+      "768up|exemplar3permit": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 21.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 79.0,
+        "unparsed": 0.0,
+        "median_pred": 28.0
+      },
+      "768up|permit": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 94.3,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 5.7,
+        "unparsed": 0.0,
+        "median_pred": 1.0
+      },
+      "frozen384|base": {
+        "n": 300,
+        "zero": 91.0,
+        "abstain": 0.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 9.0,
+        "unparsed": 0.0,
+        "median_pred": 0.0
+      },
+      "frozen384|channel": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 0.0,
+        "cannot_judge": 1.0,
+        "no_people": 94.7,
+        "nonzero": 4.3,
+        "unparsed": 0.0,
+        "median_pred": 1.0
+      },
+      "frozen384|enumAbstain": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 92.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 8.0,
+        "unparsed": 0.0,
+        "median_pred": 2.0
+      },
+      "frozen384|permit": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 94.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 6.0,
+        "unparsed": 0.0,
+        "median_pred": 1.0
+      }
+    },
+    "Phi-3.5-vision-instruct": {
+      "384|base": {
+        "n": 300,
+        "zero": 88.0,
+        "abstain": 0.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 11.7,
+        "unparsed": 0.3,
+        "median_pred": 0.0
+      },
+      "384|channel": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 0.0,
+        "cannot_judge": 3.3,
+        "no_people": 96.7,
+        "nonzero": 0.0,
+        "unparsed": 0.0,
+        "median_pred": null
+      },
+      "384|enumAbstain": {
+        "n": 300,
+        "zero": 6.7,
+        "abstain": 12.7,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 80.7,
+        "unparsed": 0.0,
+        "median_pred": 12.0
+      },
+      "384|exemplar3": {
+        "n": 300,
+        "zero": 19.3,
+        "abstain": 0.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 80.7,
+        "unparsed": 0.0,
+        "median_pred": 10.0
+      },
+      "384|exemplar3permit": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 100.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 0.0,
+        "unparsed": 0.0,
+        "median_pred": null
+      },
+      "384|permit": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 99.7,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 0.3,
+        "unparsed": 0.0,
+        "median_pred": 2.0
+      },
+      "256|base": {
+        "n": 300,
+        "zero": 89.0,
+        "abstain": 0.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 10.7,
+        "unparsed": 0.3,
+        "median_pred": 0.0
+      },
+      "256|channel": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 0.0,
+        "cannot_judge": 3.3,
+        "no_people": 96.7,
+        "nonzero": 0.0,
+        "unparsed": 0.0,
+        "median_pred": null
+      },
+      "256|enumAbstain": {
+        "n": 300,
+        "zero": 6.0,
+        "abstain": 10.7,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 83.3,
+        "unparsed": 0.0,
+        "median_pred": 12.0
+      },
+      "256|exemplar3": {
+        "n": 300,
+        "zero": 25.7,
+        "abstain": 0.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 74.3,
+        "unparsed": 0.0,
+        "median_pred": 1.5
+      },
+      "256|exemplar3permit": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 100.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 0.0,
+        "unparsed": 0.0,
+        "median_pred": null
+      },
+      "256|permit": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 99.7,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 0.3,
+        "unparsed": 0.0,
+        "median_pred": 2.0
+      },
+      "768up|base": {
+        "n": 300,
+        "zero": 88.3,
+        "abstain": 0.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 11.3,
+        "unparsed": 0.3,
+        "median_pred": 0.0
+      },
+      "768up|channel": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 0.0,
+        "cannot_judge": 3.7,
+        "no_people": 96.3,
+        "nonzero": 0.0,
+        "unparsed": 0.0,
+        "median_pred": null
+      },
+      "768up|enumAbstain": {
+        "n": 300,
+        "zero": 6.0,
+        "abstain": 12.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 82.0,
+        "unparsed": 0.0,
+        "median_pred": 12.0
+      },
+      "768up|exemplar3": {
+        "n": 300,
+        "zero": 8.3,
+        "abstain": 0.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 91.7,
+        "unparsed": 0.0,
+        "median_pred": 10.0
+      },
+      "768up|exemplar3permit": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 99.3,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 0.7,
+        "unparsed": 0.0,
+        "median_pred": 10.0
+      },
+      "768up|permit": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 99.7,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 0.3,
+        "unparsed": 0.0,
+        "median_pred": 2.0
+      },
+      "frozen384|base": {
+        "n": 300,
+        "zero": 85.0,
+        "abstain": 0.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 15.0,
+        "unparsed": 0.0,
+        "median_pred": 0.0
+      },
+      "frozen384|channel": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 0.0,
+        "cannot_judge": 11.7,
+        "no_people": 87.7,
+        "nonzero": 0.0,
+        "unparsed": 0.7,
+        "median_pred": null
+      },
+      "frozen384|enumAbstain": {
+        "n": 300,
+        "zero": 2.3,
+        "abstain": 48.7,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 49.0,
+        "unparsed": 0.0,
+        "median_pred": 12.0
+      },
+      "frozen384|permit": {
+        "n": 300,
+        "zero": 1.0,
+        "abstain": 95.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 4.0,
+        "unparsed": 0.0,
+        "median_pred": 8.0
+      }
+    },
+    "llava-onevision-qwen2-7b-ov": {
+      "frozen384|base": {
+        "n": 300,
+        "zero": 62.3,
+        "abstain": 0.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 6.3,
+        "unparsed": 31.3,
+        "median_pred": 0.0
+      },
+      "frozen384|channel": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 0.0,
+        "cannot_judge": 0.0,
+        "no_people": 96.3,
+        "nonzero": 2.0,
+        "unparsed": 1.7,
+        "median_pred": 1.0
+      },
+      "frozen384|enumAbstain": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 82.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 17.0,
+        "unparsed": 1.0,
+        "median_pred": 15.5
+      },
+      "frozen384|permit": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 91.3,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 5.3,
+        "unparsed": 3.3,
+        "median_pred": 1.0
+      }
+    },
+    "Qwen2.5-VL-3B-Instruct": {
+      "frozen384|base": {
+        "n": 300,
+        "zero": 92.3,
+        "abstain": 0.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 7.7,
+        "unparsed": 0.0,
+        "median_pred": 0.0
+      },
+      "frozen384|permit": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 97.7,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 2.3,
+        "unparsed": 0.0,
+        "median_pred": 1.0
+      }
+    },
+    "Qwen3-VL-30B-A3B-Instruct": {
+      "frozen384|base": {
+        "n": 300,
+        "zero": 67.0,
+        "abstain": 0.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 10.3,
+        "unparsed": 22.7,
+        "median_pred": 0.0
+      },
+      "frozen384|permit": {
+        "n": 300,
+        "zero": 4.7,
+        "abstain": 90.3,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 5.0,
+        "unparsed": 0.0,
+        "median_pred": 1.0
+      }
+    },
+    "Qwen3-VL-32B-Instruct": {
+      "frozen384|base": {
+        "n": 300,
+        "zero": 92.3,
+        "abstain": 0.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 7.7,
+        "unparsed": 0.0,
+        "median_pred": 0.0
+      },
+      "frozen384|channel": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 0.0,
+        "cannot_judge": 0.7,
+        "no_people": 95.3,
+        "nonzero": 4.0,
+        "unparsed": 0.0,
+        "median_pred": 1.0
+      },
+      "frozen384|enumAbstain": {
+        "n": 300,
+        "zero": 85.7,
+        "abstain": 9.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 5.3,
+        "unparsed": 0.0,
+        "median_pred": 0.0
+      },
+      "frozen384|permit": {
+        "n": 300,
+        "zero": 83.7,
+        "abstain": 11.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 5.3,
+        "unparsed": 0.0,
+        "median_pred": 0.0
+      }
+    },
+    "Qwen3-VL-4B-Instruct": {
+      "frozen384|base": {
+        "n": 300,
+        "zero": 92.0,
+        "abstain": 0.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 8.0,
+        "unparsed": 0.0,
+        "median_pred": 0.0
+      },
+      "frozen384|permit": {
+        "n": 300,
+        "zero": 3.0,
+        "abstain": 90.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 7.0,
+        "unparsed": 0.0,
+        "median_pred": 1.0
+      }
+    },
+    "Qwen3-VL-8B-Instruct": {
+      "frozen384|base": {
+        "n": 300,
+        "zero": 94.3,
+        "abstain": 0.0,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 5.7,
+        "unparsed": 0.0,
+        "median_pred": 0.0
+      },
+      "frozen384|permit": {
+        "n": 300,
+        "zero": 0.0,
+        "abstain": 95.7,
+        "cannot_judge": 0.0,
+        "no_people": 0.0,
+        "nonzero": 4.3,
+        "unparsed": 0.0,
+        "median_pred": 1.0
+      }
+    }
+  },
+  "delta_vs_384": {
+    "InternVL3_5-8B|256|base": {
+      "zero": 0.0,
+      "baseline_from": "sweep384",
+      "abstain": 0.0
+    },
+    "InternVL3_5-8B|768up|base": {
+      "zero": 0.0,
+      "baseline_from": "sweep384",
+      "abstain": 0.0
+    },
+    "InternVL3_5-8B|256|permit": {
+      "zero": 0.0,
+      "baseline_from": "sweep384",
+      "abstain": 0.0
+    },
+    "InternVL3_5-8B|768up|permit": {
+      "zero": 0.0,
+      "baseline_from": "sweep384",
+      "abstain": 0.3
+    },
+    "InternVL3_5-8B|256|channel": {
+      "zero": 0.0,
+      "baseline_from": "sweep384",
+      "abstain": 0.0
+    },
+    "InternVL3_5-8B|768up|channel": {
+      "zero": 0.0,
+      "baseline_from": "sweep384",
+      "abstain": 0.0
+    },
+    "InternVL3_5-8B|256|enumAbstain": {
+      "zero": 0.0,
+      "baseline_from": "sweep384",
+      "abstain": 1.0
+    },
+    "InternVL3_5-8B|768up|enumAbstain": {
+      "zero": 0.0,
+      "baseline_from": "sweep384",
+      "abstain": -1.0
+    },
+    "InternVL3_5-8B|256|exemplar3": {
+      "zero": 0.0,
+      "baseline_from": "sweep384",
+      "abstain": 0.0
+    },
+    "InternVL3_5-8B|768up|exemplar3": {
+      "zero": 0.0,
+      "baseline_from": "sweep384",
+      "abstain": 0.0
+    },
+    "InternVL3_5-8B|256|exemplar3permit": {
+      "zero": 0.0,
+      "baseline_from": "sweep384",
+      "abstain": 10.7
+    },
+    "InternVL3_5-8B|768up|exemplar3permit": {
+      "zero": 0.0,
+      "baseline_from": "sweep384",
+      "abstain": 4.0
+    },
+    "Phi-3.5-vision-instruct|256|base": {
+      "zero": 1.0,
+      "baseline_from": "sweep384",
+      "abstain": 0.0
+    },
+    "Phi-3.5-vision-instruct|768up|base": {
+      "zero": 0.3,
+      "baseline_from": "sweep384",
+      "abstain": 0.0
+    },
+    "Phi-3.5-vision-instruct|256|permit": {
+      "zero": 0.0,
+      "baseline_from": "sweep384",
+      "abstain": 0.0
+    },
+    "Phi-3.5-vision-instruct|768up|permit": {
+      "zero": 0.0,
+      "baseline_from": "sweep384",
+      "abstain": 0.0
+    },
+    "Phi-3.5-vision-instruct|256|channel": {
+      "zero": 0.0,
+      "baseline_from": "sweep384",
+      "abstain": 0.0
+    },
+    "Phi-3.5-vision-instruct|768up|channel": {
+      "zero": 0.0,
+      "baseline_from": "sweep384",
+      "abstain": 0.0
+    },
+    "Phi-3.5-vision-instruct|256|enumAbstain": {
+      "zero": -0.7,
+      "baseline_from": "sweep384",
+      "abstain": -2.0
+    },
+    "Phi-3.5-vision-instruct|768up|enumAbstain": {
+      "zero": -0.7,
+      "baseline_from": "sweep384",
+      "abstain": -0.7
+    },
+    "Phi-3.5-vision-instruct|256|exemplar3": {
+      "zero": 6.4,
+      "baseline_from": "sweep384",
+      "abstain": 0.0
+    },
+    "Phi-3.5-vision-instruct|768up|exemplar3": {
+      "zero": -11.0,
+      "baseline_from": "sweep384",
+      "abstain": 0.0
+    },
+    "Phi-3.5-vision-instruct|256|exemplar3permit": {
+      "zero": 0.0,
+      "baseline_from": "sweep384",
+      "abstain": 0.0
+    },
+    "Phi-3.5-vision-instruct|768up|exemplar3permit": {
+      "zero": 0.0,
+      "baseline_from": "sweep384",
+      "abstain": -0.7
+    },
+    "gemma3-12b|256|base": {
+      "zero": 0.3,
+      "baseline_from": "sweep384",
+      "abstain": 0.0
+    },
+    "gemma3-12b|768up|base": {
+      "zero": -0.3,
+      "baseline_from": "sweep384",
+      "abstain": 0.0
+    },
+    "gemma3-12b|256|permit": {
+      "zero": 0.0,
+      "baseline_from": "sweep384",
+      "abstain": 0.4
+    },
+    "gemma3-12b|768up|permit": {
+      "zero": 0.0,
+      "baseline_from": "sweep384",
+      "abstain": -0.3
+    },
+    "gemma3-12b|256|channel": {
+      "zero": 0.0,
+      "baseline_from": "sweep384",
+      "abstain": 0.0
+    },
+    "gemma3-12b|768up|channel": {
+      "zero": 0.0,
+      "baseline_from": "sweep384",
+      "abstain": 0.0
+    },
+    "gemma3-12b|256|enumAbstain": {
+      "zero": 0.0,
+      "baseline_from": "sweep384",
+      "abstain": 1.3
+    },
+    "gemma3-12b|768up|enumAbstain": {
+      "zero": 0.0,
+      "baseline_from": "sweep384",
+      "abstain": 0.3
+    },
+    "gemma3-12b|256|exemplar3": {
+      "zero": 0.0,
+      "baseline_from": "sweep384",
+      "abstain": 0.0
+    },
+    "gemma3-12b|768up|exemplar3": {
+      "zero": 0.0,
+      "baseline_from": "sweep384",
+      "abstain": 0.0
+    },
+    "gemma3-12b|256|exemplar3permit": {
+      "zero": 0.0,
+      "baseline_from": "sweep384",
+      "abstain": 1.7
+    },
+    "gemma3-12b|768up|exemplar3permit": {
+      "zero": 0.0,
+      "baseline_from": "sweep384",
+      "abstain": 0.3
+    }
+  },
+  "replication_384_vs_frozen": {
+    "InternVL3_5-8B|base": {
+      "sweep_zero": 91.0,
+      "frozen_zero": 91.0,
+      "d_zero": 0.0,
+      "sweep_abstain": 0.0,
+      "frozen_abstain": 0.0,
+      "d_abstain": 0.0
+    },
+    "InternVL3_5-8B|permit": {
+      "sweep_zero": 0.0,
+      "frozen_zero": 0.0,
+      "d_zero": 0.0,
+      "sweep_abstain": 94.0,
+      "frozen_abstain": 94.0,
+      "d_abstain": 0.0
+    },
+    "InternVL3_5-8B|channel": {
+      "sweep_zero": 0.0,
+      "frozen_zero": 0.0,
+      "d_zero": 0.0,
+      "sweep_abstain": 0.0,
+      "frozen_abstain": 0.0,
+      "d_abstain": 0.0
+    },
+    "InternVL3_5-8B|enumAbstain": {
+      "sweep_zero": 0.0,
+      "frozen_zero": 0.0,
+      "d_zero": 0.0,
+      "sweep_abstain": 91.7,
+      "frozen_abstain": 92.0,
+      "d_abstain": -0.3
+    },
+    "Phi-3.5-vision-instruct|base": {
+      "sweep_zero": 88.0,
+      "frozen_zero": 85.0,
+      "d_zero": 3.0,
+      "sweep_abstain": 0.0,
+      "frozen_abstain": 0.0,
+      "d_abstain": 0.0
+    },
+    "Phi-3.5-vision-instruct|permit": {
+      "sweep_zero": 0.0,
+      "frozen_zero": 1.0,
+      "d_zero": -1.0,
+      "sweep_abstain": 99.7,
+      "frozen_abstain": 95.0,
+      "d_abstain": 4.7
+    },
+    "Phi-3.5-vision-instruct|channel": {
+      "sweep_zero": 0.0,
+      "frozen_zero": 0.0,
+      "d_zero": 0.0,
+      "sweep_abstain": 0.0,
+      "frozen_abstain": 0.0,
+      "d_abstain": 0.0
+    },
+    "Phi-3.5-vision-instruct|enumAbstain": {
+      "sweep_zero": 6.7,
+      "frozen_zero": 2.3,
+      "d_zero": 4.4,
+      "sweep_abstain": 12.7,
+      "frozen_abstain": 48.7,
+      "d_abstain": -36.0
+    },
+    "gemma3-12b|base": {
+      "sweep_zero": 83.0,
+      "frozen_zero": 82.7,
+      "d_zero": 0.3,
+      "sweep_abstain": 0.0,
+      "frozen_abstain": 0.0,
+      "d_abstain": 0.0
+    },
+    "gemma3-12b|permit": {
+      "sweep_zero": 0.0,
+      "frozen_zero": 0.0,
+      "d_zero": 0.0,
+      "sweep_abstain": 91.3,
+      "frozen_abstain": 91.3,
+      "d_abstain": 0.0
+    },
+    "gemma3-12b|channel": {
+      "sweep_zero": 0.0,
+      "frozen_zero": 0.0,
+      "d_zero": 0.0,
+      "sweep_abstain": 0.0,
+      "frozen_abstain": 0.0,
+      "d_abstain": 0.0
+    },
+    "gemma3-12b|enumAbstain": {
+      "sweep_zero": 0.0,
+      "frozen_zero": 0.0,
+      "d_zero": 0.0,
+      "sweep_abstain": 81.0,
+      "frozen_abstain": 81.0,
+      "d_abstain": 0.0
+    }
+  },
+  "max_shift": {
+    "zero": {
+      "max_abs_pp": 11.0,
+      "where": "Phi-3.5-vision-instruct|768up|exemplar3",
+      "n": 48
+    },
+    "abstain": {
+      "max_abs_pp": 36.0,
+      "where": "Phi-3.5-vision-instruct|enumAbstain",
+      "n": 48
+    }
+  },
+  "root": "D:\\deepseek\\PaperB\\analysis\\fsc_res"
+}

@@ -1,0 +1,75 @@
+[08:13:56] ########## G7 开始 ##########
+[08:15:41]   起服就绪 R_s1（100s, maxlen=8192）
+[g7] 冻结件 md5 OK：700598c23627e9def04506d1e14dbd18 ｜ 三臂提示词逐字一致 ｜ config=R_s1 workers=8 system=0 port=8010
+[g7/R_s1] 待跑 600 项（已完成 0）｜ domain×arm = 6
+  100/600 (7.46/s bad=66 400=0 eta=1min)
+  200/600 (8.35/s bad=133 400=0 eta=1min)
+  300/600 (8.12/s bad=200 400=0 eta=1min)
+  400/600 (7.59/s bad=254 400=0 eta=0min)
+  500/600 (7.09/s bad=306 400=0 eta=0min)
+  600/600 (6.91/s bad=371 400=0 eta=0min)
+[g7/R_s1] DONE n=600 unparsed=371 http400=0
+[g7] 冻结件 md5 OK：700598c23627e9def04506d1e14dbd18 ｜ 三臂提示词逐字一致 ｜ config=F3_sys workers=8 system=1 port=8010
+[g7/F3_sys] 待跑 600 项（已完成 0）｜ domain×arm = 6
+  100/600 (7.36/s bad=65 400=0 eta=1min)
+  200/600 (8.23/s bad=132 400=0 eta=1min)
+  300/600 (8.00/s bad=197 400=0 eta=1min)
+  400/600 (7.49/s bad=245 400=0 eta=0min)
+  500/600 (7.04/s bad=294 400=0 eta=0min)
+  600/600 (6.88/s bad=357 400=0 eta=0min)
+[g7/F3_sys] DONE n=600 unparsed=357 http400=0
+[g7] 冻结件 md5 OK：700598c23627e9def04506d1e14dbd18 ｜ 三臂提示词逐字一致 ｜ config=F4_w1 workers=1 system=0 port=8010
+[g7/F4_w1] 待跑 600 项（已完成 0）｜ domain×arm = 6
+  100/600 (2.10/s bad=66 400=0 eta=4min)
+  200/600 (2.13/s bad=133 400=0 eta=3min)
+  300/600 (2.13/s bad=200 400=0 eta=2min)
+  400/600 (2.09/s bad=252 400=0 eta=2min)
+  500/600 (2.07/s bad=304 400=0 eta=1min)
+  600/600 (2.05/s bad=369 400=0 eta=0min)
+[g7/F4_w1] DONE n=600 unparsed=369 http400=0
+/root/g7_all.sh: line 32: 23578 Killed                  setsid nohup $VLLM serve "$MODEL" --served-model-name Qwen3-VL-32B-Instruct --max-model-len "$1" --gpu-memory-utilization 0.93 --limit-mm-per-prompt '{"image": 1}' --mm-processor-kwargs '{"max_pixels": 1048576, "min_pixels": 3136}' --port $PORT < /dev/null > "/root/g7_serve_$2.log" 2>&1
+[08:25:13]   起服就绪 R_s2（100s, maxlen=8192）
+[g7] 冻结件 md5 OK：700598c23627e9def04506d1e14dbd18 ｜ 三臂提示词逐字一致 ｜ config=R_s2 workers=8 system=0 port=8010
+[g7/R_s2] 待跑 600 项（已完成 0）｜ domain×arm = 6
+  100/600 (7.44/s bad=66 400=0 eta=1min)
+  200/600 (8.35/s bad=134 400=0 eta=1min)
+  300/600 (8.09/s bad=199 400=0 eta=1min)
+  400/600 (7.54/s bad=253 400=0 eta=0min)
+  500/600 (7.11/s bad=305 400=0 eta=0min)
+  600/600 (6.93/s bad=370 400=0 eta=0min)
+[g7/R_s2] DONE n=600 unparsed=370 http400=0
+/root/g7_all.sh: line 32: 23985 Killed                  setsid nohup $VLLM serve "$MODEL" --served-model-name Qwen3-VL-32B-Instruct --max-model-len "$1" --gpu-memory-utilization 0.93 --limit-mm-per-prompt '{"image": 1}' --mm-processor-kwargs '{"max_pixels": 1048576, "min_pixels": 3136}' --port $PORT < /dev/null > "/root/g7_serve_$2.log" 2>&1
+[08:28:25]   起服就绪 R_s3（100s, maxlen=8192）
+[g7] 冻结件 md5 OK：700598c23627e9def04506d1e14dbd18 ｜ 三臂提示词逐字一致 ｜ config=R_s3 workers=8 system=0 port=8010
+[g7/R_s3] 待跑 600 项（已完成 0）｜ domain×arm = 6
+  100/600 (7.47/s bad=65 400=0 eta=1min)
+  200/600 (8.39/s bad=133 400=0 eta=1min)
+  300/600 (8.29/s bad=199 400=0 eta=1min)
+  400/600 (7.62/s bad=253 400=0 eta=0min)
+  500/600 (7.15/s bad=305 400=0 eta=0min)
+  600/600 (6.97/s bad=370 400=0 eta=0min)
+[g7/R_s3] DONE n=600 unparsed=370 http400=0
+/root/g7_all.sh: line 32: 24332 Killed                  setsid nohup $VLLM serve "$MODEL" --served-model-name Qwen3-VL-32B-Instruct --max-model-len "$1" --gpu-memory-utilization 0.93 --limit-mm-per-prompt '{"image": 1}' --mm-processor-kwargs '{"max_pixels": 1048576, "min_pixels": 3136}' --port $PORT < /dev/null > "/root/g7_serve_$2.log" 2>&1
+[08:31:36]   起服就绪 F2_4096（100s, maxlen=4096）
+[g7] 冻结件 md5 OK：700598c23627e9def04506d1e14dbd18 ｜ 三臂提示词逐字一致 ｜ config=F2_4096 workers=8 system=0 port=8010
+[g7/F2_4096] 待跑 600 项（已完成 0）｜ domain×arm = 6
+  100/600 (7.47/s bad=66 400=0 eta=1min)
+  200/600 (8.40/s bad=133 400=0 eta=1min)
+  300/600 (8.20/s bad=199 400=0 eta=1min)
+  400/600 (7.62/s bad=253 400=0 eta=0min)
+  500/600 (7.12/s bad=306 400=0 eta=0min)
+  600/600 (6.95/s bad=371 400=0 eta=0min)
+[g7/F2_4096] DONE n=600 unparsed=371 http400=0
+/root/g7_all.sh: line 32: 24659 Killed                  setsid nohup $VLLM serve "$MODEL" --served-model-name Qwen3-VL-32B-Instruct --max-model-len "$1" --gpu-memory-utilization 0.93 --limit-mm-per-prompt '{"image": 1}' --mm-processor-kwargs '{"max_pixels": 1048576, "min_pixels": 3136}' --port $PORT < /dev/null > "/root/g7_serve_$2.log" 2>&1
+[08:34:48]   起服就绪 F2_16384（100s, maxlen=16384）
+[g7] 冻结件 md5 OK：700598c23627e9def04506d1e14dbd18 ｜ 三臂提示词逐字一致 ｜ config=F2_16384 workers=8 system=0 port=8010
+[g7/F2_16384] 待跑 600 项（已完成 0）｜ domain×arm = 6
+  100/600 (7.47/s bad=66 400=0 eta=1min)
+  200/600 (8.40/s bad=133 400=0 eta=1min)
+  300/600 (8.17/s bad=200 400=0 eta=1min)
+  400/600 (7.63/s bad=252 400=0 eta=0min)
+  500/600 (7.13/s bad=304 400=0 eta=0min)
+  600/600 (6.95/s bad=369 400=0 eta=0min)
+[g7/F2_16384] DONE n=600 unparsed=369 http400=0
+[08:36:14] ########## G7 结束 ##########
+/root/g7_all.sh: line 32: 24988 Killed                  setsid nohup $VLLM serve "$MODEL" --served-model-name Qwen3-VL-32B-Instruct --max-model-len "$1" --gpu-memory-utilization 0.93 --limit-mm-per-prompt '{"image": 1}' --mm-processor-kwargs '{"max_pixels": 1048576, "min_pixels": 3136}' --port $PORT < /dev/null > "/root/g7_serve_$2.log" 2>&1

@@ -1,0 +1,17 @@
+[08:01:13][p5c] 等 GPU0 队列结束…
+[08:14:58][p5c] GPU0 队列已结束
+[08:14:58][p5c] GPU0 显存已回落（0 MiB）
+[08:14:58][p5c] ① 冒烟：σ=8 取 2 项
+[08:15:12][p5c] !! 冒烟失败，见 /root/logs/p5c_smoke.log
+                                    ~~~~~~~~~~~~~~~~~~~^
+            input_ids,
+            ^^^^^^^^^^
+        ...<3 lines>...
+            mm_token_type_ids=mm_token_type_ids,
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        )
+        ^
+      File "/usr/local/miniconda3/lib/python3.13/site-packages/transformers/models/qwen3_vl/modeling_qwen3_vl.py", line 996, in get_rope_index
+        input_token_type = input_token_type[attention_mask[batch_idx].bool()]
+                           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    IndexError: The shape of the mask [1079] at index 0 does not match the shape of the indexed tensor [1070] at index 0

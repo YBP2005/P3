@@ -1,0 +1,111 @@
+[10:27:05] 开始下载新模型（4B / 2B / 30B-A3B-FP8 / InternVL3.5-38B-FP8）
+  [ModelScope] Qwen/Qwen3-VL-4B-Instruct：14 文件 8.89 GB
+[10:29:51] 开始下载新模型（4B / 2B / 30B-A3B-FP8 / InternVL3.5-38B-FP8）
+  [ModelScope] Qwen/Qwen3-VL-4B-Instruct：14 文件 8.89 GB
+    !!  model-00001-of-00002.safetensors                   4994510848/4967229296
+[10:33:02] 开始下载新模型（4B / 2B / 30B-A3B-FP8 / InternVL3.5-38B-FP8）
+  [ModelScope] Qwen/Qwen3-VL-4B-Instruct：14 文件 8.89 GB
+    !!  model-00001-of-00002.safetensors                   5345144832/4967229296
+    !!  model-00001-of-00002.safetensors                   6045464432/4967229296
+[10:39:50] 开始下载新模型（4B / 2B / 30B-A3B-FP8 / InternVL3.5-38B-FP8）
+  [ModelScope] Qwen/Qwen3-VL-4B-Instruct：14 文件 8.89 GB
+    !!  model-00001-of-00002.safetensors                   6045464432/4967229296
+    !!  model-00002-of-00002.safetensors                   4579094528/3908490048
+    OK  tokenizer.json                                          7.0 MB  (85s)
+    OK  vocab.json                                              2.8 MB  (93s)
+    OK  merges.txt                                              1.7 MB  (94s)
+    OK  model.safetensors.index.json                            0.1 MB  (94s)
+    OK  tokenizer_config.json                                   0.0 MB  (95s)
+    OK  README.md                                               0.0 MB  (95s)
+    OK  chat_template.json                                      0.0 MB  (95s)
+    OK  config.json                                             0.0 MB  (95s)
+    OK  preprocessor_config.json                                0.0 MB  (96s)
+    OK  video_preprocessor_config.json                          0.0 MB  (96s)
+    OK  generation_config.json                                  0.0 MB  (96s)
+    OK  configuration.json                                      0.0 MB  (97s)
+  --- 第 1 轮补齐 2 个不合格文件（先删坏文件）---
+    OK(补) model-00001-of-00002.safetensors                 4967.2 MB
+    OK(补) model-00002-of-00002.safetensors                 3908.5 MB
+  → Qwen/Qwen3-VL-4B-Instruct 成功 14 失败 0  8.89 GB  586s
+  ModelScope 取清单失败: <urlopen error _ssl.c:1011: The handshake operation timed out>
+  [hf-mirror] Qwen/Qwen3-VL-2B-Instruct：12 文件 4.27 GB
+    OK  model.safetensors                                    4255.1 MB  (354s)
+    OK  tokenizer.json                                          7.0 MB  (360s)
+    OK  vocab.json                                              2.8 MB  (363s)
+    OK  merges.txt                                              1.7 MB  (365s)
+    OK  tokenizer_config.json                                   0.0 MB  (366s)
+    OK  README.md                                               0.0 MB  (367s)
+    OK  chat_template.json                                      0.0 MB  (368s)
+    OK  .gitattributes                                          0.0 MB  (369s)
+    OK  config.json                                             0.0 MB  (370s)
+    OK  preprocessor_config.json                                0.0 MB  (371s)
+    OK  video_preprocessor_config.json                          0.0 MB  (372s)
+    OK  generation_config.json                                  0.0 MB  (373s)
+  → Qwen/Qwen3-VL-2B-Instruct 成功 12 失败 0  4.27 GB  373s
+  [ModelScope] Qwen/Qwen3-VL-30B-A3B-Instruct-FP8：16 文件 32.27 GB
+    OK  model-00003-of-00004.safetensors                    10728.7 MB  (572s)
+    OK  model-00002-of-00004.safetensors                    10600.2 MB  (1203s)
+    OK  model-00001-of-00004.safetensors                    10597.8 MB  (1839s)
+    OK  model-00004-of-00004.safetensors                      325.2 MB  (1885s)
+    OK  tokenizer.json                                         10.2 MB  (1886s)
+    OK  vocab.json                                              5.0 MB  (1887s)
+    OK  merges.txt                                              1.7 MB  (1887s)
+    OK  model.safetensors.index.json                            0.1 MB  (1888s)
+    OK  config.json                                             0.0 MB  (1888s)
+    OK  tokenizer_config.json                                   0.0 MB  (1889s)
+    OK  README.md                                               0.0 MB  (1889s)
+    OK  chat_template.json                                      0.0 MB  (1889s)
+    OK  preprocessor_config.json                                0.0 MB  (1890s)
+    OK  video_preprocessor_config.json                          0.0 MB  (1890s)
+    OK  generation_config.json                                  0.0 MB  (1891s)
+    OK  configuration.json                                      0.0 MB  (1891s)
+  → Qwen/Qwen3-VL-30B-A3B-Instruct-FP8 成功 16 失败 0  32.27 GB  1891s
+  ModelScope 取清单失败: HTTP Error 404: Not Found
+  [hf-mirror] brandonbeiler/InternVL3_5-38B-FP8-Dynamic：27 文件 45.59 GB
+    OK  model-00001-of-00010.safetensors                     4988.6 MB  (489s)
+    OK  model-00002-of-00010.safetensors                     4937.3 MB  (902s)
+    OK  model-00003-of-00010.safetensors                     4879.6 MB  (1339s)
+    OK  model-00005-of-00010.safetensors                     4877.5 MB  (1745s)
+    OK  model-00006-of-00010.safetensors                     4877.5 MB  (2222s)
+    OK  model-00007-of-00010.safetensors                     4877.5 MB  (2633s)
+    OK  model-00008-of-00010.safetensors                     4877.5 MB  (3040s)
+    OK  model-00004-of-00010.safetensors                     4877.5 MB  (3445s)
+    OK  model-00009-of-00010.safetensors                     4652.0 MB  (3832s)
+    OK  model-00010-of-00010.safetensors                     1739.4 MB  (3976s)
+    OK  vocab.json                                              3.4 MB  (3980s)
+    OK  merges.txt                                              1.7 MB  (3983s)
+    OK  model.safetensors.index.json                            0.2 MB  (3985s)
+    OK  modeling_intern_vit.py                                  0.0 MB  (3987s)
+    OK  modeling_internvl_chat.py                               0.0 MB  (3989s)
+    OK  conversation.py                                         0.0 MB  (3990s)
+    OK  config.json                                             0.0 MB  (3991s)
+    OK  tokenizer_config.json                                   0.0 MB  (3992s)
+    OK  configuration_intern_vit.py                             0.0 MB  (3994s)
+    OK  configuration_internvl_chat.py                          0.0 MB  (3995s)
+    OK  README.md                                               0.0 MB  (3997s)
+    OK  .gitattributes                                          0.0 MB  (3999s)
+    OK  added_tokens.json                                       0.0 MB  (4000s)
+    OK  special_tokens_map.json                                 0.0 MB  (4001s)
+    OK  chat_template.jinja                                     0.0 MB  (4002s)
+    OK  recipe.yaml                                             0.0 MB  (4003s)
+    OK  generation_config.json                                  0.0 MB  (4004s)
+  → brandonbeiler/InternVL3_5-38B-FP8-Dynamic 成功 27 失败 0  45.59 GB  4004s
+Filesystem              Size  Used Avail Use% Mounted on
+overlay                 389G  282G   91G  76% /
+UPFS:upfs-13n5o97wrrr4   40T   27T   13T  68% /model
+DL_ALL_DONE
+[12:35:37] 下载结束
+5.5G	/root/models/InternVL2_5-8B-AWQ
+43G	/root/models/InternVL3_5-38B-FP8-Dynamic
+41G	/root/models/Qwen2.5-VL-72B-Instruct-AWQ
+6.5G	/root/models/Qwen2.5-VL-7B-Instruct-AWQ
+4.0G	/root/models/Qwen3-VL-2B-Instruct
+31G	/root/models/Qwen3-VL-30B-A3B-Instruct-FP8
+21G	/root/models/Qwen3-VL-32B-Instruct-AWQ-4bit
+35G	/root/models/Qwen3-VL-32B-Instruct-AWQ-8bit
+34G	/root/models/Qwen3-VL-32B-Instruct-FP8
+20G	/root/models/Qwen3-VL-32B-Instruct-GPTQ-W4
+8.3G	/root/models/Qwen3-VL-4B-Instruct
+7.1G	/root/models/Qwen3-VL-8B-Instruct-AWQ-4bit
+overlay         389G  282G   91G  76% /
+DL_V5_DONE

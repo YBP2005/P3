@@ -1,0 +1,32 @@
+[01:26:46] 等待 recover2 结束（W1_RECOVER2_DONE）…
+[03:22:46] 重下 Idefics3-8B（普查已完成，本次只为 FSC 四臂）
+  [ModelScope] HuggingFaceM4/Idefics3-8B-Llama3：14 文件 16.93 GB
+    OK  model-00002-of-00004.safetensors                     4999.8 MB  (1450s)
+    OK  model-00001-of-00004.safetensors                     4967.9 MB  (1714s)
+    OK  model-00003-of-00004.safetensors                     4915.9 MB  (2084s)
+    OK  model-00004-of-00004.safetensors                     2040.6 MB  (2199s)
+    OK  tokenizer.json                                          9.1 MB  (2201s)
+    OK  model.safetensors.index.json                            0.1 MB  (2201s)
+    OK  tokenizer_config.json                                   0.1 MB  (2201s)
+    OK  README.md                                               0.0 MB  (2202s)
+    OK  config.json                                             0.0 MB  (2202s)
+    OK  special_tokens_map.json                                 0.0 MB  (2203s)
+    OK  preprocessor_config.json                                0.0 MB  (2203s)
+    OK  chat_template.json                                      0.0 MB  (2203s)
+    OK  generation_config.json                                  0.0 MB  (2204s)
+    OK  configuration.json                                      0.0 MB  (2204s)
+  → HuggingFaceM4/Idefics3-8B-Llama3 成功 14 失败 0  16.93 GB  2204s
+Filesystem              Size  Used Avail Use% Mounted on
+overlay                 182G  130G   45G  75% /
+UPFS:upfs-13n5o97wrrr4   40T   27T   13T  68% /model
+DL_ALL_DONE
+[04:00:34]   [idefics3_8b] 起服就绪 60s
+仪器：复用 19e 的 P/parse/call_img/b64_of（19e 未改动）
+  [base] 300 行；答 0 的 267 个；-> /root/w1_results/fsc/fsc_Idefics3-8B-Llama3_base.csv
+  [permit] 300 行；答 0 的 5 个；-> /root/w1_results/fsc/fsc_Idefics3-8B-Llama3_permit.csv
+  [exemplar3] 300 行；答 0 的 5 个；-> /root/w1_results/fsc/fsc_Idefics3-8B-Llama3_exemplar3.csv
+  [exemplar3permit] 300 行；答 0 的 1 个；-> /root/w1_results/fsc/fsc_Idefics3-8B-Llama3_exemplar3permit.csv
+[04:05:17] Idefics3 FSC 产物 4/4
+[04:05:20] ########## FSC 补齐结束 ##########
+20
+W1_FSC_LATE_DONE

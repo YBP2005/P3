@@ -1,0 +1,18 @@
+[01:21:06] ########## ① 安装 timm（deepseek-vl2 缺的包）##########
+[01:21:16] timm 版本：1.0.30
+[01:21:16] 等待 FSC 段结束（W1_FSC_DONE）…
+[03:16:16] 开始环境修复后的重试
+[03:16:16] ===== 重试家族 dsvl2_tiny（deepseek-vl2-tiny）=====
+[03:17:34]   [dsvl2_tiny] 起服就绪 75s
+[03:17:36]   [dsvl2_tiny] smoke：可解析 2 / 4 条
+[03:18:06]     [dsvl2_tiny] st_a 完成
+[03:19:41]     [dsvl2_tiny] ucf 完成
+[03:20:27]     [dsvl2_tiny] visdrone 完成
+[03:21:10]     [dsvl2_tiny] aitod 完成
+[03:21:10]   [dsvl2_tiny] 普查 16/16 + 12/12；FSC 4/4
+/root/w1_recover2.sh: line 28: 10511 Killed                  setsid nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len 4096 --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization 0.85 --max-num-seqs 16 --port 8000 "$@" < /dev/null > "/root/logs/serve_w1r2_${TAG}.log" 2>&1
+[03:21:13] Phi-4-mm 普查格不足 ⇒ 重试（--trust-remote-code）
+[03:21:13] ===== 重试家族 phi4mm_retry（Phi-4-mm）=====
+[03:21:46]   [phi4mm_retry] !! 起服报错（早停）
+[03:21:46] !! phi4mm_retry 起服仍失败 ⇒ 最终排除（理由写入 frame 表）
+[03:21:50] ########## 重试段结束 ##########

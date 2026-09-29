@@ -1,0 +1,1904 @@
+{
+ "meta": {
+  "round": "A",
+  "date": "2026-09-28",
+  "domains": [
+   "mtdc",
+   "gwhd"
+  ],
+  "contract_levels": [
+   "base",
+   "permit",
+   "bestA",
+   "bestB",
+   "bestC",
+   "channel"
+  ],
+  "pixelbudget_levels": [
+   "pb1048576",
+   "pb489987",
+   "pb228966",
+   "pb106993",
+   "pb50000"
+  ],
+  "starts": [
+   "s1",
+   "s2",
+   "s3"
+  ],
+  "data_root": "D:\\deepseek\\PaperB\\analysis\\A_res_20260928",
+  "criteria_file": "D:\\deepseek\\PaperB\\analysis\\work\\A_criteria_frozen.json",
+  "criteria_md5": "4b3f2904100a9adcaa2ce9b7f7b84c76",
+  "script_md5": "cba9dda5c0f305cf8ec2be8a9ecf1a3a",
+  "definitions": {
+   "answer_zero": "parse_ok==1 且 pred==0",
+   "abstain": "parse_ok==0（无解析值 / outlet token）",
+   "rho": "100*(sum(pred)-sum(gt))/sum(gt)，在该域共同 item 交集(=200 项)上算，pred 不可解析的项从分子分母同时剔除",
+   "span": "max(rho)-min(rho)，只取未报未测的档",
+   "median_log_err": "median(ln(pred+1)-ln(gt+1))，弃权项剔除",
+   "mae": "mean(|pred-gt|)，弃权项剔除",
+   "a3_3": "MAE_best=min(各档 MAE)；合格集={档: MAE <= 1.10*MAE_best}(边界闭合)；报合格集内 rho 的跨度；合格集<3 档报未测",
+   "wilson": "双侧 95% Wilson 上界 (z=1.959963984540054)；另附单侧 z=1.6448536269514722",
+   "undefined_rule": "n_used<20 或可评档数<3 => 未测"
+  }
+ },
+ "integrity": {
+  "manifest": {
+   "manifest_lines_total": 70,
+   "manifest_csv_lines": 66,
+   "manifest_non_csv": [
+    "gwhd/prompts_used_gwhd.json",
+    "gwhd/prompts_used_gwhd__start1.json",
+    "mtdc/prompts_used_mtdc.json",
+    "mtdc/prompts_used_mtdc__start1.json"
+   ],
+   "md5_all_match": true,
+   "bytes_all_match": true,
+   "no_extra_files": true
+  },
+  "err_rows": 0,
+  "item_sets": {
+   "mtdc": {
+    "n_items": 200,
+    "item_sets_identical": true,
+    "gt_identical": true,
+    "order_identical": false
+   },
+   "gwhd": {
+    "n_items": 200,
+    "item_sets_identical": true,
+    "gt_identical": true,
+    "order_identical": false
+   }
+  },
+  "cells": 66,
+  "rows_per_cell": 200,
+  "lines_per_cell": 201
+ },
+ "A1": {
+  "mtdc": {
+   "s1": {
+    "denominator_base_zero": 25,
+    "arms": {
+     "permit": {
+      "numerator_still_zero": 0,
+      "denominator": 25,
+      "ratio": 0.0,
+      "ratio_pct": 0.0,
+      "wilson95_upper_twosided_pct": 13.319225,
+      "wilson95_upper_onesided_pct": 9.765351,
+      "verdict_ratio_le_5pct": "通过",
+      "verdict_wilson_upper_le_5pct": "不通过",
+      "fate_of_base_zero_items": {
+       "still_zero": 0,
+       "abstain": 25,
+       "nonzero": 0
+      }
+     },
+     "channel": {
+      "numerator_still_zero": 0,
+      "denominator": 25,
+      "ratio": 0.0,
+      "ratio_pct": 0.0,
+      "wilson95_upper_twosided_pct": 13.319225,
+      "wilson95_upper_onesided_pct": 9.765351,
+      "verdict_ratio_le_5pct": "通过",
+      "verdict_wilson_upper_le_5pct": "不通过",
+      "fate_of_base_zero_items": {
+       "still_zero": 0,
+       "abstain": 25,
+       "nonzero": 0
+      }
+     }
+    },
+    "both_arms_pooled_supplementary": {
+     "numerator_still_zero": 0,
+     "denominator": 50,
+     "ratio_pct": 0.0,
+     "wilson95_upper_twosided_pct": 7.13476
+    }
+   },
+   "s2": {
+    "denominator_base_zero": 25,
+    "arms": {
+     "permit": {
+      "numerator_still_zero": 0,
+      "denominator": 25,
+      "ratio": 0.0,
+      "ratio_pct": 0.0,
+      "wilson95_upper_twosided_pct": 13.319225,
+      "wilson95_upper_onesided_pct": 9.765351,
+      "verdict_ratio_le_5pct": "通过",
+      "verdict_wilson_upper_le_5pct": "不通过",
+      "fate_of_base_zero_items": {
+       "still_zero": 0,
+       "abstain": 25,
+       "nonzero": 0
+      }
+     },
+     "channel": {
+      "numerator_still_zero": 0,
+      "denominator": 25,
+      "ratio": 0.0,
+      "ratio_pct": 0.0,
+      "wilson95_upper_twosided_pct": 13.319225,
+      "wilson95_upper_onesided_pct": 9.765351,
+      "verdict_ratio_le_5pct": "通过",
+      "verdict_wilson_upper_le_5pct": "不通过",
+      "fate_of_base_zero_items": {
+       "still_zero": 0,
+       "abstain": 25,
+       "nonzero": 0
+      }
+     }
+    },
+    "both_arms_pooled_supplementary": {
+     "numerator_still_zero": 0,
+     "denominator": 50,
+     "ratio_pct": 0.0,
+     "wilson95_upper_twosided_pct": 7.13476
+    }
+   },
+   "s3": {
+    "denominator_base_zero": 25,
+    "arms": {
+     "permit": {
+      "numerator_still_zero": 0,
+      "denominator": 25,
+      "ratio": 0.0,
+      "ratio_pct": 0.0,
+      "wilson95_upper_twosided_pct": 13.319225,
+      "wilson95_upper_onesided_pct": 9.765351,
+      "verdict_ratio_le_5pct": "通过",
+      "verdict_wilson_upper_le_5pct": "不通过",
+      "fate_of_base_zero_items": {
+       "still_zero": 0,
+       "abstain": 25,
+       "nonzero": 0
+      }
+     },
+     "channel": {
+      "numerator_still_zero": 0,
+      "denominator": 25,
+      "ratio": 0.0,
+      "ratio_pct": 0.0,
+      "wilson95_upper_twosided_pct": 13.319225,
+      "wilson95_upper_onesided_pct": 9.765351,
+      "verdict_ratio_le_5pct": "通过",
+      "verdict_wilson_upper_le_5pct": "不通过",
+      "fate_of_base_zero_items": {
+       "still_zero": 0,
+       "abstain": 25,
+       "nonzero": 0
+      }
+     }
+    },
+    "both_arms_pooled_supplementary": {
+     "numerator_still_zero": 0,
+     "denominator": 50,
+     "ratio_pct": 0.0,
+     "wilson95_upper_twosided_pct": 7.13476
+    }
+   },
+   "domain": {
+    "permit": {
+     "verdict_by_start_ratio": [
+      "通过",
+      "通过",
+      "通过"
+     ],
+     "verdict_by_start_wilson_upper": [
+      "不通过",
+      "不通过",
+      "不通过"
+     ],
+     "domain_verdict_ratio": "通过",
+     "domain_verdict_wilson_upper": "不通过"
+    },
+    "channel": {
+     "verdict_by_start_ratio": [
+      "通过",
+      "通过",
+      "通过"
+     ],
+     "verdict_by_start_wilson_upper": [
+      "不通过",
+      "不通过",
+      "不通过"
+     ],
+     "domain_verdict_ratio": "通过",
+     "domain_verdict_wilson_upper": "不通过"
+    }
+   }
+  },
+  "gwhd": {
+   "s1": {
+    "denominator_base_zero": 24,
+    "arms": {
+     "permit": {
+      "numerator_still_zero": 0,
+      "denominator": 24,
+      "ratio": 0.0,
+      "ratio_pct": 0.0,
+      "wilson95_upper_twosided_pct": 13.79762,
+      "wilson95_upper_onesided_pct": 10.131018,
+      "verdict_ratio_le_5pct": "通过",
+      "verdict_wilson_upper_le_5pct": "不通过",
+      "fate_of_base_zero_items": {
+       "still_zero": 0,
+       "abstain": 24,
+       "nonzero": 0
+      }
+     },
+     "channel": {
+      "numerator_still_zero": 0,
+      "denominator": 24,
+      "ratio": 0.0,
+      "ratio_pct": 0.0,
+      "wilson95_upper_twosided_pct": 13.79762,
+      "wilson95_upper_onesided_pct": 10.131018,
+      "verdict_ratio_le_5pct": "通过",
+      "verdict_wilson_upper_le_5pct": "不通过",
+      "fate_of_base_zero_items": {
+       "still_zero": 0,
+       "abstain": 24,
+       "nonzero": 0
+      }
+     }
+    },
+    "both_arms_pooled_supplementary": {
+     "numerator_still_zero": 0,
+     "denominator": 48,
+     "ratio_pct": 0.0,
+     "wilson95_upper_twosided_pct": 7.410013
+    }
+   },
+   "s2": {
+    "denominator_base_zero": 24,
+    "arms": {
+     "permit": {
+      "numerator_still_zero": 0,
+      "denominator": 24,
+      "ratio": 0.0,
+      "ratio_pct": 0.0,
+      "wilson95_upper_twosided_pct": 13.79762,
+      "wilson95_upper_onesided_pct": 10.131018,
+      "verdict_ratio_le_5pct": "通过",
+      "verdict_wilson_upper_le_5pct": "不通过",
+      "fate_of_base_zero_items": {
+       "still_zero": 0,
+       "abstain": 24,
+       "nonzero": 0
+      }
+     },
+     "channel": {
+      "numerator_still_zero": 0,
+      "denominator": 24,
+      "ratio": 0.0,
+      "ratio_pct": 0.0,
+      "wilson95_upper_twosided_pct": 13.79762,
+      "wilson95_upper_onesided_pct": 10.131018,
+      "verdict_ratio_le_5pct": "通过",
+      "verdict_wilson_upper_le_5pct": "不通过",
+      "fate_of_base_zero_items": {
+       "still_zero": 0,
+       "abstain": 24,
+       "nonzero": 0
+      }
+     }
+    },
+    "both_arms_pooled_supplementary": {
+     "numerator_still_zero": 0,
+     "denominator": 48,
+     "ratio_pct": 0.0,
+     "wilson95_upper_twosided_pct": 7.410013
+    }
+   },
+   "s3": {
+    "denominator_base_zero": 24,
+    "arms": {
+     "permit": {
+      "numerator_still_zero": 0,
+      "denominator": 24,
+      "ratio": 0.0,
+      "ratio_pct": 0.0,
+      "wilson95_upper_twosided_pct": 13.79762,
+      "wilson95_upper_onesided_pct": 10.131018,
+      "verdict_ratio_le_5pct": "通过",
+      "verdict_wilson_upper_le_5pct": "不通过",
+      "fate_of_base_zero_items": {
+       "still_zero": 0,
+       "abstain": 24,
+       "nonzero": 0
+      }
+     },
+     "channel": {
+      "numerator_still_zero": 0,
+      "denominator": 24,
+      "ratio": 0.0,
+      "ratio_pct": 0.0,
+      "wilson95_upper_twosided_pct": 13.79762,
+      "wilson95_upper_onesided_pct": 10.131018,
+      "verdict_ratio_le_5pct": "通过",
+      "verdict_wilson_upper_le_5pct": "不通过",
+      "fate_of_base_zero_items": {
+       "still_zero": 0,
+       "abstain": 24,
+       "nonzero": 0
+      }
+     }
+    },
+    "both_arms_pooled_supplementary": {
+     "numerator_still_zero": 0,
+     "denominator": 48,
+     "ratio_pct": 0.0,
+     "wilson95_upper_twosided_pct": 7.410013
+    }
+   },
+   "domain": {
+    "permit": {
+     "verdict_by_start_ratio": [
+      "通过",
+      "通过",
+      "通过"
+     ],
+     "verdict_by_start_wilson_upper": [
+      "不通过",
+      "不通过",
+      "不通过"
+     ],
+     "domain_verdict_ratio": "通过",
+     "domain_verdict_wilson_upper": "不通过"
+    },
+    "channel": {
+     "verdict_by_start_ratio": [
+      "通过",
+      "通过",
+      "通过"
+     ],
+     "verdict_by_start_wilson_upper": [
+      "不通过",
+      "不通过",
+      "不通过"
+     ],
+     "domain_verdict_ratio": "通过",
+     "domain_verdict_wilson_upper": "不通过"
+    }
+   }
+  }
+ },
+ "A2": {
+  "mtdc": {
+   "s1": {
+    "contract_spectrum": {
+     "levels": [
+      "base",
+      "permit",
+      "bestA",
+      "bestB",
+      "bestC",
+      "channel"
+     ],
+     "n_levels_defined": 5,
+     "rho_by_level": {
+      "base": -8.604075,
+      "permit": -16.551724,
+      "bestA": 59.154736,
+      "bestB": 22.742291,
+      "bestC": 62.81663,
+      "channel": null
+     },
+     "undefined_levels": [
+      "channel"
+     ],
+     "max_level": "bestC",
+     "min_level": "permit",
+     "span": 79.368354,
+     "status": "已评",
+     "max_rho": 62.81663,
+     "min_rho": -16.551724
+    },
+    "pixelbudget_spectrum": {
+     "levels": [
+      "pb1048576",
+      "pb489987",
+      "pb228966",
+      "pb106993",
+      "pb50000"
+     ],
+     "n_levels_defined": 5,
+     "rho_by_level": {
+      "pb1048576": -11.605176,
+      "pb489987": -21.682269,
+      "pb228966": -37.678965,
+      "pb106993": -60.91685,
+      "pb50000": -91.57489
+     },
+     "undefined_levels": [],
+     "max_level": "pb1048576",
+     "min_level": "pb50000",
+     "span": 79.969714,
+     "status": "已评",
+     "max_rho": -11.605176,
+     "min_rho": -91.57489
+    },
+    "span_diff_pp": -0.60136,
+    "verdict": "不通过",
+    "sensitivity_fullgrid_only": {
+     "contract_span": 71.420705,
+     "pixelbudget_span": 79.969714,
+     "verdict": "不通过",
+     "levels_used": [
+      "base",
+      "bestA",
+      "bestB",
+      "bestC",
+      "pb1048576",
+      "pb489987",
+      "pb228966",
+      "pb106993",
+      "pb50000"
+     ],
+     "note": "非注册口径；仅剔掉有弃权的档后看不等式是否仍成立"
+    }
+   },
+   "s2": {
+    "contract_spectrum": {
+     "levels": [
+      "base",
+      "permit",
+      "bestA",
+      "bestB",
+      "bestC",
+      "channel"
+     ],
+     "n_levels_defined": 5,
+     "rho_by_level": {
+      "base": -8.810573,
+      "permit": -16.666667,
+      "bestA": 58.136013,
+      "bestB": 22.935022,
+      "bestC": 62.031938,
+      "channel": null
+     },
+     "undefined_levels": [
+      "channel"
+     ],
+     "max_level": "bestC",
+     "min_level": "permit",
+     "span": 78.698605,
+     "status": "已评",
+     "max_rho": 62.031938,
+     "min_rho": -16.666667
+    },
+    "pixelbudget_spectrum": {
+     "levels": [
+      "pb1048576",
+      "pb489987",
+      "pb228966",
+      "pb106993",
+      "pb50000"
+     ],
+     "n_levels_defined": 5,
+     "rho_by_level": {
+      "pb1048576": -11.660242,
+      "pb489987": -21.971366,
+      "pb228966": -39.647577,
+      "pb106993": -59.471366,
+      "pb50000": -91.450991
+     },
+     "undefined_levels": [],
+     "max_level": "pb1048576",
+     "min_level": "pb50000",
+     "span": 79.790749,
+     "status": "已评",
+     "max_rho": -11.660242,
+     "min_rho": -91.450991
+    },
+    "span_diff_pp": -1.092144,
+    "verdict": "不通过",
+    "sensitivity_fullgrid_only": {
+     "contract_span": 70.842511,
+     "pixelbudget_span": 79.790749,
+     "verdict": "不通过",
+     "levels_used": [
+      "base",
+      "bestA",
+      "bestB",
+      "bestC",
+      "pb1048576",
+      "pb489987",
+      "pb228966",
+      "pb106993",
+      "pb50000"
+     ],
+     "note": "非注册口径；仅剔掉有弃权的档后看不等式是否仍成立"
+    }
+   },
+   "s3": {
+    "contract_spectrum": {
+     "levels": [
+      "base",
+      "permit",
+      "bestA",
+      "bestB",
+      "bestC",
+      "channel"
+     ],
+     "n_levels_defined": 5,
+     "rho_by_level": {
+      "base": -8.493943,
+      "permit": -16.416185,
+      "bestA": 59.127203,
+      "bestB": 23.031388,
+      "bestC": 63.904185,
+      "channel": null
+     },
+     "undefined_levels": [
+      "channel"
+     ],
+     "max_level": "bestC",
+     "min_level": "permit",
+     "span": 80.32037,
+     "status": "已评",
+     "max_rho": 63.904185,
+     "min_rho": -16.416185
+    },
+    "pixelbudget_spectrum": {
+     "levels": [
+      "pb1048576",
+      "pb489987",
+      "pb228966",
+      "pb106993",
+      "pb50000"
+     ],
+     "n_levels_defined": 5,
+     "rho_by_level": {
+      "pb1048576": -11.894273,
+      "pb489987": -21.59967,
+      "pb228966": -37.85793,
+      "pb106993": -61.082048,
+      "pb50000": -91.368392
+     },
+     "undefined_levels": [],
+     "max_level": "pb1048576",
+     "min_level": "pb50000",
+     "span": 79.474119,
+     "status": "已评",
+     "max_rho": -11.894273,
+     "min_rho": -91.368392
+    },
+    "span_diff_pp": 0.846251,
+    "verdict": "通过",
+    "sensitivity_fullgrid_only": {
+     "contract_span": 72.398128,
+     "pixelbudget_span": 79.474119,
+     "verdict": "不通过",
+     "levels_used": [
+      "base",
+      "bestA",
+      "bestB",
+      "bestC",
+      "pb1048576",
+      "pb489987",
+      "pb228966",
+      "pb106993",
+      "pb50000"
+     ],
+     "note": "非注册口径；仅剔掉有弃权的档后看不等式是否仍成立"
+    }
+   },
+   "domain": {
+    "verdict_by_start": {
+     "s1": "不通过",
+     "s2": "不通过",
+     "s3": "通过"
+    },
+    "starts_pass": [
+     "s3"
+    ],
+    "starts_fail": [
+     "s1",
+     "s2"
+    ],
+    "domain_verdict_all3": "不通过",
+    "domain_verdict_majority": "不通过",
+    "note": "域级判定=三启动全部成立(最严、不挑启动)；多数口径同时给出。二者不一致时照实列出。"
+   }
+  },
+  "gwhd": {
+   "s1": {
+    "contract_spectrum": {
+     "levels": [
+      "base",
+      "permit",
+      "bestA",
+      "bestB",
+      "bestC",
+      "channel"
+     ],
+     "n_levels_defined": 5,
+     "rho_by_level": {
+      "base": -34.025292,
+      "permit": null,
+      "bestA": 3.149606,
+      "bestB": -5.869721,
+      "bestC": 15.390122,
+      "channel": -32.407407
+     },
+     "undefined_levels": [
+      "permit"
+     ],
+     "max_level": "bestC",
+     "min_level": "base",
+     "span": 49.415414,
+     "status": "已评",
+     "max_rho": 15.390122,
+     "min_rho": -34.025292
+    },
+    "pixelbudget_spectrum": {
+     "levels": [
+      "pb1048576",
+      "pb489987",
+      "pb228966",
+      "pb106993",
+      "pb50000"
+     ],
+     "n_levels_defined": 5,
+     "rho_by_level": {
+      "pb1048576": -34.001432,
+      "pb489987": -36.85278,
+      "pb228966": -43.855882,
+      "pb106993": -62.896683,
+      "pb50000": -80.935338
+     },
+     "undefined_levels": [],
+     "max_level": "pb1048576",
+     "min_level": "pb50000",
+     "span": 46.933906,
+     "status": "已评",
+     "max_rho": -34.001432,
+     "min_rho": -80.935338
+    },
+    "span_diff_pp": 2.481508,
+    "verdict": "通过",
+    "sensitivity_fullgrid_only": {
+     "contract_span": 49.415414,
+     "pixelbudget_span": 46.933906,
+     "verdict": "通过",
+     "levels_used": [
+      "base",
+      "bestA",
+      "bestB",
+      "bestC",
+      "pb1048576",
+      "pb489987",
+      "pb228966",
+      "pb106993",
+      "pb50000"
+     ],
+     "note": "非注册口径；仅剔掉有弃权的档后看不等式是否仍成立"
+    }
+   },
+   "s2": {
+    "contract_spectrum": {
+     "levels": [
+      "base",
+      "permit",
+      "bestA",
+      "bestB",
+      "bestC",
+      "channel"
+     ],
+     "n_levels_defined": 5,
+     "rho_by_level": {
+      "base": -34.049153,
+      "permit": null,
+      "bestA": 3.531377,
+      "bestB": -5.726557,
+      "bestC": 15.413982,
+      "channel": -31.660232
+     },
+     "undefined_levels": [
+      "permit"
+     ],
+     "max_level": "bestC",
+     "min_level": "base",
+     "span": 49.463135,
+     "status": "已评",
+     "max_rho": 15.413982,
+     "min_rho": -34.049153
+    },
+    "pixelbudget_spectrum": {
+     "levels": [
+      "pb1048576",
+      "pb489987",
+      "pb228966",
+      "pb106993",
+      "pb50000"
+     ],
+     "n_levels_defined": 5,
+     "rho_by_level": {
+      "pb1048576": -34.454784,
+      "pb489987": -37.043665,
+      "pb228966": -43.748509,
+      "pb106993": -63.075638,
+      "pb50000": -80.923407
+     },
+     "undefined_levels": [],
+     "max_level": "pb1048576",
+     "min_level": "pb50000",
+     "span": 46.468623,
+     "status": "已评",
+     "max_rho": -34.454784,
+     "min_rho": -80.923407
+    },
+    "span_diff_pp": 2.994512,
+    "verdict": "通过",
+    "sensitivity_fullgrid_only": {
+     "contract_span": 49.463135,
+     "pixelbudget_span": 46.468623,
+     "verdict": "通过",
+     "levels_used": [
+      "base",
+      "bestA",
+      "bestB",
+      "bestC",
+      "pb1048576",
+      "pb489987",
+      "pb228966",
+      "pb106993",
+      "pb50000"
+     ],
+     "note": "非注册口径；仅剔掉有弃权的档后看不等式是否仍成立"
+    }
+   },
+   "s3": {
+    "contract_spectrum": {
+     "levels": [
+      "base",
+      "permit",
+      "bestA",
+      "bestB",
+      "bestC",
+      "channel"
+     ],
+     "n_levels_defined": 5,
+     "rho_by_level": {
+      "base": -33.965641,
+      "permit": null,
+      "bestA": 3.28084,
+      "bestB": -5.356717,
+      "bestC": 15.915056,
+      "channel": -31.402831
+     },
+     "undefined_levels": [
+      "permit"
+     ],
+     "max_level": "bestC",
+     "min_level": "base",
+     "span": 49.880697,
+     "status": "已评",
+     "max_rho": 15.915056,
+     "min_rho": -33.965641
+    },
+    "pixelbudget_spectrum": {
+     "levels": [
+      "pb1048576",
+      "pb489987",
+      "pb228966",
+      "pb106993",
+      "pb50000"
+     ],
+     "n_levels_defined": 5,
+     "rho_by_level": {
+      "pb1048576": -34.204247,
+      "pb489987": -36.912431,
+      "pb228966": -43.724648,
+      "pb106993": -62.574565,
+      "pb50000": -80.947268
+     },
+     "undefined_levels": [],
+     "max_level": "pb1048576",
+     "min_level": "pb50000",
+     "span": 46.743021,
+     "status": "已评",
+     "max_rho": -34.204247,
+     "min_rho": -80.947268
+    },
+    "span_diff_pp": 3.137676,
+    "verdict": "通过",
+    "sensitivity_fullgrid_only": {
+     "contract_span": 49.880697,
+     "pixelbudget_span": 46.743021,
+     "verdict": "通过",
+     "levels_used": [
+      "base",
+      "bestA",
+      "bestB",
+      "bestC",
+      "pb1048576",
+      "pb489987",
+      "pb228966",
+      "pb106993",
+      "pb50000"
+     ],
+     "note": "非注册口径；仅剔掉有弃权的档后看不等式是否仍成立"
+    }
+   },
+   "domain": {
+    "verdict_by_start": {
+     "s1": "通过",
+     "s2": "通过",
+     "s3": "通过"
+    },
+    "starts_pass": [
+     "s1",
+     "s2",
+     "s3"
+    ],
+    "starts_fail": [],
+    "domain_verdict_all3": "通过",
+    "domain_verdict_majority": "通过",
+    "note": "域级判定=三启动全部成立(最严、不挑启动)；多数口径同时给出。二者不一致时照实列出。"
+   }
+  }
+ },
+ "A3": {
+  "mtdc": {
+   "s1": {
+    "raw_rho_by_level": {
+     "base": -8.604075,
+     "permit": -16.551724,
+     "bestA": 59.154736,
+     "bestB": 22.742291,
+     "bestC": 62.81663,
+     "channel": null,
+     "pb1048576": -11.605176,
+     "pb489987": -21.682269,
+     "pb228966": -37.678965,
+     "pb106993": -60.91685,
+     "pb50000": -91.57489
+    },
+    "median_log_err_by_level": {
+     "base": -0.092395,
+     "permit": -0.160792,
+     "bestA": 0.212199,
+     "bestB": 0.0,
+     "bestC": 0.286307,
+     "channel": null,
+     "pb1048576": -0.115513,
+     "pb489987": -0.235851,
+     "pb228966": -0.431381,
+     "pb106993": -0.719839,
+     "pb50000": -2.944439
+    },
+    "n_used_by_level": {
+     "base": 200,
+     "permit": 58,
+     "bestA": 200,
+     "bestB": 200,
+     "bestC": 200,
+     "channel": 2,
+     "pb1048576": 200,
+     "pb489987": 200,
+     "pb228966": 200,
+     "pb106993": 200,
+     "pb50000": 200
+    },
+    "n_excluded_abstain_by_level": {
+     "base": 0,
+     "permit": 142,
+     "bestA": 0,
+     "bestB": 0,
+     "bestC": 0,
+     "channel": 198,
+     "pb1048576": 0,
+     "pb489987": 0,
+     "pb228966": 0,
+     "pb106993": 0,
+     "pb50000": 0
+    },
+    "mae_by_level": {
+     "base": 5.735,
+     "permit": 3.137931,
+     "bestA": 23.635,
+     "bestB": 14.25,
+     "bestC": 24.455,
+     "channel": null,
+     "pb1048576": 6.385,
+     "pb489987": 8.565,
+     "pb228966": 14.325,
+     "pb106993": 22.885,
+     "pb50000": 33.26
+    },
+    "mae_best_value": 3.137931,
+    "mae_best_levels": [
+     "permit"
+    ],
+    "mae_threshold_1p10x": 3.451724,
+    "qualifying_levels": [
+     "permit"
+    ],
+    "qualifying_n_levels": 1,
+    "span_of_rho_over_qualifying": null,
+    "span_status": "未测",
+    "undefined_reason": "合格集只有 1 档 (<3) => 跨度未测",
+    "diagnostic_only_min_multiplier_for_3_levels": 2.04,
+    "log_err_handling": "pred 不可解析(弃权)的项整体剔除，不参与中位数；剔除条数见 n_excluded_abstain_by_level",
+    "mae_handling": "pred 不可解析(弃权)的项整体剔除，不参与 MAE；不做任何代理量顶替"
+   },
+   "s2": {
+    "raw_rho_by_level": {
+     "base": -8.810573,
+     "permit": -16.666667,
+     "bestA": 58.136013,
+     "bestB": 22.935022,
+     "bestC": 62.031938,
+     "channel": null,
+     "pb1048576": -11.660242,
+     "pb489987": -21.971366,
+     "pb228966": -39.647577,
+     "pb106993": -59.471366,
+     "pb50000": -91.450991
+    },
+    "median_log_err_by_level": {
+     "base": -0.098624,
+     "permit": -0.160792,
+     "bestA": 0.212199,
+     "bestB": 0.0,
+     "bestC": 0.296532,
+     "channel": null,
+     "pb1048576": -0.112818,
+     "pb489987": -0.235851,
+     "pb228966": -0.448244,
+     "pb106993": -0.71346,
+     "pb50000": -2.944439
+    },
+    "n_used_by_level": {
+     "base": 200,
+     "permit": 58,
+     "bestA": 200,
+     "bestB": 200,
+     "bestC": 200,
+     "channel": 2,
+     "pb1048576": 200,
+     "pb489987": 200,
+     "pb228966": 200,
+     "pb106993": 200,
+     "pb50000": 200
+    },
+    "n_excluded_abstain_by_level": {
+     "base": 0,
+     "permit": 142,
+     "bestA": 0,
+     "bestB": 0,
+     "bestC": 0,
+     "channel": 198,
+     "pb1048576": 0,
+     "pb489987": 0,
+     "pb228966": 0,
+     "pb106993": 0,
+     "pb50000": 0
+    },
+    "mae_by_level": {
+     "base": 5.76,
+     "permit": 3.12069,
+     "bestA": 23.265,
+     "bestB": 14.24,
+     "bestC": 24.46,
+     "channel": null,
+     "pb1048576": 6.375,
+     "pb489987": 8.59,
+     "pb228966": 14.98,
+     "pb106993": 22.42,
+     "pb50000": 33.215
+    },
+    "mae_best_value": 3.12069,
+    "mae_best_levels": [
+     "permit"
+    ],
+    "mae_threshold_1p10x": 3.432759,
+    "qualifying_levels": [
+     "permit"
+    ],
+    "qualifying_n_levels": 1,
+    "span_of_rho_over_qualifying": null,
+    "span_status": "未测",
+    "undefined_reason": "合格集只有 1 档 (<3) => 跨度未测",
+    "diagnostic_only_min_multiplier_for_3_levels": 2.05,
+    "log_err_handling": "pred 不可解析(弃权)的项整体剔除，不参与中位数；剔除条数见 n_excluded_abstain_by_level",
+    "mae_handling": "pred 不可解析(弃权)的项整体剔除，不参与 MAE；不做任何代理量顶替"
+   },
+   "s3": {
+    "raw_rho_by_level": {
+     "base": -8.493943,
+     "permit": -16.416185,
+     "bestA": 59.127203,
+     "bestB": 23.031388,
+     "bestC": 63.904185,
+     "channel": null,
+     "pb1048576": -11.894273,
+     "pb489987": -21.59967,
+     "pb228966": -37.85793,
+     "pb106993": -61.082048,
+     "pb50000": -91.368392
+    },
+    "median_log_err_by_level": {
+     "base": -0.093819,
+     "permit": -0.159065,
+     "bestA": 0.213574,
+     "bestB": 0.0,
+     "bestC": 0.296532,
+     "channel": null,
+     "pb1048576": -0.114962,
+     "pb489987": -0.238775,
+     "pb228966": -0.448244,
+     "pb106993": -0.719839,
+     "pb50000": -2.944439
+    },
+    "n_used_by_level": {
+     "base": 200,
+     "permit": 57,
+     "bestA": 200,
+     "bestB": 200,
+     "bestC": 200,
+     "channel": 2,
+     "pb1048576": 200,
+     "pb489987": 200,
+     "pb228966": 200,
+     "pb106993": 200,
+     "pb50000": 200
+    },
+    "n_excluded_abstain_by_level": {
+     "base": 0,
+     "permit": 143,
+     "bestA": 0,
+     "bestB": 0,
+     "bestC": 0,
+     "channel": 198,
+     "pb1048576": 0,
+     "pb489987": 0,
+     "pb228966": 0,
+     "pb106993": 0,
+     "pb50000": 0
+    },
+    "mae_by_level": {
+     "base": 5.785,
+     "permit": 3.087719,
+     "bestA": 23.625,
+     "bestB": 14.465,
+     "bestC": 24.85,
+     "channel": null,
+     "pb1048576": 6.44,
+     "pb489987": 8.535,
+     "pb228966": 14.39,
+     "pb106993": 22.945,
+     "pb50000": 33.185
+    },
+    "mae_best_value": 3.087719,
+    "mae_best_levels": [
+     "permit"
+    ],
+    "mae_threshold_1p10x": 3.396491,
+    "qualifying_levels": [
+     "permit"
+    ],
+    "qualifying_n_levels": 1,
+    "span_of_rho_over_qualifying": null,
+    "span_status": "未测",
+    "undefined_reason": "合格集只有 1 档 (<3) => 跨度未测",
+    "diagnostic_only_min_multiplier_for_3_levels": 2.09,
+    "log_err_handling": "pred 不可解析(弃权)的项整体剔除，不参与中位数；剔除条数见 n_excluded_abstain_by_level",
+    "mae_handling": "pred 不可解析(弃权)的项整体剔除，不参与 MAE；不做任何代理量顶替"
+   },
+   "domain": {
+    "span_status_by_start": {
+     "s1": "未测",
+     "s2": "未测",
+     "s3": "未测"
+    },
+    "all_start_variants": false,
+    "note": "A3 通过线(freeze)=三项齐全且可复算；③在冻结件自身 <3 档规则下报未测"
+   }
+  },
+  "gwhd": {
+   "s1": {
+    "raw_rho_by_level": {
+     "base": -34.025292,
+     "permit": null,
+     "bestA": 3.149606,
+     "bestB": -5.869721,
+     "bestC": 15.390122,
+     "channel": -32.407407,
+     "pb1048576": -34.001432,
+     "pb489987": -36.85278,
+     "pb228966": -43.855882,
+     "pb106993": -62.896683,
+     "pb50000": -80.935338
+    },
+    "median_log_err_by_level": {
+     "base": -0.284767,
+     "permit": null,
+     "bestA": 0.0,
+     "bestB": -0.111059,
+     "bestC": 0.035091,
+     "channel": -0.336472,
+     "pb1048576": -0.280718,
+     "pb489987": -0.363774,
+     "pb228966": -0.437418,
+     "pb106993": -0.693147,
+     "pb50000": -1.277338
+    },
+    "n_used_by_level": {
+     "base": 200,
+     "permit": 11,
+     "bestA": 200,
+     "bestB": 200,
+     "bestC": 200,
+     "channel": 31,
+     "pb1048576": 200,
+     "pb489987": 200,
+     "pb228966": 200,
+     "pb106993": 200,
+     "pb50000": 200
+    },
+    "n_excluded_abstain_by_level": {
+     "base": 0,
+     "permit": 189,
+     "bestA": 0,
+     "bestB": 0,
+     "bestC": 0,
+     "channel": 169,
+     "pb1048576": 0,
+     "pb489987": 0,
+     "pb228966": 0,
+     "pb106993": 0,
+     "pb50000": 0
+    },
+    "mae_by_level": {
+     "base": 14.55,
+     "permit": null,
+     "bestA": 12.03,
+     "bestB": 11.68,
+     "bestC": 13.61,
+     "channel": 7.903226,
+     "pb1048576": 14.53,
+     "pb489987": 15.465,
+     "pb228966": 18.45,
+     "pb106993": 26.36,
+     "pb50000": 33.92
+    },
+    "mae_best_value": 7.903226,
+    "mae_best_levels": [
+     "channel"
+    ],
+    "mae_threshold_1p10x": 8.693549,
+    "qualifying_levels": [
+     "channel"
+    ],
+    "qualifying_n_levels": 1,
+    "span_of_rho_over_qualifying": null,
+    "span_status": "未测",
+    "undefined_reason": "合格集只有 1 档 (<3) => 跨度未测",
+    "diagnostic_only_min_multiplier_for_3_levels": 1.53,
+    "log_err_handling": "pred 不可解析(弃权)的项整体剔除，不参与中位数；剔除条数见 n_excluded_abstain_by_level",
+    "mae_handling": "pred 不可解析(弃权)的项整体剔除，不参与 MAE；不做任何代理量顶替"
+   },
+   "s2": {
+    "raw_rho_by_level": {
+     "base": -34.049153,
+     "permit": null,
+     "bestA": 3.531377,
+     "bestB": -5.726557,
+     "bestC": 15.413982,
+     "channel": -31.660232,
+     "pb1048576": -34.454784,
+     "pb489987": -37.043665,
+     "pb228966": -43.748509,
+     "pb106993": -63.075638,
+     "pb50000": -80.923407
+    },
+    "median_log_err_by_level": {
+     "base": -0.280718,
+     "permit": null,
+     "bestA": 0.0,
+     "bestB": -0.111665,
+     "bestC": 0.035091,
+     "channel": -0.330947,
+     "pb1048576": -0.287682,
+     "pb489987": -0.36779,
+     "pb228966": -0.433726,
+     "pb106993": -0.693147,
+     "pb50000": -1.298618
+    },
+    "n_used_by_level": {
+     "base": 200,
+     "permit": 11,
+     "bestA": 200,
+     "bestB": 200,
+     "bestC": 200,
+     "channel": 32,
+     "pb1048576": 200,
+     "pb489987": 200,
+     "pb228966": 200,
+     "pb106993": 200,
+     "pb50000": 200
+    },
+    "n_excluded_abstain_by_level": {
+     "base": 0,
+     "permit": 189,
+     "bestA": 0,
+     "bestB": 0,
+     "bestC": 0,
+     "channel": 168,
+     "pb1048576": 0,
+     "pb489987": 0,
+     "pb228966": 0,
+     "pb106993": 0,
+     "pb50000": 0
+    },
+    "mae_by_level": {
+     "base": 14.52,
+     "permit": null,
+     "bestA": 12.19,
+     "bestB": 11.66,
+     "bestC": 13.6,
+     "channel": 7.6875,
+     "pb1048576": 14.58,
+     "pb489987": 15.545,
+     "pb228966": 18.405,
+     "pb106993": 26.435,
+     "pb50000": 33.915
+    },
+    "mae_best_value": 7.6875,
+    "mae_best_levels": [
+     "channel"
+    ],
+    "mae_threshold_1p10x": 8.45625,
+    "qualifying_levels": [
+     "channel"
+    ],
+    "qualifying_n_levels": 1,
+    "span_of_rho_over_qualifying": null,
+    "span_status": "未测",
+    "undefined_reason": "合格集只有 1 档 (<3) => 跨度未测",
+    "diagnostic_only_min_multiplier_for_3_levels": 1.59,
+    "log_err_handling": "pred 不可解析(弃权)的项整体剔除，不参与中位数；剔除条数见 n_excluded_abstain_by_level",
+    "mae_handling": "pred 不可解析(弃权)的项整体剔除，不参与 MAE；不做任何代理量顶替"
+   },
+   "s3": {
+    "raw_rho_by_level": {
+     "base": -33.965641,
+     "permit": null,
+     "bestA": 3.28084,
+     "bestB": -5.356717,
+     "bestC": 15.915056,
+     "channel": -31.402831,
+     "pb1048576": -34.204247,
+     "pb489987": -36.912431,
+     "pb228966": -43.724648,
+     "pb106993": -62.574565,
+     "pb50000": -80.947268
+    },
+    "median_log_err_by_level": {
+     "base": -0.280718,
+     "permit": null,
+     "bestA": 0.0,
+     "bestB": -0.108816,
+     "bestC": 0.032629,
+     "channel": -0.330947,
+     "pb1048576": -0.287682,
+     "pb489987": -0.363774,
+     "pb228966": -0.433726,
+     "pb106993": -0.693147,
+     "pb50000": -1.298618
+    },
+    "n_used_by_level": {
+     "base": 200,
+     "permit": 11,
+     "bestA": 200,
+     "bestB": 200,
+     "bestC": 200,
+     "channel": 32,
+     "pb1048576": 200,
+     "pb489987": 200,
+     "pb228966": 200,
+     "pb106993": 200,
+     "pb50000": 200
+    },
+    "n_excluded_abstain_by_level": {
+     "base": 0,
+     "permit": 189,
+     "bestA": 0,
+     "bestB": 0,
+     "bestC": 0,
+     "channel": 168,
+     "pb1048576": 0,
+     "pb489987": 0,
+     "pb228966": 0,
+     "pb106993": 0,
+     "pb50000": 0
+    },
+    "mae_by_level": {
+     "base": 14.485,
+     "permit": null,
+     "bestA": 12.165,
+     "bestB": 11.655,
+     "bestC": 13.98,
+     "channel": 7.625,
+     "pb1048576": 14.565,
+     "pb489987": 15.49,
+     "pb228966": 18.395,
+     "pb106993": 26.225,
+     "pb50000": 33.925
+    },
+    "mae_best_value": 7.625,
+    "mae_best_levels": [
+     "channel"
+    ],
+    "mae_threshold_1p10x": 8.3875,
+    "qualifying_levels": [
+     "channel"
+    ],
+    "qualifying_n_levels": 1,
+    "span_of_rho_over_qualifying": null,
+    "span_status": "未测",
+    "undefined_reason": "合格集只有 1 档 (<3) => 跨度未测",
+    "diagnostic_only_min_multiplier_for_3_levels": 1.6,
+    "log_err_handling": "pred 不可解析(弃权)的项整体剔除，不参与中位数；剔除条数见 n_excluded_abstain_by_level",
+    "mae_handling": "pred 不可解析(弃权)的项整体剔除，不参与 MAE；不做任何代理量顶替"
+   },
+   "domain": {
+    "span_status_by_start": {
+     "s1": "未测",
+     "s2": "未测",
+     "s3": "未测"
+    },
+    "all_start_variants": false,
+    "note": "A3 通过线(freeze)=三项齐全且可复算；③在冻结件自身 <3 档规则下报未测"
+   }
+  }
+ },
+ "A4": {
+  "mtdc": {
+   "units": {
+    "contract": {
+     "per_level": {
+      "base": {
+       "rho_by_start": {
+        "s1": -8.604075,
+        "s2": -8.810573,
+        "s3": -8.493943
+       },
+       "sign_by_start": [
+        "-",
+        "-",
+        "-"
+       ],
+       "sign_consistent_across_starts": true
+      },
+      "permit": {
+       "rho_by_start": {
+        "s1": -16.551724,
+        "s2": -16.666667,
+        "s3": -16.416185
+       },
+       "sign_by_start": [
+        "-",
+        "-",
+        "-"
+       ],
+       "sign_consistent_across_starts": true
+      },
+      "bestA": {
+       "rho_by_start": {
+        "s1": 59.154736,
+        "s2": 58.136013,
+        "s3": 59.127203
+       },
+       "sign_by_start": [
+        "+",
+        "+",
+        "+"
+       ],
+       "sign_consistent_across_starts": true
+      },
+      "bestB": {
+       "rho_by_start": {
+        "s1": 22.742291,
+        "s2": 22.935022,
+        "s3": 23.031388
+       },
+       "sign_by_start": [
+        "+",
+        "+",
+        "+"
+       ],
+       "sign_consistent_across_starts": true
+      },
+      "bestC": {
+       "rho_by_start": {
+        "s1": 62.81663,
+        "s2": 62.031938,
+        "s3": 63.904185
+       },
+       "sign_by_start": [
+        "+",
+        "+",
+        "+"
+       ],
+       "sign_consistent_across_starts": true
+      },
+      "channel": {
+       "rho_by_start": {
+        "s1": null,
+        "s2": null,
+        "s3": null
+       },
+       "sign_by_start": [
+        "未测",
+        "未测",
+        "未测"
+       ],
+       "sign_consistent_across_starts": true
+      }
+     },
+     "signs_used": {
+      "base": "-",
+      "permit": "-",
+      "bestA": "+",
+      "bestB": "+",
+      "bestC": "+"
+     },
+     "distinct_signs": [
+      "+",
+      "-"
+     ],
+     "sign_uniform_within_unit": false
+    },
+    "pixelbudget": {
+     "per_level": {
+      "pb1048576": {
+       "rho_by_start": {
+        "s1": -11.605176,
+        "s2": -11.660242,
+        "s3": -11.894273
+       },
+       "sign_by_start": [
+        "-",
+        "-",
+        "-"
+       ],
+       "sign_consistent_across_starts": true
+      },
+      "pb489987": {
+       "rho_by_start": {
+        "s1": -21.682269,
+        "s2": -21.971366,
+        "s3": -21.59967
+       },
+       "sign_by_start": [
+        "-",
+        "-",
+        "-"
+       ],
+       "sign_consistent_across_starts": true
+      },
+      "pb228966": {
+       "rho_by_start": {
+        "s1": -37.678965,
+        "s2": -39.647577,
+        "s3": -37.85793
+       },
+       "sign_by_start": [
+        "-",
+        "-",
+        "-"
+       ],
+       "sign_consistent_across_starts": true
+      },
+      "pb106993": {
+       "rho_by_start": {
+        "s1": -60.91685,
+        "s2": -59.471366,
+        "s3": -61.082048
+       },
+       "sign_by_start": [
+        "-",
+        "-",
+        "-"
+       ],
+       "sign_consistent_across_starts": true
+      },
+      "pb50000": {
+       "rho_by_start": {
+        "s1": -91.57489,
+        "s2": -91.450991,
+        "s3": -91.368392
+       },
+       "sign_by_start": [
+        "-",
+        "-",
+        "-"
+       ],
+       "sign_consistent_across_starts": true
+      }
+     },
+     "signs_used": {
+      "pb1048576": "-",
+      "pb489987": "-",
+      "pb228966": "-",
+      "pb106993": "-",
+      "pb50000": "-"
+     },
+     "distinct_signs": [
+      "-"
+     ],
+     "sign_uniform_within_unit": true
+    }
+   },
+   "named_sign_flips": [
+    {
+     "unit": "contract",
+     "level": "base",
+     "kind": "level",
+     "sign": "-",
+     "all_signs": {
+      "base": "-",
+      "permit": "-",
+      "bestA": "+",
+      "bestB": "+",
+      "bestC": "+"
+     }
+    },
+    {
+     "unit": "contract",
+     "level": "permit",
+     "kind": "level",
+     "sign": "-",
+     "all_signs": {
+      "base": "-",
+      "permit": "-",
+      "bestA": "+",
+      "bestB": "+",
+      "bestC": "+"
+     }
+    },
+    {
+     "unit": "contract",
+     "level": "bestA",
+     "kind": "level",
+     "sign": "+",
+     "all_signs": {
+      "base": "-",
+      "permit": "-",
+      "bestA": "+",
+      "bestB": "+",
+      "bestC": "+"
+     }
+    },
+    {
+     "unit": "contract",
+     "level": "bestB",
+     "kind": "level",
+     "sign": "+",
+     "all_signs": {
+      "base": "-",
+      "permit": "-",
+      "bestA": "+",
+      "bestB": "+",
+      "bestC": "+"
+     }
+    },
+    {
+     "unit": "contract",
+     "level": "bestC",
+     "kind": "level",
+     "sign": "+",
+     "all_signs": {
+      "base": "-",
+      "permit": "-",
+      "bestA": "+",
+      "bestB": "+",
+      "bestC": "+"
+     }
+    }
+   ],
+   "verdict": "不一致，已具名列出反号格"
+  },
+  "gwhd": {
+   "units": {
+    "contract": {
+     "per_level": {
+      "base": {
+       "rho_by_start": {
+        "s1": -34.025292,
+        "s2": -34.049153,
+        "s3": -33.965641
+       },
+       "sign_by_start": [
+        "-",
+        "-",
+        "-"
+       ],
+       "sign_consistent_across_starts": true
+      },
+      "permit": {
+       "rho_by_start": {
+        "s1": null,
+        "s2": null,
+        "s3": null
+       },
+       "sign_by_start": [
+        "未测",
+        "未测",
+        "未测"
+       ],
+       "sign_consistent_across_starts": true
+      },
+      "bestA": {
+       "rho_by_start": {
+        "s1": 3.149606,
+        "s2": 3.531377,
+        "s3": 3.28084
+       },
+       "sign_by_start": [
+        "+",
+        "+",
+        "+"
+       ],
+       "sign_consistent_across_starts": true
+      },
+      "bestB": {
+       "rho_by_start": {
+        "s1": -5.869721,
+        "s2": -5.726557,
+        "s3": -5.356717
+       },
+       "sign_by_start": [
+        "-",
+        "-",
+        "-"
+       ],
+       "sign_consistent_across_starts": true
+      },
+      "bestC": {
+       "rho_by_start": {
+        "s1": 15.390122,
+        "s2": 15.413982,
+        "s3": 15.915056
+       },
+       "sign_by_start": [
+        "+",
+        "+",
+        "+"
+       ],
+       "sign_consistent_across_starts": true
+      },
+      "channel": {
+       "rho_by_start": {
+        "s1": -32.407407,
+        "s2": -31.660232,
+        "s3": -31.402831
+       },
+       "sign_by_start": [
+        "-",
+        "-",
+        "-"
+       ],
+       "sign_consistent_across_starts": true
+      }
+     },
+     "signs_used": {
+      "base": "-",
+      "bestA": "+",
+      "bestB": "-",
+      "bestC": "+",
+      "channel": "-"
+     },
+     "distinct_signs": [
+      "+",
+      "-"
+     ],
+     "sign_uniform_within_unit": false
+    },
+    "pixelbudget": {
+     "per_level": {
+      "pb1048576": {
+       "rho_by_start": {
+        "s1": -34.001432,
+        "s2": -34.454784,
+        "s3": -34.204247
+       },
+       "sign_by_start": [
+        "-",
+        "-",
+        "-"
+       ],
+       "sign_consistent_across_starts": true
+      },
+      "pb489987": {
+       "rho_by_start": {
+        "s1": -36.85278,
+        "s2": -37.043665,
+        "s3": -36.912431
+       },
+       "sign_by_start": [
+        "-",
+        "-",
+        "-"
+       ],
+       "sign_consistent_across_starts": true
+      },
+      "pb228966": {
+       "rho_by_start": {
+        "s1": -43.855882,
+        "s2": -43.748509,
+        "s3": -43.724648
+       },
+       "sign_by_start": [
+        "-",
+        "-",
+        "-"
+       ],
+       "sign_consistent_across_starts": true
+      },
+      "pb106993": {
+       "rho_by_start": {
+        "s1": -62.896683,
+        "s2": -63.075638,
+        "s3": -62.574565
+       },
+       "sign_by_start": [
+        "-",
+        "-",
+        "-"
+       ],
+       "sign_consistent_across_starts": true
+      },
+      "pb50000": {
+       "rho_by_start": {
+        "s1": -80.935338,
+        "s2": -80.923407,
+        "s3": -80.947268
+       },
+       "sign_by_start": [
+        "-",
+        "-",
+        "-"
+       ],
+       "sign_consistent_across_starts": true
+      }
+     },
+     "signs_used": {
+      "pb1048576": "-",
+      "pb489987": "-",
+      "pb228966": "-",
+      "pb106993": "-",
+      "pb50000": "-"
+     },
+     "distinct_signs": [
+      "-"
+     ],
+     "sign_uniform_within_unit": true
+    }
+   },
+   "named_sign_flips": [
+    {
+     "unit": "contract",
+     "level": "base",
+     "kind": "level",
+     "sign": "-",
+     "all_signs": {
+      "base": "-",
+      "bestA": "+",
+      "bestB": "-",
+      "bestC": "+",
+      "channel": "-"
+     }
+    },
+    {
+     "unit": "contract",
+     "level": "bestA",
+     "kind": "level",
+     "sign": "+",
+     "all_signs": {
+      "base": "-",
+      "bestA": "+",
+      "bestB": "-",
+      "bestC": "+",
+      "channel": "-"
+     }
+    },
+    {
+     "unit": "contract",
+     "level": "bestB",
+     "kind": "level",
+     "sign": "-",
+     "all_signs": {
+      "base": "-",
+      "bestA": "+",
+      "bestB": "-",
+      "bestC": "+",
+      "channel": "-"
+     }
+    },
+    {
+     "unit": "contract",
+     "level": "bestC",
+     "kind": "level",
+     "sign": "+",
+     "all_signs": {
+      "base": "-",
+      "bestA": "+",
+      "bestB": "-",
+      "bestC": "+",
+      "channel": "-"
+     }
+    },
+    {
+     "unit": "contract",
+     "level": "channel",
+     "kind": "level",
+     "sign": "-",
+     "all_signs": {
+      "base": "-",
+      "bestA": "+",
+      "bestB": "-",
+      "bestC": "+",
+      "channel": "-"
+     }
+    }
+   ],
+   "verdict": "不一致，已具名列出反号格"
+  }
+ },
+ "A5": {
+  "frozen_rule_quoted": "★ 两域分别判定、分别报出；合并只在两域都达标时才作为附加陈述。rule: (i) 两域都过 ⇒ 报『两个独立新域上预注册判据均通过』，并给合并读法；(ii) 只过一个 ⇒ 照实报一过一不过，不得只报通过的那个，也不得用合并统计把它掩盖掉（先例：§M.46 明写『One cell is above the bar and is reported rather than pooled away』）；(iii) 两个都不过 ⇒ 报『未复制』，并按 §7.3 的 scope 再收一格。",
+  "a1_domain_verdict_ratio": {
+   "mtdc": "通过",
+   "gwhd": "通过"
+  },
+  "a1_domain_verdict_wilson_upper": {
+   "mtdc": {
+    "permit": "不通过",
+    "channel": "不通过"
+   },
+   "gwhd": {
+    "permit": "不通过",
+    "channel": "不通过"
+   }
+  },
+  "a2_domain_verdict": {
+   "mtdc": "不通过",
+   "gwhd": "通过"
+  },
+  "a4_verdict": {
+   "mtdc": "不一致，已具名列出反号格",
+   "gwhd": "不一致，已具名列出反号格"
+  },
+  "branch": "(ii) 只过一个 => 照实报一过一不过",
+  "must_report_both_domains": true
+ }
+}

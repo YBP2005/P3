@@ -1,0 +1,105 @@
+{
+ "round": "B",
+ "frozen_at": "2026-09-28",
+ "frozen_by": "P3 owner (author side)",
+ "status": "DRAFT — 等用户过目后再上机；权重下载与来源指纹已固化，见 artifact_frozen",
+ "why_this_file": "评审（gemini38flash #13）要求把英文臂放到**语料基线同一个构建**上重跑。§M.19.16 / `g2_neutral0.py` 的 deviation_declared 逐字承认：语料基线用的是 Qwen3-VL-32B-**AWQ-4bit**，而当年本机没有该权重，英文臂跑在 **BF16** 上，因此**绝对率不可与语料池直接比**。本轮补上这一格。判据同样必须先冻结。",
+
+ "question": "在**与语料基线同一个 4-bit 构建**上重跑五个臂（cn-base / cn-neutral0 / en-base / en-neutral0 / en-neutral0em）于四个头条域：① 语言对答零率的**绝对**效应是多少（带 95% 区间）；② 它是否与 BF16 上读到的方向一致；③ §M.19.16 报的『$S$ 离开单位区间』在 4-bit 构建上是否同样出现。",
+
+ "artifact_frozen": {
+  "repo": "cyankiwi/Qwen3-VL-32B-Instruct-AWQ-4bit (HuggingFace, public, gated=false)",
+  "why_this_repo": "5090 自建推理机部署手册（20260910）与 data/harvest_5090_logs/vllm_serve*.log 逐字记录了语料基线当年服务的路径 `/root/models/Qwen3-VL-32B-Instruct-AWQ-4bit`，其来源即本仓库；论文自己写作『a 4-bit `compressed-tensors` AWQ checkpoint』，与本仓库标签 `compressed-tensors` 一致。",
+  "hf_commit_sha": "8c5616b1c7f48e158ef988babbde765946fd245c",
+  "shards_sha256": {
+   "model-00001-of-00005.safetensors": "4e4b8e6acbd7ea02ee4fdb5c26d10355932a895e6058113f356f7e8b9c5f4157",
+   "model-00002-of-00005.safetensors": "6601acf8ee3b270e4480164da141410afa12335e5635ce2fc0df6a6fa0b185c0",
+   "model-00003-of-00005.safetensors": "c2e7b4859f0a4d99c9a7d696efea8a3409ec025afce4fbc01b9f247d565795bf",
+   "model-00004-of-00005.safetensors": "229c734a0c6e230aa0dd5bf32d316537ea6b6847faef3dc7020cd304c139743f",
+   "model-00005-of-00005.safetensors": "b9561fc746c0521bbbc87801bf980b13a76423870306113835d65d84bc624343"
+  },
+  "hf_api_meta_md5": "47002a07713bb08487261b77a994087c",
+  "total_size_GB": 21.87,
+  "local_path_on_A800": "/root/models/Qwen3-VL-32B-Instruct-AWQ-4bit",
+  "serve_cmd": "/usr/local/miniconda3/bin/python -m vllm.entrypoints.openai.api_server --model /root/models/Qwen3-VL-32B-Instruct-AWQ-4bit --quantization awq_marlin --served-model-name Qwen3-VL-32B-AWQ4 --port 8013 --trust-remote-code --max-model-len 8192 --gpu-memory-utilization 0.90 --limit-mm-per-prompt image=1 --mm-processor-kwargs '{\"max_pixels\":1048576,\"min_pixels\":3136}' --max-num-seqs 24",
+  "serve_cmd_fallback": "--quantization awq（若 awq_marlin 报错）；config.json 的 quant_method 为准"
+ },
+
+ "what_already_exists": {
+  "cn_base_archived": "本地 analysis/e2_newh20/e1_qwen3-vl-32b-awq_<ds>_<arm>.csv —— **原 4-bit 构建的逐项输出**，是本轮比对的黄金参照（st_a 103 / ucf 180 / visdrone 273 / aitod 154，均为按语料答零条件化后的池）",
+  "en_arms_on_bf16": "/root/g2_neutral0/<ds>__<arm>.csv（当年在 BF16 上跑的五个臂）",
+  "prompt_sources": "/root/p1d_prompts.json 的 arms.neutral0（中文）；ec3_run_en.py 的 EN['base']（英文，= §M.39 冻结英文表）。**不自己另译**。",
+  "missing": "**语料基线构建上的英文臂从未跑过** ⇒ §M.19.16 的语言效应只有 BF16 一个构建的读数，绝对率不可比。"
+ },
+
+ "what_this_run_adds": "让语言的绝对效应从『BF16 上的一次读数』变成『语料基线构建上的读数 + 与 BF16 的对照』；并顺带检验 §M.19.16 的 $S$ 越界是不是某一构建的产物。",
+
+ "deviation_declared": {
+  "serving_stack": "★ 当年语料基线跑在 **5090 + 当时的 vLLM** 上，A800 是 **vLLM 0.29.0**。版本差本身是混杂因子 —— 因此设 B0 闸门把『工件 + 栈』作为整体先验一遍（见 criteria B0）。",
+  "build_matched": "本轮**故意**把构建对齐到语料基线（这正是本实验的目的），故不再是偏离。",
+  "emphasis_markers": "中文 neutral0 的存档字符串含 markdown `**`，当年发出的是否逐字含 `**` 无法从存档判定 ⇒ 英文侧**同时**跑 `en-neutral0`（不渲染）与 `en-neutral0em`（渲染），保持原设计的对照。",
+  "card_shared": "A800 ×2 由会议侧在用；本实验只在空闲窗口跑，且**只用一张卡**。"
+ },
+
+ "design": {
+  "domains": ["st_a", "ucf", "visdrone", "aitod"],
+  "item_sets": "各域语料池 `parse_ok==1` 的行，与 J.1 的 canonical 口径相同（= g2_neutral0.py 的口径）；逐域 item 清单落盘并记 md5",
+  "arms": ["cn-base", "cn-neutral0", "en-base", "en-neutral0", "en-neutral0em"],
+  "starts": 3,
+  "call_budget": "(182+334+273+154) × 5 × 3 ≈ 789 × 15 ≈ 11,835；另加 B0 闸门 (103+154) × 1 ≈ 257",
+  "serving": "vLLM 0.29.0，temperature 0，每次 fresh service start 一个独立会话；逐条落盘可续跑",
+  "workers": 8,
+  "instrument": "/root/19e_probe_multi.py, md5 03edb14c98ffa3aea9ffa20f59b00bc8（启动时断言）；逐条调用复用其 call_img/parse",
+  "output_schema": "item, gt, pred, parse_ok, raw, latency_s, lang, arm",
+  "output_dir": "/root/B_res/"
+ },
+
+ "prompts_frozen": {
+  "rule": "五个臂的字符串**逐字**取自下列既有冻结件；本轮不改一个字符。",
+  "cn_base": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复。以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+  "cn_neutral0": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复。注意：**可能是 0**；如果你的判断确实是 0，请照实回答 0。以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+  "cn_neutral0_source": "/root/p1d_prompts.json → arms.neutral0（逐字）",
+  "en_base": "Count the number of people in the image (every head or body in the crowd). Do not miss any and do not double-count. Output in JSON format: {\"count\": number}, output JSON only.",
+  "en_base_source": "ec3_run_en.py → EN['base']（= §M.39 冻结英文表；逐字）",
+  "en_neutral0": "Count the number of people in the image (every head or body in the crowd). Do not miss any and do not double-count. Note: it may be 0; if your judgement is indeed 0, answer 0 as it is. Output in JSON format: {\"count\": number}, output JSON only.",
+  "en_neutral0em": "Count the number of people in the image (every head or body in the crowd). Do not miss any and do not double-count. Note: **it may be 0**; if your judgement is indeed 0, answer 0 as it is. Output in JSON format: {\"count\": number}, output JSON only.",
+  "single_variable_rule": "五个臂之间只允许『语言』与『是否加 neutral0 子句 / 是否渲染 ** 』两个因子变动；其余逐字相同。"
+ },
+
+ "criteria_fixed_in_advance": {
+  "B0_artifact_and_stack_identity": {
+   "statement": "★ 先证『新起的 4-bit 服务 + vLLM 0.29.0』在行为上就是当年那个语料基线栈 —— 不通过就不做 B，也不硬凑。",
+   "rule": "用新服务重跑两条**已冻结的中文臂**（`aitod/base` 154 项、`st_a/base` 103 项），与本地 `e2_newh20/e1_qwen3-vl-32b-awq_*` 逐项比对：(i) 逐项 `pred` 与 `parse_ok` 完全一致率 **≥ 98%**，且不一致项**不改变任何一格的零/非零判定**；(ii) 池化 ρ 差 **≤ 7 pp**（= §8.1 的噪声底上限）。",
+   "pass": "两项同时满足",
+   "on_fail": "照实报『栈不可比』；B 降级为『同一 4-bit 工件内部的英中对照』，并在稿中明写降级理由。"
+  },
+  "B1_language_effect_on_the_baseline_build": {
+   "statement": "语言对答零率的绝对效应。",
+   "rule": "四个头条域各报 cn-base → en-base 的答零率差（pp）与 95% Wilson 区间；并按 §M.19.16 的口径把四个头条格的 $S$ 一并算出。",
+   "pass": "不设通过线 —— 这是**测量**，不是判定。"
+  },
+  "B2_consistency_with_the_bf16_reading": {
+   "statement": "4-bit 上的语言效应是否落在 BF16 读数同一方向的 95% 区间内。",
+   "rule": "逐域比较两个构建的 Δ（en − cn）；报是否同号、是否区间重叠。",
+   "pass": "同号且区间重叠 ⇒ 『语言效应不是某一构建的产物』；否则报**构建 × 语言交互**。"
+  },
+  "B3_S_leaves_the_unit_interval": {
+   "statement": "§M.19.16 报的『$S$ 越界』在 4-bit 构建上是否同样出现。",
+   "rule": "四个头条格逐个报 $S$；越界/无定义照实列出（§M.19.16(ii) 已知二十格中三格越界，其中一格是中文）。",
+   "pass": "不设通过线；出现即列。"
+  }
+ },
+
+ "what_result_would_change": {
+  "B0_pass_and_B2_consistent": "§M.19.16 那句『绝对率不可比（because 构建不同）』可改为：『在语料基线的 4-bit 构建上复核，语言的绝对效应 = X pp（95% CI …），与 BF16 读数同向』。",
+  "B2_inconsistent": "该句保留，并**新增**一条『语言效应本身是构建条件性的』——这同样是结果，不是失败。",
+  "B0_fail": "B 降级为同工件内对照；在稿中明写降级理由与触发它的读数。"
+ },
+
+ "analysis_discipline": {
+  "no_peeking": "判据与阈值本文件已冻结；跑完后不得修改本文件。",
+  "gt_source": "沿用各域语料池的 gt 列（与 J.1 同一口径）。",
+  "classification": "答零 = 解析出的 pred 恰为 0；弃权 = 无解析值（parse_ok=0）或 outlet token。两者分开报（§8.1 的两套口径都报）。",
+  "report_undefined": "样本不足或无定义的格报『未测』，不用代理量顶替。"
+ }
+}

@@ -1,0 +1,731 @@
+{
+  "prereg_md5": "75eeca6fa68c9be65c2b569d4237d8df",
+  "families": [
+    "Idefics3-8B-Llama3",
+    "MiniCPM-V-4_5",
+    "Molmo-7B-D-0924",
+    "Step3-VL-10B",
+    "deepseek-vl2-tiny",
+    "gemma-4-31b-it"
+  ],
+  "coverage": {
+    "zero": {
+      "Idefics3-8B-Llama3": {
+        "st_a": [
+          "base_native",
+          "base_s640",
+          "channel_native",
+          "permit_native"
+        ],
+        "ucf": [
+          "base_native",
+          "base_s640",
+          "channel_native",
+          "permit_native"
+        ],
+        "visdrone": [
+          "base_native",
+          "base_s640",
+          "channel_native",
+          "permit_native"
+        ],
+        "aitod": [
+          "base_native",
+          "base_s640",
+          "channel_native",
+          "permit_native"
+        ]
+      },
+      "MiniCPM-V-4_5": {
+        "st_a": [
+          "base_native",
+          "base_s640",
+          "channel_native",
+          "permit_native"
+        ],
+        "ucf": [
+          "base_native",
+          "base_s640",
+          "channel_native",
+          "permit_native"
+        ],
+        "visdrone": [
+          "base_native",
+          "base_s640",
+          "channel_native",
+          "permit_native"
+        ],
+        "aitod": [
+          "base_native",
+          "base_s640",
+          "channel_native",
+          "permit_native"
+        ]
+      },
+      "Molmo-7B-D-0924": {
+        "st_a": [
+          "base_native",
+          "base_s640",
+          "channel_native",
+          "permit_native"
+        ],
+        "ucf": [
+          "base_native",
+          "base_s640",
+          "channel_native",
+          "permit_native"
+        ],
+        "visdrone": [
+          "base_native",
+          "base_s640",
+          "channel_native",
+          "permit_native"
+        ],
+        "aitod": [
+          "base_native",
+          "base_s640",
+          "channel_native",
+          "permit_native"
+        ]
+      },
+      "Step3-VL-10B": {
+        "st_a": [
+          "base_native",
+          "base_s640",
+          "channel_native",
+          "permit_native"
+        ],
+        "ucf": [
+          "base_native",
+          "base_s640",
+          "channel_native",
+          "permit_native"
+        ],
+        "visdrone": [
+          "base_native",
+          "base_s640",
+          "channel_native",
+          "permit_native"
+        ],
+        "aitod": [
+          "base_native",
+          "base_s640",
+          "channel_native",
+          "permit_native"
+        ]
+      },
+      "deepseek-vl2-tiny": {
+        "st_a": [
+          "base_native",
+          "base_s640",
+          "channel_native",
+          "permit_native"
+        ],
+        "ucf": [
+          "base_native",
+          "base_s640",
+          "channel_native",
+          "permit_native"
+        ],
+        "visdrone": [
+          "base_native",
+          "base_s640",
+          "channel_native",
+          "permit_native"
+        ],
+        "aitod": [
+          "base_native",
+          "base_s640",
+          "channel_native",
+          "permit_native"
+        ]
+      },
+      "gemma-4-31b-it": {
+        "st_a": [
+          "base_native",
+          "base_s640",
+          "channel_native",
+          "permit_native"
+        ],
+        "ucf": [
+          "base_native",
+          "base_s640",
+          "channel_native",
+          "permit_native"
+        ],
+        "visdrone": [
+          "base_native",
+          "base_s640",
+          "channel_native",
+          "permit_native"
+        ],
+        "aitod": [
+          "base_native",
+          "base_s640",
+          "channel_native",
+          "permit_native"
+        ]
+      }
+    },
+    "nonzero": {
+      "Idefics3-8B-Llama3": {
+        "st_a": [
+          "base_native",
+          "channel_native",
+          "permit_native"
+        ],
+        "ucf": [
+          "base_native",
+          "channel_native",
+          "permit_native"
+        ],
+        "visdrone": [
+          "base_native",
+          "channel_native",
+          "permit_native"
+        ],
+        "aitod": [
+          "base_native",
+          "channel_native",
+          "permit_native"
+        ]
+      },
+      "MiniCPM-V-4_5": {
+        "st_a": [
+          "base_native",
+          "channel_native",
+          "permit_native"
+        ],
+        "ucf": [
+          "base_native",
+          "channel_native",
+          "permit_native"
+        ],
+        "visdrone": [
+          "base_native",
+          "channel_native",
+          "permit_native"
+        ],
+        "aitod": [
+          "base_native",
+          "channel_native",
+          "permit_native"
+        ]
+      },
+      "Molmo-7B-D-0924": {
+        "st_a": [
+          "base_native",
+          "channel_native",
+          "permit_native"
+        ],
+        "ucf": [
+          "base_native",
+          "channel_native",
+          "permit_native"
+        ],
+        "visdrone": [
+          "base_native",
+          "channel_native",
+          "permit_native"
+        ],
+        "aitod": [
+          "base_native",
+          "channel_native",
+          "permit_native"
+        ]
+      },
+      "Step3-VL-10B": {
+        "st_a": [
+          "base_native",
+          "channel_native",
+          "permit_native"
+        ],
+        "ucf": [
+          "base_native",
+          "channel_native",
+          "permit_native"
+        ],
+        "visdrone": [
+          "base_native",
+          "channel_native",
+          "permit_native"
+        ],
+        "aitod": [
+          "base_native",
+          "channel_native",
+          "permit_native"
+        ]
+      },
+      "deepseek-vl2-tiny": {
+        "st_a": [
+          "base_native",
+          "channel_native",
+          "permit_native"
+        ],
+        "ucf": [
+          "base_native",
+          "channel_native",
+          "permit_native"
+        ],
+        "visdrone": [
+          "base_native",
+          "channel_native",
+          "permit_native"
+        ],
+        "aitod": [
+          "base_native",
+          "channel_native",
+          "permit_native"
+        ]
+      },
+      "gemma-4-31b-it": {
+        "st_a": [
+          "base_native",
+          "channel_native",
+          "permit_native"
+        ],
+        "ucf": [
+          "base_native",
+          "channel_native",
+          "permit_native"
+        ],
+        "visdrone": [
+          "base_native",
+          "channel_native",
+          "permit_native"
+        ],
+        "aitod": [
+          "base_native",
+          "channel_native",
+          "permit_native"
+        ]
+      }
+    }
+  },
+  "P1": {
+    "per_family": [
+      {
+        "fam": "Idefics3-8B-Llama3",
+        "zeros": 40,
+        "n": 553,
+        "resid": 0.07233273056057866,
+        "wilson_hi": 0.09700013905614484,
+        "cells_ok": 2,
+        "unparsed_base": 0.0,
+        "unparsed_permit": 0.0,
+        "zero_rate_interpretable": true
+      },
+      {
+        "fam": "MiniCPM-V-4_5",
+        "zeros": 0,
+        "n": 553,
+        "resid": 0.0,
+        "wilson_hi": 0.006898909851562814,
+        "cells_ok": 4,
+        "unparsed_base": 0.0,
+        "unparsed_permit": 0.0,
+        "zero_rate_interpretable": true
+      },
+      {
+        "fam": "Molmo-7B-D-0924",
+        "zeros": 0,
+        "n": 553,
+        "resid": 0.0,
+        "wilson_hi": 0.006898909851562814,
+        "cells_ok": 4,
+        "unparsed_base": 0.0,
+        "unparsed_permit": 0.0,
+        "zero_rate_interpretable": true
+      },
+      {
+        "fam": "Step3-VL-10B",
+        "zeros": 0,
+        "n": 553,
+        "resid": 0.0,
+        "wilson_hi": 0.006898909851562814,
+        "cells_ok": 4,
+        "unparsed_base": 0.6654611211573237,
+        "unparsed_permit": 0.09945750452079566,
+        "zero_rate_interpretable": false
+      },
+      {
+        "fam": "deepseek-vl2-tiny",
+        "zeros": 267,
+        "n": 553,
+        "resid": 0.48282097649186256,
+        "wilson_hi": 0.5244449807445997,
+        "cells_ok": 2,
+        "unparsed_base": 0.45027124773960214,
+        "unparsed_permit": 0.45207956600361665,
+        "zero_rate_interpretable": true
+      },
+      {
+        "fam": "gemma-4-31b-it",
+        "zeros": 1,
+        "n": 553,
+        "resid": 0.0018083182640144665,
+        "wilson_hi": 0.010171319815304381,
+        "cells_ok": 4,
+        "unparsed_base": 0.0705244122965642,
+        "unparsed_permit": 0.0,
+        "zero_rate_interpretable": true
+      }
+    ],
+    "k": 4,
+    "n_families": 6,
+    "literal_6": [
+      4,
+      6
+    ],
+    "ratio": 0.6666666666666666,
+    "ratio_pass": false,
+    "cells_ok_total": 20,
+    "cells_total": 24,
+    "cells_pass": true,
+    "dense_base": [
+      {
+        "fam": "Idefics3-8B-Llama3",
+        "w": 0.043478260869565216
+      },
+      {
+        "fam": "MiniCPM-V-4_5",
+        "w": 0.015810276679841896
+      },
+      {
+        "fam": "Molmo-7B-D-0924",
+        "w": 0.007905138339920948
+      },
+      {
+        "fam": "Step3-VL-10B",
+        "w": 0.0
+      },
+      {
+        "fam": "deepseek-vl2-tiny",
+        "w": 0.0
+      },
+      {
+        "fam": "gemma-4-31b-it",
+        "w": 0.05533596837944664
+      }
+    ]
+  },
+  "P2": {
+    "cells": [
+      {
+        "fam": "Idefics3-8B-Llama3",
+        "ds": "visdrone",
+        "kind": "aerial",
+        "w_base": 0.52,
+        "d_contract": 0.3933333333333333,
+        "d_res": 0.10666666666666669,
+        "ok": true
+      },
+      {
+        "fam": "Idefics3-8B-Llama3",
+        "ds": "aitod",
+        "kind": "aerial",
+        "w_base": 0.34,
+        "d_contract": 0.2,
+        "d_res": 0.006666666666666654,
+        "ok": true
+      },
+      {
+        "fam": "MiniCPM-V-4_5",
+        "ds": "visdrone",
+        "kind": "aerial",
+        "w_base": 0.82,
+        "d_contract": 0.82,
+        "d_res": 0.08000000000000007,
+        "ok": true
+      },
+      {
+        "fam": "MiniCPM-V-4_5",
+        "ds": "aitod",
+        "kind": "aerial",
+        "w_base": 0.6666666666666666,
+        "d_contract": 0.6666666666666666,
+        "d_res": 0.026666666666666727,
+        "ok": true
+      },
+      {
+        "fam": "Molmo-7B-D-0924",
+        "ds": "visdrone",
+        "kind": "aerial",
+        "w_base": 0.7533333333333333,
+        "d_contract": 0.7533333333333333,
+        "d_res": 0.033333333333333326,
+        "ok": true
+      },
+      {
+        "fam": "Molmo-7B-D-0924",
+        "ds": "aitod",
+        "kind": "aerial",
+        "w_base": 0.6066666666666667,
+        "d_contract": 0.6066666666666667,
+        "d_res": 0.013333333333333308,
+        "ok": true
+      },
+      {
+        "fam": "Step3-VL-10B",
+        "ds": "visdrone",
+        "kind": "aerial",
+        "w_base": 0.4066666666666667,
+        "d_contract": 0.4066666666666667,
+        "d_res": 0.1866666666666667,
+        "ok": true
+      },
+      {
+        "fam": "Step3-VL-10B",
+        "ds": "aitod",
+        "kind": "aerial",
+        "w_base": 0.24666666666666667,
+        "d_contract": 0.24666666666666667,
+        "d_res": 0.13999999999999999,
+        "ok": true
+      },
+      {
+        "fam": "deepseek-vl2-tiny",
+        "ds": "visdrone",
+        "kind": "aerial",
+        "w_base": 0.7133333333333334,
+        "d_contract": -0.19999999999999996,
+        "d_res": 0.32000000000000006,
+        "ok": false
+      },
+      {
+        "fam": "deepseek-vl2-tiny",
+        "ds": "aitod",
+        "kind": "aerial",
+        "w_base": 0.5066666666666667,
+        "d_contract": -0.36,
+        "d_res": 0.10000000000000003,
+        "ok": false
+      },
+      {
+        "fam": "gemma-4-31b-it",
+        "ds": "visdrone",
+        "kind": "aerial",
+        "w_base": 0.58,
+        "d_contract": 0.58,
+        "d_res": 0.053333333333333344,
+        "ok": true
+      },
+      {
+        "fam": "gemma-4-31b-it",
+        "ds": "aitod",
+        "kind": "aerial",
+        "w_base": 0.4,
+        "d_contract": 0.39333333333333337,
+        "d_res": 0.013333333333333308,
+        "ok": true
+      }
+    ],
+    "n_qualify": 12,
+    "n_ok": 10,
+    "frac": 0.8333333333333334,
+    "frac_pass": true,
+    "dense_mean": null,
+    "aerial_mean": 0.37555555555555553,
+    "gap": null,
+    "gap_evaluable": false,
+    "gap_pass": null,
+    "overall": "部分通过（主判据通过；密集/航拍差不可评估）",
+    "note": "仅取 w_base>=0.20 的格（冻结文本规定），避免在零率极低的格上做退化比较"
+  },
+  "P3": {
+    "ok": true,
+    "s2_domain": 0.09589048355170138,
+    "s2_family": 0.0037144648208078616,
+    "diff": 0.09217601873089351,
+    "boot_ci": [
+      0.08313460406898868,
+      0.1002293030259656
+    ],
+    "pass_": true,
+    "families": [
+      "Idefics3-8B-Llama3",
+      "MiniCPM-V-4_5",
+      "Molmo-7B-D-0924",
+      "Step3-VL-10B",
+      "deepseek-vl2-tiny",
+      "gemma-4-31b-it"
+    ],
+    "domains": [
+      "st_a",
+      "ucf",
+      "visdrone",
+      "aitod"
+    ],
+    "table": {
+      "Idefics3-8B-Llama3|st_a": 0.04854368932038835,
+      "Idefics3-8B-Llama3|ucf": 0.04,
+      "Idefics3-8B-Llama3|visdrone": 0.52,
+      "Idefics3-8B-Llama3|aitod": 0.34,
+      "MiniCPM-V-4_5|st_a": 0.009708737864077669,
+      "MiniCPM-V-4_5|ucf": 0.02,
+      "MiniCPM-V-4_5|visdrone": 0.82,
+      "MiniCPM-V-4_5|aitod": 0.6666666666666666,
+      "Molmo-7B-D-0924|st_a": 0.019417475728155338,
+      "Molmo-7B-D-0924|ucf": 0.0,
+      "Molmo-7B-D-0924|visdrone": 0.7533333333333333,
+      "Molmo-7B-D-0924|aitod": 0.6066666666666667,
+      "Step3-VL-10B|st_a": 0.0,
+      "Step3-VL-10B|ucf": 0.0,
+      "Step3-VL-10B|visdrone": 0.4066666666666667,
+      "Step3-VL-10B|aitod": 0.24666666666666667,
+      "deepseek-vl2-tiny|st_a": 0.0,
+      "deepseek-vl2-tiny|ucf": 0.0,
+      "deepseek-vl2-tiny|visdrone": 0.7133333333333334,
+      "deepseek-vl2-tiny|aitod": 0.5066666666666667,
+      "gemma-4-31b-it|st_a": 0.019417475728155338,
+      "gemma-4-31b-it|ucf": 0.08,
+      "gemma-4-31b-it|visdrone": 0.58,
+      "gemma-4-31b-it|aitod": 0.4
+    }
+  },
+  "P4": {
+    "per_domain": {
+      "st_a": {
+        "spearman": 1.0,
+        "top1_A": "gemma-4-31b-it",
+        "top1_B": "gemma-4-31b-it",
+        "top1_same": true,
+        "n_families": 6
+      },
+      "ucf": {
+        "spearman": 0.8285714285714286,
+        "top1_A": "gemma-4-31b-it",
+        "top1_B": "deepseek-vl2-tiny",
+        "top1_same": false,
+        "n_families": 6
+      },
+      "visdrone": {
+        "spearman": 0.6571428571428571,
+        "top1_A": "gemma-4-31b-it",
+        "top1_B": "Step3-VL-10B",
+        "top1_same": false,
+        "n_families": 6
+      },
+      "aitod": {
+        "spearman": 0.8285714285714286,
+        "top1_A": "Idefics3-8B-Llama3",
+        "top1_B": "Idefics3-8B-Llama3",
+        "top1_same": true,
+        "n_families": 6
+      }
+    },
+    "skipped": [],
+    "dense_bad": 1,
+    "dense_total": 2,
+    "top1_same": 2,
+    "top1_total": 4,
+    "a_pass": true,
+    "b_pass": false
+  },
+  "P5": {
+    "executed": true,
+    "per_model": [
+      {
+        "tag": "gemini-3.8-flash",
+        "base_n": 253,
+        "base_w": 0.0,
+        "permit_n": 253,
+        "permit_w": 0.0,
+        "base_cells": {
+          "st_a": 0.0,
+          "ucf": 0.0
+        },
+        "permit_cells": {
+          "st_a": 0.0,
+          "ucf": 0.0
+        },
+        "trunc_frac": 0.0
+      },
+      {
+        "tag": "gpt-5.6-luna",
+        "base_n": 253,
+        "base_w": 0.0,
+        "permit_n": 253,
+        "permit_w": 0.0,
+        "base_cells": {
+          "st_a": 0.0,
+          "ucf": 0.0
+        },
+        "permit_cells": {
+          "st_a": 0.0,
+          "ucf": 0.0
+        },
+        "trunc_frac": 0.0
+      },
+      {
+        "tag": "grok-4.6",
+        "base_n": 253,
+        "base_w": 0.0,
+        "permit_n": 253,
+        "permit_w": 0.0,
+        "base_cells": {
+          "st_a": 0.0,
+          "ucf": 0.0
+        },
+        "permit_cells": {
+          "st_a": 0.0,
+          "ucf": 0.0
+        },
+        "trunc_frac": 0.0
+      }
+    ],
+    "evaluable": true,
+    "a_pass": false,
+    "b_pass": true,
+    "k_permit": 3,
+    "n_eval": 3,
+    "need": 2,
+    "pass_": false
+  },
+  "P6": {
+    "per_family": [
+      {
+        "fam": "Idefics3-8B-Llama3",
+        "w_base": 0.89,
+        "w_exemplar": 0.016666666666666666,
+        "drop_pp": 87.33333333333333
+      },
+      {
+        "fam": "MiniCPM-V-4_5",
+        "w_base": 0.9266666666666666,
+        "w_exemplar": 0.0,
+        "drop_pp": 92.66666666666666
+      },
+      {
+        "fam": "Molmo-7B-D-0924",
+        "w_base": 0.58,
+        "w_exemplar": 0.0,
+        "drop_pp": 57.99999999999999
+      },
+      {
+        "fam": "Step3-VL-10B",
+        "w_base": 0.79,
+        "w_exemplar": 0.03,
+        "drop_pp": 76.0
+      },
+      {
+        "fam": "deepseek-vl2-tiny",
+        "w_base": 0.0033333333333333335,
+        "w_exemplar": 0.6766666666666666,
+        "drop_pp": -67.33333333333333
+      },
+      {
+        "fam": "gemma-4-31b-it",
+        "w_base": 0.8866666666666667,
+        "w_exemplar": 0.0,
+        "drop_pp": 88.66666666666667
+      }
+    ],
+    "k": 1,
+    "n": 6,
+    "evaluable": true,
+    "pass_": false,
+    "ratio_pass": false,
+    "note": "按比例 ≥5/6 判定（家族数不足 6 时同样口径），并报出 k/n"
+  }
+}

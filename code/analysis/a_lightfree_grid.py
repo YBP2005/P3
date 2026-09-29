@@ -1,0 +1,46 @@
+# -*- coding: utf-8 -*-
+"""尽职检查：无标注代理的负结果是否只是**阈值/合并参数**没调好？
+对判别力最好的那一档（YOLO 切片 tile256）做 score × NMS 网格，看 AUC 上界与稳定性。
+若任何设置都到不了 0.65 或跨设置极差 >0.05，则负结果站得住。
+"""
+import io
+import json
+import sys
+
+import numpy as np
+
+sys.stdout.reconfigure(encoding='utf-8')
+sys.path.insert(0, r'<WORKDIR>\PaperB\analysis\work')
+from a_lightfree import (HA, load_boxes, nms, proxy, evaluate, load_corpus, auc)
+
+P = HA + r'\gaps__boxes_st_a_test_ucf_tiles_full_s0_tile256_ms1024_iou0.7.npz'
+corp = load_corpus('st_a')
+raw = load_boxes(P)
+print('图数 %d（原始检测框）' % len(raw))
+rows = []
+for score in (0.20, 0.30, 0.50, 0.70):
+    for iou in (0.5, 0.7, 0.9):
+        px = {}
+        for k, b in raw.items():
+            key = k.rsplit('.', 1)[0]
+            b = b[b[:, 4] >= score]
+            b = nms(b, iou)
+            r = proxy(b)
+            if r:
+                px[key] = r
+        ev = evaluate(px, corp)
+        med_n = float(np.median([px[k]['n'] for k in px]))
+        rows.append((score, iou, ev['auc_proxy_notzero'], ev['mae_reduction_top20_pct'],
+                     ev['spearman_proxy_absrel'], med_n, ev['n_images']))
+        print('  score≥%.2f NMS%.1f → AUC %.3f | MAE降 %+6.1f%% | ρ %+0.3f | 检测数中位 %.0f | 图 %d'
+              % (score, iou, ev['auc_proxy_notzero'], ev['mae_reduction_top20_pct'],
+                 ev['spearman_proxy_absrel'], med_n, ev['n_images']))
+
+a = [r[2] for r in rows]
+print()
+print('AUC 上界 %.3f（判据 0.65）⇒ %s' % (max(a), '可达' if max(a) >= 0.65 else '**任何参数都达不到**'))
+print('跨参数极差 %.3f（判据 ≤0.05）⇒ %s' % (max(a) - min(a), '稳健' if max(a) - min(a) <= 0.05 else '**敏感**'))
+io.open(r'<WORKDIR>\PaperB\analysis\work\a_lightfree_grid.json', 'w', encoding='utf-8').write(
+    json.dumps([dict(score=s, nms_i=i, auc=x, mae_red=m, rho=r, n_med=n, imgs=nimg)
+                for s, i, x, m, r, n, nimg in rows], ensure_ascii=False, indent=1))
+print('JSON -> a_lightfree_grid.json')

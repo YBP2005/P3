@@ -1,0 +1,213 @@
+{
+  "units": [
+    {
+      "unit": "density / st_a / mult",
+      "n": 6,
+      "span": 1432.8999999999999,
+      "span_eq": 1432.8999999999999,
+      "span_drop_high": 668.9200000000001,
+      "span_drop_low": 1372.73
+    },
+    {
+      "unit": "density / st_a / short",
+      "n": 4,
+      "span": 959.77,
+      "span_eq": 959.77,
+      "span_drop_high": 392.35,
+      "span_drop_low": 877.6500000000001
+    },
+    {
+      "unit": "density / ucf / mult",
+      "n": 6,
+      "span": 106.99000000000001,
+      "span_eq": 106.99000000000001,
+      "span_drop_high": 86.0,
+      "span_drop_low": 88.66
+    },
+    {
+      "unit": "density / ucf / short",
+      "n": 4,
+      "span": 363.99,
+      "span_eq": 363.99,
+      "span_drop_high": 195.04999999999998,
+      "span_drop_low": 313.08
+    },
+    {
+      "unit": "pxbudget(res_ctrl) / ivl / st_a",
+      "n": 5,
+      "span": 1.0226074196358965,
+      "span_eq": 0.5548677030311353,
+      "span_drop_high": 1.0226074196358965,
+      "span_drop_low": 1.0226074196358965
+    },
+    {
+      "unit": "pxbudget(res_ctrl) / ivl / ucf",
+      "n": 5,
+      "span": 2.8053290230940604,
+      "span_eq": 2.8053290230940604,
+      "span_drop_high": 2.8053290230940604,
+      "span_drop_low": 1.1767442999534694
+    },
+    {
+      "unit": "pxbudget(res_ctrl) / ivl / visdrone",
+      "n": 5,
+      "span": 7.1308818598412955,
+      "span_eq": 7.1308818598412955,
+      "span_drop_high": 7.1308818598412955,
+      "span_drop_low": 6.1249580865094515
+    },
+    {
+      "unit": "pxbudget(res_ctrl) / q32 / st_a",
+      "n": 5,
+      "span": 3.994319190484646,
+      "span_eq": 3.024270244224084,
+      "span_drop_high": 3.994319190484646,
+      "span_drop_low": 3.994319190484646
+    },
+    {
+      "unit": "pxbudget(res_ctrl) / q32 / ucf",
+      "n": 5,
+      "span": 14.076301290567073,
+      "span_eq": 14.076301290567073,
+      "span_drop_high": 14.076301290567073,
+      "span_drop_low": 5.4721043447842135
+    },
+    {
+      "unit": "pxbudget(res_ctrl) / q32 / visdrone",
+      "n": 5,
+      "span": 14.597071644126515,
+      "span_eq": 14.597071644126515,
+      "span_drop_high": 14.597071644126515,
+      "span_drop_low": 13.88174807197943
+    },
+    {
+      "unit": "pxbudget(threeway) / InternVL8B / st_a",
+      "n": 5,
+      "span": 4.329999999999998,
+      "span_eq": 4.329999999999998,
+      "span_drop_high": 4.329999999999998,
+      "span_drop_low": 4.329999999999998
+    },
+    {
+      "unit": "pxbudget(threeway) / InternVL8B / ucf",
+      "n": 5,
+      "span": 5.640000000000001,
+      "span_eq": 5.640000000000001,
+      "span_drop_high": 1.960000000000008,
+      "span_drop_low": 5.640000000000001
+    },
+    {
+      "unit": "pxbudget(threeway) / InternVL8B / visdrone",
+      "n": 5,
+      "span": 7.1299999999999955,
+      "span_eq": 7.1299999999999955,
+      "span_drop_high": 6.1299999999999955,
+      "span_drop_low": 7.1299999999999955
+    },
+    {
+      "unit": "pxbudget(threeway) / Qwen32B / st_a",
+      "n": 5,
+      "span": 3.989999999999995,
+      "span_eq": 3.019999999999996,
+      "span_drop_high": 3.989999999999995,
+      "span_drop_low": 3.989999999999995
+    },
+    {
+      "unit": "pxbudget(threeway) / Qwen32B / ucf",
+      "n": 5,
+      "span": 14.079999999999998,
+      "span_eq": 14.079999999999998,
+      "span_drop_high": 5.47999999999999,
+      "span_drop_low": 14.079999999999998
+    },
+    {
+      "unit": "pxbudget(threeway) / Qwen32B / visdrone",
+      "n": 5,
+      "span": 14.600000000000009,
+      "span_eq": 14.600000000000009,
+      "span_drop_high": 13.89,
+      "span_drop_low": 14.600000000000009
+    },
+    {
+      "unit": "tiling / st_a / base",
+      "n": 5,
+      "span": 33.33798280540691,
+      "span_eq": 33.33798280540691,
+      "span_drop_high": 28.320357079455253,
+      "span_drop_low": 18.531104968172247
+    },
+    {
+      "unit": "tiling / ucf / base",
+      "n": 5,
+      "span": 40.531885210742644,
+      "span_eq": 40.531885210742644,
+      "span_drop_high": 32.403686382622524,
+      "span_drop_low": 27.124396673426975
+    },
+    {
+      "unit": "检测器·COCO / VisDrone / tau@1024",
+      "n": 32,
+      "span": 116.81,
+      "span_eq": 16.650000000000006,
+      "span_drop_high": 116.81,
+      "span_drop_low": 116.81
+    },
+    {
+      "unit": "检测器·COCO / VisDrone / tau@1536",
+      "n": 32,
+      "span": 175.76999999999998,
+      "span_eq": 35.6,
+      "span_drop_high": 175.76999999999998,
+      "span_drop_low": 175.76999999999998
+    },
+    {
+      "unit": "检测器·COCO / VisDrone / tau@640",
+      "n": 32,
+      "span": 83.95,
+      "span_eq": 8.429999999999993,
+      "span_drop_high": 83.95,
+      "span_drop_low": 83.95
+    },
+    {
+      "unit": "检测器·域内 / VisDrone / tau@1024",
+      "n": 16,
+      "span": 515.4300000000001,
+      "span_eq": 231.93,
+      "span_drop_high": 515.4300000000001,
+      "span_drop_low": 515.4300000000001
+    },
+    {
+      "unit": "检测器·域内 / VisDrone / tau@1536",
+      "n": 16,
+      "span": 593.7,
+      "span_eq": 258.24,
+      "span_drop_high": 593.7,
+      "span_drop_low": 593.7
+    },
+    {
+      "unit": "检测器·域内 / VisDrone / tau@640",
+      "n": 16,
+      "span": 407.52,
+      "span_eq": 182.07,
+      "span_drop_high": 407.52,
+      "span_drop_low": 407.52
+    }
+  ],
+  "k_equal": 4,
+  "spearman_span_eq": 0.9643478260869566,
+  "spearman_span_drop_high": 0.9773913043478261,
+  "spearman_span_drop_low": 0.9930434782608696,
+  "shrink_eq_median": 1.0,
+  "drop_high_median": 0.0,
+  "drop_low_median": 0.0,
+  "tau_shrink": {
+    "in_domain": [
+      2.222351571594878,
+      2.2990241635687734
+    ],
+    "coco": [
+      4.937359550561797,
+      9.958481613285892
+    ]
+  }
+}

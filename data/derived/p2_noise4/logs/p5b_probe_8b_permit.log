@@ -1,0 +1,7 @@
+  冻结探针 19e_probe_multi.py md5 ✓
+  零池：180 项（ucf）｜臂 permit
+  待跑 180 项 → /root/p5a_results/p5a_Qwen3-VL-8B-Instruct_ml16384_permit.csv
+    50/180  0.35 it/s  err=0
+    100/180  0.37 it/s  err=1
+    150/180  0.40 it/s  err=1
+  [permit] DONE：180 行（err=1）→ /root/p5a_results/p5a_Qwen3-VL-8B-Instruct_ml16384_permit.csv

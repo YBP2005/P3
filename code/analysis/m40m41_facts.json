@@ -1,0 +1,39 @@
+{
+  "release": {
+    "entries": 6146,
+    "bytes": 1533803725,
+    "short_min": 384,
+    "short_max": 384,
+    "long_min": 384,
+    "long_max": 1918,
+    "short_is_384": 6146
+  },
+  "sample": {
+    "n": 300,
+    "short_min": 384,
+    "short_max": 384,
+    "long_min": 384,
+    "long_max": 1229,
+    "long_median": 514
+  },
+  "pool": {
+    "gt_rows": 307,
+    "images": 306
+  },
+  "fsc_dirs": {
+    "sc384": 18,
+    "sc256": 18,
+    "sc768": 18
+  },
+  "e2_product_files": 210,
+  "_source": {
+    "script": "_freeze_m40m41_facts.py",
+    "remote_host": [
+      "<REDACTED-A800-HOST>",
+      23,
+      "root",
+      "<REDACTED-A800-PASSWORD>"
+    ],
+    "frozen_at": "2026-09-24 13:22:21"
+  }
+}

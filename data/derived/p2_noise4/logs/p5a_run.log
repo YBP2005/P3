@@ -1,0 +1,27 @@
+[02:32:08] P4 已完成（或等待超时）⇒ 开始 P5a
+[02:32:08] [Qwen3-VL-8B-Instruct] 起服 frac=0.34 maxlen=8192
+[02:33:18] [Qwen3-VL-8B-Instruct] 就绪（70 s）｜显存 25811 MiB
+[02:33:22] [Qwen3-VL-8B-Instruct] 停服
+[02:33:22] [Qwen3-VL-32B-Instruct] 起服 frac=0.85 maxlen=4096
+[02:34:02] [Qwen3-VL-32B-Instruct] !! 起服失败
+[02:34:02] [Qwen3-VL-32B-Instruct] 跳过
+[02:34:02] P5A_DONE
+[02:36:06] P4 已完成（或等待超时）⇒ 开始 P5a
+[02:36:06] [Qwen3-VL-8B-Instruct] 起服 frac=0.34 maxlen=8192
+[02:37:16] [Qwen3-VL-8B-Instruct] 就绪（70 s）｜显存 25811 MiB
+[02:38:53]   [Qwen3-VL-8B-Instruct/base] 283 行
+[02:38:53]   [Qwen3-VL-8B-Instruct/forbid0] 283 行
+[02:38:53]   [Qwen3-VL-8B-Instruct/permit] 283 行
+[02:38:57] [Qwen3-VL-8B-Instruct] 停服
+[02:38:57] [Qwen3-VL-32B-Instruct] 起服 frac=0.85 maxlen=4096
+[02:39:37] [Qwen3-VL-32B-Instruct] !! 起服失败
+[02:39:37] [Qwen3-VL-32B-Instruct] 跳过
+[02:39:37] P5A_DONE
+[04:09:59] P4 已完成（或等待超时）⇒ 开始 P5a
+[04:09:59] [Qwen3-VL-32B-Instruct] 起服 frac=0.85 maxlen=4096（起服前显存 0 MiB）
+[04:13:09] [Qwen3-VL-32B-Instruct] 就绪（190 s）｜显存 67185 MiB
+[04:15:08]   [Qwen3-VL-32B-Instruct/base] 283 行
+[04:15:08]   [Qwen3-VL-32B-Instruct/forbid0] 283 行
+[04:15:08]   [Qwen3-VL-32B-Instruct/permit] 283 行
+[04:15:12] [Qwen3-VL-32B-Instruct] 停服
+[04:15:12] P5A_DONE

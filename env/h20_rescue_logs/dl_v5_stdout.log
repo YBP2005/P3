@@ -1,0 +1,15 @@
+[10:39:50] 开始下载新模型（4B / 2B / 30B-A3B-FP8 / InternVL3.5-38B-FP8）
+[12:35:37] 下载结束
+5.5G	/root/models/InternVL2_5-8B-AWQ
+43G	/root/models/InternVL3_5-38B-FP8-Dynamic
+41G	/root/models/Qwen2.5-VL-72B-Instruct-AWQ
+6.5G	/root/models/Qwen2.5-VL-7B-Instruct-AWQ
+4.0G	/root/models/Qwen3-VL-2B-Instruct
+31G	/root/models/Qwen3-VL-30B-A3B-Instruct-FP8
+21G	/root/models/Qwen3-VL-32B-Instruct-AWQ-4bit
+35G	/root/models/Qwen3-VL-32B-Instruct-AWQ-8bit
+34G	/root/models/Qwen3-VL-32B-Instruct-FP8
+20G	/root/models/Qwen3-VL-32B-Instruct-GPTQ-W4
+8.3G	/root/models/Qwen3-VL-4B-Instruct
+7.1G	/root/models/Qwen3-VL-8B-Instruct-AWQ-4bit
+overlay         389G  282G   91G  76% /

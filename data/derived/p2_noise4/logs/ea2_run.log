@@ -1,0 +1,376 @@
+[00:52:32] ########## E2 开始：真零池 × 5 构建 × 双语言 × 3 次服务 ##########
+overlay         182G  132G   43G  76% /
+[00:52:32] ① 池就绪：307 行
+[00:52:32] ===== E2 构建 ivl8b（InternVL3_5-8B）=====
+[00:55:05]   [ivl8b_s1] 起服就绪 150s
+[00:55:05]     [ivl8b_s1] CN z0easy × base,permit,channel
+池 z0easy：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 119 个 -> /root/z0_results_ivl8b_s1/e1_InternVL3_5-8B_z0easy_base_native.csv
+  [permit] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_ivl8b_s1/e1_InternVL3_5-8B_z0easy_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_ivl8b_s1/e1_InternVL3_5-8B_z0easy_channel_native.csv
+[00:55:34]     [ivl8b_s1] EN z0easy × base,permit,channel
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0easy：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/z0_results_en_ivl8b_s1/e1_InternVL3_5-8B_z0easy_base_en.csv
+  [permit/EN] 153 行 -> /root/z0_results_en_ivl8b_s1/e1_InternVL3_5-8B_z0easy_permit_en.csv
+  [channel/EN] 153 行 -> /root/z0_results_en_ivl8b_s1/e1_InternVL3_5-8B_z0easy_channel_en.csv
+[00:55:50]     [ivl8b_s1] CN z0hard × base,permit,channel
+池 z0hard：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 119 个 -> /root/z0_results_ivl8b_s1/e1_InternVL3_5-8B_z0hard_base_native.csv
+  [permit] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_ivl8b_s1/e1_InternVL3_5-8B_z0hard_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_ivl8b_s1/e1_InternVL3_5-8B_z0hard_channel_native.csv
+[00:56:16]     [ivl8b_s1] EN z0hard × base,permit,channel
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0hard：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/z0_results_en_ivl8b_s1/e1_InternVL3_5-8B_z0hard_base_en.csv
+  [permit/EN] 153 行 -> /root/z0_results_en_ivl8b_s1/e1_InternVL3_5-8B_z0hard_permit_en.csv
+  [channel/EN] 153 行 -> /root/z0_results_en_ivl8b_s1/e1_InternVL3_5-8B_z0hard_channel_en.csv
+[00:56:31]   [ivl8b] 第 1 次服务完成
+[00:57:20]   [ivl8b_s2] 起服就绪 45s
+[00:57:20]     [ivl8b_s2] CN z0easy × base,permit,channel
+池 z0easy：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 120 个 -> /root/z0_results_ivl8b_s2/e1_InternVL3_5-8B_z0easy_base_native.csv
+  [permit] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_ivl8b_s2/e1_InternVL3_5-8B_z0easy_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_ivl8b_s2/e1_InternVL3_5-8B_z0easy_channel_native.csv
+[00:57:47]     [ivl8b_s2] EN z0easy × base,permit,channel
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0easy：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/z0_results_en_ivl8b_s2/e1_InternVL3_5-8B_z0easy_base_en.csv
+  [permit/EN] 153 行 -> /root/z0_results_en_ivl8b_s2/e1_InternVL3_5-8B_z0easy_permit_en.csv
+  [channel/EN] 153 行 -> /root/z0_results_en_ivl8b_s2/e1_InternVL3_5-8B_z0easy_channel_en.csv
+[00:58:03]     [ivl8b_s2] CN z0hard × base,permit,channel
+池 z0hard：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 119 个 -> /root/z0_results_ivl8b_s2/e1_InternVL3_5-8B_z0hard_base_native.csv
+  [permit] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_ivl8b_s2/e1_InternVL3_5-8B_z0hard_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_ivl8b_s2/e1_InternVL3_5-8B_z0hard_channel_native.csv
+[00:58:29]     [ivl8b_s2] EN z0hard × base,permit,channel
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0hard：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/z0_results_en_ivl8b_s2/e1_InternVL3_5-8B_z0hard_base_en.csv
+  [permit/EN] 153 行 -> /root/z0_results_en_ivl8b_s2/e1_InternVL3_5-8B_z0hard_permit_en.csv
+  [channel/EN] 153 行 -> /root/z0_results_en_ivl8b_s2/e1_InternVL3_5-8B_z0hard_channel_en.csv
+[00:58:44]   [ivl8b] 第 2 次服务完成
+[00:59:32]   [ivl8b_s3] 起服就绪 45s
+[00:59:32]     [ivl8b_s3] CN z0easy × base,permit,channel
+池 z0easy：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 119 个 -> /root/z0_results_ivl8b_s3/e1_InternVL3_5-8B_z0easy_base_native.csv
+  [permit] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_ivl8b_s3/e1_InternVL3_5-8B_z0easy_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_ivl8b_s3/e1_InternVL3_5-8B_z0easy_channel_native.csv
+[01:00:01]     [ivl8b_s3] EN z0easy × base,permit,channel
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0easy：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/z0_results_en_ivl8b_s3/e1_InternVL3_5-8B_z0easy_base_en.csv
+  [permit/EN] 153 行 -> /root/z0_results_en_ivl8b_s3/e1_InternVL3_5-8B_z0easy_permit_en.csv
+  [channel/EN] 153 行 -> /root/z0_results_en_ivl8b_s3/e1_InternVL3_5-8B_z0easy_channel_en.csv
+[01:00:17]     [ivl8b_s3] CN z0hard × base,permit,channel
+池 z0hard：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 119 个 -> /root/z0_results_ivl8b_s3/e1_InternVL3_5-8B_z0hard_base_native.csv
+  [permit] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_ivl8b_s3/e1_InternVL3_5-8B_z0hard_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_ivl8b_s3/e1_InternVL3_5-8B_z0hard_channel_native.csv
+[01:00:42]     [ivl8b_s3] EN z0hard × base,permit,channel
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0hard：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/z0_results_en_ivl8b_s3/e1_InternVL3_5-8B_z0hard_base_en.csv
+  [permit/EN] 153 行 -> /root/z0_results_en_ivl8b_s3/e1_InternVL3_5-8B_z0hard_permit_en.csv
+  [channel/EN] 153 行 -> /root/z0_results_en_ivl8b_s3/e1_InternVL3_5-8B_z0hard_channel_en.csv
+[01:00:57]   [ivl8b] 第 3 次服务完成
+[01:01:00]   [ivl8b] 构建完成
+[01:01:00] ===== E2 构建 phi35（Phi-3.5-vision-instruct）=====
+[01:02:33]   [phi35_s1] 起服就绪 90s
+[01:02:33]     [phi35_s1] CN z0easy × base,permit,channel
+池 z0easy：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 120 个 -> /root/z0_results_phi35_s1/e1_Phi-3.5-vision-instruct_z0easy_base_native.csv
+  [permit] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_phi35_s1/e1_Phi-3.5-vision-instruct_z0easy_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_phi35_s1/e1_Phi-3.5-vision-instruct_z0easy_channel_native.csv
+[01:03:15]     [phi35_s1] EN z0easy × base,permit,channel
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0easy：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/z0_results_en_phi35_s1/e1_Phi-3.5-vision-instruct_z0easy_base_en.csv
+  [permit/EN] 153 行 -> /root/z0_results_en_phi35_s1/e1_Phi-3.5-vision-instruct_z0easy_permit_en.csv
+  [channel/EN] 153 行 -> /root/z0_results_en_phi35_s1/e1_Phi-3.5-vision-instruct_z0easy_channel_en.csv
+[01:03:29]     [phi35_s1] CN z0hard × base,permit,channel
+池 z0hard：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 124 个 -> /root/z0_results_phi35_s1/e1_Phi-3.5-vision-instruct_z0hard_base_native.csv
+  [permit] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_phi35_s1/e1_Phi-3.5-vision-instruct_z0hard_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_phi35_s1/e1_Phi-3.5-vision-instruct_z0hard_channel_native.csv
+[01:04:05]     [phi35_s1] EN z0hard × base,permit,channel
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0hard：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/z0_results_en_phi35_s1/e1_Phi-3.5-vision-instruct_z0hard_base_en.csv
+  [permit/EN] 153 行 -> /root/z0_results_en_phi35_s1/e1_Phi-3.5-vision-instruct_z0hard_permit_en.csv
+  [channel/EN] 153 行 -> /root/z0_results_en_phi35_s1/e1_Phi-3.5-vision-instruct_z0hard_channel_en.csv
+[01:04:18]   [phi35] 第 1 次服务完成
+[01:05:21]   [phi35_s2] 起服就绪 60s
+[01:05:21]     [phi35_s2] CN z0easy × base,permit,channel
+池 z0easy：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 120 个 -> /root/z0_results_phi35_s2/e1_Phi-3.5-vision-instruct_z0easy_base_native.csv
+  [permit] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_phi35_s2/e1_Phi-3.5-vision-instruct_z0easy_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_phi35_s2/e1_Phi-3.5-vision-instruct_z0easy_channel_native.csv
+[01:06:04]     [phi35_s2] EN z0easy × base,permit,channel
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0easy：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/z0_results_en_phi35_s2/e1_Phi-3.5-vision-instruct_z0easy_base_en.csv
+  [permit/EN] 153 行 -> /root/z0_results_en_phi35_s2/e1_Phi-3.5-vision-instruct_z0easy_permit_en.csv
+  [channel/EN] 153 行 -> /root/z0_results_en_phi35_s2/e1_Phi-3.5-vision-instruct_z0easy_channel_en.csv
+[01:06:17]     [phi35_s2] CN z0hard × base,permit,channel
+池 z0hard：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 124 个 -> /root/z0_results_phi35_s2/e1_Phi-3.5-vision-instruct_z0hard_base_native.csv
+  [permit] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_phi35_s2/e1_Phi-3.5-vision-instruct_z0hard_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_phi35_s2/e1_Phi-3.5-vision-instruct_z0hard_channel_native.csv
+[01:06:54]     [phi35_s2] EN z0hard × base,permit,channel
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0hard：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/z0_results_en_phi35_s2/e1_Phi-3.5-vision-instruct_z0hard_base_en.csv
+  [permit/EN] 153 行 -> /root/z0_results_en_phi35_s2/e1_Phi-3.5-vision-instruct_z0hard_permit_en.csv
+  [channel/EN] 153 行 -> /root/z0_results_en_phi35_s2/e1_Phi-3.5-vision-instruct_z0hard_channel_en.csv
+[01:07:07]   [phi35] 第 2 次服务完成
+[01:08:10]   [phi35_s3] 起服就绪 60s
+[01:08:10]     [phi35_s3] CN z0easy × base,permit,channel
+池 z0easy：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 120 个 -> /root/z0_results_phi35_s3/e1_Phi-3.5-vision-instruct_z0easy_base_native.csv
+  [permit] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_phi35_s3/e1_Phi-3.5-vision-instruct_z0easy_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_phi35_s3/e1_Phi-3.5-vision-instruct_z0easy_channel_native.csv
+[01:08:52]     [phi35_s3] EN z0easy × base,permit,channel
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0easy：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/z0_results_en_phi35_s3/e1_Phi-3.5-vision-instruct_z0easy_base_en.csv
+  [permit/EN] 153 行 -> /root/z0_results_en_phi35_s3/e1_Phi-3.5-vision-instruct_z0easy_permit_en.csv
+  [channel/EN] 153 行 -> /root/z0_results_en_phi35_s3/e1_Phi-3.5-vision-instruct_z0easy_channel_en.csv
+[01:09:06]     [phi35_s3] CN z0hard × base,permit,channel
+池 z0hard：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 124 个 -> /root/z0_results_phi35_s3/e1_Phi-3.5-vision-instruct_z0hard_base_native.csv
+  [permit] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_phi35_s3/e1_Phi-3.5-vision-instruct_z0hard_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_phi35_s3/e1_Phi-3.5-vision-instruct_z0hard_channel_native.csv
+[01:09:42]     [phi35_s3] EN z0hard × base,permit,channel
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0hard：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/z0_results_en_phi35_s3/e1_Phi-3.5-vision-instruct_z0hard_base_en.csv
+  [permit/EN] 153 行 -> /root/z0_results_en_phi35_s3/e1_Phi-3.5-vision-instruct_z0hard_permit_en.csv
+  [channel/EN] 153 行 -> /root/z0_results_en_phi35_s3/e1_Phi-3.5-vision-instruct_z0hard_channel_en.csv
+[01:09:56]   [phi35] 第 3 次服务完成
+[01:09:59]   [phi35] 构建完成
+[01:09:59] ===== E2 构建 llavaov（llava-onevision-qwen2-7b-ov）=====
+[01:12:32]   [llavaov_s1] 起服就绪 150s
+[01:12:32]     [llavaov_s1] CN z0easy × base,permit,channel
+池 z0easy：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 111 个 -> /root/z0_results_llavaov_s1/e1_llava-onevision-qwen2-7b-ov_z0easy_base_native.csv
+  [permit] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_llavaov_s1/e1_llava-onevision-qwen2-7b-ov_z0easy_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_llavaov_s1/e1_llava-onevision-qwen2-7b-ov_z0easy_channel_native.csv
+[01:14:09]     [llavaov_s1] EN z0easy × base,permit,channel
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0easy：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/z0_results_en_llavaov_s1/e1_llava-onevision-qwen2-7b-ov_z0easy_base_en.csv
+  [permit/EN] 153 行 -> /root/z0_results_en_llavaov_s1/e1_llava-onevision-qwen2-7b-ov_z0easy_permit_en.csv
+  [channel/EN] 153 行 -> /root/z0_results_en_llavaov_s1/e1_llava-onevision-qwen2-7b-ov_z0easy_channel_en.csv
+[01:15:06]     [llavaov_s1] CN z0hard × base,permit,channel
+池 z0hard：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 113 个 -> /root/z0_results_llavaov_s1/e1_llava-onevision-qwen2-7b-ov_z0hard_base_native.csv
+  [permit] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_llavaov_s1/e1_llava-onevision-qwen2-7b-ov_z0hard_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_llavaov_s1/e1_llava-onevision-qwen2-7b-ov_z0hard_channel_native.csv
+[01:16:20]     [llavaov_s1] EN z0hard × base,permit,channel
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0hard：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/z0_results_en_llavaov_s1/e1_llava-onevision-qwen2-7b-ov_z0hard_base_en.csv
+  [permit/EN] 153 行 -> /root/z0_results_en_llavaov_s1/e1_llava-onevision-qwen2-7b-ov_z0hard_permit_en.csv
+  [channel/EN] 153 行 -> /root/z0_results_en_llavaov_s1/e1_llava-onevision-qwen2-7b-ov_z0hard_channel_en.csv
+[01:16:43]   [llavaov] 第 1 次服务完成
+[01:17:46]   [llavaov_s2] 起服就绪 60s
+[01:17:46]     [llavaov_s2] CN z0easy × base,permit,channel
+池 z0easy：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 111 个 -> /root/z0_results_llavaov_s2/e1_llava-onevision-qwen2-7b-ov_z0easy_base_native.csv
+  [permit] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_llavaov_s2/e1_llava-onevision-qwen2-7b-ov_z0easy_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_llavaov_s2/e1_llava-onevision-qwen2-7b-ov_z0easy_channel_native.csv
+[01:19:23]     [llavaov_s2] EN z0easy × base,permit,channel
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0easy：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/z0_results_en_llavaov_s2/e1_llava-onevision-qwen2-7b-ov_z0easy_base_en.csv
+  [permit/EN] 153 行 -> /root/z0_results_en_llavaov_s2/e1_llava-onevision-qwen2-7b-ov_z0easy_permit_en.csv
+  [channel/EN] 153 行 -> /root/z0_results_en_llavaov_s2/e1_llava-onevision-qwen2-7b-ov_z0easy_channel_en.csv
+[01:20:20]     [llavaov_s2] CN z0hard × base,permit,channel
+池 z0hard：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 113 个 -> /root/z0_results_llavaov_s2/e1_llava-onevision-qwen2-7b-ov_z0hard_base_native.csv
+  [permit] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_llavaov_s2/e1_llava-onevision-qwen2-7b-ov_z0hard_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_llavaov_s2/e1_llava-onevision-qwen2-7b-ov_z0hard_channel_native.csv
+[01:21:34]     [llavaov_s2] EN z0hard × base,permit,channel
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0hard：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/z0_results_en_llavaov_s2/e1_llava-onevision-qwen2-7b-ov_z0hard_base_en.csv
+  [permit/EN] 153 行 -> /root/z0_results_en_llavaov_s2/e1_llava-onevision-qwen2-7b-ov_z0hard_permit_en.csv
+  [channel/EN] 153 行 -> /root/z0_results_en_llavaov_s2/e1_llava-onevision-qwen2-7b-ov_z0hard_channel_en.csv
+[01:21:58]   [llavaov] 第 2 次服务完成
+[01:23:01]   [llavaov_s3] 起服就绪 60s
+[01:23:01]     [llavaov_s3] CN z0easy × base,permit,channel
+池 z0easy：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 111 个 -> /root/z0_results_llavaov_s3/e1_llava-onevision-qwen2-7b-ov_z0easy_base_native.csv
+  [permit] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_llavaov_s3/e1_llava-onevision-qwen2-7b-ov_z0easy_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_llavaov_s3/e1_llava-onevision-qwen2-7b-ov_z0easy_channel_native.csv
+[01:24:38]     [llavaov_s3] EN z0easy × base,permit,channel
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0easy：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/z0_results_en_llavaov_s3/e1_llava-onevision-qwen2-7b-ov_z0easy_base_en.csv
+  [permit/EN] 153 行 -> /root/z0_results_en_llavaov_s3/e1_llava-onevision-qwen2-7b-ov_z0easy_permit_en.csv
+  [channel/EN] 153 行 -> /root/z0_results_en_llavaov_s3/e1_llava-onevision-qwen2-7b-ov_z0easy_channel_en.csv
+[01:25:35]     [llavaov_s3] CN z0hard × base,permit,channel
+池 z0hard：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 113 个 -> /root/z0_results_llavaov_s3/e1_llava-onevision-qwen2-7b-ov_z0hard_base_native.csv
+  [permit] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_llavaov_s3/e1_llava-onevision-qwen2-7b-ov_z0hard_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_llavaov_s3/e1_llava-onevision-qwen2-7b-ov_z0hard_channel_native.csv
+[01:26:49]     [llavaov_s3] EN z0hard × base,permit,channel
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0hard：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/z0_results_en_llavaov_s3/e1_llava-onevision-qwen2-7b-ov_z0hard_base_en.csv
+  [permit/EN] 153 行 -> /root/z0_results_en_llavaov_s3/e1_llava-onevision-qwen2-7b-ov_z0hard_permit_en.csv
+  [channel/EN] 153 行 -> /root/z0_results_en_llavaov_s3/e1_llava-onevision-qwen2-7b-ov_z0hard_channel_en.csv
+[01:27:13]   [llavaov] 第 3 次服务完成
+[01:27:16]   [llavaov] 构建完成
+[01:27:16] ===== E2 构建 gemma12b（gemma3-12b）=====
+[01:29:49]   [gemma12b_s1] 起服就绪 150s
+[01:29:49]     [gemma12b_s1] CN z0easy × base,permit,channel
+池 z0easy：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 81 个 -> /root/z0_results_gemma12b_s1/e1_gemma3-12b_z0easy_base_native.csv
+  [permit] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_gemma12b_s1/e1_gemma3-12b_z0easy_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_gemma12b_s1/e1_gemma3-12b_z0easy_channel_native.csv
+[01:30:20]     [gemma12b_s1] EN z0easy × base,permit,channel
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0easy：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/z0_results_en_gemma12b_s1/e1_gemma3-12b_z0easy_base_en.csv
+  [permit/EN] 153 行 -> /root/z0_results_en_gemma12b_s1/e1_gemma3-12b_z0easy_permit_en.csv
+  [channel/EN] 153 行 -> /root/z0_results_en_gemma12b_s1/e1_gemma3-12b_z0easy_channel_en.csv
+[01:30:46]     [gemma12b_s1] CN z0hard × base,permit,channel
+池 z0hard：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 70 个 -> /root/z0_results_gemma12b_s1/e1_gemma3-12b_z0hard_base_native.csv
+  [permit] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_gemma12b_s1/e1_gemma3-12b_z0hard_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_gemma12b_s1/e1_gemma3-12b_z0hard_channel_native.csv
+[01:31:17]     [gemma12b_s1] EN z0hard × base,permit,channel
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0hard：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/z0_results_en_gemma12b_s1/e1_gemma3-12b_z0hard_base_en.csv
+  [permit/EN] 153 行 -> /root/z0_results_en_gemma12b_s1/e1_gemma3-12b_z0hard_permit_en.csv
+  [channel/EN] 153 行 -> /root/z0_results_en_gemma12b_s1/e1_gemma3-12b_z0hard_channel_en.csv
+[01:31:43]   [gemma12b] 第 1 次服务完成
+[01:33:46]   [gemma12b_s2] 起服就绪 120s
+[01:33:46]     [gemma12b_s2] CN z0easy × base,permit,channel
+池 z0easy：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 80 个 -> /root/z0_results_gemma12b_s2/e1_gemma3-12b_z0easy_base_native.csv
+  [permit] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_gemma12b_s2/e1_gemma3-12b_z0easy_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_gemma12b_s2/e1_gemma3-12b_z0easy_channel_native.csv
+[01:34:17]     [gemma12b_s2] EN z0easy × base,permit,channel
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0easy：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/z0_results_en_gemma12b_s2/e1_gemma3-12b_z0easy_base_en.csv
+  [permit/EN] 153 行 -> /root/z0_results_en_gemma12b_s2/e1_gemma3-12b_z0easy_permit_en.csv
+  [channel/EN] 153 行 -> /root/z0_results_en_gemma12b_s2/e1_gemma3-12b_z0easy_channel_en.csv
+[01:34:43]     [gemma12b_s2] CN z0hard × base,permit,channel
+池 z0hard：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 71 个 -> /root/z0_results_gemma12b_s2/e1_gemma3-12b_z0hard_base_native.csv
+  [permit] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_gemma12b_s2/e1_gemma3-12b_z0hard_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_gemma12b_s2/e1_gemma3-12b_z0hard_channel_native.csv
+[01:35:15]     [gemma12b_s2] EN z0hard × base,permit,channel
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0hard：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/z0_results_en_gemma12b_s2/e1_gemma3-12b_z0hard_base_en.csv
+  [permit/EN] 153 行 -> /root/z0_results_en_gemma12b_s2/e1_gemma3-12b_z0hard_permit_en.csv
+  [channel/EN] 153 行 -> /root/z0_results_en_gemma12b_s2/e1_gemma3-12b_z0hard_channel_en.csv
+[01:35:41]   [gemma12b] 第 2 次服务完成
+[01:37:44]   [gemma12b_s3] 起服就绪 120s
+[01:37:44]     [gemma12b_s3] CN z0easy × base,permit,channel
+池 z0easy：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 81 个 -> /root/z0_results_gemma12b_s3/e1_gemma3-12b_z0easy_base_native.csv
+  [permit] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_gemma12b_s3/e1_gemma3-12b_z0easy_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_gemma12b_s3/e1_gemma3-12b_z0easy_channel_native.csv
+[01:38:15]     [gemma12b_s3] EN z0easy × base,permit,channel
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0easy：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/z0_results_en_gemma12b_s3/e1_gemma3-12b_z0easy_base_en.csv
+  [permit/EN] 153 行 -> /root/z0_results_en_gemma12b_s3/e1_gemma3-12b_z0easy_permit_en.csv
+  [channel/EN] 153 行 -> /root/z0_results_en_gemma12b_s3/e1_gemma3-12b_z0easy_channel_en.csv
+[01:38:41]     [gemma12b_s3] CN z0hard × base,permit,channel
+池 z0hard：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 71 个 -> /root/z0_results_gemma12b_s3/e1_gemma3-12b_z0hard_base_native.csv
+  [permit] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_gemma12b_s3/e1_gemma3-12b_z0hard_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_gemma12b_s3/e1_gemma3-12b_z0hard_channel_native.csv
+[01:39:13]     [gemma12b_s3] EN z0hard × base,permit,channel
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0hard：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/z0_results_en_gemma12b_s3/e1_gemma3-12b_z0hard_base_en.csv
+  [permit/EN] 153 行 -> /root/z0_results_en_gemma12b_s3/e1_gemma3-12b_z0hard_permit_en.csv
+  [channel/EN] 153 行 -> /root/z0_results_en_gemma12b_s3/e1_gemma3-12b_z0hard_channel_en.csv
+[01:39:39]   [gemma12b] 第 3 次服务完成
+[01:39:42]   [gemma12b] 构建完成
+[01:39:42] ===== E2 构建 q32（Qwen3-VL-32B-Instruct）=====
+[01:42:30]   [q32_s1] 起服就绪 165s
+[01:42:30]     [q32_s1] CN z0easy × base,permit,channel
+池 z0easy：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 129 个 -> /root/z0_results_q32_s1/e1_Qwen3-VL-32B-Instruct_z0easy_base_native.csv
+  [permit] 153 行；其中 pred==0 的 23 个 -> /root/z0_results_q32_s1/e1_Qwen3-VL-32B-Instruct_z0easy_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_q32_s1/e1_Qwen3-VL-32B-Instruct_z0easy_channel_native.csv
+[01:44:15]     [q32_s1] EN z0easy × base,permit,channel
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0easy：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/z0_results_en_q32_s1/e1_Qwen3-VL-32B-Instruct_z0easy_base_en.csv
+  [permit/EN] 153 行 -> /root/z0_results_en_q32_s1/e1_Qwen3-VL-32B-Instruct_z0easy_permit_en.csv
+  [channel/EN] 153 行 -> /root/z0_results_en_q32_s1/e1_Qwen3-VL-32B-Instruct_z0easy_channel_en.csv
+[01:46:01]     [q32_s1] CN z0hard × base,permit,channel
+池 z0hard：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 128 个 -> /root/z0_results_q32_s1/e1_Qwen3-VL-32B-Instruct_z0hard_base_native.csv
+  [permit] 153 行；其中 pred==0 的 53 个 -> /root/z0_results_q32_s1/e1_Qwen3-VL-32B-Instruct_z0hard_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_q32_s1/e1_Qwen3-VL-32B-Instruct_z0hard_channel_native.csv
+[01:47:40]     [q32_s1] EN z0hard × base,permit,channel
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0hard：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/z0_results_en_q32_s1/e1_Qwen3-VL-32B-Instruct_z0hard_base_en.csv
+  [permit/EN] 153 行 -> /root/z0_results_en_q32_s1/e1_Qwen3-VL-32B-Instruct_z0hard_permit_en.csv
+  [channel/EN] 153 行 -> /root/z0_results_en_q32_s1/e1_Qwen3-VL-32B-Instruct_z0hard_channel_en.csv
+[01:49:19]   [q32] 第 1 次服务完成
+[01:50:52]   [q32_s2] 起服就绪 90s
+[01:50:52]     [q32_s2] CN z0easy × base,permit,channel
+池 z0easy：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 129 个 -> /root/z0_results_q32_s2/e1_Qwen3-VL-32B-Instruct_z0easy_base_native.csv
+  [permit] 153 行；其中 pred==0 的 22 个 -> /root/z0_results_q32_s2/e1_Qwen3-VL-32B-Instruct_z0easy_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_q32_s2/e1_Qwen3-VL-32B-Instruct_z0easy_channel_native.csv
+[01:52:37]     [q32_s2] EN z0easy × base,permit,channel
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0easy：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/z0_results_en_q32_s2/e1_Qwen3-VL-32B-Instruct_z0easy_base_en.csv
+  [permit/EN] 153 行 -> /root/z0_results_en_q32_s2/e1_Qwen3-VL-32B-Instruct_z0easy_permit_en.csv
+  [channel/EN] 153 行 -> /root/z0_results_en_q32_s2/e1_Qwen3-VL-32B-Instruct_z0easy_channel_en.csv
+[01:54:23]     [q32_s2] CN z0hard × base,permit,channel
+池 z0hard：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 128 个 -> /root/z0_results_q32_s2/e1_Qwen3-VL-32B-Instruct_z0hard_base_native.csv
+  [permit] 153 行；其中 pred==0 的 54 个 -> /root/z0_results_q32_s2/e1_Qwen3-VL-32B-Instruct_z0hard_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_q32_s2/e1_Qwen3-VL-32B-Instruct_z0hard_channel_native.csv
+[01:56:02]     [q32_s2] EN z0hard × base,permit,channel
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0hard：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/z0_results_en_q32_s2/e1_Qwen3-VL-32B-Instruct_z0hard_base_en.csv
+  [permit/EN] 153 行 -> /root/z0_results_en_q32_s2/e1_Qwen3-VL-32B-Instruct_z0hard_permit_en.csv
+  [channel/EN] 153 行 -> /root/z0_results_en_q32_s2/e1_Qwen3-VL-32B-Instruct_z0hard_channel_en.csv
+[01:57:41]   [q32] 第 2 次服务完成
+[01:59:15]   [q32_s3] 起服就绪 90s
+[01:59:15]     [q32_s3] CN z0easy × base,permit,channel
+池 z0easy：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 129 个 -> /root/z0_results_q32_s3/e1_Qwen3-VL-32B-Instruct_z0easy_base_native.csv
+  [permit] 153 行；其中 pred==0 的 23 个 -> /root/z0_results_q32_s3/e1_Qwen3-VL-32B-Instruct_z0easy_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_q32_s3/e1_Qwen3-VL-32B-Instruct_z0easy_channel_native.csv
+[02:01:00]     [q32_s3] EN z0easy × base,permit,channel
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0easy：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/z0_results_en_q32_s3/e1_Qwen3-VL-32B-Instruct_z0easy_base_en.csv
+  [permit/EN] 153 行 -> /root/z0_results_en_q32_s3/e1_Qwen3-VL-32B-Instruct_z0easy_permit_en.csv
+  [channel/EN] 153 行 -> /root/z0_results_en_q32_s3/e1_Qwen3-VL-32B-Instruct_z0easy_channel_en.csv
+[02:02:45]     [q32_s3] CN z0hard × base,permit,channel
+池 z0hard：153 条（gt 全为 0）
+  [base] 153 行；其中 pred==0 的 128 个 -> /root/z0_results_q32_s3/e1_Qwen3-VL-32B-Instruct_z0hard_base_native.csv
+  [permit] 153 行；其中 pred==0 的 53 个 -> /root/z0_results_q32_s3/e1_Qwen3-VL-32B-Instruct_z0hard_permit_native.csv
+  [channel] 153 行；其中 pred==0 的 0 个 -> /root/z0_results_q32_s3/e1_Qwen3-VL-32B-Instruct_z0hard_channel_native.csv
+[02:04:24]     [q32_s3] EN z0hard × base,permit,channel
+EN 提示词表 md5 a31bd97c6b70（3 臂）；冻结 CN 表来自 /root/19f_probe_ablation.py md5 28e82b20a7f4
+池 z0hard：153 条（同 item 配对）
+  [base/EN] 153 行 -> /root/z0_results_en_q32_s3/e1_Qwen3-VL-32B-Instruct_z0hard_base_en.csv
+  [permit/EN] 153 行 -> /root/z0_results_en_q32_s3/e1_Qwen3-VL-32B-Instruct_z0hard_permit_en.csv
+  [channel/EN] 153 行 -> /root/z0_results_en_q32_s3/e1_Qwen3-VL-32B-Instruct_z0hard_channel_en.csv
+[02:06:04]   [q32] 第 3 次服务完成
+[02:06:07]   [q32] 构建完成
+[02:06:07] ########## E2 完成 ##########
+  产物文件数：359
+[02:06:07] E2_PANEL_DONE

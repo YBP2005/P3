@@ -1,0 +1,2 @@
+[04:43:44][internvl] === start ===  mid=InternVL3_5-8B port=8002 frac=0.28 maxlen=8192 limit=full
+[04:43:44][internvl] !! 已有 vllm 在跑 —— 单卡不能并发，先清卡

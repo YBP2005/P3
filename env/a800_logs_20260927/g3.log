@@ -1,0 +1,42 @@
+[07:26:20] ########## G3 开始（4 家族 × 2 域 × 300 项 × 3 臂 = 7,200 次调用）##########
+[07:26:20] ===== 家族 Qwen2.5-VL-3B-Instruct =====
+[07:28:15]   起服就绪 Qwen2.5-VL-3B-Instruct（110s）
+[07:29:19]   Qwen2.5-VL-3B-Instruct 完成
+[07:29:19] ===== 家族 Qwen3-VL-4B-Instruct =====
+[07:31:35]   起服就绪 Qwen3-VL-4B-Instruct（130s）
+[07:32:22]   Qwen3-VL-4B-Instruct 完成
+[07:32:22] ===== 家族 Qwen3-VL-32B-Instruct =====
+[07:34:08]   起服就绪 Qwen3-VL-32B-Instruct（100s）
+[07:37:16]   Qwen3-VL-32B-Instruct 完成
+[07:37:16] ===== 家族 InternVL3_5-8B =====
+[07:46:33] ########## G3 开始（4 家族 × 2 域 × 300 项 × 3 臂 = 7,200 次调用）ONLY=InternVL3_5-8B ##########
+[07:46:33] ########## G3 开始（4 家族 × 2 域 × 300 项 × 3 臂 = 7,200 次调用）ONLY=InternVL3_5-8B ##########
+[07:46:33] ===== 家族 InternVL3_5-8B =====
+[07:46:33] ===== 家族 InternVL3_5-8B =====
+[07:48:39]   起服就绪 InternVL3_5-8B（120s）
+[07:48:39]   起服就绪 InternVL3_5-8B（120s）
+[g3] 冻结件 md5 OK：4a0b57073515698911775374c554d472 ｜ family=InternVL3_5-8B ｜ port=8012
+[g3] JHU 项 300 ｜ TallyQA 项 300
+[g3/InternVL3_5-8B] 待跑 1800 项（已完成 0）
+  200/1800 (12.04/s bad=117 err=0)
+  400/1800 (12.09/s bad=220 err=0)
+  600/1800 (12.28/s bad=330 err=0)
+  800/1800 (12.48/s bad=438 err=0)
+  1000/1800 (12.05/s bad=512 err=0)
+  1200/1800 (11.89/s bad=547 err=0)
+  1400/1800 (11.88/s bad=582 err=0)
+  1600/1800 (11.64/s bad=604 err=0)
+  1800/1800 (11.72/s bad=634 err=0)
+[g3/InternVL3_5-8B] DONE n=1800 unparsed=634 err=0
+[07:51:13]   InternVL3_5-8B 完成
+[07:51:13]   InternVL3_5-8B 完成
+[07:51:13] ########## G3 结束 ##########
+[07:51:13] ########## G3 结束 ##########
+total 1660
+-rw-r--r-- 1 root root  122596 Sep 27 07:51 g3_InternVL3_5-8B.csv
+-rw-r--r-- 1 root root  166031 Sep 27 07:29 g3_Qwen2.5-VL-3B-Instruct.csv
+-rw-r--r-- 1 root root  134351 Sep 27 07:37 g3_Qwen3-VL-32B-Instruct.csv
+-rw-r--r-- 1 root root  133975 Sep 27 07:32 g3_Qwen3-VL-4B-Instruct.csv
+-rw-r--r-- 1 root root 1128991 Sep 27 01:44 res_ctrl_matched_visdrone.csv
+/root/g3_all.sh: line 32: 21228 Killed                  setsid nohup $VLLM serve "$1" --served-model-name "$2" --max-model-len 8192 --gpu-memory-utilization 0.93 --limit-mm-per-prompt '{"image": 1}' --trust-remote-code --port $PORT < /dev/null > "/root/g3_serve_$2.log" 2>&1
+G3_ALL_DONE

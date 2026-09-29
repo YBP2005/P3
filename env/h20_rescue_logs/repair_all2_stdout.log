@@ -1,0 +1,22 @@
+[10:17:48] 等其它下载进程退出
+[10:17:48] 开始复核（按期望尺寸）
+[10:17:48] === 第 1 轮 ===
+  [ModelScope] cyankiwi/Qwen3-VL-32B-Instruct-AWQ-8bit：22 个文件，尺寸不符 2 个
+     !! configuration.json                                   期望 76 实得 -1
+     !! model-00003-of-00008.safetensors                     期望 4902335448 实得 598827236
+  [ModelScope] Qwen/Qwen2.5-VL-72B-Instruct-AWQ：25 个文件，尺寸不符 2 个
+     !! model-00001-of-00011.safetensors                     期望 3979075232 实得 -1
+     !! vocab.json                                           期望 2776833 实得 -1
+[10:17:49]   本轮结论：AWQ-8bit rc=1，72B rc=1（0=尺寸全对）
+[10:17:49] 补齐 AWQ-8bit（下载器含校验重试轮，会先删坏文件）
+[10:23:03] 补齐 72B
+[10:28:28] === 第 2 轮 ===
+  [ModelScope] cyankiwi/Qwen3-VL-32B-Instruct-AWQ-8bit：22 个文件，尺寸不符 0 个
+  [ModelScope] Qwen/Qwen2.5-VL-72B-Instruct-AWQ：25 个文件，尺寸不符 0 个
+[10:28:29]   本轮结论：AWQ-8bit rc=0，72B rc=0（0=尺寸全对）
+[10:28:29] 两者尺寸全部正确，补齐完成
+[10:28:29] === 最终复核 ===
+  [ModelScope] cyankiwi/Qwen3-VL-32B-Instruct-AWQ-8bit：22 个文件，尺寸不符 0 个
+  [ModelScope] Qwen/Qwen2.5-VL-72B-Instruct-AWQ：25 个文件，尺寸不符 0 个
+[10:28:29]   最终：AWQ-8bit rc=0，72B rc=0
+overlay         389G  198G  175G  54% /

@@ -1,0 +1,19 @@
+{
+ "version": "p1e-v1-exploratory",
+ "status": "探索性（P1d 主判据之外）；不得用于修改 P1d 的任何结论",
+ "arm": "placebo100（= neutral0 把被提及的数字 0 换成 100，其余逐字节相同）",
+ "reference": "neutral0 与 base 的对比取 P1d 同会话产物（p1d_<family>_neutral0.csv / _base.csv）",
+ "metrics": [
+  "zero_rate",
+  "rate_of_answer_100"
+ ],
+ "token_specific_if": "|Δzero(placebo100-base)| ≤ 0.3 × |Δzero(neutral0-base)|",
+ "nonspecific_if": "|Δzero(placebo100-base)| ≥ 0.7 × |Δzero(neutral0-base)|",
+ "else": "部分特异，按实报",
+ "extra_prediction": "若非特异，placebo100 应把\"被推向的数\"改为 100（Δ答100 显著为正）",
+ "n_perm": 0,
+ "honesty": [
+  "本块在看过 P1d 三族中期读数**之后**才设计 ⇒ 必须标为探索性，不能当作预注册验证",
+  "只跑 P1d 里 neutral0 效应最大的家族，避免全量开销；结论只覆盖这些家族"
+ ]
+}

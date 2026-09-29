@@ -1,0 +1,499 @@
+file,question,groundtruth,is_simple
+img_00000.jpg,How many tourists can be seen?,11,True
+img_00001.jpg,How many hundred has the train?,12,False
+img_00002.jpg,How many years of use do these controls have?,12,False
+img_00003.jpg,How many windows are on the bus?,11,True
+img_00004.jpg,How many cabinets are visible above the counter?,14,False
+img_00005.jpg,How many people in the room?,12,True
+img_00006.jpg,How many traffic lights are pictured?,12,True
+img_00007.jpg,How many sheep are there?,13,True
+img_00008.jpg,How many birds are there?,11,True
+img_00009.jpg,How many bananas are shown?,11,True
+img_00010.jpg,How many yellow fruits are there?,11,False
+img_00011.jpg,How many zebra are there?,11,True
+img_00012.jpg,How many doughnuts are there?,11,True
+img_00013.jpg,How many donuts are in the box?,12,True
+img_00014.jpg,How many doughnuts are in the box?,12,True
+img_00015.jpg,How many drinks are there?,11,True
+img_00016.jpg,How many women are in the line?,12,True
+img_00017.jpg,How many fruits are in the bowl?,11,True
+img_00018.jpg,How many trees are visible?,11,True
+img_00019.jpg,How many small circles are there on the edges of the bottom most large circle?,12,False
+img_00020.jpg,How many bags are in the picture?,13,True
+img_00021.jpg,How many donuts are visible?,15,True
+img_00022.jpg,How many donuts are there?,14,True
+img_00023.jpg,How many people are in the photo?,14,True
+img_00024.jpg,How many water drops are in the picture?,14,True
+img_00025.jpg,How many tomato slices are there?,11,True
+img_00026.jpg,How many kites are there?,11,True
+img_00027.jpg,How many birds are on the pole?,13,True
+img_00028.jpg,How many red flags are there?,13,False
+img_00029.jpg,How many numbers are on the watch face?,12,True
+img_00030.jpg,How many people are in the image?,13,True
+img_00031.jpg,How many people are in the photograph?,15,True
+img_00032.jpg,How many muffins are in the oven?,12,True
+img_00033.jpg,How many hours are there shown on the clock?,12,True
+img_00034.jpg,How many motorcycles are visible?,11,True
+img_00035.jpg,How many umbrellas are in the picture?,11,True
+img_00036.jpg,How many appliances are shown?,13,True
+img_00037.jpg,How many X shapes on the bridge?,15,True
+img_00038.jpg,How many candles are on the cake?,14,True
+img_00039.jpg,How many blue candles are on the cake?,14,False
+img_00040.jpg,How many letters are on the kite?,12,True
+img_00041.jpg,How many numbers are on the clock?,12,True
+img_00042.jpg,How many people are in the photo?,11,True
+img_00043.jpg,How many people are in the row?,12,True
+img_00044.jpg,How many pepper slices are on the pizza?,12,True
+img_00045.jpg,How many red peppers are there?,12,False
+img_00046.jpg,How many windows are completely visible on the airplane are before the door?,11,False
+img_00047.jpg,How many cars do you see?,12,True
+img_00048.jpg,How many slices are there?,11,True
+img_00049.jpg,How many donuts are there?,12,True
+img_00050.jpg,How many pillars are on the building?,11,True
+img_00051.jpg,How many people are pictured here?,11,True
+img_00052.jpg,How many umbrellas are closed?,13,True
+img_00053.jpg,How many vehicles are in this picture?,11,True
+img_00054.jpg,How many times does "KIA" appear on the wall?,11,True
+img_00055.jpg,How many people are there?,11,True
+img_00056.jpg,How many people are there?,15,True
+img_00057.jpg,How many donuts are in the box?,12,True
+img_00058.jpg,How many orange leaves are there?,14,True
+img_00059.jpg,How many stripes are on the US flag?,13,True
+img_00060.jpg,How many stripes on the zebra's mane are white?,13,False
+img_00061.jpg,How many signs do you see?,14,True
+img_00062.jpg,How many chairs are there?,11,True
+img_00063.jpg,How many birds are seen at least partially?,14,True
+img_00064.jpg,How many people are on the beach?,14,True
+img_00065.jpg,How many animals are in the picture?,11,True
+img_00066.jpg,How many handles are shown?,13,True
+img_00067.jpg,How many little pizzas are on the tray?,12,False
+img_00068.jpg,How many people are there?,12,True
+img_00069.jpg,How many bowls are on the table?,11,True
+img_00070.jpg,How many peole wears black jackets?,13,False
+img_00071.jpg,How many pictures are on the refrigerator?,13,True
+img_00072.jpg,How many people can be seen?,12,True
+img_00073.jpg,How many people are wearing sunglasses?,12,False
+img_00074.jpg,How many white towels are there?,14,False
+img_00075.jpg,How many numbers are on the clock?,12,True
+img_00076.jpg,How many sheep are there?,12,True
+img_00077.jpg,How many floors with regular sized windows can you see on the main highrise?,11,False
+img_00078.jpg,How many chimneys are there?,12,True
+img_00079.jpg,How many people are there?,12,True
+img_00080.jpg,How many window sections does this bus have on the second level?,12,False
+img_00081.jpg,How many pocket watches are in the picture?,15,True
+img_00082.jpg,How many glasses are there?,11,True
+img_00083.jpg,How many dogs are there?,11,True
+img_00084.jpg,How many zebras are pictured?,13,True
+img_00085.jpg,How many men are in the photo?,11,True
+img_00086.jpg,How many window panes are there?,12,True
+img_00087.jpg,How many buttons are on the phone?,12,True
+img_00088.jpg,How many spots are on the tie?,12,False
+img_00089.jpg,How many numbers are on the clock?,12,True
+img_00090.jpg,How many ducks are in the water?,12,True
+img_00091.jpg,How many people are in the photo?,11,True
+img_00092.jpg,How many blue poles in this image?,14,False
+img_00093.jpg,How many wide red stripes does the man's tie have?,12,False
+img_00094.jpg,How many letters in the digital reader board on the train are not capitalized?,11,False
+img_00095.jpg,How many people are in the picture?,11,True
+img_00096.jpg,How many lines are on the left cloth?,13,False
+img_00097.jpg,How many trailers are in the picture?,13,True
+img_00098.jpg,How many numbers are on the clock?,12,True
+img_00099.jpg,How many teddy bears are there?,12,True
+img_00100.jpg,How many buses are in the picture?,15,True
+img_00101.jpg,How many birds are shown here?,12,True
+img_00102.jpg,How many planks appear on the ceiling?,13,True
+img_00103.jpg,How many elephants?,11,True
+img_00104.jpg,How many stairs are there?,12,True
+img_00105.jpg,How many numbers are on the clock?,12,True
+img_00106.jpg,How many carrots are in the picture?,14,True
+img_00107.jpg,How many zebra are part of the wildebeest herd in this image?,13,False
+img_00108.jpg,How many birds are there?,12,True
+img_00109.jpg,How many windows are shown in the photo?,13,True
+img_00110.jpg,How many sheep are in the photo?,11,True
+img_00111.jpg,How many second story windows are there?,12,False
+img_00112.jpg,How many tomatoes are there?,12,True
+img_00113.jpg,How many screws on the birdhouse are shown?,12,True
+img_00114.jpg,How many are they?,15,True
+img_00115.jpg,How many white blobs are on the pizza?,15,False
+img_00116.jpg,How many digits in the telephone number?,11,False
+img_00117.jpg,How many hot dogs are there?,12,False
+img_00118.jpg,How many minutes are listed in total on the bike sign?,12,False
+img_00119.jpg,How many square windows does this building have?,12,False
+img_00120.jpg,How many posts are on the railing in the backround?,11,False
+img_00121.jpg,How many green apple under the chair?,11,False
+img_00122.jpg,How many people are wearing a hat?,13,False
+img_00123.jpg,How many containers with planted bushes are there in the image?,12,False
+img_00124.jpg,How many people are wearing sunglasses?,12,False
+img_00125.jpg,How many gold roman numerals do you see?,12,False
+img_00126.jpg,How many birds's wings are above their bodies?,12,False
+img_00127.jpg,How many ski lift chairs are there?,12,False
+img_00128.jpg,How many people have on hats?,15,False
+img_00129.jpg,How many books are on the floating book boat?,15,False
+img_00130.jpg,How many green apples are there?,15,False
+img_00131.jpg,How many numbers are on the back of the bus?,14,False
+img_00132.jpg,How many blue windows are on trains?,11,False
+img_00133.jpg,How many donuts in this image do not have glaze on them yet?,14,False
+img_00134.jpg,How many bag handles are extended?,12,False
+img_00135.jpg,How many items are standing on the fireplace mantel?,11,False
+img_00136.jpg,How many white lines are on this side of the truck?,12,False
+img_00137.jpg,How many supportes does the bridge have?,12,False
+img_00138.jpg,How many ripe bananas are on her head?,15,False
+img_00139.jpg,How many sponsors are listed on the bike?,12,False
+img_00140.jpg,How many bunches of bananas are in the image?,12,False
+img_00141.jpg,How many people are in the duggout?q?,11,False
+img_00142.jpg,How many leaves are on the branch the elephant is chewing?,13,False
+img_00143.jpg,How many clocks on the wall have totally white faces?,11,False
+img_00144.jpg,How many white windmills are in the image?,12,False
+img_00145.jpg,How many brown eggs are in the picture?,12,False
+img_00146.jpg,How many suitcases are not yellow?,15,False
+img_00147.jpg,How many sail boats are in the marina?,11,False
+img_00148.jpg,How many wheels are on the chair in the front?,5,True
+img_00149.jpg,How many pillows are on the sofa?,5,True
+img_00150.jpg,How many pillows are on the couch?,5,True
+img_00151.jpg,How many chairs are there?,5,True
+img_00152.jpg,How many shelves are on the bookcase?,5,True
+img_00153.jpg,How many cars are visible?,5,True
+img_00154.jpg,How many zebras?,5,True
+img_00155.jpg,How many pillows are on the bed?,5,True
+img_00156.jpg,How many of the man's fingers are extended?,5,True
+img_00157.jpg,How many tracks can be seen?,5,True
+img_00158.jpg,How many sheep are there?,5,True
+img_00159.jpg,How many animals are pictured?,5,True
+img_00160.jpg,How many people are in this image?,5,True
+img_00161.jpg,How many people are in photo?,5,True
+img_00162.jpg,How many cows are seen?,5,True
+img_00163.jpg,How many people are visible?,5,True
+img_00164.jpg,How many people are in this photo?,5,True
+img_00165.jpg,How many people are visible?,5,True
+img_00166.jpg,How many signs are on the pole?,5,True
+img_00167.jpg,How many vehicles are on the road?,5,True
+img_00168.jpg,How many bags on the horse?,5,True
+img_00169.jpg,How many elephants are shown?,5,True
+img_00170.jpg,How many cows are in the photo?,5,True
+img_00171.jpg,How many trees are there?,5,True
+img_00172.jpg,How many oars are visible?,5,True
+img_00173.jpg,How many blades does the window fan have?,5,False
+img_00174.jpg,How many brown boxes can you see in the picture?,5,False
+img_00175.jpg,How many white objects are present in this picture?,5,False
+img_00176.jpg,How many white bears are in the image?,5,False
+img_00177.jpg,How many fence post shadows are in the picture?,5,False
+img_00178.jpg,How many cars are to the right of the man on the bike?,5,False
+img_00179.jpg,How many traffic lights can you see?,5,False
+img_00180.jpg,How many steps are able to see?,5,False
+img_00181.jpg,How many chocholate covered donuts with no toppings are there?,5,False
+img_00182.jpg,How many sections of fence are there to the left of both giraffes?,5,False
+img_00183.jpg,How many cherries are not in the bucket?,5,False
+img_00184.jpg,How many wooden beams are on top of the person?,5,False
+img_00185.jpg,How many things is ronald juggling on the cake?,5,False
+img_00186.jpg,How many people are in the water?,5,False
+img_00187.jpg,How many people fly?,5,False
+img_00188.jpg,How many vowels are on the sign?,5,False
+img_00189.jpg,How many numbers are on the train?,5,False
+img_00190.jpg,How many people are wearing glasses?,5,False
+img_00191.jpg,How many people are in the crowd to the left of the skater?,5,False
+img_00192.jpg,How many wheels are on the red plane?,5,False
+img_00193.jpg,How many white tiles can you see on the floor?,5,False
+img_00194.jpg,How many balconies are above the van?,5,False
+img_00195.jpg,How many times do you see the letter a?,5,False
+img_00196.jpg,How many people are standing in the picture?,5,False
+img_00197.jpg,How many posts are in front of the bus?,5,False
+img_00198.jpg,How many shelves are there in the bookshelf?,6,True
+img_00199.jpg,How many windows are on the brick building?,6,True
+img_00200.jpg,How many people are there?,6,True
+img_00201.jpg,How many people are in this picture?,6,True
+img_00202.jpg,How many birds are on the tower roof?,6,True
+img_00203.jpg,How many boats are shown here?,6,True
+img_00204.jpg,How many remotes are there?,6,True
+img_00205.jpg,How many buttons?,6,True
+img_00206.jpg,How many blades on each propeller?,6,True
+img_00207.jpg,How many hands can be seen?,6,True
+img_00208.jpg,How many zebras are pictured?,6,True
+img_00209.jpg,How many zebras?,6,True
+img_00210.jpg,How many zebras are there?,6,True
+img_00211.jpg,How many animals are shown?,6,True
+img_00212.jpg,How many people are there?,6,True
+img_00213.jpg,How many cabinet handles can be seen?,6,True
+img_00214.jpg,How many tracks are seen here?,6,True
+img_00215.jpg,How many people are in the pool?,6,True
+img_00216.jpg,How many pillows are on the bed?,6,True
+img_00217.jpg,How many pillows are shown?,6,True
+img_00218.jpg,How many zebras are there?,6,True
+img_00219.jpg,How many lights are on the chandelier?,6,True
+img_00220.jpg,How many panes does the window have?,6,True
+img_00221.jpg,How many baby ducks are there?,6,True
+img_00222.jpg,How many elephants are there?,6,True
+img_00223.jpg,How many people are walking to the left of the giraffe in the background?,6,False
+img_00224.jpg,How many yellow balloon are there?,6,False
+img_00225.jpg,How many fence polls are presently holding up the fence?,6,False
+img_00226.jpg,How many people do not wear a cap in the picture?,6,False
+img_00227.jpg,How many tree trunks are completely to the left or behind the elephant?,6,False
+img_00228.jpg,How many white frosted donuts without sprinkles are on the center top shelf?,6,False
+img_00229.jpg,How many window panes are visible to the right of the phone?,6,False
+img_00230.jpg,How many orange stools are there?,6,False
+img_00231.jpg,How many coca cola bottles are in the refrigerator?,6,False
+img_00232.jpg,How many plates are full of food?,6,False
+img_00233.jpg,How many green lights are in this image?,6,False
+img_00234.jpg,How many people are playing football?,6,False
+img_00235.jpg,How many flower pots have flowers in them?,6,False
+img_00236.jpg,How many jars don't have sauce on the inside?,6,False
+img_00237.jpg,How many of the floor tiles are white?,6,False
+img_00238.jpg,How many toilets are to the left of the basins?,6,False
+img_00239.jpg,How many sets of blue bristles are on the head of this toothbrush?,6,False
+img_00240.jpg,How many letters and numbers are shown in the license plate?,6,False
+img_00241.jpg,How many people can be seen standing on the stairs?,6,False
+img_00242.jpg,How many rectangular windows are there on the tower?,6,False
+img_00243.jpg,How many players have yellow shirts on?,6,False
+img_00244.jpg,How many doughnut varieties are with chocolate?,6,False
+img_00245.jpg,How many pieces of broccoli are in the container?,6,False
+img_00246.jpg,How many wheels are on the airplane?,6,False
+img_00247.jpg,How many rows of accessories are on peg hooks?,6,False
+img_00248.jpg,How many people are in this image?,7,True
+img_00249.jpg,How many fingers are visible?,7,True
+img_00250.jpg,How many hot dogs are there?,7,True
+img_00251.jpg,How many zebras are shown?,7,True
+img_00252.jpg,How many people are in the room?,7,True
+img_00253.jpg,How many people are there?,7,True
+img_00254.jpg,How many elephants are shown?,7,True
+img_00255.jpg,How many bowls are on the table?,7,True
+img_00256.jpg,How many dishes are on the table?,7,True
+img_00257.jpg,How many bowls are set?,7,True
+img_00258.jpg,How many skateboards?,7,True
+img_00259.jpg,How many birds can be seen?,7,True
+img_00260.jpg,How many elephants can be seen?,7,True
+img_00261.jpg,How many players can be seen in the dugout?,7,True
+img_00262.jpg,How many tents are in the background?,7,True
+img_00263.jpg,How many floors does the building have?,7,True
+img_00264.jpg,How many people are in the room?,7,True
+img_00265.jpg,How many people are in the image?,7,True
+img_00266.jpg,How many people are pictured?,7,True
+img_00267.jpg,How many spools are on the ground?,7,True
+img_00268.jpg,How many people are there?,7,True
+img_00269.jpg,How many sheep are there?,7,True
+img_00270.jpg,How many sheep are there?,7,True
+img_00271.jpg,How many people are in the photo?,7,True
+img_00272.jpg,How many people in the photo?,7,True
+img_00273.jpg,How many sheep are standing in the grass?,7,False
+img_00274.jpg,How many teeth does his smile show?,7,False
+img_00275.jpg,How many images are on the blue board?,7,False
+img_00276.jpg,How many green fruits are on his lower back?,7,False
+img_00277.jpg,How many giraffe legs are to be seen?,7,False
+img_00278.jpg,How many lighted signs are there around the base of the clock?,7,False
+img_00279.jpg,How many rows of ketchup are on the hot dog?,7,False
+img_00280.jpg,How many people are riding in boats?,7,False
+img_00281.jpg,How many red stripes are there?,7,False
+img_00282.jpg,How many arrows pointing to the right are in the sign?,7,False
+img_00283.jpg,How many clay cups are on the table?,7,False
+img_00284.jpg,How many roses are not red?,7,False
+img_00285.jpg,How many people have a partner in this image?,7,False
+img_00286.jpg,How many numbers are on the bus?,7,False
+img_00287.jpg,How many giraffie in the zoo?,7,False
+img_00288.jpg,How many forms are hanging of hooks over the stove?,7,False
+img_00289.jpg,How many brothers does this woman have?,7,False
+img_00290.jpg,How many fence boards are being touched by the suns rays in the picture?,7,False
+img_00291.jpg,How many children in the image are wearing blue shirts?,7,False
+img_00292.jpg,How many elephants are on land?,7,False
+img_00293.jpg,How many of the gazebo's lights are above the metal beam?,7,False
+img_00294.jpg,How many bus windows are open?,7,False
+img_00295.jpg,How many red caps are there in image?,7,False
+img_00296.jpg,How many dials are to the left of the child?,7,False
+img_00297.jpg,How many red stripes are on the flag in the framed picture?,7,False
+img_00298.jpg,How many pictures are on the wall?,8,True
+img_00299.jpg,How many pictures are on the walls?,8,True
+img_00300.jpg,How many pillows are on the couch?,8,True
+img_00301.jpg,How many legs are in this picture?,8,True
+img_00302.jpg,How many points in the flower drawings?,8,True
+img_00303.jpg,How many people are in the photo?,8,True
+img_00304.jpg,How many surfboards are there?,8,True
+img_00305.jpg,How many sides does the sign have?,8,True
+img_00306.jpg,How many pieces are shown?,8,True
+img_00307.jpg,How many pieces are in each box?,8,True
+img_00308.jpg,How many clocks in the picture?,8,True
+img_00309.jpg,How many trees are there?,8,True
+img_00310.jpg,How many umbrellas are there?,8,True
+img_00311.jpg,How many cars are there?,8,True
+img_00312.jpg,How many pomegranates?,8,True
+img_00313.jpg,How many people are skiing?,8,True
+img_00314.jpg,How many sides does the stop sign have?,8,True
+img_00315.jpg,How many people are visible?,8,True
+img_00316.jpg,How many people in the field?,8,True
+img_00317.jpg,How many umbrellas are there?,8,True
+img_00318.jpg,How many people are there?,8,True
+img_00319.jpg,How many shears are shown?,8,True
+img_00320.jpg,How many tomatoes are in the picture?,8,True
+img_00321.jpg,How many legs do two zebra have?,8,True
+img_00322.jpg,How many posts are there?,8,True
+img_00323.jpg,How many animals are drinking water?,8,False
+img_00324.jpg,How many kids are playing there?,8,False
+img_00325.jpg,How many trees to the left of the boy are there? there are trees to the right too?,8,False
+img_00326.jpg,How many pieces of the plane are yellow?,8,False
+img_00327.jpg,How many slices have pepperoni?,8,False
+img_00328.jpg,How many meatballs are on the white plate?,8,False
+img_00329.jpg,How many lug nuts does the trucks front wheel have?,8,False
+img_00330.jpg,How many pillows are not white?,8,False
+img_00331.jpg,How many items are not in a bowl?,8,False
+img_00332.jpg,How many pieces is the pie cut into?,8,False
+img_00333.jpg,How many white chairs are there?,8,False
+img_00334.jpg,How many umbrellas are on the deck?,8,False
+img_00335.jpg,How many windows are in the right tower?,8,False
+img_00336.jpg,How many birds are flying in the sky?,8,False
+img_00337.jpg,How many words on the bus are inside the white box over the back wheel?,8,False
+img_00338.jpg,How many spikes are on the catcher's shoe?,8,False
+img_00339.jpg,How many numbers are pm the blue bus?,8,False
+img_00340.jpg,How many white flowers are there?,8,False
+img_00341.jpg,How many of the woman's fingers are visible?,8,False
+img_00342.jpg,How many slats in the bench are to the left of the right-hand bench arm?,8,False
+img_00343.jpg,How many pizzas have pepperoni?,8,False
+img_00344.jpg,How many letters are written in blue?,8,False
+img_00345.jpg,How many yellow lines can be seen dashed across the street?,8,False
+img_00346.jpg,How many toes does the stuffed animal have?,8,False
+img_00347.jpg,How many red bowls in the image?,8,False
+img_00348.jpg,How many pictures are on the wall?,9,True
+img_00349.jpg,How many chairs are visible?,9,True
+img_00350.jpg,How many chairs are pictured?,9,True
+img_00351.jpg,How many olives are there?,9,True
+img_00352.jpg,How many people are in the canoe?,9,True
+img_00353.jpg,How many flamingos are in the picture?,9,True
+img_00354.jpg,How many flamingos are pictured?,9,True
+img_00355.jpg,How many flamingos are there?,9,True
+img_00356.jpg,How many windows are on the building?,9,True
+img_00357.jpg,How many sheep are visible?,9,True
+img_00358.jpg,How many sheep?,9,True
+img_00359.jpg,How many umbrellas are there?,9,True
+img_00360.jpg,How many airplane windows can be seen in the photo?,9,True
+img_00361.jpg,How many cats are there?,9,True
+img_00362.jpg,How many plates are stacked up?,9,True
+img_00363.jpg,How many people are in the picture?,9,True
+img_00364.jpg,How many skis are in the water?,9,True
+img_00365.jpg,How many baskets are on the shelves in the background?,9,True
+img_00366.jpg,How many passenger windows are shown?,9,True
+img_00367.jpg,How many zebras are there?,9,True
+img_00368.jpg,How many horses are there?,9,True
+img_00369.jpg,How many people appear in the photo?,9,True
+img_00370.jpg,How many power lines are there?,9,True
+img_00371.jpg,How many people are in the photo?,9,True
+img_00372.jpg,How many towels are in the photo?,9,True
+img_00373.jpg,How many consonants are there on the green sign?,9,False
+img_00374.jpg,How many letters does the button sign have?,9,False
+img_00375.jpg,How many items have red packaging?,9,False
+img_00376.jpg,How many items not in a container on the table?,9,False
+img_00377.jpg,How many of the drawers in the bathroom cabinet are rectangular?,9,False
+img_00378.jpg,How many of these men are sitting in this picture?,9,False
+img_00379.jpg,How many red lights are in front of the train?,9,False
+img_00380.jpg,How many zebras are facing to the camera?,9,False
+img_00381.jpg,How many letters on the blackboard are yellow?,9,False
+img_00382.jpg,How many player's numbers are showing on their jerseys?,9,False
+img_00383.jpg,How many birds are there on the right signal?,9,False
+img_00384.jpg,How many reflections of animals are there in the water?,9,False
+img_00385.jpg,How many yellow flowers are on the right low corner?,9,False
+img_00386.jpg,How many lines of black text are on the white page on the phone?,9,False
+img_00387.jpg,How many white paint patches are in front of the red right turn light?,9,False
+img_00388.jpg,How many windows on the red bus are on the top level?,9,False
+img_00389.jpg,How many cups are in front of the woman?,9,False
+img_00390.jpg,How many green wires do you see on the table?,9,False
+img_00391.jpg,How many dogs are in the back of the truck?,9,False
+img_00392.jpg,How many letters on the sign are capitalized?,9,False
+img_00393.jpg,How many french fries are showing?,9,False
+img_00394.jpg,How many signs are hung on the wall next to the bus?,9,False
+img_00395.jpg,How many slats are holding the door in place?,9,False
+img_00396.jpg,How many of these food items are mushrooms?,9,False
+img_00397.jpg,How many plates are next to the redheads left hand?,9,False
+img_00398.jpg,How many people are in the water?,10,True
+img_00399.jpg,How many boats in the water?,10,True
+img_00400.jpg,How many boats are pictured?,10,True
+img_00401.jpg,How many zebras are shown?,10,True
+img_00402.jpg,How many people are in the room?,10,True
+img_00403.jpg,How many people are in the bus?,10,True
+img_00404.jpg,How many glasses are there?,10,True
+img_00405.jpg,How many people are pictured?,10,True
+img_00406.jpg,How many spokes are in the footboard?,10,True
+img_00407.jpg,How many spectators are there?,10,True
+img_00408.jpg,How many birds are in the photo?,10,True
+img_00409.jpg,How many vehicles are there?,10,True
+img_00410.jpg,How many cars are in the picture?,10,True
+img_00411.jpg,How many flags are on the bus?,10,True
+img_00412.jpg,How many plates are pictured?,10,True
+img_00413.jpg,How many animals are in the picture?,10,True
+img_00414.jpg,How many toothbrushes are there?,10,True
+img_00415.jpg,How many boats are in the lake?,10,True
+img_00416.jpg,How many people are there?,10,True
+img_00417.jpg,How many people are there?,10,True
+img_00418.jpg,How many remotes are there?,10,True
+img_00419.jpg,How many people are seen on the dirt field?,10,True
+img_00420.jpg,How many bats are there?,10,True
+img_00421.jpg,How many wheels are visible?,10,True
+img_00422.jpg,How many sheep are pictureD?,10,True
+img_00423.jpg,How many shades of bush are seen behind the hydrant?,10,False
+img_00424.jpg,How many glassses are there on the table ?,10,False
+img_00425.jpg,How many letters does the caption have?,10,False
+img_00426.jpg,How many toes are on the surfboard?,10,False
+img_00427.jpg,How many pieces of sausage are on this pizza in the image?,10,False
+img_00428.jpg,How many circles are there above the clock?,10,False
+img_00429.jpg,How many tubes is this truck hauling?,10,False
+img_00430.jpg,How many buttons does the girls shirt have?,10,False
+img_00431.jpg,How many train cars follow the engine?,10,False
+img_00432.jpg,How many of the birds are to the right of the tower?,10,False
+img_00433.jpg,How many tree trunks are to the right of the skateboarder wearing the black shirt?,10,False
+img_00434.jpg,How many birds are sitting on stoplights in this image?,10,False
+img_00435.jpg,How many colors do you see on the rainbow umbrella?,10,False
+img_00436.jpg,How many fingers does the stuffed sasquatch have in total?,10,False
+img_00437.jpg,How many people are not on the helicopter?,10,False
+img_00438.jpg,How many ceiling tiles in this picture do not have large circles on them?,10,False
+img_00439.jpg,How many players have aren't in the dugout?,10,False
+img_00440.jpg,How many everything babels are there?,10,False
+img_00441.jpg,How many people are to the right of the red rectangular structure in the top left of the picture?,10,False
+img_00442.jpg,How many green objects are in the image?,10,False
+img_00443.jpg,How many bowls of purple fruit are there?,10,False
+img_00444.jpg,How many windows are facing sunlight?,10,False
+img_00445.jpg,How many tiles have a fish on them?,10,False
+img_00446.jpg,How many horse riders are not in green?,10,False
+img_00447.jpg,How many lug nuts does this trucks front wheel have?,10,False
+img_00448.jpg,How many people are in this picture?,0,True
+img_00449.jpg,How many people are in the room?,0,True
+img_00450.jpg,How many animals appear in this photo?,0,True
+img_00451.jpg,How many people are pictured?,0,True
+img_00452.jpg,How many dinosaurs are in the picture?,0,True
+img_00453.jpg,How many people are in the photo?,0,True
+img_00454.jpg,How many fruits are pictured here?,0,True
+img_00455.jpg,How many people are in the photo?,0,True
+img_00456.jpg,How many dinosaurs are in the picture?,0,True
+img_00457.jpg,How many elephants are pictured?,0,True
+img_00458.jpg,How many animals are seen?,0,True
+img_00459.jpg,How many elephants are pictured?,0,True
+img_00460.jpg,How many dinosaurs are in the picture?,0,True
+img_00461.jpg,How many people are shown in this picture?,0,True
+img_00462.jpg,How many people are there?,0,True
+img_00463.jpg,How many elephants are pictured?,0,True
+img_00464.jpg,How many people are pictured here?,0,True
+img_00465.jpg,How many elephants are pictured?,0,True
+img_00466.jpg,How many kangaroos are in this picture?,0,True
+img_00467.jpg,How many people are shown?,0,True
+img_00468.jpg,How many people are on the bus?,0,True
+img_00469.jpg,How many people are visible?,0,True
+img_00470.jpg,How many dinosaurs are in the picture?,0,True
+img_00471.jpg,How many firefighters are on the sidewalk?,0,True
+img_00472.jpg,How many people are in the picture?,0,True
+img_00473.jpg,How many of the cows are black?,0,False
+img_00474.jpg,How many people are washing hand near the kitchen?,0,False
+img_00475.jpg,How many red birds are there?,0,False
+img_00476.jpg,How many coyotes are visible in this image?,0,False
+img_00477.jpg,How many suns are in the sky?,0,False
+img_00478.jpg,How many fire hydrants are flying in the sky?,0,False
+img_00479.jpg,How many people are sitting on the oven?,0,False
+img_00480.jpg,How many people are standing beside the motorcycle?,0,False
+img_00481.jpg,How many people are wearing jeans?,0,False
+img_00482.jpg,How many salt shakers are sitting on the table left of the sandwhich?,0,False
+img_00483.jpg,How many pigs feet are cooking in the pot?,0,False
+img_00484.jpg,How many people are playing football?,0,False
+img_00485.jpg,How many white horses are there?,0,False
+img_00486.jpg,How many people are walking on the road?,0,False
+img_00487.jpg,How many people are playing football?,0,False
+img_00488.jpg,How many sea lions are in the photo?,0,False
+img_00489.jpg,How many people are sitting on the chair?,0,False
+img_00490.jpg,How many squirrels are eating out of the boy's hand?,0,False
+img_00491.jpg,How many old men are standing near the wall?,0,False
+img_00492.jpg,How many of the donuts are blue?,0,False
+img_00493.jpg,How many people are playing tennis?,0,False
+img_00494.jpg,How many green circles are there?,0,False
+img_00495.jpg,How many blue cows are there?,0,False
+img_00496.jpg,How many people are playing football?,0,False
+img_00497.jpg,How many people are playing football?,0,False

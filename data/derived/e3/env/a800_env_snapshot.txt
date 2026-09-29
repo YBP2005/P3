@@ -1,0 +1,29 @@
+== A5 on A800 :: environment snapshot (2026-09-22) ==
+
+date: 2026-09-22T10:59:52Z
+gpu: NVIDIA A800-SXM4-80GB, 595.71.05, 81920 MiB
+cpus: 16  mem: 236 GB
+disk: overlay         128G   50G   73G  41% /
+python: Python 3.13.5
+vllm: Version: 0.29.0
+transformers: 5.17.0
+torch: 2.13.0+cu130
+
+== instrument md5 ==
+03edb14c98ffa3aea9ffa20f59b00bc8  /root/19e_probe_multi.py
+cd70f996f90b576c579ed002d9a7ddab  /root/a5_grid.sh
+a3c1ce713dc2cfc13c020e40fc1c777e  /root/a5_pixtral_compat.py
+
+== vllm pixtral.py patch (backup vs patched) ==
+2f4ba96d43870d1eb1d0f0bc6bf0fc99  /usr/local/miniconda3/lib/python3.13/site-packages/vllm/model_executor/models/pixtral.py
+5d9842199f8efe61a60b7b02c0557f12  /usr/local/miniconda3/lib/python3.13/site-packages/vllm/model_executor/models/pixtral.py.orig
+
+== serve params ==
+--max-model-len 8192 --limit-mm-per-prompt {image:1} --gpu-memory-utilization 0.85 --max-num-seqs 24 ; temperature 0.0 ; max_tokens 128 ; workers 8
+
+== families / sources ==
+gemma3-12b <- /model/ModelScope/LLM-Research/gemma-3-12b-it
+
+InternVL3_5-8B <- 
+Phi-3.5-vision-instruct <- 
+llava-onevision-qwen2-7b-ov <-

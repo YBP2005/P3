@@ -1,0 +1,32 @@
+[g56] 冻结件 md5 OK：22869fd86fefb37502ddf9d8dd5bec8b ｜ 12 条提示词逐字一致
+[g56/arms] 待跑 2184 项（已完成 0）｜模型 Qwen3-VL-32B-Instruct
+  200/2184 (17.11/s unparsed=0 eta=2min)
+  400/2184 (17.93/s unparsed=0 eta=2min)
+  600/2184 (18.67/s unparsed=0 eta=1min)
+  800/2184 (19.09/s unparsed=0 eta=1min)
+  1000/2184 (19.08/s unparsed=0 eta=1min)
+  1200/2184 (18.87/s unparsed=0 eta=1min)
+  1400/2184 (18.87/s unparsed=0 eta=1min)
+  1600/2184 (18.84/s unparsed=0 eta=1min)
+  1800/2184 (18.92/s unparsed=0 eta=0min)
+  2000/2184 (18.84/s unparsed=0 eta=0min)
+[g56/arms] DONE n=2184 unparsed=0
+[g56] 冻结件 md5 OK：22869fd86fefb37502ddf9d8dd5bec8b ｜ 12 条提示词逐字一致
+[g56/budget] 待跑 910 项（已完成 0）｜模型 Qwen3-VL-32B-Instruct
+  200/910 (9.10/s unparsed=0 eta=1min)
+  400/910 (10.03/s unparsed=0 eta=1min)
+  600/910 (9.70/s unparsed=0 eta=1min)
+  800/910 (9.89/s unparsed=0 eta=0min)
+[g56/budget] DONE n=910 unparsed=0
+[g56] 冻结件 md5 OK：22869fd86fefb37502ddf9d8dd5bec8b ｜ 12 条提示词逐字一致
+[g56/tile] 待跑 910 项（已完成 0）｜模型 Qwen3-VL-32B-Instruct
+  200/910 (1.60/s unparsed=0 eta=7min)
+  400/910 (1.67/s unparsed=0 eta=5min)
+  600/910 (1.63/s unparsed=0 eta=3min)
+  800/910 (1.64/s unparsed=0 eta=1min)
+[g56/tile] DONE n=910 unparsed=0
+[g56] 冻结件 md5 OK：22869fd86fefb37502ddf9d8dd5bec8b ｜ 12 条提示词逐字一致
+[g56/noise] 待跑 364 项（已完成 0）｜模型 Qwen3-VL-32B-Instruct
+  200/364 (8.25/s unparsed=0 eta=0min)
+[g56/noise] DONE n=364 unparsed=0
+G56_ALL_DONE

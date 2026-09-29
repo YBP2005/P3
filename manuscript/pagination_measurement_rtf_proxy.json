@@ -1,0 +1,64 @@
+{
+  "measured_at": "2026-09-21",
+  "tool": "Word COM ComputeStatistics(2)",
+  "layout_source": "E:\\workplace\\PR网页.txt L567/L569/L571",
+  "layout": {
+    "page": "A4",
+    "columns": 1,
+    "spacing": "1.5 (Word)",
+    "body_pt": 10,
+    "table_pt": 10,
+    "caption_pt": 8,
+    "justify": true,
+    "margins_cm": {
+      "top": 4.3,
+      "right": 4.8,
+      "bottom": 4.3,
+      "left": 4.8
+    },
+    "text_area_cm": [
+      11.4,
+      21.1
+    ]
+  },
+  "inputs": {
+    "en": "D:\\deepseek\\PaperB\\PaperB_英文稿_PR_20260919.md",
+    "en_md5": "198a3c12dd10402ef1a449872ab7bf62"
+  },
+  "variants": {
+    "titleA_fignone": {
+      "variant": "A",
+      "fig_cm": null,
+      "pages": 33,
+      "words": 11003,
+      "rtf_md5": "7c3f1d50fb67fd579d6b400461199fc9"
+    },
+    "titleA_fig7.5": {
+      "variant": "A",
+      "fig_cm": 7.5,
+      "pages": 35,
+      "words": 11023,
+      "rtf_md5": "6b2bbb3b03099f2326a9a27527b83baa"
+    },
+    "titleB_fignone": {
+      "variant": "B",
+      "fig_cm": null,
+      "pages": 33,
+      "words": 11003,
+      "rtf_md5": "ba6d459453e1ac81998615c4491ade15"
+    },
+    "titleB_fig7.5": {
+      "variant": "B",
+      "fig_cm": 7.5,
+      "pages": 35,
+      "words": 11023,
+      "rtf_md5": "16b933648beb84b0bc9415e5c9581645"
+    }
+  },
+  "positive_control": {
+    "injected_words": 600,
+    "pages_before": 35,
+    "pages_after": 37,
+    "responded": true
+  }
+}

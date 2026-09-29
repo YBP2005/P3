@@ -1,0 +1,9 @@
+=== 10:43:31 修复开始 ===
+备份 -> /usr/local/miniconda3/lib/python3.13/site-packages/vllm/model_executor/models/pixtral.py.orig  md5=5d9842199f8efe61a60b7b02c0557f12
+transformers 源版本：4.57.1
+垫片已写：/root/a5_pixtral_compat.py
+a3c1ce713dc2cfc13c020e40fc1c777e  /root/a5_pixtral_compat.py
+补丁已应用
+LLAVA_IMPORT_OK LlavaOnevisionForConditionalGeneration
+LLAVA_FIX_OK
+=== 10:43:43 修复结束 ===

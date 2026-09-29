@@ -1,0 +1,21 @@
+key,group,dataset,arm,build,pred,parse_ok,raw,latency_s
+S-1|9999979_00000_d_0000020,S-1,visdrone,base,Qwen3-VL-32B-Instruct,0,1,"{""count"": 0}",0.37
+S-1|849ed8f7c,S-1,aitod,base,Qwen3-VL-32B-Instruct,0,1,"{""count"": 0}",0.34
+S-1|18__0_1200,S-1,aitod,base,Qwen3-VL-32B-Instruct,0,1,"{""count"": 0}",0.34
+S-1|ebeead154,S-1,aitod,base,Qwen3-VL-32B-Instruct,0,1,"{""count"": 0}",0.34
+S-1|16f2a1d1f,S-1,aitod,base,Qwen3-VL-32B-Instruct,0,1,"{""count"": 0}",0.34
+S-1|4ca079a8d,S-1,aitod,base,Qwen3-VL-32B-Instruct,0,1,"{""count"": 0}",0.34
+S-1|7c9a8e27f,S-1,aitod,base,Qwen3-VL-32B-Instruct,0,1,"{""count"": 0}",0.34
+S-1|5ae6093fe,S-1,aitod,base,Qwen3-VL-32B-Instruct,0,1,"{""count"": 0}",0.34
+S-1|3aebab0b7,S-1,aitod,base,Qwen3-VL-32B-Instruct,0,1,"{""count"": 0}",0.34
+S-1|14577,S-1,aitod,base,Qwen3-VL-32B-Instruct,0,1,"{""count"": 0}",0.34
+S-2|000000509260.jpg,S-2,coco,base,Qwen3-VL-32B-Instruct,0,1,"{""count"": 0}",0.34
+S-2|000000005600.jpg,S-2,coco,base,Qwen3-VL-32B-Instruct,0,1,"{""count"": 0}",0.34
+S-2|000000118515.jpg,S-2,coco,base,Qwen3-VL-32B-Instruct,0,1,"{""count"": 0}",0.34
+S-2|000000546556.jpg,S-2,coco,base,Qwen3-VL-32B-Instruct,0,1,"{""count"": 0}",0.34
+S-2|000000375430.jpg,S-2,coco,base,Qwen3-VL-32B-Instruct,0,1,"{""count"": 0}",0.34
+S-2|000000567825.jpg,S-2,coco,base,Qwen3-VL-32B-Instruct,0,1,"{""count"": 0}",0.34
+S-2|000000579091.jpg,S-2,coco,base,Qwen3-VL-32B-Instruct,0,1,"{""count"": 0}",0.34
+S-2|000000104612.jpg,S-2,coco,base,Qwen3-VL-32B-Instruct,0,1,"{""count"": 0}",0.34
+S-2|000000140929.jpg,S-2,coco,base,Qwen3-VL-32B-Instruct,0,1,"{""count"": 0}",0.34
+S-2|000000290592.jpg,S-2,coco,base,Qwen3-VL-32B-Instruct,0,1,"{""count"": 0}",0.34

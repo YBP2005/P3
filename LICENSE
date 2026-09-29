@@ -1,0 +1,48 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Copyright (c) 2026 the authors
+
+You are free to:
+  Share — copy and redistribute the material in any medium or format
+  Adapt — remix, transform, and build upon the material for any purpose, even commercially.
+
+Under the following terms:
+  Attribution — You must give appropriate credit, provide a link to the license, and indicate
+  if changes were made. You may do so in any reasonable manner, but not in any way that suggests
+  the licensor endorses you or your use.
+  No additional restrictions — You may not apply legal terms or technological measures that
+  legally restrict others from doing anything the license permits.
+
+Full legal code: https://creativecommons.org/licenses/by/4.0/legalcode
+Human-readable summary: https://creativecommons.org/licenses/by/4.0/
+
+
+---------------------------------------------------------------------------
+Scope of this notice
+---------------------------------------------------------------------------
+
+1. Covered material. CC BY 4.0 applies to the artifacts produced by the
+   authors of this work and released in this repository: the derived
+   per-image prediction records, the analysis and figure-generation scripts,
+   the run logs, and the documentation authored here (DATA, README, and
+   MANIFEST files).
+
+2. Source datasets are not covered. The source image datasets used in this
+   work are not redistributed here, and nothing in this repository grants a
+   license to them. Each remains governed by the terms set by its own
+   provider. In particular, the MTDC dataset is distributed by its provider
+   for academic use only. Users must obtain each dataset from its provider
+   and comply with that provider's terms; the providers are identified in the
+   dataset section of the paper.
+
+3. Redistributed third-party files. Where a file here is a verbatim copy of
+   material authored by a third party, that file remains under its original
+   terms and is included only as required for reproducibility. Such files are
+   identified in the per-file manifest (MANIFEST.csv) and in the notes
+   accompanying them.
+
+4. The manuscript text itself is not covered by this notice; it is subject to
+   the terms of its publisher.
+
+For the material described in clause 1, if this notice and the CC BY 4.0
+legal code differ, the legal code governs.

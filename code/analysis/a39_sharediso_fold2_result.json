@@ -1,0 +1,318 @@
+{
+  "unit_set": "A39 per-item sources (a39_calib3.py same files and same unit definitions)",
+  "eligibility": ">=3 levels and >=20 common items (A39 rule)",
+  "variant": "rotating disjoint thirds (split index mod 3) + shared-isotonic arm — the #27 control",
+  "n_units": 36,
+  "units": [
+    "VLM·output contract / ivl",
+    "VLM·output contract / q32",
+    "VLM·pixel budget / ivl / st_a",
+    "VLM·pixel budget / ivl / ucf",
+    "VLM·pixel budget / ivl / visdrone",
+    "VLM·pixel budget / q32 / st_a",
+    "VLM·pixel budget / q32 / ucf",
+    "VLM·pixel budget / q32 / visdrone",
+    "VLM·prompt family / IVL / ucf / base",
+    "VLM·prompt family / IVL / ucf / over",
+    "VLM·prompt family / IVL / ucf / under",
+    "VLM·prompt family / Qwen32B / ucf / base",
+    "VLM·prompt family / Qwen32B / ucf / over",
+    "VLM·prompt family / Qwen32B / ucf / under",
+    "VLM·tiling / Qwen32B / ucf / base",
+    "VLM·tiling / Qwen32B(ctile) / ucf / base",
+    "VLM·tiling / Qwen32B(ctile) / ucf / choice",
+    "VLM·tiling / Qwen32B(ctile) / ucf / forbid0",
+    "VLM·tiling / Qwen32B(ctile) / ucf / range",
+    "VLM·tiling / Qwen8B(ctile) / ucf / base",
+    "density·CSRNet / ladder",
+    "density·CSRNet / st",
+    "density·official DM-Count / st_a",
+    "density·official DM-Count / ucf",
+    "det·in-domain(micro)/BBBC005 (full grid)",
+    "det·in-domain(micro)/BBBC005 / tau@1024",
+    "det·in-domain(micro)/BBBC005 / tau@1536",
+    "det·in-domain(micro)/BBBC005 / tau@640",
+    "det·in-domain/VisDrone (full grid)",
+    "det·in-domain/VisDrone / tau@1024",
+    "det·in-domain/VisDrone / tau@1536",
+    "det·in-domain/VisDrone / tau@640",
+    "det·zero-shot COCO (full grid)",
+    "det·zero-shot COCO / tau@1024",
+    "det·zero-shot COCO / tau@1536",
+    "det·zero-shot COCO / tau@640"
+  ],
+  "nsplit": 200,
+  "seed": 20260923,
+  "calib_frac": 0.3333333333333333,
+  "arms": {
+    "C1u": {
+      "median": 0.5136752697424919,
+      "p05": 0.45833065285718205,
+      "p95": 0.7371130718655102,
+      "frac_ge_090": 0.0,
+      "frac_ge_080": 0.0
+    },
+    "C2l": {
+      "median": 0.562013259836924,
+      "p05": 0.4759637052136645,
+      "p95": 0.6648217273780409,
+      "frac_ge_090": 0.0,
+      "frac_ge_080": 0.0
+    },
+    "Cg": {
+      "median": 0.9835242630969236,
+      "p05": 0.9832668297078131,
+      "p95": 0.995881065774231,
+      "frac_ge_090": 1.0,
+      "frac_ge_080": 1.0
+    },
+    "ISO": {
+      "median": 0.5342686155602816,
+      "p05": 0.39734843609216114,
+      "p95": 0.7093577036941692,
+      "frac_ge_090": 0.0,
+      "frac_ge_080": 0.0
+    },
+    "QNT": {
+      "median": 0.4278267593645811,
+      "p05": 0.3720151903180738,
+      "p95": 0.5489767022782855,
+      "frac_ge_090": 0.0,
+      "frac_ge_080": 0.0
+    },
+    "SISO": {
+      "median": 0.8102749405819413,
+      "p05": 0.8045326379327264,
+      "p95": 0.8175323438443206,
+      "frac_ge_090": 0.0,
+      "frac_ge_080": 1.0
+    },
+    "C0e": {
+      "median": 0.9835242630969236,
+      "p05": 0.9832668297078131,
+      "p95": 0.995881065774231,
+      "frac_ge_090": 1.0,
+      "frac_ge_080": 1.0
+    }
+  },
+  "theorem_span_eq_abs_a_max_dev": 3.730349362740526e-14,
+  "corollary_global_same_ratio_max_range": 5.831446436843635e-14,
+  "per_unit": {
+    "VLM·output contract / ivl": {
+      "span_full": 160.7321243002246,
+      "slope_median": 0.20270109994541005,
+      "ratio_C1u_median": 0.20270109994541244,
+      "ratio_Cg_median": 0.16375401088492156
+    },
+    "VLM·output contract / q32": {
+      "span_full": 259.4072302742216,
+      "slope_median": 0.20882795643970498,
+      "ratio_C1u_median": 0.20882795643970606,
+      "ratio_Cg_median": 0.16375401088491867
+    },
+    "VLM·pixel budget / ivl / st_a": {
+      "span_full": 1.0226074196358965,
+      "slope_median": 1.9239043572981638,
+      "ratio_C1u_median": 1.9239043572981693,
+      "ratio_Cg_median": 0.16375401088493494
+    },
+    "VLM·pixel budget / ivl / ucf": {
+      "span_full": 2.8053290230940604,
+      "slope_median": 2.43225099526996,
+      "ratio_C1u_median": 2.4322509952699574,
+      "ratio_Cg_median": 0.16375401088491448
+    },
+    "VLM·pixel budget / ivl / visdrone": {
+      "span_full": 7.1308818598412955,
+      "slope_median": 1.6123507972657316,
+      "ratio_C1u_median": 1.6123507972657507,
+      "ratio_Cg_median": 0.1637540108849187
+    },
+    "VLM·pixel budget / q32 / st_a": {
+      "span_full": 3.994319190484646,
+      "slope_median": 0.488584196306812,
+      "ratio_C1u_median": 0.4885841963068305,
+      "ratio_Cg_median": 0.16375401088492433
+    },
+    "VLM·pixel budget / q32 / ucf": {
+      "span_full": 14.076301290567073,
+      "slope_median": 0.2936042346007598,
+      "ratio_C1u_median": 0.29360423460075996,
+      "ratio_Cg_median": 0.16375401088492025
+    },
+    "VLM·pixel budget / q32 / visdrone": {
+      "span_full": 14.597071644126515,
+      "slope_median": 0.8867431887509957,
+      "ratio_C1u_median": 0.8867431887509998,
+      "ratio_Cg_median": 0.16375401088494915
+    },
+    "VLM·prompt family / IVL / ucf / base": {
+      "span_full": 73.53143159006868,
+      "slope_median": 0.14313437182635055,
+      "ratio_C1u_median": 0.1431343718263497,
+      "ratio_Cg_median": 0.16375401088491937
+    },
+    "VLM·prompt family / IVL / ucf / over": {
+      "span_full": 276.3615261859858,
+      "slope_median": 0.027926327315594607,
+      "ratio_C1u_median": 0.027926327315594166,
+      "ratio_Cg_median": 0.16375401088491978
+    },
+    "VLM·prompt family / IVL / ucf / under": {
+      "span_full": 325.26661275745613,
+      "slope_median": 0.034469408792906546,
+      "ratio_C1u_median": 0.03446940879290731,
+      "ratio_Cg_median": 0.1637540108849193
+    },
+    "VLM·prompt family / Qwen32B / ucf / base": {
+      "span_full": 367.10043012220933,
+      "slope_median": 0.09580575691331622,
+      "ratio_C1u_median": 0.09580575691331775,
+      "ratio_Cg_median": 0.16375401088491934
+    },
+    "VLM·prompt family / Qwen32B / ucf / over": {
+      "span_full": 187.29318188717872,
+      "slope_median": 0.16769964237323895,
+      "ratio_C1u_median": 0.16769964237324012,
+      "ratio_Cg_median": 0.16375401088491903
+    },
+    "VLM·prompt family / Qwen32B / ucf / under": {
+      "span_full": 189.03600395815187,
+      "slope_median": 0.18748089923493308,
+      "ratio_C1u_median": 0.1874808992349318,
+      "ratio_Cg_median": 0.16375401088491934
+    },
+    "VLM·tiling / Qwen32B / ucf / base": {
+      "span_full": 40.531885210742644,
+      "slope_median": 0.740699509182512,
+      "ratio_C1u_median": 0.740699509182512,
+      "ratio_Cg_median": 0.16375401088491898
+    },
+    "VLM·tiling / Qwen32B(ctile) / ucf / base": {
+      "span_full": 40.00841221520278,
+      "slope_median": 0.3841853711089371,
+      "ratio_C1u_median": 0.384185371108941,
+      "ratio_Cg_median": 0.16375401088491848
+    },
+    "VLM·tiling / Qwen32B(ctile) / ucf / choice": {
+      "span_full": 260.3755512707859,
+      "slope_median": 0.24602298180115545,
+      "ratio_C1u_median": 0.24602298180115606,
+      "ratio_Cg_median": 0.16375401088491923
+    },
+    "VLM·tiling / Qwen32B(ctile) / ucf / forbid0": {
+      "span_full": 61.63988222898716,
+      "slope_median": 0.1385932991099665,
+      "ratio_C1u_median": 0.13859329910996904,
+      "ratio_Cg_median": 0.16375401088491987
+    },
+    "VLM·tiling / Qwen32B(ctile) / ucf / range": {
+      "span_full": 114.58088415639776,
+      "slope_median": 0.16847745407056428,
+      "ratio_C1u_median": 0.1684774540705638,
+      "ratio_Cg_median": 0.16375401088492
+    },
+    "VLM·tiling / Qwen8B(ctile) / ucf / base": {
+      "span_full": 32.93216167527932,
+      "slope_median": 1.2152770620386086,
+      "ratio_C1u_median": 1.2152770620386153,
+      "ratio_Cg_median": 0.16375401088491767
+    },
+    "density·CSRNet / ladder": {
+      "span_full": 387.4046903656301,
+      "slope_median": 0.1409629203606719,
+      "ratio_C1u_median": 0.14096292036067187,
+      "ratio_Cg_median": 0.16375401088491937
+    },
+    "density·CSRNet / st": {
+      "span_full": 1451.3268000248504,
+      "slope_median": 0.050898125552011696,
+      "ratio_C1u_median": 0.050898125552011605,
+      "ratio_Cg_median": 0.1637540108849192
+    },
+    "density·official DM-Count / st_a": {
+      "span_full": 32.61297342192683,
+      "slope_median": 1.0894462590496157,
+      "ratio_C1u_median": 1.0894462590496172,
+      "ratio_Cg_median": 0.16375401088491873
+    },
+    "density·official DM-Count / ucf": {
+      "span_full": 35.07700968523007,
+      "slope_median": 1.042398170458031,
+      "ratio_C1u_median": 1.0423981704580292,
+      "ratio_Cg_median": 0.16375401088491906
+    },
+    "det·in-domain(micro)/BBBC005 (full grid)": {
+      "span_full": 112.31276973851232,
+      "slope_median": 0.6940985547176003,
+      "ratio_C1u_median": 0.6940985547176001,
+      "ratio_Cg_median": 0.16375401088491873
+    },
+    "det·in-domain(micro)/BBBC005 / tau@1024": {
+      "span_full": 36.043412033511046,
+      "slope_median": 0.9345599511244741,
+      "ratio_C1u_median": 0.9345599511244757,
+      "ratio_Cg_median": 0.16375401088491834
+    },
+    "det·in-domain(micro)/BBBC005 / tau@1536": {
+      "span_full": 112.31276973851232,
+      "slope_median": 0.5017543936390523,
+      "ratio_C1u_median": 0.5017543936390519,
+      "ratio_Cg_median": 0.16375401088491873
+    },
+    "det·in-domain(micro)/BBBC005 / tau@640": {
+      "span_full": 29.32850977405433,
+      "slope_median": 0.962326447397046,
+      "ratio_C1u_median": 0.9623264473970472,
+      "ratio_Cg_median": 0.16375401088492378
+    },
+    "det·in-domain/VisDrone (full grid)": {
+      "span_full": 204.88431876606683,
+      "slope_median": 0.42851731459654213,
+      "ratio_C1u_median": 0.4285173145965421,
+      "ratio_Cg_median": 0.16375401088491964
+    },
+    "det·in-domain/VisDrone / tau@1024": {
+      "span_full": 159.28244104168994,
+      "slope_median": 0.4661864591678463,
+      "ratio_C1u_median": 0.4661864591678475,
+      "ratio_Cg_median": 0.16375401088491748
+    },
+    "det·in-domain/VisDrone / tau@1536": {
+      "span_full": 195.68570470548786,
+      "slope_median": 0.38734779363616895,
+      "ratio_C1u_median": 0.3873477936361683,
+      "ratio_Cg_median": 0.16375401088491562
+    },
+    "det·in-domain/VisDrone / tau@640": {
+      "span_full": 95.85335866770986,
+      "slope_median": 0.55276259447255,
+      "ratio_C1u_median": 0.5527625944725529,
+      "ratio_Cg_median": 0.163754010884921
+    },
+    "det·zero-shot COCO (full grid)": {
+      "span_full": 61.71808661194452,
+      "slope_median": 1.1544993106964854,
+      "ratio_C1u_median": 1.1544993106964876,
+      "ratio_Cg_median": 0.16375401088492703
+    },
+    "det·zero-shot COCO / tau@1024": {
+      "span_full": 30.314180583073863,
+      "slope_median": 1.5293596964367868,
+      "ratio_C1u_median": 1.529359696436792,
+      "ratio_Cg_median": 0.16375401088493544
+    },
+    "det·zero-shot COCO / tau@1536": {
+      "span_full": 55.462779507500706,
+      "slope_median": 1.0093732814832361,
+      "ratio_C1u_median": 1.0093732814832361,
+      "ratio_Cg_median": 0.16375401088492336
+    },
+    "det·zero-shot COCO / tau@640": {
+      "span_full": 16.44494763656948,
+      "slope_median": 1.8620421688335675,
+      "ratio_C1u_median": 1.8620421688335684,
+      "ratio_Cg_median": 0.16375401088493263
+    }
+  }
+}

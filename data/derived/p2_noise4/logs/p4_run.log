@@ -1,0 +1,151 @@
+[01:28:46] == P4 smalls 开始 ｜ 显存 0 MiB ｜ 每格 6 线程 ==
+[01:28:46] [Qwen2.5-VL-3B-Instruct] 起服 frac=0.11 maxlen=8192
+[01:28:46] [Qwen3-VL-4B-Instruct] 起服 frac=0.13 maxlen=8192
+[01:28:46] [llava-onevision-qwen2-7b-ov] 起服 frac=0.26 maxlen=8192
+[01:28:46] [Qwen3-VL-8B-Instruct] 起服 frac=0.24 maxlen=8192
+[01:29:36] [Qwen3-VL-8B-Instruct] !! 起服失败
+[01:29:36] [llava-onevision-qwen2-7b-ov] !! 起服失败
+[01:29:36] [Qwen3-VL-8B-Instruct] 跳过
+[01:29:36] [llava-onevision-qwen2-7b-ov] 跳过
+[01:30:06] [Qwen2.5-VL-3B-Instruct] !! 起服失败
+[01:30:06] [Qwen2.5-VL-3B-Instruct] 跳过
+[01:30:56] [Qwen3-VL-4B-Instruct] 就绪（130 s）｜显存 16501 MiB
+[01:31:07] [Qwen3-VL-4B-Instruct] 256 完成
+[01:31:22] [Qwen3-VL-4B-Instruct] 768 完成
+[01:31:26] [Qwen3-VL-4B-Instruct] 停服；产物：4 个文件
+[01:31:29] == P4 smalls 结束 ｜ 显存 0 MiB ==
+[01:31:29] P4_smalls_DONE
+[01:32:11] == P4 smalls 开始 ｜ 显存 0 MiB ｜ 每格 6 线程 ==
+[01:32:11] [Qwen2.5-VL-3B-Instruct] 起服 frac=0.11 maxlen=8192
+[01:33:01] [Qwen2.5-VL-3B-Instruct] !! 起服失败
+[01:33:01] [Qwen2.5-VL-3B-Instruct] 跳过
+[01:33:11] [Qwen3-VL-4B-Instruct] 起服 frac=0.13 maxlen=8192
+[01:34:01] [Qwen3-VL-4B-Instruct] !! 起服失败
+[01:34:01] [Qwen3-VL-4B-Instruct] 跳过
+[01:34:11] [Qwen3-VL-8B-Instruct] 起服 frac=0.24 maxlen=8192
+[01:35:02] [Qwen3-VL-8B-Instruct] !! 起服失败
+[01:35:02] [Qwen3-VL-8B-Instruct] 跳过
+[01:35:12] [llava-onevision-qwen2-7b-ov] 起服 frac=0.26 maxlen=8192
+[01:36:12] [llava-onevision-qwen2-7b-ov] 就绪（60 s）｜显存 20501 MiB
+[01:36:23] [llava-onevision-qwen2-7b-ov] 256 完成
+[01:36:38] [llava-onevision-qwen2-7b-ov] 768 完成
+[01:36:42] [llava-onevision-qwen2-7b-ov] 停服；产物：4 个文件
+[01:36:45] == P4 smalls 结束 ｜ 显存 0 MiB ==
+[01:36:45] P4_smalls_DONE
+[01:37:45] == P4 smalls 开始 ｜ 显存 0 MiB ｜ 每格 6 线程 ==
+[01:37:45] [Qwen2.5-VL-3B-Instruct] 起服 frac=0.16 maxlen=8192
+[01:38:56] [Qwen3-VL-4B-Instruct] 起服 frac=0.16 maxlen=8192
+[01:38:56] [Qwen2.5-VL-3B-Instruct] 就绪（70 s）｜显存 11127 MiB
+[01:39:06] [Qwen2.5-VL-3B-Instruct] 256 完成
+[01:39:21] [Qwen2.5-VL-3B-Instruct] 768 完成
+[01:39:25] [Qwen2.5-VL-3B-Instruct] 停服；产物：4 个文件
+[01:40:06] [Qwen3-VL-8B-Instruct] 起服 frac=0.30 maxlen=8192
+[01:40:06] [Qwen3-VL-4B-Instruct] 就绪（70 s）｜显存 22624 MiB
+[01:40:06] [Qwen3-VL-4B-Instruct] 256 完成
+[01:40:07] [Qwen3-VL-4B-Instruct] 768 完成
+[01:40:11] [Qwen3-VL-4B-Instruct] 停服；产物：4 个文件
+[01:41:16] [llava-onevision-qwen2-7b-ov] 起服 frac=0.26 maxlen=8192
+[01:41:16] [Qwen3-VL-8B-Instruct] 就绪（70 s）｜显存 45180 MiB
+[01:41:27] [Qwen3-VL-8B-Instruct] 256 完成
+[01:41:42] [Qwen3-VL-8B-Instruct] 768 完成
+[01:41:46] [Qwen3-VL-8B-Instruct] 停服；产物：4 个文件
+[01:42:26] [llava-onevision-qwen2-7b-ov] 就绪（70 s）｜显存 65677 MiB
+[01:42:26] [llava-onevision-qwen2-7b-ov] 256 完成
+[01:42:27] [llava-onevision-qwen2-7b-ov] 768 完成
+[01:42:31] [llava-onevision-qwen2-7b-ov] 停服；产物：4 个文件
+[01:42:34] == P4 smalls 结束 ｜ 显存 0 MiB ==
+[01:42:34] P4_smalls_DONE
+[01:48:14] == P4 smalls 开始 ｜ 显存 0 MiB ｜ 每格 6 线程 ==
+[01:48:14] [Qwen2.5-VL-3B-Instruct] 起服 frac=0.16 maxlen=8192
+[01:49:14] [Qwen3-VL-4B-Instruct] 起服 frac=0.16 maxlen=8192
+[01:49:14] [Qwen2.5-VL-3B-Instruct] 就绪（60 s）｜显存 11127 MiB
+[01:49:24] [Qwen2.5-VL-3B-Instruct] 256 完成
+[01:49:39] [Qwen2.5-VL-3B-Instruct] 768 完成
+[01:49:43] [Qwen2.5-VL-3B-Instruct] 停服；产物：4 个文件
+[01:50:24] [Qwen3-VL-8B-Instruct] 起服 frac=0.30 maxlen=8192
+[01:50:24] [Qwen3-VL-4B-Instruct] 就绪（70 s）｜显存 22624 MiB
+[01:50:35] [Qwen3-VL-4B-Instruct] 256 完成
+[01:50:50] [Qwen3-VL-4B-Instruct] 768 完成
+[01:50:54] [Qwen3-VL-4B-Instruct] 停服；产物：4 个文件
+[01:51:34] [llava-onevision-qwen2-7b-ov] 起服 frac=0.26 maxlen=8192
+[01:51:34] [Qwen3-VL-8B-Instruct] 就绪（70 s）｜显存 45180 MiB
+[01:51:47] [Qwen3-VL-8B-Instruct] 256 完成
+[01:52:02] [Qwen3-VL-8B-Instruct] 768 完成
+[01:52:06] [Qwen3-VL-8B-Instruct] 停服；产物：4 个文件
+[01:52:34] [llava-onevision-qwen2-7b-ov] 就绪（60 s）｜显存 65677 MiB
+[01:52:44] [llava-onevision-qwen2-7b-ov] 256 完成
+[01:52:59] [llava-onevision-qwen2-7b-ov] 768 完成
+[01:53:03] [llava-onevision-qwen2-7b-ov] 停服；产物：4 个文件
+[01:53:06] == P4 smalls 结束 ｜ 显存 0 MiB ==
+[01:53:06] P4_smalls_DONE
+[01:57:50] == P4 smalls 开始 ｜ 显存 0 MiB ｜ 每格 6 线程 ==
+[01:57:50] [Qwen2.5-VL-3B-Instruct] 起服 frac=0.16 maxlen=8192
+[01:59:00] [Qwen3-VL-4B-Instruct] 起服 frac=0.16 maxlen=8192
+[01:59:00] [Qwen2.5-VL-3B-Instruct] 就绪（70 s）｜显存 11127 MiB
+[01:59:20] [Qwen2.5-VL-3B-Instruct] 256 完成（ERR 行 0/600）
+[02:00:20] [Qwen3-VL-8B-Instruct] 起服 frac=0.30 maxlen=8192
+[02:00:20] [Qwen3-VL-4B-Instruct] 就绪（80 s）｜显存 23940 MiB
+[02:00:22] [Qwen2.5-VL-3B-Instruct] 768 完成（ERR 行 0/600）
+[02:00:26] [Qwen2.5-VL-3B-Instruct] 停服；产物：4 个文件
+[02:00:37] [Qwen3-VL-4B-Instruct] 256 完成（ERR 行 0/600）
+[02:01:25] [Qwen3-VL-4B-Instruct] 768 完成（ERR 行 0/600）
+[02:01:29] [Qwen3-VL-4B-Instruct] 停服；产物：4 个文件
+[02:01:40] [llava-onevision-qwen2-7b-ov] 起服 frac=0.26 maxlen=8192
+[02:01:40] [Qwen3-VL-8B-Instruct] 就绪（80 s）｜显存 47956 MiB
+[02:02:02] [Qwen3-VL-8B-Instruct] 256 完成（ERR 行 0/600）
+[02:02:50] [llava-onevision-qwen2-7b-ov] 就绪（70 s）｜显存 70883 MiB
+[02:03:20] [Qwen3-VL-8B-Instruct] 768 完成（ERR 行 0/600）
+[02:03:24] [Qwen3-VL-8B-Instruct] 停服；产物：4 个文件
+[02:04:17] [llava-onevision-qwen2-7b-ov] 256 完成（ERR 行 0/600）
+[02:07:42] == P4 big 开始 ｜ 显存 0 MiB ｜ 每格 6 线程 ==
+[02:07:42] [Qwen3-VL-32B-Instruct] 起服 frac=0.85 maxlen=4096
+[02:09:12] [Qwen3-VL-32B-Instruct] 就绪（90 s）｜显存 67185 MiB
+[02:09:15] == P4 a3b 开始 ｜ 显存 0 MiB ｜ 每格 6 线程 ==
+[02:09:15] [Qwen3-VL-30B-A3B-Instruct] 起服 frac=0.85 maxlen=4096
+[02:11:10] [llava-onevision-qwen2-7b-ov] 768 完成（ERR 行 38/600）
+[02:11:14] [llava-onevision-qwen2-7b-ov] 停服；产物：4 个文件
+[02:11:16] [Qwen3-VL-30B-A3B-Instruct] !! 进程退出
+[02:11:16] [Qwen3-VL-30B-A3B-Instruct] 跳过
+[02:11:29] == P4 a3b 结束 ｜ 显存 0 MiB ==
+[02:11:29] P4_a3b_DONE
+[02:11:48] == P4 llava 开始 ｜ 显存 0 MiB ｜ 每格 6 线程 ==
+[02:11:48] [llava-onevision-qwen2-7b-ov] 起服 frac=0.26 maxlen=8192
+[02:12:59] [llava-onevision-qwen2-7b-ov] 就绪（70 s）｜显存 20501 MiB
+[02:12:59] [llava-onevision-qwen2-7b-ov] 256 完成（ERR 行 0/600）
+[02:13:00] [llava-onevision-qwen2-7b-ov] 768 完成（ERR 行 38/600）
+[02:13:04] [llava-onevision-qwen2-7b-ov] 停服；产物：4 个文件
+[02:13:07] == P4 llava 结束 ｜ 显存 0 MiB ==
+[02:13:07] P4_llava_DONE
+[02:17:27] == P4 big 开始 ｜ 显存 0 MiB ｜ 每格 6 线程 ==
+[02:17:27] [Qwen3-VL-32B-Instruct] 起服 frac=0.85 maxlen=4096
+[02:18:47] [Qwen3-VL-32B-Instruct] 就绪（80 s）｜显存 67485 MiB
+[02:19:43] [Qwen3-VL-32B-Instruct] 256 完成（ERR 行 0/744）
+[02:19:43] [Qwen3-VL-32B-Instruct] 256 完成（ERR 行 0/746）
+[02:22:53] [Qwen3-VL-32B-Instruct] 768 完成（ERR 行 0/1202）
+[02:22:53] [Qwen3-VL-32B-Instruct] 768 完成（ERR 行 0/1202）
+[02:22:57] [Qwen3-VL-32B-Instruct] 停服；产物：4 个文件
+[02:22:57] [Qwen3-VL-32B-Instruct] 停服；产物：4 个文件
+[02:23:00] == P4 big 结束 ｜ 显存 0 MiB ==
+[02:23:00] P4_big_DONE
+[02:23:03] == P4 a3b 开始 ｜ 显存 0 MiB ｜ 每格 6 线程 ==
+[02:23:03] [Qwen3-VL-30B-A3B-Instruct] 起服 frac=0.85 maxlen=4096
+[02:25:23] [Qwen3-VL-30B-A3B-Instruct] 就绪（140 s）｜显存 67981 MiB
+[02:25:56] [Qwen3-VL-30B-A3B-Instruct] 256 完成（ERR 行 0/600）
+[02:27:00] [Qwen3-VL-30B-A3B-Instruct] 768 完成（ERR 行 0/600）
+[02:27:04] [Qwen3-VL-30B-A3B-Instruct] 停服；产物：4 个文件
+[02:27:07] == P4 a3b 结束 ｜ 显存 0 MiB ==
+[02:27:07] P4_a3b_DONE
+[04:17:07] == P4 llava 开始 ｜ 显存 0 MiB ｜ 每格 6 线程 ==
+[04:17:07] [llava-onevision-qwen2-7b-ov] 起服 frac=0.26 maxlen=8192
+[04:19:08] [llava-onevision-qwen2-7b-ov] !! 进程退出
+[04:19:08] [llava-onevision-qwen2-7b-ov] 跳过
+[04:19:21] == P4 llava 结束 ｜ 显存 0 MiB ==
+[04:19:21] P4_llava_DONE
+[04:24:22] == P4 llava 开始 ｜ 显存 0 MiB ｜ 每格 6 线程 ==
+[04:24:22] [llava-onevision-qwen2-7b-ov] 起服 frac=0.26 maxlen=8192
+[04:25:32] [llava-onevision-qwen2-7b-ov] 就绪（70 s）｜显存 20501 MiB
+[04:25:32] [llava-onevision-qwen2-7b-ov] 256 完成（ERR 行 0/600）
+[04:25:46] [llava-onevision-qwen2-7b-ov] 768 完成（ERR 行 2/600）
+[04:25:50] [llava-onevision-qwen2-7b-ov] 停服；产物：4 个文件
+[04:25:53] == P4 llava 结束 ｜ 显存 0 MiB ==
+[04:25:53] P4_llava_DONE

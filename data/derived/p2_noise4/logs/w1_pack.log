@@ -1,0 +1,6 @@
+[03:38:31] 等待 W1_RECOVER3_DONE …
+[04:06:32] 流水线已结束（或等待超时）⇒ 开始打包
+[04:06:35] GPU 现值：0 MiB
+[04:06:35] 打包完成：584K  a9e209f984a8252e6fdce78efe43c0c9
+[04:06:35] 产物计数：zero=80 nonzero=60 fsc=20 hosted=12
+W1_PACK_DONE

@@ -1,0 +1,63 @@
+{
+ "round": "g8",
+ "frozen_at": "2026-09-27",
+ "frozen_by": "P3 owner (author side)",
+ "requester": "grok47 X2（v0573 盲审）",
+ "quote_verbatim": "补完 UCF-QNRF 的英文臂（现 203/334 为 HTTP 400）；判据：英文四格 S 是否都落 [0,1] 且 ≥70% ⇒ 决定\"语言迁移\"能不能改信；约 334 次调用；需提高 max-model-len 或缩长边（会破坏与已发表语料的可比配置 ⇒ 须谨慎）",
+ "design": {
+  "item_set": "**逐字取自已发表的中文 UCF-QNRF 头条格逐项记录** `/root/dense_results/vlm_ucf_base_whole.csv` 的 `item` 列（**334 项**，一个不多一个不少）⇒ 与已发表语料**配对**。",
+  "images": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test（runner 启动时断言 334 项全部能解析到文件）",
+  "gt": "同一份已发表记录里的 `gt` 列（runner 启动时断言 334 项 gt 齐备）",
+  "arms_run_now": [
+   "en:base",
+   "en:channel",
+   "cn:base"
+  ],
+  "why_these_arms": "评审要的是**英文那一格的 $S$**，$S$ 只建立在 `base` 臂上；另跑 `en:channel` 一臂是 M.38 那条\"通道是否被选择性使用\"的同批旁证；**同会话再跑一遍 `cn:base`** 是为了给出**同构建、配对**的中英对照（否则只能与另一台机器的 AWQ 记录比）。",
+  "calls": "334 × 3 = **1,002 次调用**",
+  "max_model_len_ladder_preregistered": [
+   16384,
+   32768,
+   65536
+  ],
+  "max_model_len_rule": "按上表**依次**起服，取**第一个 0 个 HTTP 400** 的档位；若 65536 仍有 400，则该格**报为仍不可测**，**不用缩长边**（缩长边会改变输入，破坏与已发表语料的配对，评审自己也点了这一条）。",
+  "reference_published": "已发表的三个英文格（st_a / VisDrone / AI-TOD）是在**另一台机器、AWQ 构建**上测的 ⇒ 本格的**构建与它们不同**，见 declared_deviation。"
+ },
+ "prompts_verbatim": {
+  "en:base": "Count the number of people in the image (every head or body in the crowd). Do not miss any and do not double-count. Output in JSON format: {\"count\": number}, output JSON only.",
+  "en:channel": "Judge the number of people in this image. You may: (1) give a number; (2) answer \"cannot_judge\" if you cannot judge; (3) answer \"no_people\" if there are no recognizable individuals in the image. Output in JSON format: {\"response\": ...}, output JSON only.",
+  "cn:base": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复，以JSON格式输出：{\"count\": 数量}，只输出JSON。"
+ },
+ "prompts_not_used_but_frozen": {
+  "en:permit": "Count the number of people in the image (every head or body in the crowd). If you cannot confirm each one individually, answer abstain rather than guessing. Output in JSON format: {\"count\": number} or {\"count\": \"abstain\"}, output JSON only.",
+  "cn:permit": "请数出图片中的人数（人群中的每个人头或人体）。如果你无法逐个确证，请回答 abstain，而不要猜测。以JSON格式输出：{\"count\": 数量} 或 {\"count\": \"abstain\"}，只输出JSON。",
+  "cn:channel": "请判断这张图片中的人数。你可以：①给出数字；②回答 \"cannot_judge\" 表示无法判断；③回答 \"no_people\" 表示画面中没有可辨认的个体。以JSON格式输出：{\"response\": ...}，只输出JSON。"
+ },
+ "estimands": {
+  "answered_zero_rate": "pred == 0 的占比（分母 = 解析成功的项）",
+  "rho_answered": "ρ = 100·(Σpred − Σgt)/Σgt，**在作答子集上**（pred ≠ 0）",
+  "S": "S = (G − G_N)/(G − P)，与 §5.5/§M.18.9 同定义；**仅当 ρ_total < 0 时有定义**，否则如实报\"无定义\"而不填数。"
+ },
+ "criteria_fixed_in_advance": {
+  "C1_reviewer": {
+   "statement": "★ 评审原文判据。",
+   "rule": "本格（UCF-QNRF 英文 base）的 S 落在 **[0, 1]** 且 **≥ 70%**。",
+   "fail_reads_as": "S 越出 [0,1] ⇒ 与 §M.19.16 已在最密格发现的现象一致（作答子集过计，份额不再是份额）；S < 70% ⇒ 英文侧该格不满足头条阈值。"
+  },
+  "C2_partial_measurement": {
+   "rule": "报出 **HTTP 400 的项数**；若 > 0，则该格按**实际可测子集**报率，并**同时**报\"以 334 为分母的保守下界\"，两个数都给，不挑一个。"
+  },
+  "C3_build": {
+   "rule": "本格**不与**已发表的三格并表：只作**单独标注的新臂**报，并在同一句里写明构建不同。"
+  }
+ },
+ "declared_deviation": [
+  "构建：已发表的三格是 AWQ-4bit（另一台机器），本轮是 **BF16**（本机）⇒ **绝对值不可与那三格并列**。",
+  "推理栈：vLLM 0.29.0；`max-model-len` 按预注册阶梯提到能容纳该语料为止（这正是评审自己指出的修法）。",
+  "不做缩长边：那会改变输入像素，破坏与已发表记录的配对。"
+ ],
+ "discipline": {
+  "instrument": "`19f_probe_ablation.py`（md5 28e82b20a7f468680da11b2e9855cff9）由 importlib 载入，`parse()` / `b64_of()` / `call_img()` **逐字复用**；英文提示词表逐字取自 `20b_probe_lang.py`（md5 77385964ee28d6bf26b8a2a3dcca1975），runner 启动时断言两个 md5 并**逐字比对三条提示词**。",
+  "serving": "temperature 0、max_tokens 128（与冻结探针一致）、一个请求一张图。"
+ }
+}

@@ -1,0 +1,59 @@
+[11:55:48] ########## A5 追加实验（第三批）开始（先等第二批）##########
+[12:26:48]   第二批已完成，开始
+[12:26:48] ---- 阶段 E：InternVL3.5-8B @ visdrone ----
+[12:27:36]   [extra3_ivl] 起服就绪（45s）
+  base 臂 pred==0 的 item 共 273 个；本次抽 150 个（gt 从 1 到 8）
+  [base] 150 行；pred==0 的 94 个；-> /root/e1_results_ablate3/e1_InternVL3_5-8B_visdrone_base_s640.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/e1_results_ablate3/e1_InternVL3_5-8B_visdrone_permit_s640.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/e1_results_ablate3/e1_InternVL3_5-8B_visdrone_channel_s640.csv
+[12:28:03]   [extra3_ivl/visdrone] s640 rc=0
+  base 臂 pred==0 的 item 共 273 个；本次抽 150 个（gt 从 1 到 8）
+  [base] 150 行；pred==0 的 94 个；-> /root/e1_results_ablate3/e1_InternVL3_5-8B_visdrone_base_s1536.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/e1_results_ablate3/e1_InternVL3_5-8B_visdrone_permit_s1536.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/e1_results_ablate3/e1_InternVL3_5-8B_visdrone_channel_s1536.csv
+[12:29:30]   [extra3_ivl/visdrone] s1536 rc=0
+  base 臂 pred==0 的 item 共 273 个；本次抽 150 个（gt 从 1 到 8）
+  [base] 150 行；pred==0 的 84 个；-> /root/e1_results_ablate3/e1_InternVL3_5-8B_visdrone_base_native_sys.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/e1_results_ablate3/e1_InternVL3_5-8B_visdrone_permit_native_sys.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/e1_results_ablate3/e1_InternVL3_5-8B_visdrone_channel_native_sys.csv
+[12:30:55]   [extra3_ivl/visdrone] sys rc=0
+[12:30:55] ---- 阶段 F：Phi-3.5-Vision @ visdrone ----
+[12:31:43]   [extra3_phi] 起服就绪（45s）
+  base 臂 pred==0 的 item 共 273 个；本次抽 150 个（gt 从 1 到 8）
+  [base] 150 行；pred==0 的 93 个；-> /root/e1_results_ablate3/e1_Phi-3.5-vision-instruct_visdrone_base_s640.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/e1_results_ablate3/e1_Phi-3.5-vision-instruct_visdrone_permit_s640.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/e1_results_ablate3/e1_Phi-3.5-vision-instruct_visdrone_channel_s640.csv
+[12:32:10]   [extra3_phi/visdrone] s640 rc=0
+  base 臂 pred==0 的 item 共 273 个；本次抽 150 个（gt 从 1 到 8）
+  [base] 150 行；pred==0 的 92 个；-> /root/e1_results_ablate3/e1_Phi-3.5-vision-instruct_visdrone_base_s1536.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/e1_results_ablate3/e1_Phi-3.5-vision-instruct_visdrone_permit_s1536.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/e1_results_ablate3/e1_Phi-3.5-vision-instruct_visdrone_channel_s1536.csv
+[12:32:37]   [extra3_phi/visdrone] s1536 rc=0
+  base 臂 pred==0 的 item 共 273 个；本次抽 150 个（gt 从 1 到 8）
+  [base] 150 行；pred==0 的 7 个；-> /root/e1_results_ablate3/e1_Phi-3.5-vision-instruct_visdrone_base_native_sys.csv
+  [permit] 150 行；pred==0 的 0 个；-> /root/e1_results_ablate3/e1_Phi-3.5-vision-instruct_visdrone_permit_native_sys.csv
+  [channel] 150 行；pred==0 的 0 个；-> /root/e1_results_ablate3/e1_Phi-3.5-vision-instruct_visdrone_channel_native_sys.csv
+[12:33:34]   [extra3_phi/visdrone] sys rc=0
+[12:33:34] ---- 阶段 G：Qwen3-VL-32B-Instruct BF16 @ st_a ----
+[12:37:38]   [extra3_q32] 起服就绪（240s）
+[12:37:38]   [q32/st_a] 变体 native
+  base 臂 pred==0 的 item 共 103 个；本次抽 103 个（gt 从 138 到 2256）
+  [base] 103 行；pred==0 的 62 个；-> /root/e1_results_ablate3/e1_Qwen3-VL-32B-Instruct_st_a_base_native.csv
+  [permit] 103 行；pred==0 的 0 个；-> /root/e1_results_ablate3/e1_Qwen3-VL-32B-Instruct_st_a_permit_native.csv
+  [channel] 103 行；pred==0 的 0 个；-> /root/e1_results_ablate3/e1_Qwen3-VL-32B-Instruct_st_a_channel_native.csv
+[12:38:49]      rc=0
+[12:38:49]   [q32/st_a] 变体 --imgsz 640
+  base 臂 pred==0 的 item 共 103 个；本次抽 103 个（gt 从 138 到 2256）
+  [base] 103 行；pred==0 的 69 个；-> /root/e1_results_ablate3/e1_Qwen3-VL-32B-Instruct_st_a_base_s640.csv
+  [permit] 103 行；pred==0 的 0 个；-> /root/e1_results_ablate3/e1_Qwen3-VL-32B-Instruct_st_a_permit_s640.csv
+  [channel] 103 行；pred==0 的 0 个；-> /root/e1_results_ablate3/e1_Qwen3-VL-32B-Instruct_st_a_channel_s640.csv
+[12:39:34]      rc=0
+[12:39:34]   [q32/st_a] 变体 sys
+  base 臂 pred==0 的 item 共 103 个；本次抽 103 个（gt 从 138 到 2256）
+  [base] 103 行；pred==0 的 69 个；-> /root/e1_results_ablate3/e1_Qwen3-VL-32B-Instruct_st_a_base_native_sys.csv
+  [permit] 103 行；pred==0 的 0 个；-> /root/e1_results_ablate3/e1_Qwen3-VL-32B-Instruct_st_a_permit_native_sys.csv
+  [channel] 103 行；pred==0 的 0 个；-> /root/e1_results_ablate3/e1_Qwen3-VL-32B-Instruct_st_a_channel_native_sys.csv
+[12:40:44]      rc=0
+[12:40:44] 文件清点：ablate3 27 个
+[12:40:44] ########## A5 追加实验（第三批）结束 ##########
+A5_EXTRA3_DONE

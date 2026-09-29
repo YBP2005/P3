@@ -1,0 +1,22 @@
+归档 /root/w1_results/fsc_sc256/fsc_Qwen3-VL-32B-Instruct_base.csv
+=== 32B ===
+[02:17:27] == P4 big 开始 ｜ 显存 0 MiB ｜ 每格 6 线程 ==
+[02:17:27] [Qwen3-VL-32B-Instruct] 起服 frac=0.85 maxlen=4096
+[02:18:47] [Qwen3-VL-32B-Instruct] 就绪（80 s）｜显存 67485 MiB
+[02:19:43] [Qwen3-VL-32B-Instruct] 256 完成（ERR 行 0/746）
+[02:22:53] [Qwen3-VL-32B-Instruct] 768 完成（ERR 行 0/1202）
+/root/p4_run.sh: line 44: 15647 Killed                  nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization "$FRAC" --max-num-seqs 24 --port "$PORT" < /dev/null > "$LOG" 2>&1
+[02:22:57] [Qwen3-VL-32B-Instruct] 停服；产物：4 个文件
+[02:23:00] == P4 big 结束 ｜ 显存 0 MiB ==
+[02:23:00] P4_big_DONE
+=== 30B-A3B ===
+[02:23:03] == P4 a3b 开始 ｜ 显存 0 MiB ｜ 每格 6 线程 ==
+[02:23:03] [Qwen3-VL-30B-A3B-Instruct] 起服 frac=0.85 maxlen=4096
+[02:25:23] [Qwen3-VL-30B-A3B-Instruct] 就绪（140 s）｜显存 67981 MiB
+[02:25:56] [Qwen3-VL-30B-A3B-Instruct] 256 完成（ERR 行 0/600）
+[02:27:00] [Qwen3-VL-30B-A3B-Instruct] 768 完成（ERR 行 0/600）
+/root/p4_run.sh: line 44: 16085 Killed                  nohup $VLLM serve "$MP" --served-model-name "$N" --max-model-len "$ML" --limit-mm-per-prompt '{"image": 1}' --gpu-memory-utilization "$FRAC" --max-num-seqs 24 --port "$PORT" < /dev/null > "$LOG" 2>&1
+[02:27:04] [Qwen3-VL-30B-A3B-Instruct] 停服；产物：4 个文件
+[02:27:07] == P4 a3b 结束 ｜ 显存 0 MiB ==
+[02:27:07] P4_a3b_DONE
+P4_FINISH_DONE

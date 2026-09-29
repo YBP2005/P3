@@ -1,0 +1,721 @@
+{
+  "study": "E-C language-equivalence control (paired, same items)",
+  "design": "the frozen Chinese arm prompts were rendered into semantically equivalent English and re-run on exactly the items already scored under Chinese; frozen probe imported unchanged; English prompt table md5 a31bd97c6b70",
+  "parsing": "raw-text matching (as in E-A and the paper §8.1/§11.2)",
+  "cells": {
+    "InternVL3_5-8B": {
+      "z0easy": {
+        "base": {
+          "n": 153,
+          "agreement": 0.9935,
+          "kappa": 0.9805,
+          "cn": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.7843,
+            "num": 0.2157
+          },
+          "en": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.7908,
+            "num": 0.2092
+          }
+        },
+        "channel": {
+          "n": 153,
+          "agreement": 0.9542,
+          "kappa": 0.8103,
+          "cn": {
+            "no_people": 0.8693,
+            "cannot_judge": 0.085,
+            "zero": 0.0,
+            "num": 0.0458
+          },
+          "en": {
+            "no_people": 0.8627,
+            "cannot_judge": 0.0654,
+            "zero": 0.0,
+            "num": 0.0719
+          }
+        }
+      },
+      "z0hard": {
+        "base": {
+          "n": 153,
+          "agreement": 0.9739,
+          "kappa": 0.9259,
+          "cn": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.7778,
+            "num": 0.2222
+          },
+          "en": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.7647,
+            "num": 0.2353
+          }
+        },
+        "channel": {
+          "n": 153,
+          "agreement": 0.915,
+          "kappa": 0.6234,
+          "cn": {
+            "no_people": 0.8889,
+            "cannot_judge": 0.0523,
+            "zero": 0.0,
+            "num": 0.0588
+          },
+          "en": {
+            "no_people": 0.8627,
+            "cannot_judge": 0.0261,
+            "zero": 0.0,
+            "num": 0.1046
+          }
+        }
+      },
+      "d0st_a": {
+        "base": {
+          "n": 103,
+          "agreement": 0.9126,
+          "kappa": -0.0109,
+          "cn": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.0097,
+            "num": 0.9903
+          },
+          "en": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.0194,
+            "num": 0.9223
+          }
+        },
+        "channel": {
+          "n": 103,
+          "agreement": 0.9709,
+          "kappa": -0.0098,
+          "cn": {
+            "no_people": 0.0097,
+            "cannot_judge": 0.9903,
+            "zero": 0.0,
+            "num": 0.0
+          },
+          "en": {
+            "no_people": 0.0097,
+            "cannot_judge": 0.9806,
+            "zero": 0.0,
+            "num": 0.0097
+          }
+        }
+      },
+      "d0ucf": {
+        "base": {
+          "n": 150,
+          "agreement": 0.9533,
+          "kappa": 0.1184,
+          "cn": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.0067,
+            "num": 0.9933
+          },
+          "en": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.0133,
+            "num": 0.9533
+          }
+        },
+        "channel": {
+          "n": 150,
+          "agreement": 0.98,
+          "kappa": 0.0,
+          "cn": {
+            "no_people": 0.0,
+            "cannot_judge": 1.0,
+            "zero": 0.0,
+            "num": 0.0
+          },
+          "en": {
+            "no_people": 0.0133,
+            "cannot_judge": 0.98,
+            "zero": 0.0,
+            "num": 0.0067
+          }
+        }
+      }
+    },
+    "Phi-3.5-vision-instruct": {
+      "z0easy": {
+        "base": {
+          "n": 153,
+          "agreement": 0.7908,
+          "kappa": 0.5071,
+          "cn": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.7778,
+            "num": 0.1765
+          },
+          "en": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.6993,
+            "num": 0.1373
+          }
+        },
+        "channel": {
+          "n": 153,
+          "agreement": 0.9542,
+          "kappa": 0.8919,
+          "cn": {
+            "no_people": 0.6928,
+            "cannot_judge": 0.3072,
+            "zero": 0.0,
+            "num": 0.0
+          },
+          "en": {
+            "no_people": 0.6993,
+            "cannot_judge": 0.3007,
+            "zero": 0.0,
+            "num": 0.0
+          }
+        }
+      },
+      "z0hard": {
+        "base": {
+          "n": 153,
+          "agreement": 0.8562,
+          "kappa": 0.5856,
+          "cn": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.8039,
+            "num": 0.1895
+          },
+          "en": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.7778,
+            "num": 0.1438
+          }
+        },
+        "channel": {
+          "n": 153,
+          "agreement": 0.9281,
+          "kappa": 0.7136,
+          "cn": {
+            "no_people": 0.8627,
+            "cannot_judge": 0.1373,
+            "zero": 0.0,
+            "num": 0.0
+          },
+          "en": {
+            "no_people": 0.8431,
+            "cannot_judge": 0.1569,
+            "zero": 0.0,
+            "num": 0.0
+          }
+        }
+      },
+      "d0st_a": {
+        "base": {
+          "n": 103,
+          "agreement": 0.9223,
+          "kappa": 0.0,
+          "cn": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.0,
+            "num": 1.0
+          },
+          "en": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.0,
+            "num": 0.9223
+          }
+        },
+        "channel": {
+          "n": 103,
+          "agreement": 1.0,
+          "kappa": null,
+          "cn": {
+            "no_people": 0.0,
+            "cannot_judge": 1.0,
+            "zero": 0.0,
+            "num": 0.0
+          },
+          "en": {
+            "no_people": 0.0,
+            "cannot_judge": 1.0,
+            "zero": 0.0,
+            "num": 0.0
+          }
+        }
+      },
+      "d0ucf": {
+        "base": {
+          "n": 150,
+          "agreement": 0.9467,
+          "kappa": 0.0,
+          "cn": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.0,
+            "num": 1.0
+          },
+          "en": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.0,
+            "num": 0.9467
+          }
+        },
+        "channel": {
+          "n": 150,
+          "agreement": 1.0,
+          "kappa": null,
+          "cn": {
+            "no_people": 0.0,
+            "cannot_judge": 1.0,
+            "zero": 0.0,
+            "num": 0.0
+          },
+          "en": {
+            "no_people": 0.0,
+            "cannot_judge": 1.0,
+            "zero": 0.0,
+            "num": 0.0
+          }
+        }
+      }
+    },
+    "llava-onevision-qwen2-7b-ov": {
+      "z0easy": {
+        "base": {
+          "n": 153,
+          "agreement": 0.8627,
+          "kappa": 0.6293,
+          "cn": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.719,
+            "num": 0.1503
+          },
+          "en": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.8431,
+            "num": 0.1569
+          }
+        },
+        "channel": {
+          "n": 153,
+          "agreement": 0.9739,
+          "kappa": 0.9149,
+          "cn": {
+            "no_people": 0.8105,
+            "cannot_judge": 0.1895,
+            "zero": 0.0,
+            "num": 0.0
+          },
+          "en": {
+            "no_people": 0.8105,
+            "cannot_judge": 0.1895,
+            "zero": 0.0,
+            "num": 0.0
+          }
+        }
+      },
+      "z0hard": {
+        "base": {
+          "n": 153,
+          "agreement": 0.8758,
+          "kappa": 0.6608,
+          "cn": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.719,
+            "num": 0.1765
+          },
+          "en": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.8431,
+            "num": 0.1569
+          }
+        },
+        "channel": {
+          "n": 153,
+          "agreement": 0.9608,
+          "kappa": 0.7959,
+          "cn": {
+            "no_people": 0.902,
+            "cannot_judge": 0.0784,
+            "zero": 0.0,
+            "num": 0.0065
+          },
+          "en": {
+            "no_people": 0.8889,
+            "cannot_judge": 0.0719,
+            "zero": 0.0,
+            "num": 0.0
+          }
+        }
+      },
+      "d0st_a": {
+        "base": {
+          "n": 103,
+          "agreement": 0.3883,
+          "kappa": 0.0,
+          "cn": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.0,
+            "num": 0.3883
+          },
+          "en": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.0,
+            "num": 1.0
+          }
+        },
+        "channel": {
+          "n": 103,
+          "agreement": 1.0,
+          "kappa": null,
+          "cn": {
+            "no_people": 0.0,
+            "cannot_judge": 1.0,
+            "zero": 0.0,
+            "num": 0.0
+          },
+          "en": {
+            "no_people": 0.0,
+            "cannot_judge": 1.0,
+            "zero": 0.0,
+            "num": 0.0
+          }
+        }
+      },
+      "d0ucf": {
+        "base": {
+          "n": 150,
+          "agreement": 0.7733,
+          "kappa": 0.0222,
+          "cn": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.0,
+            "num": 0.7733
+          },
+          "en": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.0067,
+            "num": 0.9933
+          }
+        },
+        "channel": {
+          "n": 150,
+          "agreement": 1.0,
+          "kappa": 1.0,
+          "cn": {
+            "no_people": 0.0,
+            "cannot_judge": 0.98,
+            "zero": 0.0,
+            "num": 0.02
+          },
+          "en": {
+            "no_people": 0.0,
+            "cannot_judge": 0.98,
+            "zero": 0.0,
+            "num": 0.02
+          }
+        }
+      }
+    },
+    "gemma3-12b": {
+      "z0easy": {
+        "base": {
+          "n": 153,
+          "agreement": 0.8693,
+          "kappa": 0.7337,
+          "cn": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.5359,
+            "num": 0.4641
+          },
+          "en": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.6275,
+            "num": 0.3725
+          }
+        },
+        "channel": {
+          "n": 153,
+          "agreement": 0.8235,
+          "kappa": 0.6917,
+          "cn": {
+            "no_people": 0.4706,
+            "cannot_judge": 0.4706,
+            "zero": 0.0,
+            "num": 0.0588
+          },
+          "en": {
+            "no_people": 0.5425,
+            "cannot_judge": 0.3529,
+            "zero": 0.0,
+            "num": 0.1046
+          }
+        }
+      },
+      "z0hard": {
+        "base": {
+          "n": 153,
+          "agreement": 0.9085,
+          "kappa": 0.8171,
+          "cn": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.4641,
+            "num": 0.5359
+          },
+          "en": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.5033,
+            "num": 0.4967
+          }
+        },
+        "channel": {
+          "n": 153,
+          "agreement": 0.8431,
+          "kappa": 0.7448,
+          "cn": {
+            "no_people": 0.3856,
+            "cannot_judge": 0.5163,
+            "zero": 0.0,
+            "num": 0.098
+          },
+          "en": {
+            "no_people": 0.4379,
+            "cannot_judge": 0.3856,
+            "zero": 0.0,
+            "num": 0.1765
+          }
+        }
+      },
+      "d0st_a": {
+        "base": {
+          "n": 103,
+          "agreement": 1.0,
+          "kappa": null,
+          "cn": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.0,
+            "num": 1.0
+          },
+          "en": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.0,
+            "num": 1.0
+          }
+        },
+        "channel": {
+          "n": 103,
+          "agreement": 1.0,
+          "kappa": null,
+          "cn": {
+            "no_people": 0.0,
+            "cannot_judge": 1.0,
+            "zero": 0.0,
+            "num": 0.0
+          },
+          "en": {
+            "no_people": 0.0,
+            "cannot_judge": 1.0,
+            "zero": 0.0,
+            "num": 0.0
+          }
+        }
+      },
+      "d0ucf": {
+        "base": {
+          "n": 150,
+          "agreement": 1.0,
+          "kappa": null,
+          "cn": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.0,
+            "num": 1.0
+          },
+          "en": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.0,
+            "num": 1.0
+          }
+        },
+        "channel": {
+          "n": 150,
+          "agreement": 1.0,
+          "kappa": null,
+          "cn": {
+            "no_people": 0.0,
+            "cannot_judge": 1.0,
+            "zero": 0.0,
+            "num": 0.0
+          },
+          "en": {
+            "no_people": 0.0,
+            "cannot_judge": 1.0,
+            "zero": 0.0,
+            "num": 0.0
+          }
+        }
+      }
+    },
+    "Qwen3-VL-32B-Instruct": {
+      "z0easy": {
+        "base": {
+          "n": 153,
+          "agreement": 0.9869,
+          "kappa": 0.9506,
+          "cn": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.8431,
+            "num": 0.1569
+          },
+          "en": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.8431,
+            "num": 0.1569
+          }
+        },
+        "channel": {
+          "n": 153,
+          "agreement": 0.915,
+          "kappa": 0.756,
+          "cn": {
+            "no_people": 0.7908,
+            "cannot_judge": 0.1307,
+            "zero": 0.0,
+            "num": 0.0784
+          },
+          "en": {
+            "no_people": 0.7908,
+            "cannot_judge": 0.1895,
+            "zero": 0.0,
+            "num": 0.0196
+          }
+        }
+      },
+      "z0hard": {
+        "base": {
+          "n": 153,
+          "agreement": 0.9869,
+          "kappa": 0.9506,
+          "cn": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.8366,
+            "num": 0.1634
+          },
+          "en": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.8497,
+            "num": 0.1503
+          }
+        },
+        "channel": {
+          "n": 153,
+          "agreement": 0.9608,
+          "kappa": 0.868,
+          "cn": {
+            "no_people": 0.8366,
+            "cannot_judge": 0.0654,
+            "zero": 0.0,
+            "num": 0.098
+          },
+          "en": {
+            "no_people": 0.8235,
+            "cannot_judge": 0.1046,
+            "zero": 0.0,
+            "num": 0.0719
+          }
+        }
+      },
+      "d0st_a": {
+        "base": {
+          "n": 103,
+          "agreement": 0.5728,
+          "kappa": 0.2457,
+          "cn": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.6019,
+            "num": 0.3981
+          },
+          "en": {
+            "no_people": 0.0,
+            "cannot_judge": 0.0,
+            "zero": 0.1748,
+            "num": 0.8252
+          }
+        },
+        "channel": {
+          "n": 103,
+          "agreement": 1.0,
+          "kappa": null,
+          "cn": {
+            "no_people": 0.0,
+            "cannot_judge": 1.0,
+            "zero": 0.0,
+            "num": 0.0
+          },
+          "en": {
+            "no_people": 0.0,
+            "cannot_judge": 1.0,
+            "zero": 0.0,
+            "num": 0.0
+          }
+        }
+      },
+      "d0ucf": {}
+    }
+  },
+  "headline": {
+    "channel_no_people_language_gap_pp": [
+      -7.2,
+      2.6
+    ],
+    "base_answered_zero_language_gap_pp": [
+      -12.4,
+      42.7
+    ],
+    "channel_agreement_median": 0.9709,
+    "answer": "The channel conclusion is language-robust (no_people rates agree to within a few pp), but the ANSWERED-ZERO rate is language-sensitive for the anchor lineage: Qwen3-VL-32B-Instruct answers 0 on 60.2% of the dense pool under Chinese and 17.5% under English, a 42.7 pp drop."
+  },
+  "quoted_display": {
+    "vanchor_cn_zero": "60.2%",
+    "anchor_en_zero": "17.5%",
+    "anchor_delta_pp": "42.7 pp",
+    "pair_n": "2645",
+    "note": "正文/附录若引用，直接用这些显示值。"
+  }
+}

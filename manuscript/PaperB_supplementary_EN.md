@@ -1786,7 +1786,7 @@ summary is **≥ 5 of 7 but not 6 of 7**, and the boundary case is **Gemma-3-12B
 counterexample — each is one on which the statistic has no resolution: Qwen3-VL-32B-AWQ is the one measured
 build whose **dense** zero rate is itself 95.3%, and Gemma-3-12B answers a number in *both* domains. The
 sharper form is measured **inside** one family, weights fixed: across the five Qwen3-VL-32B deployments the
-dense zero rate spans **81.3 pp** (9.0% → 95.3%) against **5.7 pp** aerially (92.7% → 98.3%). "Aerial zeros
+dense zero rate spans **81.3 pp** (13.4% → 94.7%) against **5.7 pp** aerially (92.7% → 98.3%). "Aerial zeros
 are near-universal" now carries **two** exceptions — the MoE build of §M.18.6 (11.0%) and **Gemma-3-12B
 (3.0%)**: 14 of 17 measured conditions, i.e. all four new unquantised builds except Gemma.
 
@@ -2137,7 +2137,7 @@ values of this section come from an **offline re-parse of the stored raw replies
 order: fenced+quoted, the frozen pattern, first integer), because the frozen probe's pattern requires the
 key to follow the brace while this batch emits quoted keys. Re-classifying all **3,600** items under
 **seven** conventions — the frozen regular expression, strict `json.loads`, raw-keyword matching,
-first-integer, the quoted-key rule alone, and the full priority pipeline — leaves the **zero / non-zero
+first-integer, the quoted-key rule alone, the full priority pipeline, and the classification as published — leaves the **zero / non-zero
 boundary row-identical**: **0 disagreements**. The same holds over all **95,160** rows of the three tables
 this bears on: the seven-family table of §M.19.2 (the largest spread in a family-level rate is
 **0.0000 pp**; the §P1 verdict is 7 of 7 under every convention), the **52** (configuration × domain) cells
@@ -3398,7 +3398,7 @@ the F.10 object (six detector ladders of 8–16 levels); the two are not compara
 
 **Which calibrators a deployer can actually use, and what they cost the ordering.** The ladder above tests
 one global map and per-unit maps; a deployer's realistic options sit between them, so we fit **eleven map
-shapes at four granularities** (global, per-domain, per-(domain × contract), per-knob, per-unit) on the same
+shapes at five granularities** (global, per-domain, per-(domain × contract), per-knob, per-unit) on the same
 36-unit set and the same split protocol, first reproducing all six pre-existing arms of **both** frozen
 artefacts to Δ = **0.0000**.
 
@@ -3423,7 +3423,7 @@ exactly five arms, and the between-unit spread of spans stays at ≈ **1.2×** f
 no other arm satisfies either. Those five leave the spread of spans **unchanged** (22.3–22.7× against 22.7×
 uncalibrated): they rescale the caliber without making two units comparable. Conversely, every arm that
 **does** pull the magnitudes toward a common scale — per-unit per-level 4.4×, per-unit isotonic 5×, per-unit
-quantile 7×, per-unit affine 11× — sits at ρ 0.41–0.54 with P(≥0.9) = 0. **Among eleven map shapes at four
+quantile 7×, per-unit affine 11× — sits at ρ 0.41–0.54 with P(≥0.9) = 0. **Among eleven map shapes at five
 granularities there is no arm in between.** The best deployable *nonlinear* families reach only 0.841
 (global kernel) and 0.852 (global sigmoid), below the bar and with no gain in comparability.
 

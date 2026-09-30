@@ -4581,7 +4581,7 @@ items × 3 arms × 4 families.
 | Qwen3-VL-32B-Instruct (anchor) | 0/70 = 0.00% *(95% upper bound 5.2%)* | 3/14 = **21.43%** *(95% upper bound 47.6%)* | **3.57%** | pass |
 | InternVL3.5-8B (control) | 0/6 = 0.00% *(95% upper bound 39.0%)* | 0/8 = 0.00% *(95% upper bound 32.4%)* | **0.00%** | pass |
 
-**Read the counts as well as the rates.** Several cells rest on 2–25 items, so their 95% upper bounds are wide (0 of 2 → up to 77.6%, 0 of 11 → up to 25.9%) and they are direction readings. With that caveat, **all four families are inside the 5% residual**, so the recipe's gate transfers to corpora and to families
+**Read the counts as well as the rates.** Several cells rest on 2–25 items, so their 95% upper bounds are wide (0 of 2 → up to 65.8%, 0 of 11 → up to 25.9%) and they are direction readings. **The interval family is named, because two are in use in this paper and they are not interchangeable:** the bound printed in the table above — and here — is the **Jeffreys** one-sided 95% upper limit; the **Clopper–Pearson** limit on the same 0-of-2 cell is **77.6%**. Both are above the 5% residual, so the verdict does not turn on the choice, but the label must carry the family it was computed under. With that caveat, **all four families are inside the 5% residual**, so the recipe's gate transfers to corpora and to families
 this paper never touched. One cell is above the bar and is reported rather than pooled away: the anchor
 build on TallyQA leaves **3 of 14** answered zeros (21.43%). The channel composition on the same runs shows
 the outlets being used rather than ignored — numbers 35–52%, `cannot_judge` 46–64%, `no_people` 0.3–2.0%,
@@ -4636,6 +4636,14 @@ baseline was served from; commit and per-shard digests frozen in the criteria fi
 runner** as (b) — the one this appendix already cites — and the same instrument, at temperature 0, over
 **three independent service starts**, on the corpus pools: 4 domains × 5 arms × 3 starts = **17,130 calls,
 0 unparsed**.
+
+**The serving path, stated rather than implied.** These rows — and the fp8 rows of §M.19.15 / §M.19.17 — were
+deployed on a machine whose compute capability is **8.0**. Weight-and-activation 8-bit inference requires
+capability **8.9** in the runtime we used, so on this host the loader selects the **weight-only** 8-bit path
+(the compressed-tensors `W8A16` scheme, whose documented floor is capability **7.5**) instead. The quantised
+weights are the published ones and the build card above is unaltered, but **the numeric path is not the one a
+deployment on 8.9-class hardware would take**, so these rows bound **the build**, not that path: they are
+evidence about how a quantised *checkpoint* behaves, and no claim here turns on activation quantisation.
 
 **A gate, honestly failed and then attributed.** The pre-registered check was that the new service reproduce
 the archived per-item outputs of the baseline. It did not, on two items per domain, so **the gate is reported

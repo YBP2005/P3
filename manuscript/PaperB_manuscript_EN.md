@@ -874,7 +874,7 @@ anchor lineage answers zero on **60.2%** of the dense pool under Chinese and **1
 measured here (**the share holds at BF16; the rate does not**; eight of nine further families and builds fall short; M.19.15). The true-zero pools differ by **54.7 pp**, so $p\approx1$ is not transferable (Appendix M.21.9).
 Two further limits: the abstention **share** leaves its unit interval when the net
 deviation is near zero — three of twenty cells, unmeasured rather than clipped — and the **English**
-prompt lowers the answered-zero rate on the dense domains only, by 18–22 pp on the **BF16** build, against **15–26 pp** on the corpus's own **third-party 4-bit** build, where two of the twenty cells stay outside the unit interval (Appendices M.19.16, M.46(c)).
+prompt lowers the answered-zero rate on the dense domains only, by 18–22 pp on the **BF16** build, against **15–26 pp** on the corpus's own **third-party 4-bit** build, where two of the twenty cells stay outside the unit interval (Appendices M.19.16, M.46(c)). **The 8-bit rows were served weight-only, not weight-and-activation 8-bit** — the hardware cannot select the latter — so they bound the build, not that path (M.46(c)).
 
 **Domain composition is not systematic**: the nine datasets span a legibility range rather than a stated
 population, so domain-level statements describe these domains, not a distribution.

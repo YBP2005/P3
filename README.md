@@ -41,7 +41,7 @@ weakened for release.
 
 | Claim in the paper | Reproduce with |
 |---|---|
-| Abstention share of the under-count (82–94%, base arm; 42.5–99.4% over all arms) | `code/analysis/recompute_S.py` over `data/derived/corpus/` — prints `w`, `rho_answered`, `rho_total` and the closed form `S` per domain and arm. |
+| Abstention share of the under-count (82–94%, base arm; **0–99.4%** over all arms) | `code/analysis/recompute_S.py` over `data/derived/corpus/` — prints `w`, `rho_answered`, `rho_total` and the closed form `S` per domain and arm. (The `42.5%` that appears beside these numbers in the paper is a **relative-deviation floor** of Mode A, *not* an abstention share; see §5.7's parenthetical.) |
 | The identity behind Proposition 4 / the dual-convention gap (61.3 / 57.5 / 40.6 / 40.6 pp) | same script; the identity `(1-w)(1+rho_ans)` reproduces every printed gap to <= 0.04 pp. |
 | The abstention channel is set by the output contract (E1: 1591/1591 explicit abstentions, median 2.463-9.452x when abstention is forbidden) | `data/derived/e1/*.csv` (raw responses included); summarised by `code/analysis/e1_evidence.py`. |
 | **The gate is the abstention token, not the enumeration demand** (E2 census: `enum`/`locate` arms produce zero explicit refusals while the same prompt plus one abstention token converts 98-100% of the items) | `code/analysis/e2_v7c_analysis.py` over `data/derived/e2/` (its §M.18.2 table); the arm prompts are in `code/experiments/19e_probe_multi.py`. |

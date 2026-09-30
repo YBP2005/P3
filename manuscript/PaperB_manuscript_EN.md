@@ -649,7 +649,7 @@ build, keeping 251 of those 277** while the *same* build on ShanghaiTech-A leave
 that build leaves **0** zeros — for it the outlet must be **enumerated as an option**
 rather than *permitted* (Appendix M.24.3). The gate is therefore
 **family × domain × wording conditional, not universal**, and we state that explicitly rather than as a
-dense-only caveat. **(iii) On this benchmark the convention moves magnitudes, not the ranking** (ρ by up to **44.0 pp**; Spearman **0.983**, 1 inversion of 36) — the same asymmetry §5.12 reports for the decision forms. Its sensitivity to the input scale is bounded in Appendix M.41.
+dense-only caveat. **(iii) On this benchmark the convention moves magnitudes, not the ρ ordering** (ρ by up to **44.0 pp**; Spearman **0.983**, 1 inversion of 36) — the same asymmetry §5.12 reports for the decision forms. Its sensitivity to the input scale is bounded in Appendix M.41.
 
 ### 5.14 A prospective test on an independently sampled panel
 
@@ -690,7 +690,7 @@ is present in frontier hosted models too; only its expression differs.
 the public benchmark the two conventions differ by a median of **32.9** counts and by up to **45.6**, while
 the spread between its nine configurations under the published convention is **2.6** counts — the convention
 effect is **12.7 times** the between-system spread, and the two conventions reorder the panel (**seven of
-36** pairs invert, Spearman **0.783**). Reporting one convention without the abstention mass therefore
+36** pairs invert, Spearman **0.783** on the MAE ordering). Reporting one convention without the abstention mass therefore
 publishes an ordering of abstention propensity; the correction needs no re-run, since
 $\mathrm{MAE}_A=(1-w)\,\mathrm{MAE}_B+w\,\overline{\mathrm{GT}}_{\text{abstained}}$ recovers it from
 any stored output (Appendix M.35).
@@ -827,8 +827,8 @@ fixed before the runs (Appendix M.46).
 
 ### 8.1 Disclosure of measurement fragility
 
-Six counts of measurement fragility are itemised with item-level impact in **Appendix M.32**: **Two runner defects**,
-one of them a dead parse branch recorded as a **third instrument finding**; **Run-to-run non-determinism**,
+Six counts of measurement fragility are itemised with item-level impact in **Appendix M.32**: **Two runner defects**
+and, separately, a dead parse branch recorded as a **third instrument finding**; **Run-to-run non-determinism**,
 characterised below; **Graded isolation**, with a residue ledger; **a census of anomalous predictions**;
 **No attention-based criterion**; and **Per-cell intervals are lower bounds**, the across-repeat term exceeding
 the interval width by roughly a factor of two where levels are few (§A.2). No aggregate above depends on the affected runs (§3.7, §5.1).
@@ -871,7 +871,7 @@ prompts, so we repeated the arms in a byte-frozen English rendering on the same 
 is language-robust (`no_people` differs by at most **7.2 pp**), but the answered-zero rate is not — the
 anchor lineage answers zero on **60.2%** of the dense pool under Chinese and **17.5%** under English, a
 **42.7 pp** drop **on the BF16 build** (Appendix M.39). The shares of §5.5 are therefore scoped to the prompt language and to the **one anchor build**
-measured here (**the share holds at BF16; the rate does not**; seven of eight further families and builds fall short; M.19.15). The true-zero pools differ by **54.7 pp**, so $p\approx1$ is not transferable (Appendix M.21.9).
+measured here (**the share holds at BF16; the rate does not**; eight of nine further families and builds fall short; M.19.15). The true-zero pools differ by **54.7 pp**, so $p\approx1$ is not transferable (Appendix M.21.9).
 Two further limits: the abstention **share** leaves its unit interval when the net
 deviation is near zero — three of twenty cells, unmeasured rather than clipped — and the **English**
 prompt lowers the answered-zero rate on the dense domains only, by 18–22 pp on the **BF16** build, against **15–26 pp** on the corpus's own **third-party 4-bit** build, where two of the twenty cells stay outside the unit interval (Appendices M.19.16, M.46(c)).
@@ -962,7 +962,7 @@ not-for-profit sectors.
 
 16. Trick, L. M., Pylyshyn, Z. W. Why are small and large numbers enumerated differently? A limited-capacity preattentive stage in vision. Psychol. Rev. 101(1):80–102, 1994. https://doi.org/10.1037/0033-295X.101.1.80.
 
-17. Fu, Y., Li, F., Liu, X., et al. NumerosityVLM: A Cognitively Inspired Benchmark for Interpreting Numerosity Representations in VLMs. preprint arXiv:2608.15425, 2026.
+17. Fu, Y., Li, F., Liu, X., et al. NumerosityVLM: A Cognitively Inspired Benchmark for Interpreting Numerosity Representations in Vision-Language Models. preprint arXiv:2608.15425, 2026.
 
 18. Yu, F.-S., Li, J., Wang, X., et al. Large, Complex, and Realistic Safety Clothing and Helmet Detection: Dataset and Method. preprint arXiv:2306.02098, 2023.
 

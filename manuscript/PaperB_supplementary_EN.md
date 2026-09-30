@@ -1419,7 +1419,10 @@ bimodality, since with four knob **sides** collapsed into ten units a bimodality
 **§5.5.** Across the other arms the same quantity runs from **42.5%** — ShanghaiTech-B under the `under` arm, a cell
 whose abstention rate is itself only 13.6% — to **99.4%** (ShanghaiTech-A, `under` arm); the `over` arm has **0%** — its prompt requires every
 possible target to be counted, so it never abstains — and the dense `base` cells sit at
-**93.7–94.2%**. The same abstention term under the item-count convention is 53.9–68.2%. The
+**93.7–94.2%**. The same abstention term under the item-count convention is 53.9–68.2% — under that
+convention an abstained item contributes $pred=0$, so this term is **identically** the abstention rate itself
+(the last column of Table 3), which is why it is printed as a positive percentage while the ground-truth-weighted
+term beside it is negative. The
 two differ by **38–40 pp** on ShanghaiTech-A and UCF, which is why both must be reported. Case-resampling the per-item records (2,000 draws, seed 20260924, the convention of §7.3) puts $S$ at **90.8–97.0%** on ShanghaiTech-A and **91.2–96.0%** on UCF-QNRF, and the four headline values' intervals do not overlap. (*Reproduction: `p3r4_zero_1_S_ci.py`.*) Setting refusals
 aside entirely, the answered-only relative deviation is only **−19.8%** and **−29.2%** — these models are
 much closer to unbiased than the aggregate suggests.
@@ -2378,7 +2381,8 @@ All entries are answered-zero rates in percent. `δ` is the Chinese-versus-Engli
 `δe` is the difference between the two English renderings of the tail clause (with and without the emphasis
 markers the archived Chinese string carries, which we could not resolve from the archive). Item counts are
 the full corpus pools (182 / 334 / 400 / 226); UCF-QNRF loses **127 of 334** items to the context-limit
-error already disclosed in §M.39, and those are reported as **unmeasured rather than filled in**.
+error of the same kind disclosed in §M.39 (which reports **203 of 334** for its own 8,192-token run), and those
+are reported as **unmeasured rather than filled in**.
 
 **The mechanism reproduces on real images, and it is larger on the dense domains.** The added sentence lifts
 the zero rate by **+60 to +81 pp** on the two dense domains and by **+10 to +14 pp** on the two aerial ones —
@@ -2447,8 +2451,8 @@ does occur elsewhere on it (Qwen2.5-VL-72B-AWQ) — including a **larger build o
 (InternVL3.5-38B-fp8: dense
 zero-pool rate **7.38%** [4.72, 11.36] over **244** items — the nine of 253 with an empty `pred` are
 excluded from the rate, per this appendix's rule — share **18.28%**), which was run **once** and is an **fp8** build,
-so its precision axis moves with its family axis and the two cannot be separated from this row alone. **Its rebuild at BF16 — a larger non-Qwen build at the anchor's own precision, the cell this panel was missing — reaches only 9.56% (24/251, Wilson 95% [6.51, 13.83]) with a dense share of 23.20% over three fresh service starts, so it clears neither bar; and on the 244 items its two weight formats share, its fp8 and BF16 builds differ by +0.41 pp (95% [−2.05, +2.87]).** The precision axis on the **anchor's** own checkpoint spans three weights on the identical 253 items and is reported there as **indeterminate**, not as a small effect (§M.19.15.1). Eight of the ten rows therefore fall below the bar, and the two that clear it are the
-same checkpoint at two precisions. **The same checkpoint at BF16 clears the bar and does not reproduce it whole**: on the identical item sets it holds **82.27%** of the share (against **90.30%**, a paired bootstrap difference of **8.03 pp**, 95% **[−12.37, −3.75]**) while the answered-zero rate falls from **95.26%** to **64.03%**. The **share** is therefore a build-level quantity and the **rate** is a build-and-precision one on this checkpoint — though not on every one: on the 38B build the weight format does not move it at all (0.41 pp; §M.19.15.1) — which is the narrower reading §8.2 now states. Three denominators must not be crossed here: **64.03%** is the dense **intersection** (253 items), **65.02%** is this build's **own** dense zero pool (283 items), and **33.61%** is the dense rate on the **full** item set (482 items). This is sharper than "lineage- or build-specific": **the other Qwen anchor (AWQ) fails
+so its precision axis moves with its family axis and the two cannot be separated from this row alone. **Its rebuild at BF16 — a larger non-Qwen build at the anchor's own precision, the cell this panel was missing — reaches only 9.56% (24/251, Wilson 95% [6.51, 13.83]) with a dense share of 23.20% over three fresh service starts, so it clears neither bar; and on the 244 items its two weight formats share, its fp8 and BF16 builds differ by +0.41 pp (95% [−2.05, +2.87]).** The precision axis on the **anchor's** own checkpoint spans three weights on the identical 253 items and is reported there as **indeterminate**, not as a small effect (§M.19.17). Eight of the ten rows therefore fall below the bar, and the two that clear it are the
+same checkpoint at two precisions. **The same checkpoint at BF16 clears the bar and does not reproduce it whole**: on the identical item sets it holds **82.27%** of the share (against **90.30%**, a paired bootstrap difference of **8.03 pp**, 95% **[−12.37, −3.75]**) while the answered-zero rate falls from **95.26%** to **64.03%**. The **share** is therefore a build-level quantity and the **rate** is a build-and-precision one on this checkpoint — though not on every one: on the 38B build the weight format does not move it at all (0.41 pp; §M.19.17) — which is the narrower reading §8.2 now states. Three denominators must not be crossed here: **64.03%** is the dense **intersection** (253 items), **65.02%** is this build's **own** dense zero pool (283 items), and **33.61%** is the dense rate on the **full** item set (482 items). This is sharper than "lineage- or build-specific": **the other Qwen anchor (AWQ) fails
 as well** (dense 0.00%); the BF16 build of that same checkpoint clears it (64.03% / 82.27%). What the cross-family grid therefore supports is that the dense abstention channel
 belongs to **that build in that configuration** — the same conclusion §8.2 reaches from the five-deployment
 spread, now measured in the headline's own quantity.
@@ -2467,12 +2471,12 @@ the anchor family's files carry duplicate rows with a `#r` suffix (309 of 412 on
 the analyser's loader excludes them, and not excluding them **quadruples** the count (407 and 673 rather
 than 103 and 180, i.e. 102 and 166 zeros) and silently breaks agreement with M.19.2.*
 
-#### M.19.15.1 The missing cell, filled: a larger non-Qwen build at the anchor's own precision
+#### M.19.17 The missing cell, filled: a larger non-Qwen build at the anchor's own precision
 
 M.19.15's 38B row is the panel's only large non-Qwen build, and it is an fp8 one, so its two axes move
 together. The cell that separates them — **same family, same size, at the anchor's own precision** — had not
 been run. We ran it: **InternVL3.5-38B rebuilt at BF16**, on the same frozen item sets and the same
-instrument, with **three fresh service starts** and the served configuration held to the panel's own
+prompt set and parser, with **three fresh service starts** and the served configuration held to the panel's own
 (`max-model-len` 8192, `max-num-seqs` 24, one image per prompt, temperature 0, four-way concurrency).
 
 | start | dense zero-pool rate | Wilson 95% | $n$ | dense $S$ |
@@ -2485,8 +2489,8 @@ instrument, with **three fresh service starts** and the served configuration hel
 returned an empty `pred` in each start and are excluded from the pooled rate. The share $S$ is computed on
 the **full** dense set (480 items after the same exclusions), not on the zero pool. All three starts fall
 below both bars — a dense rate of 30% and a share of 50% — and the Wilson **upper** bounds are
-13.83 / 12.45 / 13.37%, so the failure does not turn on which start is read. The most conservative reading
-the appendix's cross-start rule allows is the largest of the three, 9.56%, and it too fails; the three
+13.83 / 12.45 / 13.37%, so the failure does not turn on which start is read. The most conservative of the
+three starts — the largest, 9.56% — is also below both bars; the three
 starts' zero / non-zero classification flips on 12 of 753 item pairs (1.59%).
 
 | axis | held fixed | items | readings | paired difference, 95% |
@@ -2504,13 +2508,14 @@ checkpoint the same axis is indeterminate rather than small**: three weights spa
 band and not as a magnitude. That band is the pre-registered reading for the anchor's checkpoint; the
 0.41 pp above is a **two**-point figure on a **different** checkpoint and is not a substitute for it.
 
-One cross-family side-evidence, stated with its confound: within InternVL3.5, the **8B** BF16 build reads
-**0.79%** (2/253) where the **38B** fp8 build reads **7.38%** (18/244). Family and size move together there,
-so this is a directional note only and is not used as a precision measurement.
+A same-family, cross-scale sidelight bearing on the same question — and the confound that keeps it
+directional rather than a precision measurement — is recorded separately in §M.19.15.1.
 
 *Reproduction and scope: the BF16 rebuild's per-item records are **not part of the released reproduction
-package**; the frozen item list, the instrument (md5 `e7a65fd47345c2fe040fa4d05a3b1d86`) and the served
-configuration are recorded with them. The 38B-fp8 reading is this appendix's existing single-run row and
+package**; the frozen item list, the served configuration, and the instrument — a derived probe whose prompt
+set and parser are taken verbatim from the panel's own (`19e_probe_multi.py`, md5
+`03edb14c98ffa3aea9ffa20f59b00bc8`), itself at md5 `e7a65fd47345c2fe040fa4d05a3b1d86` — are recorded with
+them. The 38B-fp8 reading is this appendix's existing single-run row and
 carries the cross-session term that a multi-start reading would not, so the second row of the table above is
 item-paired but not start-paired.*
 
@@ -2548,7 +2553,8 @@ corpus images; not part of the released package**) and the corpus predictions
 
 ##### M.19.15.1 A same-family cross-precision sidelight (not a precision axis)
 
-A **directional sidelight, not a precision axis**: the **8B** BF16 build of this family answers zero on **0.79%** of its dense pool against **7.38%** for its **38B** FP8 build (paired bootstrap over the 244 shared items, seed 20260930: **+6.97 pp, 95% [+4.10, +10.66]**), and the same 8B build is itself at **51.33%** on the aerial domains, well below the 38B build's **78.00%**. Both dense readings sit far below the 30% bar, so the direction is compatible with §1.4's expectation without measuring it. The sample is **one family at two scales**, so it supports no family-level or lineage-level statement, and its denominators (253 / 229 dense, 300 aerial) are its own.
+A **directional sidelight, not a precision axis**: the **8B** BF16 build of this family answers zero on **0.79%** of its dense pool against **7.38%** for its **38B** FP8 build (paired bootstrap over the 244 shared items, seed 20260930: **+6.97 pp, 95% [+4.10, +10.66]**), and the same 8B build is itself at **51.33%** on the aerial domains, well below the 38B build's **78.00%**. Both dense readings sit far below the 30% bar, so the direction is compatible with a
+family-level rather than precision-level reading, without measuring it. The sample is **one family at two scales**, so it supports no family-level or lineage-level statement, and its denominators (253 / 229 dense, 300 aerial) are its own.
 
 ---
 
@@ -4369,8 +4375,7 @@ touched"*. Both corpora and both of the two additional families **do appear else
 
 **(a) Two new corpora, two new families, 7,200 calls.** The claim under test is the transferable half of
 §M.22's recipe — that the **contract gate** (the fraction of the `base` arm's answered zeros that a
-`permit` arm still answers as zero) reproduces outside this paper's stack. Two corpora on which the recipe's residual has **never been reported** were obtained from public mirrors and used whole, with **no new annotation**: **JHU-Crowd++** (test
-split; 300 images, ground truth from the release's own per-image count file) and **TallyQA-short** (a
+`permit` arm still answers as zero) reproduces outside this paper's stack. Two corpora on which the recipe's residual has **never been reported** were obtained from public mirrors and used as released, with **no new annotation**: **JHU-Crowd++** (a fixed 300-image subsample of the release's **1,600-image test split**; ground truth from the release's own per-image count file) and **TallyQA-short** (a
 non-FSC-147 visual-question-answering counting benchmark; 300 items with numeric answers). Four families
 were run, **two of which have no previously reported residual** — Qwen2.5-VL-3B and Qwen3-VL-4B — alongside the
 anchor build and one previously measured family as controls, over the three contract arms, 2 domains × 300

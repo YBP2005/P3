@@ -12,7 +12,7 @@ from a true zero, and the **dual-convention identities** that make under-counts 
 open-weight models here (§5.7, §8.2), the dominant dense-scene failure is **not underestimation
 but abstention** — a literal "0" — accounting for **82–94%** of the total under-count under ground-truth-weighted share
 (**base arm, Chinese prompts, one anchor build**; the same abstention term under the **item-count** convention is **53.9–68.2%**); **answered-zero rate** drops **42.7 pp on the BF16 build under English** (§8.2).
-Given an abstention option **1591/1591** calls abstain; forbidding it yields a **per-item median** of **2.463–9.452×** (§5.7, M).
+Given an abstention option **1591/1591** calls abstain; forbidding it yields a **per-item median** of **2.463–9.452×** (§5.7, M.1).
 The gate is the **availability of an abstention token**, not enumeration demand
 (M.18). Abstention is a
 behaviour, not a capability ceiling: gated by legibility, removable by tiling (**56.6% → 0.0%**) or, at a directional cost, by prompt relaxation
@@ -739,7 +739,7 @@ number is not a comparable quantity unless the weight set is specified. (Appendi
 ### 7.3 The response spectrum of knobs: the ordering, and what is not predicted
 
 **What this design can and cannot resolve.** Ten unit values on four sides resolve to the design's own noise
-floor, **2.15–6.46 pp**, and the separating split (**1.6 pp**, corrected $p$ **0.07**) lies below it. For the
+floor, **2.15–6.46 pp**, and the separating split (**1.6 pp**, corrected $p$ **0.075**) lies below it. For the
 split *as observed* (**3 vs 7**) the nine enumerated split points span only **120** assignments, so the
 **smallest attainable corrected $p$ is 0.075** — **no gap whatsoever would be certified by this test**; a
 5-vs-5 split would need **6.5 pp** for 80% power. **We therefore do not claim a separable structure** and
@@ -895,7 +895,7 @@ the convention under which it is read, because the two conventions differ by ten
 the same data. The second is a
 **behavioural reading of the answered zero**: the channel through which a model declines to answer is set by
 the output contract rather than by the lineage, so the outlet is a property of the serving configuration (§5.7). The spectrum replicates in its **ordering**, not its magnitudes, and then only under the **level sets and calibers compared**: with **ten** units and a
-separation of **1.6 pp** below the noise floor (corrected $p\approx0.07$), it supports a **ranking**, and its per-cell intervals are sampling **lower bounds** (§8.1). The weakest parts are stated as such in
+separation of **1.6 pp** below the noise floor (corrected $p\approx0.075$), it supports a **ranking**, and its per-cell intervals are sampling **lower bounds** (§8.1). The weakest parts are stated as such in
 §8; the most consequential open question is whether the abstention channel can be given a statistical
 guarantee rather than a measured rate (§7.7).
 

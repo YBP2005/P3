@@ -473,6 +473,8 @@ bit-for-bit** as a check that it is the same pipeline):
 | **10 units** (as published) | 3 vs 7 | **+1.58 pp** | 0.0082 (164/20,000) | $9/120 = $ **0.075** |
 | **16 units** ($\tau$ split by input size) | 3 vs 13 | **−2.58 pp** | — (overlaps) | $15/560 = $ 0.027 *(were the gap positive)* |
 
+The two columns are computed differently: the permutation $p$ is a **Monte-Carlo** estimate (164 of 20,000 draws), and nine times it gives **0.074** — marginally below the exhaustive floor $9/120 = 0.075$ that complete enumeration over the 120 assignments could return. The paper quotes the floor, which is the value an exact test cannot go below; both are above 0.05, so the verdict does not turn on the choice.
+
 **The separation does not survive the finer unit set.** With the detector knob split, the largest
 non-overlapping gap anywhere in the 16-unit spectrum is **0.2 pp** (a 1-vs-15 split), and the split that
 corresponds to the published low cluster now has a **negative** gap: the third pixel-budget unit's upper
@@ -2435,10 +2437,9 @@ to 71.50% against the correct 28.78%.
 | **Qwen3-VL-32B-BF16** | **64.03%** | **82.27%** | 95.33% | 49.66% |
 | Qwen2.5-VL-72B-AWQ | 0.00% | *n/a* | 71.33% | 51.82% |
 | InternVL3.5-38B-fp8 | 7.38% | 18.28% | 78.00% | *n/a* |
-| **InternVL3.5-38B-BF16** | **9.56%** | **23.20%** | *not run* | *not run* |
+| **InternVL3.5-38B-BF16** | **9.56%** | **23.20%** | **76.33%** | **31.91%** |
 
-*`n/a` marks a cell with no abstentions, where $S$ is undefined rather than zero; `not run` marks a cell
-this round did not measure — the BF16 rebuild of InternVL3.5-38B was run on the dense domains only.* Comparable item sets:
+*`n/a` marks a cell with no abstentions, where $S$ is undefined rather than zero.* Comparable item sets:
 253 dense and 300 aerial on the zero pool; 482 and 499 on the full set. Qwen3-VL-32B-AWQ is the
 configuration that **defined** the zero pool. **The fp8 38B row's denominator is 244, not 253.** Nine of the 253 dense items returned an empty `pred`
 and are excluded from pooled rates, so the row reads **18/244 = 7.38%**, Wilson 95% **[4.72, 11.36]**
@@ -2450,7 +2451,7 @@ builds screened, **none** other than the two Qwen3-VL-32B precisions reaches eit
 does occur elsewhere on it (Qwen2.5-VL-72B-AWQ) — including a **larger build of a non-Qwen family**
 (InternVL3.5-38B-fp8: dense
 zero-pool rate **7.38%** [4.72, 11.36] over **244** items — the nine of 253 with an empty `pred` are
-excluded from the rate, per this appendix's rule — share **18.28%**), which was run **once** and is an **fp8** build,
+excluded from the rate, per this appendix's rule — share **18.28%**), whose printed dense reading is a **single** run — re-run here over **three fresh service starts** (§M.19.17) — and which is an **fp8** build,
 so its precision axis moves with its family axis and the two cannot be separated from this row alone. **Its rebuild at BF16 — a larger non-Qwen build at the anchor's own precision, the cell this panel was missing — reaches only 9.56% (24/251, Wilson 95% [6.51, 13.83]) with a dense share of 23.20% over three fresh service starts, so it clears neither bar; and on the 244 items its two weight formats share, its fp8 and BF16 builds differ by +0.41 pp (95% [−2.05, +2.87]).** The precision axis on the **anchor's** own checkpoint spans three weights on the identical 253 items and is reported there as **indeterminate**, not as a small effect (§M.19.17). Eight of the ten rows therefore fall below the bar, and the two that clear it are the
 same checkpoint at two precisions. **The same checkpoint at BF16 clears the bar and does not reproduce it whole**: on the identical item sets it holds **82.27%** of the share (against **90.30%**, a paired bootstrap difference of **8.03 pp**, 95% **[−12.37, −3.75]**) while the answered-zero rate falls from **95.26%** to **64.03%**. The **share** is therefore a build-level quantity and the **rate** is a build-and-precision one on this checkpoint — though not on every one: on the 38B build the weight format does not move it at all (0.41 pp; §M.19.17) — which is the narrower reading §8.2 now states. Three denominators must not be crossed here: **64.03%** is the dense **intersection** (253 items), **65.02%** is this build's **own** dense zero pool (283 items), and **33.61%** is the dense rate on the **full** item set (482 items). This is sharper than "lineage- or build-specific": **the other Qwen anchor (AWQ) fails
 as well** (dense 0.00%); the BF16 build of that same checkpoint clears it (64.03% / 82.27%). What the cross-family grid therefore supports is that the dense abstention channel
@@ -2463,7 +2464,7 @@ configuration is real — yet their **share is only 19.6–28.8%** (defined for 
 their *answered* items under-count
 heavily in their own right and the ratio absorbs it. "The model answers zero often" and "the under-count is
 dominated by abstention" are therefore separable within one table: the two-kinds statement of §5.7, in the
-headline's quantity.
+headline's quantity. On the **aerial** domains the same BF16 rebuild answers zero on **76.33%** of the aerial pool — **1.67 pp** below the fp8 row's **78.00%**, the three fresh starts spanning **76.33–76.67%** — while its aerial **share** is only **31.91%**: about half the third-party 4-bit anchor's **59.12%**, and above the **19.6–28.8%** of the five smaller non-Qwen families. **On these domains a family's rate and its share therefore come apart**: this build matches the fp8 row's rate while its selectivity sits at roughly half the anchor's.
 
 *Reproduction: `analysis/work/n4_cross_family_dense_panel.py` (md5 `9c74db226c1b785361807ebc7e069771`); it
 reproduces M.19.2's per-family base zeros and M.19.3's dense rates exactly. **One trap is worth recording**:
@@ -2492,6 +2493,10 @@ below both bars — a dense rate of 30% and a share of 50% — and the Wilson **
 13.83 / 12.45 / 13.37%, so the failure does not turn on which start is read. The most conservative of the
 three starts — the largest, 9.56% — is also below both bars; the three
 starts' zero / non-zero classification flips on 12 of 753 item pairs (1.59%).
+
+**The aerial arm of the same build, and the fp8 row's cross-start check.** The identical serving configuration answers zero on **229 / 230 / 230** of the **300** aerial-pool items across the three fresh starts (**76.33 / 76.67 / 76.67%**, Wilson lower bounds **71.21 / 71.56 / 71.56%**), with the zero/non-zero classification flipping on at most **2 of 300** item pairs (**0.67%**) — inside the ≤1% band, so the three starts may be pooled. Its aerial share $S$ is **31.91 / 31.76 / 31.98%**. The fp8 row, by contrast, is archived as a **single** run, so we re-ran it on the identical dense item set with three fresh service starts: **8.87 / 8.91 / 8.47%** (**22/248**, **22/247**, **21/248**), $S$ **22.37 / 21.50 / 20.48%**, with **1.21%** of item pairs flipping — the (1%, 5%] band, where the three starts are read side by side and the most conservative (**8.91%**) is quoted. The archived single run's own per-item records are in the released package, so the re-runs can be paired against it item by item on the **244** items both parse: the differences are **+0.41 / +0.41 / +0.00 pp** (95% **[−1.64, +2.87] / [−1.65, +2.47] / [−2.05, +2.46]**, all crossing zero), with **236–237 of 244** items agreeing in classification. **The "run once" qualifier on that row is therefore a provenance statement, not a stability one**: nothing in these three starts separates them from the single run they repeat.
+
+*Reproduction: the archived single run is in the released package (`data/derived/e2/e1_internvl35-38b-fp8_{st_a,ucf}_base.csv`); recomputing from it reproduces that row's **18/244 = 7.38%** and **[4.72, 11.36]** exactly, which is the acceptance check for the pairing above. The aerial arm and the three fp8 re-runs are per-item records held by the authors (md5s in the evidence record for this round) and are **not part of the released reproduction package**.*
 
 | axis | held fixed | items | readings | paired difference, 95% |
 |---|---|---|---|---|
@@ -2661,7 +2666,7 @@ items the census had answered zero it returns `no_people` on **0.0–1.7%** and 
 this section defines, $P(\text{genuine zero}\mid\text{answered zero})$ for the **`base`** contract, is a
 third thing again: it additionally requires the **base rate of genuinely empty items in the mixed corpus**,
 which we do not have. That is why those two conditional rates are quoted as a **bounded, pool-stated
-substitute** and never as the precision itself, and why neither of them is recoverable from $\kappa$ (Appendix Z).
+substitute** and never as the precision itself, and why neither of them is recoverable from $\kappa$ (Appendix Z). The bound is one-sided, and it is worth stating positively: because this precision falls with the base rate of genuinely empty items in the pool, and our pools bound that rate only from below, **nothing measured here gives the answered-zero channel's precision an upper bound on a mixed corpus** — it is bounded above by 1 trivially, and by nothing informative.
 
 **Every rate in this appendix, with its contract, conditioning event, pool and denominator.** The four
 quantities above are easy to conflate in prose, so they are written out once:
@@ -2873,12 +2878,25 @@ printed above.
 **(d) Scope, stated as a hard limit.** The construction could not exceed $\pi \approx 0.40$: the census
 holds 226 items with ground truth > 0 and the frozen true-zero pool holds 150, giving a ceiling of
 $150/376 = 0.399$. Nothing here speaks to $\pi = 0.5$, and nothing here measures the **corpus's** $\pi$ —
-the experiment tests the identity's transferability, not the corpus base rate.
+the experiment tests the identity's transferability, not the corpus base rate. **That ceiling is a property of that construction, not of the design**: (e) below rebuilds the mixture from the whole frozen true-zero pool and reaches **0.5703**.
 
 *Reproduction: the analysis is `pi_analyze.py` over the per-item records of three fresh service starts per
 build in `pi_res/`; the criteria were frozen before any rate was computed (`pi_criteria_frozen.json`, md5
 `aca4444c7f681b0596db4e4a84578b62`). These artefacts are from the run reported here and are **not part of
 the released reproduction package**.*
+
+**(e) A higher base rate, and the reading rule it makes first-order.** We rebuilt the mixture from the whole **300**-item frozen true-zero pool rather than its S-1 half, lifting the construction's ceiling from $150/376 = 0.399$ to $300/526 = \mathbf{0.5703}$, and ran four builds × three fresh service starts in the `base` arm (**6,312** calls):
+
+| build | parsed / 526 | true-zero parsed | $p$ | $q$ | $\text{precision}_{obs}$ | residual, nominal $\pi$ | residual, $\pi_{\rm eff}$ |
+|---|---|---|---|---|---|---|---|
+| Gemma-3-12B | 526 | 300 | 61.00–61.33% | 35.55–35.74% | 97.86–97.87% | +0.00 pp | +0.00 |
+| Phi-3.5-Vision-4.2B | 523 | 300 | 82.00% | 69.79–69.98% | 67.21–67.40% | +0.38 pp | +0.00 |
+| InternVL3.5-8B | 526 | 300 | 99.00% | 68.06% | 82.96% | +0.00 pp | +0.00 |
+| LLaVA-OneVision-7B | 445–446 | 223–224 | 95.96–95.98% | 71.69–71.75% | 67.08–67.19% | −9.11 to −9.27 pp | ≤0.01 pp |
+
+Read against the **parsed** subset the identity holds in every cell, as it must; read against the constructed $\pi$ it misses the 0.59 pp bound in three, all of them LLaVA-OneVision-7B, whose parse rate on this mixture is **84.6–84.8%** — on a build that leaves a seventh of the mixture unparsed we do not report the nominal-$\pi$ residual as a violation, and report those cells as **not evaluable** instead. The mechanism is not a property of $\pi$: that build leaves **81** items unparsed and **77** of them are true-zero against **4** census items, so the scored subset's true-zero share is $\pi_{\rm eff} = 0.501$, not 0.570, and the residual of the nominal form is exactly $p\,(\pi_{\rm eff}-\pi)/q$ — substituting that build's own $p$, $q$ and $\pi_{\rm eff}$ returns **−9.27 pp**. Against $\pi_{\rm eff}$ all twelve cells close to **≤0.01 pp**. The same parse asymmetry would displace the base rate by **6.5 pp** at $\pi = 0.399$ and **4.1 pp** at $\pi = 0.20$, so the construction should always be reported together with the base rate of the subset actually scored — a rule that only becomes visible when a build's non-response differs between the two halves of the mixture. The transfer test of (b) is not repeated here: all **300** true zeros entered the construction, so no disjoint subset is available.
+
+*Reproduction: the four builds × three starts are per-item records held by the authors (md5s in the evidence record for this round) and are **not part of the released reproduction package**; the mixture manifest and the frozen true-zero pool are those of §M.21.10.*
 
 ### M.22 The adoption recipe: what a third party has to run, and what it then knows
 
@@ -3409,8 +3427,7 @@ count, the published convention (an abstention counted as a predicted zero) repo
 $$\mathrm{MAE}_A = (1-w)\,\mathrm{MAE}_B + w\,\overline{\mathrm{GT}}_{\text{abstained}}$$
 
 where $\mathrm{MAE}_B$ is the error on the items it did answer. The second term is the large one, because
-abstention concentrates on the crowded items: on the public benchmark the abstained items average
-**72.6** objects against a corpus-wide mean of **73.6**.
+abstention concentrates on the crowded items: on the public benchmark the abstained items average **71.8–77.1** objects (median **72.6** across the nine configurations) against a corpus-wide mean of **70.13**.
 
 **Nine configurations, six lineages, one benchmark.** We recomputed both conventions for every configuration
 of the public-benchmark panel on the same stratified test images:
@@ -3443,6 +3460,8 @@ Two consequences follow: a number reported this way should come with $w$, since 
 abstention propensity can differ by tens of counts while failing equally where they do answer; and because the
 identity needs no re-running, the abstention mass is recoverable from any stored output and is the quantity a
 reader should ask for.
+
+*Reproduction: the nine configurations' per-item records are in the released package at `data/derived/fsc_res/frozen384/` (nine `fsc_*_base.csv`); recomputing the identity and the table from them reproduces every cell printed here. The generator used for the table is `_retro_rank_and_m35.py` (author-side; not part of the released package). The abstained-item ground-truth means are 72.90 / 77.03 / 72.04 / 72.08 / 72.13 / 72.58 / 71.77 / 75.14 / 77.07 over the nine configurations, against the panel's corpus-wide mean of **70.13**.*
 
 ---
 
@@ -4439,7 +4458,7 @@ frozen criteria.*
 Part (b) ran them on the BF16 build and declared the deviation: the corpus baseline is a **4-bit
 `compressed-tensors` AWQ** checkpoint, so the two were not comparable in absolute terms. That gap is now
 closed. The five arms were re-run on **`cyankiwi/Qwen3-VL-32B-Instruct-AWQ-4bit`** (the public artifact the
-baseline was served from; commit and per-shard digests frozen in the criteria file), using the **same
+baseline was served from; commit and per-shard digests frozen in the criteria file; the requantisation itself is an **AWQ INT4** conversion at **group size 32**, symmetric, of **`Qwen/Qwen3-VL-32B-Instruct`**, produced with **`llm-compressor`** and calibrated on **`HuggingFaceM4/FineVision`**, with **117** layers exempt from quantisation, and the artifact ships the recipe file it was built from), using the **same
 runner** as (b) — the one this appendix already cites — and the same instrument, at temperature 0, over
 **three independent service starts**, on the corpus pools: 4 domains × 5 arms × 3 starts = **17,130 calls,
 0 unparsed**.

@@ -428,7 +428,7 @@ to invert the ranking of the paradigms being compared.
 Only one split separates: three pixel-budget units with a maximum upper bound of **22.4 pp** against the
 remaining seven with a minimum lower bound of **24.0 pp** — a gap of **1.6 pp**, permutation
 $p \approx 0.008$ **before** any correction for the nine enumerated split points. The smallest attainable
-corrected value is therefore of order $0.07$, which is not significant at this sample size, and the
+corrected value is therefore $0.075$, which is not significant at this sample size, and the
 1.6 pp gap is itself **below the paper's own noise floor of 2.15–6.46 pp**. Within the high-response
 group **6 of 6 adjacent pairs overlap**.
 
@@ -446,7 +446,31 @@ regression (4), output contract (2), pixel budget (6), prompt family (6) and til
 two agree because the interval's two ends are two of the six knobs. The **31**-unit set above carries no
 leave-one-out reading, and `m37_ci_power.py` is the generator of the frozen field only.
 
-**The intervals do not depend on treating the units as independent.** The units are nested in six knobs, so we re-ran the resampling at the **cluster** level: resampling whole knobs with replacement gives a 95% interval of **0.913–0.994** over the **31** unit set (2,000 draws, seed 20260924), against **0.939–0.996** under the unit bootstrap printed above — a lower bound **2.6 pp** below the i.i.d. one and still well above the **0.80** bar this paper would have read as instability (F.10). The same substitution on the **36** unit set gives **0.883–0.998**, and removing any one knob whole leaves **0.883–0.970** as above. We report the clustered interval alongside the unit one rather than instead of it. **Why the interval is the right instrument here, stated exactly.** A permutation test is informative only if it perturbs what the statistic depends on, and this statistic is a rank correlation over the **paired** unit readings: permuting *whole knobs* moves those pairs about but does not break them, so the statistic is bit-identical under all 720 block permutations and `p = 1` — a property of that implementation, not a theorem about permutation tests. **Redrawing the span values from their own distribution does break the pairing, and there the ordering separates at `p < 5×10^{-5}` on all three deflations and both unit sets. We report both null models as two equivalent independent nulls rather than as two different ones: they agree to the last digit (`4.999750012499375e-05`) on every cell.** We therefore rest the claim on the interval, not on a clustered $p$ — the units are six knobs and the test cannot separate them. Reproduction: `m37_cluster.py` and `m37_cluster_result.json` — **these two artefacts are not part of the released reproduction package**, so the clustered interval above is not independently recomputable from it; the span-value null is recomputed from the released `equalcount36_result.json` by `p3r4_zero_2_null_span.py`; the point readings it is compared against are recomputed from the released `equalcount36_result.json`.
+**The intervals do not depend on treating the units as independent.** The units are nested in six knobs, so we re-ran the resampling at the **cluster** level: resampling whole knobs with replacement gives a 95% interval of **0.913–0.994** over the **31** unit set (2,000 draws, seed 20260924), against **0.939–0.996** under the unit bootstrap printed above — a lower bound **2.6 pp** below the i.i.d. one and still well above the **0.80** bar this paper would have read as instability (F.10). The same substitution on the **36** unit set gives **0.883–0.998**, and removing any one knob whole leaves **0.883–0.970** as above. We report the clustered interval alongside the unit one rather than instead of it. **Why the interval is the right instrument here, stated exactly.** A permutation test is informative only if it perturbs what the statistic depends on, and this statistic is a rank correlation over the **paired** unit readings: permuting *whole knobs* moves those pairs about but does not break them, so the statistic is
+bit-identical under all 720 block permutations and `p = 1`. **This is not a defect of this implementation but a
+theorem about the class of statistics it belongs to: any symmetric function of a set of *paired* readings —
+Spearman, Kendall, distance correlation, a two-sample $U$ — is invariant under every permutation that keeps the
+pairs together, so its permutation null is a point mass at the observed value and the test has zero power by
+construction, not merely low power. The instrument for a paired design is a null that breaks the pairing —
+redrawing one member of each pair, or resampling whole pairs — which is what we use.** **Redrawing the span values from their own distribution does break the pairing, and there the ordering separates at `p < 5×10^{-5}` on all three deflations and both unit sets. We report both null models as two equivalent independent nulls rather than as two different ones: they agree to the last digit (`4.999750012499375e-05`) on every cell.** We therefore rest the claim on the interval, not on a clustered $p$ — the units are six knobs and the test cannot separate them. Reproduction: `m37_cluster.py` and `m37_cluster_result.json` — **these two artefacts are not part of the released reproduction package**, so the clustered interval above is not independently recomputable from it; the span-value null is recomputed from the released `equalcount36_result.json` by `p3r4_zero_2_null_span.py`; the point readings it is compared against are recomputed from the released `equalcount36_result.json`.
+
+**How many units are enough, when the knob means are what is being read.** The same six-knob nesting also
+prices a design. Treating the 36 log-spans as one-way nested in the six knobs — detector 12, density 4,
+output contract 2, pixel budget 6, prompt family 6, tiling 6 — and estimating the variance components by
+moments with the unbalanced-group constant $m_0 = (N - \sum_i n_i^2/N)/(k-1) = 5.6889$ gives
+$\sigma_b^2 = 1.706$ and $\sigma_w^2 = 0.940$, hence $\mathrm{ICC}(1) = 0.645$ and a knob-mean reliability at
+six units per knob of $\rho_6 = 0.916$. The reading does not depend on the deflation: the per-unit reliability
+is **0.645** on full levels, **0.596** under the equal-count $k=3$ restriction, **0.651** dropping the highest
+level and **0.634** dropping the lowest. To reach a target $\rho^\star$ a design needs
+
+$$ m^\star = \left\lceil \frac{\sigma_w^2}{\sigma_b^2} \cdot \frac{\rho^\star}{1-\rho^\star} \right\rceil $$
+
+units per knob — **3, 5, 11, 55** for $\rho^\star = 0.80, 0.90, 0.95, 0.99$, i.e. **18, 30, 66, 330** units in
+total against the 36 analysed here. This is the arithmetic behind the bar of §M.45(a): at six units per knob
+the measured $\rho_6$ is **0.916**, so a pre-registered $0.80$ is met with margin while $0.95$ is out of reach
+at this unit count, and raising the bar is a matter of units rather than of effort. The object here is the
+reliability of a **knob mean under the observation design**, which is not the same object as the
+certifiability of a partition in the rule above.
 
 **Why no split could be certified.** The observed split is **3 vs 7**, and $\binom{10}{3} = 120$ assignments
 put a floor of $1/120 = 0.0083$ under the permutation $p$ *before* correction; with the nine enumerated split
@@ -474,6 +498,16 @@ bit-for-bit** as a check that it is the same pipeline):
 | **16 units** ($\tau$ split by input size) | 3 vs 13 | **−2.58 pp** | — (overlaps) | $15/560 = $ 0.027 *(were the gap positive)* |
 
 The two columns are computed differently: the permutation $p$ is a **Monte-Carlo** estimate (164 of 20,000 draws), and nine times it gives **0.074** — marginally below the exhaustive floor $9/120 = 0.075$ that complete enumeration over the 120 assignments could return. The paper quotes the floor, which is the value an exact test cannot go below; both are above 0.05, so the verdict does not turn on the choice.
+
+**When a split can be certified at all.** The two rows of the table above are the ends of one rule. With $n$ units, a $k$-vs-$(n-k)$ reading and $n-1$ enumerated split points — the enumeration design both rows use — complete enumeration has $\binom{n}{k}$ assignments, so the smallest attainable corrected $p$ is $(n-1)/\binom{n}{k}$ and the split is certifiable at level $\alpha$ exactly when $\binom{n}{k}>(n-1)/\alpha$. The published ten-unit split gives $9/120=0.075$ and cannot be certified; the sixteen-unit construction gives $15/560=0.027$ and can. For $k=3$ and $\alpha=0.05$ the rule needs $\binom{n}{3}>20(n-1)$, first satisfied at $n=13$ — so **thirteen units would have sufficed** for the construction this appendix ran with sixteen, and "how many units must I add?" has a one-line answer. This is a statement about **certifying a partition**, not about the ordering: §M.45 asks the different question of how the full ordering behaves under an equal level count and under a common error budget, and answers it there.
+
+**The rule has one premise, and it is where the rule is won or lost: $k$ must be fixed before the data are
+seen.** The floor $(n-1)/\binom{n}{k}$ counts the partitions of one cut size. If the cut size is chosen from
+the same data, the enumeration ranges over cut sizes as well, the multiplicity becomes
+$\sum_{k}\binom{n}{k} = 2^n - 2$, and the smallest attainable corrected $p$ falls to $(n-1)/(2^n-2)$ — at
+$n = 16$, from $15/560 = 0.027$ to $15/65{,}534 = 2.3\times10^{-4}$. The rule therefore prices
+**pre-registration**, not merely unit count: sixteen units certify a partition when $k$ is declared in advance
+and cannot come close when it is not.
 
 **The separation does not survive the finer unit set.** With the detector knob split, the largest
 non-overlapping gap anywhere in the 16-unit spectrum is **0.2 pp** (a 1-vs-15 split), and the split that
@@ -1412,7 +1446,7 @@ three weight sets), so §4.1's domain conditionality is consistent with a stable
 **§7.3.** Only one split
 separates, by **1.6 pp**, at $p \approx 0.008$ before correction — which neither the paper's own noise
 floor (**2.15–6.46 pp**) nor the nine enumerated split points allows us to treat as established (the
-arithmetic, including the order-$0.07$ corrected value, is in Appendix F.7). We therefore report the
+arithmetic, including the $0.075$ corrected value, is in Appendix F.7). We therefore report the
 separable low-response cluster as a **candidate structure** rather than an established partition, and we
 retain **one low-response cluster** (VLM pixel budget, ≤ 22.4 pp) alongside an **internally
 continuous high-response spectrum** (33.5–150.7 pp, from F.9's **transcribed** column) — and explicitly **not** two anchor zones or
@@ -1861,6 +1895,12 @@ corpus zero** (0.0–0.8%), as the build-specific reading predicts.
 | InternVL2.5-8B-AWQ (anchor) | 0.0% [0, 1.5] | 76.7% [71.6, 81.1] | +76.7 | [−81.1, −71.3] | yes |
 
 † defined on the parsed subset only (see §M.19.5).
+
+**The aerial denominators above are the raw 300-item intersections.** Two arms — Phi-3.5-Vision-4.2B and
+LLaVA-OneVision-7B — lose unparsed items on these domains, and §M.19.15 prints the same two arms after the
+frozen empty-`pred` exclusion, where the denominators are **297** and **293**: there the values are
+**66.33%** and **80.20%** against the **65.7%** and **78.3%** here. The numerators are identical
+(197 and 235); only the denominator moves, and each table names its own.
 
 **Verdict, stated both ways because the frozen rule says "≥ 5/6 families": 5 of 7 families pass the
 literal count, and 5 < ⌈5·7/6⌉ = 6, so the proportional reading fails.** **A literal miss is a miss**: we do not rescale the denominator after seeing the data, so the honest
@@ -2358,6 +2398,72 @@ The mechanism therefore remains open in the specific sense §7.6 meant, and is n
 `p5c_results2_summary.json`, `_p1d_indep_check.py` (which re-derives the hidden-state summary from the per-item
 records without reading it), and the per-item records of both probes.*
 
+#### M.19.15 The same panel in the headline's own quantity: the dense result is a *build* property
+
+M.19.3 compares the seven families on the **answered-zero rate**. The headline is the **abstention share**
+$S$, so we computed it on the same census files and on each family's comparable item sets (dense =
+st_a + ucf, aerial = VisDrone + AI-TOD). The two denominators are reported separately, because $S$ requires
+the **full** item set and not the zero pool: computing it on the zero pool alone inflates it, for one family
+to 71.50% against the correct 28.78%.
+
+| family | dense zero-pool rate | dense $S$ | aerial zero-pool rate | aerial $S$ |
+|---|---|---|---|---|
+| Gemma-3-12B | 0.00% | *n/a* | 3.00% | *n/a* |
+| InternVL3.5-8B | 0.79% | 1.43% | 51.33% | 19.56% |
+| Phi-3.5-Vision-4.2B | 0.00% | *n/a* | 66.33% | *n/a* |
+| LLaVA-OneVision-7B | 0.00% | *n/a* | 80.20% | 28.78% |
+| InternVL2.5-8B-AWQ | 0.00% | *n/a* | 76.67% | 27.07% |
+| **Qwen3-VL-32B-AWQ** | **95.26%** | **90.30%** | 98.33% | 59.12% |
+| **Qwen3-VL-32B-BF16** | **64.03%** | **82.27%** | 95.33% | 49.66% |
+| Qwen2.5-VL-72B-AWQ | 0.00% | *n/a* | 71.33% | 51.82% |
+| InternVL3.5-38B-fp8 | 7.38% | 18.28% | 78.00% | *n/a* |
+| **InternVL3.5-38B-BF16** | **9.56%** | **23.20%** | **76.33%** | **31.91%** |
+
+*`n/a` marks a cell with no abstentions, where $S$ is undefined rather than zero.* Comparable item sets:
+253 dense and 300 aerial on the zero pool; 482 and 499 on the full set. Qwen3-VL-32B-AWQ is the
+configuration that **defined** the zero pool. **The fp8 38B row's denominator is 244, not 253.** Nine of the 253 dense items returned an empty `pred`
+and are excluded from pooled rates, so the row reads **18/244 = 7.38%**, Wilson 95% **[4.72, 11.36]**
+(the exclusion rule itself is stated with the frozen criteria above). **Two of these cells are quoted
+elsewhere under the raw intersection instead, and the two calibers are not interchangeable:** applying the
+frozen exclusion rule leaves LLaVA-OneVision-7B's aerial arm at **235/293 = 80.20%** and Phi-3.5-Vision's at
+**197/297 = 66.33%**, whereas on the raw **300**-item intersection the same two arms read **235/300 = 78.3%**
+and **197/300 = 65.7%** — the caliber §M.19.3 (and §M.22) quotes. The numerators are identical; only the
+denominator moves, and each statement names its own.
+
+**On the dense domains the headline does not reproduce in any other family.** Of the **ten** families and
+builds screened, **none** other than the two Qwen3-VL-32B precisions reaches either a dense zero rate of
+30% or a **dense** share of 50% — a qualifier the table needs, because an **aerial** share of 51.82%
+does occur elsewhere on it (Qwen2.5-VL-72B-AWQ) — including a **larger build of a non-Qwen family**
+(InternVL3.5-38B-fp8: dense
+zero-pool rate **7.38%** [4.72, 11.36] over **244** items — the nine of 253 with an empty `pred` are
+excluded from the rate, per this appendix's rule — share **18.28%**), whose printed dense reading is a **single** run — re-run here over **three fresh service starts** (§M.19.17) — and which is an **fp8** build,
+so its precision axis moves with its family axis and the two cannot be separated from this row alone. **Its rebuild at BF16 — a larger non-Qwen build at the anchor's own precision, the cell this panel was missing — reaches only 9.56% (24/251, Wilson 95% [6.51, 13.83]) with a dense share of 23.20% over three fresh service starts, so it clears neither bar; and on the 244 items its two weight formats share, its fp8 and BF16 builds differ by +0.41 pp (95% [−2.05, +2.87]).** The precision axis on the **anchor's** own checkpoint spans three weights on the identical 253 items and is reported there as **indeterminate**, not as a small effect (§M.19.17). Eight of the ten rows therefore fall below the bar, and the two that clear it are the
+same checkpoint at two precisions. **The same checkpoint at BF16 clears the bar and does not reproduce it whole**: on the identical item sets it holds **82.27%** of the share (against **90.30%**, a paired bootstrap difference of **8.03 pp**, 95% **[−12.37, −3.75]**) while the answered-zero rate falls from **95.26%** to **64.03%**. The **share** is therefore a build-level quantity and the **rate** is a build-and-precision one on this checkpoint — though not on every one: on the 38B build the weight format does not move it at all (0.41 pp; §M.19.17) — which is the narrower reading §8.2 now states. Three denominators must not be crossed here: **64.03%** is the dense **intersection** (253 items), **65.02%** is this build's **own** dense zero pool (283 items), and **33.61%** is the dense rate on the **full** item set (482 items). This is sharper than "lineage- or build-specific": **the other Qwen anchor (AWQ) fails
+as well** (dense 0.00%); the BF16 build of that same checkpoint clears it (64.03% / 82.27%). What the cross-family grid therefore supports is that the dense abstention channel
+belongs to **that build in that configuration** — the same conclusion §8.2 reaches from the five-deployment
+spread, now measured in the headline's own quantity.
+
+**The aerial half is the mirror image, and the more informative one.** There the **five non-Qwen families** answer zero on
+**51–80%** of the items, with Wilson lower bounds of **46–75%**, so the difference from the corpus
+configuration is real — yet their **share is only 19.6–28.8%** (defined for three of the five), because
+their *answered* items under-count
+heavily in their own right and the ratio absorbs it. "The model answers zero often" and "the under-count is
+dominated by abstention" are therefore separable within one table: the two-kinds statement of §5.7, in the
+headline's quantity. On the **aerial** domains the same BF16 rebuild answers zero on **76.33%** of the aerial pool — **1.67 pp** below the fp8 row's **78.00%**, the three fresh starts spanning **76.33–76.67%** — while its aerial **share** is only **31.91%**: about half the third-party 4-bit anchor's **59.12%**, and above the **19.6–28.8%** of the five smaller non-Qwen families. **On these domains a family's rate and its share therefore come apart**: this build matches the fp8 row's rate while its selectivity sits at roughly half the anchor's.
+
+*Reproduction: `analysis/work/n4_cross_family_dense_panel.py` (md5 `9c74db226c1b785361807ebc7e069771`); it
+reproduces M.19.2's per-family base zeros and M.19.3's dense rates exactly. **One trap is worth recording**:
+the anchor family's files carry duplicate rows with a `#r` suffix (309 of 412 on st_a, 540 of 720 on ucf);
+the analyser's loader excludes them, and not excluding them **quadruples** the count (407 and 673 rather
+than 103 and 180, i.e. 102 and 166 zeros) and silently breaks agreement with M.19.2.*
+
+##### M.19.15.1 A same-family cross-precision sidelight (not a precision axis)
+
+A **directional sidelight, not a precision axis**: the **8B** BF16 build of this family answers zero on **0.79%** of its dense pool against **7.38%** for its **38B** FP8 build (paired bootstrap over the 244 shared items, seed 20260930: **+6.97 pp, 95% [+4.10, +10.66]**), and the same 8B build is itself at **51.33%** on the aerial domains, well below the 38B build's **78.00%**. Both dense readings sit far below the 30% bar, so the direction is compatible with a
+family-level rather than precision-level reading, without measuring it. The sample is **one family at two scales**, so it supports no family-level or lineage-level statement, and its denominators (253 / **244** dense, 300 aerial) are its own — on the **244** items the two weight formats share it reads **18/244 = 7.38%** against **1/244 = 0.41%**, a paired difference of exactly one item, which is the **+6.97 pp** quoted just above.
+
+---
+
 #### M.19.16 The value named in the instruction, on the four headline cells and in English
 
 §M.19.13 established on the deterministic disc grid that what moves the zero is the **value named in the
@@ -2417,60 +2523,6 @@ ShanghaiTech-A. Absolute rates are **not** comparable to the corpus pool's, whic
 build, whereas this run uses the BF16 build (the quantised build is not on this machine); every difference
 above is within-run and within-language.*
 
-
-#### M.19.15 The same panel in the headline's own quantity: the dense result is a *build* property
-
-M.19.3 compares the seven families on the **answered-zero rate**. The headline is the **abstention share**
-$S$, so we computed it on the same census files and on each family's comparable item sets (dense =
-st_a + ucf, aerial = VisDrone + AI-TOD). The two denominators are reported separately, because $S$ requires
-the **full** item set and not the zero pool: computing it on the zero pool alone inflates it, for one family
-to 71.50% against the correct 28.78%.
-
-| family | dense zero-pool rate | dense $S$ | aerial zero-pool rate | aerial $S$ |
-|---|---|---|---|---|
-| Gemma-3-12B | 0.00% | *n/a* | 3.00% | *n/a* |
-| InternVL3.5-8B | 0.79% | 1.43% | 51.33% | 19.56% |
-| Phi-3.5-Vision-4.2B | 0.00% | *n/a* | 66.33% | *n/a* |
-| LLaVA-OneVision-7B | 0.00% | *n/a* | 80.20% | 28.78% |
-| InternVL2.5-8B-AWQ | 0.00% | *n/a* | 76.67% | 27.07% |
-| **Qwen3-VL-32B-AWQ** | **95.26%** | **90.30%** | 98.33% | 59.12% |
-| **Qwen3-VL-32B-BF16** | **64.03%** | **82.27%** | 95.33% | 49.66% |
-| Qwen2.5-VL-72B-AWQ | 0.00% | *n/a* | 71.33% | 51.82% |
-| InternVL3.5-38B-fp8 | 7.38% | 18.28% | 78.00% | *n/a* |
-| **InternVL3.5-38B-BF16** | **9.56%** | **23.20%** | **76.33%** | **31.91%** |
-
-*`n/a` marks a cell with no abstentions, where $S$ is undefined rather than zero.* Comparable item sets:
-253 dense and 300 aerial on the zero pool; 482 and 499 on the full set. Qwen3-VL-32B-AWQ is the
-configuration that **defined** the zero pool. **The fp8 38B row's denominator is 244, not 253.** Nine of the 253 dense items returned an empty `pred`
-and are excluded from pooled rates, so the row reads **18/244 = 7.38%**, Wilson 95% **[4.72, 11.36]**
-(the exclusion rule itself is stated with the frozen criteria above).
-
-**On the dense domains the headline does not reproduce in any other family.** Of the **ten** families and
-builds screened, **none** other than the two Qwen3-VL-32B precisions reaches either a dense zero rate of
-30% or a **dense** share of 50% — a qualifier the table needs, because an **aerial** share of 51.82%
-does occur elsewhere on it (Qwen2.5-VL-72B-AWQ) — including a **larger build of a non-Qwen family**
-(InternVL3.5-38B-fp8: dense
-zero-pool rate **7.38%** [4.72, 11.36] over **244** items — the nine of 253 with an empty `pred` are
-excluded from the rate, per this appendix's rule — share **18.28%**), whose printed dense reading is a **single** run — re-run here over **three fresh service starts** (§M.19.17) — and which is an **fp8** build,
-so its precision axis moves with its family axis and the two cannot be separated from this row alone. **Its rebuild at BF16 — a larger non-Qwen build at the anchor's own precision, the cell this panel was missing — reaches only 9.56% (24/251, Wilson 95% [6.51, 13.83]) with a dense share of 23.20% over three fresh service starts, so it clears neither bar; and on the 244 items its two weight formats share, its fp8 and BF16 builds differ by +0.41 pp (95% [−2.05, +2.87]).** The precision axis on the **anchor's** own checkpoint spans three weights on the identical 253 items and is reported there as **indeterminate**, not as a small effect (§M.19.17). Eight of the ten rows therefore fall below the bar, and the two that clear it are the
-same checkpoint at two precisions. **The same checkpoint at BF16 clears the bar and does not reproduce it whole**: on the identical item sets it holds **82.27%** of the share (against **90.30%**, a paired bootstrap difference of **8.03 pp**, 95% **[−12.37, −3.75]**) while the answered-zero rate falls from **95.26%** to **64.03%**. The **share** is therefore a build-level quantity and the **rate** is a build-and-precision one on this checkpoint — though not on every one: on the 38B build the weight format does not move it at all (0.41 pp; §M.19.17) — which is the narrower reading §8.2 now states. Three denominators must not be crossed here: **64.03%** is the dense **intersection** (253 items), **65.02%** is this build's **own** dense zero pool (283 items), and **33.61%** is the dense rate on the **full** item set (482 items). This is sharper than "lineage- or build-specific": **the other Qwen anchor (AWQ) fails
-as well** (dense 0.00%); the BF16 build of that same checkpoint clears it (64.03% / 82.27%). What the cross-family grid therefore supports is that the dense abstention channel
-belongs to **that build in that configuration** — the same conclusion §8.2 reaches from the five-deployment
-spread, now measured in the headline's own quantity.
-
-**The aerial half is the mirror image, and the more informative one.** There the **five non-Qwen families** answer zero on
-**51–80%** of the items, with Wilson lower bounds of **46–75%**, so the difference from the corpus
-configuration is real — yet their **share is only 19.6–28.8%** (defined for three of the five), because
-their *answered* items under-count
-heavily in their own right and the ratio absorbs it. "The model answers zero often" and "the under-count is
-dominated by abstention" are therefore separable within one table: the two-kinds statement of §5.7, in the
-headline's quantity. On the **aerial** domains the same BF16 rebuild answers zero on **76.33%** of the aerial pool — **1.67 pp** below the fp8 row's **78.00%**, the three fresh starts spanning **76.33–76.67%** — while its aerial **share** is only **31.91%**: about half the third-party 4-bit anchor's **59.12%**, and above the **19.6–28.8%** of the five smaller non-Qwen families. **On these domains a family's rate and its share therefore come apart**: this build matches the fp8 row's rate while its selectivity sits at roughly half the anchor's.
-
-*Reproduction: `analysis/work/n4_cross_family_dense_panel.py` (md5 `9c74db226c1b785361807ebc7e069771`); it
-reproduces M.19.2's per-family base zeros and M.19.3's dense rates exactly. **One trap is worth recording**:
-the anchor family's files carry duplicate rows with a `#r` suffix (309 of 412 on st_a, 540 of 720 on ucf);
-the analyser's loader excludes them, and not excluding them **quadruples** the count (407 and 673 rather
-than 103 and 180, i.e. 102 and 166 zeros) and silently breaks agreement with M.19.2.*
 
 #### M.19.17 The missing cell, filled: a larger non-Qwen build at the anchor's own precision
 
@@ -2555,13 +2607,6 @@ post-processing settings), frozen results `a_lightfree_result.json`, `a_lightfre
 the detector box archives `analysis/data/harvest_A/{gaps__,rn__}boxes_st_a_test_*.npz` (**detector outputs on the public
 corpus images; not part of the released package**) and the corpus predictions
 `data/derived/e2_pools/dense_results/vlm_st_a_base_whole.csv`.*
-
-##### M.19.15.1 A same-family cross-precision sidelight (not a precision axis)
-
-A **directional sidelight, not a precision axis**: the **8B** BF16 build of this family answers zero on **0.79%** of its dense pool against **7.38%** for its **38B** FP8 build (paired bootstrap over the 244 shared items, seed 20260930: **+6.97 pp, 95% [+4.10, +10.66]**), and the same 8B build is itself at **51.33%** on the aerial domains, well below the 38B build's **78.00%**. Both dense readings sit far below the 30% bar, so the direction is compatible with a
-family-level rather than precision-level reading, without measuring it. The sample is **one family at two scales**, so it supports no family-level or lineage-level statement, and its denominators (253 / 229 dense, 300 aerial) are its own.
-
----
 
 ### M.21 The formal framework in full
 
@@ -2896,7 +2941,39 @@ the released reproduction package**.*
 
 Read against the **parsed** subset the identity holds in every cell, as it must; read against the constructed $\pi$ it misses the 0.59 pp bound in three, all of them LLaVA-OneVision-7B, whose parse rate on this mixture is **84.6–84.8%** — on a build that leaves a seventh of the mixture unparsed we do not report the nominal-$\pi$ residual as a violation, and report those cells as **not evaluable** instead. The mechanism is not a property of $\pi$: that build leaves **81** items unparsed and **77** of them are true-zero against **4** census items, so the scored subset's true-zero share is $\pi_{\rm eff} = 0.501$, not 0.570, and the residual of the nominal form is exactly $p\,(\pi_{\rm eff}-\pi)/q$ — substituting that build's own $p$, $q$ and $\pi_{\rm eff}$ returns **−9.27 pp**. Against $\pi_{\rm eff}$ all twelve cells close to **≤0.01 pp**. The same parse asymmetry would displace the base rate by **6.5 pp** at $\pi = 0.399$ and **4.1 pp** at $\pi = 0.20$, so the construction should always be reported together with the base rate of the subset actually scored — a rule that only becomes visible when a build's non-response differs between the two halves of the mixture. The transfer test of (b) is not repeated here: all **300** true zeros entered the construction, so no disjoint subset is available.
 
+**A transfer-refutation statistic that the protocol can compute about itself.** The identity above is a gate:
+it holds by construction, so it cannot fail, and it therefore cannot tell a third party whether the
+construction underlying it is admissible at all. One scalar can. Let $\alpha$ be the constructed pool's
+measured true-zero content, $\theta$ the measured non-empty answered-zero rate, and $q_C$ the corpus's own
+answered-zero rate. Any base rate $\pi_C$ that reconciles the two must satisfy
+$q_C = \alpha\pi_C + (1-\pi_C)\theta$, so the construction requires $\theta \le q_C \le \alpha$ and
+
+$$ \delta^\star := \frac{q_C^{\mathrm{meas}} - \theta^{\mathrm{meas}}}{\alpha^{\mathrm{meas}} - \theta^{\mathrm{meas}}}. $$
+
+On the four builds, with $\alpha$ recomputed as the pooled rate over the **150**-item frozen true-zero pool
+(three starts, $n = 2{,}653$–$2{,}688$) and $\theta$ the same pool's answered-zero rate on its non-empty
+side, the protocol gives
+
+| build | $\alpha$ (recomputed pool) | $\theta$ (recomputed pool) | $q_C$ (corpus, §M.19.16 cn-`base`) | $\delta^\star$ |
+|---|---|---|---|---|
+| Qwen3-VL-32B | 100.00% | 63.27% | 63.88% | **0.0165** |
+| InternVL3.5-8B | 97.71% | 27.09% | 68.06% | **0.5802** |
+| Phi-3.5-Vision-4.2B | 99.54% | 53.68% | 69.98% | **0.3555** |
+| gemma-3-12b | 35.32% | 1.77% | 35.74% | **1.0125** |
+
+A value below $1$ is a usable base rate; **a value above $1$ is a refutation**: on gemma-3-12b no
+$\pi_C \in [0,1]$ reconciles the corpus with the pool, because $\alpha = 35.32\% < q_C = 35.74\%$, so on that
+build the two are not jointly transferable however well the identity holds within each. The quantity is sharp
+in $\alpha$ and must be reported **with $\alpha$'s caliber attached**: substituting the $p$ printed in
+§M.21.10(e) for $\alpha$ on that construction's own 526-item mixture returns 0.5697 / 0.5756 / 0.5703 for
+InternVL3.5-8B, Phi-3.5-Vision and gemma-3-12b — and the last is *exactly* that construction's nominal base
+rate, which is the arithmetic reason the identity above can never fail there. The identification set this
+sits beside is $[\,1/(\kappa+1),\, \min(1, q_C)\,]$, so the contract does not merely move a distribution: **it
+sets what is identifiable.**
+
 *Reproduction: the four builds × three starts are per-item records held by the authors (md5s in the evidence record for this round) and are **not part of the released reproduction package**; the mixture manifest and the frozen true-zero pool are those of §M.21.10.*
+
+**(f) What a plugged-in $\hat\pi$ costs the headline.** Write the identity logarithmically, $\log\text{precision}=\log p+\log\pi-\log q$, and two regimes follow — and this appendix's sentences sit in different ones. Where $\pi$ and $q$ are measured **independently**, the corpus case, the relative errors add in quadrature, $(\delta P/P)^2=(\delta p/p)^2+(\delta\pi/\pi)^2+(\delta q/q)^2$, so the term §M.44 leaves open is a first-class part of the budget rather than a remainder: feeding §M.44's own numbers into it (a transfer error of 10.80 pp on the recovered proportion, a 95% half-width of 10.2–16.4 pp, and a binomial $q$ at $n=526$) puts **65% of the variance on $\pi$**, 25% on the transfer of $p$ and 10% on $q$. Where the mixture is **constructed**, $q=\pi p+(1-\pi)r$ is a function of $\pi$ and the same perturbation is damped by $\eta\equiv\partial\log\text{precision}/\partial\log\pi=1-(p-r)\pi/q$, computed from the same per-item records as (e): over the four builds $\eta$ runs from **0.050** to **0.770** — a **16-fold** spread — because it is governed by how often a build answers zero on the *non-empty* side, $r$ ranging from **1.8%** (Gemma-3-12B) to **53.4%** (Phi-3.5-Vision). Passing §M.44's resolution (17.8–28.7% relative on a proportion of 0.572) through $\eta$ moves the headline by **0.9% to 22.1%** depending on the build. **A single tolerance quoted for every build would therefore be wrong by more than an order of magnitude**, and any future attempt to close $\pi$ has to carry a build-dependent one.
 
 ### M.22 The adoption recipe: what a third party has to run, and what it then knows
 
@@ -2916,6 +2993,28 @@ annotation boxes, or any retraining. The recipe is five steps.
 4. **Report both conventions and the abstention mass**: pooled (zeros counted) *and* answered-only, with
    $w$ = answered share. Proposition 8 gives the gap; §5.12 measures its consequence — the same configurations
    reorder (Spearman **0.476–1.000**) and one configuration's bias moves by up to **48.2 pp**.
+**When one convention can be reported instead of two, and when it cannot.** Step 4 says to report both
+conventions. It does not say when one of them is redundant, and the test is arithmetic. Write
+$a_u = P_u/G_u$ for a unit's pooled relative deviation (abstentions counted as zero), $w_u = G_{N,u}/G_u$
+for its answered share, and $b_u = P_u/G_{N,u}$ for its answered-only deviation. Then $b_u = a_u/w_u$
+identically, and for two units $u,v$ labelled so that $a_u > a_v$,
+
+$$ \text{the two conventions order } (u,v) \text{ oppositely} \iff 1 < \frac{a_u}{a_v} < \frac{w_u}{w_v}. $$
+
+The proof is two lines: $b_u/b_v = (a_u/a_v)(w_v/w_u)$, and the two orders differ exactly when both factors
+lie on opposite sides of $1$. Two consequences a third party can apply directly. **A certificate:** when
+$|\Delta \log a| \ge |\Delta \log w|$ the pair is ordered the same way under both conventions and **one
+convention suffices for that pair**; when $|\Delta \log a| < |\Delta \log w|$ the pair **must** be reported
+twice. **A closed form for the damage:** the number of pairs whose order the convention flips is
+$N_{\mathrm{inv}} = \#\{(u,v) : 1 < a_u/a_v < w_u/w_v\}$, so the two conventions cannot disagree at all
+whenever $w$ is constant across the units being compared — the **answered share**, not the accuracy, is the
+only channel through which a change of convention can reorder anything. On the nine FSC-147 configurations
+the two orderings separate exactly this way: under the relative deviation $\rho$ **1 of 36** pairs invert and
+under the mean absolute error **7 of 36**, a factor of seven that is structural rather than incidental — the
+convention acts on a ratio family as a **multiplicative rescaling** (only pairs inside the window
+$1 < a_u/a_v < w_u/w_v$ can move) and on a weighted-mean family as an **affine mixture**, which does not
+factorise and therefore moves pairs outside that window.
+
 5. **Decide.** If `permit` leaves **≤5%** of the base zeros still answered as 0, the zero is contract-set and
    a single-convention report is not comparable with one using the other convention; if the answered-only
    bias sits inside your own noise floor, the convention is immaterial *for those cells* — say which, and
@@ -2953,6 +3052,20 @@ boxes**. Three natural signals were tested against a bar fixed before the runs (
 is **≤ 0.6×** the mean over all items). All three are computable from a model's own behaviour, so a working
 one would be deployable with no annotation, no detector and no training:
 
+**A bar is not a criterion unless it is decidable at the sample size tested.** The AUC leg above is read
+against a pre-registered threshold $\theta$; whether that reading can pass at all is a power question with a
+one-line answer. With $n^-$ negative units and the Hanley–McNeil equal-variance form
+$\mathrm{SE}(\mathrm{AUC}) \approx 1/(2\sqrt{n^-})$, the condition $\theta - \tfrac12 \ge z_{1-\alpha}\,
+\mathrm{SE}$ inverts to
+
+$$ n^- \;\ge\; \left\lceil \frac{1}{4}\left(\frac{z_{1-\alpha}}{2(\theta - \frac12)}\right)^{2} \right\rceil , $$
+
+which at $\theta = 0.65$ and $\alpha = 0.05$ requires $n^- \ge 31$. Our cross-wording units carry a median of
+**17** negatives, **15 of 20** are below the bar, and one has $n^- = 0$, where the AUC is not defined at all.
+Screening to the units that can be tested leaves **five**, of which **one** passes; under a true pass rate as
+high as **0.52** the probability of seeing at most one is **0.159**. The count of passing cells is therefore
+not evidence about the signal — it is a statement about the sample sizes, and we report it as such.
+
 | signal | how it is computed | units tested | units passing |
 |---|---|---|---|
 | **cross-scale agreement** | \|pred$_{640}$ − pred$_{1536}$\| / max(pred$_{1536}$,1), same prompt | 4 (3 families × dense/aerial) | **0** |
@@ -2984,70 +3097,6 @@ inputs are the E2/E3 per-item CSVs under `data/derived/e3/` — no new inference
 
 ---
 
-### M.25 The response spectrum's statistical structure and its calibration check
-
-§7.3 states this material in condensed form and **keeps its own statement of the numbers**; this
-appendix gives the same material at greater length. It is a **rewrite, not a transfer** — the two
-are not sentence-identical — so a reader of the main text alone loses no claim, and no number below
-is offered as new. The frozen values are in Appendices F.3, F.8, F.10 and F.11. Per-level intervals here are **resampling lower bounds** and understate the dominant term for any
-contrast across sides: only **ten units on four sides** exist.
-
-#### M.25.1 Statistical structure
-
-**Statistical structure.** For the ten (knob × domain) units we took the isotonic-calibrated span with its
-unit-level bootstrap interval (**200 resamples**, F.9) and enumerated **all** single split points (Appendix F.3). Exactly one split
-separates, by **1.6 pp** at permutation $p \approx 0.008$ **before** correction for the nine enumerated
-split points — and that gap is itself **below this paper's own noise floor (2.15–6.46 pp)**, with the
-smallest attainable corrected value of order 0.07. We therefore report that separation as a **candidate
-structure rather than an established partition**: one low-response unit alongside an **internally
-continuous high-response spectrum** (33.5–150.7 pp, from F.9's **transcribed** column), and explicitly **not**
-two anchor zones or bimodality, since with four knob **sides** collapsed into ten units a bimodality
-test has very low power. (The six knobs of Appendix F.2 map onto four sides; the split-point enumeration of Appendix F.3 runs over
-the ten units, not over the six knobs — the two counts are different populations, and the word "class" is
-not used for either.) (Appendix M.9)
-
-#### M.25.2 A shared calibration cannot remove the achievable span
-
-**A shared calibration cannot remove the achievable span.** By **Proposition 5** a shared affine calibration
-scales a span by its slope, so compressing one requires $s\ll1$. A **per-unit** deployable calibrator does
-reach such scales, but it is the very caliber under which the ordering is not preserved (**M.37**); the
-quantile map, which also compresses, is fittable from a labelled calibration set and deployable as a map,
-but it **destroys the ordering** (**0.410** over the 36 units, M.37). The answer to the objection that span
-is a calibration artefact is therefore not that compression is impossible, but that **no calibrator that
-compresses the span leaves the units mutually comparable** (M.37). Span is also not a single construct, and
-the noise floor is **2.15–6.46 pp** (Appendix F.8).
-
----
-
-### M.26 Three short §7 results
-
-Their conclusions are in the main text; the bodies are reproduced so that no wording is lost.
-
-#### 7.4 Saturation slope: a same-lineage scale difference, verified two ways
-
-Across the four configurations of one lineage the slope of the density-saturation relation is
-$-0.00511$ to $-0.00382$ (range 0.00129, 27.5% relative); the three configurations that agree at about −0.005 do so as a cluster, with the 8B point as the outlier. 
-
-*(Full detail in Appendix F.)*
-
-#### The quantitative structure of relative deviation (no main-text section)
-
-Per-level means and medians disagree at the sparse end for every configuration, and the disagreement is a
-**magnification** rather than a shift; only Qwen3-VL-8B assigns the correct direction to all three curves
-at magnified scale, consistent with its computed statistics. 
-
-*(Full detail in Appendix A.)*
-
-#### 7.8 An independent endorsement of enumeration over regression
-
-Our finding that enumeration-style counting is more directionally controllable than regression-style
-counting is not isolated: work on other tasks has independently reached the same conclusion that
-regress-then-round pipelines lose the property being measured. 
-
-*(Full detail in Appendix F.)*
-
----
-
 ### M.24 The public-benchmark check: FSC-147, nine configurations, and one counterexample
 
 §5.13 states the result; this appendix carries the full panel, the mechanism arms, and the diagnosis of the
@@ -3058,6 +3107,14 @@ sample of 300 test images** (step-sampled over the GT-sorted test split, so the 
 objects), the corpus contracts reused verbatim, one image per prompt, `temperature 0`, `max_tokens 128`, up
 to 4 096 context. The probe **imports the census probe** and reuses its prompt dictionary, parser and
 transport rather than re-implementing them, so the instrument is the same one used on the nine corpora.
+
+**The image count, stated once and with both calibers.** The release as distributed links to, and mirrors
+redistribute, the pre-processed package `images_384_VarV2`, which holds **6,146** files — that is the object we
+sample from, and it is why §M.41 and this section state **6,146**. The total usually quoted for FSC-147 in the
+literature is **6,135** images (3,659 / 1,286 / 1,190 train/val/test), i.e. a **de-duplicated** count; the
+difference of **eleven** is what the revision **FSC-133** (Amini-Naieni et al.) records, namely eleven training
+images that also appear in the validation or test split. Both figures are therefore correct under their own
+caliber; we sample the package as distributed and say so, rather than silently reconciling the two.
 
 #### M.24.1 Contract gate across nine configurations (six lineages)
 
@@ -3120,39 +3177,67 @@ are byte-identical; images, annotations and splits from the public `isentropic/F
 
 ---
 
-### M.28 The two remaining §5.11 consequences
+### M.25 The response spectrum's statistical structure and its calibration check
 
-§5.11 keeps the convention-gap numbers; the other two consequences, with their arithmetic, are below
-(their per-cell tables are in Appendix J.6 either way).
+§7.3 states this material in condensed form and **keeps its own statement of the numbers**; this
+appendix gives the same material at greater length. It is a **rewrite, not a transfer** — the two
+are not sentence-identical — so a reader of the main text alone loses no claim, and no number below
+is offered as new. The frozen values are in Appendices F.3, F.8, F.10 and F.11. Per-level intervals here are **resampling lower bounds** and understate the dominant term for any
+contrast across sides: only **ten units on four sides** exist.
 
-**(b) The abstention rate rises with ground truth, and (c) the scale effect is domain-dependent.** The slope
-of the deviation-vs-ground-truth relation **reverses sign** between conventions, and a 4× parameter increase
-enlarges the directional span by **2.5–3.1×** in the dense domains but not in the aerial domain
-(**0.66–1.18×**) *(per-cell tables: Appendix J.6)*.
+#### M.25.1 Statistical structure
+
+**Statistical structure.** For the ten (knob × domain) units we took the isotonic-calibrated span with its
+unit-level bootstrap interval (**200 resamples**, F.9) and enumerated **all** single split points (Appendix F.3). Exactly one split
+separates, by **1.6 pp** at permutation $p \approx 0.008$ **before** correction for the nine enumerated
+split points — and that gap is itself **below this paper's own noise floor (2.15–6.46 pp)**, with the
+smallest attainable corrected value is 0.075. We therefore report that separation as a **candidate
+structure rather than an established partition**: one low-response unit alongside an **internally
+continuous high-response spectrum** (33.5–150.7 pp, from F.9's **transcribed** column), and explicitly **not**
+two anchor zones or bimodality, since with four knob **sides** collapsed into ten units a bimodality
+test has very low power. (The six knobs of Appendix F.2 map onto four sides; the split-point enumeration of Appendix F.3 runs over
+the ten units, not over the six knobs — the two counts are different populations, and the word "class" is
+not used for either.) (Appendix M.9)
+
+#### M.25.2 A shared calibration cannot remove the achievable span
+
+**A shared calibration cannot remove the achievable span.** By **Proposition 5** a shared affine calibration
+scales a span by its slope, so compressing one requires $s\ll1$. A **per-unit** deployable calibrator does
+reach such scales, but it is the very caliber under which the ordering is not preserved (**M.37**); the
+quantile map, which also compresses, is fittable from a labelled calibration set and deployable as a map,
+but it **destroys the ordering** (**0.410** over the 36 units, M.37). The answer to the objection that span
+is a calibration artefact is therefore not that compression is impossible, but that **no calibrator that
+compresses the span leaves the units mutually comparable** (M.37). Span is also not a single construct, and
+the noise floor is **2.15–6.46 pp** (Appendix F.8).
 
 ---
 
-### M.29 Two §5 results
+### M.26 Three short §7 results
 
 Their conclusions are in the main text; the bodies are reproduced so that no wording is lost.
 
-#### 5.4 Cross-domain abstention summary
+#### 7.4 Saturation slope: a same-lineage scale difference, verified two ways
 
-Aggregating over domains, the abstention rate is **not** ordered by object count. It is highest in the
-dense-crowd and aerial domains (ShanghaiTech-A 56.6%, VisDrone 68.2%, AI-TOD 68.1%) and essentially
-zero in the clearly-resolved domains (ShanghaiTech-B 0%, sparse sets near 0%), while ShanghaiTech-B has
-**more** targets per image (124) than VisDrone (22). Object count is therefore not the ordering
-variable; §5.6 identifies what is.
+Across the four configurations of one lineage the slope of the density-saturation relation is
+$-0.00511$ to $-0.00382$ (range 0.00129, 27.5% relative); the three configurations that agree at about −0.005 do so as a cluster, with the 8B point as the outlier. 
 
-#### 5.10 Aerial domain: the legibility extreme
+*(Full detail in Appendix F.)*
 
-VisDrone and AI-TOD are the legibility extreme. Tiling gives limited relief (Appendix M.8): **the aerial bottleneck is instance
-under-resolution, the crowd bottleneck is overlap**, and the two respond differently to the same
-intervention. The contract effect is only partly effective: lowering the pixel budget raises
-abstention monotonically in both lineages, but "forbid 0" works only partly for Qwen and hardly at all
-for InternVL (Appendix C.4). (Appendix M.11)
+#### The quantitative structure of relative deviation (no main-text section)
 
+Per-level means and medians disagree at the sparse end for every configuration, and the disagreement is a
+**magnification** rather than a shift; only Qwen3-VL-8B assigns the correct direction to all three curves
+at magnified scale, consistent with its computed statistics. 
 
+*(Full detail in Appendix A.)*
+
+#### 7.8 An independent endorsement of enumeration over regression
+
+Our finding that enumeration-style counting is more directionally controllable than regression-style
+counting is not isolated: work on other tasks has independently reached the same conclusion that
+regress-then-round pipelines lose the property being measured. 
+
+*(Full detail in Appendix F.)*
 
 ---
 
@@ -3193,6 +3278,62 @@ were frozen before the run.*
 
 ---
 
+### M.28 The two remaining §5.11 consequences
+
+§5.11 keeps the convention-gap numbers; the other two consequences, with their arithmetic, are below
+(their per-cell tables are in Appendix J.6 either way).
+
+**(b) The abstention rate rises with ground truth, and (c) the scale effect is domain-dependent.** The slope
+of the deviation-vs-ground-truth relation **reverses sign** between conventions, and a 4× parameter increase
+enlarges the directional span by **2.5–3.1×** in the dense domains but not in the aerial domain
+(**0.66–1.18×**) *(per-cell tables: Appendix J.6)*.
+
+---
+
+### M.29 Two §5 results
+
+Their conclusions are in the main text; the bodies are reproduced so that no wording is lost.
+
+#### 5.4 Cross-domain abstention summary
+
+Aggregating over domains, the abstention rate is **not** ordered by object count. It is highest in the
+dense-crowd and aerial domains (ShanghaiTech-A 56.6%, VisDrone 68.2%, AI-TOD 68.1%) and essentially
+zero in the clearly-resolved domains (ShanghaiTech-B 0%, sparse sets near 0%), while ShanghaiTech-B has
+**more** targets per image (124) than VisDrone (22). Object count is therefore not the ordering
+variable; §5.6 identifies what is.
+
+**What would make a stratifier valid, without defining legibility.** The paragraph above leaves open what
+the ordering variable is, and the test for a candidate is decidable from the same table. Let $M$ be a
+per-image quantity used to stratify images and $A$ the abstention rate, and define
+
+$$ \gamma_k(M) := \max\{\,|A(u) - A(v)| \;:\; u \ne v \text{ in the same } M\text{-stratum}\,\}. $$
+
+Under the reading this paper already uses — $A$ is a monotone function of legibility, and legibility is a
+function of $M$ —
+
+$$ M \text{ is a legible stratifier} \iff \gamma_k(M) = 0, $$
+
+because a valid $M$ forces equal legibility, hence equal $A$, inside every stratum, while $\gamma_k = 0$
+makes $M$'s partition a refinement of $A$'s, which is what validity means here. The criterion needs no
+definition of legibility and one pair falsifies it, and the published stratifier fails it at four:
+**ShanghaiTech-B (123.8 targets/image, 0%)** against **VisDrone (22.4, 68.2%)**, **AI-TOD (17.0, 68.1%)**
+and **ShanghaiTech-A (433.3, 56.6%)**, and **UCF-QNRF (718.9, 53.9%)** against **ShanghaiTech-A**. The
+UCF-QNRF rate is measured here on the **334** images of that corpus in the released item set — **180**
+abstentions, **53.89%** — by the same instrument that returns **56.59%** on ShanghaiTech-A and **0.00%** on
+ShanghaiTech-B, against the **56.6%** and **0%** printed in §5.4.
+
+#### 5.10 Aerial domain: the legibility extreme
+
+VisDrone and AI-TOD are the legibility extreme. Tiling gives limited relief (Appendix M.8): **the aerial bottleneck is instance
+under-resolution, the crowd bottleneck is overlap**, and the two respond differently to the same
+intervention. The contract effect is only partly effective: lowering the pixel budget raises
+abstention monotonically in both lineages, but "forbid 0" works only partly for Qwen and hardly at all
+for InternVL (Appendix C.4). (Appendix M.11)
+
+
+
+---
+
 ### M.30 The excluded mechanism hypotheses
 
 The main text keeps the conclusion — all three candidate explanations are excluded — and the bodies are
@@ -3218,6 +3359,117 @@ domain conditionality §7.5 reports for the corpus arms (Appendix M.18).
 ---
 
 ---
+
+---
+
+### M.31 The prospective panel: rule, frame, verdicts, and what failed (P3, 2026-09-23)
+
+Predictions, thresholds and the sampling rule were frozen before any data were collected
+(`analysis/work/w1_prereg.json`, md5 `75eeca6fa68c9be65c2b569d4237d8df`); post-hoc decompositions are labelled. The
+full frame with every candidate and exclusion reason, the per-cell coverage table with unparsed rates, and all CSV
+files are released with the paper (`w1_bundle.tar.gz`, md5 `25308f6fbbbb7b8e1a780de501b36e0c`).
+
+#### M.31.1 Rule and frame
+The rule admits open-weight multimodal instruction-tuned families of at least two billion
+parameters, obtainable at no more than 35 GB, loadable on one 80 GB device, and **not used anywhere in §3-§5**;
+among those it takes the most lineage-novel first, one per lineage, up to six. It yielded six families in six
+lineages **with no Qwen model among them** — `gemma-4-31B-it` (Google), `Idefics3-8B-Llama3` (HuggingFace),
+`Step3-VL-10B` (StepFun), `MiniCPM-V-4_5` (OpenBMB), `deepseek-vl2-tiny` (DeepSeek) and `Molmo-7B-D-0924`
+(AllenAI) — of which five lineages appear nowhere in §3-§5. Attrition is recorded with causes: `MiniCPM-V-2_6`
+failed the smoke gate by answering the `base` contract with a natural-language refusal on all four gate items and
+producing no parseable JSON, so it is excluded (the gate forbids prompt edits) and its lineage slot passed to
+`MiniCPM-V-4_5`; three further families entered only after infrastructure gaps were closed (`trust_remote_code` for
+two, the `timm` package for one, `tensorflow` for Molmo's image processor), with no prompt, parser or threshold
+changed; and the reserve family was dropped after its vision and speech adapters returned zero bytes twice. Cells:
+96 on the zero pool, 72 on the non-zero pool, 24 on FSC-147.
+
+#### M.31.2 Frozen predictions and their verdicts
+
+| id | frozen criterion | outcome |
+|---|---|---|
+| P1 | >= 5 of 6 families with `permit` residual <= 2% | **failed**: 4 of 6 (0.00%, 0.00%, 0.00%, 0.18%, 7.23%, 48.28%); 20 of 24 cells <= 2% |
+| P2 | contract knob >= resolution knob + 10 pp in >= 70% of qualifying cells; dense minus aerial >= 20 pp | **main criterion passed** (10 of 12); the dense/aerial contrast is **not evaluable** — every qualifying cell is aerial |
+| P3 | domain variance component exceeds family | **passed**: 0.0959 against 0.0037 (25.8×, computed from the **unrounded** components 0.0958905 / 0.00371446 — the printed four-decimal values divide to 25.9, so the ratio is quoted from the unrounded ones), bootstrap interval [0.0831, 0.1002] |
+| P4 | (a) a dense domain with rank correlation < 0.90; (b) top family unchanged in >= 3 of 4 | (a) **passed** (0.83); (b) **failed** (changed in 2 of 4) |
+| P5 | (a) a hosted model with base zero rate >= 5%; (b) >= 2 of 3 with `permit` residual <= 2% | (a) **failed** (0.0% for all three); (b) **passed** (3 of 3) |
+| P6 | >= 5 of 6 families with the zero rate falling by less than 20 pp under exemplars | **failed**; five of six fell by 58-93 pp |
+
+**What the failures bound.** P1 and P6 bound the **exemplar** statement, P4(b) the **convention** statement
+about which family ranks first; P2's secondary criterion and P5(a) are likewise boundaries. **No headline
+claim rests on a failed prediction**, and each is written into the main text as a bounded statement.
+
+#### M.31.3 Where the gate holds (post-hoc), and the two boundaries
+Base zero rate, then `permit` zero rate, then
+`permit` abstention rate:
+
+| family | st_a | ucf | visdrone | aitod |
+|---|---|---|---|---|
+| gemma-4-31B-it | 1.9% -> 0.0% (100%) | 8.0% -> 0.0% (100%) | 58.0% -> 0.0% (89%) | 40.0% -> 0.7% (91%) |
+| Idefics3-8B-Llama3 | 4.9% -> 0.0% (99%) | 4.0% -> 0.0% (99%) | 52.0% -> 12.7% (50%) | 34.0% -> 14.0% (29%) |
+| Step3-VL-10B | 0.0% -> 0.0% (100%) | 0.0% -> 0.0% (100%) | 40.7% -> 0.0% (80%) | 24.7% -> 0.0% (79%) |
+| MiniCPM-V-4_5 | 1.0% -> 0.0% (100%) | 2.0% -> 0.0% (100%) | 82.0% -> 0.0% (99%) | 66.7% -> 0.0% (93%) |
+| Molmo-7B-D-0924 | 1.9% -> 0.0% (100%) | 0.0% -> 0.0% (100%) | 75.3% -> 0.0% (100%) | 60.7% -> 0.0% (100%) |
+| deepseek-vl2-tiny | 0.0% -> 0.0% (0%) | 0.0% -> 0.0% (0%) | 71.3% -> 91.3% (0%) | 50.7% -> 86.7% (0%) |
+
+Two boundaries, separated deliberately. The sparse-aerial residual of Idefics3-8B is a counting error rather than a
+refused outlet: the aerial zero pools have median ground truth three and five, its residual items two to three, and
+it answers zero on items with one or two objects while abstaining on half that domain. deepseek-vl2-tiny differs in
+kind — in the dense domains 97.3% and 99.0% of its replies are unparsable under both contracts, so its zero rate
+there is uninterpretable, while in the aerial domains it keeps answering zero under `permit` and abstains on none;
+it is a genuine family x domain outlet failure, of the kind §5.13 reports for the build that needed the outlet
+enumerated as an option.
+
+#### M.31.4 The exemplar condition
+Three exemplar boxes per image from the benchmark's own annotations, normalised to a
+0-1000 scale and given as text; no image is modified, so the comparison is on identical pixels.
+
+| family | zero rate base -> exemplars | MAE over all images | median relative error when a number is given |
+|---|---|---|---|
+| gemma-4-31B-it | 88.7% -> 0.0% | 69.2 -> 28.6 | 90.5% -> 14.4% |
+| MiniCPM-V-4_5 | 92.7% -> 0.0% | 69.6 -> 64.6 | 89.4% -> 25.0% |
+| Molmo-7B-D-0924 | 58.0% -> 0.0% | 68.3 -> 59.8 | 93.8% -> 71.8% |
+| Idefics3-8B-Llama3 | 89.0% -> 1.7% | 69.8 -> 64.1 | 97.4% -> 93.2% |
+| Step3-VL-10B | 79.0% -> 3.0% | 77.6 -> 878.8 (75 of 300 scored) | 93.8% -> 92.3% |
+| deepseek-vl2-tiny | 0.3% -> 67.7% | 44.7 -> 72.2 | 28.6% -> 96.3% |
+
+The zero disappears in five of six families and the error falls materially in one; where accuracy does improve it
+improves greatly, and where it does not the zero has been replaced by a wrong number. On a second axis, then, the
+same distinction holds: **an expression of failure can be removed without removing the failure**.
+
+#### M.31.5 Hosted endpoints
+Three proprietary deployments answered the same 253 items, with the census probe and two endpoint-forced
+changes (`max_tokens` 128 -> 2048, because thinking tokens consumed the original budget, and
+`reasoning_effort: minimal`); prompts and parser are byte-identical and `finish_reason` is stored per item
+(0.00% truncated). Under a number-only contract none answered zero (0.0%); permitted to abstain they abstained
+on 98-100% of those items (residual 0.00%); their median relative error where they did answer was 34.1-46.7%
+against 58.5-82.6% for the open families on the same items. The frozen criterion asking for a base zero rate of
+at least 5% therefore fails, and we record that as a boundary of the phenomenon rather than as support for it.
+
+#### M.31.6 An instrument defect
+The census parser's first pattern requires the key to follow the brace
+immediately, while standard JSON writes `{"count": ...}`; every such reply misses that pattern and is recovered only
+by the integer fallback, and the abstention form `{"count": "abstain"}` contains no integer, so it is returned as
+unparsed. Of 55,351 stored rows none carries an abstention token in `pred`, 25,108 contain an abstention word in the
+raw reply (23,605 in quoted JSON form, none unquoted), and 23,602 quoted abstentions were recorded as parsing
+failures. **No aggregate in this paper depends on the affected column**: abstention is counted by matching the raw
+reply, and answering zero is a successful parse with value zero, which the integer fallback supplies. **This is the same defect as M.6** (where the digit is present and the value is recoverable) and as **M.19.12(e)** (where it is not); the boundary is whether the reply carries a digit. The panel's
+analyses were re-run under raw matching after this was found, which is why the hosted table reads as abstention
+rather than as failure to parse.
+
+#### M.31.8 The two failed predictions in full (§5.14)
+
+The main text states the failures in one sentence; the elaboration is reproduced here so that no wording is lost.
+
+**Two predictions failed, and both failures are informative.** First, the convention can change the *choice*: the
+top-ranked family changes between conventions in **two of four** domains (Spearman **0.83** on UCF-QNRF), so the
+"the decision does not move" asymmetry of §5.12 is a property of that configuration set rather than of the
+convention. Excluding the one family whose dense output is unparsable it still changes in one domain, where the
+ranking is more convention-sensitive, not less (**0.40**). Second, the exemplar prediction is falsified: three
+exemplar boxes remove the zero in five of six families (**58–93 pp**), yet the error over all images falls
+materially in only one (MAE **69.2 → 28.6**) and barely in three (69.8 → 64.1; 69.6 → 64.6; 68.3 → 59.8).
+Accuracy *conditional on giving a number* improves in three families (median relative error **90.5% → 14.4%**,
+**89.4% → 25.0%**, 93.8% → 71.8%) and not in the other two (**97.4% → 93.2%**, **93.8% → 92.3%**). **Removing the
+zero is therefore not the same as becoming able to count** (Appendix M.31.4).
 
 ---
 
@@ -3307,117 +3559,6 @@ limit. (Appendices J.7, J.8)
 
 ---
 
-### M.31 The prospective panel: rule, frame, verdicts, and what failed (P3, 2026-09-23)
-
-Predictions, thresholds and the sampling rule were frozen before any data were collected
-(`analysis/work/w1_prereg.json`, md5 `75eeca6fa68c9be65c2b569d4237d8df`); post-hoc decompositions are labelled. The
-full frame with every candidate and exclusion reason, the per-cell coverage table with unparsed rates, and all CSV
-files are released with the paper (`w1_bundle.tar.gz`, md5 `25308f6fbbbb7b8e1a780de501b36e0c`).
-
-#### M.31.1 Rule and frame
-The rule admits open-weight multimodal instruction-tuned families of at least two billion
-parameters, obtainable at no more than 35 GB, loadable on one 80 GB device, and **not used anywhere in §3-§5**;
-among those it takes the most lineage-novel first, one per lineage, up to six. It yielded six families in six
-lineages **with no Qwen model among them** — `gemma-4-31B-it` (Google), `Idefics3-8B-Llama3` (HuggingFace),
-`Step3-VL-10B` (StepFun), `MiniCPM-V-4_5` (OpenBMB), `deepseek-vl2-tiny` (DeepSeek) and `Molmo-7B-D-0924`
-(AllenAI) — of which five lineages appear nowhere in §3-§5. Attrition is recorded with causes: `MiniCPM-V-2_6`
-failed the smoke gate by answering the `base` contract with a natural-language refusal on all four gate items and
-producing no parseable JSON, so it is excluded (the gate forbids prompt edits) and its lineage slot passed to
-`MiniCPM-V-4_5`; three further families entered only after infrastructure gaps were closed (`trust_remote_code` for
-two, the `timm` package for one, `tensorflow` for Molmo's image processor), with no prompt, parser or threshold
-changed; and the reserve family was dropped after its vision and speech adapters returned zero bytes twice. Cells:
-96 on the zero pool, 72 on the non-zero pool, 24 on FSC-147.
-
-#### M.31.2 Frozen predictions and their verdicts
-
-| id | frozen criterion | outcome |
-|---|---|---|
-| P1 | >= 5 of 6 families with `permit` residual <= 2% | **failed**: 4 of 6 (0.00%, 0.00%, 0.00%, 0.18%, 7.23%, 48.28%); 20 of 24 cells <= 2% |
-| P2 | contract knob >= resolution knob + 10 pp in >= 70% of qualifying cells; dense minus aerial >= 20 pp | **main criterion passed** (10 of 12); the dense/aerial contrast is **not evaluable** — every qualifying cell is aerial |
-| P3 | domain variance component exceeds family | **passed**: 0.0959 against 0.0037 (25.8x), bootstrap interval [0.0831, 0.1002] |
-| P4 | (a) a dense domain with rank correlation < 0.90; (b) top family unchanged in >= 3 of 4 | (a) **passed** (0.83); (b) **failed** (changed in 2 of 4) |
-| P5 | (a) a hosted model with base zero rate >= 5%; (b) >= 2 of 3 with `permit` residual <= 2% | (a) **failed** (0.0% for all three); (b) **passed** (3 of 3) |
-| P6 | >= 5 of 6 families with the zero rate falling by less than 20 pp under exemplars | **failed**; five of six fell by 58-93 pp |
-
-**What the failures bound.** P1 and P6 bound the **exemplar** statement, P4(b) the **convention** statement
-about which family ranks first; P2's secondary criterion and P5(a) are likewise boundaries. **No headline
-claim rests on a failed prediction**, and each is written into the main text as a bounded statement.
-
-#### M.31.3 Where the gate holds (post-hoc), and the two boundaries
-Base zero rate, then `permit` zero rate, then
-`permit` abstention rate:
-
-| family | st_a | ucf | visdrone | aitod |
-|---|---|---|---|---|
-| gemma-4-31B-it | 1.9% -> 0.0% (100%) | 8.0% -> 0.0% (100%) | 58.0% -> 0.0% (89%) | 40.0% -> 0.7% (91%) |
-| Idefics3-8B-Llama3 | 4.9% -> 0.0% (99%) | 4.0% -> 0.0% (99%) | 52.0% -> 12.7% (50%) | 34.0% -> 14.0% (29%) |
-| Step3-VL-10B | 0.0% -> 0.0% (100%) | 0.0% -> 0.0% (100%) | 40.7% -> 0.0% (80%) | 24.7% -> 0.0% (79%) |
-| MiniCPM-V-4_5 | 1.0% -> 0.0% (100%) | 2.0% -> 0.0% (100%) | 82.0% -> 0.0% (99%) | 66.7% -> 0.0% (93%) |
-| Molmo-7B-D-0924 | 1.9% -> 0.0% (100%) | 0.0% -> 0.0% (100%) | 75.3% -> 0.0% (100%) | 60.7% -> 0.0% (100%) |
-| deepseek-vl2-tiny | 0.0% -> 0.0% (0%) | 0.0% -> 0.0% (0%) | 71.3% -> 91.3% (0%) | 50.7% -> 86.7% (0%) |
-
-Two boundaries, separated deliberately. The sparse-aerial residual of Idefics3-8B is a counting error rather than a
-refused outlet: the aerial zero pools have median ground truth three and five, its residual items two to three, and
-it answers zero on items with one or two objects while abstaining on half that domain. deepseek-vl2-tiny differs in
-kind — in the dense domains 97.3% and 99.0% of its replies are unparsable under both contracts, so its zero rate
-there is uninterpretable, while in the aerial domains it keeps answering zero under `permit` and abstains on none;
-it is a genuine family x domain outlet failure, of the kind §5.13 reports for the build that needed the outlet
-enumerated as an option.
-
-#### M.31.4 The exemplar condition
-Three exemplar boxes per image from the benchmark's own annotations, normalised to a
-0-1000 scale and given as text; no image is modified, so the comparison is on identical pixels.
-
-| family | zero rate base -> exemplars | MAE over all images | median relative error when a number is given |
-|---|---|---|---|
-| gemma-4-31B-it | 88.7% -> 0.0% | 69.2 -> 28.6 | 90.5% -> 14.4% |
-| MiniCPM-V-4_5 | 92.7% -> 0.0% | 69.6 -> 64.6 | 89.4% -> 25.0% |
-| Molmo-7B-D-0924 | 58.0% -> 0.0% | 68.3 -> 59.8 | 93.8% -> 71.8% |
-| Idefics3-8B-Llama3 | 89.0% -> 1.7% | 69.8 -> 64.1 | 97.4% -> 93.2% |
-| Step3-VL-10B | 79.0% -> 3.0% | 77.6 -> 878.8 (75 of 300 scored) | 93.8% -> 92.3% |
-| deepseek-vl2-tiny | 0.3% -> 67.7% | 44.7 -> 72.2 | 28.6% -> 96.3% |
-
-The zero disappears in five of six families and the error falls materially in one; where accuracy does improve it
-improves greatly, and where it does not the zero has been replaced by a wrong number. On a second axis, then, the
-same distinction holds: **an expression of failure can be removed without removing the failure**.
-
-#### M.31.5 Hosted endpoints
-Three proprietary deployments answered the same 253 items, with the census probe and two endpoint-forced
-changes (`max_tokens` 128 -> 2048, because thinking tokens consumed the original budget, and
-`reasoning_effort: minimal`); prompts and parser are byte-identical and `finish_reason` is stored per item
-(0.00% truncated). Under a number-only contract none answered zero (0.0%); permitted to abstain they abstained
-on 98-100% of those items (residual 0.00%); their median relative error where they did answer was 34.1-46.7%
-against 58.5-82.6% for the open families on the same items. The frozen criterion asking for a base zero rate of
-at least 5% therefore fails, and we record that as a boundary of the phenomenon rather than as support for it.
-
-#### M.31.6 An instrument defect
-The census parser's first pattern requires the key to follow the brace
-immediately, while standard JSON writes `{"count": ...}`; every such reply misses that pattern and is recovered only
-by the integer fallback, and the abstention form `{"count": "abstain"}` contains no integer, so it is returned as
-unparsed. Of 55,351 stored rows none carries an abstention token in `pred`, 25,108 contain an abstention word in the
-raw reply (23,605 in quoted JSON form, none unquoted), and 23,602 quoted abstentions were recorded as parsing
-failures. **No aggregate in this paper depends on the affected column**: abstention is counted by matching the raw
-reply, and answering zero is a successful parse with value zero, which the integer fallback supplies. **This is the same defect as M.6** (where the digit is present and the value is recoverable) and as **M.19.12(e)** (where it is not); the boundary is whether the reply carries a digit. The panel's
-analyses were re-run under raw matching after this was found, which is why the hosted table reads as abstention
-rather than as failure to parse.
-
-#### M.31.8 The two failed predictions in full (§5.14)
-
-The main text states the failures in one sentence; the elaboration is reproduced here so that no wording is lost.
-
-**Two predictions failed, and both failures are informative.** First, the convention can change the *choice*: the
-top-ranked family changes between conventions in **two of four** domains (Spearman **0.83** on UCF-QNRF), so the
-"the decision does not move" asymmetry of §5.12 is a property of that configuration set rather than of the
-convention. Excluding the one family whose dense output is unparsable it still changes in one domain, where the
-ranking is more convention-sensitive, not less (**0.40**). Second, the exemplar prediction is falsified: three
-exemplar boxes remove the zero in five of six families (**58–93 pp**), yet the error over all images falls
-materially in only one (MAE **69.2 → 28.6**) and barely in three (69.8 → 64.1; 69.6 → 64.6; 68.3 → 59.8).
-Accuracy *conditional on giving a number* improves in three families (median relative error **90.5% → 14.4%**,
-**89.4% → 25.0%**, 93.8% → 71.8%) and not in the other two (**97.4% → 93.2%**, **93.8% → 92.3%**). **Removing the
-zero is therefore not the same as becoming able to count** (Appendix M.31.4).
-
----
-
 ### M.35 What a published number would do under the other convention
 
 A table that reports one convention without its abstention mass is not merely imprecise: on a public
@@ -3427,7 +3568,7 @@ count, the published convention (an abstention counted as a predicted zero) repo
 $$\mathrm{MAE}_A = (1-w)\,\mathrm{MAE}_B + w\,\overline{\mathrm{GT}}_{\text{abstained}}$$
 
 where $\mathrm{MAE}_B$ is the error on the items it did answer. The second term is the large one, because
-abstention concentrates on the crowded items: on the public benchmark the abstained items average **71.8–77.1** objects (median **72.6** across the nine configurations) against a corpus-wide mean of **70.13**.
+abstention concentrates on the crowded items: on the public benchmark the abstained items average **71.8–77.0** objects (median **72.6** across the nine configurations) against a corpus-wide mean of **70.13**.
 
 **Nine configurations, six lineages, one benchmark.** We recomputed both conventions for every configuration
 of the public-benchmark panel on the same stratified test images:
@@ -3461,7 +3602,7 @@ abstention propensity can differ by tens of counts while failing equally where t
 identity needs no re-running, the abstention mass is recoverable from any stored output and is the quantity a
 reader should ask for.
 
-*Reproduction: the nine configurations' per-item records are in the released package at `data/derived/fsc_res/frozen384/` (nine `fsc_*_base.csv`); recomputing the identity and the table from them reproduces every cell printed here. The generator used for the table is `_retro_rank_and_m35.py` (author-side; not part of the released package). The abstained-item ground-truth means are 72.90 / 77.03 / 72.04 / 72.08 / 72.13 / 72.58 / 71.77 / 75.14 / 77.07 over the nine configurations, against the panel's corpus-wide mean of **70.13**.*
+*Reproduction: the nine configurations' per-item records are in the released package at `data/derived/fsc_res/frozen384/` (nine `fsc_*_base.csv`); recomputing the identity and the table from them reproduces every cell printed here. The generator used for the table is `_retro_rank_and_m35.py` (author-side; not part of the released package). The abstained-item ground-truth means are 72.90 / 77.03 / 72.04 / 73.48 / 72.13 / 72.58 / 71.77 / 75.14 / 72.14 over the nine configurations, against the panel's corpus-wide mean of **70.13**. Each is computed on the **same item set as the table above** — all items of the stratified sample, with an item whose `pred` field is empty (an explicit textual refusal) counted as an abstention, which is what the table's $w$ counts. Two configurations, Qwen3-VL-30B-A3B and LLaVA-OneVision-7B, have unparsed items and are the only two for which the two item sets differ; reading their means on the parsed subset instead would move them to 72.08 and 77.07 and break the identity above on exactly those two rows, so we state the set here.*
 
 ---
 
@@ -3484,7 +3625,11 @@ correlation reaches 0.8.
 **Verdict: partially predictive, and we do not upgrade it to a law.** Domain and contract alone reduce the error for an unseen family by **52%** (from 24.3 pp to 11.7 pp), and the ranking of cells is recovered at r = 0.673 — below the 0.8 bar fixed in advance, so the pre-registered criterion **fails**. What the numbers do support is a bounded statement worth stating exactly: knowing only which domain and which contract a new family faces, its answered-zero rate can be placed to within about **12 pp**, against a range that spans 0% to 91% across the panel; adding a linear term on the domain's ground-truth statistics does not improve on that (M2 is worse than M1), which is itself informative — the domain enters as a category, not through a smooth difficulty axis that these features capture.
 
 Resampled at the item level (1,000 draws), the components separate: domain **0.0959** [**0.0875**, **0.1039**]
-against family **0.0037** [**0.0024**, **0.0051**] — 25.8-fold, intervals not overlapping.
+against family **0.0037** [**0.0024**, **0.0051**] — 25.8-fold, intervals not overlapping. This is a **second**
+resampling of the same domain component, under a different scheme from the one of record: the frozen
+`w1_quoted.json` carries **`[0.0831, 0.1002]`**, and that is the interval printed in M.31.2. The two differ in
+scheme, not in conclusion — both exclude zero by a wide margin, and the verdict is read from neither alone — so
+we print both rather than one, and label which artifact each comes from.
 
 The residual is the part family identity still owns: twelve percentage points is the same order as the spread
 between families within one domain under one contract, so "this contract will clear the zero for a new family"
@@ -3565,6 +3710,30 @@ for every unit); the spread of per-unit retention is **1×** for it, **9×** for
 for a per-unit one — and a global **isotonic** map, although shared, already gives **898×**, because
 span-multiplicativity requires a map that is both affine *and* level-independent, not merely monotone.
 That is the quantitative form of the "shared isotonic lands in between" row above.
+
+**The threshold is a wall, not a tolerance, and it is set by the closest resolvable pair.** The rows above
+differ in one respect only: whether the map's factor varies across units. Write $x_1 < \dots < x_{36}$ for
+the uncalibrated spans and $s_u$ for the factor a caliber applies to unit $u$; a caliber is
+**level-independent** when $s_u$ does not depend on the level, which is exactly the affine case of
+Proposition 5. A pair $i < j$ is then inverted exactly when $s_i x_i > s_j x_j$, i.e. when
+$\log s_i - \log s_j > \log(x_j/x_i)$, so with $A = \max_u s_u / \min_u s_u$,
+
+$$ \text{the ordering is preserved for every such caliber} \iff A \le r_{\min} := \min\{x_j/x_i : x_i < x_j\}, $$
+
+and the bound is attained: for the pair realising $r_{\min}$, taking $s_i = \max s$ and $s_j = \min s$
+inverts it. (At $A = r_{\min}$ that pair can only tie, never invert, which is why the condition is stated
+on the weak order.) On this table $r_{\min}$ is set by `det·zero-shot COCO (full grid)` at
+**61.7181 pp** against `VLM·tiling / Qwen32B(ctile) / ucf / forbid0` at **61.6399 pp** — **0.13% apart** —
+so $r_{\min} = 1.0013$. Two units, `det·in-domain(micro)/BBBC005 (full grid)` and its `tau@1536` sibling,
+coincide exactly at **112.3128 pp**; a strict order does not exist there, and the radius is quoted on the
+closest pair that does resolve. The consequence is narrower than a tolerance band and sharper than a
+ranking: **every caliber whose factor varies across units by more than 0.13% must lose this ordering**, so
+the per-knob map (7.7×) could not have held it however well it was fitted — not because it fits badly, but
+because no map at that granularity can. The loss then grows with $A$ monotonically. Over the same 36 units
+the Kendall $\tau$ against the uncalibrated ordering is **1.0000** at $A = 1.000$ (the shared case, exact),
+then **0.9111 / 0.8476 / 0.8381** as $A$ rises through **2.572× / 3.558× / 5.024×** for the equal-count and
+extreme-dropping deflations, against Spearman **0.983 / 0.947 / 0.933**. The rungs are not a ladder of fit
+quality; they are one wall, crossed once.
 
 **This is a property of the unit set, not a universal.** On the 8-unit frozen set, which contains only
 **two** knobs whose factors differ by 1.39×, the per-knob map is **indistinguishable** from the global one
@@ -3992,7 +4161,12 @@ files all have a **short side of exactly 384** pixels, with the long side varyin
 according to aspect ratio; on our 300-image sample the short side is 384 throughout and the long side runs
 384–1229 (median 514). Inside that package the scale is therefore fixed by the dataset and the canvas is
 not. That package is what the dataset README links to and what mirrors redistribute; there is **no**
-official original-resolution release. A request for "the native resolution"
+official original-resolution release. **The file count and the commonly quoted total differ in caliber.** The distributed package holds **6,146**
+files, which is the object we sample from and the reason we call it *the* release; the count usually quoted for
+FSC-147 is a **de-duplicated** one, lower by the images that appear in more than one split — the reconciliation,
+with both figures, is stated once in §M.24. Wherever this appendix states an image count it states the count of
+the package as distributed, and the sampling
+in §5.13 and §D.3 is from that same package. A request for "the native resolution"
 thus asks for something that is not distributed: the scale is a property of **the dataset**, not of our
 pipeline. What **can** be varied is the scale handed to the model: **downward** on the short side to 256
 pixels, which discards information the release does supply, or **upward** to 768 pixels, the same

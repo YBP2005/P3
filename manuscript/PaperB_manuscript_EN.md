@@ -8,10 +8,10 @@
 Evaluation reports symmetric magnitudes: 100 and 150 look alike. We treat the **signed
 error direction** as a measurable dimension and contribute **two findings, plus the apparatus that makes
 them checkable**: an **operationalisation** of abstention that separates a suppressed abstention
-from a true zero, and the **dual-convention identities** that make under-counts readable. For the
-open-weight models here (§5.7, §8.2), the dominant dense-scene failure is **not underestimation
+from a true zero, and the **dual-convention identities** that make under-counts readable. For **one anchor
+build under Chinese prompts** (§5.7, §8.2), the dominant dense-scene failure is **not underestimation
 but abstention** — a literal "0" — accounting for **82–94%** of the total under-count under ground-truth-weighted share
-(**base arm, Chinese prompts, one anchor build**; the same abstention term under the **item-count** convention is **53.9–68.2%**); **answered-zero rate** drops **42.7 pp on the BF16 build under English** (§8.2).
+(**base arm**; the same abstention **rate** under the **item-count** convention is **53.9–68.2%**); **answered-zero rate** drops **42.7 pp on the BF16 build under English** (§8.2).
 Given an abstention option **1591/1591** calls abstain; forbidding it yields a **per-item median** of **2.463–9.452×** (§5.7, M.1).
 The gate is the **availability of an abstention token**, not enumeration demand
 (M.18). Abstention is a
@@ -36,8 +36,8 @@ vision-language models (VLMs) systematically underestimate dense scenes, which p
 **capability** problem. Re-classifying every outcome in our corpus (892 result files, ~**620k** records,
 four VLM configurations, nine datasets), we find that **the dominant component of these
 "underestimates" is not underestimation but abstention**: the model declines to estimate instances it
-cannot individually ascertain, and expresses that refusal as the **literal answer "0"**. Under a ground-truth-weighted convention, answering 0 accounts for **82–94%** of the total under-count
-(**base contract arm, Chinese prompts, one anchor build**; over all arms and domains it spans
+cannot individually ascertain, and expresses that refusal as the **literal answer "0"**. Under a ground-truth-weighted convention on one anchor build, answering 0 accounts for **82–94%** of the total under-count
+(**base contract arm, Chinese prompts**; over all arms and domains it spans
 **0–99.4%** — **0%** on the `over` arm and **99.4%** on ShanghaiTech-A under the `under` arm (Appendix J.1);
 the **answered-zero rate** drops **42.7 pp on the BF16 build under English prompts** (Appendix M.39)).
 
@@ -313,9 +313,9 @@ whole corpus (892 result files, ~620k records):
 **For the Qwen family — the source of all our abstention headlines — `pred = 0` covers **99.82%** of them**
 (the three configurations: 0.18%, 0% and 0%). **For InternVL2.5-8B it covers only about seven
 tenths**, the rest arriving as textual refusals. **Cross-lineage comparisons of abstention rate must
-therefore define the channel per lineage.** The incompleteness is **bounded rather than merely
+therefore define the channel per lineage.** The incompleteness is **lower-bounded, not
 disclosed**: by Proposition 7, a lineage with ratio $\kappa$ identifies the abstention rate only to
-within the missed-refusal share $1/(\kappa+1)$ — **0.18%** for Qwen3-VL-32B and
+within **at least** the missed-refusal share $1/(\kappa+1)$ — **0.18%** for Qwen3-VL-32B and
 **30.31%** for InternVL2.5-8B — so any abstention
 rate quoted for a partially covered lineage carries that error bar, and the two lineages are never pooled
 (§3.8, §8.2).
@@ -497,7 +497,7 @@ description "VLMs underestimate dense scenes" is mostly a description of refusal
 
 **Table 3.** Proposition 4's terms on the four headline domains.
 
-| Domain (anchor build) | abstention term | answering term | $S$ | abstention term, item-count convention |
+| Domain (anchor build) | abstention term | answering term | $S$ | abstention rate, item-count convention |
 |---|---|---|---|---|
 | ShanghaiTech-A | **−76.41** | −4.67 | **94.2%** | 56.6% |
 | UCF-QNRF | **−81.27** | −5.48 | **93.7%** | 53.9% |
@@ -505,7 +505,7 @@ description "VLMs underestimate dense scenes" is mostly a description of refusal
 | VisDrone | **−58.39** | −12.71 | **82.1%** | 68.2% |
 
 *(Terms are pp of the pooled relative deviation and sum to it exactly; $S$ is the ground-truth-weighted
-share and the last column the same term under the item-count convention. Appendix J.1.)*
+share and the last column the same **rate** under the item-count convention. Appendix J.1.)*
 
 ### 5.6 Causal attribution of abstention: not count, but legibility
 
@@ -649,7 +649,7 @@ build, keeping 251 of those 277** while the *same* build on ShanghaiTech-A leave
 that build leaves **0** zeros — for it the outlet must be **enumerated as an option**
 rather than *permitted* (Appendix M.24.3). The gate is therefore
 **family × domain × wording conditional, not universal**, and we state that explicitly rather than as a
-dense-only caveat. **(iii) On this benchmark the convention moves magnitudes, not the ρ ordering** (ρ by up to **44.0 pp**; Spearman **0.983**, 1 inversion of 36) — the same asymmetry §5.12 reports for the decision forms. Its sensitivity to the input scale is bounded in Appendix M.41.
+dense-only caveat. **(iii) Here the convention moves magnitudes, not the ρ ordering** (ρ by up to **44.0 pp**; Spearman **0.983 on the ρ ordering**, 1 inversion of 36) — the asymmetry §5.12 reports for the decision forms. Its sensitivity to the input scale is bounded in Appendix M.41.
 
 ### 5.14 A prospective test on an independently sampled panel
 
@@ -739,7 +739,7 @@ number is not a comparable quantity unless the weight set is specified. (Appendi
 ### 7.3 The response spectrum of knobs: the ordering, and what is not predicted
 
 **What this design can and cannot resolve.** Ten unit values on four sides resolve to the design's own noise
-floor, **2.15–6.46 pp**, and the separating split (**1.6 pp**, corrected $p$ **0.075**) lies below it. For the
+floor, **2.15–6.46 pp**, and the separating split (**1.6 pp**, corrected $p$ **≥0.075**) lies below it. For the
 split *as observed* (**3 vs 7**) the nine enumerated split points span only **120** assignments, so the
 **smallest attainable corrected $p$ is 0.075** — **no gap whatsoever would be certified by this test**; a
 5-vs-5 split would need **6.5 pp** for 80% power. **We therefore do not claim a separable structure** and
@@ -919,8 +919,7 @@ None.
 ## Data availability
 
 The image corpora are public datasets, cited above. The derived per-image prediction records, analysis scripts and run logs that reproduce
-every reported number are released at https://github.com/YBP2005/P3 (CC BY 4.0), with a per-file MD5
-manifest.
+every reported number are released or flagged at https://github.com/YBP2005/P3 (CC BY 4.0), with per-file MD5s.
 
 ## Funding
 

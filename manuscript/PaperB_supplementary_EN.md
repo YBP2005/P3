@@ -2381,8 +2381,8 @@ All entries are answered-zero rates in percent. `δ` is the Chinese-versus-Engli
 `δe` is the difference between the two English renderings of the tail clause (with and without the emphasis
 markers the archived Chinese string carries, which we could not resolve from the archive). Item counts are
 the full corpus pools (182 / 334 / 400 / 226); UCF-QNRF loses **127 of 334** items to the context-limit
-error of the same kind disclosed in §M.39 (which reports **203 of 334** for its own 8,192-token run), and those
-are reported as **unmeasured rather than filled in**.
+error of the same kind disclosed in §M.39 (which reports **203 of 334** for its own run — the two runs differ),
+and those are reported as **unmeasured rather than filled in**.
 
 **The mechanism reproduces on real images, and it is larger on the dense domains.** The added sentence lifts
 the zero rate by **+60 to +81 pp** on the two dense domains and by **+10 to +14 pp** on the two aerial ones —

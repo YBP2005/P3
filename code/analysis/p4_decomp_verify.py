@@ -74,6 +74,27 @@ def unit_stats(path):
     G, GN, P = gt.sum(), gt[ans].sum(), pr[ans].sum()
     s = dict(n=len(dd), G=G, GN=GN, P=P, nans=int(ans.sum()),
              abr=100.0 * (~ans).mean(), md5=hashlib.md5(io.open(path, 'rb').read()).hexdigest()[:10])
+    # ★ 2026-09-30（v0607 轮新增）命题 2 的数值验证 —— 放在**提前 return 之前**，
+    #   以便覆盖**全部**单元（含无弃权的 41 份），而不是只覆盖恒等式 4 适用的那 95 份。
+    #   ρ_pooled = r 的 g 加权均值，ρ̄ = r 的等权均值 ⇒ ρ_pooled − ρ̄ = Cov(g, r)/ḡ，
+    #   其中 r_i = (p_i − g_i)/g_i，Cov 为**普通样本协方差**（ddof = 0，即 1/n 归一）。
+    #   验证的是"两个口径的偏离恰由该协方差给出"（代数恒等式），不是"拟合得好"。
+    #   只在 gt > 0 的项上算（与 A.1 的比值口径一致）。
+    _pos = gt > 0
+    if _pos.any():
+        _g, _p = gt[_pos], pr[_pos]
+        _r = (_p - _g) / _g
+        s['p2_n'] = int(_pos.sum())
+        s['p2_rho_bar'] = float(_r.mean())
+        s['p2_cov'] = float(((_g - _g.mean()) * (_r - _r.mean())).mean())
+        # ★ 两个口径必须**在同一索引集上**取（即 gt > 0 的项）：恒等式的加权均值要求
+        #   权重和为 1。若拿全集口径的 rho_t（含 gt = 0 的项）去比，残差会到 1e-3 量级——
+        #   那不是命题错，是索引集不同（实测 4.665e-03 ⇒ 改成同集后降到浮点级）。
+        s['p2_rho_pooled'] = (_p.sum() - _g.sum()) / _g.sum()
+        s['p2_lhs'] = s['p2_rho_pooled'] - s['p2_rho_bar']
+        s['p2_rhs'] = s['p2_cov'] / float(_g.mean())
+        s['p2_res'] = abs(s['p2_lhs'] - s['p2_rhs'])
+        s['p2_sign_ok'] = (s['p2_lhs'] > 0) == (s['p2_rhs'] > 0)
     if not ans.any() or ans.all() or G <= 0 or GN <= 0:
         s['applicable'] = False
         s['why'] = '全弃权' if not ans.any() else ('无弃权' if ans.all() else 'G或G_N≤0')
@@ -152,6 +173,15 @@ print('     不适用 %d 份（%s）' % (len(inappl), '、'.join(sorted(set(s['w
 print('  【P4-2】推论 4.1 闭式 S：%d 份；|S实测−S闭式| 最大 = %.3e' % (len(Sok), maxSres))
 print('  【P4-3】边界（逐图中位口径）：%d 份；残差区间 %.2f–%.2f pp' % (len(med), 100 * med_range[0], 100 * med_range[1]))
 print('  【P4-4】副本离散性：多副本且数字分歧 %d 组；同配置离散上界 %.3f pp' % (len(div), 100 * divmax))
+_p2 = [s for _, _, s in recs if 'p2_res' in s]
+if _p2:
+    _p2res = max(s['p2_res'] for s in _p2)
+    _p2sep = [s for s in _p2 if abs(s['p2_lhs']) > 1e-12]
+    _p2agree = sum(1 for s in _p2sep if s['p2_sign_ok'])
+    _p2zero = sum(1 for s in _p2 if abs(s['p2_cov']) < 1e-12)
+    print('  【P2】命题 2 恒等式 ρ_pooled − ρ̄ = Cov(g,r)/ḡ：覆盖 %d 份；最大残差 = %.3e' % (len(_p2), _p2res))
+    print('       两口径确有差别 %d 份，其中偏离符号 == 协方差符号 %d 份；Cov == 0（两口径逐位相同）%d 份'
+          % (len(_p2sep), _p2agree, _p2zero))
 
 # ---------- 写记录 ----------
 L = []

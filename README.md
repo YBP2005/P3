@@ -7,7 +7,18 @@ Source data, code, figures and audit scripts for the manuscript
 
 Everything reported in the paper is reproducible from the files here. No number in the manuscript was
 typed in from memory: each is either computed by a script in `code/`, or taken from a per-image record in
-`data/derived/`, and the arithmetic identities are re-checked by assertions (`code/analysis/en_check.py`).
+`data/derived/`, and the arithmetic identities are re-checked by assertions.
+
+**Scope of that claim, stated because it is narrower than it may read.** The assertions live in
+`code/analysis/en_check.py`, which is the authors' **pre-submission gate for the working tree**: it reads
+Chinese-language source drafts, evidence records and frozen result files that are deliberately **not** part of
+this released package — of its **56** required inputs, **36** (in **6** classes: source drafts, evidence
+records, pagination/submission artefacts, reference-retrieval records, frozen analysis results and run logs)
+are not here — so it **cannot be run from this package alone**. What is reproducible from this package is
+every script in `code/` that reads only `data/derived/`, and each number those produce is the number printed
+in the paper. This README, `*.md` in `manuscript/`, the figures, and `data.zip`/`MANIFEST.csv` recompute. The
+gate is shipped for transparency, not as a runnable entry point; it is released unmodified and has not been
+weakened for release.
 
 ## Contents
 

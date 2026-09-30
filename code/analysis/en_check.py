@@ -277,6 +277,15 @@ EQUIV = {
     #   `p3r2_plan_m37cluster_criteria_frozen.json` 跑前冻结）；同一批读数印在补充材料 §F.7。
     '0.913': '§7.3 簇级（按旋钮整块）bootstrap 31 单元下沿，2026-09-29 v0605 只读复算',
     '0.994': '§7.3 簇级（按旋钮整块）bootstrap 31 单元上沿，2026-09-29 v0605 只读复算',
+    # ★ 2026-09-30（v0607）：§7.3 的 per-unit isotonic 一组两个值（8 单元 0.571 / 36 单元 0.521）。
+    #   更正前该处印的是 `0.571 / 0.548` —— 0.548 是**相邻那一行**（per-unit affine, refitted per
+    #   level）的 36 单元值，属**串行**（第 3 轮盲审 dspro 蒸馏器发现，本轮一手核到）。
+    #   0.571 与 0.521 都在**发布包内**的冻结件里：`code/analysis/perknob_rung_8unit_result.json`
+    #   （md5 `63ceb33804756655956d873c13a8d62e`，见补充材料 §M.37 的 Reproduction 行），
+    #   同一张表印在补充材料 §M.37 的 "per-unit isotonic" 行。0.521 不在中文定稿里（中文定稿没有该表），
+    #   故按既有做法**登记于此并写明出处**，而不是放宽判据。
+    '0.521': '§M.37 表 per-unit isotonic 行的 36 单元值（同一行 8 单元值 = 0.571）；'
+             '冻结件 perknob_rung_8unit_result.json 在发布包内，2026-09-30 v0607 更正串行',
 }
 missing = sorted((en_flat - zh_flat) - WHITE - ARXIV - SECT - set(EQUIV), key=lambda s: -len(s))
 chk('无法溯源的数字 token 0 个', not missing, str(missing[:12]))

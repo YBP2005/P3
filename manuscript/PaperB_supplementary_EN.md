@@ -2431,22 +2431,24 @@ to 71.50% against the correct 28.78%.
 | **Qwen3-VL-32B-BF16** | **64.03%** | **82.27%** | 95.33% | 49.66% |
 | Qwen2.5-VL-72B-AWQ | 0.00% | *n/a* | 71.33% | 51.82% |
 | InternVL3.5-38B-fp8 | 7.38% | 18.28% | 78.00% | *n/a* |
+| **InternVL3.5-38B-BF16** | **9.56%** | **23.20%** | *not run* | *not run* |
 
-*`n/a` marks a cell with no abstentions, where $S$ is undefined rather than zero.* Comparable item sets:
+*`n/a` marks a cell with no abstentions, where $S$ is undefined rather than zero; `not run` marks a cell
+this round did not measure — the BF16 rebuild of InternVL3.5-38B was run on the dense domains only.* Comparable item sets:
 253 dense and 300 aerial on the zero pool; 482 and 499 on the full set. Qwen3-VL-32B-AWQ is the
-configuration that **defined** the zero pool. **The 38B row's denominator is 244, not 253.** Nine of the 253 dense items returned an empty `pred`
+configuration that **defined** the zero pool. **The fp8 38B row's denominator is 244, not 253.** Nine of the 253 dense items returned an empty `pred`
 and are excluded from pooled rates, so the row reads **18/244 = 7.38%**, Wilson 95% **[4.72, 11.36]**
 (the exclusion rule itself is stated with the frozen criteria above).
 
-**On the dense domains the headline does not reproduce in any other family.** Of the **nine** families and
+**On the dense domains the headline does not reproduce in any other family.** Of the **ten** families and
 builds screened, **none** other than the two Qwen3-VL-32B precisions reaches either a dense zero rate of
 30% or a **dense** share of 50% — a qualifier the table needs, because an **aerial** share of 51.82%
 does occur elsewhere on it (Qwen2.5-VL-72B-AWQ) — including a **larger build of a non-Qwen family**
 (InternVL3.5-38B-fp8: dense
 zero-pool rate **7.38%** [4.72, 11.36] over **244** items — the nine of 253 with an empty `pred` are
 excluded from the rate, per this appendix's rule — share **18.28%**), which was run **once** and is an **fp8** build,
-so its precision axis moves with its family axis and the two cannot be separated from this row alone. Seven of the nine rows therefore fall below the bar, and the two that clear it are the
-same checkpoint at two precisions. **The same checkpoint at BF16 clears the bar and does not reproduce it whole**: on the identical item sets it holds **82.27%** of the share (against **90.30%**, a paired bootstrap difference of **8.03 pp**, 95% **[−12.37, −3.75]**) while the answered-zero rate falls from **95.26%** to **64.03%**. The **share** is therefore a build-level quantity and the **rate** is a build-and-precision one, which is the narrower reading §8.2 now states. Three denominators must not be crossed here: **64.03%** is the dense **intersection** (253 items), **65.02%** is this build's **own** dense zero pool (283 items), and **33.61%** is the dense rate on the **full** item set (482 items). This is sharper than "lineage- or build-specific": **the other Qwen anchor (AWQ) fails
+so its precision axis moves with its family axis and the two cannot be separated from this row alone. **Its rebuild at BF16 — a larger non-Qwen build at the anchor's own precision, the cell this panel was missing — reaches only 9.56% (24/251, Wilson 95% [6.51, 13.83]) with a dense share of 23.20% over three fresh service starts, so it clears neither bar; and on the 244 items its two weight formats share, its fp8 and BF16 builds differ by +0.41 pp (95% [−2.05, +2.87]).** The precision axis on the **anchor's** own checkpoint spans three weights on the identical 253 items and is reported there as **indeterminate**, not as a small effect (§M.19.15.1). Eight of the ten rows therefore fall below the bar, and the two that clear it are the
+same checkpoint at two precisions. **The same checkpoint at BF16 clears the bar and does not reproduce it whole**: on the identical item sets it holds **82.27%** of the share (against **90.30%**, a paired bootstrap difference of **8.03 pp**, 95% **[−12.37, −3.75]**) while the answered-zero rate falls from **95.26%** to **64.03%**. The **share** is therefore a build-level quantity and the **rate** is a build-and-precision one on this checkpoint — though not on every one: on the 38B build the weight format does not move it at all (0.41 pp; §M.19.15.1) — which is the narrower reading §8.2 now states. Three denominators must not be crossed here: **64.03%** is the dense **intersection** (253 items), **65.02%** is this build's **own** dense zero pool (283 items), and **33.61%** is the dense rate on the **full** item set (482 items). This is sharper than "lineage- or build-specific": **the other Qwen anchor (AWQ) fails
 as well** (dense 0.00%); the BF16 build of that same checkpoint clears it (64.03% / 82.27%). What the cross-family grid therefore supports is that the dense abstention channel
 belongs to **that build in that configuration** — the same conclusion §8.2 reaches from the five-deployment
 spread, now measured in the headline's own quantity.
@@ -2464,6 +2466,53 @@ reproduces M.19.2's per-family base zeros and M.19.3's dense rates exactly. **On
 the anchor family's files carry duplicate rows with a `#r` suffix (309 of 412 on st_a, 540 of 720 on ucf);
 the analyser's loader excludes them, and not excluding them **quadruples** the count (407 and 673 rather
 than 103 and 180, i.e. 102 and 166 zeros) and silently breaks agreement with M.19.2.*
+
+#### M.19.15.1 The missing cell, filled: a larger non-Qwen build at the anchor's own precision
+
+M.19.15's 38B row is the panel's only large non-Qwen build, and it is an fp8 one, so its two axes move
+together. The cell that separates them — **same family, same size, at the anchor's own precision** — had not
+been run. We ran it: **InternVL3.5-38B rebuilt at BF16**, on the same frozen item sets and the same
+instrument, with **three fresh service starts** and the served configuration held to the panel's own
+(`max-model-len` 8192, `max-num-seqs` 24, one image per prompt, temperature 0, four-way concurrency).
+
+| start | dense zero-pool rate | Wilson 95% | $n$ | dense $S$ |
+|---|---|---|---|---|
+| 1 | **24/251 = 9.56%** | [6.51, 13.83] | 251 | 23.20% |
+| 2 | **21/251 = 8.37%** | [5.54, 12.45] | 251 | 20.41% |
+| 3 | **23/251 = 9.16%** | [6.18, 13.37] | 251 | 21.90% |
+
+**The denominator is 251, not 253**, for the reason this appendix's rule states: two of the 253 dense items
+returned an empty `pred` in each start and are excluded from the pooled rate. The share $S$ is computed on
+the **full** dense set (480 items after the same exclusions), not on the zero pool. All three starts fall
+below both bars — a dense rate of 30% and a share of 50% — and the Wilson **upper** bounds are
+13.83 / 12.45 / 13.37%, so the failure does not turn on which start is read. The most conservative reading
+the appendix's cross-start rule allows is the largest of the three, 9.56%, and it too fails; the three
+starts' zero / non-zero classification flips on 12 of 753 item pairs (1.59%).
+
+| axis | held fixed | items | readings | paired difference, 95% |
+|---|---|---|---|---|
+| **family** | BF16 | 251 | Qwen3-VL-32B **63.75%** vs InternVL3.5-38B **9.56%** | **−54.18 pp** [−60.56, −47.81] |
+| **weight format** | InternVL3.5-38B | 244 | fp8 **7.38%** vs BF16 **7.79%** | **+0.41 pp** [−2.05, +2.87] |
+| **weight format** | Qwen3-VL-32B | 253 | AWQ-4bit **95.26%** / BF16 **64.03%** / FP8 **80.24%** | span **31.23 pp** |
+
+Three things follow, and one of them is a limit. (i) **With the weight format fixed, the family difference
+is large and its paired interval does not cross zero.** (ii) **With this build fixed, re-weighting it does
+not move the quantity**: its own fp8 and BF16 builds differ by 0.41 pp over the 244 items they share, so
+the weight format does not account for the 38B row's distance from the anchor. (iii) **On the anchor's
+checkpoint the same axis is indeterminate rather than small**: three weights span 31.23 pp on the identical
+253 items, which is neither "the axis explains the 87.88 pp gap" nor "it does not", so we report it as a
+band and not as a magnitude. That band is the pre-registered reading for the anchor's checkpoint; the
+0.41 pp above is a **two**-point figure on a **different** checkpoint and is not a substitute for it.
+
+One cross-family side-evidence, stated with its confound: within InternVL3.5, the **8B** BF16 build reads
+**0.79%** (2/253) where the **38B** fp8 build reads **7.38%** (18/244). Family and size move together there,
+so this is a directional note only and is not used as a precision measurement.
+
+*Reproduction and scope: the BF16 rebuild's per-item records are **not part of the released reproduction
+package**; the frozen item list, the instrument (md5 `e7a65fd47345c2fe040fa4d05a3b1d86`) and the served
+configuration are recorded with them. The 38B-fp8 reading is this appendix's existing single-run row and
+carries the cross-session term that a multi-start reading would not, so the second row of the table above is
+item-paired but not start-paired.*
 
 
 ### M.20 The annotation-free legibility proxy, tested rather than promised

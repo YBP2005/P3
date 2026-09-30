@@ -16,6 +16,18 @@ Usage:
   python n2_boundary_rule_audit.py --check    # recount + assert the section
   python n2_boundary_rule_audit.py --selftest # negative controls
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import argparse
 import csv
 import glob
@@ -25,11 +37,11 @@ import re
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-ROOT = r'<WORKDIR>\PaperB'
-E3 = os.path.join(ROOT, 'analysis', 'e2xt_a800', 'merged')
-E2 = os.path.join(ROOT, 'analysis', 'e2_newh20')
-P2R = os.path.join(ROOT, 'analysis', 'p2_a800', 'p2_probe_results_reparsed')
-SUPP = os.path.join(ROOT, 'PaperB_英文补充材料_PR_20260919.md')
+ROOT = NR()
+E3 = RP('analysis', 'e2xt_a800', 'merged')
+E2 = RP('analysis', 'e2_newh20')
+P2R = RP('analysis', 'p2_a800', 'p2_probe_results_reparsed')
+SUPP = RP('PaperB_英文补充材料_PR_20260919.md')
 AW = ('abstain', 'cannot_judge', 'no_people')
 FIRST = re.compile(r'-?\d+')
 
@@ -43,9 +55,9 @@ def load(p):
 
 
 def audit():
-    files = (sorted(glob.glob(os.path.join(E3, '*.csv')))
-             + sorted(glob.glob(os.path.join(E2, 'e1_*.csv')))
-             + sorted(glob.glob(os.path.join(P2R, '*.csv'))))
+    files = (sorted(glob.glob(RP('analysis', 'e2xt_a800', 'merged', '*.csv')))
+             + sorted(glob.glob(RP('analysis', 'e2_newh20', 'e1_*.csv')))
+             + sorted(glob.glob(RP('analysis', 'p2_a800', 'p2_probe_results_reparsed', '*.csv'))))
     n_all = n_word = n_wa = n_before = 0
     for f in files:
         for r in load(f):

@@ -21,6 +21,18 @@ $\\binom{16}{3}=560$ ⇒ 最小可达校正 $p = 15/560 = 0.0268 \\le 0.05$ ⇒ 
 
 数据源与 A44 **逐字相同**（不改任何冻结产物）。用法：python -u a44_split16.py
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import collections
 import hashlib
 import io
@@ -34,10 +46,10 @@ import sys
 import numpy as np
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
-PM = r'<WORKDIR>\PaperB\analysis\data\pod_mirror'
-B = r'E:\Edu_workplace\work\b_harvest_20260917'
-W = r'E:\Edu_workplace\work'
-OUT = os.path.join(r'<WORKDIR>\PaperB\analysis\work', 'a44_split16_result.json')
+PM = RP('analysis', 'data', 'pod_mirror')
+B = NR('@shared', 'work', 'b_harvest_20260917')
+W = NR('@shared', 'work')
+OUT = RP('analysis', 'work', 'a44_split16_result.json')
 ANOM, SENT, SEED, NBOOT = 1e5, 1234567890, 20260918, 200
 
 
@@ -144,9 +156,9 @@ def build(split_detector):
             return
         units.append((lab, kind, {s: {i: u[s][i] for i in common} for s in settings}))
 
-    det = (('检测·域内 VisDrone', os.path.join(PM, 'A', 'det_yolo_ladder_visdrone_det.csv'), 'n_det_person'),
-           ('检测·零样本 COCO', os.path.join(PM, 'A', 'det_yolo_ladder_yolo12n.csv'), 'n_det_person'),
-           ('检测·域内 BBBC005', os.path.join(B, 'bbbc_eval', 'ladder.csv'), 'n_det'))
+    det = (('检测·域内 VisDrone', RP('analysis', 'data', 'pod_mirror', 'A', 'det_yolo_ladder_visdrone_det.csv'), 'n_det_person'),
+           ('检测·零样本 COCO', RP('analysis', 'data', 'pod_mirror', 'A', 'det_yolo_ladder_yolo12n.csv'), 'n_det_person'),
+           ('检测·域内 BBBC005', NR('@shared', 'work', 'b_harvest_20260917', 'bbbc_eval', 'ladder.csv'), 'n_det'))
     for lab, path, pcol in det:
         rows = list(csv_dict(path))
         if not split_detector:
@@ -157,15 +169,15 @@ def build(split_detector):
                 sub = {k[1]: v for k, v in u.items() if k[0] == sz}
                 add('%s/tau@%s' % (lab, sz), '检测器 τ×尺寸', sub)
 
-    u = unitize(list(csv_dict(os.path.join(W, 'dm_ladder.csv'))), ['dataset', 'protocol', 'value'], 'pred')
+    u = unitize(list(csv_dict(NR('@shared', 'work', 'dm_ladder.csv'))), ['dataset', 'protocol', 'value'], 'pred')
     for ds in sorted({k[0] for k in u}):
         add('密度·官方DM/' + ds, '密度输入尺度', {k: v for k, v in u.items() if k[0] == ds})
     for dom in ('visdrone', 'st_a', 'ucf'):
-        p = os.path.join(PM, 'res_ctrl__ivl', 'res_ctrl_%s.csv' % dom)
+        p = os.path.join(RP('analysis', 'data', 'pod_mirror', 'res_ctrl__ivl'), 'res_ctrl_%s.csv' % dom)
         if os.path.exists(p):
             add('VLM·像素预算/' + dom, 'VLM·视觉侧', unitize(list(csv_dict(p)), ['budget'], 'pred'))
-    for tag, p in (('ivl', os.path.join(PM, 'b2__out_ivl', 'E1.csv')),
-                   ('q32', os.path.join(PM, 'b2__out_q32', 'E1.csv'))):
+    for tag, p in (('ivl', RP('analysis', 'data', 'pod_mirror', 'b2__out_ivl', 'E1.csv')),
+                   ('q32', RP('analysis', 'data', 'pod_mirror', 'b2__out_q32', 'E1.csv'))):
         if os.path.exists(p):
             add('VLM·输出契约/' + tag, 'VLM·语言侧', unitize(list(csv_dict(p)), ['arm'], 'pred'))
     return units
@@ -254,7 +266,7 @@ def split_test(U, tag):
 def main():
     print('阶段 1：回归自检（用原口径复算 10 单元，应与 a44_result.json 逐位一致）')
     ten = measure(build(False), '原口径 10 单元')
-    ref_p = os.path.join(W, 'a44_result.json')
+    ref_p = NR('@shared', 'work', 'a44_result.json')
     ref = json.loads(io.open(ref_p, encoding='utf-8').read()) if os.path.exists(ref_p) else None
     reg = '缺参考件'
     if ref:

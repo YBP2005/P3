@@ -13,6 +13,18 @@
 
 只读：不写、不改任何已有文件。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import collections
 import hashlib
 import io
@@ -23,9 +35,9 @@ import statistics as st
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
-ROOT = r'<WORKDIR>\PaperB'
-W = os.path.join(ROOT, 'analysis', 'work')
-SUPP = os.path.join(ROOT, 'PaperB_英文补充材料_PR_20260919.md')
+ROOT = NR()
+W = RP('analysis', 'work')
+SUPP = RP('PaperB_英文补充材料_PR_20260919.md')
 
 
 def spearman(a, b):
@@ -55,9 +67,10 @@ TRAVEL = {
     'det': dict(R=10.0,
                 why='τ 实际只扫 {0.05,0.1,0.15,0.2,0.25,0.3,0.4,0.5}（8 档）⇒ 0.5/0.05 = **10.0×**',
                 src='analysis/data/pod_mirror/A/det_yolo_ladder_visdrone_det.csv、'
-                    'det_yolo_ladder_yolo12n.csv、E:/Edu_workplace/work/b_harvest_20260917/bbbc_eval/ladder.csv（tau 列）'),
+                    'det_yolo_ladder_yolo12n.csv、<not released: '
+                    'work/b_harvest_20260917/bbbc_eval/ladder.csv>（tau 列）'),
     'density_mult': dict(R=4.0, why='protocol=mult：value ∈ {0.5,0.75,1,1.25,1.5,2} ⇒ 2/0.5 = **4.0×**',
-                         src='E:/Edu_workplace/work/dm_ladder.csv、analysis/data/pod_mirror/A/csrsta_ladder_st_a.csv、'
+                         src='<not released: work/dm_ladder.csv>、analysis/data/pod_mirror/A/csrsta_ladder_st_a.csv、'
                              'csrucf_ladder_ucf.csv（protocol+value 列）'),
     'density_short': dict(R=1024 / 384, why='protocol=short：value ∈ {384,512,768,1024} px ⇒ 1024/384 = **2.667×**',
                           src='同上（short 行）'),
@@ -253,7 +266,7 @@ def report(units, title, note):
 
 
 # ───────── 取值 ─────────
-src36 = os.path.join(W, 'equalcount36_result.json')
+src36 = RP('analysis', 'work', 'equalcount36_result.json')
 d36 = json.loads(io.open(src36, encoding='utf-8').read())
 U36 = [(u['unit'], float(u['span'])) for u in d36['units']]
 h36 = hashlib.md5(io.open(src36, 'rb').read()).hexdigest()

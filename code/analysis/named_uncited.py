@@ -3,13 +3,25 @@
 对应 P1 文件 §2.1 的建议，并按其 §2.1⑤ 做白名单（自造名、仅出现在参考条目标题里的名字不算）。
 只读，不改任何文件。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import os
 import re
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-D = r'<WORKDIR>\PaperB'
-MS = os.path.join(D, 'PaperB_英文稿_PR_20260919.md')
+D = NR()
+MS = RP('PaperB_英文稿_PR_20260919.md')
 t = open(MS, encoding='utf-8').read()
 
 # 正文 = References 之前

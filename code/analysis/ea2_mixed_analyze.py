@@ -6,6 +6,18 @@
 口径：raw-match（同 `a5_judge.cls()`）；**只统计 gt>0 的项目**（真零侧由 Z0 的 gt=0 单独报告）。
 产物：`analysis/work/ea2_mixed_result.json`（+ .md5）
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import collections
 import csv
 import glob
@@ -17,8 +29,8 @@ import re
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
-CEN = r'<WORKDIR>\PaperB\analysis\e1_results_census'
-OUT = r'<WORKDIR>\PaperB\analysis\work\ea2_mixed_result.json'
+CEN = RP('analysis', 'e1_results_census')
+OUT = RP('analysis', 'work', 'ea2_mixed_result.json')
 BUILDS = ['InternVL3_5-8B', 'Phi-3.5-vision-instruct', 'llava-onevision-qwen2-7b-ov',
           'gemma3-12b', 'Qwen3-VL-32B-Instruct']
 DENSE, AERIAL = ('st_a', 'ucf'), ('visdrone', 'aitod')
@@ -46,7 +58,7 @@ def dist(d):
 
 
 rows = collections.defaultdict(dict)     # build -> (domain, arm) -> {item: class}
-for f in glob.glob(os.path.join(CEN, '*.csv')):
+for f in glob.glob(RP('analysis', 'e1_results_census', '*.csv')):
     m = re.match(r'^e1_(.+?)_([a-z_]+)_(base|permit|channel|enum|best[ABC])\.csv$', os.path.basename(f))
     if not m:
         continue
@@ -93,7 +105,7 @@ for model in BUILDS:
 
 out = dict(
     purpose='E2 的非零对照侧：gt>0 项目上的通道构成（供与 Z0 真零池并列，回答"混合真零/非零"）',
-    inputs=dict(census=os.path.basename(CEN), n_files=len(glob.glob(os.path.join(CEN, '*.csv'))),
+    inputs=dict(census=os.path.basename(CEN), n_files=len(glob.glob(RP('analysis', 'e1_results_census', '*.csv'))),
                 builds=BUILDS),
     rule='raw-match（同 a5_judge.cls()）；仅统计 gt>0 的项目',
     by_build=res,

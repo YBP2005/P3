@@ -6,6 +6,18 @@
 此前只存在于"我在会话里说过"。按本库纪律（**能算就不要抄**），它们应当同样是**冻结、可复算**的。
 本脚本只读机器与本地冻结件，产出 `m40m41_facts.json` + `.md5`。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import hashlib
 import io
 import json
@@ -13,7 +25,7 @@ import os
 import sys
 import time
 
-sys.path.insert(0, r'<WORKDIR>\PaperB\analysis\work')
+sys.path.insert(0, RP('analysis', 'work'))
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 from rsh import connect, HOST  # noqa
 

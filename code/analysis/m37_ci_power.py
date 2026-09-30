@@ -21,6 +21,18 @@
     按本文自己的规则枚举全部 9 个分割点并对多重性做 Bonferroni 校正（9 个点），
     在 α=0.05 下判"是否检出该分割"；功率 = 检出率（2000 次模拟）。给出功率 0.8 对应的 Δ。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import hashlib
 import io
 import json
@@ -29,10 +41,10 @@ import random
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
-W = r'<WORKDIR>\PaperB\analysis\work'
-EQ = os.path.join(W, 'equalcount36_result.json')
-A39 = os.path.join(W, 'a39_unit_calib_heldout_result.json')
-OUT = os.path.join(W, 'm37_ci_power_result.json')
+W = RP('analysis', 'work')
+EQ = RP('analysis', 'work', 'equalcount36_result.json')
+A39 = RP('analysis', 'work', 'a39_unit_calib_heldout_result.json')
+OUT = RP('analysis', 'work', 'm37_ci_power_result.json')
 
 eq = json.loads(io.open(EQ, encoding='utf-8').read())
 a39 = json.loads(io.open(A39, encoding='utf-8').read())

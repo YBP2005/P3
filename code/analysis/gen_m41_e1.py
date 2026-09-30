@@ -14,6 +14,18 @@
 
 用法：python -u gen_m41_e1.py
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import hashlib
 import io
 import json
@@ -24,9 +36,9 @@ import sys
 import time
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
-W = r'<WORKDIR>\PaperB\analysis\work'
-SUP = r'<WORKDIR>\PaperB\PaperB_英文补充材料_PR_20260919.md'
-RES = os.path.join(W, 'fsc_res_result.json')
+W = RP('analysis', 'work')
+SUP = RP('PaperB_英文补充材料_PR_20260919.md')
+RES = RP('analysis', 'work', 'fsc_res_result.json')
 CAP = None       # ★ 2026-09-24 取消自订上限（用户口径）：只记录词数，不拒绝写盘。
 ARMS = ('base', 'permit', 'channel', 'enumAbstain', 'exemplar3', 'exemplar3permit')
 SWEEP = ('384', '256', '768up')
@@ -285,6 +297,10 @@ if hit:
     sys.exit('!! M.41 命中禁用串：%s ⇒ 拒绝写盘' % hit)
 print('  禁用串预检：0（与 en_check 同一份名单）')
 bak = SUP + '.bak_before_m41_%s' % time.strftime('%Y%m%d_%H%M%S')
-shutil.copy2(SUP, bak)
-io.open(SUP, 'w', encoding='utf-8', newline='\n').write(src)
-print('  已写盘 md5 %s' % hashlib.md5(io.open(SUP, 'rb').read()).hexdigest()[:12])
+if '--apply' in sys.argv:           # ★ 2026-09-30 v0610：默认**只读**，写回须显式 --apply
+    shutil.copy2(SUP, bak)
+    io.open(SUP, 'w', encoding='utf-8', newline='\n').write(src)
+    print('  已写盘 md5 %s' % hashlib.md5(io.open(SUP, 'rb').read()).hexdigest()[:12])
+else:
+    print('  （dry run：**未**写回补充材料、**未**落 .bak（%d 字节待写）；加 --apply 才写）'
+          % len(src.encode('utf-8')))

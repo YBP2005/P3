@@ -20,9 +20,21 @@ FSC-147 官方发布件 `images_384_VarV2` 把**短边固定在 384**（6146/614
 ## 口径
 分类沿用论文自身的 raw-match 顺序（abstain → 数字 → unparsed），与 `a5_judge.cls()` 同源。
 产物：`analysis/work/fsc_res_result.json`（+ .md5）
-用法：python -u fsc_res_analyze.py [--root D:\\deepseek\\PaperB\\analysis\\fsc_res]
+用法：python -u fsc_res_analyze.py [--root <default: data/derived/fsc_res/ in this package>]
 目录约定：<root>/384/fsc_<model>_<arm>.csv、<root>/256/…、<root>/768up/…、<root>/frozen384/…
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import argparse
 import collections
 import csv
@@ -36,7 +48,7 @@ import statistics as st
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
-OUT = r'<WORKDIR>\PaperB\analysis\work\fsc_res_result.json'
+OUT = RP('analysis', 'work', 'fsc_res_result.json')
 SWEEP = ('384', '256', '768up')
 ARMS_RE = r'(base|permit|channel|enumAbstain|exemplar3|exemplar3permit)'
 
@@ -72,7 +84,7 @@ def read(f):
 
 
 ap = argparse.ArgumentParser()
-ap.add_argument('--root', default=r'<WORKDIR>\PaperB\analysis\fsc_res')
+ap.add_argument('--root', default=RP('analysis', 'fsc_res'))
 A = ap.parse_args()
 
 res = collections.defaultdict(dict)

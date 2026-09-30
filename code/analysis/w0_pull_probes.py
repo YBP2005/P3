@@ -6,6 +6,18 @@
   ② 19f 的 OUTD / 尺度臂 / 池参数怎么传（决定驱动脚本怎么写）；
   ③ 19g 的 FSC 结构（决定 exemplar 臂怎么加）。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import hashlib
 import os
 import sys
@@ -17,7 +29,7 @@ sys.stdout.reconfigure(encoding='utf-8')
 HOST = ('<REDACTED-A800-HOST>', 23, 'root', '<REDACTED-A800-PASSWORD>')
 HERE = os.path.dirname(os.path.abspath(__file__))
 DST = os.path.join(HERE, 'a800_probes')
-LOCAL = r'<WORKDIR>\PaperB\repro_github\code\experiments'
+LOCAL = RP('repro_github', 'code', 'experiments')
 
 PATTERNS = {
     '19f_argparse': r"grep -n 'OUTD\|add_argument\|imgsz\|pool\|system\|DS_DIRS' /root/19f_probe_ablation.py | head -34",
@@ -43,7 +55,7 @@ def main():
         lp = os.path.join(DST, base)
         sf.get(rem, lp)
         h_rem = hashlib.md5(open(lp, 'rb').read()).hexdigest()
-        loc = os.path.join(LOCAL, base if base != '19g_probe_fsc.py' else '19g_probe_fsc.py')
+        loc = os.path.join(RP('repro_github', 'code', 'experiments'), base if base != '19g_probe_fsc.py' else '19g_probe_fsc.py')
         note = ''
         if os.path.exists(loc):
             h_loc = hashlib.md5(open(loc, 'rb').read()).hexdigest()

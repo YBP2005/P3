@@ -16,6 +16,18 @@ Usage:
   python pred_w_caliber.py --check
   python pred_w_caliber.py --selftest
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import argparse
 import io
 import json
@@ -23,10 +35,10 @@ import os
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-ROOT = r'<WORKDIR>\PaperB'
-SUPP = os.path.join(ROOT, 'PaperB_英文补充材料_PR_20260919.md')
-MAIN = os.path.join(ROOT, 'PaperB_英文稿_PR_20260919.md')
-FROZEN = os.path.join(ROOT, 'analysis', 'work', 'convention_rank_result.json')
+ROOT = NR()
+SUPP = RP('PaperB_英文补充材料_PR_20260919.md')
+MAIN = RP('PaperB_英文稿_PR_20260919.md')
+FROZEN = RP('analysis', 'work', 'convention_rank_result.json')
 
 
 def squash(s):

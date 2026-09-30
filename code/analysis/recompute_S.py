@@ -3,27 +3,39 @@
 S = (1-w)/[1-w(1+rho_ans)]，w = G_ans/G（真值加权），rho_ans = (Σ pred_ans − G_ans)/G_ans。
 同时打印 w、rho_ans、rho_total，便于对账。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import csv
 import glob
 import os
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-CORP = r'<WORKDIR>\PaperB\analysis\e1_5090\corpus'
-ARCH = r'<WORKDIR>\PaperB\analysis\m5090_archive\unpacked\dense'
+CORP = RP('analysis', 'e1_5090', 'corpus')
+ARCH = NR('analysis', 'm5090_archive', 'unpacked', 'dense')
 
 
 def load_gt(ds):
     """从存档的 counts.csv 取金标准（st_a/st_b 用 shanghaitech，ucf 用 ucf_qnrf）。"""
     g = {}
     if ds in ('st_a', 'st_b'):
-        f = os.path.join(ARCH, 'shanghaitech', 'counts.csv')
+        f = RP('analysis', 'm5090_archive', 'unpacked', 'dense', 'shanghaitech', 'counts.csv')
         want = 'part_A' if ds == 'st_a' else 'part_B'
         for r in csv.DictReader(open(f, encoding='utf-8-sig')):
             if (r.get('part') or '') == want and (r.get('split') or '') == 'test':
                 g[os.path.splitext(os.path.basename(r['file']))[0]] = int(r['count'])
     else:
-        f = os.path.join(ARCH, 'ucf_qnrf', 'counts.csv')
+        f = RP('analysis', 'm5090_archive', 'unpacked', 'dense', 'ucf_qnrf', 'counts.csv')
         for r in csv.DictReader(open(f, encoding='utf-8-sig')):
             if (r.get('split') or '') == 'Test':
                 g[os.path.splitext(os.path.basename(r['file']))[0]] = int(r['count'])
@@ -34,7 +46,7 @@ pat = __import__('re').compile(r'^vlm_(?P<ds>st_a|st_b|ucf)_(?P<arm>[a-z]+)_whol
 gts = {}
 print('%-6s %-7s %7s %9s %10s %9s %9s' % ('ds', 'arm', 'n', 'w', 'rho_ans', 'rho_tot', 'S'))
 rows = []
-for p in sorted(glob.glob(os.path.join(CORP, '*.csv'))):
+for p in sorted(glob.glob(RP('analysis', 'e1_5090', 'corpus', '*.csv'))):
     m = pat.match(os.path.basename(p))
     if not m:
         continue

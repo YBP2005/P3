@@ -7,11 +7,23 @@
   · Phi-3.5-vision        → --trust-remote-code
   · LLaVA-OneVision(-hf)  → 无（-hf 版可直接加载）
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import sys
 import time
 
 sys.stdout.reconfigure(encoding='utf-8')
-sys.path.insert(0, r'<WORKDIR>\PaperB\analysis\work')
+sys.path.insert(0, RP('analysis', 'work'))
 from a800_conn import connect, sh, launch
 
 A = ('<REDACTED-A800-HOST>', 23, 'root', '<REDACTED-A800-PASSWORD>')
@@ -26,7 +38,7 @@ try:
     # ★ 先上传**最新**的 a5_grid.sh —— 上一轮我改了本地脚本却忘了上传，
     #   结果 `--trust-remote-code` 被丢掉，InternVL 报 "contains custom code ... trust_remote_code=True"。
     sftp = c.open_sftp()
-    sftp.put(r'<WORKDIR>\PaperB\analysis\work\a5_grid.sh', '/root/a5_grid.sh')
+    sftp.put(RP('analysis', 'work', 'a5_grid.sh'), '/root/a5_grid.sh')
     sftp.close()
     print('a5_grid.sh 已上传（最新版）')
 

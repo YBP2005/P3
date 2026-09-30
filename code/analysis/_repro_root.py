@@ -1,0 +1,153 @@
+# -*- coding: utf-8 -*-
+"""_repro_root.py —— 复现包／工作树的**统一根**（release root）。
+
+第三方把本仓库解到**任意目录**后直接跑 `code/analysis/*.py` 即可：脚本里所有数据路径都
+经由本模块解析，不再依赖作者的机器布局。
+
+根按此顺序确定：
+  1. 环境变量 `PAPERB_ROOT`（显式指定优先）；
+  2. 由本文件位置反推 —— 放行树 `<root>/code/analysis/` 与作者树 `<root>/analysis/work/`
+     **都是上两级**，故同一段代码在两种布局下都对；
+  3. 再向上找带 `data/` 或 `code/` 的目录。
+
+`resolve(*parts)`（脚本里以 `RP` 引入）按**作者树相对路径**给路径，例如
+`resolve('analysis', 'work', 'f9_quoted.json')`：
+  · 作者工作树上该路径存在（或整体就是作者树）⇒ 原样返回，**行为与本次改动前逐字一致**；
+  · 否则套用下面的「前缀映射表」，落到放行包里的等价位置。
+
+`not_released(*parts)`（脚本里以 `NR` 引入）用于**未随包发布**的作者侧路径：
+  · 作者树上原样可用；
+  · 其它机器上返回 `PAPERB_ROOT/_NOT_RELEASED/<tag>` —— 一个**故意不存在**的路径，
+    使调用方的 `open()` / `os.path.isdir()` 照常失败并报出可读的文件名，
+    而不是悄悄指到另一棵自己造出来的树。
+
+前缀映射表的每一条都在 2026-09-30 的 v0608 轮用**文件名集合逐一比对**实测过
+（`analysis/<X>` 与放行树对应目录的递归文件名集合相等，或为实测的包含关系）。
+"""
+import os
+import re
+
+_HERE = os.path.dirname(os.path.abspath(__file__))
+_UP2 = os.path.dirname(os.path.dirname(_HERE))
+
+# 作者工作树是否就在眼前：判据是 `<root>/analysis/work/`（放行树里没有这一层）。
+# 它决定 `resolve()`/`not_released()` 走"作者树原样"还是走"映射表"。
+AUTHOR_TREE = os.path.isdir(os.path.join(_UP2, 'analysis', 'work'))
+
+
+def _infer():
+    for c in (_UP2, _HERE):
+        if (os.path.isdir(os.path.join(c, 'data'))
+                or os.path.isdir(os.path.join(c, 'code'))
+                or os.path.isdir(os.path.join(c, 'analysis'))):
+            return c
+    return _UP2
+
+
+ROOT = os.environ.get('PAPERB_ROOT') or _infer()
+
+# 作者机的**共享语料盘**（`E:\Edu_workplace` 一类）：本论文之外的东西，未随包发布。
+# 它以前以盘符字面量散落在 10 余个脚本里；现在只在这一个地方出现，且可用环境变量覆盖。
+SHARED = os.environ.get('PAPERB_SHARED') or 'E:/Edu_workplace'
+
+# ── 作者树相对路径前缀 -> 放行树相对路径前缀（按段数从长到短匹配）────────────────
+_ALIAS = (
+    # `sync_repro.py` 的落点，逐条实测
+    ('analysis/work', 'code/analysis'),
+    ('analysis/e2xt_a800', 'data/derived/e3'),
+    ('analysis/e1_results_census', 'data/derived/e3/zero'),
+    ('analysis/e1_results_nonzero', 'data/derived/e3/nonzero'),
+    ('analysis/e1_5090/corpus', 'data/derived/corpus'),
+    ('analysis/e1_5090', 'data/derived/e1'),
+    ('analysis/e2_5090', 'data/derived/e2'),
+    ('analysis/e2_h20', 'data/derived/e2'),
+    ('analysis/e2_newh20/logs_h20_v7c', 'env/h20_v7c_logs'),
+    ('analysis/e2_newh20', 'data/derived/e2'),
+    ('analysis/fsc_res', 'data/derived/fsc_res'),
+    ('analysis/fsc_a800', 'data/derived/fsc_res/frozen384'),
+    ('analysis/ea2_z0', 'data/derived/ea2'),
+    ('analysis/A_res_20260928', 'data/derived/A_res_20260928'),
+    ('analysis/B_res_20260928', 'data/derived/B_res_20260928'),
+    ('analysis/h20_rescue_20260922/extract', 'data/derived/e2_pools'),
+    ('analysis/data/pod_mirror', 'data/derived/pA'),
+    ('analysis/figures', 'figures'),
+    ('analysis/g2_neutral0', 'data/derived/g2_neutral0'),
+    ('analysis/p2_a800', 'data/derived/p2_noise4'),
+    ('analysis/p1_results_w5', 'data/derived/p1/csv'),
+    ('analysis/p1b_results2', 'data/derived/p1b/csv'),
+    ('analysis/p1c_results', 'data/derived/p1c/csv'),
+    ('analysis/p1d_results', 'data/derived/p1df/csv'),
+    ('analysis/p5c_results', 'data/derived/p5c'),
+    ('analysis/p5a_results_ml16384', 'data/derived/p5b/csv'),
+    ('analysis/ctxctrl/ctxctrl_result.json', 'code/analysis/ctxctrl_result.json'),
+    ('analysis/m5090_archive/unpacked_all/root/dense_results', 'data/derived/dense_results'),
+    ('analysis/m5090_archive/unpacked_all/root/tile_results', 'data/derived/tile_results'),
+    ('analysis/m5090_archive/unpacked/dense/shanghaitech/counts.csv',
+     'data/gold/shanghaitech_counts.csv'),
+    ('analysis/m5090_archive/unpacked/dense/ucf_qnrf/counts.csv',
+     'data/gold/ucf_qnrf_counts.csv'),
+    # 整棵复现仓库自身 / 权威稿
+    ('repro_github', ''),
+    ('PaperB_英文稿_PR_20260919.md', 'manuscript/PaperB_manuscript_EN.md'),
+    ('PaperB_英文补充材料_PR_20260919.md', 'manuscript/PaperB_supplementary_EN.md'),
+    ('PaperB_E1证据_20260920.md', 'manuscript/E1_evidence_record.md'),
+    ('measurement_pr_docx.json', 'manuscript/pagination_measurement.json'),
+)
+_ALIAS = tuple(sorted(_ALIAS, key=lambda kv: -len(kv[0].split('/'))))
+
+
+def _join(parts):
+    """把 parts 拼成绝对路径。首元素可以是 `@up1`（ROOT 的上一级）、`@shared`（共享语料盘），
+    或一个带盘符的绝对路径。"""
+    parts = [str(p) for p in parts]
+    if not parts:
+        return ROOT
+    head = parts[0]
+    if head == '@up1':
+        return os.path.normpath(os.path.join(os.path.dirname(ROOT), *parts[1:]))
+    if head == '@shared':
+        return os.path.normpath(os.path.join(SHARED.replace('/', os.sep), *parts[1:]))
+    if len(head) > 1 and head[1] == ':':
+        return os.path.normpath(os.path.join(head.replace('/', os.sep), *parts[1:]))
+    return os.path.normpath(os.path.join(ROOT, *parts))
+
+
+def _mapped(parts):
+    """放行树相对路径；不可映射（哨兵、盘符路径、无别名命中）返回 None。"""
+    parts = [str(p) for p in parts]
+    if not parts or parts[0].startswith('@') or (len(parts[0]) > 1 and parts[0][1] == ':'):
+        return None
+    rel = '/'.join(parts)
+    for a, b in _ALIAS:
+        if rel == a or rel.startswith(a + '/'):
+            tail = rel[len(a):].lstrip('/')
+            return (b + '/' + tail).strip('/') if b else tail
+    return None
+
+
+def resolve(*parts):
+    """作者树相对路径 -> 可用绝对路径（作者树上原样；否则查映射表）。"""
+    if AUTHOR_TREE:
+        return _join(parts)
+    p = _join(parts)
+    if os.path.exists(p):
+        return p
+    rel = _mapped(parts)
+    if rel is None:
+        return p
+    return os.path.join(ROOT, *rel.split('/')) if rel else ROOT
+
+
+def not_released(*parts):
+    """**未随包发布**的作者侧路径。作者树上原样可用；否则返回 `_NOT_RELEASED/` 下的标记路径。"""
+    if AUTHOR_TREE:
+        return _join(parts)
+    p = _join(parts)
+    if os.path.exists(p):
+        return p
+    tag = re.sub(r'[^0-9A-Za-z_.\u4e00-\u9fff-]+', '-', '_'.join(str(x) for x in parts))
+    return os.path.join(ROOT, '_NOT_RELEASED', tag.strip('-'))
+
+
+# 兼容：本模块自身也供"只想拿根"的调用方使用
+REPO_ROOT = ROOT

@@ -12,6 +12,18 @@
   · "口径改变结论" = top-1 变化 **或** Spearman < 0.9；
   · 契约门控"跨配置成立" = 每个配置 permit 残留零 ≤5%。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import csv
 import io
 import itertools
@@ -21,7 +33,7 @@ import os
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-D = r'<WORKDIR>\PaperB\analysis\fsc_a800'
+D = RP('analysis', 'fsc_a800')
 ABSTAIN = ('abstain', 'cannot_judge', 'no_people')
 MODELS = ['gemma3-12b', 'InternVL3_5-8B', 'Phi-3.5-vision-instruct',
           'llava-onevision-qwen2-7b-ov', 'Qwen3-VL-32B-Instruct']
@@ -38,7 +50,7 @@ def wilson(k, n, z=1.959963985):
 
 
 def load(fn):
-    p = os.path.join(D, fn)
+    p = os.path.join(RP('analysis', 'fsc_a800'), fn)
     if not os.path.exists(p):
         return None
     out = {}
@@ -144,6 +156,6 @@ if len(tab) >= 3:
 else:
     print('（配置数不足 3，不做排名比较）')
 
-io.open(r'<WORKDIR>\PaperB\analysis\work\b1_fsc_result.json', 'w', encoding='utf-8').write(
+io.open(RP('analysis', 'work', 'b1_fsc_result.json'), 'w', encoding='utf-8').write(
     json.dumps(dict(gate=rows, table=tab), ensure_ascii=False, indent=1))
 print('\nJSON -> b1_fsc_result.json')

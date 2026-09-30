@@ -33,6 +33,18 @@
     python -u span_equalcount2.py                    # 修正版（两种口径）
     python -u span_equalcount2.py --reproduce-bug    # 复算原版错值以验证病根
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import collections
 import csv
 import glob
@@ -43,11 +55,11 @@ import statistics as st
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-ROOT = r'<WORKDIR>\PaperB'
-DATA = os.path.join(ROOT, 'analysis', 'data')
-PM = os.path.join(DATA, 'pod_mirror')
-E2 = os.path.join(ROOT, 'analysis', 'e2_newh20')
-OUT = os.path.join(ROOT, 'analysis', 'work', 'span_equalcount2_result.json')
+ROOT = NR()
+DATA = NR('analysis', 'data')
+PM = RP('analysis', 'data', 'pod_mirror')
+E2 = RP('analysis', 'e2_newh20')
+OUT = RP('analysis', 'work', 'span_equalcount2_result.json')
 ANOM = 1e5
 REPRO_BUG = '--reproduce-bug' in sys.argv
 
@@ -94,7 +106,7 @@ def build(caliber):
             L[unit] = seq
 
     # ① 检测 τ —— ★ 修正点：按 match 取行
-    p = os.path.join(DATA, 'threeway_curves_v2.csv')
+    p = NR('analysis', 'data', 'threeway_curves_v2.csv')
     if os.path.exists(p):
         rows = list(csv.DictReader(io.open(p, encoding='utf-8-sig')))
         for para in sorted(set(r['paradigm'] for r in rows)):
@@ -112,7 +124,7 @@ def build(caliber):
             assert all(len(v) == 1 for v in calibers_seen.values())
 
     # ② 密度回归输入尺度
-    p = os.path.join(DATA, 'threeway_curves.csv')
+    p = NR('analysis', 'data', 'threeway_curves.csv')
     if os.path.exists(p):
         rows = list(csv.DictReader(io.open(p, encoding='utf-8-sig')))
         for ds in sorted(set(r['domain'] for r in rows if r['paradigm'] == '密度回归')):
@@ -131,7 +143,7 @@ def build(caliber):
 
     # ③ 像素预算（res_ctrl：逐图，可重算）
     for mdl in ('q32', 'ivl'):
-        for f in sorted(glob.glob(os.path.join(PM, 'res_ctrl__%s' % mdl, 'res_ctrl_*.csv'))):
+        for f in sorted(glob.glob(os.path.join(RP('analysis', 'data', 'pod_mirror'), 'res_ctrl__%s' % mdl, 'res_ctrl_*.csv'))):
             ds = os.path.basename(f)[len('res_ctrl_'):-4]
             with io.open(f, encoding='utf-8-sig') as fh:
                 rr = list(csv.DictReader(fh))
@@ -153,23 +165,23 @@ def build(caliber):
 
     # ④ 提示词族
     for ds in ('st_a', 'ucf', 'visdrone'):
-        fs_ = sorted(glob.glob(os.path.join(PM, 'dense_prompt_results', 'vlm_%s_base_V*.csv' % ds)))
+        fs_ = sorted(glob.glob(os.path.join(RP('analysis', 'data', 'pod_mirror', 'dense_prompt_results'), 'vlm_%s_base_V*.csv' % ds)))
         if fs_:
             add('promptfamily / %s / base' % ds,
                 [(os.path.basename(f).split('_V')[1][0], load_csv(f)) for f in fs_])
-        fs_ = sorted(glob.glob(os.path.join(PM, 'ivl_dense_prompt_results', 'ivl_%s_base_V*.csv' % ds)))
+        fs_ = sorted(glob.glob(os.path.join(RP('analysis', 'data', 'pod_mirror', 'ivl_dense_prompt_results'), 'ivl_%s_base_V*.csv' % ds)))
         if fs_:
             add('promptfamily(ivl) / %s / base' % ds,
                 [(os.path.basename(f).split('_V')[1][0], load_csv(f)) for f in fs_])
 
     # ⑤ 切块级别
     for ds in ('st_a', 'ucf', 'visdrone'):
-        fs_ = sorted(glob.glob(os.path.join(PM, 'tile_results', 'vlm_%s_base_tile*.csv' % ds)))
+        fs_ = sorted(glob.glob(os.path.join(RP('analysis', 'data', 'pod_mirror', 'tile_results'), 'vlm_%s_base_tile*.csv' % ds)))
         if fs_:
             add('tiling / %s / base' % ds,
                 [(os.path.basename(f).split('tile')[1][0], load_csv(f)) for f in fs_])
         if ds == 'visdrone':
-            fs_ = sorted(glob.glob(os.path.join(PM, 'ivl_aerial_tile_results', 'ivl_*tile*.csv')))
+            fs_ = sorted(glob.glob(RP('analysis', 'data', 'pod_mirror', 'ivl_aerial_tile_results', 'ivl_*tile*.csv')))
             if fs_:
                 add('tiling(ivl) / %s / base' % ds,
                     [(os.path.basename(f).split('tile')[1][0], load_csv(f)) for f in fs_])
@@ -178,7 +190,7 @@ def build(caliber):
     for ds in ('st_a', 'ucf', 'visdrone', 'aitod'):
         levels = []
         for arm in ('base', 'permit', 'bestA', 'bestB', 'bestC', 'channel'):
-            f = os.path.join(E2, 'e1_qwen3-vl-32b-awq_%s_%s.csv' % (ds, arm))
+            f = os.path.join(RP('analysis', 'e2_newh20'), 'e1_qwen3-vl-32b-awq_%s_%s.csv' % (ds, arm))
             if os.path.exists(f):
                 levels.append((arm, load_csv(f)))
         if len(levels) >= 3:

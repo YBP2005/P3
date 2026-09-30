@@ -4,18 +4,33 @@
 另修一处遗留：line 238 的 "PseCo 2311.12386" 张冠李戴（2311.12386 是 [19]）。
 只读检查 + 一处定点修正；一次事务写一次盘、幂等。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import re
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-MS = r'<WORKDIR>\PaperB\PaperB_英文稿_PR_20260919.md'
+MS = RP('PaperB_英文稿_PR_20260919.md')
 t = open(MS, encoding='utf-8').read()
 
 # ---------- 定点修：(2605.10887; PseCo 2311.12386) → ([18]; [19]) ----------
 if 'PseCo 2311.12386' in t:
     t = t.replace('(2605.10887; PseCo 2311.12386)', '([18]; [19])')
-    open(MS, 'w', encoding='utf-8', newline='\n').write(t)
-    print('已修：PseCo 张冠李戴 → ([18]; [19])')
+    if '--apply' in sys.argv:      # ★ v0610：默认**只读**，写回须显式 --apply
+        open(MS, 'w', encoding='utf-8', newline='\n').write(t)
+        print('已修：PseCo 张冠李戴 → ([18]; [19])')
+    else:
+        print('（dry run：检出 PseCo 张冠李戴，**未**写回主稿；加 --apply 才写）')
 else:
     print('PseCo 遗留：无（已修）')
 

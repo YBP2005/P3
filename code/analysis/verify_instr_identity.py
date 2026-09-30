@@ -13,6 +13,18 @@
       PaperB 各包在 Integrity 行里引用的正是这个值；本脚本会核对该自报值。
 输出：各包剥离后字符数/md5，以及"是否全部一致"的判定；不一致则 exit 1。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import hashlib
 import io
 import os
@@ -20,7 +32,7 @@ import re
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-R = r'<WORKDIR>\analysis\model_review'
+R = NR('@up1', 'analysis', 'model_review')
 MK_A = '【NOVELTY-ONLY FAST REVIEW'
 MK_B = '===== 【Manuscript'
 PACKS = [
@@ -41,7 +53,7 @@ REF_6MODEL = 'd4002a4a53d9'
 seen = {}
 bad = []
 for tag, name in PACKS:
-    p = os.path.join(R, name)
+    p = os.path.join(NR('@up1', 'analysis', 'model_review'), name)
     t = io.open(p, encoding='utf-8').read()
     a, b = t.find(MK_A), t.find(MK_B)
     if a < 0 or b <= a:

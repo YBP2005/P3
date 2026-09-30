@@ -2,7 +2,7 @@
 """v7c 全量分析：把 6 个模型在 2 个新域（visdrone/aitod）上的结果并入全表，
 并把"契约效应"从**臂级比例**升级为**条目级配对转移**（base 出零 → permit 弃答/改答）。
 
-产出：D:\\deepseek\\PaperB\\analysis\\work\\out_v7c_report.md（可直接贴进证据文件）
+产出：code/analysis/out_v7c_report.md（可直接贴进证据文件）
 
 纪律：
   · 结果 CSV 里 `raw` 含内嵌换行 ⇒ 用 csv 模块读，绝不用 wc -l / 行切分；
@@ -10,6 +10,18 @@
   · 判定只用 (pred, raw) 两个字段：pred 为空 = 未解析（弃答/格式失败），
     raw 里出现 abstain / cannot_judge / no_people 才算**契约给出的**弃答出口。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import csv
 import glob
 import io
@@ -18,8 +30,8 @@ import os
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-D = r'<WORKDIR>\PaperB\analysis\e2_newh20'
-OUT = r'<WORKDIR>\PaperB\analysis\work\out_v7c_report.md'
+D = RP('analysis', 'e2_newh20')
+OUT = RP('analysis', 'work', 'out_v7c_report.md')
 DOMS = ['st_a', 'st_b', 'ucf', 'visdrone', 'aitod', 'countbench']
 DENSE = ['st_a', 'st_b', 'ucf']
 AERIAL = ['visdrone', 'aitod']
@@ -73,7 +85,7 @@ def parse(fn):
 
 
 TAB = {}
-for p in glob.glob(os.path.join(D, '*.csv')):
+for p in glob.glob(RP('analysis', 'e2_newh20', '*.csv')):
     k = parse(os.path.basename(p))
     if k:
         TAB[k] = p
@@ -82,7 +94,7 @@ MODELS = sorted(set(k[1] for k in TAB))
 say('# v7c 全量分析（含新域 visdrone / aitod）')
 say()
 say('- 结果目录：`analysis/e2_newh20`（零池 %d 个模型标签；文件 %d 个）'
-    % (len(MODELS), len(glob.glob(os.path.join(D, '*.csv')))))
+    % (len(MODELS), len(glob.glob(RP('analysis', 'e2_newh20', '*.csv')))))
 say('- 零池臂：%s；非零池臂：%s' % (','.join(ZARMS), ','.join(NZARMS)))
 say('- 类别判定：`pred` 空 = 未解析；`raw` 含 `abstain`/`cannot_judge`/`no_people` = 契约给出的弃答出口')
 say()

@@ -11,6 +11,18 @@ E2 新测的是**真零池**（306 张核实图）。两者并列，就能回答
   非零侧：analysis/e1_results_nonzero/e1_<model>_<domain>_<arm>.csv
 产物：analysis/work/ea2_contrast_result.json（+ .md5）
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import collections
 import csv
 import glob
@@ -22,9 +34,9 @@ import re
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
-Z0 = r'<WORKDIR>\PaperB\analysis\ea2_z0'
-NZ = r'<WORKDIR>\PaperB\analysis\e1_results_nonzero'
-OUT = r'<WORKDIR>\PaperB\analysis\work\ea2_contrast_result.json'
+Z0 = RP('analysis', 'ea2_z0')
+NZ = RP('analysis', 'e1_results_nonzero')
+OUT = RP('analysis', 'work', 'ea2_contrast_result.json')
 DENSE, AERIAL = ('st_a', 'ucf'), ('visdrone', 'aitod')
 ARMS = ('base', 'permit', 'channel')
 
@@ -71,7 +83,7 @@ def read_csv(f):
 #      三次服务的 item 集**完全一致**（不一致就直接报错，不允许把不同 item 集混在一起算率）。
 z0 = collections.defaultdict(list)          # (model, lang, stratum, arm) -> [class, ...]（跨服务的池化观测）
 z0_items = collections.defaultdict(list)    # 同上键 -> [itemset_s1, itemset_s2, ...]，用于一致性断言
-for f in glob.glob(os.path.join(Z0, '*', '*.csv')):
+for f in glob.glob(RP('analysis', 'ea2_z0', '*', '*.csv')):
     dirn = os.path.basename(os.path.dirname(f))
     m = re.match(r'^(cn|en)_(.+)_s(\d)$', dirn)
     if not m:
@@ -97,7 +109,7 @@ for k, lst in z0_items.items():
 
 # ── 非零侧（已冻结）─────────────────────────────────────────────────────
 nz = collections.defaultdict(dict)
-for f in glob.glob(os.path.join(NZ, '*.csv')):
+for f in glob.glob(RP('analysis', 'e1_results_nonzero', '*.csv')):
     mm = re.match(r'^e1_(.+?)_([a-z_]+)_(base|permit|channel)\.csv$', os.path.basename(f))
     if not mm:
         continue

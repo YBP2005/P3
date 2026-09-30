@@ -12,8 +12,20 @@
   ③ **语言对照**：同批图上的 CN vs EN；
   ④ **服务级噪声**：同一构建 3 次**服务启动**之间的极差（这是 E2 独有的维度）。
 
-用法：python -u ea2_analyze.py [--root D:\\deepseek\\PaperB\\analysis\\ea2_z0] [--out <json>]
+用法：python -u ea2_analyze.py [--root <default: data/derived/ea2/ in this package>] [--out <json>]
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import argparse
 import collections
 import csv
@@ -26,8 +38,8 @@ import statistics as st
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
-ROOT = r'<WORKDIR>\PaperB\analysis\ea2_z0'
-OUT = r'<WORKDIR>\PaperB\analysis\work\ea2_z0_result.json'
+ROOT = RP('analysis', 'ea2_z0')
+OUT = RP('analysis', 'work', 'ea2_z0_result.json')
 
 
 def cls_of(raw, pred):

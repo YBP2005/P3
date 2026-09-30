@@ -7,6 +7,18 @@
      若为 0 ⇒ 不变性是**这批数据的经验事实**，换一批就可能破。
   Q2 稿内 M.18.3 印的那几行（`permit → 拒答 / → 给数 / → 仍答 0`）能否复现？
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import csv
 import glob
 import io
@@ -15,10 +27,10 @@ import re
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
-ROOT = r'<WORKDIR>\PaperB'
-E3 = os.path.join(ROOT, 'analysis', 'e2xt_a800', 'merged')
-E2 = os.path.join(ROOT, 'analysis', 'e2_newh20')
-P2R = os.path.join(ROOT, 'analysis', 'p2_a800', 'p2_probe_results_reparsed')
+ROOT = NR()
+E3 = RP('analysis', 'e2xt_a800', 'merged')
+E2 = RP('analysis', 'e2_newh20')
+P2R = RP('analysis', 'p2_a800', 'p2_probe_results_reparsed')
 AW = ('abstain', 'cannot_judge', 'no_people')
 FIRST = re.compile(r'-?\d+')
 
@@ -41,9 +53,9 @@ def first_int(r):
 print('=' * 110)
 print('Q1  **"零边界不变"是定理还是经验事实？** —— 直接数"含拒答词 **且** 含数字"的 reply')
 print('=' * 110)
-files = (sorted(glob.glob(os.path.join(E3, '*.csv')))
-         + sorted(glob.glob(os.path.join(E2, 'e1_*.csv')))
-         + sorted(glob.glob(os.path.join(P2R, '*.csv'))))
+files = (sorted(glob.glob(RP('analysis', 'e2xt_a800', 'merged', '*.csv')))
+         + sorted(glob.glob(RP('analysis', 'e2_newh20', 'e1_*.csv')))
+         + sorted(glob.glob(RP('analysis', 'p2_a800', 'p2_probe_results_reparsed', '*.csv'))))
 n_all = n_word = n_word_num = n_word_num_before = 0
 examples = []
 for f in files:
@@ -114,8 +126,8 @@ WANT = [('qwen3-vl-32b-awq', 'st_a'), ('qwen3-vl-32b-fp8', 'st_a'),
         ('qwen3-vl-2b', 'visdrone'), ('qwen3-vl-2b', 'aitod')]
 print('  %-34s %6s %6s %6s %6s %6s' % ('model / domain', 'zer', '→ref', '→num', '→0', '→unp'))
 for m, d in WANT:
-    pb = os.path.join(E2, 'e1_%s_%s_base.csv' % (m, d))
-    pp = os.path.join(E2, 'e1_%s_%s_permit.csv' % (m, d))
+    pb = os.path.join(RP('analysis', 'e2_newh20'), 'e1_%s_%s_base.csv' % (m, d))
+    pp = os.path.join(RP('analysis', 'e2_newh20'), 'e1_%s_%s_permit.csv' % (m, d))
     if not (os.path.exists(pb) and os.path.exists(pp)):
         print('  %-34s  缺文件' % ('%s / %s' % (m, d)))
         continue

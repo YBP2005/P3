@@ -17,6 +17,18 @@
 输出：两因素方差分解（平方和占比）+ 分域/分构建的极差，并给出评审要求的判定：
      "构建间方差是否 ≥ 域间方差"。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import csv
 import io
 import glob
@@ -25,8 +37,8 @@ import os
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-E2 = r'<WORKDIR>\PaperB\analysis\e2_newh20'
-OUT = r'<WORKDIR>\PaperB\analysis\work\variance_decomp_result.json'
+E2 = RP('analysis', 'e2_newh20')
+OUT = RP('analysis', 'work', 'variance_decomp_result.json')
 
 BUILDS = [('qwen3-vl-32b-awq', 'AWQ-4bit'), ('qwen3-vl-32b-awq8', 'AWQ-8bit'),
           ('qwen3-vl-32b-bf16', 'BF16'), ('qwen3-vl-32b-fp8', 'FP8'),
@@ -36,7 +48,7 @@ SUB = {}          # 域 → 允许的 item 集合（跨构建一致）
 
 
 def items_of(model, ds, arm='base'):
-    p = os.path.join(E2, 'e1_%s_%s_%s.csv' % (model, ds, arm))
+    p = os.path.join(RP('analysis', 'e2_newh20'), 'e1_%s_%s_%s.csv' % (model, ds, arm))
     if not os.path.exists(p):
         return None
     with io.open(p, encoding='utf-8-sig') as f:

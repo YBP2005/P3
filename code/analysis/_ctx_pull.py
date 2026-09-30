@@ -6,6 +6,18 @@
 
 用法：python -u _ctx_pull.py
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import hashlib
 import io
 import os
@@ -18,7 +30,7 @@ from a800_conn import connect, sh  # noqa: E402
 sys.stdout.reconfigure(encoding='utf-8')
 HOST = ('<REDACTED-A800-HOST>', 23, 'root', '<REDACTED-A800-PASSWORD>')
 REM = '/root/w1_results'
-LOC = r'<WORKDIR>\PaperB\analysis\ctxctrl'
+LOC = NR('analysis', 'ctxctrl')
 EXTRA = ['ctxctrl_result.json']          # 单文件（非目录）
 MD5 = lambda p: hashlib.md5(io.open(p, 'rb').read()).hexdigest()
 
@@ -32,7 +44,7 @@ def main():
     print('远端 %d 个产节目录' % len(dirs))
     n_file = 0
     for d in dirs:
-        ld = os.path.join(LOC, d)
+        ld = os.path.join(NR('analysis', 'ctxctrl'), d)
         os.makedirs(ld, exist_ok=True)
         for f in sorted(sf.listdir(REM + '/' + d)):
             if f.startswith('.'):
@@ -41,7 +53,7 @@ def main():
             n_file += 1
     for f in EXTRA:
         try:
-            sf.get(REM + '/' + f, os.path.join(LOC, f))
+            sf.get(REM + '/' + f, os.path.join(NR('analysis', 'ctxctrl'), f))
             n_file += 1
         except Exception as ex:
             print('  !! %s 拉取失败：%s' % (f, str(ex)[:80]))
@@ -51,7 +63,7 @@ def main():
     print('\n本地逐目录检查（行数应各为 4 个臂文件）：')
     bad = 0
     for d in dirs:
-        ld = os.path.join(LOC, d)
+        ld = os.path.join(NR('analysis', 'ctxctrl'), d)
         fs = sorted(os.listdir(ld))
         sizes = sum(os.path.getsize(os.path.join(ld, f)) for f in fs)
         print('  %-34s %d 文件 %9d B' % (d, len(fs), sizes))
@@ -64,7 +76,7 @@ def main():
     lines = [l.split() for l in out.splitlines() if '  ' in l]
     mism = []
     for h, p in lines:
-        lp = os.path.join(LOC, p.replace('/', os.sep))
+        lp = os.path.join(NR('analysis', 'ctxctrl'), p.replace('/', os.sep))
         if not os.path.exists(lp):
             mism.append((p, '本地缺失'))
         elif MD5(lp) != h:

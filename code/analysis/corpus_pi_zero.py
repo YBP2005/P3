@@ -20,6 +20,18 @@ Usage:
   python corpus_pi_zero.py --check    # recount + assert the §M.21.9 sentence
   python corpus_pi_zero.py --selftest # negative controls
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import argparse
 import csv
 import glob
@@ -29,17 +41,17 @@ import re
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-ROOT = r'<WORKDIR>\PaperB'
-E2 = os.path.join(ROOT, 'analysis', 'e2_newh20')
-CORP = os.path.join(ROOT, 'analysis', 'e1_5090', 'corpus')
-SUPP = os.path.join(ROOT, 'PaperB_英文补充材料_PR_20260919.md')
+ROOT = NR()
+E2 = RP('analysis', 'e2_newh20')
+CORP = RP('analysis', 'e1_5090', 'corpus')
+SUPP = RP('PaperB_英文补充材料_PR_20260919.md')
 
 # The corpus pools, and where each domain's full pool lives.
-SOURCES = [('ShanghaiTech-A', os.path.join(CORP, 'vlm_st_a_base_whole.csv')),
-           ('ShanghaiTech-B', os.path.join(CORP, 'vlm_st_b_base_whole.csv')),
-           ('UCF-QNRF', os.path.join(CORP, 'vlm_ucf_base_whole.csv')),
-           ('VisDrone', os.path.join(E2, 'e1_qwen3-vl-32b-awq_visdrone_base.csv')),
-           ('AI-TOD', os.path.join(E2, 'e1_qwen3-vl-32b-awq_aitod_base.csv'))]
+SOURCES = [('ShanghaiTech-A', RP('analysis', 'e1_5090', 'corpus', 'vlm_st_a_base_whole.csv')),
+           ('ShanghaiTech-B', RP('analysis', 'e1_5090', 'corpus', 'vlm_st_b_base_whole.csv')),
+           ('UCF-QNRF', RP('analysis', 'e1_5090', 'corpus', 'vlm_ucf_base_whole.csv')),
+           ('VisDrone', RP('analysis', 'e2_newh20', 'e1_qwen3-vl-32b-awq_visdrone_base.csv')),
+           ('AI-TOD', RP('analysis', 'e2_newh20', 'e1_qwen3-vl-32b-awq_aitod_base.csv'))]
 EXPECT = {'ShanghaiTech-A': 182, 'ShanghaiTech-B': 316, 'UCF-QNRF': 334,
           'VisDrone': 273, 'AI-TOD': 154}
 

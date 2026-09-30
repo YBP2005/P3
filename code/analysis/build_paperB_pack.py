@@ -25,6 +25,18 @@
 用法：
     python build_paperB_pack.py [tag] [date]      # tag 缺省 = 已有最大编号 +1
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import glob
 import hashlib
 import io
@@ -35,14 +47,14 @@ import sys
 import time
 
 sys.stdout.reconfigure(encoding='utf-8')
-ROOT = r'<WORKDIR>\PaperB'
-PKG = os.path.join(ROOT, 'review_pkg_20260919')
+ROOT = NR()
+PKG = NR('review_pkg_20260919')
 
 
 def next_tag():
     """与 final_gates.py 同源：取已有 pin 的最大编号 +1（**不要**再写死 tag）。"""
     nums = []
-    for f in glob.glob(os.path.join(PKG, '03_评审包_v05*_*.md')):
+    for f in glob.glob(NR('review_pkg_20260919', '03_评审包_v05*_*.md')):
         m = re.search(r'_v(\d{4})_\d{8}\.md$', os.path.basename(f))
         if m:
             nums.append(int(m.group(1)))
@@ -51,8 +63,8 @@ def next_tag():
 
 TAG = sys.argv[1] if len(sys.argv) > 1 else next_tag()
 DATE = sys.argv[2] if len(sys.argv) > 2 else time.strftime('%Y%m%d')
-OUT = os.path.join(PKG, '03_评审包_%s_%s.md' % (TAG, DATE))
-CHANGE_SRC = os.path.join(PKG, '02f_本轮变化块_%s.md' % TAG)
+OUT = os.path.join(NR('review_pkg_20260919'), '03_评审包_%s_%s.md' % (TAG, DATE))
+CHANGE_SRC = os.path.join(NR('review_pkg_20260919'), '02f_本轮变化块_%s.md' % TAG)
 print('本轮 tag = %s（%s）；输出 %s'
       % (TAG, '命令行给定' if len(sys.argv) > 1 else '自动取已有最大编号 +1', os.path.basename(OUT)))
 
@@ -66,7 +78,7 @@ SRC_PATH = {}
 
 def _bind():
     for name, src in PARTS:
-        SRC_PATH[name] = os.path.join(PKG, src) if src == name else os.path.join(ROOT, src)
+        SRC_PATH[name] = os.path.join(NR('review_pkg_20260919'), src) if src == name else os.path.join(NR(), src)
 
 
 _bind()
@@ -80,15 +92,15 @@ def md5s(s):
     return hashlib.md5(s.encode('utf-8')).hexdigest()
 
 
-meas = json.loads(rd(os.path.join(ROOT, 'measurement_pr_docx.json')))
+meas = json.loads(rd(RP('measurement_pr_docx.json')))
 pages = meas['result']['pages']
 words_word = meas['result']['words']            # ★ Word COM 实测（权威）
 md_md5 = meas['inputs']['markdown_md5']
 
-manu = rd(os.path.join(ROOT, PARTS[2][1]))
-supp = rd(os.path.join(ROOT, PARTS[3][1]))
-prompt = rd(os.path.join(PKG, PARTS[0][0]))
-qset = rd(os.path.join(PKG, PARTS[1][0]))
+manu = rd(os.path.join(NR(), PARTS[2][1]))
+supp = rd(os.path.join(NR(), PARTS[3][1]))
+prompt = rd(os.path.join(NR('review_pkg_20260919'), PARTS[0][0]))
+qset = rd(os.path.join(NR('review_pkg_20260919'), PARTS[1][0]))
 
 # —— 材料自述（写给审稿人看的"这份材料是什么"）——
 prose = len(re.findall(r'\S+', re.sub(r'(?m)^\|.*$', '', manu)))   # \S+ 口径：不含表格行
@@ -165,7 +177,7 @@ pack = ''.join(buf)
 # 同构写入：包里的 06/08 与权威稿必须逐字一致（防止"包里是旧稿"）
 for name, src in PARTS:
     src_text = rd(SRC_PATH[name])
-    dst = os.path.join(PKG, name)
+    dst = os.path.join(NR('review_pkg_20260919'), name)
     if os.path.abspath(dst) != os.path.abspath(SRC_PATH[name]):
         io.open(dst, 'w', encoding='utf-8', newline='').write(src_text)
 

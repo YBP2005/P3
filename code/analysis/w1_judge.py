@@ -16,6 +16,18 @@
 用法：python w1_judge.py                 # 读 analysis/w1_a800/**，写 w1_results.json + 中文结果
       python w1_judge.py --selftest      # 用合成数据自测（不读真实数据）
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import csv
 import glob
 import io
@@ -28,8 +40,8 @@ import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
 HERE = os.path.dirname(os.path.abspath(__file__))
-ROOT = r'<WORKDIR>\PaperB\analysis'
-A800 = os.path.join(ROOT, 'w1_a800')
+ROOT = NR('analysis')
+A800 = NR('analysis', 'w1_a800')
 HOSTED = os.path.join(A800, 'hosted')
 DOMS = ['st_a', 'ucf', 'visdrone', 'aitod']
 DENSE = ['st_a', 'ucf']
@@ -499,7 +511,7 @@ def main():
                      % (r['fam'], 100 * r['w_base'], 100 * r['w_exemplar'], r['drop_pp']))
         L += ['', 'k = %d/%d ⇒ %s（按 ≥5/6 比例口径）'
               % (P6['k'], P6['n'], '通过' if P6['pass_'] else '不通过'), '']
-    with io.open(os.path.join(ROOT, 'W1_前瞻验证结果_20260923.md'), 'w', encoding='utf-8', newline='\n') as f:
+    with io.open(NR('analysis', 'W1_前瞻验证结果_20260923.md'), 'w', encoding='utf-8', newline='\n') as f:
         f.write('\n'.join(L) + '\n')
     print('\n'.join(L))
     return 0

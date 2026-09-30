@@ -6,6 +6,18 @@
  ② 关键日志、补丁垫片、远端脚本已拉到本地并校验 md5；
  ③ 远端无残留计算进程、显存回落。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import hashlib
 import io
 import os
@@ -13,14 +25,14 @@ import posixpath
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-sys.path.insert(0, r'<WORKDIR>\PaperB\analysis\work')
+sys.path.insert(0, RP('analysis', 'work'))
 from a800_conn import connect, sh
 
 A = ('<REDACTED-A800-HOST>', 23, 'root', '<REDACTED-A800-PASSWORD>')
-L = r'<WORKDIR>\PaperB\analysis\e2xt_a800'
-ENV = os.path.join(L, 'env')
+L = RP('analysis', 'e2xt_a800')
+ENV = RP('analysis', 'e2xt_a800', 'env')
 os.makedirs(ENV, exist_ok=True)
-os.makedirs(os.path.join(ENV, 'a800_logs'), exist_ok=True)
+os.makedirs(RP('analysis', 'e2xt_a800', 'env', 'a800_logs'), exist_ok=True)
 
 PAIRS = [
     ('/root/e1_results', 'zero'),
@@ -54,7 +66,7 @@ for rdir, sub in PAIRS:
     except IOError:
         print('  %-28s 远端不存在' % rdir)
         continue
-    ldir = os.path.join(L, sub)
+    ldir = os.path.join(RP('analysis', 'e2xt_a800'), sub)
     lfiles = set(f for f in os.listdir(ldir) if f.endswith('.csv')) if os.path.isdir(ldir) else set()
     miss = rfiles - lfiles
     same = sum(1 for f in rfiles & lfiles
@@ -77,7 +89,7 @@ for rp in LOGS + SCRIPTS:
     except IOError:
         print('  %-34s 远端无' % name)
         continue
-    dst = os.path.join(ENV, 'a800_logs', name) if rp in LOGS else os.path.join(ENV, 'a800_scripts', name)
+    dst = os.path.join(RP('analysis', 'e2xt_a800', 'env', 'a800_logs'), name) if rp in LOGS else os.path.join(RP('analysis', 'e2xt_a800', 'env', 'a800_scripts'), name)
     os.makedirs(os.path.dirname(dst), exist_ok=True)
     if not (os.path.exists(dst) and os.path.getsize(dst) == st.st_size):
         sftp.get(rp, dst)

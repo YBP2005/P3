@@ -16,6 +16,18 @@
 
 用法：python -u anchor_f10.py [--selftest]
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import io
 import json
 import os
@@ -23,10 +35,10 @@ import re
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-W = r'<WORKDIR>\PaperB\analysis\work'
-SUP = r'<WORKDIR>\PaperB\PaperB_英文补充材料_PR_20260919.md'
-EN = r'<WORKDIR>\PaperB\PaperB_英文稿_PR_20260919.md'
-FROZEN = os.path.join(W, 'span_equalcount2_result.json')
+W = RP('analysis', 'work')
+SUP = RP('PaperB_英文补充材料_PR_20260919.md')
+EN = RP('PaperB_英文稿_PR_20260919.md')
+FROZEN = RP('analysis', 'work', 'span_equalcount2_result.json')
 
 ok = fail = 0
 FAILD = []
@@ -119,8 +131,8 @@ def run(frozen, verbose=True):
     # ③b 随机删档那一句：数值必须与两个冻结件**逐项复算**一致（2026-09-24 夜新增）。
     #     ★ 加这一段的直接原因：写它的时候就查出一处不一致——正文写的 all-detections 六条阶梯中位
     #       区间是 0.52–0.57，而冻结件复算出来是 0.52–0.66（漏了域内三条）。数字靠复算，不靠记忆。
-    dr = json.loads(io.open(os.path.join(W, 'f10_random_drop_result.json'), encoding='utf-8').read())
-    do = json.loads(io.open(os.path.join(W, 'f10_random_drop_order_result.json'), encoding='utf-8').read())
+    dr = json.loads(io.open(RP('analysis', 'work', 'f10_random_drop_result.json'), encoding='utf-8').read())
+    do = json.loads(io.open(RP('analysis', 'work', 'f10_random_drop_order_result.json'), encoding='utf-8').read())
     drng = {}
     for cal in ('person', 'allclass'):
         ms = [x['median'] for x in dr['per_caliber'][cal].values()]

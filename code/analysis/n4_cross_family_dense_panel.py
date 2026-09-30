@@ -29,6 +29,18 @@
 用法：python -u n4_cross_family_dense_panel.py
 ═══════════════════════════════════════════════════════════════════════════════════════
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import csv
 import glob
 import hashlib
@@ -38,8 +50,8 @@ import os
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
-E3 = r'<WORKDIR>\PaperB\analysis\e2xt_a800'
-ZDIR, NZDIR = os.path.join(E3, 'merged'), os.path.join(E3, 'nonzero')
+E3 = RP('analysis', 'e2xt_a800')
+ZDIR, NZDIR = RP('analysis', 'e2xt_a800', 'merged'), RP('analysis', 'e2xt_a800', 'nonzero')
 ANCHORS = {'qwen3-vl-32b-awq', 'qwen25vl-72b-awq', 'internvl25-8b-awq'}   # 论文点名的三个锚
 # ★ 评审说的"5 个非 Qwen 家族"= 本材料里**非 Qwen** 的五个（两个 Qwen 锚除外）：
 NONQWEN = ['gemma3-12b', 'InternVL3_5-8B', 'Phi-3.5-vision-instruct',

@@ -9,6 +9,18 @@
   ③ 新增 **SISO 臂**：在**全部 unit 的标定折池化**后拟合**一个**保序映射，再逐 unit 应用
      （与 Cg"一个仿射参数"对应的"一个保序映射"对照）。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import hashlib
 import io
 import os
@@ -16,15 +28,15 @@ import shutil
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
-W = r'<WORKDIR>\PaperB\analysis\work'
-SRC = os.path.join(W, 'a39_unit_calib_heldout.py')
-DST = os.path.join(W, 'a39_sharediso_fold2.py')
+W = RP('analysis', 'work')
+SRC = RP('analysis', 'work', 'a39_unit_calib_heldout.py')
+DST = RP('analysis', 'work', 'a39_sharediso_fold2.py')
 
 src = io.open(SRC, encoding='utf-8').read()
 out = src
 
-R1_OLD = "OUT = r'D:\\deepseek\\PaperB\\analysis\\work\\a39_unit_calib_heldout_result.json'"
-R1_NEW = "OUT = r'D:\\deepseek\\PaperB\\analysis\\work\\a39_sharediso_fold2_result.json'"
+R1_OLD = "OUT = RP('analysis', 'work', 'a39_unit_calib_heldout_result.json')"
+R1_NEW = "OUT = RP('analysis', 'work', 'a39_sharediso_fold2_result.json')"
 assert out.count(R1_OLD) == 1, 'OUT 锚点 count=%d' % out.count(R1_OLD)
 out = out.replace(R1_OLD, R1_NEW)
 

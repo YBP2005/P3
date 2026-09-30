@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """按 PR **官方 Word 版式**实测页数（把 26 号文 §5.3 的假设变成测量）。
 
-官方条款（E:\\workplace\\PR网页.txt）：
+官方条款（the journal's submission-webpage notes；该原文**未随包发布**）：
   L567  single-column, **1.5 spaced when writing in Word**, fully-justified, numbered pages
   L569  **Times New Roman**; Font size of text **incl. tables 10pt**; **footnotes and captions 8pt**
   L571  Margins should be 4.3cm, 4.8cm, 4.3cm, 4.8cm **(Top, Right, Bottom, Left)**
@@ -14,6 +14,18 @@
 图件高度仍走 none / 7.5cm 两档（图件真实高度是未定参数）。
 阳性对照：注入 600 词，确认页数会变（不随内容变化的测量不是测量）。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import io
 import json
 import os
@@ -21,13 +33,13 @@ import re
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-sys.path.insert(0, r'<WORKDIR>\PaperB\analysis\work')
+sys.path.insert(0, RP('analysis', 'work'))
 import measure_pages as mp
 
-ROOT = r'<WORKDIR>\PaperB'
-EN = os.path.join(ROOT, 'PaperB_英文稿_PR_20260919.md')
+ROOT = NR()
+EN = RP('PaperB_英文稿_PR_20260919.md')
 OUT_RTF = os.path.join(mp.OUT_RTF, 'pr')
-OUT_JSON = os.path.join(ROOT, 'measurement_pr_layout.json')
+OUT_JSON = NR('measurement_pr_layout.json')
 
 CM = 566.9291338582677           # 1 cm → twips（1 inch = 1440 twips = 2.54 cm）
 PAGE_W_TW, PAGE_H_TW = 11906, 16838
@@ -141,7 +153,7 @@ def main():
 
     out = dict(
         measured_at='2026-09-21', tool='Word COM ComputeStatistics(2)',
-        layout_source='E:\\workplace\\PR网页.txt L567/L569/L571',
+        layout_source='PR submission-webpage template notes, L567/L569/L571 (source file not released)',
         layout=dict(page='A4', columns=1, spacing='1.5 (Word)', body_pt=10, table_pt=10,
                     caption_pt=8, justify=True,
                     margins_cm=dict(top=4.3, right=4.8, bottom=4.3, left=4.8),

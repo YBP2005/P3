@@ -19,6 +19,18 @@ Usage:
   python f10_grid8_declared.py --check    # recompute + assert the F.10 declaration
   python f10_grid8_declared.py --selftest # negative controls
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import argparse
 import csv
 import io
@@ -26,9 +38,9 @@ import os
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-ROOT = r'<WORKDIR>\PaperB'
-LAD = os.path.join(ROOT, 'analysis', 'data', 'pod_mirror', 'A')
-SUPP = os.path.join(ROOT, 'PaperB_英文补充材料_PR_20260919.md')
+ROOT = NR()
+LAD = RP('analysis', 'data', 'pod_mirror', 'A')
+SUPP = RP('PaperB_英文补充材料_PR_20260919.md')
 ANOM = 1e5
 
 LADDERS = [
@@ -60,7 +72,7 @@ def rho(pairs):
 
 def ladder_spans(name, fname, n_items):
     """Pooled rho at each tau on the common item intersection, then max - min."""
-    rows = load(os.path.join(LAD, fname))
+    rows = load(os.path.join(RP('analysis', 'data', 'pod_mirror', 'A'), fname))
     out = {}
     for cal, col in CALIBERS:
         for sz in IMGSZ:
@@ -164,7 +176,7 @@ def selftest():
 
     # (4) Dropping the loosest tau must change the span -- i.e. the span really is a
     #     functional of the admitted level set, as Proposition 3 says.
-    rows = load(os.path.join(LAD, 'det_yolo_ladder_yolo12n.csv'))
+    rows = load(RP('analysis', 'data', 'pod_mirror', 'A', 'det_yolo_ladder_yolo12n.csv'))
     sub = [r for r in rows if r['imgsz'] == '640']
     taus = sorted(set(r['tau'] for r in sub), key=float)
     per = {t: {} for t in taus}

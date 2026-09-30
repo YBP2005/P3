@@ -10,6 +10,18 @@
   · 某主题"已落地" = 第 2 轮**没有任何**模型再就它扣分；
   · 分数比较只在**同模型**之间做（跨模型可比≠有效），聚合值仅作参考。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import io
 import json
 import os
@@ -17,9 +29,9 @@ import statistics as st
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-D = r'<WORKDIR>\PaperB\analysis\model_review'
-J1 = os.path.join(D, 'novelty_paperB1_result.json')
-J2 = os.path.join(D, 'novelty_paperB2_result.json')
+D = NR('analysis', 'model_review')
+J1 = NR('analysis', 'model_review', 'novelty_paperB1_result.json')
+J2 = NR('analysis', 'model_review', 'novelty_paperB2_result.json')
 
 # 主题关键词（用于自动打标；只作初筛，最终以人工确认的映射为准）
 THEME_KW = [

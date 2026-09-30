@@ -19,6 +19,18 @@
 
 只读分析；新文件只写 `analysis/work/`。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import collections
 import csv
 import glob
@@ -32,11 +44,11 @@ import sys
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
-ROOT = r'<WORKDIR>\PaperB'
-WORK = os.path.join(ROOT, 'analysis', 'work')
-E3 = os.path.join(ROOT, 'analysis', 'e2xt_a800', 'merged')
-E2 = os.path.join(ROOT, 'analysis', 'e2_newh20')
-P2R = os.path.join(ROOT, 'analysis', 'p2_a800', 'p2_probe_results_reparsed')
+ROOT = NR()
+WORK = RP('analysis', 'work')
+E3 = RP('analysis', 'e2xt_a800', 'merged')
+E2 = RP('analysis', 'e2_newh20')
+P2R = RP('analysis', 'p2_a800', 'p2_probe_results_reparsed')
 
 ABSTAIN_WORDS = ('abstain', 'cannot_judge', 'no_people')
 ANOM = 1e5
@@ -238,7 +250,7 @@ def seven_family():
     print('【表 1】§5.7 七家族契约表（M.19.2）：permit 臂下"仍答 0" —— 六规则 + as_published 逐家对照')
     print('=' * 132)
     bodies = {}
-    for p in glob.glob(os.path.join(E3, '*.csv')):
+    for p in glob.glob(RP('analysis', 'e2xt_a800', 'merged', '*.csv')):
         b = os.path.basename(p)
         if not b.startswith('e1_'):
             continue
@@ -247,13 +259,13 @@ def seven_family():
             bodies.setdefault(sp[0], set()).add(sp[1])
     fams = sorted(f for f, ds in bodies.items()
                   if sum(1 for d in DOM4 if d in ds) > 0
-                  and any(os.path.exists(os.path.join(E3, 'e1_%s_%s_permit.csv' % (f, d))) for d in DOM4))
+                  and any(os.path.exists(os.path.join(RP('analysis', 'e2xt_a800', 'merged'), 'e1_%s_%s_permit.csv' % (f, d))) for d in DOM4))
     res = {}
     for f in fams:
         per_rule = {n: [0, 0] for n in ALLCOL}
         for d in DOM4:
-            pb = os.path.join(E3, 'e1_%s_%s_base.csv' % (f, d))
-            pp = os.path.join(E3, 'e1_%s_%s_permit.csv' % (f, d))
+            pb = os.path.join(RP('analysis', 'e2xt_a800', 'merged'), 'e1_%s_%s_base.csv' % (f, d))
+            pp = os.path.join(RP('analysis', 'e2xt_a800', 'merged'), 'e1_%s_%s_permit.csv' % (f, d))
             if not (os.path.exists(pb) and os.path.exists(pp)):
                 continue
             track(pb, None); track(pp, None)
@@ -312,7 +324,7 @@ def census_52():
     print('【表 2】M.18.3 的 52 个 (model×domain) 格：permit / channel 是否消掉该模型自己 base 的答零')
     print('=' * 132)
     models = {}
-    for p in glob.glob(os.path.join(E2, 'e1_*.csv')):
+    for p in glob.glob(RP('analysis', 'e2_newh20', 'e1_*.csv')):
         sp = split_model(os.path.basename(p)[3:-4])
         if sp:
             models.setdefault(sp[0], set()).add((sp[1], sp[2]))
@@ -331,9 +343,9 @@ def census_52():
     per_rule = {n: {'p': 0, 'c': 0, 'cells': {}} for n in ALLCOL}
     details = []
     for (m, d) in cells:
-        pb = os.path.join(E2, 'e1_%s_%s_base.csv' % (m, d))
-        pp = os.path.join(E2, 'e1_%s_%s_permit.csv' % (m, d))
-        pc = os.path.join(E2, 'e1_%s_%s_channel.csv' % (m, d))
+        pb = os.path.join(RP('analysis', 'e2_newh20'), 'e1_%s_%s_base.csv' % (m, d))
+        pp = os.path.join(RP('analysis', 'e2_newh20'), 'e1_%s_%s_permit.csv' % (m, d))
+        pc = os.path.join(RP('analysis', 'e2_newh20'), 'e1_%s_%s_channel.csv' % (m, d))
         for q in (pb, pp, pc):
             track(q, None)
         rb, rp, rc = load(pb), load(pp), load(pc)
@@ -389,8 +401,8 @@ def census_52():
     for n in ALLCOL:
         tot = collections.Counter()
         for (m, d) in cells:
-            pb = os.path.join(E2, 'e1_%s_%s_base.csv' % (m, d))
-            pp = os.path.join(E2, 'e1_%s_%s_permit.csv' % (m, d))
+            pb = os.path.join(RP('analysis', 'e2_newh20'), 'e1_%s_%s_base.csv' % (m, d))
+            pp = os.path.join(RP('analysis', 'e2_newh20'), 'e1_%s_%s_permit.csv' % (m, d))
             cb = _CACHE[(m, d, 'base')]
             cp = _CACHE[(m, d, 'permit')]
             for i in cb['as_published']:
@@ -437,7 +449,7 @@ def headline_spread(fams, rates, agg, details):
     for d in ('st_a', 'ucf'):
         for m in ('qwen3-vl-32b-awq', 'qwen3-vl-32b-awq8', 'qwen3-vl-32b-bf16',
                   'qwen3-vl-32b-fp8', 'qwen3-vl-32b-gptq'):
-            p = os.path.join(E2, 'e1_%s_%s_base.csv' % (m, d))
+            p = os.path.join(RP('analysis', 'e2_newh20'), 'e1_%s_%s_base.csv' % (m, d))
             if not os.path.exists(p):
                 continue
             track(p, None)
@@ -469,7 +481,7 @@ def reverify_p2():
     print('=' * 132)
     print('【表 4】复核 p2 的 3,598 / 3,600 —— **独立路线**：用已存 `pred_frozen` 列，不重新派生 pred')
     print('=' * 132)
-    files = sorted(glob.glob(os.path.join(P2R, '*.csv')))
+    files = sorted(glob.glob(RP('analysis', 'p2_a800', 'p2_probe_results_reparsed', '*.csv')))
     if not files:
         print('  !! 目录不存在或为空：%s ⇒ 未核实' % P2R)
         return None
@@ -528,7 +540,7 @@ def main():
     print('=' * 132)
     for p, h in FILES:
         print('  %s  %s' % (h, p))
-    with io.open(os.path.join(WORK, 'n2_rule_spread_inventory.json'), 'w', encoding='utf-8') as f:
+    with io.open(RP('analysis', 'work', 'n2_rule_spread_inventory.json'), 'w', encoding='utf-8') as f:
         json.dump({'files': [{'md5': h, 'path': p} for p, h in FILES],
                    'rules': [n for n, _ in RULES],
                    'cells_52': [{'model': c[0], 'dom': c[1]} for c in cells],

@@ -1,6 +1,18 @@
 # -*- coding: utf-8 -*-
 """E2 汇总：AWQ(M机5090) vs BF16(H20) 的单变量契约实验对照。
 只做定量汇总，不做判断；输出用于写 E2 证据记录。"""
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import csv
 import glob
 import os
@@ -9,13 +21,13 @@ import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-D_A = r'<WORKDIR>\PaperB\analysis\e2_5090'   # AWQ
-D_B = r'<WORKDIR>\PaperB\analysis\e2_h20'    # BF16
+D_A = RP('analysis', 'e2_5090')   # AWQ
+D_B = RP('analysis', 'e2_h20')    # BF16
 DATASETS = ['st_a', 'ucf']
 ARMS = ['base', 'permit', 'bestA', 'channel']
 
 print('=== 列名 ===')
-f0 = sorted(glob.glob(os.path.join(D_B, '*.csv')))[0]
+f0 = sorted(glob.glob(RP('analysis', 'e2_h20', '*.csv')))[0]
 with open(f0, encoding='utf-8-sig') as f:
     rd = csv.DictReader(f)
     print(os.path.basename(f0), '->', rd.fieldnames)

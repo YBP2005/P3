@@ -9,6 +9,18 @@
 
 用法：python -u endgame_e1.py
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import os
 import subprocess
 import sys
@@ -16,7 +28,7 @@ import sys
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 W = os.path.dirname(os.path.abspath(__file__))
 PY = sys.executable
-DEST = r'<WORKDIR>\PaperB\analysis\fsc_res'
+DEST = RP('analysis', 'fsc_res')
 MAP = (('fsc_sc384', '384'), ('fsc_sc256', '256'), ('fsc_sc768', '768up'))
 MODELS = ('InternVL3_5-8B', 'Phi-3.5-vision-instruct', 'gemma3-12b')
 ARMS = ('base', 'permit', 'channel', 'enumAbstain', 'exemplar3', 'exemplar3permit')
@@ -30,7 +42,7 @@ def run(args):
 print('■ ① 拉回三档产物')
 for rem_name, tag in MAP:
     rem = '/root/w1_results/%s' % rem_name
-    loc = os.path.join(DEST, tag)
+    loc = os.path.join(RP('analysis', 'fsc_res'), tag)
     rc, out = run([PY, '-u', 'rsh.py', '--get', rem, loc, '--t', '900'])
     have = sorted(f[:-4].split('_', 1)[1] for f in os.listdir(loc) if f.endswith('.csv')) \
         if os.path.isdir(loc) else []

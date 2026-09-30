@@ -5,6 +5,18 @@
 两者口径不同（RTF 代理按 7.5 cm 预留图位，真实 .docx 按图件真实纵横比插入），
 故必须分开记录，不可混用。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import hashlib
 import io
 import json
@@ -15,10 +27,10 @@ import time
 sys.stdout.reconfigure(encoding='utf-8')
 import win32com.client as w
 
-ROOT = r'<WORKDIR>\PaperB'
-DOCX = os.path.join(ROOT, 'PaperB_英文稿_PR.docx')
-MD = os.path.join(ROOT, 'PaperB_英文稿_PR_20260919.md')
-OUT = os.path.join(ROOT, 'measurement_pr_docx.json')
+ROOT = NR()
+DOCX = NR('PaperB_英文稿_PR.docx')
+MD = RP('PaperB_英文稿_PR_20260919.md')
+OUT = RP('measurement_pr_docx.json')
 
 
 def md5f(p):

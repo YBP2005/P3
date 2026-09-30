@@ -13,6 +13,18 @@
 
 用法：python normalize_supp_lf.py [--check]
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import hashlib
 import io
 import os
@@ -20,7 +32,7 @@ import shutil
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
-P = r'<WORKDIR>\PaperB\PaperB_英文补充材料_PR_20260919.md'
+P = RP('PaperB_英文补充材料_PR_20260919.md')
 BAK = P + '.bak_crlf_20260928'
 
 raw = io.open(P, 'rb').read()
@@ -39,14 +51,17 @@ if crlf == 0:
     print('已经是纯 LF，无需改动。')
     raise SystemExit(0)
 
-if not os.path.exists(BAK):
-    shutil.copy2(P, BAK)
-    print('已备份 ->', BAK)
-else:
-    print('备份已存在，保留原样 ->', BAK)
-
 new = raw.replace(b'\r\n', b'\n')
-io.open(P, 'wb').write(new)
+if '--apply' in sys.argv:             # ★ v0610：默认**只读**，写回须显式 --apply
+    if not os.path.exists(BAK):
+        shutil.copy2(P, BAK)
+        print('已备份 ->', BAK)
+    else:
+        print('备份已存在，保留原样 ->', BAK)
+    io.open(P, 'wb').write(new)
+else:
+    print('（dry run：将把 CRLF 归一为 LF（%d → %d 字节），**未**写回补充材料、**未**落 .bak；'
+          '加 --apply 才写）' % (len(raw), len(new)))
 
 back = io.open(P, 'rb').read()
 assert back.count(b'\r') == 0, '改写后仍有 CR'

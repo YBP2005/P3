@@ -9,6 +9,18 @@
 口径：A「弃权当错」（分母=全部）；B「弃权待复核」（分母=已答，弃权图移出交付集）。
 判据（跑前写死）：**存在任一 (θ,tol) 组合下翻转 ≥2 个同类单元**，或**任一数据集内最优配置不同** ⇒ 有后果。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import csv
 import io
 import json
@@ -16,9 +28,9 @@ import os
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-FSC = r'<WORKDIR>\PaperB\analysis\fsc_a800'
-MER = r'<WORKDIR>\PaperB\analysis\e2xt_a800\merged'
-E2 = r'<WORKDIR>\PaperB\analysis\e2_newh20'
+FSC = RP('analysis', 'fsc_a800')
+MER = RP('analysis', 'e2xt_a800', 'merged')
+E2 = RP('analysis', 'e2_newh20')
 ABSTAIN = ('abstain', 'cannot_judge', 'no_people')
 THETAS = (0.30, 0.50, 0.70)
 TOLS = (0.10, 0.20, 0.50)
@@ -61,7 +73,7 @@ def collect():
     data = {}
     for f in sorted(os.listdir(FSC)):
         if f.startswith('fsc_') and f.endswith('_base.csv'):
-            data.setdefault('FSC-147', {})[f[4:-9]] = list(load_csv(os.path.join(FSC, f)).values())
+            data.setdefault('FSC-147', {})[f[4:-9]] = list(load_csv(os.path.join(RP('analysis', 'fsc_a800'), f)).values())
     seen = set()
     for d in (MER, E2):
         for f in sorted(os.listdir(d)):
@@ -151,7 +163,7 @@ print('  同数据集内最优配置不同的数据集数：%d/%d' % (sum(sym_al
 print('  结论：%s' % ('**有后果 ★**' if verdict else '**无后果**（如实报 + 给机制）'))
 print('=' * 104)
 
-io.open(r'<WORKDIR>\PaperB\analysis\work\deploy_decision2_result.json', 'w', encoding='utf-8').write(
+io.open(RP('analysis', 'work', 'deploy_decision2_result.json'), 'w', encoding='utf-8').write(
     json.dumps(dict(flip_by_cell=flip_total, max_flip=max(flip_total.values()),
                     selection_diff_units=sum(sym_all), n_units=len(sym_all),
                     verdict=bool(verdict)), ensure_ascii=False, indent=1))

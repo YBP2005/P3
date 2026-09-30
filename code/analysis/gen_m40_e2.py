@@ -7,6 +7,18 @@
 
 用法：python -u gen_m40_e2.py            # 先用当前产物生成/更新 M.40
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import collections
 import glob
 import hashlib
@@ -19,11 +31,11 @@ import sys
 import time
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
-W = r'<WORKDIR>\PaperB\analysis\work'
-SUP = r'<WORKDIR>\PaperB\PaperB_英文补充材料_PR_20260919.md'
+W = RP('analysis', 'work')
+SUP = RP('PaperB_英文补充材料_PR_20260919.md')
 CAP = None       # 2026-09-24 取消自订上限（只记录词数）
-Z0 = os.path.join(W, 'ea2_z0_result.json')
-CON = os.path.join(W, 'ea2_contrast_result.json')
+Z0 = RP('analysis', 'work', 'ea2_z0_result.json')
+CON = RP('analysis', 'work', 'ea2_contrast_result.json')
 MARK = 'E2_M40_END'
 # ★ 与 en_check.py 的计数口径**逐字一致**（`W = lambda s: len(re.findall(r"[A-Za-z][A-Za-z'\-]*", s))`）：
 #   自订护栏必须用裁决者的尺子，否则会出现"护栏说超、en_check 说没事"的假警报（本轮已踩）。
@@ -54,7 +66,7 @@ for k, v in con['nonzero'].items():
 #   而通道/对照表按**模型全名**（InternVL3_5-8B/Phi-3.5-vision-instruct/…）。对不上就会静默打印 0.0，
 #   把"0.0–2.6 pp"说成"0.0–0.0 pp"（结论方向都会变）。故先建 标签→全名 的映射。
 _tag2name = {}
-for d in glob.glob(os.path.join(r'<WORKDIR>\PaperB\analysis\ea2_z0', '*', '*.csv')):
+for d in glob.glob(RP('analysis', 'ea2_z0', '*', '*.csv')):
     dirn = os.path.basename(os.path.dirname(d))
     m = re.match(r'^(?:cn|en)_(.+)_s(\d)$', dirn)
     mm = re.match(r'^e1_(.+?)_(?:z0easy|z0hard)_', os.path.basename(d))
@@ -245,6 +257,10 @@ if hit:
     sys.exit('!! M.40 命中禁用串：%s ⇒ 拒绝写盘' % hit)
 print('  禁用串预检：0（与 en_check 同一份名单）')
 bak = SUP + '.bak_before_m40_%s' % time.strftime('%Y%m%d_%H%M%S')
-shutil.copy2(SUP, bak)
-io.open(SUP, 'w', encoding='utf-8', newline='\n').write(src)
-print('  已写盘 md5 %s' % hashlib.md5(io.open(SUP, 'rb').read()).hexdigest()[:12])
+if '--apply' in sys.argv:           # ★ 2026-09-30 v0610：默认**只读**，写回须显式 --apply
+    shutil.copy2(SUP, bak)
+    io.open(SUP, 'w', encoding='utf-8', newline='\n').write(src)
+    print('  已写盘 md5 %s' % hashlib.md5(io.open(SUP, 'rb').read()).hexdigest()[:12])
+else:
+    print('  （dry run：**未**写回补充材料、**未**落 .bak（%d 字节待写）；加 --apply 才写）'
+          % len(src.encode('utf-8')))

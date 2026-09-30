@@ -4,6 +4,18 @@
  ④ E1 48 格表（仅有效调用，ERR 单独披露）；⑤ 写出内部证据件。
 所有数字都从这里出，正文只引用本文件的数。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import csv
 import glob
 import hashlib
@@ -14,13 +26,13 @@ import sys
 from collections import Counter
 
 sys.stdout.reconfigure(encoding='utf-8')
-sys.path.insert(0, r'<WORKDIR>\PaperB\analysis\work')
+sys.path.insert(0, RP('analysis', 'work'))
 import paramiko  # noqa
 
-E1D = r'<WORKDIR>\PaperB\analysis\e1_5090'
-CORP = os.path.join(E1D, 'corpus')
-OUT = r'<WORKDIR>\PaperB\PaperB_E1证据_20260920.md'
-HOST, PORT, USER, PW = 'cpod-1v4b5h1i96an-s1.podtcp.compshare.cn', 23654, 'root', '6q7QBV0F5z43Z21U'
+E1D = RP('analysis', 'e1_5090')
+CORP = RP('analysis', 'e1_5090', 'corpus')
+OUT = RP('PaperB_E1证据_20260920.md')
+HOST, PORT, USER, PW = '<REDACTED-POD-HOST>', 23654, 'root', '<REDACTED-POD-PASSWORD>'
 
 BS = chr(92)
 FALLBACK = re.compile('-?' + BS + 'd+')
@@ -41,9 +53,9 @@ def pull():
         sf = c.open_sftp()
         for f in sf.listdir('/root/dense_results'):
             if f.endswith('.csv'):
-                sf.get('/root/dense_results/' + f, os.path.join(CORP, f))
-        sf.get('/root/06_dense_vlm.py', os.path.join(E1D, '06_dense_vlm.py'))
-        sf.get('/root/logs/vllm_qwen3-vl-32b-awq.log', os.path.join(E1D, 'vllm_log.txt'))
+                sf.get('/root/dense_results/' + f, os.path.join(RP('analysis', 'e1_5090', 'corpus'), f))
+        sf.get('/root/06_dense_vlm.py', RP('analysis', 'e1_5090', '06_dense_vlm.py'))
+        sf.get('/root/logs/vllm_qwen3-vl-32b-awq.log', RP('analysis', 'e1_5090', 'vllm_log.txt'))
         sf.close()
     finally:
         c.close()
@@ -55,7 +67,7 @@ def corpus_tables():
     tot = Counter()
     audit = Counter()
     cpat = re.compile(r'^vlm_(?P<ds>st_a|st_b|ucf)_(?P<arm>[a-z]+)_whole\.csv$')
-    for p in sorted(glob.glob(os.path.join(CORP, '*.csv'))):
+    for p in sorted(glob.glob(RP('analysis', 'e1_5090', 'corpus', '*.csv'))):
         mm = cpat.match(os.path.basename(p))
         if not mm:
             print('!! 语料文件名无法解析:', os.path.basename(p))
@@ -90,7 +102,7 @@ ABSTAIN = ('abstain', 'cannot_judge', 'no_people')
 def e1_tables():
     pat = re.compile(r'^(?P<m>.+)_(?P<d>st_a|st_b|ucf)_(?P<a>[A-Za-z]+)$')
     cells = {}
-    for p in sorted(glob.glob(os.path.join(E1D, 'e1_*.csv'))):
+    for p in sorted(glob.glob(RP('analysis', 'e1_5090', 'e1_*.csv'))):
         mm = pat.match(os.path.basename(p)[3:-4])
         rows = list(csv.DictReader(open(p, encoding='utf-8-sig')))
         err = sum(1 for r in rows if (r.get('raw') or '').startswith('ERR'))
@@ -263,13 +275,18 @@ def write_evidence(per, tot, audit, cells, tot_valid, tot_abst, tot_zero_pc, bes
     A('')
     A('## 6. 溯源')
     A('')
-    A('- 探针：`/root/19b_e1_probe.py` md5 %s' % md5(os.path.join(E1D, '19b_e1_probe.py')))
-    A('- 语料运行器：`/root/06_dense_vlm.py` md5 %s' % md5(os.path.join(E1D, '06_dense_vlm.py')))
+    A('- 探针：`/root/19b_e1_probe.py` md5 %s' % md5(RP('analysis', 'e1_5090', '19b_e1_probe.py')))
+    A('- 语料运行器：`/root/06_dense_vlm.py` md5 %s' % md5(RP('analysis', 'e1_5090', '06_dense_vlm.py')))
     A('- 队列脚本：`run_e1b.sh` / `run_e1c.sh`；两队列均打印 `E1B_ALL_DONE` / `E1C_ALL_DONE`。')
     A('- 本地数据：`analysis/e1_5090/e1_*.csv`（48 个）、`analysis/e1_5090/corpus/*.csv`（9 个）。')
-    open(OUT, 'w', encoding='utf-8').write('\n'.join(L) + '\n')
-    print()
-    print('-> 写出', OUT, '(%d 字符)' % len('\n'.join(L)))
+    if '--apply' in sys.argv:      # ★ v0610：默认**只读**，写回须显式 --apply
+        open(OUT, 'w', encoding='utf-8').write('\n'.join(L) + '\n')
+        print()
+        print('-> 写出', OUT, '(%d 字符)' % len('\n'.join(L)))
+    else:
+        print()
+        print('-> （dry run：**未**写出 %s（%d 字符）；加 --apply 才写）'
+              % (OUT, len('\n'.join(L))))
 
 
 if __name__ == '__main__':

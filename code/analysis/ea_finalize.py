@@ -9,6 +9,18 @@ D0 = 语料答 0 的密集图（GT>0）。
 
 口径：**原文匹配**（数 raw 里的 token），与论文 §8.1/§11.2 已披露并采用的修正口径一致。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import csv
 import io
 import json
@@ -17,10 +29,10 @@ import re
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-ROOT = r'<WORKDIR>\PaperB\analysis'
-Z0 = os.path.join(ROOT, 'ea_z0')
-D0DIRS = [os.path.join(ROOT, 'e2xt_a800', 'zero'), os.path.join(ROOT, 'e2xt_a800', 'ablate3')]
-OUT = os.path.join(r'<WORKDIR>\PaperB\analysis\work', 'ea_truezero_result.json')
+ROOT = NR('analysis')
+Z0 = NR('analysis', 'ea_z0')
+D0DIRS = [RP('analysis', 'e2xt_a800', 'zero'), RP('analysis', 'e2xt_a800', 'ablate3')]
+OUT = RP('analysis', 'work', 'ea_truezero_result.json')
 FAM = ['InternVL3_5-8B', 'Phi-3.5-vision-instruct', 'llava-onevision-qwen2-7b-ov',
        'gemma3-12b', 'Qwen3-VL-32B-Instruct']
 PAT = (('zero', r'(?:count|计数|数量|人数)\s*["\s]*[:：]\s*"?0(?!\d)'),
@@ -69,11 +81,11 @@ print('=' * 118)
 print('  %-28s | %-16s | %-22s | %-22s' % ('家族', 'Z0 真零 base 答0', 'Z0 channel', 'D0(GT>0) channel'))
 print('  %-28s | %16s | %22s | %22s' % ('', '', 'no_people / cannot_j', 'no_people / cannot_j'))
 for m in FAM:
-    z0b_e = stat(os.path.join(Z0, 'e1_%s_z0easy_base_native.csv' % m))
-    z0b_h = stat(os.path.join(Z0, 'e1_%s_z0hard_base_native.csv' % m))
-    z0c_e = stat(os.path.join(Z0, 'e1_%s_z0easy_channel_native.csv' % m))
-    z0c_h = stat(os.path.join(Z0, 'e1_%s_z0hard_channel_native.csv' % m))
-    z0p_e = stat(os.path.join(Z0, 'e1_%s_z0easy_permit_native.csv' % m))
+    z0b_e = stat(os.path.join(NR('analysis', 'ea_z0'), 'e1_%s_z0easy_base_native.csv' % m))
+    z0b_h = stat(os.path.join(NR('analysis', 'ea_z0'), 'e1_%s_z0hard_base_native.csv' % m))
+    z0c_e = stat(os.path.join(NR('analysis', 'ea_z0'), 'e1_%s_z0easy_channel_native.csv' % m))
+    z0c_h = stat(os.path.join(NR('analysis', 'ea_z0'), 'e1_%s_z0hard_channel_native.csv' % m))
+    z0p_e = stat(os.path.join(NR('analysis', 'ea_z0'), 'e1_%s_z0easy_permit_native.csv' % m))
     d0c_s = stat(find_d0(m, 'st_a', 'channel') or '')
     d0c_u = stat(find_d0(m, 'ucf', 'channel') or '')
     d0p_s = stat(find_d0(m, 'st_a', 'permit') or '')

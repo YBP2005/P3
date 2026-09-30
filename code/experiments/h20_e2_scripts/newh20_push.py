@@ -10,7 +10,7 @@ import time
 sys.stdout.reconfigure(encoding='utf-8')
 import paramiko
 
-M = ('cpod-1v4b5h1i96an-s1.podtcp.compshare.cn', 23654, 'root', '6q7QBV0F5z43Z21U')
+M = ('<REDACTED-POD-HOST>', 23654, 'root', '<REDACTED-POD-PASSWORD>')
 RD = '/root/results_newh20'
 # 零池与非零池探针的文件名完全相同，推到同一目录会互相覆盖 ⇒ 非零池加 nz__ 前缀
 SRC = [('/root/e1_results', ''), ('/root/e1_results_nonzero', 'nz__')]

@@ -6,6 +6,18 @@
   ② 计算该 JSON 的 md5 并打印，供日后核对"判定用的是不是这一版判据"。
 不含任何结果；结果由 `a5_judge.py`（待写）按此 JSON 判定。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import hashlib
 import io
 import json
@@ -13,7 +25,7 @@ import os
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-OUT = r'<WORKDIR>\PaperB\analysis\work\a5_criteria_frozen.json'
+OUT = RP('analysis', 'work', 'a5_criteria_frozen.json')
 
 SPEC = {
     'round': 'A5-cross-family',

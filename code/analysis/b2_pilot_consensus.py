@@ -10,6 +10,18 @@
   · 同时报**中位**相对误差，避免单点爆炸
 判据同前（AUC ≥ 0.65 且 有界MAE@20% ≤ 0.6 × 有界MAE@100%），并额外报告"与随机/与零信号"的对照。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import csv
 import io
 import json
@@ -18,8 +30,8 @@ import statistics as st
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-MER = r'<WORKDIR>\PaperB\analysis\e2xt_a800\merged'
-E2 = r'<WORKDIR>\PaperB\analysis\e2_newh20'
+MER = RP('analysis', 'e2xt_a800', 'merged')
+E2 = RP('analysis', 'e2_newh20')
 FAMS = ['gemma3-12b', 'InternVL3_5-8B', 'Phi-3.5-vision-instruct',
         'llava-onevision-qwen2-7b-ov', 'qwen3-vl-32b-awq', 'internvl25-8b-awq', 'qwen25vl-72b-awq']
 DOMS = ['st_a', 'ucf', 'visdrone', 'aitod']
@@ -119,6 +131,6 @@ if res:
         print('  AUC(大误差) 中位 %.3f，范围 %.3f–%.3f；clipMAE@20%% 与 @100%% 之比中位 %.2f'
               % (st.median(a), min(a), max(a), st.median(r20)))
 print('=' * 96)
-io.open(r'<WORKDIR>\PaperB\analysis\work\b2_pilot_consensus_result.json', 'w', encoding='utf-8').write(
+io.open(RP('analysis', 'work', 'b2_pilot_consensus_result.json'), 'w', encoding='utf-8').write(
     json.dumps(res, ensure_ascii=False, indent=1))
 print('JSON -> b2_pilot_consensus_result.json')

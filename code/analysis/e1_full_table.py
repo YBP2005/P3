@@ -2,6 +2,18 @@
 """E1 全表：行taxonomy + 跨模型对齐 + 主表 + flash 污染检查。
 样本帧是确定性的（zero.sort(gt) 后等间隔取），因此各模型应共享同一 40 个 item。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import csv
 import glob
 import os
@@ -12,7 +24,7 @@ import collections
 import json
 
 sys.stdout.reconfigure(encoding='utf-8')
-D = r'<WORKDIR>\PaperB\analysis\e1_5090'
+D = RP('analysis', 'e1_5090')
 ABSTAIN_TOKENS = ('abstain', 'cannot_judge', 'no_people')
 
 
@@ -40,7 +52,7 @@ def load(p):
 def main():
     files = {}
     pat = re.compile(r'^(?P<model>.+)_(?P<ds>st_a|st_b|ucf)_(?P<arm>[A-Za-z]+)$')
-    for p in sorted(glob.glob(os.path.join(D, 'e1_*.csv'))):
+    for p in sorted(glob.glob(RP('analysis', 'e1_5090', 'e1_*.csv'))):
         b = os.path.basename(p)[3:-4]
         mm = pat.match(b)
         if not mm:
@@ -131,7 +143,7 @@ def main():
             if pts:
                 print('  %-28s %-6s %s' % (m, a, '   '.join(pts)))
 
-    with open(os.path.join(D, 'e1_table.json'), 'w', encoding='utf-8') as f:
+    with open(RP('analysis', 'e1_5090', 'e1_table.json'), 'w', encoding='utf-8') as f:
         json.dump(table, f, ensure_ascii=False, indent=1)
     print()
     print('-> e1_table.json 已写出，%d 个格' % len(table))

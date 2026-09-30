@@ -1,12 +1,24 @@
 ﻿# -*- coding: utf-8 -*-
 """从 b1_fsc_result.json **生成** §5.13 引用值清单（供数字溯源闸门）。"""
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import io
 import os
 import json
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-W = r'<WORKDIR>\PaperB\analysis\work'
+W = RP('analysis', 'work')
 d = json.load(io.open(W + r'\b1_fsc_result.json', encoding='utf-8'))
 gate, tab = d['gate'], d['table']
 out = {'source': 'b1_fsc_result.json（FSC-147 公开基准，300 张分层抽样测试图）',

@@ -6,39 +6,51 @@
   N2 搬出内容仍在附录：从主文 §3.6 移走的五分类判据/去重协议必须在附录 B.1–B.2 找到。
 只读，不改任何产物。退出码 0=全过，1=有失败项。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import io, os, re, sys, hashlib, json
 sys.stdout.reconfigure(encoding='utf-8')
 
-ROOT = r'<WORKDIR>\PaperB'
-PKG = os.path.join(ROOT, 'review_pkg_20260919')
-EN = os.path.join(ROOT, 'PaperB_英文稿_PR_20260919.md')
-SUP = os.path.join(ROOT, 'PaperB_英文补充材料_PR_20260919.md')
-ZH = os.path.join(ROOT, 'PaperB_章节骨架_v3_可确证性_20260911.md')
+ROOT = NR()
+PKG = NR('review_pkg_20260919')
+EN = RP('PaperB_英文稿_PR_20260919.md')
+SUP = RP('PaperB_英文补充材料_PR_20260919.md')
+ZH = NR('PaperB_章节骨架_v3_可确证性_20260911.md')
 # 第二数字权威：命题 4–6 的验证记录。其数字是**当场计算**得出（README 第 4 条
 # 「数字能算就不要抄」），不是从中文定稿翻译来的，故单列为第二权威。
-IDENTITY_AUTHORITY = os.path.join(ROOT, 'PaperB_命题4-6验证记录_20260919.md')
+IDENTITY_AUTHORITY = NR('PaperB_命题4-6验证记录_20260919.md')
 # 第三权威：参考文献取回记录。条目里的年份/编号等数字**来自 P40 上的 arXiv/Crossref 取回**，
 # 不是从中文定稿翻译来的，故单列（同 IDENTITY_AUTHORITY 的道理）。
-ARXIV_AUTHORITY = os.path.join(ROOT, 'analysis', 'work', '_arxiv_records.json')
-ARXIV_AUTHORITY2 = os.path.join(ROOT, 'analysis', 'work', '_refs_inventory.json')
-ARXIV_AUTHORITY3 = os.path.join(ROOT, 'analysis', 'work', '_refs_extra.json')
+ARXIV_AUTHORITY = RP('analysis', 'work', '_arxiv_records.json')
+ARXIV_AUTHORITY2 = RP('analysis', 'work', '_refs_inventory.json')
+ARXIV_AUTHORITY3 = RP('analysis', 'work', '_refs_extra.json')
 # 第四权威：E1 判别实验的证据记录（2026-09-20）。E1 的数字由 5090 上的实测产出
 # （48 格、1591/1591、2.463–9.452、语料 2496 行），既非中文定稿的翻译、也非参考文献取回，
 # 与 IDENTITY_AUTHORITY 同理单列。
-E1_AUTHORITY = os.path.join(ROOT, 'PaperB_E1证据_20260920.md')
+E1_AUTHORITY = RP('PaperB_E1证据_20260920.md')
 # 第四组：**E2 普查（09-22 收尾轮）** 的证据记录 —— §3.6(d) 改写、§5.7 普查段、§7.7 旁证与附录 M.18
 # 里引用的数字（258/273、263/273、46/52、52/52、4.854–6.281、0.250/0.469/0.511/0.662/0.833、
 # 36.1–92.9%、88.6–100% 等）全部来自这份记录，且由 `verify_s11.py` 逐条断言回原始 CSV。
 # 它既不是中文定稿的翻译、也不是参考文献取回，故与前几组同理单列。
-E2_AUTHORITY = os.path.join(ROOT, 'PaperB_E2证据_20260921.md')
+E2_AUTHORITY = NR('PaperB_E2证据_20260921.md')
 # 第五组：**评审对照证据（09-22）** —— 针对模拟评审两条"可能致命"意见的正面检验：
 # ① 跨度的等点数/去端点稳健性（Spearman 0.964/0.977/0.993、τ 单元降 2.2–5.0 倍）
 # ② 答 0 率的构建×域两因素方差分解（38.7/33.9/27.4%、密集域构建极差 90.3 pp、航拍 2.7–8.7 pp）
 # 正文 §5.7/§7.3/§9 引用的正是这些数字，故单列为权威。
-RC_AUTHORITY = os.path.join(ROOT, 'PaperB_评审对照证据_20260922.md')
+RC_AUTHORITY = NR('PaperB_评审对照证据_20260922.md')
 # ★ 2026-09-24：v0527 盲审修回证据（§7.3 的置换 CI／留出区间／功效等新数字的出处）。
 #   与 E1/E2/RC/A5 同一机制：新算出的数字必须先进证据档，正文才允许引用。
-V0527_AUTHORITY = os.path.join(ROOT, 'PaperB_盲审v0527修回证据_20260924.md')
+V0527_AUTHORITY = NR('PaperB_盲审v0527修回证据_20260924.md')
 
 en = io.open(EN, encoding='utf-8', newline='').read()
 sup = io.open(SUP, encoding='utf-8', newline='').read()
@@ -54,7 +66,7 @@ for _rf in ('_pb_refs_out.json', '_pb_refs2_out.json', '_pb_refs34_out.json', '_
             #   它引入了一个新 DOI 数字令牌（`2020.3035969`），[F] 段正确地把它报成"无法溯源"；
             #   本文件即那份溯源（arXiv abs + Crossref work，均 2026-09-27 实测）。
             '_pb_refs6_out.json'):
-    _rp = os.path.join(ROOT, 'analysis', 'work', _rf)
+    _rp = os.path.join(RP('analysis', 'work'), _rf)
     if os.path.exists(_rp):
         ar += io.open(_rp, encoding='utf-8', newline='').read()
 e1n = (io.open(E1_AUTHORITY, encoding='utf-8', newline='').read() if os.path.exists(E1_AUTHORITY) else '')
@@ -67,7 +79,7 @@ v27n = (io.open(V0527_AUTHORITY, encoding='utf-8', newline='').read()
 assert v27n, 'v0527 修回证据缺失：%s' % V0527_AUTHORITY
 # ★ 2026-09-22（同日二轮）：A5（正文中称 E3）的跨家族证据记录同列为数字权威——
 #   §5.7/§8.2/M.19 的新数字（7/7、2.1%、81.3 pp、5.7 pp 等）出处就是它与其 `a5_*.json`。
-A5_AUTHORITY = os.path.join(ROOT, 'PaperB_A5跨家族证据_20260922.md')
+A5_AUTHORITY = NR('PaperB_A5跨家族证据_20260922.md')
 a5n = (io.open(A5_AUTHORITY, encoding='utf-8', newline='').read() if os.path.exists(A5_AUTHORITY) else '')
 assert a5n, 'A5/E3 证据记录缺失：%s' % A5_AUTHORITY
 # ★ 2026-09-22（三转）：无标注代理的实测结果（M.20）同列为数字权威——正文 §3.3 的
@@ -124,13 +136,13 @@ for _lf in ('a_lightfree_result.json', 'a_lightfree_grid.json', 'a_lightfree_quo
             # ★ 2026-09-27（第四批：零新数据的两项排序复检）——#14 预注册排序统计量、#13 预算匹配跨度。
             #   正文 §7.3 新增的那句不含数字，此处登记只为**同源可复算**。
             'n5_order_result.json', 'n6_result.json'):
-    _lp = os.path.join(ROOT, 'analysis', 'work', _lf)
+    _lp = os.path.join(RP('analysis', 'work'), _lf)
     if os.path.exists(_lp):
         a5n += io.open(_lp, encoding='utf-8', newline='').read()
 # ★ 2026-09-23：W1 与 W2 的两份**记录**同列为数字权威（它们含逐格表与判定原文；
 #   正文 §5.14/§8.2 引用的边界数值（如稀疏项 GT、未解析率）出处即在此）。
 for _rf in ('W1_独立家族前瞻验证_结果_20260923.md', 'W2_闭源端点_结果_20260923.md'):
-    _rp = os.path.join(ROOT, _rf)
+    _rp = os.path.join(NR(), _rf)
     if os.path.exists(_rp):
         a5n += io.open(_rp, encoding='utf-8', newline='').read()
 W = lambda s: len(re.findall(r"[A-Za-z][A-Za-z'\-]*", s))
@@ -341,9 +353,9 @@ _ab_ns = len(re.findall(r'\S+', _ab))
 chk('摘要 ≤ 250 词（期刊口径=空白分词，数字也算词；同时打印本库口径）',
     bool(_ab_m) and _ab_ns <= 250,
     '空白分词 %d 词／本库口径 %d 词' % (_ab_ns, W(_ab)))
-MEAS_DOCX = os.path.join(ROOT, 'measurement_pr_docx.json')
-MEAS_PRL = os.path.join(ROOT, 'measurement_pr_layout.json')
-MEAS = os.path.join(ROOT, 'measurement.json')          # 自订严尺子（仅披露）
+MEAS_DOCX = RP('measurement_pr_docx.json')
+MEAS_PRL = NR('measurement_pr_layout.json')
+MEAS = NR('measurement.json')          # 自订严尺子（仅披露）
 w = W(en)
 # 边界修正：正文 = `## References` 之前。原写法 W(en) − W(References…Appendix C) 会把
 # 参考文献**之后**的 Appendix C 指针段算进正文（8,507 vs 正确 8,371，差 136 词）。
@@ -479,7 +491,7 @@ print('  英文稿   %d 词；md5 %s' % (w, hashlib.md5(en.encode('utf-8')).hexd
 _mw = None
 try:
     import json as _json
-    _mj = _json.load(io.open(os.path.join(ROOT, 'measurement_pr_docx.json'), encoding='utf-8'))
+    _mj = _json.load(io.open(RP('measurement_pr_docx.json'), encoding='utf-8'))
     for _k in ('words', 'word_count', 'Words'):
         if isinstance(_mj.get(_k), int):
             _mw = _mj[_k]
@@ -526,8 +538,8 @@ else:
 
 # ---------- I. 投稿包同步 ----------
 print('\n[I] 投稿包同步')
-for src, dst in [(EN, os.path.join(PKG, '06_英文稿_EN.md')),
-                 (SUP, os.path.join(PKG, '08_英文补充材料_Supplementary.md'))]:
+for src, dst in [(EN, NR('review_pkg_20260919', '06_英文稿_EN.md')),
+                 (SUP, NR('review_pkg_20260919', '08_英文补充材料_Supplementary.md'))]:
     if os.path.exists(dst):
         same = io.open(src, encoding='utf-8', newline='').read().replace('\r\n', '\n') == \
                io.open(dst, encoding='utf-8', newline='').read().replace('\r\n', '\n')

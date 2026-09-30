@@ -13,6 +13,18 @@ M.37 的表有**两列**：8-unit 列（冻结排序对象，逐位复现 `span_
 用法：python -u perknob_rung_8unit.py
 输出：perknob_rung_8unit_result.json（新文件）
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import collections
 import csv
 import glob
@@ -25,12 +37,12 @@ import sys
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
-ROOT = r'<WORKDIR>\PaperB'
-WORK = os.path.join(ROOT, 'analysis', 'work')
-PM = os.path.join(ROOT, 'analysis', 'data', 'pod_mirror')
-FROZEN_SPAN = os.path.join(WORK, 'span_equalcount_result.json')
-FROZEN_ARMS = os.path.join(WORK, 'per_unit_affine_heldout_result.json')
-OUT = os.path.join(WORK, 'perknob_rung_8unit_result.json')
+ROOT = NR()
+WORK = RP('analysis', 'work')
+PM = RP('analysis', 'data', 'pod_mirror')
+FROZEN_SPAN = RP('analysis', 'work', 'span_equalcount_result.json')
+FROZEN_ARMS = RP('analysis', 'work', 'per_unit_affine_heldout_result.json')
+OUT = RP('analysis', 'work', 'perknob_rung_8unit_result.json')
 ANOM = 1e5
 NSPLIT = 200
 SEED = 20260923
@@ -76,7 +88,7 @@ def add(unit, levels, src):
 
 
 for mdl in ('q32', 'ivl'):
-    for f in sorted(glob.glob(os.path.join(PM, 'res_ctrl__%s' % mdl, 'res_ctrl_*.csv'))):
+    for f in sorted(glob.glob(os.path.join(RP('analysis', 'data', 'pod_mirror'), 'res_ctrl__%s' % mdl, 'res_ctrl_*.csv'))):
         ds = os.path.basename(f)[len('res_ctrl_'):-4]
         with io.open(f, encoding='utf-8-sig') as fh:
             buds = sorted(set(r['budget'] for r in csv.DictReader(fh)), key=float)
@@ -84,11 +96,11 @@ for mdl in ('q32', 'ivl'):
             [('budget=%s' % b, load_csv_level(f, 'budget', b)) for b in buds], f)
 
 for ds in ('st_a', 'ucf', 'visdrone'):
-    files = sorted(glob.glob(os.path.join(PM, 'tile_results', 'vlm_%s_base_tile*.csv' % ds)))
+    files = sorted(glob.glob(os.path.join(RP('analysis', 'data', 'pod_mirror', 'tile_results'), 'vlm_%s_base_tile*.csv' % ds)))
     if files:
         add('tiling / %s / base' % ds,
             [(os.path.basename(f).split('tile')[1][0], load_csv(f)) for f in files],
-            os.path.join(PM, 'tile_results'))
+            RP('analysis', 'data', 'pod_mirror', 'tile_results'))
 
 
 def knob_of(name):

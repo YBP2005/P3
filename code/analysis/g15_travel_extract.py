@@ -11,6 +11,18 @@
 要检验它，先得把"动程"定义清楚。本脚本只做**取证**：把每条阶梯**逐档的实际 setting**打出来，
 让人看清"动程"到底能不能算、以及怎么算。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import collections
 import csv
 import glob
@@ -20,10 +32,10 @@ import os
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
-ROOT = r'<WORKDIR>\PaperB'
-DATA = os.path.join(ROOT, 'analysis', 'data')
-PM = os.path.join(DATA, 'pod_mirror')
-E2 = os.path.join(ROOT, 'analysis', 'e2_newh20')
+ROOT = NR()
+DATA = NR('analysis', 'data')
+PM = RP('analysis', 'data', 'pod_mirror')
+E2 = RP('analysis', 'e2_newh20')
 
 out = {}
 
@@ -49,7 +61,7 @@ def dump(title, levels):
 print('=' * 104)
 print('【① 检测 τ】来源 analysis/data/threeway_curves_v2.csv（按 match 口径分开）')
 print('=' * 104)
-p = os.path.join(DATA, 'threeway_curves_v2.csv')
+p = NR('analysis', 'data', 'threeway_curves_v2.csv')
 tau = {}
 if os.path.exists(p):
     rows = list(csv.DictReader(io.open(p, encoding='utf-8-sig')))
@@ -74,7 +86,7 @@ print()
 print('=' * 104)
 print('【② 密度回归输入尺度】来源 analysis/data/threeway_curves.csv')
 print('=' * 104)
-p = os.path.join(DATA, 'threeway_curves.csv')
+p = NR('analysis', 'data', 'threeway_curves.csv')
 dens = {}
 if os.path.exists(p):
     rows = list(csv.DictReader(io.open(p, encoding='utf-8-sig')))
@@ -99,7 +111,7 @@ print('【③ 像素预算】来源 analysis/data/pod_mirror/res_ctrl__*/res_ctr
 print('=' * 104)
 bud = {}
 for mdl in ('q32', 'ivl'):
-    for f in sorted(glob.glob(os.path.join(PM, 'res_ctrl__%s' % mdl, 'res_ctrl_*.csv'))):
+    for f in sorted(glob.glob(os.path.join(RP('analysis', 'data', 'pod_mirror'), 'res_ctrl__%s' % mdl, 'res_ctrl_*.csv'))):
         ds = os.path.basename(f)[len('res_ctrl_'):-4]
         rr = list(csv.DictReader(io.open(f, encoding='utf-8-sig')))
         bs = sorted(set(r['budget'] for r in rr), key=lambda x: float(x))
@@ -131,9 +143,9 @@ print('=' * 104)
 print('【④ 切块 tiling】来源 pod_mirror/tile_results/ 与 ivl_aerial_tile_results/ 的**文件名**')
 print('=' * 104)
 til = {}
-for f in sorted(glob.glob(os.path.join(PM, 'tile_results', 'vlm_*base_tile*.csv'))):
+for f in sorted(glob.glob(RP('analysis', 'data', 'pod_mirror', 'tile_results', 'vlm_*base_tile*.csv'))):
     print('    %s' % os.path.basename(f))
-for f in sorted(glob.glob(os.path.join(PM, 'ivl_aerial_tile_results', '*tile*.csv'))):
+for f in sorted(glob.glob(RP('analysis', 'data', 'pod_mirror', 'ivl_aerial_tile_results', '*tile*.csv'))):
     print('    %s' % os.path.basename(f))
 print('    ⇒ 切块档位是**档数**（文件名里的数字），不是某个连续量纲 ⇒ 动程须另立定义（见报告 §未核实）')
 
@@ -141,11 +153,11 @@ print()
 print('=' * 104)
 print('【⑤ 提示词族 / ⑥ 输出契约】—— 都是**类别型**，没有连续动程')
 print('=' * 104)
-pf = sorted(os.path.basename(x) for x in glob.glob(os.path.join(PM, 'dense_prompt_results', 'vlm_st_a_base_V*.csv')))
+pf = sorted(os.path.basename(x) for x in glob.glob(RP('analysis', 'data', 'pod_mirror', 'dense_prompt_results', 'vlm_st_a_base_V*.csv')))
 print('    提示词族：%s' % pf)
-arms = sorted(os.path.basename(x) for x in glob.glob(os.path.join(E2, 'e1_qwen3-vl-32b-awq_st_a_*.csv')))
+arms = sorted(os.path.basename(x) for x in glob.glob(RP('analysis', 'e2_newh20', 'e1_qwen3-vl-32b-awq_st_a_*.csv')))
 print('    输出契约：%s' % [a.split('st_a_')[1][:-4] for a in arms])
 
-j = os.path.join(ROOT, 'analysis', 'work', 'g15_travel_extract.json')
+j = RP('analysis', 'work', 'g15_travel_extract.json')
 io.open(j, 'w', encoding='utf-8').write(json.dumps(out, ensure_ascii=False, indent=1))
 print('\n已写 %s' % j)

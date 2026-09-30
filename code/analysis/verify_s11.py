@@ -4,18 +4,30 @@
 方式：从结果 CSV **重算**，与 §11 中写死的期望值逐条断言。
 任一不符即退出码非 0 —— 不允许"看起来对"就过。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import csv
 import io
 import os
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-D = r'<WORKDIR>\PaperB\analysis\e2_newh20'
+D = RP('analysis', 'e2_newh20')
 FAIL = []
 
 
 def load(rel):
-    p = os.path.join(D, rel)
+    p = os.path.join(RP('analysis', 'e2_newh20'), rel)
     if not os.path.exists(p):
         return None
     with io.open(p, encoding='utf-8-sig') as f:
@@ -271,7 +283,7 @@ for m, ds, want in (('qwen3-vl-2b', 'st_a', 24), ('qwen3-vl-2b', 'ucf', 3)):
 print()
 print('M.18.7 成本（从 exp_v7c.log 直接解析）')
 import re as _re
-lg = os.path.join(D, 'logs_h20_v7c', 'exp_v7c.log')
+lg = RP('analysis', 'e2_newh20', 'logs_h20_v7c', 'exp_v7c.log')
 txt = io.open(lg, encoding='utf-8', errors='replace').read()
 EXP = {('qwen25vl-72b-awq', 'visdrone', 'zero'): 1451, ('qwen25vl-72b-awq', 'aitod', 'zero'): 583,
        ('qwen25vl-72b-awq', 'visdrone', 'nonzero'): 606, ('qwen25vl-72b-awq', 'aitod', 'nonzero'): 104,

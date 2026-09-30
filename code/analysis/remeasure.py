@@ -2,19 +2,34 @@
 """① 修 §8.1 披露里的同一术语（four classes → four knob sides；披露内容不变，只消歧）；
    ② remeasure：只刷新 measurement.json（不再碰 en_check.py —— finish_measure.py 会覆盖 [G]..[H] 段，
       把 G2 判据冲掉，故另立此脚本）。"""
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import io, os, re, sys, json, hashlib
 sys.stdout.reconfigure(encoding='utf-8')
-sys.path.insert(0, r'<WORKDIR>\PaperB\analysis\work')
-ROOT = r'<WORKDIR>\PaperB'
-EN = os.path.join(ROOT, 'PaperB_英文稿_PR_20260919.md')
-MEAS = os.path.join(ROOT, 'measurement.json')
+sys.path.insert(0, RP('analysis', 'work'))
+ROOT = NR()
+EN = RP('PaperB_英文稿_PR_20260919.md')
+MEAS = NR('measurement.json')
 
 # ---- ① ----
 en = io.open(EN, encoding='utf-8', newline='').read()
 OLD = '**Statistical power for the spectrum is low** (four classes, ten units);'
 NEW = '**Statistical power for the spectrum is low** (four knob sides, ten units);'
 if OLD in en:
-    io.open(EN, 'w', encoding='utf-8', newline='\n').write(en.replace(OLD, NEW, 1))
+    if '--apply' in sys.argv:      # ★ v0610：默认**只读**，写回须显式 --apply
+        io.open(EN, 'w', encoding='utf-8', newline='\n').write(en.replace(OLD, NEW, 1))
+    else:
+        print('（dry run：§8.1 披露已消歧，**未**写回主稿；加 --apply 才写）')
     en = en.replace(OLD, NEW, 1)
     print('① §8.1 披露已消歧：four classes → four knob sides（披露内容不变）')
 else:

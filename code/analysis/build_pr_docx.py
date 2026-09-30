@@ -8,13 +8,25 @@
 图件位置按项目纪律：插在**首次引用该图的段落之后**（位置本身也要被测到）。
 生成后用 Word COM 读真实页数，而不是用词数折算。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import io
 import os
 import re
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-sys.path.insert(0, r'<WORKDIR>\PaperB\analysis\work')
+sys.path.insert(0, RP('analysis', 'work'))
 import measure_pages as mp
 from docx import Document
 from docx.enum.section import WD_SECTION
@@ -23,10 +35,10 @@ from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.shared import Cm, Pt, RGBColor
 
-ROOT = r'<WORKDIR>\PaperB'
-SRC = os.path.join(ROOT, 'PaperB_英文稿_PR_20260919.md')
-OUT = os.path.join(ROOT, 'PaperB_英文稿_PR.docx')
-FIGDIR = os.path.join(ROOT, 'analysis', 'figures')
+ROOT = NR()
+SRC = RP('PaperB_英文稿_PR_20260919.md')
+OUT = NR('PaperB_英文稿_PR.docx')
+FIGDIR = RP('analysis', 'figures')
 FIGS = [('F6b_abstention_vs_tile.png', 'Fig. 1'),
         ('F11_abstention_vs_undercount.png', 'Fig. 2'),
         ('F12_prompt_dose.png', 'Fig. 3'),
@@ -167,7 +179,7 @@ def build(md, path):
                     continue
                 if re.search(r'\b%s\b' % re.escape(label), b[1]):
                     fig_used.add(label)
-                    fp = os.path.join(FIGDIR, fn)
+                    fp = os.path.join(RP('analysis', 'figures'), fn)
                     if os.path.exists(fp):
                         ip = doc.add_paragraph()
                         ip.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER

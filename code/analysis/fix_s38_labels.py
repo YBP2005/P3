@@ -2,11 +2,23 @@
 """把紧凑版 §3.8 再改一版：**保留 Proposition 1–8 的标签**（正文别处有交叉引用，
 删标签会让引用悬空），并给 82–94% 补上 base 臂限定（闸门会查）。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import io
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-EN = r'<WORKDIR>\PaperB\PaperB_英文稿_PR_20260919.md'
+EN = RP('PaperB_英文稿_PR_20260919.md')
 t = io.open(EN, encoding='utf-8', newline='').read()
 START = '### 3.8 Formal framework: what is identifiable from outputs'
 END = '### 3.9 Figures and tables'
@@ -60,6 +72,10 @@ uninterpretable.
 
 '''
 new = t[:i] + compact + t[j:]
-io.open(EN, 'w', encoding='utf-8', newline='').write(new)
-print('§3.8 紧凑版：%d 字符（含标签）' % len(compact))
-print('正文总字符：%d → %d' % (len(t), len(new)))
+if '--apply' in sys.argv:           # ★ 2026-09-30 v0610：默认**只读**，写回须显式 --apply
+    io.open(EN, 'w', encoding='utf-8', newline='').write(new)
+    print('§3.8 紧凑版：%d 字符（含标签）' % len(compact))
+    print('正文总字符：%d → %d' % (len(t), len(new)))
+else:
+    print('（dry run：§3.8 紧凑版 %d 字符；正文 %d → %d，**未**写回主稿；加 --apply 才写）'
+          % (len(compact), len(t), len(new)))

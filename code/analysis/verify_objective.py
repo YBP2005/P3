@@ -10,16 +10,28 @@
 按**目标批次**组织（每批 = 一次交付目标），而非按检查类型。只读，不改任何产物。
 退出码 0=全绿；1=有红项（打印红项所属批次与编号）。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import io, os, re, sys, json, hashlib, glob
 sys.stdout.reconfigure(encoding='utf-8')
 
-ROOT = r'<WORKDIR>\PaperB'
-PKG = os.path.join(ROOT, 'review_pkg_20260919')
-WORK = os.path.join(ROOT, 'analysis', 'work')
-ZH = os.path.join(ROOT, 'PaperB_章节骨架_v3_可确证性_20260911.md')
-EN = os.path.join(ROOT, 'PaperB_英文稿_PR_20260919.md')
-SUP = os.path.join(ROOT, 'PaperB_英文补充材料_PR_20260919.md')
-MEAS = os.path.join(ROOT, 'measurement.json')
+ROOT = NR()
+PKG = NR('review_pkg_20260919')
+WORK = RP('analysis', 'work')
+ZH = NR('PaperB_章节骨架_v3_可确证性_20260911.md')
+EN = RP('PaperB_英文稿_PR_20260919.md')
+SUP = RP('PaperB_英文补充材料_PR_20260919.md')
+MEAS = NR('measurement.json')
 
 rd = lambda p: io.open(p, encoding='utf-8', newline='').read() if os.path.exists(p) else ''
 W = lambda s: len(re.findall(r"[A-Za-z][A-Za-z'\-]*", s))
@@ -30,10 +42,10 @@ zh, en, sup = rd(ZH), rd(EN), rd(SUP)
 # **不能用"附C 起点"** —— 那会把附A/附B 的审计台账算进正文（曾因此误报 4 项）。
 _mA = re.search(r'(?m)^##\s+附[A-Z]', zh)
 ZH_BODY = zh[:_mA.start()] if _mA else zh
-p01 = rd(os.path.join(PKG, '01_评审包_论文.md'))
-p01b = rd(os.path.join(PKG, '01b_评审包_论文+补充材料.md'))
-ppr = rd(os.path.join(PKG, '02_评审提示词.txt'))
-pgd = rd(os.path.join(PKG, '00_评审包_导读.md'))
+p01 = rd(NR('review_pkg_20260919', '01_评审包_论文.md'))
+p01b = rd(NR('review_pkg_20260919', '01b_评审包_论文+补充材料.md'))
+ppr = rd(NR('review_pkg_20260919', '02_评审提示词.txt'))
+pgd = rd(NR('review_pkg_20260919', '00_评审包_导读.md'))
 
 ITEMS = []      # (batch, id, 描述, 通过?, 证据)
 
@@ -119,9 +131,9 @@ secs = sec_wordcounts(zh)
 body_n = len(ZH_BODY)
 ck(B, 1, '正文总量在 55k–72k 字符容差内', 55000 <= body_n <= 72000, '%d 字符' % body_n)
 deliv = ['04_随稿补充材料清单.md', '05_实验提示词全文.md']
-ck(B, 2, '随稿交付物 04/05 存在', all(os.path.exists(os.path.join(PKG, d)) for d in deliv),
-   ', '.join(d for d in deliv if not os.path.exists(os.path.join(PKG, d))) or '齐全')
-figs = glob.glob(os.path.join(ROOT, 'analysis', 'figures', '*'))
+ck(B, 2, '随稿交付物 04/05 存在', all(os.path.exists(os.path.join(NR('review_pkg_20260919'), d)) for d in deliv),
+   ', '.join(d for d in deliv if not os.path.exists(os.path.join(NR('review_pkg_20260919'), d))) or '齐全')
+figs = glob.glob(RP('analysis', 'figures', '*'))
 ck(B, 3, '图件清点 ≥ 12 张', len(figs) >= 12, '%d 张' % len(figs))
 
 # ══════════ 批次 EN：英文稿（投稿本体） ══════════
@@ -146,7 +158,7 @@ bb = {n: len(re.findall(p, en)) for p, n in [(p, p) for p in BAD] if re.findall(
 ck(B, 4, '英文稿禁用串 0', not bb, str(bb or '全 0'))
 ck(B, 5, '英文稿中文残留 0', len(re.findall(r'[\u4e00-\u9fff]', en)) == 0,
    '%d' % len(re.findall(r'[\u4e00-\u9fff]', en)))
-AU = rd(os.path.join(ROOT, 'PaperB_命题4-6验证记录_20260919.md'))
+AU = rd(NR('PaperB_命题4-6验证记录_20260919.md'))
 nz = lambda s: set(x.replace(',', '') for x in re.findall(r'\d+(?:[.,]\d+)*', s))
 SECT = set(re.findall(r'(?m)^#{2,4}\s+(\d+(?:\.\d+)*)(?=\s)', en)) | set(re.findall(r'§\s*(\d+(?:\.\d+)*)', en))
 # 与 en_check 同源：第三/第四权威 = P40 上的 arXiv/Crossref 取回记录；
@@ -154,10 +166,10 @@ SECT = set(re.findall(r'(?m)^#{2,4}\s+(\d+(?:\.\d+)*)(?=\s)', en)) | set(re.find
 _arx = ''
 for _f in ['_arxiv_records.json', '_refs_inventory.json', '_refs_extra.json',
            '_pb_refs_out.json', '_pb_refs2_out.json', '_pb_refs34_out.json', '_pb_refs5_out.json']:
-    _p = os.path.join(WORK, _f)
+    _p = os.path.join(RP('analysis', 'work'), _f)
     if os.path.exists(_p):
         _arx += io.open(_p, encoding='utf-8').read()
-_e1p = os.path.join(ROOT, 'PaperB_E1证据_20260920.md')
+_e1p = RP('PaperB_E1证据_20260920.md')
 _e1 = io.open(_e1p, encoding='utf-8').read() if os.path.exists(_e1p) else ''
 missn = sorted((nz(en) - nz(zh) - nz(AU) - nz(_arx) - nz(_e1) - SECT
                 - {str(i) for i in range(103)} - {'620', '0.07'}), key=len, reverse=True)
@@ -168,8 +180,8 @@ refs = set(re.findall(r'Appendix\s+([A-M](?:\.\d+)*)', en)) | set(re.findall(r'\
 unres = sorted(r for r in refs if r not in supheads)
 ck(B, 7, '附录交叉引用 0 未解析', not unres, str(unres or ''))
 ck(B, 8, '投稿包 06/08 与源文件一致',
-   rd(os.path.join(PKG, '06_英文稿_EN.md')).replace('\r\n', '\n') == en.replace('\r\n', '\n')
-   and rd(os.path.join(PKG, '08_英文补充材料_Supplementary.md')).replace('\r\n', '\n') == sup.replace('\r\n', '\n'))
+   rd(NR('review_pkg_20260919', '06_英文稿_EN.md')).replace('\r\n', '\n') == en.replace('\r\n', '\n')
+   and rd(NR('review_pkg_20260919', '08_英文补充材料_Supplementary.md')).replace('\r\n', '\n') == sup.replace('\r\n', '\n'))
 
 # ══════════ 批次 THEORY：命题 4–6 ══════════
 B = 'THEORY 命题 4–6'
@@ -194,9 +206,9 @@ ck(B, 4, '导读声明的正文范围与中文骨架一致', '§0–§8' in pgd 
 ck(B, 5, '导读声明的贡献条数与中文骨架一致', ('**%d 条**' % n_contrib) in pgd,
    '骨架=%d' % n_contrib)
 ck(B, 6, '包目录不含上一轮评审产物（污染盲审独立性）',
-   not glob.glob(os.path.join(PKG, '06_*汇总*.md')) and not glob.glob(os.path.join(PKG, '07_v0*_抽取.json')),
+   not glob.glob(NR('review_pkg_20260919', '06_*汇总*.md')) and not glob.glob(NR('review_pkg_20260919', '07_v0*_抽取.json')),
    '命中 ' + ','.join(os.path.basename(x) for x in
-                    glob.glob(os.path.join(PKG, '06_*汇总*.md')) + glob.glob(os.path.join(PKG, '07_v0*_抽取.json'))))
+                    glob.glob(NR('review_pkg_20260919', '06_*汇总*.md')) + glob.glob(NR('review_pkg_20260919', '07_v0*_抽取.json'))))
 
 # ══════════ 批次 MEASURE：实测分页 ══════════
 B = 'MEASURE 实测分页'

@@ -1,13 +1,25 @@
 # -*- coding: utf-8 -*-
 """看原始输出：确认"契约生效"是真的（permit 后 base 答 0 的 item 被换成 abstain/数字），
 以及 unparsed 到底是什么文本（LLaVA 密集域解析率低的原因）。"""
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import csv
 import io
 import os
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-D = r'<WORKDIR>\PaperB\analysis\e2xt_a800\merged'
+D = RP('analysis', 'e2xt_a800', 'merged')
 ABSTAIN = ('abstain', 'cannot_judge', 'no_people')
 CASES = [
     ('InternVL3_5-8B', 'visdrone'),
@@ -18,7 +30,7 @@ CASES = [
 
 
 def load(f, ds, arm):
-    p = os.path.join(D, 'e1_%s_%s_%s.csv' % (f, ds, arm))
+    p = os.path.join(RP('analysis', 'e2xt_a800', 'merged'), 'e1_%s_%s_%s.csv' % (f, ds, arm))
     if not os.path.exists(p):
         return None
     return {r['item']: r for r in csv.DictReader(io.open(p, encoding='utf-8-sig'))}

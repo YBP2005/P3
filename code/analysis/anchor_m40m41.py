@@ -18,6 +18,18 @@
 
 用法：python -u anchor_m40m41.py        # 失败以非零退出，便于串进门禁
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import collections
 import glob
 import io
@@ -28,9 +40,9 @@ import sys
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 W = os.path.dirname(os.path.abspath(__file__))
-PAPER = r'<WORKDIR>\PaperB'
-SUP = os.path.join(PAPER, 'PaperB_英文补充材料_PR_20260919.md')
-EN = os.path.join(PAPER, 'PaperB_英文稿_PR_20260919.md')
+PAPER = NR()
+SUP = RP('PaperB_英文补充材料_PR_20260919.md')
+EN = RP('PaperB_英文稿_PR_20260919.md')
 
 fails, notes = [], []
 
@@ -116,14 +128,14 @@ for k, v in STRUCT.items():
     UNIV[k].append('struct(%s=%d)' % (k, v))
 
 # ── 3. 现场重数：本地 E2 产物（比"脚本自报"可靠）─────────────────────────────
-ea2d = os.path.join(PAPER, 'analysis', 'ea2_z0')
-dirs = [d for d in os.listdir(ea2d) if os.path.isdir(os.path.join(ea2d, d))]
-csvs = [f for d in dirs for f in os.listdir(os.path.join(ea2d, d)) if f.endswith('.csv')]
-fscd = os.path.join(PAPER, 'analysis', 'fsc_res')
-n384 = len(glob.glob(os.path.join(fscd, '384', '*.csv')))
-n256 = len(glob.glob(os.path.join(fscd, '256', '*.csv')))
-n768 = len(glob.glob(os.path.join(fscd, '768up', '*.csv')))
-nfroz = len(glob.glob(os.path.join(fscd, 'frozen384', '*.csv')))
+ea2d = RP('analysis', 'ea2_z0')
+dirs = [d for d in os.listdir(ea2d) if os.path.isdir(os.path.join(RP('analysis', 'ea2_z0'), d))]
+csvs = [f for d in dirs for f in os.listdir(os.path.join(RP('analysis', 'ea2_z0'), d)) if f.endswith('.csv')]
+fscd = RP('analysis', 'fsc_res')
+n384 = len(glob.glob(RP('analysis', 'fsc_res', '384', '*.csv')))
+n256 = len(glob.glob(RP('analysis', 'fsc_res', '256', '*.csv')))
+n768 = len(glob.glob(RP('analysis', 'fsc_res', '768up', '*.csv')))
+nfroz = len(glob.glob(RP('analysis', 'fsc_res', 'frozen384', '*.csv')))
 print('现场重数：E2 %d 目录 / %d CSV ｜ E1 %d+%d+%d（冻结面板 %d）' % (len(dirs), len(csvs), n384, n256, n768, nfroz))
 for v in (len(dirs), len(csvs), n384, n256, n768, nfroz, n384 + n256 + n768 + nfroz):
     UNIV[str(v)].append('counted-on-disk')

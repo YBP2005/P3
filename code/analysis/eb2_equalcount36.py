@@ -9,6 +9,18 @@ F.10 那三种扰动的 Spearman ⇒ 让"排序稳健"这件事落在**可重算
 
 单元构造与 `a39_unit_calib_heldout.py` **逐字同源**（同文件、同规则：档位 ≥3 且各档交集 ≥20）。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import collections
 import csv
 import glob
@@ -19,10 +31,10 @@ import re
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-PM = r'<WORKDIR>\PaperB\analysis\data\pod_mirror'
-W = r'E:\Edu_workplace\work'
-B = os.path.join(W, 'b_harvest_20260917')
-OUT = r'<WORKDIR>\PaperB\analysis\work\equalcount36_result.json'
+PM = RP('analysis', 'data', 'pod_mirror')
+W = NR('@shared', 'work')
+B = NR('@shared', 'work', 'b_harvest_20260917')
+OUT = RP('analysis', 'work', 'equalcount36_result.json')
 ANOM, SENT = 1e5, 1234567890
 MIN_ITEMS = 20
 
@@ -67,9 +79,9 @@ def add_unit(name, bylevel):
 
 # —— 与 a39_unit_calib_heldout.py 同源的六族构造 ——
 for lab, path, pcol in (
-        ('det·in-domain/VisDrone', os.path.join(PM, 'A', 'det_yolo_ladder_visdrone_det.csv'), 'n_det_person'),
-        ('det·zero-shot COCO', os.path.join(PM, 'A', 'det_yolo_ladder_yolo12n.csv'), 'n_det_person'),
-        ('det·in-domain(micro)/BBBC005', os.path.join(B, 'bbbc_eval', 'ladder.csv'), 'n_det')):
+        ('det·in-domain/VisDrone', RP('analysis', 'data', 'pod_mirror', 'A', 'det_yolo_ladder_visdrone_det.csv'), 'n_det_person'),
+        ('det·zero-shot COCO', RP('analysis', 'data', 'pod_mirror', 'A', 'det_yolo_ladder_yolo12n.csv'), 'n_det_person'),
+        ('det·in-domain(micro)/BBBC005', NR('@shared', 'work', 'b_harvest_20260917', 'bbbc_eval', 'ladder.csv'), 'n_det')):
     if not os.path.exists(path):
         continue
     u = unitize(load(path), ['tau', 'imgsz'], pcol)
@@ -77,26 +89,26 @@ for lab, path, pcol in (
     for sz in sorted({k[1] for k in u if len(k) > 1}):
         add_unit('%s / tau@%s' % (lab, sz), {k: v for k, v in u.items() if len(k) > 1 and k[1] == sz})
 
-p = os.path.join(W, 'dm_ladder.csv')
+p = NR('@shared', 'work', 'dm_ladder.csv')
 if os.path.exists(p):
     u = unitize(load(p), ['dataset', 'protocol', 'value'], 'pred')
     for ds in sorted({k[0] for k in u}):
         add_unit('density·official DM-Count / %s' % ds, {k: v for k, v in u.items() if k[0] == ds})
-for lab, path in (('density·CSRNet', os.path.join(PM, 'A', 'csrsta_ladder_st_a.csv')),
-                  ('density·CSRNet', os.path.join(PM, 'A', 'csrucf_ladder_ucf.csv'))):
+for lab, path in (('density·CSRNet', RP('analysis', 'data', 'pod_mirror', 'A', 'csrsta_ladder_st_a.csv')),
+                  ('density·CSRNet', RP('analysis', 'data', 'pod_mirror', 'A', 'csrucf_ladder_ucf.csv'))):
     if os.path.exists(path):
         u = unitize(load(path), ['protocol', 'value'], 'pred')
         add_unit('%s / %s' % (lab, os.path.basename(path).split('_')[-2]), {k: v for k, v in u.items()})
 
 for mdl in ('ivl', 'q32'):
-    for f in sorted(glob.glob(os.path.join(PM, 'res_ctrl__%s' % mdl, 'res_ctrl_*.csv'))):
+    for f in sorted(glob.glob(os.path.join(RP('analysis', 'data', 'pod_mirror'), 'res_ctrl__%s' % mdl, 'res_ctrl_*.csv'))):
         ds = os.path.basename(f)[len('res_ctrl_'):-4]
         u = unitize(load(f), ['budget'], 'pred')
         add_unit('VLM·pixel budget / %s / %s' % (mdl, ds), {k: v for k, v in u.items()})
 
 for sub, mdl in (('tile_results', 'Qwen32B'), ('b2__out_32b_ctile', 'Qwen32B(ctile)'),
                  ('b2__out_8b_ctile', 'Qwen8B(ctile)')):
-    d = os.path.join(PM, sub)
+    d = os.path.join(RP('analysis', 'data', 'pod_mirror'), sub)
     if not os.path.isdir(d):
         continue
     groups = collections.defaultdict(dict)
@@ -115,12 +127,12 @@ for sub, mdl in (('tile_results', 'Qwen32B'), ('b2__out_32b_ctile', 'Qwen32B(cti
     for (dom, arm), bl in sorted(groups.items()):
         add_unit('VLM·tiling / %s / %s / %s' % (mdl, dom, arm), bl)
 
-for mdl, pp in (('ivl', os.path.join(PM, 'b2__out_ivl', 'E1.csv')), ('q32', os.path.join(PM, 'b2__out_q32', 'E1.csv'))):
+for mdl, pp in (('ivl', RP('analysis', 'data', 'pod_mirror', 'b2__out_ivl', 'E1.csv')), ('q32', RP('analysis', 'data', 'pod_mirror', 'b2__out_q32', 'E1.csv'))):
     if os.path.exists(pp):
         add_unit('VLM·output contract / %s' % mdl, {k: v for k, v in unitize(load(pp), ['arm'], 'pred').items()})
 
 for sub, mdl in (('dense_prompt_results', 'Qwen32B'), ('ivl_dense_prompt_results', 'IVL')):
-    d = os.path.join(PM, sub)
+    d = os.path.join(RP('analysis', 'data', 'pod_mirror'), sub)
     if not os.path.isdir(d):
         continue
     groups = collections.defaultdict(dict)

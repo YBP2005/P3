@@ -15,11 +15,23 @@
 输出：① 终端报告；② 证据记录 `PaperB_命题4-6验证记录_20260919.md`（供 en_check.py 作数字溯源第二权威）。
 数据口径与 a18_decomp.py 一致（按 item 去重、剔 pred≥1e5、剔不可解析、比值丢弃 gt≤0）。只读语料。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import io, os, re, sys, csv, hashlib
 import numpy as np
 sys.stdout.reconfigure(encoding='utf-8')
-PM = r'<WORKDIR>\PaperB\analysis\data\pod_mirror'
-REC = r'<WORKDIR>\PaperB\PaperB_命题4-6验证记录_20260919.md'
+PM = RP('analysis', 'data', 'pod_mirror')
+REC = NR('PaperB_命题4-6验证记录_20260919.md')
 NAME = re.compile(r'^(vlm|aer|ext)_(.+?)_(base|over|under)(?:_(whole|tile\d+))?\.csv$')
 
 
@@ -295,9 +307,13 @@ A('')
 A('*本记录由 `p4_decomp_verify.py` 生成（同一次运行同时产出终端报告与本文件），md5 见终端输出。*')
 
 txt = '\n'.join(L) + '\n'
-io.open(REC, 'w', encoding='utf-8', newline='\n').write(txt)
-print('\n  证据记录已写出：%s（%d 字符，md5 %s）'
-      % (os.path.basename(REC), len(txt), hashlib.md5(txt.encode('utf-8')).hexdigest()[:12]))
+if '--apply' in sys.argv:             # ★ v0610：默认**只读**，写回须显式 --apply
+    io.open(REC, 'w', encoding='utf-8', newline='\n').write(txt)
+    print('\n  证据记录已写出：%s（%d 字符，md5 %s）'
+          % (os.path.basename(REC), len(txt), hashlib.md5(txt.encode('utf-8')).hexdigest()[:12]))
+else:
+    print('\n  （dry run：证据记录 %d 字符待写，md5 %s；**未**写回；加 --apply 才写）'
+          % (len(txt), hashlib.md5(txt.encode('utf-8')).hexdigest()[:12]))
 
 # ---------- 补充：命题 4 对 §5.11(a) 已报双口径差的独立预测 ----------
 import csv as _csv
@@ -307,7 +323,7 @@ TGT = [('ShanghaiTech-A', r'dense_results\vlm_st_a_base_whole.csv', 61.3),
        ('VisDrone',       r'aerial_results\aer_visdrone_base.csv', 40.6)]
 gaps = []
 for _n, _rel, _doc in TGT:
-    _s = unit_stats(os.path.join(PM, _rel))
+    _s = unit_stats(os.path.join(RP('analysis', 'data', 'pod_mirror'), _rel))
     if not _s or not _s.get('applicable'):
         continue
     _pred = -(1 - _s['w']) * (1 + _s['rho_a'])
@@ -329,6 +345,9 @@ L.append('**最大偏离 %.2f pp** ⇒ 命题 4 **独立复现了论文由另一
          '而非对已报结果的重新表述。这是本组命题最强形式的确认。' % gapmax)
 L.append('')
 txt2 = '\n'.join(L) + '\n'
-io.open(REC, 'w', encoding='utf-8', newline='\n').write(txt2)
-print('   记录已补 §5.11(a) 复现：最大偏离 %.2f pp；文件 %d 字符 md5 %s'
-      % (gapmax, len(txt2), hashlib.md5(txt2.encode('utf-8')).hexdigest()[:12]))
+if '--apply' in sys.argv:             # ★ v0610：默认**只读**
+    io.open(REC, 'w', encoding='utf-8', newline='\n').write(txt2)
+    print('   记录已补 §5.11(a) 复现：最大偏离 %.2f pp；文件 %d 字符 md5 %s'
+          % (gapmax, len(txt2), hashlib.md5(txt2.encode('utf-8')).hexdigest()[:12]))
+else:
+    print('   （dry run：§5.11(a) 复现段 %d 字符待补，**未**写回；加 --apply 才写）' % len(txt2))

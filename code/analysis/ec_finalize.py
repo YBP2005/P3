@@ -1,5 +1,17 @@
 # -*- coding: utf-8 -*-
 """ec_finalize.py —— **E-C 冻结**：语言均衡对照的关键统计量 + 结果 JSON。"""
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import csv
 import io
 import json
@@ -8,11 +20,11 @@ import re
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-ROOT = r'<WORKDIR>\PaperB\analysis'
-EN = os.path.join(ROOT, 'lang_results')
-Z0 = os.path.join(ROOT, 'ea_z0')
-D0DIRS = [os.path.join(ROOT, 'e2xt_a800', 'zero'), os.path.join(ROOT, 'e2xt_a800', 'ablate3')]
-OUT = os.path.join(ROOT, 'work', 'ec_lang_result.json')
+ROOT = NR('analysis')
+EN = NR('analysis', 'lang_results')
+Z0 = NR('analysis', 'ea_z0')
+D0DIRS = [RP('analysis', 'e2xt_a800', 'zero'), RP('analysis', 'e2xt_a800', 'ablate3')]
+OUT = RP('analysis', 'work', 'ec_lang_result.json')
 FAM = ['InternVL3_5-8B', 'Phi-3.5-vision-instruct', 'llava-onevision-qwen2-7b-ov',
        'gemma3-12b', 'Qwen3-VL-32B-Instruct']
 POOLS = ['z0easy', 'z0hard', 'd0st_a', 'd0ucf']
@@ -38,7 +50,7 @@ def load(p):
 
 def cn_path(m, pool, arm):
     if pool.startswith('z0'):
-        return os.path.join(Z0, 'e1_%s_%s_%s_native.csv' % (m, pool, arm))
+        return os.path.join(NR('analysis', 'ea_z0'), 'e1_%s_%s_%s_native.csv' % (m, pool, arm))
     ds = 'st_a' if pool == 'd0st_a' else 'ucf'
     for d in D0DIRS:
         for suf in ('', '_native'):
@@ -71,7 +83,7 @@ for m in FAM:
         res['cells'][m][pool] = {}
         for arm in ('base', 'channel'):
             cn = load(cn_path(m, pool, arm) or '')
-            en = load(os.path.join(EN, 'e1_%s_%s_%s_en.csv' % (m, pool, arm)))
+            en = load(os.path.join(NR('analysis', 'lang_results'), 'e1_%s_%s_%s_en.csv' % (m, pool, arm)))
             common = sorted(set(cn) & set(en))
             if not common:
                 continue

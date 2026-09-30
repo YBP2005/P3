@@ -24,11 +24,23 @@
 （`*(Numbers: F.8.)*` 等）。虽然 grok46 只点了正文，但这是**同一类内部痕迹**，
 两处不一致反而更刺眼；改写同样 0 词，故一并做掉。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import io, os, re, sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-EN = r'<WORKDIR>\PaperB\PaperB_英文稿_PR_20260919.md'
-SUP = r'<WORKDIR>\PaperB\PaperB_英文补充材料_PR_20260919.md'
+EN = RP('PaperB_英文稿_PR_20260919.md')
+SUP = RP('PaperB_英文补充材料_PR_20260919.md')
 PAT = re.compile(r'\*\(Numbers:\s*([A-M]\.\d+)\.\)\*')
 W = lambda s: len(re.findall(r"[A-Za-z][A-Za-z'\-]*", s))
 

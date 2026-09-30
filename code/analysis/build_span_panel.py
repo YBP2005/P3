@@ -20,6 +20,18 @@ Usage:
   python build_span_panel.py --check    # recompute + assert the §M.18.8 panel
   python build_span_panel.py --selftest # negative controls
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import argparse
 import csv
 import io
@@ -27,8 +39,8 @@ import os
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-E2 = r'<WORKDIR>\PaperB\analysis\e2_newh20'
-SUPP = r'<WORKDIR>\PaperB\PaperB_英文补充材料_PR_20260919.md'
+E2 = RP('analysis', 'e2_newh20')
+SUPP = RP('PaperB_英文补充材料_PR_20260919.md')
 ANOM = 1e5
 
 BUILDS = [('AWQ-4bit', 'awq'), ('AWQ-8bit', 'awq8'), ('BF16', 'bf16'),
@@ -46,7 +58,7 @@ M188_N = {'st_a': 103, 'ucf': 180, 'visdrone': 150, 'aitod': 150}
 
 
 def rows_of(cfg, ds, arm):
-    p = os.path.join(E2, 'e1_qwen3-vl-32b-%s_%s_%s.csv' % (cfg, ds, arm))
+    p = os.path.join(RP('analysis', 'e2_newh20'), 'e1_qwen3-vl-32b-%s_%s_%s.csv' % (cfg, ds, arm))
     if not os.path.exists(p):
         return None
     with io.open(p, encoding='utf-8-sig') as f:

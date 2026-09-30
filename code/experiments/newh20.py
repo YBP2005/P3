@@ -6,11 +6,11 @@ import time
 sys.stdout.reconfigure(encoding='utf-8')
 import paramiko
 
-HOST = '117.50.80.219'
+HOST = '<REDACTED-POD-HOST>'
 PORT = 23
 USER = 'root'
-PW = '10T534269iNDPdqu'
-MACHINE = ('cpod-1v4b5h1i96an-s1.podtcp.compshare.cn', 23654, 'root', '6q7QBV0F5z43Z21U')
+PW = '<REDACTED-POD-PASSWORD2>'
+MACHINE = ('<REDACTED-POD-HOST>', 23654, 'root', '<REDACTED-POD-PASSWORD>')
 
 
 def connect(host=HOST, port=PORT, user=USER, pw=PW, tries=8):

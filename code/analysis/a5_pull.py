@@ -11,6 +11,18 @@
 
 只在两个目录都齐了以后才复制锚点，避免半拉状态被误判。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import io
 import os
 import posixpath
@@ -18,12 +30,12 @@ import shutil
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-sys.path.insert(0, r'<WORKDIR>\PaperB\analysis\work')
+sys.path.insert(0, RP('analysis', 'work'))
 from a800_conn import connect, sh
 
 A = ('<REDACTED-A800-HOST>', 23, 'root', '<REDACTED-A800-PASSWORD>')
-LOCAL = r'<WORKDIR>\PaperB\analysis\e2xt_a800'
-E2 = r'<WORKDIR>\PaperB\analysis\e2_newh20'
+LOCAL = RP('analysis', 'e2xt_a800')
+E2 = RP('analysis', 'e2_newh20')
 # 冻结判据点名的三个锚点家族（各取一个配置，4 域齐全）
 ANCHORS = ['qwen3-vl-32b-awq', 'qwen25vl-72b-awq', 'internvl25-8b-awq']
 NEW_FAMS = ['gemma3-12b', 'InternVL3_5-8B', 'Phi-3.5-vision-instruct',
@@ -63,11 +75,11 @@ def fam_of(name):
 
 
 def main():
-    z = pull('/root/e1_results', os.path.join(LOCAL, 'zero'))
-    nz = pull('/root/e1_results_nonzero', os.path.join(LOCAL, 'nonzero'))
+    z = pull('/root/e1_results', RP('analysis', 'e2xt_a800', 'zero'))
+    nz = pull('/root/e1_results_nonzero', RP('analysis', 'e2xt_a800', 'nonzero'))
     print('拉回：零池 %d 个、非零池 %d 个 -> %s' % (z, nz, LOCAL))
 
-    zd = os.path.join(LOCAL, 'zero')
+    zd = RP('analysis', 'e2xt_a800', 'zero')
     fams = {}
     for n in os.listdir(zd):
         f = fam_of(n)
@@ -84,21 +96,21 @@ def main():
         print('⇒ 不复制锚点（等新家族齐了再并表）')
         return 2
 
-    ad = os.path.join(LOCAL, 'anchors')
+    ad = RP('analysis', 'e2xt_a800', 'anchors')
     os.makedirs(ad, exist_ok=True)
     n = 0
     for f in ANCHORS:
         for src in os.listdir(E2):
             if src.startswith('e1_' + f + '_') and src.endswith('.csv'):
-                shutil.copy2(os.path.join(E2, src), os.path.join(ad, src))
+                shutil.copy2(os.path.join(RP('analysis', 'e2_newh20'), src), os.path.join(RP('analysis', 'e2xt_a800', 'anchors'), src))
                 n += 1
     print('锚点复制 %d 个文件（%s）' % (n, ', '.join(ANCHORS)))
-    merged = os.path.join(LOCAL, 'merged')
+    merged = RP('analysis', 'e2xt_a800', 'merged')
     os.makedirs(merged, exist_ok=True)
     for d in (zd, ad):
         for n2 in os.listdir(d):
             if n2.endswith('.csv'):
-                shutil.copy2(os.path.join(d, n2), os.path.join(merged, n2))
+                shutil.copy2(os.path.join(d, n2), os.path.join(RP('analysis', 'e2xt_a800', 'merged'), n2))
     print('并表目录 %s：%d 个零池 CSV' % (merged, len([x for x in os.listdir(merged) if x.endswith('.csv')])))
     return 0
 

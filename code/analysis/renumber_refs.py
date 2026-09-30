@@ -4,11 +4,23 @@
 ④ 按 new 顺序重排列表并重编号。
 **写盘前硬校验**：重排后正文首现序列必须为 1..N 严格递增、1..N 全覆盖、[n] token 总数不变。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import re
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-MS = r'<WORKDIR>\PaperB\PaperB_英文稿_PR_20260919.md'
+MS = RP('PaperB_英文稿_PR_20260919.md')
 t = open(MS, encoding='utf-8').read()
 head, sep, refs = t.partition('## References')
 entries = re.findall(r'(?m)^(\d+)\. (.+)$', refs)
@@ -64,5 +76,8 @@ print('校验：首现序列=1..N 严格递增 %s | 1..N 全覆盖 %s | [n] toke
       % (ok_order, ok_cover, n_tok_before, n_tok_after, ok_tok))
 if not (ok_order and ok_cover and ok_tok):
     raise SystemExit('校验未通过，**不写盘**')
-open(MS, 'w', encoding='utf-8', newline='\n').write(new_t)
-print('已写盘：%d 条参考文献按首现顺序重编号完成' % N)
+if '--apply' in sys.argv:           # ★ 2026-09-30 v0610：默认**只读**，写回须显式 --apply
+    open(MS, 'w', encoding='utf-8', newline='\n').write(new_t)
+    print('已写盘：%d 条参考文献按首现顺序重编号完成' % N)
+else:
+    print('（dry run：%d 条参考文献将按首现顺序重编号，**未**写回主稿；加 --apply 才写）' % N)

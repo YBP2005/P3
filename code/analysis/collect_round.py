@@ -2,6 +2,18 @@
 """按 21 号文收结果：① 文件级完整性（先于内容）② 选每模型最新 ③ 抽取 8 维评分与判定。
 判据先行：完整性不过的档位不参与内容判读，单列出来。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import glob
 import io
 import os
@@ -10,7 +22,7 @@ import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
 # 目录可用环境变量覆盖，便于用合成评分表做**回归自测**（不污染真实产物目录）。
-D = os.environ.get('REVIEW_DIR') or r'<WORKDIR>\analysis\model_review'
+D = os.environ.get('REVIEW_DIR') or NR('@up1', 'analysis', 'model_review')
 MODELS = ['dsflash', 'dspro', 'glm53flash', 'gemini38flash', 'grok46', 'gpt56sol', 'qwen38max', 'hy4']
 if os.environ.get('REVIEW_MODELS'):
     MODELS = [x.strip() for x in os.environ['REVIEW_MODELS'].split(',') if x.strip()]

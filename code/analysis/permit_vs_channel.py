@@ -7,13 +7,25 @@
   · 若所有单元两者都 ≤5% 或都 >5% ⇒ 记"两者等效（在这些单元上）"。
 数据：`analysis/e2xt_a800/merged/`（4 新家族 + 3 锚点）、`analysis/e2_newh20/`（E2 的 14 配置）。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import csv
 import io
 import os
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-DIRS = [r'<WORKDIR>\PaperB\analysis\e2xt_a800\merged', r'<WORKDIR>\PaperB\analysis\e2_newh20']
+DIRS = [RP('analysis', 'e2xt_a800', 'merged'), RP('analysis', 'e2_newh20')]
 DS_ALL = ['st_a', 'st_b', 'ucf', 'visdrone', 'aitod']
 ABSTAIN = ('abstain', 'cannot_judge', 'no_people')
 
@@ -91,7 +103,7 @@ for c, ds, rp, rc in saves:
 if not saves:
     print('   ⇒ 在这些单元上两者等效（都 ≤5% 或都 >5%）')
 import json
-io.open(r'<WORKDIR>\PaperB\analysis\work\permit_vs_channel_result.json', 'w', encoding='utf-8').write(
+io.open(RP('analysis', 'work', 'permit_vs_channel_result.json'), 'w', encoding='utf-8').write(
     json.dumps(dict(n_units=len(rows), saves=saves,
                     rows=[dict(cfg=c, ds=ds, n=n, permit=rp, channel=rc) for c, ds, n, rp, rc in rows]),
                ensure_ascii=False, indent=1))

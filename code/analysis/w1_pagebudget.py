@@ -5,13 +5,25 @@
 "感觉某节很长"不足以决定外迁哪一段；按词数排序才能一次腾够、避免反复重建 docx。
 输出：按词数降序的节表 + §5.10–§5.13 的逐段词数（外迁候选）。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import io
 import os
 import re
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-MAN = r'<WORKDIR>\PaperB\PaperB_英文稿_PR_20260919.md'
+MAN = RP('PaperB_英文稿_PR_20260919.md')
 
 
 def wc(t):

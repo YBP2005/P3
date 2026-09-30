@@ -9,6 +9,18 @@
      （口径不一致会让 P2 与往轮不可比 ⇒ 必须报出来。）
   ③ 两套口径下 P2 的关键率（base 零率、permit 弃答率 / 零率、channel 出口率）差多少？
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import collections
 import csv
 import glob
@@ -18,7 +30,7 @@ import re
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-BASE = r'<WORKDIR>\PaperB'
+BASE = NR()
 
 
 def cls_of(raw, pred):
@@ -46,7 +58,7 @@ tot = collections.Counter()
 files = 0
 worst = []
 for pat in pats:
-    for f in sorted(glob.glob(os.path.join(BASE, pat))):
+    for f in sorted(glob.glob(os.path.join(NR(), pat))):
         b = os.path.basename(f).lower()
         if not any(k in b for k in ('permit', 'abstain', 'channel', 'enum')):
             continue
@@ -72,10 +84,10 @@ print()
 print('=' * 92)
 print('② P2 的 12 臂：往轮口径（raw 子串） vs P2 重解析口径')
 print('=' * 92)
-P2 = os.path.join(BASE, 'analysis/p2_a800/p2_probe_results_reparsed')
+P2 = RP('analysis', 'p2_a800', 'p2_probe_results_reparsed')
 agree = disagree = 0
 detail = []
-for f in sorted(glob.glob(os.path.join(P2, '*.csv'))):
+for f in sorted(glob.glob(RP('analysis', 'p2_a800', 'p2_probe_results_reparsed', '*.csv'))):
     rows = list(csv.DictReader(io.open(f, encoding='utf-8')))
     if not rows:
         continue

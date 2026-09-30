@@ -47,6 +47,18 @@
 
 用法：python -u s15_five_build_S.py
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import csv
 import io
 import os
@@ -54,8 +66,8 @@ import sys
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
-POD = r'<WORKDIR>\PaperB\analysis\data\pod_mirror'
-E2 = r'<WORKDIR>\PaperB\analysis\e2_newh20'
+POD = RP('analysis', 'data', 'pod_mirror')
+E2 = RP('analysis', 'e2_newh20')
 BUILDS = [('AWQ-4bit', 'awq'), ('AWQ-8bit', 'awq8'), ('BF16', 'bf16'), ('FP8', 'fp8'), ('GPTQ-W4', 'gptq')]
 DOMAINS = [('st_a', 'ShanghaiTech-A'), ('ucf', 'UCF-QNRF'), ('visdrone', 'VisDrone'), ('aitod', 'AI-TOD')]
 CORPUS = {'st_a': (POD, 'dense_results', 'vlm_st_a_base_whole.csv'),
@@ -125,8 +137,8 @@ def stats(rows, mode='A'):
 
 
 def census(build, dom):
-    return (load(os.path.join(E2, 'e1_qwen3-vl-32b-%s_%s_base.csv' % (build, dom))),
-            load(os.path.join(E2, 'nz__e1_qwen3-vl-32b-%s_%s_base.csv' % (build, dom))))
+    return (load(os.path.join(RP('analysis', 'e2_newh20'), 'e1_qwen3-vl-32b-%s_%s_base.csv' % (build, dom))),
+            load(os.path.join(RP('analysis', 'e2_newh20'), 'nz__e1_qwen3-vl-32b-%s_%s_base.csv' % (build, dom))))
 
 
 def corpus_rows(dom):

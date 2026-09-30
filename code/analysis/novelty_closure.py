@@ -9,13 +9,25 @@
 判据：每条扣分的锚点**全部命中**才算闭环；命中位置必须在**正文**（EN）或**补充材料**（SUP）。
 任何一条未闭环，脚本以非零码退出，并把它打印出来（供当轮修）。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import io
 import json
 import re
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-PAPER = r'<WORKDIR>\PaperB'
+PAPER = NR()
 J = PAPER + r'\analysis\model_review\novelty_paperB1_result.json'
 EN = PAPER + r'\PaperB_英文稿_PR_20260919.md'
 SUP = PAPER + r'\PaperB_英文补充材料_PR_20260919.md'

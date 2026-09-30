@@ -6,6 +6,18 @@
 
 用法：python -u endgame_e2.py
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import os
 import subprocess
 import sys
@@ -13,7 +25,7 @@ import sys
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 W = os.path.dirname(os.path.abspath(__file__))
 PY = sys.executable
-EA2 = r'<WORKDIR>\PaperB\analysis\ea2_z0'
+EA2 = RP('analysis', 'ea2_z0')
 # 远端目录后缀 tag：E2 的 run_build 用的是 ivl8b/phi35/llavaov/gemma12b/q32
 TAGS = ('ivl8b', 'phi35', 'llavaov', 'gemma12b', 'q32')
 
@@ -28,7 +40,7 @@ for tag in TAGS:
     for lang, pre in (('cn', 'z0_results_'), ('en', 'z0_results_en_')):
         for s in (1, 2, 3):
             rem = '/root/%s%s_s%d' % (pre, tag, s)
-            loc = os.path.join(EA2, '%s_%s_s%d' % (lang, tag, s))
+            loc = os.path.join(RP('analysis', 'ea2_z0'), '%s_%s_s%d' % (lang, tag, s))
             rc, out = run([PY, '-u', 'rsh.py', '--get', rem, loc, '--t', '600'])
             ok = os.path.isdir(loc) and len([f for f in os.listdir(loc) if f.endswith('.csv')]) >= 6
             print('   %-28s → %-46s %s  %s' % (rem, loc, 'OK' if ok else '!! 不足 6 个 CSV',

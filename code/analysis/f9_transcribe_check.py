@@ -17,6 +17,18 @@
 ⇒ 因此 `f9_quoted.json` 里必须写：**该列的"可部署性"未经独立复算确认**，
   稿内引用它时必须同时写**口径名**与**"转录"字样**。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import hashlib
 import io
 import json
@@ -25,11 +37,11 @@ import re
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-ROOT = r'<WORKDIR>\PaperB'
-SUP = os.path.join(ROOT, 'PaperB_英文补充材料_PR_20260919.md')
-ZH = os.path.join(ROOT, 'PaperB_章节骨架_v3_可确证性_20260911.md')
-FIX = os.path.join(ROOT, 'analysis', 'work', 'fix_ten_units.py')
-OUT = os.path.join(ROOT, 'analysis', 'work', 'f9_quoted.json')
+ROOT = NR()
+SUP = RP('PaperB_英文补充材料_PR_20260919.md')
+ZH = NR('PaperB_章节骨架_v3_可确证性_20260911.md')
+FIX = RP('analysis', 'work', 'fix_ten_units.py')
+OUT = RP('analysis', 'work', 'f9_quoted.json')
 
 # F.9 表内 10 行的四个数值列（与 fix_ten_units.py L56–65 一致）
 COLS = ['shared_affine', 'isotonic', 'quantile_map', 'isotonic_CI']

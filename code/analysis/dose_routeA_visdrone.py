@@ -18,6 +18,18 @@ Usage:
   python dose_routeA_visdrone.py --check    # recompute + assert the M.8 paragraph
   python dose_routeA_visdrone.py --selftest # negative controls
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import argparse
 import csv
 import io
@@ -25,16 +37,16 @@ import os
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-ROOT = r'<WORKDIR>\PaperB'
-PM = os.path.join(ROOT, 'analysis', 'data', 'pod_mirror')
-SUPP = os.path.join(ROOT, 'PaperB_英文补充材料_PR_20260919.md')
+ROOT = NR()
+PM = RP('analysis', 'data', 'pod_mirror')
+SUPP = RP('PaperB_英文补充材料_PR_20260919.md')
 ANOM = 1e5
 
 FILES = [
-    ('VisDrone whole', os.path.join(PM, 'dose_results', 'dose_visdrone.csv')),
-    ('VisDrone 3x3', os.path.join(PM, 'dose_tile_results', 'dose_tile3_visdrone.csv')),
-    ('ShanghaiTech-A whole', os.path.join(PM, 'dose_results', 'dose_st_a.csv')),
-    ('UCF-QNRF whole', os.path.join(PM, 'dose_results', 'dose_ucf.csv')),
+    ('VisDrone whole', RP('analysis', 'data', 'pod_mirror', 'dose_results', 'dose_visdrone.csv')),
+    ('VisDrone 3x3', RP('analysis', 'data', 'pod_mirror', 'dose_tile_results', 'dose_tile3_visdrone.csv')),
+    ('ShanghaiTech-A whole', RP('analysis', 'data', 'pod_mirror', 'dose_results', 'dose_st_a.csv')),
+    ('UCF-QNRF whole', RP('analysis', 'data', 'pod_mirror', 'dose_results', 'dose_ucf.csv')),
 ]
 L1, L4 = 'L1_随便给', 'L4_中性'
 
@@ -133,7 +145,7 @@ def selftest():
     # (1) The canonical filter must matter: without it the aerial 3x3 L1 cell is inflated by
     #     a single item (pred 100,025 against gt 24).  That is exactly why the skeleton records
     #     a superseded +1277.6% for this cell.
-    rows = load(os.path.join(PM, 'dose_tile_results', 'dose_tile3_visdrone.csv'))
+    rows = load(RP('analysis', 'data', 'pod_mirror', 'dose_tile_results', 'dose_tile3_visdrone.csv'))
     sub = [r for r in rows if r['level'] == L1]
     def rho_of(keep):
         sg = sum(float(r['gt']) for r in keep)

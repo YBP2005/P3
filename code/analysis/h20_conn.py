@@ -4,7 +4,7 @@ import time
 
 import paramiko
 
-H = ('117.50.80.219', 23, 'root', '10T534269iNDPdqu')
+H = ('<REDACTED-POD-HOST>', 23, 'root', '<REDACTED-POD-PASSWORD2>')
 
 
 def connect(h=H, tries=8, wait=8):

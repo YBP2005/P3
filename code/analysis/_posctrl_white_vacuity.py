@@ -26,12 +26,24 @@
    本脚本的 `trig` 诊断会立刻显示可触发集合，从而暴露"检查是否又变永真/是否真能触发"。
 3. 它示范了正确的顺序：**先证明判据能失败，再把它当门禁用**。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import io, os, re, sys, tempfile
 
 sys.stdout.reconfigure(encoding='utf-8')
 WORK = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(WORK, 'en_check.py')
-EN = r'<WORKDIR>\PaperB\PaperB_英文稿_PR_20260919.md'
+EN = RP('PaperB_英文稿_PR_20260919.md')
 
 CANDS = ['73 pp', '75 pp', '86 pp']     # 0–102 中曾经（用不完整的权威档清单）以为"不在权威档"的三个
 ANCHOR = 'Its diagnosis is informative:'
@@ -40,7 +52,7 @@ ANCHOR = 'Its diagnosis is informative:'
 def run_with(tmp_path, tok):
     """用 EN 指向 tmp_path 的 en_check 源码副本跑一次，返回 (退出码, 全部输出)。"""
     src = io.open(SRC, encoding='utf-8').read()
-    src = src.replace("EN = os.path.join(ROOT, 'PaperB_英文稿_PR_20260919.md')",
+    src = src.replace("EN = RP('PaperB_英文稿_PR_20260919.md')",
                       "EN = r'%s'" % tmp_path, 1)
     assert tmp_path in src, '未能把 EN 指向临时稿'
     # StringIO 没有 reconfigure（en_check 第 10 行会调）⇒ 去掉那一行，只影响本探针
@@ -54,8 +66,8 @@ def run_with(tmp_path, tok):
         "print('      DBG tok=%s in_en=%s in_zh=%s in_SECT=%s in_ARXIV=%s only_white=%s white_dead=%s' % ("
         "TOK_DEBUG, TOK_DEBUG in en_flat, TOK_DEBUG in zh_flat, TOK_DEBUG in SECT,"
         " TOK_DEBUG in ARXIV, sorted(_only_white), WHITE <= zh_flat))\n" + marker, 1)
-    src = src.replace("ROOT = r'D:\\deepseek\\PaperB'",
-                      "ROOT = r'D:\\deepseek\\PaperB'\nTOK_DEBUG = %r" % tok, 1)
+    src = src.replace("ROOT = RP()",
+                      "ROOT = RP()\nTOK_DEBUG = %r" % tok, 1)
 
     buf = io.StringIO()
     old, code = sys.stdout, None

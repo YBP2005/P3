@@ -14,6 +14,18 @@
   · analysis/w1_a800/coverage_table.md
 用法：python w1_frame_report.py
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import csv
 import glob
 import io
@@ -24,8 +36,8 @@ import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
 HERE = os.path.dirname(os.path.abspath(__file__))
-A800 = r'<WORKDIR>\PaperB\analysis\w1_a800'
-LOGS = os.path.join(A800, 'logs')
+A800 = NR('analysis', 'w1_a800')
+LOGS = NR('analysis', 'w1_a800', 'logs')
 DOMS = ['st_a', 'ucf', 'visdrone', 'aitod']
 ARMS_Z = [('base', 'native'), ('permit', 'native'), ('channel', 'native'), ('base', 's640')]
 ARMS_N = ARMS_Z[:3]
@@ -84,17 +96,17 @@ def frame_table():
                                                   (big[0][0] if big else '')))
     L += ['', '## 三、入组/替补家族的门控结果（由产物 CSV 统计）', '',
           '| 家族（served name） | 零池格数 | 非零池格数 | 门控/备注 |', '|---|---|---|---|']
-    zf = sorted({fam_of(p) for p in glob.glob(os.path.join(A800, 'zero', 'e1_*.csv'))} - {None})
-    nf = sorted({fam_of(p) for p in glob.glob(os.path.join(A800, 'nonzero', 'e1_*.csv'))} - {None})
+    zf = sorted({fam_of(p) for p in glob.glob(NR('analysis', 'w1_a800', 'zero', 'e1_*.csv'))} - {None})
+    nf = sorted({fam_of(p) for p in glob.glob(NR('analysis', 'w1_a800', 'nonzero', 'e1_*.csv'))} - {None})
     for fam in sorted(set(zf) | set(nf)):
-        zc = len(glob.glob(os.path.join(A800, 'zero', 'e1_%s_*.csv' % fam)))
-        nc = len(glob.glob(os.path.join(A800, 'nonzero', 'e1_%s_*.csv' % fam)))
+        zc = len(glob.glob(os.path.join(NR('analysis', 'w1_a800', 'zero'), 'e1_%s_*.csv' % fam)))
+        nc = len(glob.glob(os.path.join(NR('analysis', 'w1_a800', 'nonzero'), 'e1_%s_*.csv' % fam)))
         note = USED.get(fam, '')
         if not note:
             note = '入组并跑满' if (zc >= 16 and nc >= 12) else '**未跑满**（按已完成格报告）'
         L.append('| `%s` | %d/16 | %d/12 | %s |' % (fam, zc, nc, note))
     txt = '\n'.join(L) + '\n'
-    io.open(os.path.join(A800, 'frame_table.md'), 'w', encoding='utf-8', newline='\n').write(txt)
+    io.open(NR('analysis', 'w1_a800', 'frame_table.md'), 'w', encoding='utf-8', newline='\n').write(txt)
     return txt
 
 
@@ -105,9 +117,9 @@ def coverage_table():
     tot = 0
     for pool, arms in (('zero', ARMS_Z), ('nonzero', ARMS_N)):
         for ds in DOMS:
-            for fam in sorted({fam_of(p) for p in glob.glob(os.path.join(A800, pool, 'e1_*.csv'))} - {None}):
+            for fam in sorted({fam_of(p) for p in glob.glob(os.path.join(NR('analysis', 'w1_a800'), pool, 'e1_*.csv'))} - {None}):
                 for arm, var in arms:
-                    p = os.path.join(A800, pool, 'e1_%s_%s_%s_%s.csv' % (fam, ds, arm, var))
+                    p = os.path.join(NR('analysis', 'w1_a800'), pool, 'e1_%s_%s_%s_%s.csv' % (fam, ds, arm, var))
                     rows = read(p)
                     if not rows:
                         continue
@@ -121,7 +133,7 @@ def coverage_table():
                     tot += 1
     L += ['', '合计 %d 个非空格。' % tot]
     txt = '\n'.join(L) + '\n'
-    io.open(os.path.join(A800, 'coverage_table.md'), 'w', encoding='utf-8', newline='\n').write(txt)
+    io.open(NR('analysis', 'w1_a800', 'coverage_table.md'), 'w', encoding='utf-8', newline='\n').write(txt)
     return txt
 
 

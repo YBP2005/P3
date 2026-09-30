@@ -21,6 +21,18 @@ Q3 的裁决要求"补脚本 + f9_quoted.json；做不到就做可核验转录"�
 F.9 的十个 unit 与仓库文件的对应关系**部分是推断**（例如 "VLM, pixel budget" 未指明是 ivl 还是 q32）。
 故本脚本对**可指认的来源**逐一试算，并把"来源指认"本身也打印出来供人工裁决；不硬凑、不调参。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import collections
 import csv
 import hashlib
@@ -30,10 +42,10 @@ import os
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-PM = r'<WORKDIR>\PaperB\analysis\data\pod_mirror'
-W = r'E:\Edu_workplace\work'
+PM = RP('analysis', 'data', 'pod_mirror')
+W = NR('@shared', 'work')
 WORKDIR = os.path.dirname(os.path.abspath(__file__))
-B = os.path.join(W, 'b_harvest_20260917')
+B = NR('@shared', 'work', 'b_harvest_20260917')
 ANOM, SENT = 1e5, 1234567890
 
 # F.9 印出的保序跨度（isotonic），用于比对
@@ -158,23 +170,23 @@ print('=' * 150)
 print('  说明：F.9 自述口径 = pooled relative deviation；仓库内唯一的保序实现是 oracle 方向 + 逐项中位。')
 
 res = {}
-if os.path.exists(os.path.join(PM, 'A', 'det_yolo_ladder_visdrone_det.csv')):
+if os.path.exists(RP('analysis', 'data', 'pod_mirror', 'A', 'det_yolo_ladder_visdrone_det.csv')):
     res['det/VisDrone'] = report('Detection, in-domain / VisDrone',
-                                 unitize(load(os.path.join(PM, 'A', 'det_yolo_ladder_visdrone_det.csv')),
+                                 unitize(load(RP('analysis', 'data', 'pod_mirror', 'A', 'det_yolo_ladder_visdrone_det.csv')),
                                          ['tau', 'imgsz'], 'n_det_person'),
                                  F9['det·in-domain/VisDrone'])
-if os.path.exists(os.path.join(PM, 'A', 'det_yolo_ladder_yolo12n.csv')):
+if os.path.exists(RP('analysis', 'data', 'pod_mirror', 'A', 'det_yolo_ladder_yolo12n.csv')):
     res['det/COCO'] = report('Detection, zero-shot COCO',
-                             unitize(load(os.path.join(PM, 'A', 'det_yolo_ladder_yolo12n.csv')),
+                             unitize(load(RP('analysis', 'data', 'pod_mirror', 'A', 'det_yolo_ladder_yolo12n.csv')),
                                      ['tau', 'imgsz'], 'n_det_person'),
                              F9['det·zero-shot COCO'])
-if os.path.exists(os.path.join(B, 'bbbc_eval', 'ladder.csv')):
+if os.path.exists(NR('@shared', 'work', 'b_harvest_20260917', 'bbbc_eval', 'ladder.csv')):
     res['det/BBBC005'] = report('Detection, in-domain / BBBC005',
-                                unitize(load(os.path.join(B, 'bbbc_eval', 'ladder.csv')),
+                                unitize(load(NR('@shared', 'work', 'b_harvest_20260917', 'bbbc_eval', 'ladder.csv')),
                                         ['tau', 'imgsz'], 'n_det'),
                                 F9['det·in-domain(micro)/BBBC005'])
-if os.path.exists(os.path.join(W, 'dm_ladder.csv')):
-    u = unitize(load(os.path.join(W, 'dm_ladder.csv')), ['dataset', 'protocol', 'value'], 'pred')
+if os.path.exists(NR('@shared', 'work', 'dm_ladder.csv')):
+    u = unitize(load(NR('@shared', 'work', 'dm_ladder.csv')), ['dataset', 'protocol', 'value'], 'pred')
     for ds, lab, f9 in (('st_a', 'ShanghaiTech-A', F9['density·official DM-Count/st_a(ShanghaiTech-A)']),
                         ('ucf', 'UCF-QNRF', F9['density·official DM-Count/ucf(UCF-QNRF)'])):
         sub = {k: v for k, v in u.items() if k[0] == ds}
@@ -182,12 +194,12 @@ if os.path.exists(os.path.join(W, 'dm_ladder.csv')):
             res['density/' + ds] = report('Density regression, official DM-Count / %s' % lab, sub, f9)
 for mdl in ('ivl', 'q32'):
     for ds in ('st_a', 'ucf', 'visdrone'):
-        p = os.path.join(PM, 'res_ctrl__%s' % mdl, 'res_ctrl_%s.csv' % ds)
+        p = os.path.join(RP('analysis', 'data', 'pod_mirror'), 'res_ctrl__%s' % mdl, 'res_ctrl_%s.csv' % ds)
         if os.path.exists(p):
             res['pxbudget/%s/%s' % (mdl, ds)] = report('VLM, pixel budget / %s / %s' % (mdl, ds),
                                                        unitize(load(p), ['budget'], 'pred'), None)
 for mdl, f9v in (('ivl', 97.7), ('q32', 85.9)):
-    p = os.path.join(PM, 'b2__out_%s' % mdl, 'E1.csv')
+    p = os.path.join(RP('analysis', 'data', 'pod_mirror'), 'b2__out_%s' % mdl, 'E1.csv')
     if os.path.exists(p):
         res['contract/%s' % mdl] = report('VLM, output contract / %s' % mdl,
                                           unitize(load(p), ['arm'], 'pred'), f9v)

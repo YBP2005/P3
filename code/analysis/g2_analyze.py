@@ -17,6 +17,18 @@
 
 用法：python -u g2_analyze.py [--dir <本地目录>] [--pool <语料池目录>]
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import argparse
 import csv
 import io
@@ -27,11 +39,11 @@ import random
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
-LOCAL = r'<WORKDIR>\PaperB'
+LOCAL = NR()
 # 语料池的**权威副本**：直接从 A800 的 /root/dense_results/ 拉回（与 item 集的定义同源）。
 # 本机另有两处历史副本（`analysis/e1_5090/corpus/`、`analysis/data/pod_mirror/dense_results/`），
 # 已实测 st_a 的 md5 与之一致（ff69abb8457c…），故用哪一处都不影响。
-POOL = os.path.join(LOCAL, 'analysis', 'g2_neutral0', 'pool')
+POOL = RP('analysis', 'g2_neutral0', 'pool')
 SRC = {'st_a': 'vlm_st_a_base_whole.csv', 'ucf': 'vlm_ucf_base_whole.csv',
        'visdrone': 'vlm_visdrone_base_whole.csv', 'aitod': 'vlm_aitod_base_whole.csv'}
 ARMS = ['cn-base', 'cn-neutral0', 'en-base', 'en-neutral0', 'en-neutral0em']
@@ -67,7 +79,7 @@ def cls(raw, pred):
 
 
 def load_pool(ds):
-    p = os.path.join(POOL, SRC[ds])
+    p = os.path.join(RP('analysis', 'g2_neutral0', 'pool'), SRC[ds])
     gt = {}
     with io.open(p, encoding='utf-8-sig', newline='') as f:
         for r in csv.DictReader(f):
@@ -130,9 +142,9 @@ def boot_S(rows, draws=2000, seed=20260926):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('--dir', default=os.path.join(LOCAL, 'analysis', 'g2_neutral0'))
+    ap.add_argument('--dir', default=RP('analysis', 'g2_neutral0'))
     A = ap.parse_args()
-    crit = json.load(io.open(os.path.join(LOCAL, 'analysis', 'work', 'g_criteria_frozen.json'),
+    crit = json.load(io.open(RP('analysis', 'work', 'g_criteria_frozen.json'),
                              encoding='utf-8'))
     print('冻结判据：%s（%d 条）' % (crit['round'], len(crit['criteria_fixed_in_advance'])))
 

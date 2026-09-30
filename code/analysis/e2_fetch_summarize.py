@@ -1,5 +1,17 @@
 # -*- coding: utf-8 -*-
 """拉取 M机 E2 的 8 个 CSV 到本地并出对照表（含完整性检查）。"""
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import csv
 import io
 import os
@@ -10,8 +22,8 @@ import sys
 sys.stdout.reconfigure(encoding='utf-8')
 import paramiko
 
-M = ('cpod-1v4b5h1i96an-s1.podtcp.compshare.cn', 23654, 'root', '6q7QBV0F5z43Z21U')
-LOCAL = r'<WORKDIR>\PaperB\analysis\e2_5090'
+M = ('<REDACTED-POD-HOST>', 23654, 'root', '<REDACTED-POD-PASSWORD>')
+LOCAL = RP('analysis', 'e2_5090')
 ABST = ('abstain', 'cannot_judge', 'no_people')
 
 c = paramiko.SSHClient()
@@ -26,7 +38,7 @@ try:
     got = []
     for f in sf.listdir('/root/e1_results'):
         if 'qwen3-vl-32b-awq' in f and f.endswith('.csv'):
-            sf.get('/root/e1_results/' + f, os.path.join(LOCAL, f)); got.append(f)
+            sf.get('/root/e1_results/' + f, os.path.join(RP('analysis', 'e2_5090'), f)); got.append(f)
     sf.close()
     print('\n拉取 %d 个 CSV -> %s' % (len(got), LOCAL))
 finally:
@@ -37,7 +49,7 @@ rows = []
 for f in sorted(os.listdir(LOCAL)):
     if not f.endswith('.csv'):
         continue
-    rr = list(csv.DictReader(io.open(os.path.join(LOCAL, f), encoding='utf-8-sig')))
+    rr = list(csv.DictReader(io.open(os.path.join(RP('analysis', 'e2_5090'), f), encoding='utf-8-sig')))
     nums = []; gts = []; z = 0; ab = 0; err = 0
     for r in rr:
         raw = r.get('raw') or ''

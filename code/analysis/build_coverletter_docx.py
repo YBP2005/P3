@@ -4,21 +4,33 @@
 ★ 投稿信是 PR 的**必交件**，且官方要求在里面回答三个问题（L801–L810）。本脚本只负责排版，
   内容由 `09_CoverLetter_PR.md` 单一来源提供 —— 不允许"docx 里另写一份"。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import io
 import os
 import re
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-sys.path.insert(0, r'<WORKDIR>\PaperB\analysis\work')
+sys.path.insert(0, RP('analysis', 'work'))
 import build_pr_docx as B          # 复用同一套行内解析与页面设置
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.shared import Cm, Pt
 
-PKG = r'<WORKDIR>\PaperB\review_pkg_20260919'
-SRC = os.path.join(PKG, '09_CoverLetter_PR.md')
-OUT = os.path.join(PKG, '09_CoverLetter_PR.docx')
+PKG = NR('review_pkg_20260919')
+SRC = NR('review_pkg_20260919', '09_CoverLetter_PR.md')
+OUT = NR('review_pkg_20260919', '09_CoverLetter_PR.docx')
 
 md = io.open(SRC, encoding='utf-8', newline='\n').read()
 doc = Document()
@@ -107,6 +119,6 @@ for need in ('1. Is the work compared with the state of the art?',
     assert need in txt, '投稿信缺少必答问题：%s' % need
 print('三个必答问题齐全 ✓')
 import json
-m = json.loads(io.open(r'<WORKDIR>\PaperB\measurement_pr_docx.json', encoding='utf-8').read())
+m = json.loads(io.open(RP('measurement_pr_docx.json'), encoding='utf-8').read())
 assert str(m['result']['pages']) in txt, '投稿信中的页数与实测不一致'
 print('页数自述与实测一致（%d 页）✓' % m['result']['pages'])

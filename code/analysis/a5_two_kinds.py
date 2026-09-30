@@ -16,6 +16,18 @@
 用法：
     python a5_two_kinds.py <zero_dir> [<zero_dir2> ...]     # 可给多个目录（并集）
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import csv
 import glob
 import io
@@ -80,7 +92,7 @@ def fam_of(cfg):
 
 
 def main():
-    dirs = sys.argv[1:] or [r'<WORKDIR>\PaperB\analysis\e2_newh20']
+    dirs = sys.argv[1:] or [RP('analysis', 'e2_newh20')]
     tab = {}
     for d in dirs:
         for p in glob.glob(os.path.join(d, '*.csv')):
@@ -161,7 +173,7 @@ def main():
         out['_aerial_universality'] = {'n': len(aer), 'min': aer[0], 'median': mid,
                                        'max': aer[-1],
                                        'ge_50pct': sum(1 for x in aer if x >= .5)}
-    with io.open(r'<WORKDIR>\PaperB\analysis\work\a5_two_kinds.json', 'w', encoding='utf-8') as f:
+    with io.open(RP('analysis', 'work', 'a5_two_kinds.json'), 'w', encoding='utf-8') as f:
         f.write(json.dumps(out, ensure_ascii=False, indent=1))
     print('JSON -> a5_two_kinds.json')
     return 0

@@ -11,7 +11,7 @@ import time
 sys.stdout.reconfigure(encoding='utf-8')
 import paramiko
 
-M = ('cpod-1v4b5h1i96an-s1.podtcp.compshare.cn', 23654, 'root', '6q7QBV0F5z43Z21U')
+M = ('<REDACTED-POD-HOST>', 23654, 'root', '<REDACTED-POD-PASSWORD>')
 INC = '/root/incoming'
 
 # 包名 -> 解包目标目录

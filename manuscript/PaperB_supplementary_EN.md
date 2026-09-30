@@ -446,7 +446,7 @@ regression (4), output contract (2), pixel budget (6), prompt family (6) and til
 two agree because the interval's two ends are two of the six knobs. The **31**-unit set above carries no
 leave-one-out reading, and `m37_ci_power.py` is the generator of the frozen field only.
 
-**The intervals do not depend on treating the units as independent.** The units are nested in six knobs, so we re-ran the resampling at the **cluster** level: resampling whole knobs with replacement gives a 95% interval of **0.913–0.994** over the **31** unit set (2,000 draws, seed 20260924), against **0.939–0.996** under the unit bootstrap printed above — a lower bound **2.6 pp** below the i.i.d. one and still well above the **0.80** bar this paper would have read as instability (F.10). The same substitution on the **36** unit set gives **0.883–0.998**, and removing any one knob whole leaves **0.883–0.970** as above. We report the clustered interval alongside the unit one rather than instead of it, because **a cluster-level permutation test has no power here**: the statistic is a rank correlation over the paired unit readings, which is invariant to relabelling units, so permuting knob labels leaves it **bit-identical** (all 720 block permutations give the same value, `p = 1`). We therefore rest the claim on the interval, not on a clustered $p$ — the units are six knobs and the test cannot separate them. Reproduction: `m37_cluster.py` and `m37_cluster_result.json` — **these two artefacts are not part of the released reproduction package**, so the clustered interval above is not independently recomputable from it; the point readings it is compared against are recomputed from the released `equalcount36_result.json`.
+**The intervals do not depend on treating the units as independent.** The units are nested in six knobs, so we re-ran the resampling at the **cluster** level: resampling whole knobs with replacement gives a 95% interval of **0.913–0.994** over the **31** unit set (2,000 draws, seed 20260924), against **0.939–0.996** under the unit bootstrap printed above — a lower bound **2.6 pp** below the i.i.d. one and still well above the **0.80** bar this paper would have read as instability (F.10). The same substitution on the **36** unit set gives **0.883–0.998**, and removing any one knob whole leaves **0.883–0.970** as above. We report the clustered interval alongside the unit one rather than instead of it. **Why the interval is the right instrument here, stated exactly.** A permutation test is informative only if it perturbs what the statistic depends on, and this statistic is a rank correlation over the **paired** unit readings: permuting *whole knobs* moves those pairs about but does not break them, so the statistic is bit-identical under all 720 block permutations and `p = 1` — a property of that implementation, not a theorem about permutation tests. **Redrawing the span values from their own distribution does break the pairing, and there the ordering separates at `p < 5×10^{-5}` on all three deflations and both unit sets. We report both null models as two equivalent independent nulls rather than as two different ones: they agree to the last digit (`4.999750012499375e-05`) on every cell.** We therefore rest the claim on the interval, not on a clustered $p$ — the units are six knobs and the test cannot separate them. Reproduction: `m37_cluster.py` and `m37_cluster_result.json` — **these two artefacts are not part of the released reproduction package**, so the clustered interval above is not independently recomputable from it; the span-value null is recomputed from the released `equalcount36_result.json` by `p3r4_zero_2_null_span.py`; the point readings it is compared against are recomputed from the released `equalcount36_result.json`.
 
 **Why no split could be certified.** The observed split is **3 vs 7**, and $\binom{10}{3} = 120$ assignments
 put a floor of $1/120 = 0.0083$ under the permutation $p$ *before* correction; with the nine enumerated split
@@ -1420,7 +1420,7 @@ bimodality, since with four knob **sides** collapsed into ten units a bimodality
 whose abstention rate is itself only 13.6% — to **99.4%** (ShanghaiTech-A, `under` arm); the `over` arm has **0%** — its prompt requires every
 possible target to be counted, so it never abstains — and the dense `base` cells sit at
 **93.7–94.2%**. The same abstention term under the item-count convention is 53.9–68.2%. The
-two differ by **38–40 pp** on ShanghaiTech-A and UCF, which is why both must be reported. Setting refusals
+two differ by **38–40 pp** on ShanghaiTech-A and UCF, which is why both must be reported. Case-resampling the per-item records (2,000 draws, seed 20260924, the convention of §7.3) puts $S$ at **90.8–97.0%** on ShanghaiTech-A and **91.2–96.0%** on UCF-QNRF, and the four headline values' intervals do not overlap. (*Reproduction: `p3r4_zero_1_S_ci.py`.*) Setting refusals
 aside entirely, the answered-only relative deviation is only **−19.8%** and **−29.2%** — these models are
 much closer to unbiased than the aggregate suggests.
 
@@ -2497,6 +2497,10 @@ the detector box archives `analysis/data/harvest_A/{gaps__,rn__}boxes_st_a_test_
 corpus images; not part of the released package**) and the corpus predictions
 `data/derived/e2_pools/dense_results/vlm_st_a_base_whole.csv`.*
 
+##### M.19.15.1 A same-family cross-precision sidelight (not a precision axis)
+
+A **directional sidelight, not a precision axis**: the **8B** BF16 build of this family answers zero on **0.79%** of its dense pool against **7.38%** for its **38B** FP8 build (paired bootstrap over the 244 shared items, seed 20260930: **+6.97 pp, 95% [+4.10, +10.66]**), and the same 8B build is itself at **51.33%** on the aerial domains, well below the 38B build's **78.00%**. Both dense readings sit far below the 30% bar, so the direction is compatible with §1.4's expectation without measuring it. The sample is **one family at two scales**, so it supports no family-level or lineage-level statement, and its denominators (253 / 229 dense, 300 aerial) are its own.
+
 ---
 
 ### M.21 The formal framework in full
@@ -2728,7 +2732,7 @@ only misread a cell if a reply carries **both** a refusal word and a digit. We c
 assuming it away (`n2_adversarial_probe.py`): over the **95,160** stored rows of **654** files, **35,716**
 contain one of the three refusal words (`abstain`, `cannot_judge`, `no_people`, matched as lower-case
 substrings) and **0** contain a refusal word **and** a digit — so **the class is empty at the audited scope of this probe** (654 files, 95,160 rows: 35,716 carry a refusal word, **0** carry a refusal word and a digit; **0** of those place the digit first, which is the only ordering the fallback can misread). We record the breakdown in full rather than the bare zero, because the scope of the count is itself a finding: whether a wider sample contains such a row is **not** decided here, and that is what makes
-the invariance an empirical property of this corpus rather than a theorem. A constructed reply such as
+the invariance an empirical property of this corpus rather than a theorem. Extending the same criterion to the whole released set settles the question the paragraph above leaves open: over the **2,338** CSV files under `data/derived/` — **2,304** of them evaluable (the 34 that carry no `raw` column are not), **791,139** rows — **three** rows do contain a refusal word and a digit with the digit first, all of them LLaVA-OneVision-7B replies that state an incidental number in prose or in a multi-object JSON before reaching `{"count": "abstain"}`. All three are stored exactly as the frozen rule reads them (`parse_ok = 1`), so they are the rule's documented weakness rather than a defect in the records; each moves at most one item of its table. A separate convention difference is worth recording: 2,242 rows across eight files of `data/derived/p2_noise4/p2_probe_results_reparsed/` carry the refusal token in the `pred` column, where every other released file leaves `pred` empty and the token in `raw`. (*Reproduction: `p3r4_zero_3_parse_all_csv.py`.*) A constructed reply such as
 `{"response": "no_people", "confidence": 0.85}` lies in exactly that class: keyword matching reads
 `no_people` while the first-integer rule reads the `0` of `0.85`, so the two would disagree. The frozen
 artefact is left byte-unchanged, so both readings remain available.
@@ -3675,6 +3679,8 @@ pre-registered object; the set used here is its fully recomputable counterpart, 
 calibration analysis above also runs.
 
 *Reproduction: `eb2_equalcount36.py`; frozen result `equalcount36_result.json`.*
+
+Both alternative explanations are now measured rather than assumed. Recomputing every unit's span on its **answered** items only — the convention that excludes the abstention term — leaves the ordering at Spearman **0.962** against the pooled one and does not change the top knob, so the spectrum is not an abstention-quality artefact. Normalising each span by its unit's median ground truth leaves **99.99%** of the ordering intact for every β we tried, and the ground-truth magnitude explains **under 1%** of the log-span variance (OLS, β̂ = 0.082); the single change is the **top** unit at β = 1. (*Reproduction: `p3r4_zero_4_answered_only.py`.*)
 
 ### M.38 A true-zero control for the answered zero
 

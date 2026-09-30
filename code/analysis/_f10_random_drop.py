@@ -16,6 +16,18 @@
 数据：`threeway_curves_v2.csv`（检测 τ，按 `match` 口径分开）与 `span_equalcount2.py` 的阶梯口径。
 产物：`f10_random_drop_result.json`（+ .md5）。用法：python -u _f10_random_drop.py
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import collections
 import csv
 import hashlib
@@ -29,7 +41,7 @@ import sys
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 W = os.path.dirname(os.path.abspath(__file__))
-DATA = r'<WORKDIR>\PaperB\analysis\data'
+DATA = NR('analysis', 'data')
 OUT = os.path.join(W, 'f10_random_drop_result.json')
 K = 4
 NDRAW = 2000
@@ -42,7 +54,7 @@ def span(seq):
 
 
 def ladders(caliber):
-    rows = list(csv.DictReader(io.open(os.path.join(DATA, 'threeway_curves_v2.csv'),
+    rows = list(csv.DictReader(io.open(NR('analysis', 'data', 'threeway_curves_v2.csv'),
                                        encoding='utf-8-sig')))
     out = collections.defaultdict(list)
     for r in rows:

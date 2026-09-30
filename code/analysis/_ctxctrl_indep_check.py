@@ -17,6 +17,18 @@ S1 的核心结论恰恰是一个**取极值/汇总**结论（"上下文之差 3
 
 产物：`_ctxctrl_indep_check.md`（结论）+ 退出码（0 = 全过）
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import collections
 import csv
 import io
@@ -26,10 +38,10 @@ import statistics as st
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
-ROOT = r'<WORKDIR>\PaperB\analysis'
-CTX = os.path.join(ROOT, 'ctxctrl')
-FSC = os.path.join(ROOT, 'fsc_res')
-FROZEN = os.path.join(CTX, 'ctxctrl_result.json')
+ROOT = NR('analysis')
+CTX = NR('analysis', 'ctxctrl')
+FSC = RP('analysis', 'fsc_res')
+FROZEN = RP('analysis', 'ctxctrl', 'ctxctrl_result.json')
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '_ctxctrl_indep_check.md')
 ARMS = ('base', 'permit', 'channel', 'enumAbstain')
 TAG = {'Phi-3.5-vision-instruct': 'phi35', 'InternVL3_5-8B': 'ivl8b', 'gemma3-12b': 'gemma12b'}
@@ -94,7 +106,7 @@ for m, tag in TAG.items():
     for ctx in ('4096', '8192'):
         for s in ('1', '2', '3'):
             for arm in ARMS:
-                f = os.path.join(CTX, 'ctxctrl_%s_ml%s_s%s' % (tag, ctx, s),
+                f = os.path.join(NR('analysis', 'ctxctrl'), 'ctxctrl_%s_ml%s_s%s' % (tag, ctx, s),
                                  'fsc_%s_%s.csv' % (m, arm))
                 if not os.path.exists(f):
                     bad.append('缺文件 %s' % f)
@@ -159,8 +171,8 @@ P('|---|---|---|---|---|---|---|---|')
 worst = 0.0
 for mm in TAG:
     for arm in ARMS:
-        h4 = rate(os.path.join(FSC, 'frozen384', 'fsc_%s_%s.csv' % (mm, arm)))
-        h8 = rate(os.path.join(FSC, '384', 'fsc_%s_%s.csv' % (mm, arm)))
+        h4 = rate(os.path.join(RP('analysis', 'fsc_res', 'frozen384'), 'fsc_%s_%s.csv' % (mm, arm)))
+        h8 = rate(os.path.join(RP('analysis', 'fsc_res', '384'), 'fsc_%s_%s.csv' % (mm, arm)))
         a4 = agg[(mm, '4096', arm)][0]
         a8 = agg[(mm, '8192', arm)][0]
         d4 = a4 - h4[2] if h4 else float('nan')
@@ -201,8 +213,8 @@ freeze['movers'] = {'%s|%s' % (x[0], x[1]): round(x[2], 2) for x in movers}
 fre_hd = {}
 for mm in TAG:
     for arm in ARMS:
-        h4 = rate(os.path.join(FSC, 'frozen384', 'fsc_%s_%s.csv' % (mm, arm)))
-        h8 = rate(os.path.join(FSC, '384', 'fsc_%s_%s.csv' % (mm, arm)))
+        h4 = rate(os.path.join(RP('analysis', 'fsc_res', 'frozen384'), 'fsc_%s_%s.csv' % (mm, arm)))
+        h8 = rate(os.path.join(RP('analysis', 'fsc_res', '384'), 'fsc_%s_%s.csv' % (mm, arm)))
         if h4:
             fre_hd['%s|%s|4096' % (mm, arm)] = dict(hist=h4[2], live=round(agg[(mm, '4096', arm)][0], 1),
                                                    diff=round(agg[(mm, '4096', arm)][0] - h4[2], 2))

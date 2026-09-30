@@ -6,14 +6,26 @@
 结论前置：抽样是**固定种子**的，所有 n=150 的模型拿到**同一批 item**，
 且与全池的交集恰为 150 ⇒ 跨模型比较可用公共子集做同口径。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import csv
 import io
 import os
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-D = r'<WORKDIR>\PaperB\analysis\e2_newh20'
-OUT = r'<WORKDIR>\PaperB\analysis\work\out_v7c_subset.md'
+D = RP('analysis', 'e2_newh20')
+OUT = RP('analysis', 'work', 'out_v7c_subset.md')
 L = []
 
 
@@ -46,7 +58,7 @@ def cls(r):
 
 def path(model, ds, arm, pool=''):
     pre = 'nz__' if pool == 'nonzero' else ''
-    return os.path.join(D, '%se1_%s_%s_%s.csv' % (pre, model, ds, arm))
+    return os.path.join(RP('analysis', 'e2_newh20'), '%se1_%s_%s_%s.csv' % (pre, model, ds, arm))
 
 
 def rates(model, ds, arm, pool='', subset=None):

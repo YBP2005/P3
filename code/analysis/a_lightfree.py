@@ -16,6 +16,18 @@
   · AUC ≥ 0.65 ⇒ "无标注代理可作分诊信号"；0.55–0.65 记"弱"；<0.55 记"不成立"；
   · 换检测器后 AUC 变动 ≤0.05 ⇒ "对检测器选择稳健"。
 """
+
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# RP(*parts) = 作者树相对路径 -> 绝对路径（作者树上原样；放行树上查前缀映射表）；
+# NR(*parts) = **未随包发布**的作者侧路径（放行树上落到 _NOT_RELEASED/，使失败可见）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import csv
 import io
 import os
@@ -24,9 +36,9 @@ import sys
 import numpy as np
 
 sys.stdout.reconfigure(encoding='utf-8')
-HA = r'<WORKDIR>\PaperB\analysis\data\harvest_A'
-CORP = r'<WORKDIR>\PaperB\repro_github\data\derived\e2_pools\dense_results'
-OUT = r'<WORKDIR>\PaperB\analysis\work\a_lightfree_result.json'
+HA = NR('analysis', 'data', 'harvest_A')
+CORP = RP('repro_github', 'data', 'derived', 'e2_pools', 'dense_results')
+OUT = RP('analysis', 'work', 'a_lightfree_result.json')
 SCORE_MIN = 0.30
 NMS_IOU = 0.7
 
@@ -112,7 +124,7 @@ def auc(score, label):
 
 
 def load_corpus(ds='st_a'):
-    p = os.path.join(CORP, 'vlm_%s_base_whole.csv' % ds)
+    p = os.path.join(RP('repro_github', 'data', 'derived', 'e2_pools', 'dense_results'), 'vlm_%s_base_whole.csv' % ds)
     out = {}
     for r in csv.DictReader(io.open(p, encoding='utf-8-sig')):
         it = r['item']
@@ -159,10 +171,10 @@ def main():
     print('语料 st_a：%d 张有 gt/pred' % len(corp))
     runs = [
         ('YOLO 切片 tile256 (score≥%.2f)' % SCORE_MIN,
-         os.path.join(HA, 'gaps__boxes_st_a_test_ucf_tiles_full_s0_tile256_ms1024_iou0.7.npz')),
-        ('YOLO 切片 tile512', os.path.join(HA, 'gaps__boxes_st_a_test_ucf_tiles_full_s0_tile512_ms1024_iou0.7.npz')),
-        ('RetinaNet 整图', os.path.join(HA, 'rn__boxes_st_a_test_retinanet_whole_ms800.npz')),
-        ('RetinaNet tile256', os.path.join(HA, 'rn__boxes_st_a_test_retinanet_tile256_ms800.npz')),
+         NR('analysis', 'data', 'harvest_A', 'gaps__boxes_st_a_test_ucf_tiles_full_s0_tile256_ms1024_iou0.7.npz')),
+        ('YOLO 切片 tile512', NR('analysis', 'data', 'harvest_A', 'gaps__boxes_st_a_test_ucf_tiles_full_s0_tile512_ms1024_iou0.7.npz')),
+        ('RetinaNet 整图', NR('analysis', 'data', 'harvest_A', 'rn__boxes_st_a_test_retinanet_whole_ms800.npz')),
+        ('RetinaNet tile256', NR('analysis', 'data', 'harvest_A', 'rn__boxes_st_a_test_retinanet_tile256_ms800.npz')),
     ]
     allres = {}
     for name, path in runs:

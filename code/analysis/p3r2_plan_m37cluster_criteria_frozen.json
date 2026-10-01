@@ -1,0 +1,78 @@
+{
+  "round": "P3R2 / class-3 / §4 (hy4 #16)",
+  "frozen_at": "2026-09-29T00:00:00+08:00",
+  "frozen_by": "P3R2 施工代理（依 `_p3r2_experiment_plan.md` §4.2 逐条落成）",
+  "why_this_file": "hy4 #16 指控 31 单元嵌套在 6 knob x 4 域里，自由标签置换会反保守；现文只补了 leave-one-knob-out，其下沿 0.883 < 0.9。本件把簇级口径**跑前**写死。",
+  "question": "§7.3 的排序稳定性在**按 knob（或 knob x 域/构建）聚类**的重采样/置换下，下沿还 >= 0.80 吗？",
+  "what_already_exists": {
+    "iid_unit_bootstrap": "m37_ci_power.py::boot_ci() 为单元 i.i.d. 有放回；31@k4 = 0.939-0.996，36@k3 = 0.836-0.983",
+    "free_label_permutation": "m37_ci_power.py::perm_p() 为自由标签置换（rnd.shuffle(b)）；两套单元集的 p 都饱和在 5.0e-5",
+    "leave_one_knob_out": "冻结件 m37_ci_power_result.json 的 leave_one_knob_out 有 9 个键、字段只有 rho_36 ⇒ 是**朴素名字子组**、**36 单元**口径（方案 §4.1 第 2 条）",
+    "gap": "**从未**整体丢掉 detector threshold（12 单元）或 density regression（4 单元）；也从未做簇级置换/块 bootstrap"
+  },
+  "what_this_run_adds": "① 簇级（按 knob / 按 knob x 域）置换检验；② 按簇的块 bootstrap 95% 区间；③ 留一**簇**（真旋钮）极差；④ 与 9 个朴素子组的对账",
+  "deviation_declared": "① 本件只做**重采样结构**替换，0 次推理、0 新数据；② 不改 m37_ci_power.py 与任何冻结件；③ 簇标签由单元名的 knob 前缀机械解析（KNOB_OF_PREFIX 表写死在脚本里）；④ 36 单元口径下 tiling/density 的簇大小与 31 单元口径不同，**分列报，不混用**",
+  "design": {
+    "unit_sets": [
+      "31unit_k4（span_eq4 存在且 n>=4）",
+      "36unit_k3（全 36 单元）"
+    ],
+    "statistic": "Spearman(full-ladder span, deflated span)；deflation 三种：span_eq4 / span_drop_high / span_drop_low",
+    "clustering_a": {
+      "name": "six_knobs",
+      "expected_31_units_sizes": {
+        "detection_threshold": 12,
+        "density_regression": 4,
+        "output_contract": 2,
+        "pixel_budget": 6,
+        "prompt_family": 6,
+        "tiling": 1
+      },
+      "note": "方案 §4.2 criteria.clustering (a)"
+    },
+    "clustering_b": {
+      "name": "knob_x_domain",
+      "note": "方案 §4.2 criteria.clustering (b)；更细簇，实测单元名里可解析"
+    },
+    "permutation": {
+      "n_perm": 20000,
+      "enum_cap": 200000,
+      "tail": "p = (1 + #{perm_stat >= obs}) / (1 + N)",
+      "seed": 20260924
+    },
+    "block_bootstrap": {
+      "n_boot": 2000,
+      "resample": "按簇整块有放回",
+      "seed": 20260924
+    },
+    "deflation": [
+      "equal_count_k4",
+      "drop_high",
+      "drop_low"
+    ],
+    "starts": "n/a（0 次推理，无服务）"
+  },
+  "criteria": {
+    "pass": "**按 knob 聚类的置换 p < 0.05** 且 **按 knob 的块 bootstrap 95% 下沿 >= 0.80**",
+    "threshold_0.80_source": "补材 1154 行：'all far above the 0.8 threshold we would have accepted as evidence of instability'（F.10）",
+    "report_both_clusterings": "criteria.clustering 的 (a) 六旋钮 与 (b) knob x 域/构建 **两套都要报**",
+    "report_both_calibers": "leave-one-cluster-out 极差须**区分**'六个旋钮'与'九个朴素子组'两种口径（后者用于与现文 0.883-0.970 对账）",
+    "negative_controls": [
+      "i.i.d. bootstrap 必须**逐位复现**现文 31@k4 = 0.939-0.996 与 36@k3 = 0.836-0.983",
+      "自由标签置换必须复现 p = 4.999750012499375e-05",
+      "--selftest：打乱簇标签后簇级检验必须失去显著性"
+    ],
+    "multiple_comparison": "12 个（3 deflation x 2 单元集 x 2 聚类）置换 p 做 **Holm** 校正，原 p 与校正 p 并印",
+    "p_not_significant_note": "簇数只有 2~12，功效天然低；**p 不显著 != 排序不稳**，区间必须并印",
+    "on_fail": "见方案 §4.8：不得因 p 变大就撤回 ordering 主张（§7.3 已把'可分结构'撤回、只主张 ordering）"
+  },
+  "what_result_would_change": {
+    "lower_bound_below_0.80": "§7.3 L757-759 删 i.i.d. 区间、换 clustered 口径；L775-778 加限定；§8.2 L892-893 补半句；F.7 加一段（+180 词）",
+    "lower_bound_ge_0.80_but_p_gt_0.05": "§7.3 保留 ordering 主张，只把区间来源换成簇级口径",
+    "both_pass": "§7.3 只把区间来源注明为 clustered（净 +6 词，删 i.i.d. 区间可回收 -8 词）"
+  },
+  "inputs": {
+    "equalcount36_result.json": "bd70867b1453cc5e3ceeb97572d26eea",
+    "m37_ci_power_result.json": "c4961d58d9450e3a12223de2e81a4974"
+  }
+}

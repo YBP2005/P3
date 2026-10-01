@@ -1,0 +1,2247 @@
+{
+  "purpose": "P3R2 §4（hy4 #16）：把 §7.3 排序稳定性的重采样结构从 i.i.d. 换成**按 knob 聚类**，给簇级置换 p、块 bootstrap 95% 区间与留一簇极差。0 次推理 / 0 新数据。",
+  "inputs": {
+    "equalcount36": "equalcount36_result.json",
+    "equalcount36_md5": "bd70867b1453cc5e3ceeb97572d26eea",
+    "m37_ci_power_result": "m37_ci_power_result.json",
+    "m37_ci_power_result_md5": "c4961d58d9450e3a12223de2e81a4974",
+    "criteria": "p3r2_plan_m37cluster_criteria_frozen.json",
+    "criteria_md5": "4cf662f155cf87016ff505dbb426a8b1"
+  },
+  "methods": {
+    "iid_bootstrap": "★ 逐字照抄 m37_ci_power.py::boot_ci()（单元 i.i.d. 有放回，2000 次，seed 20260924）",
+    "free_permutation": "★ 逐字照抄 m37_ci_power.py::perm_p()（自由标签置换，20000 次，seed 20260924）",
+    "cluster_permutation_literal": "方案 §4.3 字面口径（在簇标签层置换、统计量 = Spearman(full, deflated)）：**实测退化** —— 全局 Spearman 只依赖 (x,y) 配对集合，与单元顺序/分组无关，故每次置换统计量与观测逐位相同，p 恒为 1。仍照跑并落盘（见 degeneracy）。",
+    "cluster_permutation_used": "★ 可用替代：统计量 = between_rank_r2（簇间秩协方差标准化），置换 = 打乱\"单元 -> 簇\"标签映射（生成随机划分）。标签多重集排列数 <= 200000 且簇数 <= 8 时完整枚举，否则蒙特卡洛 20000 次；p=(1+#{>=obs})/(1+N)",
+    "block_bootstrap": "按簇整块有放回重抽 2000 次，seed 20260924，取 2.5/97.5 分位",
+    "leave_one_cluster_out": "整簇丢掉后重算 rho 取极差",
+    "deflation": "x = full-ladder span；31@k4 用 span_eq4/drop_high/drop_low；36@k3 用 span_eq/drop_high/drop_low"
+  },
+  "degeneracy": {
+    "literal_cluster_permutation_invariant": true,
+    "evidence": "200 次随机单元顺序置换下 distinct Spearman = 1；完整枚举 720 种块置换 distinct 统计量 = 1",
+    "enumeration_720": {
+      "obs": 0.9820813939117907,
+      "p": 1.0,
+      "n_draws": 720,
+      "n_clusters": 6,
+      "method": "full_enumeration",
+      "degenerate": true,
+      "distinct_stat_values": 1,
+      "seed": 20260924,
+      "note": "统计量只依赖配对集合 ⇒ 期望 distinct_stat_values == 1（退化）"
+    },
+    "implication": "方案 §4.2 的判据\"按 knob 聚类的置换 p < 0.05\"若照 §4.3 字面实现则**不可评**（p 恒为 1 是数学必然，不是功效问题）。本件改用对簇结构有依赖的 between_rank_r2，并把这一条作为**需要上级拍板**的设计偏离上报。"
+  },
+  "clustering": {
+    "a_six_knobs": {
+      "order": [
+        "detection_threshold",
+        "density_regression",
+        "output_contract",
+        "pixel_budget",
+        "prompt_family",
+        "tiling"
+      ],
+      "sizes_31": {
+        "detection_threshold": 12,
+        "density_regression": 4,
+        "output_contract": 2,
+        "pixel_budget": 6,
+        "prompt_family": 6,
+        "tiling": 1
+      },
+      "sizes_36": {
+        "detection_threshold": 12,
+        "density_regression": 4,
+        "output_contract": 2,
+        "pixel_budget": 6,
+        "prompt_family": 6,
+        "tiling": 6
+      }
+    },
+    "b_knob_x_domain": {
+      "note": "knob x 域/构建；逐单元标签见 cluster_labels"
+    }
+  },
+  "cluster_labels": {
+    "31unit_k4": {
+      "a": {
+        "VLM·output contract / ivl": "output_contract",
+        "VLM·output contract / q32": "output_contract",
+        "VLM·pixel budget / ivl / st_a": "pixel_budget",
+        "VLM·pixel budget / ivl / ucf": "pixel_budget",
+        "VLM·pixel budget / ivl / visdrone": "pixel_budget",
+        "VLM·pixel budget / q32 / st_a": "pixel_budget",
+        "VLM·pixel budget / q32 / ucf": "pixel_budget",
+        "VLM·pixel budget / q32 / visdrone": "pixel_budget",
+        "VLM·prompt family / IVL / ucf / base": "prompt_family",
+        "VLM·prompt family / IVL / ucf / over": "prompt_family",
+        "VLM·prompt family / IVL / ucf / under": "prompt_family",
+        "VLM·prompt family / Qwen32B / ucf / base": "prompt_family",
+        "VLM·prompt family / Qwen32B / ucf / over": "prompt_family",
+        "VLM·prompt family / Qwen32B / ucf / under": "prompt_family",
+        "VLM·tiling / Qwen32B / ucf / base": "tiling",
+        "density·CSRNet / ladder": "density_regression",
+        "density·CSRNet / st": "density_regression",
+        "density·official DM-Count / st_a": "density_regression",
+        "density·official DM-Count / ucf": "density_regression",
+        "det·in-domain(micro)/BBBC005 (full grid)": "detection_threshold",
+        "det·in-domain(micro)/BBBC005 / tau@1024": "detection_threshold",
+        "det·in-domain(micro)/BBBC005 / tau@1536": "detection_threshold",
+        "det·in-domain(micro)/BBBC005 / tau@640": "detection_threshold",
+        "det·in-domain/VisDrone (full grid)": "detection_threshold",
+        "det·in-domain/VisDrone / tau@1024": "detection_threshold",
+        "det·in-domain/VisDrone / tau@1536": "detection_threshold",
+        "det·in-domain/VisDrone / tau@640": "detection_threshold",
+        "det·zero-shot COCO (full grid)": "detection_threshold",
+        "det·zero-shot COCO / tau@1024": "detection_threshold",
+        "det·zero-shot COCO / tau@1536": "detection_threshold",
+        "det·zero-shot COCO / tau@640": "detection_threshold"
+      },
+      "b": {
+        "VLM·output contract / ivl": "VLM·output contract|ivl",
+        "VLM·output contract / q32": "VLM·output contract|q32",
+        "VLM·pixel budget / ivl / st_a": "VLM·pixel budget|ivl",
+        "VLM·pixel budget / ivl / ucf": "VLM·pixel budget|ivl",
+        "VLM·pixel budget / ivl / visdrone": "VLM·pixel budget|ivl",
+        "VLM·pixel budget / q32 / st_a": "VLM·pixel budget|q32",
+        "VLM·pixel budget / q32 / ucf": "VLM·pixel budget|q32",
+        "VLM·pixel budget / q32 / visdrone": "VLM·pixel budget|q32",
+        "VLM·prompt family / IVL / ucf / base": "VLM·prompt family|IVL",
+        "VLM·prompt family / IVL / ucf / over": "VLM·prompt family|IVL",
+        "VLM·prompt family / IVL / ucf / under": "VLM·prompt family|IVL",
+        "VLM·prompt family / Qwen32B / ucf / base": "VLM·prompt family|Qwen32B",
+        "VLM·prompt family / Qwen32B / ucf / over": "VLM·prompt family|Qwen32B",
+        "VLM·prompt family / Qwen32B / ucf / under": "VLM·prompt family|Qwen32B",
+        "VLM·tiling / Qwen32B / ucf / base": "VLM·tiling|Qwen32B",
+        "density·CSRNet / ladder": "density·CSRNet|ladder",
+        "density·CSRNet / st": "density·CSRNet|st",
+        "density·official DM-Count / st_a": "density·official DM-Count|st_a",
+        "density·official DM-Count / ucf": "density·official DM-Count|ucf",
+        "det·in-domain(micro)/BBBC005 (full grid)": "det·in-domain(micro)|BBBC005 (full grid)",
+        "det·in-domain(micro)/BBBC005 / tau@1024": "det·in-domain(micro)|BBBC005",
+        "det·in-domain(micro)/BBBC005 / tau@1536": "det·in-domain(micro)|BBBC005",
+        "det·in-domain(micro)/BBBC005 / tau@640": "det·in-domain(micro)|BBBC005",
+        "det·in-domain/VisDrone (full grid)": "det·in-domain|VisDrone (full grid)",
+        "det·in-domain/VisDrone / tau@1024": "det·in-domain|VisDrone",
+        "det·in-domain/VisDrone / tau@1536": "det·in-domain|VisDrone",
+        "det·in-domain/VisDrone / tau@640": "det·in-domain|VisDrone",
+        "det·zero-shot COCO (full grid)": "det·zero-shot COCO (full grid)|(full grid)",
+        "det·zero-shot COCO / tau@1024": "det·zero-shot COCO|tau@1024",
+        "det·zero-shot COCO / tau@1536": "det·zero-shot COCO|tau@1536",
+        "det·zero-shot COCO / tau@640": "det·zero-shot COCO|tau@640"
+      }
+    },
+    "36unit_k3": {
+      "a": {
+        "VLM·output contract / ivl": "output_contract",
+        "VLM·output contract / q32": "output_contract",
+        "VLM·pixel budget / ivl / st_a": "pixel_budget",
+        "VLM·pixel budget / ivl / ucf": "pixel_budget",
+        "VLM·pixel budget / ivl / visdrone": "pixel_budget",
+        "VLM·pixel budget / q32 / st_a": "pixel_budget",
+        "VLM·pixel budget / q32 / ucf": "pixel_budget",
+        "VLM·pixel budget / q32 / visdrone": "pixel_budget",
+        "VLM·prompt family / IVL / ucf / base": "prompt_family",
+        "VLM·prompt family / IVL / ucf / over": "prompt_family",
+        "VLM·prompt family / IVL / ucf / under": "prompt_family",
+        "VLM·prompt family / Qwen32B / ucf / base": "prompt_family",
+        "VLM·prompt family / Qwen32B / ucf / over": "prompt_family",
+        "VLM·prompt family / Qwen32B / ucf / under": "prompt_family",
+        "VLM·tiling / Qwen32B / ucf / base": "tiling",
+        "VLM·tiling / Qwen32B(ctile) / ucf / base": "tiling",
+        "VLM·tiling / Qwen32B(ctile) / ucf / choice": "tiling",
+        "VLM·tiling / Qwen32B(ctile) / ucf / forbid0": "tiling",
+        "VLM·tiling / Qwen32B(ctile) / ucf / range": "tiling",
+        "VLM·tiling / Qwen8B(ctile) / ucf / base": "tiling",
+        "density·CSRNet / ladder": "density_regression",
+        "density·CSRNet / st": "density_regression",
+        "density·official DM-Count / st_a": "density_regression",
+        "density·official DM-Count / ucf": "density_regression",
+        "det·in-domain(micro)/BBBC005 (full grid)": "detection_threshold",
+        "det·in-domain(micro)/BBBC005 / tau@1024": "detection_threshold",
+        "det·in-domain(micro)/BBBC005 / tau@1536": "detection_threshold",
+        "det·in-domain(micro)/BBBC005 / tau@640": "detection_threshold",
+        "det·in-domain/VisDrone (full grid)": "detection_threshold",
+        "det·in-domain/VisDrone / tau@1024": "detection_threshold",
+        "det·in-domain/VisDrone / tau@1536": "detection_threshold",
+        "det·in-domain/VisDrone / tau@640": "detection_threshold",
+        "det·zero-shot COCO (full grid)": "detection_threshold",
+        "det·zero-shot COCO / tau@1024": "detection_threshold",
+        "det·zero-shot COCO / tau@1536": "detection_threshold",
+        "det·zero-shot COCO / tau@640": "detection_threshold"
+      },
+      "b": {
+        "VLM·output contract / ivl": "VLM·output contract|ivl",
+        "VLM·output contract / q32": "VLM·output contract|q32",
+        "VLM·pixel budget / ivl / st_a": "VLM·pixel budget|ivl",
+        "VLM·pixel budget / ivl / ucf": "VLM·pixel budget|ivl",
+        "VLM·pixel budget / ivl / visdrone": "VLM·pixel budget|ivl",
+        "VLM·pixel budget / q32 / st_a": "VLM·pixel budget|q32",
+        "VLM·pixel budget / q32 / ucf": "VLM·pixel budget|q32",
+        "VLM·pixel budget / q32 / visdrone": "VLM·pixel budget|q32",
+        "VLM·prompt family / IVL / ucf / base": "VLM·prompt family|IVL",
+        "VLM·prompt family / IVL / ucf / over": "VLM·prompt family|IVL",
+        "VLM·prompt family / IVL / ucf / under": "VLM·prompt family|IVL",
+        "VLM·prompt family / Qwen32B / ucf / base": "VLM·prompt family|Qwen32B",
+        "VLM·prompt family / Qwen32B / ucf / over": "VLM·prompt family|Qwen32B",
+        "VLM·prompt family / Qwen32B / ucf / under": "VLM·prompt family|Qwen32B",
+        "VLM·tiling / Qwen32B / ucf / base": "VLM·tiling|Qwen32B",
+        "VLM·tiling / Qwen32B(ctile) / ucf / base": "VLM·tiling|Qwen32B(ctile)",
+        "VLM·tiling / Qwen32B(ctile) / ucf / choice": "VLM·tiling|Qwen32B(ctile)",
+        "VLM·tiling / Qwen32B(ctile) / ucf / forbid0": "VLM·tiling|Qwen32B(ctile)",
+        "VLM·tiling / Qwen32B(ctile) / ucf / range": "VLM·tiling|Qwen32B(ctile)",
+        "VLM·tiling / Qwen8B(ctile) / ucf / base": "VLM·tiling|Qwen8B(ctile)",
+        "density·CSRNet / ladder": "density·CSRNet|ladder",
+        "density·CSRNet / st": "density·CSRNet|st",
+        "density·official DM-Count / st_a": "density·official DM-Count|st_a",
+        "density·official DM-Count / ucf": "density·official DM-Count|ucf",
+        "det·in-domain(micro)/BBBC005 (full grid)": "det·in-domain(micro)|BBBC005 (full grid)",
+        "det·in-domain(micro)/BBBC005 / tau@1024": "det·in-domain(micro)|BBBC005",
+        "det·in-domain(micro)/BBBC005 / tau@1536": "det·in-domain(micro)|BBBC005",
+        "det·in-domain(micro)/BBBC005 / tau@640": "det·in-domain(micro)|BBBC005",
+        "det·in-domain/VisDrone (full grid)": "det·in-domain|VisDrone (full grid)",
+        "det·in-domain/VisDrone / tau@1024": "det·in-domain|VisDrone",
+        "det·in-domain/VisDrone / tau@1536": "det·in-domain|VisDrone",
+        "det·in-domain/VisDrone / tau@640": "det·in-domain|VisDrone",
+        "det·zero-shot COCO (full grid)": "det·zero-shot COCO (full grid)|(full grid)",
+        "det·zero-shot COCO / tau@1024": "det·zero-shot COCO|tau@1024",
+        "det·zero-shot COCO / tau@1536": "det·zero-shot COCO|tau@1536",
+        "det·zero-shot COCO / tau@640": "det·zero-shot COCO|tau@640"
+      }
+    }
+  },
+  "negative_controls": {
+    "31unit_k4": {
+      "rho": 0.9820813939117907,
+      "iid": {
+        "obs": 0.9820813939117907,
+        "p025": 0.9390905416017907,
+        "p975": 0.995845707414122,
+        "method": "iid_unit_bootstrap",
+        "n_boot": 2000,
+        "seed": 20260924
+      },
+      "perm": {
+        "obs": 0.9820813939117907,
+        "p": 4.999750012499375e-05,
+        "n_perm": 20000,
+        "seed": 20260924,
+        "method": "free_label_permutation"
+      }
+    },
+    "36unit_k3": {
+      "rho": 0.9324881740039196,
+      "iid": {
+        "obs": 0.9324881740039196,
+        "p025": 0.8362896474108009,
+        "p975": 0.9834305991652087,
+        "method": "iid_unit_bootstrap",
+        "n_boot": 2000,
+        "seed": 20260924
+      },
+      "perm": {
+        "obs": 0.9324881740039196,
+        "p": 4.999750012499375e-05,
+        "n_perm": 20000,
+        "seed": 20260924,
+        "method": "free_label_permutation"
+      }
+    }
+  },
+  "readings": {
+    "31unit_k4": {
+      "equal_count_k4": {
+        "a": {
+          "perm": {
+            "obs": 0.6202238160363377,
+            "p": 9.99950002499875e-05,
+            "n_draws": 20000,
+            "n_clusters": 6,
+            "method": "monte_carlo",
+            "seed": 20260924,
+            "min_attainable_p": 5e-05,
+            "cluster_sizes": [
+              1,
+              2,
+              4,
+              6,
+              6,
+              12
+            ],
+            "statistic": "between_rank_r2 = sum_c n_c*mean_c(rx)*mean_c(ry) / (n*sd(rx)*sd(ry))"
+          },
+          "block_boot": {
+            "obs": 0.9820813939117907,
+            "p025": 0.913086768687556,
+            "p975": 0.9939790005040757,
+            "n_clusters": 6,
+            "cluster_sizes": [
+              1,
+              2,
+              4,
+              6,
+              6,
+              12
+            ],
+            "n_boot": 2000,
+            "seed": 20260924
+          },
+          "lo_cluster": {
+            "rows": [
+              {
+                "cluster": "density_regression",
+                "n_dropped": 4,
+                "rho": 0.977153263861468
+              },
+              {
+                "cluster": "detection_threshold",
+                "n_dropped": 12,
+                "rho": 0.9912280701754383
+              },
+              {
+                "cluster": "output_contract",
+                "n_dropped": 2,
+                "rho": 0.9791098113462597
+              },
+              {
+                "cluster": "pixel_budget",
+                "n_dropped": 6,
+                "rho": 0.9673100783702008
+              },
+              {
+                "cluster": "prompt_family",
+                "n_dropped": 6,
+                "rho": 0.9751069402342242
+              },
+              {
+                "cluster": "tiling",
+                "n_dropped": 1,
+                "rho": 0.9846709367042725
+              }
+            ],
+            "lo": 0.9673100783702008,
+            "hi": 0.9912280701754383,
+            "n_clusters": 6
+          }
+        },
+        "b": {
+          "perm": {
+            "obs": 0.9006956392179196,
+            "p": 0.0007499625018749063,
+            "n_draws": 20000,
+            "n_clusters": 19,
+            "method": "monte_carlo",
+            "seed": 20260924,
+            "min_attainable_p": 5e-05,
+            "cluster_sizes": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3
+            ],
+            "statistic": "between_rank_r2 = sum_c n_c*mean_c(rx)*mean_c(ry) / (n*sd(rx)*sd(ry))"
+          },
+          "block_boot": {
+            "obs": 0.9820813939117907,
+            "p025": 0.9238429676990709,
+            "p975": 0.9963750985027583,
+            "n_clusters": 19,
+            "cluster_sizes": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3
+            ],
+            "n_boot": 2000,
+            "seed": 20260924
+          },
+          "lo_cluster": {
+            "rows": [
+              {
+                "cluster": [
+                  "VLM·output contract",
+                  "ivl"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9811234357458546
+              },
+              {
+                "cluster": [
+                  "VLM·output contract",
+                  "q32"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9802347369815922
+              },
+              {
+                "cluster": [
+                  "VLM·pixel budget",
+                  "ivl"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9762131783075962
+              },
+              {
+                "cluster": [
+                  "VLM·pixel budget",
+                  "q32"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9767602296823834
+              },
+              {
+                "cluster": [
+                  "VLM·prompt family",
+                  "IVL"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9789726013196208
+              },
+              {
+                "cluster": [
+                  "VLM·prompt family",
+                  "Qwen32B"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9789851016911326
+              },
+              {
+                "cluster": [
+                  "VLM·tiling",
+                  "Qwen32B"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9846709367042725
+              },
+              {
+                "cluster": [
+                  "density·CSRNet",
+                  "ladder"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9806790863637234
+              },
+              {
+                "cluster": [
+                  "density·CSRNet",
+                  "st"
+                ],
+                "n_dropped": 1,
+                "rho": 0.980234736981592
+              },
+              {
+                "cluster": [
+                  "density·official DM-Count",
+                  "st_a"
+                ],
+                "n_dropped": 1,
+                "rho": 0.981559109816268
+              },
+              {
+                "cluster": [
+                  "density·official DM-Count",
+                  "ucf"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9828927499111271
+              },
+              {
+                "cluster": [
+                  "det·in-domain",
+                  "VisDrone"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9811584179008538
+              },
+              {
+                "cluster": [
+                  "det·in-domain",
+                  "VisDrone (full grid)"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9815677851279861
+              },
+              {
+                "cluster": [
+                  "det·in-domain(micro)",
+                  "BBBC005"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9852216748768474
+              },
+              {
+                "cluster": [
+                  "det·in-domain(micro)",
+                  "BBBC005 (full grid)"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9906562847608456
+              },
+              {
+                "cluster": [
+                  "det·zero-shot COCO",
+                  "tau@1024"
+                ],
+                "n_dropped": 1,
+                "rho": 0.981559109816268
+              },
+              {
+                "cluster": [
+                  "det·zero-shot COCO",
+                  "tau@1536"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9846709367042725
+              },
+              {
+                "cluster": [
+                  "det·zero-shot COCO",
+                  "tau@640"
+                ],
+                "n_dropped": 1,
+                "rho": 0.980225469721409
+              },
+              {
+                "cluster": [
+                  "det·zero-shot COCO (full grid)",
+                  "(full grid)"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9842263900059861
+              }
+            ],
+            "lo": 0.9762131783075962,
+            "hi": 0.9906562847608456,
+            "n_clusters": 19
+          }
+        }
+      },
+      "drop_high": {
+        "a": {
+          "perm": {
+            "obs": 0.6260711797115827,
+            "p": 4.999750012499375e-05,
+            "n_draws": 20000,
+            "n_clusters": 6,
+            "method": "monte_carlo",
+            "seed": 20260924,
+            "min_attainable_p": 5e-05,
+            "cluster_sizes": [
+              1,
+              2,
+              4,
+              6,
+              6,
+              12
+            ],
+            "statistic": "between_rank_r2 = sum_c n_c*mean_c(rx)*mean_c(ry) / (n*sd(rx)*sd(ry))"
+          },
+          "block_boot": {
+            "obs": 0.9873180871525017,
+            "p025": 0.8833333333333333,
+            "p975": 0.999222080702779,
+            "n_clusters": 6,
+            "cluster_sizes": [
+              1,
+              2,
+              4,
+              6,
+              6,
+              12
+            ],
+            "n_boot": 2000,
+            "seed": 20260924
+          },
+          "lo_cluster": {
+            "rows": [
+              {
+                "cluster": "density_regression",
+                "n_dropped": 4,
+                "rho": 0.9856873535021795
+              },
+              {
+                "cluster": "detection_threshold",
+                "n_dropped": 12,
+                "rho": 0.982456140350877
+              },
+              {
+                "cluster": "output_contract",
+                "n_dropped": 2,
+                "rho": 0.9948463828997908
+              },
+              {
+                "cluster": "pixel_budget",
+                "n_dropped": 6,
+                "rho": 0.9757750034792478
+              },
+              {
+                "cluster": "prompt_family",
+                "n_dropped": 6,
+                "rho": 0.9858392493248528
+              },
+              {
+                "cluster": "tiling",
+                "n_dropped": 1,
+                "rho": 0.9882273102905633
+              }
+            ],
+            "lo": 0.9757750034792478,
+            "hi": 0.9948463828997908,
+            "n_clusters": 6
+          }
+        },
+        "b": {
+          "perm": {
+            "obs": 0.9067446361233451,
+            "p": 0.0006499675016249188,
+            "n_draws": 20000,
+            "n_clusters": 19,
+            "method": "monte_carlo",
+            "seed": 20260924,
+            "min_attainable_p": 5e-05,
+            "cluster_sizes": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3
+            ],
+            "statistic": "between_rank_r2 = sum_c n_c*mean_c(rx)*mean_c(ry) / (n*sd(rx)*sd(ry))"
+          },
+          "block_boot": {
+            "obs": 0.9873180871525017,
+            "p025": 0.9395649084448812,
+            "p975": 0.9996208481800807,
+            "n_clusters": 19,
+            "cluster_sizes": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3
+            ],
+            "n_boot": 2000,
+            "seed": 20260924
+          },
+          "lo_cluster": {
+            "rows": [
+              {
+                "cluster": [
+                  "VLM·output contract",
+                  "ivl"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9886773752420869
+              },
+              {
+                "cluster": [
+                  "VLM·output contract",
+                  "q32"
+                ],
+                "n_dropped": 1,
+                "rho": 0.995342615974056
+              },
+              {
+                "cluster": [
+                  "VLM·pixel budget",
+                  "ivl"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9827777948050418
+              },
+              {
+                "cluster": [
+                  "VLM·pixel budget",
+                  "q32"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9827777948050418
+              },
+              {
+                "cluster": [
+                  "VLM·prompt family",
+                  "IVL"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9833442344820864
+              },
+              {
+                "cluster": [
+                  "VLM·prompt family",
+                  "Qwen32B"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9899082269540741
+              },
+              {
+                "cluster": [
+                  "VLM·tiling",
+                  "Qwen32B"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9882273102905633
+              },
+              {
+                "cluster": [
+                  "density·CSRNet",
+                  "ladder"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9860112789492991
+              },
+              {
+                "cluster": [
+                  "density·CSRNet",
+                  "st"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9860112789492991
+              },
+              {
+                "cluster": [
+                  "density·official DM-Count",
+                  "st_a"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9882273102905633
+              },
+              {
+                "cluster": [
+                  "density·official DM-Count",
+                  "ucf"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9882273102905633
+              },
+              {
+                "cluster": [
+                  "det·in-domain",
+                  "VisDrone"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9893552300804763
+              },
+              {
+                "cluster": [
+                  "det·in-domain",
+                  "VisDrone (full grid)"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9886773752420869
+              },
+              {
+                "cluster": [
+                  "det·in-domain(micro)",
+                  "BBBC005"
+                ],
+                "n_dropped": 3,
+                "rho": 0.985769020251779
+              },
+              {
+                "cluster": [
+                  "det·in-domain(micro)",
+                  "BBBC005 (full grid)"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9862068965517243
+              },
+              {
+                "cluster": [
+                  "det·zero-shot COCO",
+                  "tau@1024"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9860045767991316
+              },
+              {
+                "cluster": [
+                  "det·zero-shot COCO",
+                  "tau@1536"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9860045767991316
+              },
+              {
+                "cluster": [
+                  "det·zero-shot COCO",
+                  "tau@640"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9860045767991316
+              },
+              {
+                "cluster": [
+                  "det·zero-shot COCO (full grid)",
+                  "(full grid)"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9860045767991316
+              }
+            ],
+            "lo": 0.9827777948050418,
+            "hi": 0.995342615974056,
+            "n_clusters": 19
+          }
+        }
+      },
+      "drop_low": {
+        "a": {
+          "perm": {
+            "obs": 0.6379003292155269,
+            "p": 4.999750012499375e-05,
+            "n_draws": 20000,
+            "n_clusters": 6,
+            "method": "monte_carlo",
+            "seed": 20260924,
+            "min_attainable_p": 5e-05,
+            "cluster_sizes": [
+              1,
+              2,
+              4,
+              6,
+              6,
+              12
+            ],
+            "statistic": "between_rank_r2 = sum_c n_c*mean_c(rx)*mean_c(ry) / (n*sd(rx)*sd(ry))"
+          },
+          "block_boot": {
+            "obs": 0.9824842164687687,
+            "p025": 0.9,
+            "p975": 0.9940062212442895,
+            "n_clusters": 6,
+            "cluster_sizes": [
+              1,
+              2,
+              4,
+              6,
+              6,
+              12
+            ],
+            "n_boot": 2000,
+            "seed": 20260924
+          },
+          "lo_cluster": {
+            "rows": [
+              {
+                "cluster": "density_regression",
+                "n_dropped": 4,
+                "rho": 0.9789819973559061
+              },
+              {
+                "cluster": "detection_threshold",
+                "n_dropped": 12,
+                "rho": 0.9842105263157893
+              },
+              {
+                "cluster": "output_contract",
+                "n_dropped": 2,
+                "rho": 0.9864863292619775
+              },
+              {
+                "cluster": "pixel_budget",
+                "n_dropped": 6,
+                "rho": 0.9680796170164778
+              },
+              {
+                "cluster": "prompt_family",
+                "n_dropped": 6,
+                "rho": 0.9835394688054321
+              },
+              {
+                "cluster": "tiling",
+                "n_dropped": 1,
+                "rho": 0.9820036565145546
+              }
+            ],
+            "lo": 0.9680796170164778,
+            "hi": 0.9864863292619775,
+            "n_clusters": 6
+          }
+        },
+        "b": {
+          "perm": {
+            "obs": 0.9114494114942323,
+            "p": 0.0002999850007499625,
+            "n_draws": 20000,
+            "n_clusters": 19,
+            "method": "monte_carlo",
+            "seed": 20260924,
+            "min_attainable_p": 5e-05,
+            "cluster_sizes": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3
+            ],
+            "statistic": "between_rank_r2 = sum_c n_c*mean_c(rx)*mean_c(ry) / (n*sd(rx)*sd(ry))"
+          },
+          "block_boot": {
+            "obs": 0.9824842164687687,
+            "p025": 0.9413929949139382,
+            "p975": 0.9944158110000149,
+            "n_clusters": 19,
+            "cluster_sizes": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3
+            ],
+            "n_boot": 2000,
+            "seed": 20260924
+          },
+          "lo_cluster": {
+            "rows": [
+              {
+                "cluster": [
+                  "VLM·output contract",
+                  "ivl"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9842338814207742
+              },
+              {
+                "cluster": [
+                  "VLM·output contract",
+                  "q32"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9864556283314303
+              },
+              {
+                "cluster": [
+                  "VLM·pixel budget",
+                  "ivl"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9767602296823835
+              },
+              {
+                "cluster": [
+                  "VLM·pixel budget",
+                  "q32"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9773072810571706
+              },
+              {
+                "cluster": [
+                  "VLM·prompt family",
+                  "IVL"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9800655096102372
+              },
+              {
+                "cluster": [
+                  "VLM·prompt family",
+                  "Qwen32B"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9844466643226034
+              },
+              {
+                "cluster": [
+                  "VLM·tiling",
+                  "Qwen32B"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9820036565145546
+              },
+              {
+                "cluster": [
+                  "density·CSRNet",
+                  "ladder"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9811234357458553
+              },
+              {
+                "cluster": [
+                  "density·CSRNet",
+                  "st"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9806790863637239
+              },
+              {
+                "cluster": [
+                  "density·official DM-Count",
+                  "st_a"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9815591098162683
+              },
+              {
+                "cluster": [
+                  "density·official DM-Count",
+                  "ucf"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9837818433077
+              },
+              {
+                "cluster": [
+                  "det·in-domain",
+                  "VisDrone"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9844371427727027
+              },
+              {
+                "cluster": [
+                  "det·in-domain",
+                  "VisDrone (full grid)"
+                ],
+                "n_dropped": 1,
+                "rho": 0.982456483892249
+              },
+              {
+                "cluster": [
+                  "det·in-domain(micro)",
+                  "BBBC005"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9835796387520527
+              },
+              {
+                "cluster": [
+                  "det·in-domain(micro)",
+                  "BBBC005 (full grid)"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9822024471635152
+              },
+              {
+                "cluster": [
+                  "det·zero-shot COCO",
+                  "tau@1024"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9811145631179817
+              },
+              {
+                "cluster": [
+                  "det·zero-shot COCO",
+                  "tau@1536"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9820036565145543
+              },
+              {
+                "cluster": [
+                  "det·zero-shot COCO",
+                  "tau@640"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9811145631179817
+              },
+              {
+                "cluster": [
+                  "det·zero-shot COCO (full grid)",
+                  "(full grid)"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9837818433077
+              }
+            ],
+            "lo": 0.9767602296823835,
+            "hi": 0.9864556283314303,
+            "n_clusters": 19
+          }
+        }
+      }
+    },
+    "36unit_k3": {
+      "equal_count_k3": {
+        "a": {
+          "perm": {
+            "obs": 0.5103503024489946,
+            "p": 0.0002999850007499625,
+            "n_draws": 20000,
+            "n_clusters": 6,
+            "method": "monte_carlo",
+            "seed": 20260924,
+            "min_attainable_p": 5e-05,
+            "cluster_sizes": [
+              2,
+              4,
+              6,
+              6,
+              6,
+              12
+            ],
+            "statistic": "between_rank_r2 = sum_c n_c*mean_c(rx)*mean_c(ry) / (n*sd(rx)*sd(ry))"
+          },
+          "block_boot": {
+            "obs": 0.9324881740039196,
+            "p025": 0.710657876788958,
+            "p975": 0.9982162824921461,
+            "n_clusters": 6,
+            "cluster_sizes": [
+              2,
+              4,
+              6,
+              6,
+              6,
+              12
+            ],
+            "n_boot": 2000,
+            "seed": 20260924
+          },
+          "lo_cluster": {
+            "rows": [
+              {
+                "cluster": "density_regression",
+                "n_dropped": 4,
+                "rho": 0.9049855789469214
+              },
+              {
+                "cluster": "detection_threshold",
+                "n_dropped": 12,
+                "rho": 0.9443478260869566
+              },
+              {
+                "cluster": "output_contract",
+                "n_dropped": 2,
+                "rho": 0.9391167668848157
+              },
+              {
+                "cluster": "pixel_budget",
+                "n_dropped": 6,
+                "rho": 0.8832101091092615
+              },
+              {
+                "cluster": "prompt_family",
+                "n_dropped": 6,
+                "rho": 0.9700428478334033
+              },
+              {
+                "cluster": "tiling",
+                "n_dropped": 6,
+                "rho": 0.9277689593236192
+              }
+            ],
+            "lo": 0.8832101091092615,
+            "hi": 0.9700428478334033,
+            "n_clusters": 6
+          }
+        },
+        "b": {
+          "perm": {
+            "obs": 0.8382993345972957,
+            "p": 0.0004999750012499375,
+            "n_draws": 20000,
+            "n_clusters": 21,
+            "method": "monte_carlo",
+            "seed": 20260924,
+            "min_attainable_p": 5e-05,
+            "cluster_sizes": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              4
+            ],
+            "statistic": "between_rank_r2 = sum_c n_c*mean_c(rx)*mean_c(ry) / (n*sd(rx)*sd(ry))"
+          },
+          "block_boot": {
+            "obs": 0.9324881740039196,
+            "p025": 0.785734102665427,
+            "p975": 0.9918515211327148,
+            "n_clusters": 21,
+            "cluster_sizes": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              4
+            ],
+            "n_boot": 2000,
+            "seed": 20260924
+          },
+          "lo_cluster": {
+            "rows": [
+              {
+                "cluster": [
+                  "VLM·output contract",
+                  "ivl"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9382999858520124
+              },
+              {
+                "cluster": [
+                  "VLM·output contract",
+                  "q32"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9327032069325252
+              },
+              {
+                "cluster": [
+                  "VLM·pixel budget",
+                  "ivl"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9123147348994957
+              },
+              {
+                "cluster": [
+                  "VLM·pixel budget",
+                  "q32"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9123147348994957
+              },
+              {
+                "cluster": [
+                  "VLM·prompt family",
+                  "IVL"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9691259049311576
+              },
+              {
+                "cluster": [
+                  "VLM·prompt family",
+                  "Qwen32B"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9364316139670004
+              },
+              {
+                "cluster": [
+                  "VLM·tiling",
+                  "Qwen32B"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9307247308419663
+              },
+              {
+                "cluster": [
+                  "VLM·tiling",
+                  "Qwen32B(ctile)"
+                ],
+                "n_dropped": 4,
+                "rho": 0.9346452317467194
+              },
+              {
+                "cluster": [
+                  "VLM·tiling",
+                  "Qwen8B(ctile)"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9287653103559832
+              },
+              {
+                "cluster": [
+                  "density·CSRNet",
+                  "ladder"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9268265890670637
+              },
+              {
+                "cluster": [
+                  "density·CSRNet",
+                  "st"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9265467501210893
+              },
+              {
+                "cluster": [
+                  "density·official DM-Count",
+                  "st_a"
+                ],
+                "n_dropped": 1,
+                "rho": 0.926525972657717
+              },
+              {
+                "cluster": [
+                  "density·official DM-Count",
+                  "ucf"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9270858070822836
+              },
+              {
+                "cluster": [
+                  "det·in-domain",
+                  "VisDrone"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9460912210040996
+              },
+              {
+                "cluster": [
+                  "det·in-domain",
+                  "VisDrone (full grid)"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9329830458784996
+              },
+              {
+                "cluster": [
+                  "det·in-domain(micro)",
+                  "BBBC005"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9314839572192514
+              },
+              {
+                "cluster": [
+                  "det·in-domain(micro)",
+                  "BBBC005 (full grid)"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9397759103641457
+              },
+              {
+                "cluster": [
+                  "det·zero-shot COCO",
+                  "tau@1024"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9265259726577171
+              },
+              {
+                "cluster": [
+                  "det·zero-shot COCO",
+                  "tau@1536"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9307247308419664
+              },
+              {
+                "cluster": [
+                  "det·zero-shot COCO",
+                  "tau@640"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9265259726577171
+              },
+              {
+                "cluster": [
+                  "det·zero-shot COCO (full grid)",
+                  "(full grid)"
+                ],
+                "n_dropped": 1,
+                "rho": 0.934083737389366
+              }
+            ],
+            "lo": 0.9123147348994957,
+            "hi": 0.9691259049311576,
+            "n_clusters": 21
+          }
+        }
+      },
+      "drop_high": {
+        "a": {
+          "perm": {
+            "obs": 0.5688482754126535,
+            "p": 9.99950002499875e-05,
+            "n_draws": 20000,
+            "n_clusters": 6,
+            "method": "monte_carlo",
+            "seed": 20260924,
+            "min_attainable_p": 5e-05,
+            "cluster_sizes": [
+              2,
+              4,
+              6,
+              6,
+              6,
+              12
+            ],
+            "statistic": "between_rank_r2 = sum_c n_c*mean_c(rx)*mean_c(ry) / (n*sd(rx)*sd(ry))"
+          },
+          "block_boot": {
+            "obs": 0.9476631298075968,
+            "p025": 0.8470859147214813,
+            "p975": 0.9984784798254535,
+            "n_clusters": 6,
+            "cluster_sizes": [
+              2,
+              4,
+              6,
+              6,
+              6,
+              12
+            ],
+            "n_boot": 2000,
+            "seed": 20260924
+          },
+          "lo_cluster": {
+            "rows": [
+              {
+                "cluster": "density_regression",
+                "n_dropped": 4,
+                "rho": 0.9430671084676497
+              },
+              {
+                "cluster": "detection_threshold",
+                "n_dropped": 12,
+                "rho": 0.9547826086956521
+              },
+              {
+                "cluster": "output_contract",
+                "n_dropped": 2,
+                "rho": 0.9501041583725809
+              },
+              {
+                "cluster": "pixel_budget",
+                "n_dropped": 6,
+                "rho": 0.9219200735891132
+              },
+              {
+                "cluster": "prompt_family",
+                "n_dropped": 6,
+                "rho": 0.9265352052303489
+              },
+              {
+                "cluster": "tiling",
+                "n_dropped": 6,
+                "rho": 0.9882273102905633
+              }
+            ],
+            "lo": 0.9219200735891132,
+            "hi": 0.9882273102905633,
+            "n_clusters": 6
+          }
+        },
+        "b": {
+          "perm": {
+            "obs": 0.8401441551601393,
+            "p": 0.0005499725013749313,
+            "n_draws": 20000,
+            "n_clusters": 21,
+            "method": "monte_carlo",
+            "seed": 20260924,
+            "min_attainable_p": 5e-05,
+            "cluster_sizes": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              4
+            ],
+            "statistic": "between_rank_r2 = sum_c n_c*mean_c(rx)*mean_c(ry) / (n*sd(rx)*sd(ry))"
+          },
+          "block_boot": {
+            "obs": 0.9476631298075968,
+            "p025": 0.8573886391029876,
+            "p975": 0.9957277274979593,
+            "n_clusters": 21,
+            "cluster_sizes": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              4
+            ],
+            "n_boot": 2000,
+            "seed": 20260924
+          },
+          "lo_cluster": {
+            "rows": [
+              {
+                "cluster": [
+                  "VLM·output contract",
+                  "ivl"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9475346710691658
+              },
+              {
+                "cluster": [
+                  "VLM·output contract",
+                  "q32"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9517322552587811
+              },
+              {
+                "cluster": [
+                  "VLM·pixel budget",
+                  "ivl"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9320242073854238
+              },
+              {
+                "cluster": [
+                  "VLM·pixel budget",
+                  "q32"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9413778553448477
+              },
+              {
+                "cluster": [
+                  "VLM·prompt family",
+                  "IVL"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9344069610410991
+              },
+              {
+                "cluster": [
+                  "VLM·prompt family",
+                  "Qwen32B"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9427723839831704
+              },
+              {
+                "cluster": [
+                  "VLM·tiling",
+                  "Qwen32B"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9469599291543975
+              },
+              {
+                "cluster": [
+                  "VLM·tiling",
+                  "Qwen32B(ctile)"
+                ],
+                "n_dropped": 4,
+                "rho": 0.9800501323291262
+              },
+              {
+                "cluster": [
+                  "VLM·tiling",
+                  "Qwen8B(ctile)"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9517185217632134
+              },
+              {
+                "cluster": [
+                  "density·CSRNet",
+                  "ladder"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9430572479335763
+              },
+              {
+                "cluster": [
+                  "density·CSRNet",
+                  "st"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9430572479335763
+              },
+              {
+                "cluster": [
+                  "density·official DM-Count",
+                  "st_a"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9517185217632136
+              },
+              {
+                "cluster": [
+                  "density·official DM-Count",
+                  "ucf"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9489193496403806
+              },
+              {
+                "cluster": [
+                  "det·in-domain",
+                  "VisDrone"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9474265649998709
+              },
+              {
+                "cluster": [
+                  "det·in-domain",
+                  "VisDrone (full grid)"
+                ],
+                "n_dropped": 1,
+                "rho": 0.947534671069166
+              },
+              {
+                "cluster": [
+                  "det·in-domain(micro)",
+                  "BBBC005"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9488636363636364
+              },
+              {
+                "cluster": [
+                  "det·in-domain(micro)",
+                  "BBBC005 (full grid)"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9473389355742297
+              },
+              {
+                "cluster": [
+                  "det·zero-shot COCO",
+                  "tau@1024"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9494791840649471
+              },
+              {
+                "cluster": [
+                  "det·zero-shot COCO",
+                  "tau@1536"
+                ],
+                "n_dropped": 1,
+                "rho": 0.946680011942114
+              },
+              {
+                "cluster": [
+                  "det·zero-shot COCO",
+                  "tau@640"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9472398463666809
+              },
+              {
+                "cluster": [
+                  "det·zero-shot COCO (full grid)",
+                  "(full grid)"
+                ],
+                "n_dropped": 1,
+                "rho": 0.944720591456131
+              }
+            ],
+            "lo": 0.9320242073854238,
+            "hi": 0.9800501323291262,
+            "n_clusters": 21
+          }
+        }
+      },
+      "drop_low": {
+        "a": {
+          "perm": {
+            "obs": 0.5799171987897155,
+            "p": 9.99950002499875e-05,
+            "n_draws": 20000,
+            "n_clusters": 6,
+            "method": "monte_carlo",
+            "seed": 20260924,
+            "min_attainable_p": 5e-05,
+            "cluster_sizes": [
+              2,
+              4,
+              6,
+              6,
+              6,
+              12
+            ],
+            "statistic": "between_rank_r2 = sum_c n_c*mean_c(rx)*mean_c(ry) / (n*sd(rx)*sd(ry))"
+          },
+          "block_boot": {
+            "obs": 0.9831570942297567,
+            "p025": 0.9110450087123547,
+            "p975": 0.9925423451823996,
+            "n_clusters": 6,
+            "cluster_sizes": [
+              2,
+              4,
+              6,
+              6,
+              6,
+              12
+            ],
+            "n_boot": 2000,
+            "seed": 20260924
+          },
+          "lo_cluster": {
+            "rows": [
+              {
+                "cluster": "density_regression",
+                "n_dropped": 4,
+                "rho": 0.9815148065414618
+              },
+              {
+                "cluster": "detection_threshold",
+                "n_dropped": 12,
+                "rho": 0.9860869565217392
+              },
+              {
+                "cluster": "output_contract",
+                "n_dropped": 2,
+                "rho": 0.9848975647505037
+              },
+              {
+                "cluster": "pixel_budget",
+                "n_dropped": 6,
+                "rho": 0.9717535910804166
+              },
+              {
+                "cluster": "prompt_family",
+                "n_dropped": 6,
+                "rho": 0.9806977807157841
+              },
+              {
+                "cluster": "tiling",
+                "n_dropped": 6,
+                "rho": 0.9820036565145546
+              }
+            ],
+            "lo": 0.9717535910804166,
+            "hi": 0.9860869565217392,
+            "n_clusters": 6
+          }
+        },
+        "b": {
+          "perm": {
+            "obs": 0.8782632963249438,
+            "p": 0.0002999850007499625,
+            "n_draws": 20000,
+            "n_clusters": 21,
+            "method": "monte_carlo",
+            "seed": 20260924,
+            "min_attainable_p": 5e-05,
+            "cluster_sizes": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              4
+            ],
+            "statistic": "between_rank_r2 = sum_c n_c*mean_c(rx)*mean_c(ry) / (n*sd(rx)*sd(ry))"
+          },
+          "block_boot": {
+            "obs": 0.9831570942297567,
+            "p025": 0.9436007736865489,
+            "p975": 0.9923316960809039,
+            "n_clusters": 21,
+            "cluster_sizes": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              4
+            ],
+            "n_boot": 2000,
+            "seed": 20260924
+          },
+          "lo_cluster": {
+            "rows": [
+              {
+                "cluster": [
+                  "VLM·output contract",
+                  "ivl"
+                ],
+                "n_dropped": 1,
+                "rho": 0.983913734045832
+              },
+              {
+                "cluster": [
+                  "VLM·output contract",
+                  "q32"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9853129287757038
+              },
+              {
+                "cluster": [
+                  "VLM·pixel budget",
+                  "ivl"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9784583883268486
+              },
+              {
+                "cluster": [
+                  "VLM·pixel budget",
+                  "q32"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9787924471825423
+              },
+              {
+                "cluster": [
+                  "VLM·prompt family",
+                  "IVL"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9804763288952155
+              },
+              {
+                "cluster": [
+                  "VLM·prompt family",
+                  "Qwen32B"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9831530772440429
+              },
+              {
+                "cluster": [
+                  "VLM·tiling",
+                  "Qwen32B"
+                ],
+                "n_dropped": 1,
+                "rho": 0.985028670024926
+              },
+              {
+                "cluster": [
+                  "VLM·tiling",
+                  "Qwen32B(ctile)"
+                ],
+                "n_dropped": 4,
+                "rho": 0.9804163008822101
+              },
+              {
+                "cluster": [
+                  "VLM·tiling",
+                  "Qwen8B(ctile)"
+                ],
+                "n_dropped": 1,
+                "rho": 0.985028670024926
+              },
+              {
+                "cluster": [
+                  "density·CSRNet",
+                  "ladder"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9819548614240117
+              },
+              {
+                "cluster": [
+                  "density·CSRNet",
+                  "st"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9816750224780372
+              },
+              {
+                "cluster": [
+                  "density·official DM-Count",
+                  "st_a"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9825094151143764
+              },
+              {
+                "cluster": [
+                  "density·official DM-Count",
+                  "ucf"
+                ],
+                "n_dropped": 1,
+                "rho": 0.985028670024926
+              },
+              {
+                "cluster": [
+                  "det·in-domain",
+                  "VisDrone"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9834808528857015
+              },
+              {
+                "cluster": [
+                  "det·in-domain",
+                  "VisDrone (full grid)"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9827943782619346
+              },
+              {
+                "cluster": [
+                  "det·in-domain(micro)",
+                  "BBBC005"
+                ],
+                "n_dropped": 3,
+                "rho": 0.9842914438502673
+              },
+              {
+                "cluster": [
+                  "det·in-domain(micro)",
+                  "BBBC005 (full grid)"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9831932773109243
+              },
+              {
+                "cluster": [
+                  "det·zero-shot COCO",
+                  "tau@1024"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9819495806898099
+              },
+              {
+                "cluster": [
+                  "det·zero-shot COCO",
+                  "tau@1536"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9850286700249259
+              },
+              {
+                "cluster": [
+                  "det·zero-shot COCO",
+                  "tau@640"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9819495806898098
+              },
+              {
+                "cluster": [
+                  "det·zero-shot COCO (full grid)",
+                  "(full grid)"
+                ],
+                "n_dropped": 1,
+                "rho": 0.9836290839635095
+              }
+            ],
+            "lo": 0.9784583883268486,
+            "hi": 0.9853129287757038,
+            "n_clusters": 21
+          }
+        }
+      }
+    }
+  },
+  "criterion": {
+    "key": "31unit_k4|equal_count_k4|a",
+    "p_cluster_perm": 9.99950002499875e-05,
+    "p_threshold": 0.05,
+    "block_boot_lower": 0.913086768687556,
+    "lower_threshold": 0.8,
+    "pass_p": true,
+    "pass_lower": true,
+    "verdict": "PASS",
+    "text": "按 knob 聚类的置换 p < 0.05 且 按 knob 的块 bootstrap 95% 下沿 >= 0.80"
+  },
+  "holm_adjusted_p": {
+    "31unit_k4|drop_high|a": 0.000599970001499925,
+    "31unit_k4|drop_low|a": 0.0005499725013749313,
+    "31unit_k4|equal_count_k4|a": 0.000999950002499875,
+    "36unit_k3|drop_high|a": 0.0008999550022498875,
+    "36unit_k3|drop_low|a": 0.0007999600019999,
+    "31unit_k4|drop_low|b": 0.0020998950052497373,
+    "36unit_k3|equal_count_k3|a": 0.001799910004499775,
+    "36unit_k3|drop_low|b": 0.0014999250037498126,
+    "36unit_k3|equal_count_k3|b": 0.00199990000499975,
+    "36unit_k3|drop_high|b": 0.0016499175041247939,
+    "31unit_k4|drop_high|b": 0.0012999350032498376,
+    "31unit_k4|equal_count_k4|b": 0.0007499625018749063
+  },
+  "leave_one_cluster_out_36": {
+    "rows": [
+      {
+        "cluster": "density_regression",
+        "n_dropped": 4,
+        "rho": 0.9049855789469214
+      },
+      {
+        "cluster": "detection_threshold",
+        "n_dropped": 12,
+        "rho": 0.9443478260869566
+      },
+      {
+        "cluster": "output_contract",
+        "n_dropped": 2,
+        "rho": 0.9391167668848157
+      },
+      {
+        "cluster": "pixel_budget",
+        "n_dropped": 6,
+        "rho": 0.8832101091092615
+      },
+      {
+        "cluster": "prompt_family",
+        "n_dropped": 6,
+        "rho": 0.9700428478334033
+      },
+      {
+        "cluster": "tiling",
+        "n_dropped": 6,
+        "rho": 0.9277689593236192
+      }
+    ],
+    "lo": 0.8832101091092615,
+    "hi": 0.9700428478334033,
+    "n_clusters": 6
+  },
+  "leave_one_naive_subgroup_36": {
+    "rows": [
+      {
+        "name": "output contract",
+        "n_dropped": 2,
+        "rho": 0.9391167668848157
+      },
+      {
+        "name": "pixel budget",
+        "n_dropped": 6,
+        "rho": 0.8832101091092615
+      },
+      {
+        "name": "prompt family",
+        "n_dropped": 6,
+        "rho": 0.9700428478334033
+      },
+      {
+        "name": "tiling",
+        "n_dropped": 6,
+        "rho": 0.9277689593236192
+      },
+      {
+        "name": "CSRNet",
+        "n_dropped": 2,
+        "rho": 0.9201940371003313
+      },
+      {
+        "name": "official DM-Count",
+        "n_dropped": 2,
+        "rho": 0.9204501725424183
+      },
+      {
+        "name": "in-domain(micro)",
+        "n_dropped": 4,
+        "rho": 0.9365835777126098
+      },
+      {
+        "name": "in-domain",
+        "n_dropped": 4,
+        "rho": 0.9467487348733368
+      },
+      {
+        "name": "zero-shot COCO",
+        "n_dropped": 3,
+        "rho": 0.9173256177349008
+      }
+    ],
+    "lo": 0.8832101091092615,
+    "hi": 0.9700428478334033,
+    "published": [
+      0.883,
+      0.97
+    ],
+    "note": "现文 \"0.883-0.970\" 的口径 = 36 单元 + 9 个朴素名字子组（与冻结件 leave_one_knob_out 逐格一致）"
+  },
+  "detector_knob_whole_drop_36": {
+    "n_dropped": 12,
+    "rho": 0.9443478260869566,
+    "delta_vs_full": 0.011859652083036964,
+    "note": "**从未被测量过**的那一档：detector threshold 的 12 个单元整体丢掉（全 36 单元的三分之一）"
+  },
+  "quoted_display": {
+    "rho_31_k4": 0.982,
+    "rho_31_k4_iid_ci": [
+      0.939,
+      0.996
+    ],
+    "rho_36_k3": 0.932,
+    "rho_36_k3_iid_ci": [
+      0.836,
+      0.983
+    ],
+    "clustered_31_k4_knob_ci": [
+      0.913,
+      0.994
+    ],
+    "clustered_31_k4_knob_p": 9.99950002499875e-05,
+    "loo_knob6_36": [
+      0.883,
+      0.97
+    ],
+    "loo_naive9_36": [
+      0.883,
+      0.97
+    ],
+    "detector_knob_whole_drop_rho": 0.944
+  },
+  "created_by": "p3r2_plan_m37_cluster.py",
+  "created_at": "2026-09-29T18:58:47"
+}

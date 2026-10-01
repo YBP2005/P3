@@ -1135,7 +1135,7 @@ approached monotonically across count bins ($[1,10)$ is exactly **+0.0%**; $[60,
 **−53.8%**). The two microscopy numbers are therefore the *same* quantity at two calibers (whole-domain
 pooled versus top count bin), both under the pooled convention and confined to these models and domains.
 
-### J.8 The clean synthetic grid: the per-cell values behind the "up to 42.5%" of §5.7
+### J.8 The clean synthetic grid: the single-render per-cell values behind the "up to 50%" of §5.7
 
 A deterministic disc grid on which the ground-truth count $n$ and the disc radius $r$ vary independently
 ($n \in \{50, 100, 200, 400, 800\}$ × $r \in \{2, 4, 8, 16\}$ px = **20 cells**), rendered once with an
@@ -3601,7 +3601,7 @@ interaction, the five deployments of that checkpoint differing by up to **90.3 p
 
 **A three-way corroboration that abstention is not the cause.** Three settings in which abstention is
 excluded each still under-count, but by *different* amounts: the clean synthetic grid (no answered zero on
-any of its 20 cells) by **up to 42.5%** (§J.8), microscopy with its abstention channel closed (0.0% answered zeros over
+any of its 20 cells) by **up to 50%** (five independent renders; the single render tabulated in §J.8 reaches **−42.5%**), microscopy with its abstention channel closed (0.0% answered zeros over
 1,210 items) by **−50.1%**, and real images restricted to the answered subset by **−19.8%** and
 **−29.2%**. These are three domain-specific magnitudes, **not one common band**; what the three share is
 that the under-count survives with abstention removed, and in the first two with resolution not the binding
@@ -5040,11 +5040,13 @@ now stands, and the artefact that recomputes it.
   read that the synthetic-grid floor, microscopy and the answered subset of real images "all land in
   **−18% to −29%**". That conjunction was wrong: the three are separate quantities on separate subsets, and
   only the third lies in that band (microscopy is **−50.1%** pooled; the synthetic grid reaches
-  **−42.5%**). The paragraph now states the three magnitudes separately and says explicitly that they are
+  **−42.5%** in the single render tabulated in §J.8, and **45–50%** across five independent renders). The
+  paragraph now states the three magnitudes separately and says explicitly that they are
   **not one common band**; no measured value changed. The per-cell table behind the synthetic figure is now
   printed in **§J.8**, so that number is traceable inside the submitted material rather than only in an
-  internal record, and §1/§5.7 quote it as "**up to 42.5%**" — the unconditional maximum — instead of the
-  narrower band that held for 14 of its 20 cells.
+  internal record, and §1/§5.5/§5.7 quote the clean-input under-count as "**up to 50%**" — the five-render
+  range — in place of the single render's **−42.5%**, which was the unconditional maximum of that one table
+  rather than the narrower band that held for 14 of its 20 cells.
 - **The two microscopy numbers are one quantity at two calibers.** §5.7 prints **−50.1%** and §J.7 printed
   **−53.8%** without saying how the two relate. They are the whole-domain pooled figure and the top count
   bin ($[60,101)$) of the same domain under the same convention; §J.7 now labels both calibers explicitly.

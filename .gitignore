@@ -1,0 +1,15 @@
+# 这是**发布件**的第二道防线：作者侧跑一次 `py_compile` / `import` 就会在包内就地生成
+# `__pycache__/*.pyc`，而 MANIFEST 按设计不登记它们 ⇒ 目录文件数与 MANIFEST 行数的差会失真。
+# `sync_repro.py::sweep_residue()` 会整目录删除 `__pycache__`（第一道防线），这里保证即使
+# 有人手工 `git add -A` 也不会把它们提交上去。
+__pycache__/
+*.pyc
+
+# 编辑器/补丁残渣（与 sync_repro.py 的 `_RESIDUE` 同一集合）
+*.bak
+*.bak_*
+*.tmp
+*.orig
+*.rej
+*.swp
+*~

@@ -451,7 +451,13 @@ theorem about the class of statistics it belongs to: any symmetric function of a
 Spearman, Kendall, distance correlation, a two-sample $U$ — is invariant under every permutation that keeps the
 pairs together, so its permutation null is a point mass at the observed value and the test has zero power by
 construction, not merely low power. The instrument for a paired design is a null that breaks the pairing —
-redrawing one member of each pair, or resampling whole pairs — which is what we use.** **Redrawing the span values from their own distribution does break the pairing, and there the ordering separates at `p < 5×10^{-5}` on all three deflations and both unit sets. We report both null models as two equivalent independent nulls rather than as two different ones: they agree to the last digit (`4.999750012499375e-05`) on every cell.** We therefore rest the claim on the interval, not on a clustered $p$ — the units are six knobs and the test cannot separate them. Reproduction: `p3r2_plan_m37_cluster.py`, its pre-registered criteria `p3r2_plan_m37cluster_criteria_frozen.json` and its frozen output `p3r2_plan_m37_cluster_result.json` — **all three are in the released reproduction package**; the script reads only the two released inputs (`equalcount36_result.json`, `m37_ci_power_result.json`) and refuses to run unless the first one's md5 matches the value printed earlier in this appendix, so the clustered interval above **is** independently recomputable from the package; the span-value null is recomputed from the released `equalcount36_result.json` by `p3r4_zero_2_null_span.py`; the point readings it is compared against are recomputed from the released `equalcount36_result.json`.
+redrawing one member of each pair, or resampling whole pairs — which is what we use.** **Redrawing the span values from their own distribution does break the pairing, and there the ordering separates at `p < 5×10^{-5}` on all three deflations and both unit sets. We report both null models as two equivalent independent nulls rather than as two different ones: they …on every cell **both nulls return 0 of 20,000 draws at least as extreme as the observed ordering, so both saturate the Monte-Carlo floor `1/(B+1) = 5.0×10^{-5}`; we report the clustered result as `p < 5×10^{-5}` (0/20,000)**. We note explicitly that this agreement is an agreement **at the floor**: it says neither null separates the orderings at this resample budget, not that the two nulls are the same distribution. The floor itself is a property of the budget, not a measurement.** We therefore rest the claim on the interval, not on a clustered $p$ — the units are six knobs and the test cannot separate them. Reproduction: `p3r2_plan_m37_cluster.py`, its pre-registered criteria `p3r2_plan_m37cluster_criteria_frozen.json` and its frozen output `p3r2_plan_m37_cluster_result.json` — **all three are in the released reproduction package**; the script reads only the two released inputs (`equalcount36_result.json`, `m37_ci_power_result.json`) and refuses to run unless the first one's md5 matches the value printed earlier in this appendix, so the clustered interval above **is** independently recomputable from the package; the span-value null is recomputed from the released `equalcount36_result.json` by `p3r4_zero_2_null_span.py`; the point readings it is compared against are recomputed from the released `equalcount36_result.json`.
+
+The two quantities printed above are linked by the same arithmetic, which is worth stating because it makes the choice of a 0.80 lower bound non-arbitrary: with `ICC(1) = 0.645` the variance ratio is `σ_w²/σ_b² = (1 − 0.645)/0.645 = 0.5504`, and Spearman–Brown at six units returns `6 × 0.645 / (1 + 5 × 0.645) = 0.916`, the reliability printed for `m = 6`. The allocation formula is the inverse of that step, so the four targets are recovered from the same two numbers: `m*` = **2.20 / 4.95 / 10.46 / 54.49** for `ρ*` = 0.80 / 0.90 / 0.95 / 0.99. Nothing here is new theory; it is the arithmetic of the data structure, and it is what makes "six units, 0.80" a defensible design point rather than a convention.
+
+The null that permutes **whole pairs** — relabelling the units while keeping each unit's two members together — leaves every **symmetric function of the paired multiset** literally unchanged. The resampling distribution is therefore a **point mass**, and a test against that null has **zero power by construction**. This is a property of the design, not of our implementation. A numerical check agrees **to machine precision**; at full float precision it does **not** return a single distinct value, because the summation order inside the correlation differs across permutations, so we do not quote "one distinct value" as the evidence. The **pair-breaking** null is the informative one: over the 720 permutations of a six-unit set it returns **470 distinct values** spanning **−0.90 to +0.95**, which is what separates the orderings — and it is why the claim rests on the interval rather than on a clustered $p$.
+
+The clustered bootstrap draws from a set of only `C(11,6) = 462` distinct resamples, so a 2,000-draw run repeats each of them several times over and any `p` it reports is quantised at `1/20001`. We therefore report the clustered result at the floor rather than at full float precision, and we state the design fact behind it: **the six knobs are a design choice, not a random sample of clusters**, which is why the clustered interval is used as a robustness check on the pooled one and not as the interval of record.
 
 **How many units are enough, when the knob means are what is being read.** The same six-knob nesting also
 prices a design. Treating the 36 log-spans as one-way nested in the six knobs — detector 12, density 4,
@@ -1159,16 +1165,36 @@ answered-zero rate is 0.0% in every cell — and the pooled relative deviation $
 | 800 | 8 | 256 | 0.0% | 525 | −34.4% |
 | 800 | 16 | 1024 | 0.0% | 605 | −24.4% |
 
-**Scope of the number printed in §5.7.** The "**up to 42.5%**" quoted there is the largest $\lvert\rho\rvert$
+**Scope of the number printed in §5.7.** The table's own maximum, **−42.5%**, is the largest $\lvert\rho\rvert$
 in this table, and it is stated without further qualification. For a reader who wants
 the distribution rather than its maximum: the under-count reaches 20% or more in **14 of the 20 cells**
 (20.0%–42.5% across those cells), the full range over all 20 cells is **+0.0%** to **−42.5%**, and the
 per-$n$ means are −20.0% / −10.2% / −25.8% / −34.5% / −35.0% for $n$ = 50 / 100 / 200 / 400 / 800, so the
 growth with $n$ is **not monotone at $n = 100$** and no trend statement is attached to this table.
 
+**This table is one render, and the render seed is not the seed it appears to be.** The grid was rendered
+**once**. The renderer (`12_abstain_causal.py`, released under `code/experiments/`) draws each image with the
+seed `hash(item) & 0xffff` — i.e. from **CPython's built-in string hash**, which is **randomised per process**;
+the module-level `random.seed(20260911)` never enters the drawing routine. A fresh process therefore draws
+**different** images, and the per-cell values above are **not byte-reproducible**. We re-rendered the identical
+grid five times (controlled by `PYTHONHASHSEED` $\in \{0,1,2,3,4\}$; three arms $\times$ 400 images each,
+**6,000** calls) and re-read it with the same probe. The `base` arm's largest single-cell under-count is
+**45.05 / 50.00 / 46.25 / 50.00 / 47.50 %** (median **47.50%**; the extremal cell is `n200_r2` in four of the
+five renders and `n800_r4` in the fifth). The **structure** reproduces exactly — `base` and `over` abstain on
+**0 of 400** items in **all five** renders, and only `under` abstains — while the **magnitude of the extreme
+does not**: **every one of the five renders exceeds the 42.5% tabulated above**. That number is therefore a
+**conservative single realisation, not a bound**. We accordingly state the clean-input under-count as **up to
+50%**, and where the single-cell maximum is quoted we quote it as **45–50%** across renders. The reproduction
+note below is amended to match: the table above is one realisation, and reproducing it exactly requires fixing
+`PYTHONHASHSEED`.
+
 *Reproduction: `synthetic_grid_cells.py` carries the 20 frozen per-cell values and all derivations above,
 and its `--check` mode re-reads this table and asserts cell by cell that it still matches them, that
-abstention is 0.0% in every cell, and that $\max\lvert\rho\rvert$ is 42.5%.*
+abstention is 0.0% in every cell, and that $\max\lvert\rho\rvert$ is 42.5%. That check verifies the table
+against itself; it does **not** re-render. The renderer is `12_abstain_causal.py` (released); because its
+image seed is `hash(item) & 0xffff`, reproducing this exact table requires running it under a fixed
+`PYTHONHASHSEED`, and the value used for the table above is not recorded — which is why we report the
+five-render range instead of a point value.*
 
 ### J.9 Proposition 2: the divergence condition, verified
 
@@ -1978,6 +2004,24 @@ new directional finding**: enumeration pressure *raises* the zero rate — Gemma
 contract decides the **outlet**, enumeration pressure decides **how many items arrive at it**. The three-leg
 reading rule (`enumAbstain ≤ 5%`, `enum ≥ 5%`, `enum/base ≥ 0.25`) is **post hoc**: the frozen criteria cover
 only the `base`/`permit`/`channel` arms.
+
+#### M.19.7.1 The pooled AUC is carried by between-unit differences, not by within-unit ranking
+
+The deployment statement in the main text is qualitative; this is its quantitative form on the same frozen
+records. Stacking the twenty (family $\times$ domain) units, the pooled AUC of the dispersion statistic is
+**0.586**. Two decompositions show what that number is made of. Predicting from **unit identity alone** gives
+**0.767** — *higher* than the statistic itself — while centring the statistic **within** each unit leaves
+**0.575**, essentially chance; and **96.1%** of the positive–negative pairs over which the pooled AUC is
+computed are **between** units, only **3.9%** within. The pooled figure is therefore carried by between-unit
+base-rate differences, and the statistic's genuine within-unit ranking power is close to chance. This is the
+mechanism behind the qualitative statement, and it is why the pooled number is **not** used as cross-domain
+evidence. As a reference for how much room a mixture of the two components leaves, the within-unit ceiling is
+**0.967**, the between-unit ceiling **0.519** and the mixture **0.537** — so the observed 0.586 sits **above**
+that mixture ceiling, and no information-theoretic impossibility is being claimed here.
+
+*Reproduction: the decomposition is `_strat_decomp.py` and the ceiling arithmetic `_bound_check.py`, both
+computed from the released per-item records; the twenty units are the same (family $\times$ domain) units used
+in the table above.*
 
 #### M.19.8 Ablations: the contract effect is scale- and template-invariant; the zero *rate* is not
 
@@ -2969,6 +3013,10 @@ rate, which is the arithmetic reason the identity above can never fail there. Th
 sits beside is $[\,1/(\kappa+1),\, \min(1, q_C)\,]$, so the contract does not merely move a distribution: **it
 sets what is identifiable.**
 
+With `δ* = (q_C − θ)/(α − θ)`, **gemma-3-12b returns δ\* = 1.0125 > 1**, i.e. even at the largest α the construction permits, the corpus's own answered-zero rate cannot be produced — the **joint transfer is formally refuted** on that build. For reference, the frozen construction's own (designed, not measured) parameters return **δ\* = 0.5697 / 0.5756 / 0.5703**; the last of these **is** the construction's nominal base rate, which is the arithmetic reason the identity of §M.21.10(a) is a gate that cannot fail.
+
+The reverse direction is equally tight: at the construction's π the pool surface reproduces the corpus rate to **∓0.10–0.16 pp**. The sharp identified set for the precision is **[1/(κ+1), 1]**, with `1/(κ+1)` an infimum; its **upper end 1 is what is new here**, and the abstention-only arm (`â = b̂ = 0`) **trivialises the set to [0,1]**. We therefore claim only the interval, not a point. The identification argument itself is not new as a **method**: Manski, C. F. (2021), *Epidemiology* 32(2):162–167, DOI `10.1097/EDE.0000000000001309`, already shows that a positive or negative predictive value is bounded only under a bound on prevalence, so what is added here is the **application** to this construction — the upper end of 1, the sharpness of the set, and its trivialisation to $[0,1]$ by the abstention-only arm — and not the identifiability result, which we cite rather than claim.
+
 *Reproduction: the four builds × three starts are per-item records in the released package (`data/derived/p3r4_a800/E3_<build>_start{1,2,3}.csv`, twelve files); the mixture manifest (`pf_items_pi0570.json`, md5 `c43d7f94bc192ac0a2d9b697561d90ef`) and the frozen true-zero pool are those of §M.21.10.*
 
 **(f) What a plugged-in $\hat\pi$ costs the headline.** Write the identity logarithmically, $\log\text{precision}=\log p+\log\pi-\log q$, and two regimes follow — and this appendix's sentences sit in different ones. Where $\pi$ and $q$ are measured **independently**, the corpus case, the relative errors add in quadrature, $(\delta P/P)^2=(\delta p/p)^2+(\delta\pi/\pi)^2+(\delta q/q)^2$, so the term §M.44 leaves open is a first-class part of the budget rather than a remainder: feeding §M.44's own numbers into it (a transfer error of 10.80 pp on the recovered proportion, a 95% half-width of 10.2–16.4 pp, and a binomial $q$ at $n=526$) puts **65% of the variance on $\pi$**, 25% on the transfer of $p$ and 10% on $q$. Where the mixture is **constructed**, $q=\pi p+(1-\pi)r$ is a function of $\pi$ and the same perturbation is damped by $\eta\equiv\partial\log\text{precision}/\partial\log\pi=1-(p-r)\pi/q$, computed from the same per-item records as (e): over the four builds $\eta$ runs from **0.050** to **0.770** — a **16-fold** spread — because it is governed by how often a build answers zero on the *non-empty* side, $r$ ranging from **1.8%** (Gemma-3-12B) to **53.4%** (Phi-3.5-Vision). Passing §M.44's resolution (17.8–28.7% relative on a proportion of 0.572) through $\eta$ moves the headline by **0.9% to 22.1%** depending on the build. **A single tolerance quoted for every build would therefore be wrong by more than an order of magnitude**, and any future attempt to close $\pi$ has to carry a build-dependent one.
@@ -2996,6 +3044,8 @@ conventions. It does not say when one of them is redundant, and the test is arit
 $a_u = P_u/G_u$ for a unit's pooled relative deviation (abstentions counted as zero), $w_u = G_{N,u}/G_u$
 for its answered share, and $b_u = P_u/G_{N,u}$ for its answered-only deviation. Then $b_u = a_u/w_u$
 identically, and for two units $u,v$ labelled so that $a_u > a_v$,
+
+`gap(c) = (1 − w)(c − 1 − ρ_a)`, where `w = G_N/G` and `ρ_a = (P − G_N)/G_N` is the relative deviation on the answered subset.
 
 $$ \text{the two conventions order } (u,v) \text{ oppositely} \iff 1 < \frac{a_u}{a_v} < \frac{w_u}{w_v}. $$
 
@@ -3310,6 +3360,8 @@ Under the reading this paper already uses — $A$ is a monotone function of legi
 function of $M$ —
 
 $$ M \text{ is a legible stratifier} \iff \gamma_k(M) = 0, \quad\text{under the deterministic reading below; the converse is not claimed for general valid stratifiers}, $$
+
+The fourth domain's abstention rate is **180/334 = 53.89%** on UCF-QNRF (`base` arm, all 334 items parsed), to be read against the counts already printed for the other domains. This supplies the widest pair the within-stratum criterion can be tested on: **UCF-QNRF carries 718.9 annotated heads per image on average and abstains on 53.89% of items, while VisDrone carries 22.4 and abstains on 68.2%** — a **32-fold** difference in the ordering variable accompanied by a **14.3 pp** abstention difference **in the opposite direction**. The monotonicity argument printed earlier is therefore not merely incomplete: the stronger within-stratum condition `γ_k(M) = 0` fails on this pair as well.
 
 because a valid $M$ forces equal legibility, hence equal $A$, inside every stratum, while $\gamma_k = 0$
 makes $M$'s partition a refinement of $A$'s, which is what validity means here. The criterion needs no
@@ -3709,6 +3761,8 @@ for a per-unit one — and a global **isotonic** map, although shared, already g
 span-multiplicativity requires a map that is both affine *and* level-independent, not merely monotone.
 That is the quantitative form of the "shared isotonic lands in between" row above.
 
+`A ≤ r_min` ⇔ the published ordering is preserved; `A > r_min` ⇔ a constructive counterexample **exists**.
+
 **The threshold is a wall, not a tolerance, and it is set by the closest resolvable pair.** The rows above
 differ in one respect only: whether the map's factor varies across units. Write $x_1 < \dots < x_{36}$ for
 the uncalibrated spans and $s_u$ for the factor a caliber applies to unit $u$; a caliber is
@@ -3968,6 +4022,44 @@ parser's structural branch does **not** fire on `{"count": 120}`, per `corpus_pa
 strictly will not reproduce these rates.*
 
 ---
+
+### M.38.1 The same control on a second, source-disjoint pool
+
+§M.38's true-zero pool is drawn from a single source. To ask whether the emptiness-outlet rate is a property
+of the *design* or of the *pool*, we built a **second** verify-empty pool under the identical window rule
+(square window of side $0.35 \times \min(H,W)$, expanded by 48 px, kept only if the expanded box contains no
+annotated head point; stride $=$ side$/3$) but from an **entirely disjoint source**: UCF-QNRF **Train**
+(1,201 images) instead of **Test**. Both pools take 1,500 empty and 1,500 non-empty windows
+($\pi = 0.5000$), and both were machine-checked to be **disjoint** from the 300-item frozen true-zero pool and
+from the 226-item census (both intersections empty). Four builds $\times$ three fresh service starts
+$\times$ 2 pools, **36,000** calls per pool, on the same probe and the same serving geometry, so the two runs
+differ in exactly one thing: the source of the pool.
+
+| build | Train pool (s1 / s2 / s3) | Test pool (s1 / s2 / s3) | $\Delta$ |
+|---|---|---|---|
+| Gemma-3-12B | **40.67 / 40.67 / 40.80%** | 48.27 / 48.27 / 48.13% | **−7.51 pp** |
+| Phi-3.5-vision | **77.99 / 78.08 / 78.13%** | 86.85 / 86.84 / 86.83% | **−8.78 pp** |
+| InternVL3.5-8B | **77.47 / 77.47 / 77.53%** | 81.20 / 81.27 / 81.27% | **−3.76 pp** |
+| LLaVA-OneVision-7B | **79.84 / 79.84 / 79.84%** | 86.07 / 86.07 / 85.99% | **−6.20 pp** |
+
+**All four builds answer zero on the Train pool at a lower rate than on the Test pool** (−3.8 to −8.8 pp), and
+each build's three starts agree to within **0.02–0.14 pp** (LLaVA-OneVision-7B's three starts are
+bit-identical), so the shift is a property of the pool rather than of the sampling. On the non-empty half the
+direction is **not** uniform (Phi-3.5-vision falls by 0.28 pp, InternVL3.5-8B rises by 0.2 pp and
+LLaVA-OneVision-7B by 0.6 pp), so this pool sensitivity is specific to the empty side. This is the measurement
+behind the paper's standing wording that the emptiness-outlet rate is **a rate on a stated pool**: the point
+estimate moves by **4–9 pp** between two pools built to the same rule, while the **39–90%** band printed in
+M.38 contains both.
+
+*Evaluability.* Each pool yields **18 of 24 evaluable cells**. Every parse shortfall in both runs comes from
+LLaVA-OneVision-7B, which falls below the 95% gate in all six of its cells in each pool (Test: 89.47% on the
+empty half, 80.80–80.87% on the non-empty half; Train: 92.93% and 90.47–90.53%). Those cells are reported as
+**not evaluable**, not as failures, and that build's parse rate on the same window rule also differs between
+the two pools (92.93% against 89.47% on the empty half).
+
+*Reproduction: both pools are built by the same generator with only the source directory changed, and both
+frozen item lists and criteria files are released; the four-build runs are three fresh service starts each on
+one card, and the per-item records for both pools are in the released package.*
 
 ### M.39 A language control for the corpus-level rates
 
@@ -4553,9 +4645,17 @@ of the **level sets compared** — preserved under level-count restriction, and 
 calibration, but **not** under error-budget matching — and the paper is amended to say so rather than to
 claim the ordering in general.
 
-*Reproduction: the two frozen criteria files, the two analysers, and the resulting files are released; both
-analysers re-derive the 36 units from the released per-item records and assert the frozen spans before
-computing anything else.*
+*Reproduction: all of the parts above are released under `code/analysis/`. Part (a) is produced by
+`span_equalcount.py` and `span_equalcount2.py`, with `equalcount36_result.json` as their frozen output. Part
+(b) — the budget-matched ordering and its two post-hoc diagnostics — is produced by `n6_budget_matched.py`,
+which imports the shared unit construction from `n5_order_prereg.py` (itself a verbatim copy of the builder in
+`a39_unit_calib_heldout.py`), asserts its frozen criteria `n6_criteria_frozen.json` — generated by
+`make_n6_criteria.py` and holding the pre-registered cost proxy — and writes `n6_result.json`. Both parts
+re-derive the 36 units from the released per-item records and assert the frozen spans before computing
+anything else.*
+
+unit `u` **has a non-degenerate span** at budget `(B,C)` ⇔ `B ≥ min B*_{ij}` over pairs inside `L_u`; its span **reaches the full-level span** ⇔ `B ≥ max B*_{ij}` over the same pairs;
+hence "the budget-matched ordering agrees with the published ordering on **all decisive pairs** ⇔ `B ≥ max B*`" (`max` over every decisive pair).
 
 ### M.46 The recipe run on two corpora this paper never used, and the four English headline cells on one build
 

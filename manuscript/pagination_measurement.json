@@ -1,17 +1,17 @@
 {
-  "measured_at": "2026-10-01",
+  "measured_at": "2026-10-02",
   "tool": "Word 16.0 COM ComputeStatistics",
   "authority": ".docx 是官方唯一接受的交付件（PR L573），故以它为准；RTF 代理见 measurement_pr_layout.json",
   "inputs": {
     "docx": "D:\\deepseek\\PaperB\\PaperB_英文稿_PR.docx",
-    "docx_md5": "437cf6c086966c1c0b9fb6208af5cfee",
+    "docx_md5": "622ca7a571ab8d9320a6dd4f907eb11d",
     "markdown": "D:\\deepseek\\PaperB\\PaperB_英文稿_PR_20260919.md",
-    "markdown_md5": "c2dac3d8f3732458633dffcc2ad45288"
+    "markdown_md5": "3790231d2127b99858e888f6878e7f56"
   },
   "result": {
     "pages": 35,
     "words": 11596,
-    "characters": 64351,
+    "characters": 64345,
     "limit_pages": 35,
     "compliant": true,
     "margin_pages": 0

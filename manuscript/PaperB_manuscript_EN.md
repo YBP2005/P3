@@ -62,7 +62,7 @@ show an answered-zero-to-refusal ratio approaching 0.
 
 **② Gated by per-instance legibility, not by target count**, and **decoupled from directional bias**:
 on count-controlled grids, arrangement and blur alone drive abstention from 0% to 90%, while on clean
-synthetic dots the base arm never abstains yet still underestimates by **up to 42.5%**, and in microscopy
+synthetic dots the base arm never abstains yet still underestimates by **up to 50%**, and in microscopy
 it is **0.0%** with a bias of **−50.1%** (§5.6, §5.7).
 
 **③ Switchable from both ends**, being a behaviour: tiling (**Fig. 1**) drops the ShanghaiTech-A [3] abstention rate from **56.6%** to **0.0%** (2×2: 6.0%, 3×3: 0.55%)
@@ -498,7 +498,7 @@ The title claims the **composition of the aggregate under-count**, not the absen
 answered-only relative deviation is **−19.8%** (ShanghaiTech-A), **−29.2%** (UCF-QNRF), **−30.5%** (VisDrone)
 and **−39.6%** (AI-TOD), each far outside the paper's own **7 pp** band (§A.3 — the across-repeat band of $\rho$, which is neither the 3.92 pp batch bound of Appendix M.21.9 nor a band for zero rates).
 
-**Mode A: capacity-driven under-counting.** Even with ideal input the model under-counts by **up to 42.5%** in relative deviation (not an abstention share; Appendix J.8) — a floor set by the reporting stage, not by perception. **Mode B: mode collapse, whose extreme form is answering 0.** Triggered by loss of legibility, absent on clean input, switchable on by blur, overlap or a strict prompt.
+**Mode A: capacity-driven under-counting.** Even with ideal input the model under-counts by **up to 50%** in relative deviation (not an abstention share; Appendix J.8) — a floor set by the reporting stage, not by perception. **Mode B: mode collapse, whose extreme form is answering 0.** Triggered by loss of legibility, absent on clean input, switchable on by blur, overlap or a strict prompt.
 **The channel is set by the output contract (Appendix M):** on the items that the corpus configuration
 answered exactly 0, five configurations given an explicit abstention option abstained
 explicitly in **1591 of 1591** successful calls and **never** answered 0, while forbidding abstention
@@ -531,7 +531,7 @@ removed the answered zero in **7 of 7**:
 | InternVL2.5-8B-AWQ (anchor) | 230 | 0 | **0.0%** | [0.0%, 1.6%] |
 
 **The two modes decouple completely (Fig. 4).** On clean synthetic dots the base arm **never abstains** yet still
-under-counts by **up to 42.5%**; in microscopy (BBBC005 [48]) abstention is **0.0%** while the bias reaches **−50.1%**.
+under-counts by **up to 50%**; in microscopy (BBBC005 [48]) abstention is **0.0%** while the bias reaches **−50.1%**.
 Conversely, on dense crowds abstention is 50–70% while the answered-only bias is only −19.8% / −29.2%.
 
 (Appendix M.34)

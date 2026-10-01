@@ -314,10 +314,9 @@ whole corpus (892 result files, ~620k records):
 (the three configurations: 0.18%, 0% and 0%). **For InternVL2.5-8B it covers only about seven
 tenths**, the rest arriving as textual refusals. **Cross-lineage comparisons of abstention rate must
 therefore define the channel per lineage.** The incompleteness is **lower-bounded, not
-disclosed**: by Proposition 7, a lineage with ratio $\kappa$ identifies the abstention rate only to
+disclosed**: by Proposition 7, a lineage with ratio $\kappa$ identifies its **answered-zero rate** only to
 within **at least** the missed-refusal share $1/(\kappa+1)$ — **0.18%** for Qwen3-VL-32B and
-**30.31%** for InternVL2.5-8B — so any abstention
-rate quoted for a partially covered lineage carries that error bar, and the two lineages are never pooled
+**30.31%** for InternVL2.5-8B — so any **answered-zero rate** quoted for a partially covered lineage carries that error bar, and the two lineages are never pooled
 (§3.8, §8.2).
 
 **(d) A consequence that corrects the mechanism.** What decides whether a refusal is expressed is the

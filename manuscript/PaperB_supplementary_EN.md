@@ -501,13 +501,12 @@ The two columns are computed differently: the permutation $p$ is a **Monte-Carlo
 
 **When a split can be certified at all.** The two rows of the table above are the ends of one rule. With $n$ units, a $k$-vs-$(n-k)$ reading and $n-1$ enumerated split points — the enumeration design both rows use — complete enumeration has $\binom{n}{k}$ assignments, so the smallest attainable corrected $p$ is $(n-1)/\binom{n}{k}$ and the split is certifiable at level $\alpha$ exactly when $\binom{n}{k}>(n-1)/\alpha$. The published ten-unit split gives $9/120=0.075$ and cannot be certified; the sixteen-unit construction gives $15/560=0.027$ and can. For $k=3$ and $\alpha=0.05$ the rule needs $\binom{n}{3}>20(n-1)$, first satisfied at $n=13$ — so **thirteen units would have sufficed** for the construction this appendix ran with sixteen, and "how many units must I add?" has a one-line answer. This is a statement about **certifying a partition**, not about the ordering: §M.45 asks the different question of how the full ordering behaves under an equal level count and under a common error budget, and answers it there.
 
-**The rule has one premise, and it is where the rule is won or lost: $k$ must be fixed before the data are
-seen.** The floor $(n-1)/\binom{n}{k}$ counts the partitions of one cut size. If the cut size is chosen from
-the same data, the enumeration ranges over cut sizes as well, the multiplicity becomes
-$\sum_{k}\binom{n}{k} = 2^n - 2$, and the smallest attainable corrected $p$ falls to $(n-1)/(2^n-2)$ — at
-$n = 16$, from $15/560 = 0.027$ to $15/65{,}534 = 2.3\times10^{-4}$. The rule therefore prices
-**pre-registration**, not merely unit count: sixteen units certify a partition when $k$ is declared in advance
-and cannot come close when it is not.
+**One premise carries this rule: $k$ must be fixed before the data are seen.** If the cut size is chosen from
+the same data, the multiplicity to correct for grows from $\binom{n}{k}$ to
+$\sum_{k}\binom{n}{k} = 2^n - 2$, so an *observed* corrected $p$ then carries a larger correction. The
+enumeration's floor moves the other way — it is $(n-1)/(2^n-2)$ — so the rule above, which is a statement
+about what an enumeration **can** return, is quoted for the **pre-registered** case only, and is not offered
+as a bound in the data-chosen one.
 
 **The separation does not survive the finer unit set.** With the detector knob split, the largest
 non-overlapping gap anywhere in the 16-unit spectrum is **0.2 pp** (a 1-vs-15 split), and the split that
@@ -1017,7 +1016,7 @@ the paper had obtained by a separate route, rather than restating it.
 those are excluded here — the largest divergence between a primary run and its re-run is **0.809 pp** on
 $\rho$, Appendix J.4):
 
-| Unit (base contract arm) | $S$ measured | $S$ closed form | abstention term, item-count convention |
+| Unit (base contract arm) | $S$ measured | $S$ closed form | abstention rate, item-count convention |
 |---|---|---|---|
 | Qwen3-VL-32B / ShanghaiTech-A | 94.2% | 94.2% | 56.6% |
 | Qwen3-VL-32B / UCF-QNRF | 93.7% | 93.7% | 53.9% |
@@ -1455,7 +1454,7 @@ bimodality, since with four knob **sides** collapsed into ten units a bimodality
 **§5.5.** Across the other arms the same quantity runs from **42.5%** — ShanghaiTech-B under the `under` arm, a cell
 whose abstention rate is itself only 13.6% — to **99.4%** (ShanghaiTech-A, `under` arm); the `over` arm has **0%** — its prompt requires every
 possible target to be counted, so it never abstains — and the dense `base` cells sit at
-**93.7–94.2%**. The same abstention term under the item-count convention is 53.9–68.2% — under that
+**93.7–94.2%**. The same abstention **rate** under the item-count convention is 53.9–68.2% — under that
 convention an abstained item contributes $pred=0$, so this term is **identically** the abstention rate itself
 (the last column of Table 3), which is why it is printed as a positive percentage while the ground-truth-weighted
 term beside it is negative. The
@@ -2438,7 +2437,7 @@ does occur elsewhere on it (Qwen2.5-VL-72B-AWQ) — including a **larger build o
 zero-pool rate **7.38%** [4.72, 11.36] over **244** items — the nine of 253 with an empty `pred` are
 excluded from the rate, per this appendix's rule — share **18.28%**), whose printed dense reading is a **single** run — re-run here over **three fresh service starts** (§M.19.17) — and which is an **fp8** build,
 so its precision axis moves with its family axis and the two cannot be separated from this row alone. **Its rebuild at BF16 — a larger non-Qwen build at the anchor's own precision, the cell this panel was missing — reaches only 9.56% (24/251, Wilson 95% [6.51, 13.83]) with a dense share of 23.20% over three fresh service starts, so it clears neither bar; and on the 244 items its two weight formats share, its fp8 and BF16 builds differ by +0.41 pp (95% [−2.05, +2.87]).** The precision axis on the **anchor's** own checkpoint spans three weights on the identical 253 items and is reported there as **indeterminate**, not as a small effect (§M.19.17). Eight of the ten rows therefore fall below the bar, and the two that clear it are the
-same checkpoint at two precisions. **The same checkpoint at BF16 clears the bar and does not reproduce it whole**: on the identical item sets it holds **82.27%** of the share (against **90.30%**, a paired bootstrap difference of **8.03 pp**, 95% **[−12.37, −3.75]**) while the answered-zero rate falls from **95.26%** to **64.03%**. The **share** is therefore a build-level quantity and the **rate** is a build-and-precision one on this checkpoint — though not on every one: on the 38B build the weight format does not move it at all (0.41 pp; §M.19.17) — which is the narrower reading §8.2 now states. Three denominators must not be crossed here: **64.03%** is the dense **intersection** (253 items), **65.02%** is this build's **own** dense zero pool (283 items), and **33.61%** is the dense rate on the **full** item set (482 items). This is sharper than "lineage- or build-specific": **the other Qwen anchor (AWQ) fails
+same checkpoint at two precisions. **The same checkpoint at BF16 clears the bar and does not reproduce it whole**: on the identical item sets it holds **82.27%** of the share (against **90.30%**, a paired bootstrap difference of **−8.03 pp**, 95% **[−12.37, −3.75]**) while the answered-zero rate falls from **95.26%** to **64.03%**. The **share** is therefore a build-level quantity and the **rate** is a build-and-precision one on this checkpoint — though not on every one: on the 38B build the weight format does not move it at all (0.41 pp; §M.19.17) — which is the narrower reading §8.2 now states. Three denominators must not be crossed here: **64.03%** is the dense **intersection** (253 items), **65.02%** is this build's **own** dense zero pool (283 items), and **33.61%** is the dense rate on the **full** item set (482 items). This is sharper than "lineage- or build-specific": **the other Qwen anchor (AWQ) fails
 as well** (dense 0.00%); the BF16 build of that same checkpoint clears it (64.03% / 82.27%). What the cross-family grid therefore supports is that the dense abstention channel
 belongs to **that build in that configuration** — the same conclusion §8.2 reaches from the five-deployment
 spread, now measured in the headline's own quantity.
@@ -2460,7 +2459,7 @@ than 103 and 180, i.e. 102 and 166 zeros) and silently breaks agreement with M.1
 ##### M.19.15.1 A same-family cross-precision sidelight (not a precision axis)
 
 A **directional sidelight, not a precision axis**: the **8B** BF16 build of this family answers zero on **0.79%** of its dense pool against **7.38%** for its **38B** FP8 build (paired bootstrap over the 244 shared items, seed 20260930: **+6.97 pp, 95% [+4.10, +10.66]**), and the same 8B build is itself at **51.33%** on the aerial domains, well below the 38B build's **78.00%**. Both dense readings sit far below the 30% bar, so the direction is compatible with a
-family-level rather than precision-level reading, without measuring it. The sample is **one family at two scales**, so it supports no family-level or lineage-level statement, and its denominators (253 / **244** dense, 300 aerial) are its own — on the **244** items the two weight formats share it reads **18/244 = 7.38%** against **1/244 = 0.41%**, a paired difference of exactly one item, which is the **+6.97 pp** quoted just above.
+family-level rather than precision-level reading, without measuring it. The sample is **one family at two scales**, so it supports no family-level or lineage-level statement, and its denominators (253 / **244** dense, 300 aerial) are its own — on the **244** items the two builds share, this 8B BF16 build reads **1/244 = 0.41%** against **18/244 = 7.38%** for the 38B FP8 build, a difference of **17 of the 244 items (6.97 pp)**, which is the **+6.97 pp** quoted just above. (The **+0.41 pp** quoted in §M.19.15 is a *different* contrast — that build's own fp8 against its own BF16, on the same 244 items.)
 
 ---
 
@@ -3058,12 +3057,12 @@ one-line answer. With $n^-$ negative units and the Hanley–McNeil equal-varianc
 $\mathrm{SE}(\mathrm{AUC}) \approx 1/(2\sqrt{n^-})$, the condition $\theta - \tfrac12 \ge z_{1-\alpha}\,
 \mathrm{SE}$ inverts to
 
-$$ n^- \;\ge\; \left\lceil \frac{1}{4}\left(\frac{z_{1-\alpha}}{2(\theta - \frac12)}\right)^{2} \right\rceil , $$
+$$ n^- \;\ge\; \left\lceil \left(\frac{z_{1-\alpha}}{2(\theta - \tfrac12)}\right)^{2} \right\rceil , $$
 
 which at $\theta = 0.65$ and $\alpha = 0.05$ requires $n^- \ge 31$. Our cross-wording units carry a median of
 **17** negatives, **15 of 20** are below the bar, and one has $n^- = 0$, where the AUC is not defined at all.
 Screening to the units that can be tested leaves **five**, of which **one** passes; under a true pass rate as
-high as **0.52** the probability of seeing at most one is **0.159**. The count of passing cells is therefore
+high as **0.52** the probability of seeing at most one is **0.1635**. The count of passing cells is therefore
 not evidence about the signal — it is a statement about the sample sizes, and we report it as such.
 
 | signal | how it is computed | units tested | units passing |
@@ -3112,7 +3111,7 @@ transport rather than re-implementing them, so the instrument is the same one us
 redistribute, the pre-processed package `images_384_VarV2`, which holds **6,146** files — that is the object we
 sample from, and it is why §M.41 and this section state **6,146**. The total usually quoted for FSC-147 in the
 literature is **6,135** images (3,659 / 1,286 / 1,190 train/val/test), i.e. a **de-duplicated** count; the
-difference of **eleven** is what the revision **FSC-133** (Amini-Naieni et al.) records, namely eleven training
+difference of **eleven** is what the revision **FSC-133** (Hobley & Prisacariu, arXiv:2205.10203) records, namely eleven training
 images that also appear in the validation or test split. Both figures are therefore correct under their own
 caliber; we sample the package as distributed and say so, rather than silently reconciling the two.
 
@@ -3727,9 +3726,7 @@ on the weak order.) On this table $r_{\min}$ is set by `det·zero-shot COCO (ful
 so $r_{\min} = 1.0013$. Two units, `det·in-domain(micro)/BBBC005 (full grid)` and its `tau@1536` sibling,
 coincide exactly at **112.3128 pp**; a strict order does not exist there, and the radius is quoted on the
 closest pair that does resolve. The consequence is narrower than a tolerance band and sharper than a
-ranking: **every caliber whose factor varies across units by more than 0.13% must lose this ordering**, so
-the per-knob map (7.7×) could not have held it however well it was fitted — not because it fits badly, but
-because no map at that granularity can. The loss then grows with $A$ monotonically. Over the same 36 units
+ranking: **every caliber whose factor varies across units by more than 0.13% has *some* factor assignment that reverses this ordering** — so no bound at that granularity *guarantees* preservation, and the per-knob map (7.7×) had no such guarantee to invoke. That is a statement about the *worst case over assignments*, not a claim that each individual map fails: a map that gives the larger factor to the larger reading can still keep the order. The loss then grows with $A$ monotonically. Over the same 36 units
 the Kendall $\tau$ against the uncalibrated ordering is **1.0000** at $A = 1.000$ (the shared case, exact),
 then **0.9111 / 0.8476 / 0.8381** as $A$ rises through **2.572× / 3.558× / 5.024×** for the equal-count and
 extreme-dropping deflations, against Spearman **0.983 / 0.947 / 0.933**. The rungs are not a ladder of fit
@@ -4581,7 +4578,7 @@ items × 3 arms × 4 families.
 | Qwen3-VL-32B-Instruct (anchor) | 0/70 = 0.00% *(95% upper bound 5.2%)* | 3/14 = **21.43%** *(95% upper bound 47.6%)* | **3.57%** | pass |
 | InternVL3.5-8B (control) | 0/6 = 0.00% *(95% upper bound 39.0%)* | 0/8 = 0.00% *(95% upper bound 32.4%)* | **0.00%** | pass |
 
-**Read the counts as well as the rates.** Several cells rest on 2–25 items, so their 95% upper bounds are wide (0 of 2 → up to 65.8%, 0 of 11 → up to 25.9%) and they are direction readings. **The interval family is named, because two are in use in this paper and they are not interchangeable:** the bound printed in the table above — and here — is the **Jeffreys** one-sided 95% upper limit; the **Clopper–Pearson** limit on the same 0-of-2 cell is **77.6%**. Both are above the 5% residual, so the verdict does not turn on the choice, but the label must carry the family it was computed under. With that caveat, **all four families are inside the 5% residual**, so the recipe's gate transfers to corpora and to families
+**Read the counts as well as the rates.** Several cells rest on 2–25 items, so their 95% upper bounds are wide (0 of 2 → up to 65.8%, 0 of 11 → up to 25.9%) and they are direction readings. **The interval family is named, because two are in use in this paper and they are not interchangeable:** the bound printed in the table above — and here — is the **Wilson two-sided 95% upper endpoint**, which is also the family the paper's Table 4 labels `(Wilson)`; the **Clopper–Pearson** single-sided limit on the same 0-of-2 cell is **77.6%**. Both are above the 5% residual, so the verdict does not turn on the choice, but the label must carry the family it was computed under. With that caveat, **all four families are inside the 5% residual**, so the recipe's gate transfers to corpora and to families
 this paper never touched. One cell is above the bar and is reported rather than pooled away: the anchor
 build on TallyQA leaves **3 of 14** answered zeros (21.43%). The channel composition on the same runs shows
 the outlets being used rather than ignored — numbers 35–52%, `cannot_judge` 46–64%, `no_people` 0.3–2.0%,

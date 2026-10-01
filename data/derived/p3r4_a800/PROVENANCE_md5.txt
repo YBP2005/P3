@@ -1,0 +1,71 @@
+P3R4 A800 逐项记录 —— 回收获 md5 校验记录（对照实验机上 md5sum 的输出）
+目录：data/derived/p3r4_a800/
+==========================================================================================
+
+#### _md5_verify_e3b.txt
+E3_gemma3_12b_start1.csv                   4a35590496e4fbd5972dd58bcf927936  期望 4a35590496e4fbd5972dd58bcf927936  OK
+E3_gemma3_12b_start2.csv                   1d61299a27effcffa09bae3f8329ecc0  期望 1d61299a27effcffa09bae3f8329ecc0  OK
+E3_gemma3_12b_start3.csv                   b263c21d56937898a81bee15801ad882  期望 b263c21d56937898a81bee15801ad882  OK
+E3_internvl8b_start1.csv                   9f68a7ab164d3702147b7ebc270004ef  期望 9f68a7ab164d3702147b7ebc270004ef  OK
+E3_internvl8b_start2.csv                   874ecd52d8d11a25b54a66da46a8fc4d  期望 874ecd52d8d11a25b54a66da46a8fc4d  OK
+E3_internvl8b_start3.csv                   e5fbbf7cd9732ca12bd0c8c933078f20  期望 e5fbbf7cd9732ca12bd0c8c933078f20  OK
+E3_llavaov_start1.csv                      ce69c2464e2cfe11a1fdec30c41802a4  期望 ce69c2464e2cfe11a1fdec30c41802a4  OK
+E3_llavaov_start2.csv                      6f4549797942b6d4ce06486529385189  期望 6f4549797942b6d4ce06486529385189  OK
+E3_llavaov_start3.csv                      b2176c7b324ec86a26a967b41751e0c8  期望 b2176c7b324ec86a26a967b41751e0c8  OK
+E3_phi35_start1.csv                        8e5c15acfb29a69c96dfae8771514f53  期望 8e5c15acfb29a69c96dfae8771514f53  OK
+E3_phi35_start2.csv                        432a2ada7efbc107cfb27a0271f69a11  期望 432a2ada7efbc107cfb27a0271f69a11  OK
+E3_phi35_start3.csv                        99a74656b10734cb7aedda6a6a59e4b1  期望 99a74656b10734cb7aedda6a6a59e4b1  OK
+E1_fp8_densenonzero_start1.csv             c1b258d5183d91c791b178a7aec19933  期望 c1b258d5183d91c791b178a7aec19933  OK
+E1_fp8_densenonzero_start2.csv             388a09b17ad69bbf9633266282f17a12  期望 388a09b17ad69bbf9633266282f17a12  OK
+E1_fp8_densenonzero_start3.csv             d583c931b82beb4e3f070e03d6836c3d  期望 d583c931b82beb4e3f070e03d6836c3d  OK
+E5_aerial_nonzero_start1.csv               4d1305e3fe74407826c4f027168d61b6  期望 4d1305e3fe74407826c4f027168d61b6  OK
+E5_aerial_nonzero_start2.csv               2a3584f244dd04a1ca3b5f928605f006  期望 2a3584f244dd04a1ca3b5f928605f006  OK
+E5_aerial_nonzero_start3.csv               f7cddccc566380406593f0afda4ff844  期望 f7cddccc566380406593f0afda4ff844  OK
+
+#### _md5_verify_e8b.txt
+B1_zero_start1.csv                 e9a98dc0634e4676018c4010ba842400  期望 e9a98dc0634e4676018c4010ba842400  OK
+B1_zero_start2.csv                 24c04b2a3fe2c3a1774d731b16b03d3b  期望 24c04b2a3fe2c3a1774d731b16b03d3b  OK
+B1_zero_start3.csv                 688afbd77edca3e465c081a770249824  期望 688afbd77edca3e465c081a770249824  OK
+B1_nonzero_start1.csv              7eb415ab9e72ce992131b3e6e11c65bc  期望 7eb415ab9e72ce992131b3e6e11c65bc  OK
+B1_nonzero_start2.csv              55516275019b74d6fc3d51b065b70ab3  期望 55516275019b74d6fc3d51b065b70ab3  OK
+B1_nonzero_start3.csv              3bb533c387ab3b0963eb34df79531251  期望 3bb533c387ab3b0963eb34df79531251  OK
+pf_e1_stats.py                     1f7d495f2716daaca7a4989a45491afe  期望 1f7d495f2716daaca7a4989a45491afe  OK
+pf_e1_report.py                    7650fc38561bf73eeb532521107a6d32  期望 7650fc38561bf73eeb532521107a6d32  OK
+pf_probe_pi.py                     c4dcb99fdcf0a5ff56d6d72c4019d752  期望 c4dcb99fdcf0a5ff56d6d72c4019d752  OK
+pf_probe_aerial.py                 43ec0dbd36b55c5c24481c52215a0fc5  期望 43ec0dbd36b55c5c24481c52215a0fc5  OK
+
+#### 本目录内逐件实测 md5
+B1_nonzero_start1.csv                        7eb415ab9e72ce992131b3e6e11c65bc
+B1_nonzero_start2.csv                        55516275019b74d6fc3d51b065b70ab3
+B1_nonzero_start3.csv                        3bb533c387ab3b0963eb34df79531251
+B1_zero_start1.csv                           e9a98dc0634e4676018c4010ba842400
+B1_zero_start2.csv                           24c04b2a3fe2c3a1774d731b16b03d3b
+B1_zero_start3.csv                           688afbd77edca3e465c081a770249824
+E1_fp8_densenonzero_start1.csv               c1b258d5183d91c791b178a7aec19933
+E1_fp8_densenonzero_start2.csv               388a09b17ad69bbf9633266282f17a12
+E1_fp8_densenonzero_start3.csv               d583c931b82beb4e3f070e03d6836c3d
+E1_fp8_densezero_start1.csv                  ede2c2fbf532bc0b1afd3e8dce4c220d
+E1_fp8_densezero_start2.csv                  884765192533af24a3b926e7b635cd06
+E1_fp8_densezero_start3.csv                  62f57cd9007c96c9bc059dc215391acf
+E3_cells.json                                3a4c8b2203abe1c6b92ca696ac84c47c
+E3_gemma3_12b_start1.csv                     4a35590496e4fbd5972dd58bcf927936
+E3_gemma3_12b_start2.csv                     1d61299a27effcffa09bae3f8329ecc0
+E3_gemma3_12b_start3.csv                     b263c21d56937898a81bee15801ad882
+E3_internvl8b_start1.csv                     9f68a7ab164d3702147b7ebc270004ef
+E3_internvl8b_start2.csv                     874ecd52d8d11a25b54a66da46a8fc4d
+E3_internvl8b_start3.csv                     e5fbbf7cd9732ca12bd0c8c933078f20
+E3_llavaov_start1.csv                        ce69c2464e2cfe11a1fdec30c41802a4
+E3_llavaov_start2.csv                        6f4549797942b6d4ce06486529385189
+E3_llavaov_start3.csv                        b2176c7b324ec86a26a967b41751e0c8
+E3_phi35_start1.csv                          8e5c15acfb29a69c96dfae8771514f53
+E3_phi35_start2.csv                          432a2ada7efbc107cfb27a0271f69a11
+E3_phi35_start3.csv                          99a74656b10734cb7aedda6a6a59e4b1
+E5_aerial_nonzero_start1.csv                 4d1305e3fe74407826c4f027168d61b6
+E5_aerial_nonzero_start2.csv                 2a3584f244dd04a1ca3b5f928605f006
+E5_aerial_nonzero_start3.csv                 f7cddccc566380406593f0afda4ff844
+E5_aerial_zero_start1.csv                    0173a57b97edc215926f59b1d6948abd
+E5_aerial_zero_start2.csv                    c655214b4dfc75d95853dc2651ee7369
+E5_aerial_zero_start3.csv                    1b3a0fbba216cedc6a4bbcaef1722b63
+pf_items_aerial499.json                      ab8c06eb4436ddeb2d5f4d5113e7fd9f
+pf_items_dense482.json                       ca51c48bf9f8f19292d5d2fc56fe4044
+pf_items_pi0570.json                         c43d7f94bc192ac0a2d9b697561d90ef

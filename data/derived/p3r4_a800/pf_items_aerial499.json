@@ -1,0 +1,4044 @@
+{
+ "purpose": "P3R4 E-4/后续 aerial 臂：7 家族 aerial 交集池（zero 300 + nonzero 199 = 499）",
+ "seed": 20260930,
+ "frozen_pools": {
+  "aerial_zero": 300,
+  "aerial_nonzero": 199,
+  "aerial_union": 499
+ },
+ "forbidden": "★ 不得按被测构建的输出筛选 item；不得事后改种子或换 item",
+ "arms": [
+  "base"
+ ],
+ "builds_note": "E-4 用 Qwen3-VL-32B-Instruct-AWQ-4bit（社区再量化，--quantization compressed-tensors）",
+ "img_dirs": {
+  "visdrone": "/root/aerial/visdrone/images",
+  "aitod": "/root/aerial/aitod/images"
+ },
+ "md5_of_inputs": {
+  "gemma3-12b|visdrone|zero": "0ae51dcc1dcfb8feb07f238c0e9e5dd4",
+  "gemma3-12b|visdrone|nonzero": "5cb880e70538d2f57f350c04edec9731",
+  "gemma3-12b|aitod|zero": "029ec5b06246f7c0935b48d1b562406a",
+  "gemma3-12b|aitod|nonzero": "f873569b5bf9f7f73c6cefaeb98a04b6",
+  "InternVL3_5-8B|visdrone|zero": "df025e07bf5b11ba397e454671fba04e",
+  "InternVL3_5-8B|visdrone|nonzero": "5ca7707690bcb04a12ad332c5fb837f4",
+  "InternVL3_5-8B|aitod|zero": "539fac52a3b19b75f2e690c0fe84a97e",
+  "InternVL3_5-8B|aitod|nonzero": "1fc2aedafb8fda7079395127a6646002",
+  "Phi-3.5-vision-instruct|visdrone|zero": "d0729b231d205b3959e2558500a5a330",
+  "Phi-3.5-vision-instruct|visdrone|nonzero": "b67a1eb957d8835fa4d60ca2893526fe",
+  "Phi-3.5-vision-instruct|aitod|zero": "a4396a31c39a618d17f0b709a3fa335b",
+  "Phi-3.5-vision-instruct|aitod|nonzero": "ea1e6e9d447f7f1ed4a7cb964e29a66a",
+  "llava-onevision-qwen2-7b-ov|visdrone|zero": "c8ece6fb5bb98672998922d590aa195f",
+  "llava-onevision-qwen2-7b-ov|visdrone|nonzero": "b191b2404c6e5715818be4c98685bcb7",
+  "llava-onevision-qwen2-7b-ov|aitod|zero": "a7dfeb92c0e316e58ea7a302f911671d",
+  "llava-onevision-qwen2-7b-ov|aitod|nonzero": "8de123018150fbab8764797c126954b3",
+  "qwen3-vl-32b-awq|visdrone|zero": "4dc6c4fda74c1389322d42fd89c813c3",
+  "qwen3-vl-32b-awq|visdrone|nonzero": "35b499c4c6bad1ee26cbd064a8575c2c",
+  "qwen3-vl-32b-awq|aitod|zero": "456ff6ecc67a19c1659cc2f8ef928ef5",
+  "qwen3-vl-32b-awq|aitod|nonzero": "3b781f605b23476c953d6f14ffb7b87d",
+  "qwen25vl-72b-awq|visdrone|zero": "e26378b8880de27c998c5f328cffa2d8",
+  "qwen25vl-72b-awq|visdrone|nonzero": "e9020d00068debc7e784bd973ece4e80",
+  "qwen25vl-72b-awq|aitod|zero": "1b5de6cde851ee8bcc607a056f9394ea",
+  "qwen25vl-72b-awq|aitod|nonzero": "4aa94af58a17787248ba2ba9ff3da8b7",
+  "internvl25-8b-awq|visdrone|zero": "023f49410dac5b007b5f0ff9556e1b72",
+  "internvl25-8b-awq|visdrone|nonzero": "0e6007cdca88bec0f9d0b074db0c0c03",
+  "internvl25-8b-awq|aitod|zero": "a4e69524f1220debc2fbe2adacfda664",
+  "internvl25-8b-awq|aitod|nonzero": "8b0a438115769feee802bce7ab3dd0b2"
+ },
+ "items_zero": [
+  {
+   "item": "0000133_00078_d_0000141__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 38,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000133_00078_d_0000141__0_0"
+  },
+  {
+   "item": "0000156_00154_d_0000077__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 31,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000156_00154_d_0000077__0_0"
+  },
+  {
+   "item": "0000181_00000_d_0000028__160_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 19,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000181_00000_d_0000028__160_0"
+  },
+  {
+   "item": "0000182_01220_d_0000039__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 21,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000182_01220_d_0000039__0_0"
+  },
+  {
+   "item": "0000193_02606_d_0000117__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 25,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000193_02606_d_0000117__0_0"
+  },
+  {
+   "item": "0000194_00998_d_0000124__160_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 16,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000194_00998_d_0000124__160_0"
+  },
+  {
+   "item": "0000197_03351_d_0000154__1120_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 2,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000197_03351_d_0000154__1120_0"
+  },
+  {
+   "item": "0000199_00303_d_0000163__160_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 23,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000199_00303_d_0000163__160_0"
+  },
+  {
+   "item": "0000200_00297_d_0000169__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 4,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000200_00297_d_0000169__0_0"
+  },
+  {
+   "item": "0000201_00000_d_0000171__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 12,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000201_00000_d_0000171__0_0"
+  },
+  {
+   "item": "0000225_03052_d_0000011__1120_280",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 2,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000225_03052_d_0000011__1120_280"
+  },
+  {
+   "item": "0000225_05003_d_0000016__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 1,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000225_05003_d_0000016__600_0"
+  },
+  {
+   "item": "0000228_00001_d_0000001__1200_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 7,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000228_00001_d_0000001__1200_0"
+  },
+  {
+   "item": "0000228_00500_d_0000002__1120_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 15,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000228_00500_d_0000002__1120_0"
+  },
+  {
+   "item": "0000239_07930_d_0000021__160_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 12,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000239_07930_d_0000021__160_0"
+  },
+  {
+   "item": "0000239_08430_d_0000022__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 13,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000239_08430_d_0000022__0_0"
+  },
+  {
+   "item": "0000242_02400_d_0000009__160_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 9,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000242_02400_d_0000009__160_0"
+  },
+  {
+   "item": "0000242_05059_d_0000015__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 11,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000242_05059_d_0000015__0_0"
+  },
+  {
+   "item": "0000244_01500_d_0000004__160_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 8,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000244_01500_d_0000004__160_0"
+  },
+  {
+   "item": "0000250_02350_d_0000001",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 1,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000250_02350_d_0000001"
+  },
+  {
+   "item": "0000257_04349_d_0000067__560_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 47,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000257_04349_d_0000067__560_0"
+  },
+  {
+   "item": "0000264_01401_d_0000201__560_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 9,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000264_01401_d_0000201__560_0"
+  },
+  {
+   "item": "0000264_01801_d_0000203__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 1,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000264_01801_d_0000203__600_0"
+  },
+  {
+   "item": "0000303_03401_d_0000200__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 10,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000303_03401_d_0000200__600_0"
+  },
+  {
+   "item": "0000315_00401_d_0000503__560_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 20,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000315_00401_d_0000503__560_0"
+  },
+  {
+   "item": "0000337_03500_d_0000043",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 6,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000337_03500_d_0000043"
+  },
+  {
+   "item": "0000337_04000_d_0000044",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 2,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000337_04000_d_0000044"
+  },
+  {
+   "item": "0000339_02157_d_0000172__560_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 8,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000339_02157_d_0000172__560_0"
+  },
+  {
+   "item": "0000344_02941_d_0000308__560_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 9,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000344_02941_d_0000308__560_0"
+  },
+  {
+   "item": "0000353_05500_d_0000199",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 8,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000353_05500_d_0000199"
+  },
+  {
+   "item": "0000355_02500_d_0000211",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 1,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000355_02500_d_0000211"
+  },
+  {
+   "item": "9999937_00000_d_0000005__544_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 5,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999937_00000_d_0000005__544_0"
+  },
+  {
+   "item": "9999937_00000_d_0000013__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 6,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999937_00000_d_0000013__0_0"
+  },
+  {
+   "item": "9999938_00000_d_0000010",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 7,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000010"
+  },
+  {
+   "item": "9999938_00000_d_0000018",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 6,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000018"
+  },
+  {
+   "item": "9999938_00000_d_0000030",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 4,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000030"
+  },
+  {
+   "item": "9999938_00000_d_0000031",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 8,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000031"
+  },
+  {
+   "item": "9999938_00000_d_0000050",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 6,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000050"
+  },
+  {
+   "item": "9999938_00000_d_0000055",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 5,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000055"
+  },
+  {
+   "item": "9999938_00000_d_0000070",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 4,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000070"
+  },
+  {
+   "item": "9999938_00000_d_0000187",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 7,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000187"
+  },
+  {
+   "item": "9999938_00000_d_0000233",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 7,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000233"
+  },
+  {
+   "item": "9999938_00000_d_0000240",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 6,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000240"
+  },
+  {
+   "item": "9999938_00000_d_0000243",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 5,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000243"
+  },
+  {
+   "item": "9999938_00000_d_0000245",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 5,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000245"
+  },
+  {
+   "item": "9999938_00000_d_0000259",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 8,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000259"
+  },
+  {
+   "item": "9999938_00000_d_0000261",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 7,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000261"
+  },
+  {
+   "item": "9999938_00000_d_0000271",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 2,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000271"
+  },
+  {
+   "item": "9999938_00000_d_0000276",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000276"
+  },
+  {
+   "item": "9999938_00000_d_0000278",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 4,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000278"
+  },
+  {
+   "item": "9999938_00000_d_0000283",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 2,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000283"
+  },
+  {
+   "item": "9999938_00000_d_0000285",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 2,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000285"
+  },
+  {
+   "item": "9999938_00000_d_0000295",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 7,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000295"
+  },
+  {
+   "item": "9999938_00000_d_0000298",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 6,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000298"
+  },
+  {
+   "item": "9999938_00000_d_0000299",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 2,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000299"
+  },
+  {
+   "item": "9999938_00000_d_0000304",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 1,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000304"
+  },
+  {
+   "item": "9999938_00000_d_0000336",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 4,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000336"
+  },
+  {
+   "item": "9999938_00000_d_0000337",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000337"
+  },
+  {
+   "item": "9999938_00000_d_0000339",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000339"
+  },
+  {
+   "item": "9999938_00000_d_0000340",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000340"
+  },
+  {
+   "item": "9999938_00000_d_0000343",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 2,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000343"
+  },
+  {
+   "item": "9999938_00000_d_0000346",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 2,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000346"
+  },
+  {
+   "item": "9999938_00000_d_0000347",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 1,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000347"
+  },
+  {
+   "item": "9999938_00000_d_0000359",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000359"
+  },
+  {
+   "item": "9999938_00000_d_0000372",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 2,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000372"
+  },
+  {
+   "item": "9999940_00000_d_0000026__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 5,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999940_00000_d_0000026__0_0"
+  },
+  {
+   "item": "9999940_00000_d_0000033__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 1,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999940_00000_d_0000033__600_0"
+  },
+  {
+   "item": "9999940_00000_d_0000064__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 1,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999940_00000_d_0000064__600_0"
+  },
+  {
+   "item": "9999940_00000_d_0000076__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 16,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999940_00000_d_0000076__600_0"
+  },
+  {
+   "item": "9999941_00000_d_0000002",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 4,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999941_00000_d_0000002"
+  },
+  {
+   "item": "9999941_00000_d_0000021",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 6,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999941_00000_d_0000021"
+  },
+  {
+   "item": "9999941_00000_d_0000032",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 1,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999941_00000_d_0000032"
+  },
+  {
+   "item": "9999942_00000_d_0000254__600_250",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 20,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999942_00000_d_0000254__600_250"
+  },
+  {
+   "item": "9999945_00000_d_0000004__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 2,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999945_00000_d_0000004__0_0"
+  },
+  {
+   "item": "9999945_00000_d_0000004__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 22,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999945_00000_d_0000004__600_0"
+  },
+  {
+   "item": "9999945_00000_d_0000004__600_250",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 50,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999945_00000_d_0000004__600_250"
+  },
+  {
+   "item": "9999945_00000_d_0000042__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 7,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999945_00000_d_0000042__600_0"
+  },
+  {
+   "item": "9999945_00000_d_0000052__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 11,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999945_00000_d_0000052__0_0"
+  },
+  {
+   "item": "9999945_00000_d_0000078__0_250",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 4,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999945_00000_d_0000078__0_250"
+  },
+  {
+   "item": "9999945_00000_d_0000099__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 9,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999945_00000_d_0000099__600_0"
+  },
+  {
+   "item": "9999945_00000_d_0000133__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 38,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999945_00000_d_0000133__600_0"
+  },
+  {
+   "item": "9999945_00000_d_0000158__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 11,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999945_00000_d_0000158__600_0"
+  },
+  {
+   "item": "9999945_00000_d_0000171__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 4,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999945_00000_d_0000171__600_0"
+  },
+  {
+   "item": "9999952_00000_d_0000016",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000016"
+  },
+  {
+   "item": "9999952_00000_d_0000017",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 1,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000017"
+  },
+  {
+   "item": "9999952_00000_d_0000019",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 5,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000019"
+  },
+  {
+   "item": "9999952_00000_d_0000030",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 2,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000030"
+  },
+  {
+   "item": "9999952_00000_d_0000033",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 1,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000033"
+  },
+  {
+   "item": "9999952_00000_d_0000041",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 1,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000041"
+  },
+  {
+   "item": "9999952_00000_d_0000050",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 2,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000050"
+  },
+  {
+   "item": "9999952_00000_d_0000051",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000051"
+  },
+  {
+   "item": "9999952_00000_d_0000056",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 1,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000056"
+  },
+  {
+   "item": "9999952_00000_d_0000064",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 1,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000064"
+  },
+  {
+   "item": "9999952_00000_d_0000068",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 1,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000068"
+  },
+  {
+   "item": "9999952_00000_d_0000069",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 1,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000069"
+  },
+  {
+   "item": "9999952_00000_d_0000073",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 2,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000073"
+  },
+  {
+   "item": "9999952_00000_d_0000079",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 1,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000079"
+  },
+  {
+   "item": "9999952_00000_d_0000080",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 1,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000080"
+  },
+  {
+   "item": "9999952_00000_d_0000092",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 1,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000092"
+  },
+  {
+   "item": "9999952_00000_d_0000101",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 8,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000101"
+  },
+  {
+   "item": "9999952_00000_d_0000104",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 1,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000104"
+  },
+  {
+   "item": "9999952_00000_d_0000112",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 8,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000112"
+  },
+  {
+   "item": "9999952_00000_d_0000116",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 2,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000116"
+  },
+  {
+   "item": "9999952_00000_d_0000117",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 1,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000117"
+  },
+  {
+   "item": "9999952_00000_d_0000118",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000118"
+  },
+  {
+   "item": "9999952_00000_d_0000119",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000119"
+  },
+  {
+   "item": "9999952_00000_d_0000121",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 2,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000121"
+  },
+  {
+   "item": "9999952_00000_d_0000132",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 2,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000132"
+  },
+  {
+   "item": "9999952_00000_d_0000135",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 4,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000135"
+  },
+  {
+   "item": "9999952_00000_d_0000141",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 7,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000141"
+  },
+  {
+   "item": "9999952_00000_d_0000142",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 2,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000142"
+  },
+  {
+   "item": "9999952_00000_d_0000148",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 2,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000148"
+  },
+  {
+   "item": "9999952_00000_d_0000149",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000149"
+  },
+  {
+   "item": "9999952_00000_d_0000151",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 1,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000151"
+  },
+  {
+   "item": "9999952_00000_d_0000161",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000161"
+  },
+  {
+   "item": "9999952_00000_d_0000162",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 1,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000162"
+  },
+  {
+   "item": "9999952_00000_d_0000168",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 7,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000168"
+  },
+  {
+   "item": "9999952_00000_d_0000177",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 1,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000177"
+  },
+  {
+   "item": "9999952_00000_d_0000193",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 6,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000193"
+  },
+  {
+   "item": "9999952_00000_d_0000197",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 4,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000197"
+  },
+  {
+   "item": "9999952_00000_d_0000216",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 1,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000216"
+  },
+  {
+   "item": "9999952_00000_d_0000217",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 7,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000217"
+  },
+  {
+   "item": "9999952_00000_d_0000218",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 1,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000218"
+  },
+  {
+   "item": "9999952_00000_d_0000223",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 2,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000223"
+  },
+  {
+   "item": "9999952_00000_d_0000229",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 2,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000229"
+  },
+  {
+   "item": "9999952_00000_d_0000233",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000233"
+  },
+  {
+   "item": "9999952_00000_d_0000238",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000238"
+  },
+  {
+   "item": "9999952_00000_d_0000251",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 4,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000251"
+  },
+  {
+   "item": "9999952_00000_d_0000256",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 5,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000256"
+  },
+  {
+   "item": "9999952_00000_d_0000258",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 4,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000258"
+  },
+  {
+   "item": "9999952_00000_d_0000264",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 4,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000264"
+  },
+  {
+   "item": "9999952_00000_d_0000270",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 7,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000270"
+  },
+  {
+   "item": "9999952_00000_d_0000274",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 2,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000274"
+  },
+  {
+   "item": "9999952_00000_d_0000276",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000276"
+  },
+  {
+   "item": "9999952_00000_d_0000284",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 6,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000284"
+  },
+  {
+   "item": "9999952_00000_d_0000289",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 1,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000289"
+  },
+  {
+   "item": "9999952_00000_d_0000296",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 4,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000296"
+  },
+  {
+   "item": "9999952_00000_d_0000303",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 2,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000303"
+  },
+  {
+   "item": "9999952_00000_d_0000308",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000308"
+  },
+  {
+   "item": "9999952_00000_d_0000312",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000312"
+  },
+  {
+   "item": "9999952_00000_d_0000317",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000317"
+  },
+  {
+   "item": "9999952_00000_d_0000318",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000318"
+  },
+  {
+   "item": "9999952_00000_d_0000323",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 6,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000323"
+  },
+  {
+   "item": "9999955_00000_d_0000001__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 5,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999955_00000_d_0000001__600_0"
+  },
+  {
+   "item": "9999955_00000_d_0000006__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 3,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999955_00000_d_0000006__600_0"
+  },
+  {
+   "item": "9999955_00000_d_0000018__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 58,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999955_00000_d_0000018__0_0"
+  },
+  {
+   "item": "9999955_00000_d_0000084__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 10,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999955_00000_d_0000084__600_0"
+  },
+  {
+   "item": "9999955_00000_d_0000101__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 1,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999955_00000_d_0000101__0_0"
+  },
+  {
+   "item": "9999955_00000_d_0000346__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 1,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999955_00000_d_0000346__600_0"
+  },
+  {
+   "item": "9999955_00000_d_0000431__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 8,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999955_00000_d_0000431__0_0"
+  },
+  {
+   "item": "9999963_00000_d_0000004",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999963_00000_d_0000004"
+  },
+  {
+   "item": "9999963_00000_d_0000016",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999963_00000_d_0000016"
+  },
+  {
+   "item": "9999963_00000_d_0000020",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999963_00000_d_0000020"
+  },
+  {
+   "item": "9999963_00000_d_0000049",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999963_00000_d_0000049"
+  },
+  {
+   "item": "9999963_00000_d_0000071",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999963_00000_d_0000071"
+  },
+  {
+   "item": "9999965_00000_d_0000033__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 61,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999965_00000_d_0000033__600_0"
+  },
+  {
+   "item": "9999970_00000_d_0000010__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 9,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999970_00000_d_0000010__0_0"
+  },
+  {
+   "item": "9999972_00000_d_0000050__0_278",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 1,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999972_00000_d_0000050__0_278"
+  },
+  {
+   "item": "9999973_00000_d_0000014",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 1,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999973_00000_d_0000014"
+  },
+  {
+   "item": "9999973_00000_d_0000021",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999973_00000_d_0000021"
+  },
+  {
+   "item": "9999973_00000_d_0000027",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 5,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999973_00000_d_0000027"
+  },
+  {
+   "item": "9999973_00000_d_0000031",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 1,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999973_00000_d_0000031"
+  },
+  {
+   "item": "9999973_00000_d_0000040",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 6,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999973_00000_d_0000040"
+  },
+  {
+   "item": "9999973_00000_d_0000044",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 4,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999973_00000_d_0000044"
+  },
+  {
+   "item": "9999973_00000_d_0000045",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999973_00000_d_0000045"
+  },
+  {
+   "item": "9999973_00000_d_0000047",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 6,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999973_00000_d_0000047"
+  },
+  {
+   "item": "9999973_00000_d_0000060",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 2,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999973_00000_d_0000060"
+  },
+  {
+   "item": "9999973_00000_d_0000067",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 6,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999973_00000_d_0000067"
+  },
+  {
+   "item": "9999973_00000_d_0000071",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 2,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999973_00000_d_0000071"
+  },
+  {
+   "item": "9999973_00000_d_0000072",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 1,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999973_00000_d_0000072"
+  },
+  {
+   "item": "9999973_00000_d_0000075",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 6,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999973_00000_d_0000075"
+  },
+  {
+   "item": "9999973_00000_d_0000076",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 5,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999973_00000_d_0000076"
+  },
+  {
+   "item": "9999973_00000_d_0000081",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 5,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999973_00000_d_0000081"
+  },
+  {
+   "item": "9999973_00000_d_0000093",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 2,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999973_00000_d_0000093"
+  },
+  {
+   "item": "9999973_00000_d_0000095",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999973_00000_d_0000095"
+  },
+  {
+   "item": "9999973_00000_d_0000098",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 1,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999973_00000_d_0000098"
+  },
+  {
+   "item": "9999973_00000_d_0000100",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 4,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999973_00000_d_0000100"
+  },
+  {
+   "item": "9999973_00000_d_0000103",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 1,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999973_00000_d_0000103"
+  },
+  {
+   "item": "9999973_00000_d_0000104",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 1,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999973_00000_d_0000104"
+  },
+  {
+   "item": "9999973_00000_d_0000109",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 2,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999973_00000_d_0000109"
+  },
+  {
+   "item": "9999973_00000_d_0000114",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999973_00000_d_0000114"
+  },
+  {
+   "item": "9999973_00000_d_0000116",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 2,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999973_00000_d_0000116"
+  },
+  {
+   "item": "9999973_00000_d_0000131",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 6,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999973_00000_d_0000131"
+  },
+  {
+   "item": "9999975_00000_d_0000005__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 6,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999975_00000_d_0000005__600_0"
+  },
+  {
+   "item": "9999975_00000_d_0000025__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 1,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999975_00000_d_0000025__0_0"
+  },
+  {
+   "item": "9999976_00000_d_0000008",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 5,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999976_00000_d_0000008"
+  },
+  {
+   "item": "9999976_00000_d_0000011",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999976_00000_d_0000011"
+  },
+  {
+   "item": "9999976_00000_d_0000016",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 6,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999976_00000_d_0000016"
+  },
+  {
+   "item": "9999976_00000_d_0000017",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999976_00000_d_0000017"
+  },
+  {
+   "item": "9999976_00000_d_0000019",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 6,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999976_00000_d_0000019"
+  },
+  {
+   "item": "9999976_00000_d_0000023",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 2,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999976_00000_d_0000023"
+  },
+  {
+   "item": "9999976_00000_d_0000024",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 5,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999976_00000_d_0000024"
+  },
+  {
+   "item": "9999976_00000_d_0000029",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 6,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999976_00000_d_0000029"
+  },
+  {
+   "item": "9999977_00000_d_0000039__1116_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 1,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999977_00000_d_0000039__1116_0"
+  },
+  {
+   "item": "9999977_00000_d_0000043__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 9,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999977_00000_d_0000043__600_0"
+  },
+  {
+   "item": "9999977_00000_d_0000045__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 3,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999977_00000_d_0000045__0_0"
+  },
+  {
+   "item": "9999977_00000_d_0000049__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 6,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999977_00000_d_0000049__0_0"
+  },
+  {
+   "item": "9999977_00000_d_0000052__1200_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 3,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999977_00000_d_0000052__1200_0"
+  },
+  {
+   "item": "9999977_00000_d_0000054__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 12,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999977_00000_d_0000054__600_0"
+  },
+  {
+   "item": "9999977_00000_d_0000057__600_278",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 4,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999977_00000_d_0000057__600_278"
+  },
+  {
+   "item": "9999979_00000_d_0000007",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 2,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999979_00000_d_0000007"
+  },
+  {
+   "item": "9999979_00000_d_0000027",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 4,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999979_00000_d_0000027"
+  },
+  {
+   "item": "9999979_00000_d_0000031",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 2,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999979_00000_d_0000031"
+  },
+  {
+   "item": "9999979_00000_d_0000051",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999979_00000_d_0000051"
+  },
+  {
+   "item": "9999980_00000_d_0000005",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999980_00000_d_0000005"
+  },
+  {
+   "item": "9999981_00000_d_0000096__600_250",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 10,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999981_00000_d_0000096__600_250"
+  },
+  {
+   "item": "9999981_00000_d_0000153__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 16,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999981_00000_d_0000153__0_0"
+  },
+  {
+   "item": "9999981_00000_d_0000154__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 58,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999981_00000_d_0000154__600_0"
+  },
+  {
+   "item": "9999982_00000_d_0000009__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 1,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999982_00000_d_0000009__600_0"
+  },
+  {
+   "item": "9999982_00000_d_0000015__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 1,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999982_00000_d_0000015__0_0"
+  },
+  {
+   "item": "9999982_00000_d_0000015__600_250",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 2,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999982_00000_d_0000015__600_250"
+  },
+  {
+   "item": "9999982_00000_d_0000019__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 2,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999982_00000_d_0000019__600_0"
+  },
+  {
+   "item": "9999982_00000_d_0000021__0_250",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 2,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999982_00000_d_0000021__0_250"
+  },
+  {
+   "item": "9999982_00000_d_0000025__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 5,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999982_00000_d_0000025__0_0"
+  },
+  {
+   "item": "9999982_00000_d_0000029__600_250",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 3,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999982_00000_d_0000029__600_250"
+  },
+  {
+   "item": "9999982_00000_d_0000031__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 4,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999982_00000_d_0000031__600_0"
+  },
+  {
+   "item": "9999982_00000_d_0000038__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 3,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999982_00000_d_0000038__600_0"
+  },
+  {
+   "item": "9999982_00000_d_0000045__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 9,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999982_00000_d_0000045__0_0"
+  },
+  {
+   "item": "9999982_00000_d_0000053__0_250",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 1,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999982_00000_d_0000053__0_250"
+  },
+  {
+   "item": "9999982_00000_d_0000069__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 1,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999982_00000_d_0000069__0_0"
+  },
+  {
+   "item": "9999982_00000_d_0000083__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 8,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999982_00000_d_0000083__600_0"
+  },
+  {
+   "item": "9999982_00000_d_0000085__0_250",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 1,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999982_00000_d_0000085__0_250"
+  },
+  {
+   "item": "9999982_00000_d_0000091__0_250",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 1,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999982_00000_d_0000091__0_250"
+  },
+  {
+   "item": "9999982_00000_d_0000095__0_250",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 2,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999982_00000_d_0000095__0_250"
+  },
+  {
+   "item": "9999982_00000_d_0000099__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 4,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999982_00000_d_0000099__600_0"
+  },
+  {
+   "item": "9999982_00000_d_0000123__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 3,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999982_00000_d_0000123__600_0"
+  },
+  {
+   "item": "9999982_00000_d_0000130__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 1,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999982_00000_d_0000130__600_0"
+  },
+  {
+   "item": "9999982_00000_d_0000170__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 48,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999982_00000_d_0000170__0_0"
+  },
+  {
+   "item": "9999982_00000_d_0000171__0_250",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 51,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999982_00000_d_0000171__0_250"
+  },
+  {
+   "item": "9999982_00000_d_0000172__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 37,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999982_00000_d_0000172__0_0"
+  },
+  {
+   "item": "9999982_00000_d_0000175__600_250",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 12,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999982_00000_d_0000175__600_250"
+  },
+  {
+   "item": "9999982_00000_d_0000178__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 15,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999982_00000_d_0000178__600_0"
+  },
+  {
+   "item": "9999982_00000_d_0000179__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 3,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999982_00000_d_0000179__0_0"
+  },
+  {
+   "item": "9999982_00000_d_0000208__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 3,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999982_00000_d_0000208__600_0"
+  },
+  {
+   "item": "9999982_00000_d_0000222__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 6,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999982_00000_d_0000222__0_0"
+  },
+  {
+   "item": "9999982_00000_d_0000244__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 29,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999982_00000_d_0000244__0_0"
+  },
+  {
+   "item": "9999982_00000_d_0000245__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 41,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999982_00000_d_0000245__600_0"
+  },
+  {
+   "item": "9999982_00000_d_0000247__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 13,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999982_00000_d_0000247__0_0"
+  },
+  {
+   "item": "9999982_00000_d_0000251__0_250",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 33,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999982_00000_d_0000251__0_250"
+  },
+  {
+   "item": "9999984_00000_d_0000014__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 1,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999984_00000_d_0000014__600_0"
+  },
+  {
+   "item": "9999984_00000_d_0000020__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 13,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999984_00000_d_0000020__0_0"
+  },
+  {
+   "item": "9999984_00000_d_0000029__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 4,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999984_00000_d_0000029__0_0"
+  },
+  {
+   "item": "9999984_00000_d_0000034__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 7,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999984_00000_d_0000034__0_0"
+  },
+  {
+   "item": "9999984_00000_d_0000036__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 16,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999984_00000_d_0000036__600_0"
+  },
+  {
+   "item": "9999984_00000_d_0000048__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 2,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999984_00000_d_0000048__600_0"
+  },
+  {
+   "item": "9999984_00000_d_0000054__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 2,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999984_00000_d_0000054__600_0"
+  },
+  {
+   "item": "9999984_00000_d_0000076__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 8,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999984_00000_d_0000076__0_0"
+  },
+  {
+   "item": "9999984_00000_d_0000085__0_250",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 7,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999984_00000_d_0000085__0_250"
+  },
+  {
+   "item": "9999984_00000_d_0000109__600_250",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 8,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999984_00000_d_0000109__600_250"
+  },
+  {
+   "item": "9999984_00000_d_0000110__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 5,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999984_00000_d_0000110__600_0"
+  },
+  {
+   "item": "9999984_00000_d_0000122__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 2,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999984_00000_d_0000122__600_0"
+  },
+  {
+   "item": "9999984_00000_d_0000125__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 8,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999984_00000_d_0000125__0_0"
+  },
+  {
+   "item": "9999984_00000_d_0000156__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 5,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999984_00000_d_0000156__600_0"
+  },
+  {
+   "item": "9999984_00000_d_0000156__600_250",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 6,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999984_00000_d_0000156__600_250"
+  },
+  {
+   "item": "9999984_00000_d_0000158__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 5,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999984_00000_d_0000158__0_0"
+  },
+  {
+   "item": "9999984_00000_d_0000162__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 1,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999984_00000_d_0000162__600_0"
+  },
+  {
+   "item": "9999984_00000_d_0000174__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 2,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999984_00000_d_0000174__600_0"
+  },
+  {
+   "item": "9999985_00000_d_0000025__600_250",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 3,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999985_00000_d_0000025__600_250"
+  },
+  {
+   "item": "9999985_00000_d_0000054__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 13,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999985_00000_d_0000054__0_0"
+  },
+  {
+   "item": "9999985_00000_d_0000063__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 20,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999985_00000_d_0000063__0_0"
+  },
+  {
+   "item": "9999986_00000_d_0000027",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 5,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999986_00000_d_0000027"
+  },
+  {
+   "item": "9999990_00000_d_0000060__600_250",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 16,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999990_00000_d_0000060__600_250"
+  },
+  {
+   "item": "9999993_00000_d_0000008",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 4,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999993_00000_d_0000008"
+  },
+  {
+   "item": "9999993_00000_d_0000010",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999993_00000_d_0000010"
+  },
+  {
+   "item": "9999994_00000_d_0000002__0_250",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 1,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999994_00000_d_0000002__0_250"
+  },
+  {
+   "item": "9999994_00000_d_0000027__0_250",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 1,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999994_00000_d_0000027__0_250"
+  },
+  {
+   "item": "9999994_00000_d_0000028__0_250",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 3,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999994_00000_d_0000028__0_250"
+  },
+  {
+   "item": "9999994_00000_d_0000029__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 1,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999994_00000_d_0000029__0_0"
+  },
+  {
+   "item": "9999994_00000_d_0000033__0_250",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 1,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999994_00000_d_0000033__0_250"
+  },
+  {
+   "item": "9999994_00000_d_0000036__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 1,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999994_00000_d_0000036__0_0"
+  },
+  {
+   "item": "9999994_00000_d_0000036__0_250",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 1,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999994_00000_d_0000036__0_250"
+  },
+  {
+   "item": "9999994_00000_d_0000037__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 1,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999994_00000_d_0000037__600_0"
+  },
+  {
+   "item": "9999994_00000_d_0000071__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 8,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999994_00000_d_0000071__0_0"
+  },
+  {
+   "item": "9999994_00000_d_0000075__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 2,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999994_00000_d_0000075__0_0"
+  },
+  {
+   "item": "9999994_00000_d_0000077__600_250",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 11,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999994_00000_d_0000077__600_250"
+  },
+  {
+   "item": "9999994_00000_d_0000079__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 16,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999994_00000_d_0000079__600_0"
+  },
+  {
+   "item": "9999994_00000_d_0000080__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 2,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999994_00000_d_0000080__0_0"
+  },
+  {
+   "item": "9999994_00000_d_0000091__0_250",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 2,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999994_00000_d_0000091__0_250"
+  },
+  {
+   "item": "9999994_00000_d_0000092__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 5,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999994_00000_d_0000092__600_0"
+  },
+  {
+   "item": "9999994_00000_d_0000095__600_250",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 2,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999994_00000_d_0000095__600_250"
+  },
+  {
+   "item": "9999994_00000_d_0000100__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 5,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999994_00000_d_0000100__600_0"
+  },
+  {
+   "item": "9999994_00000_d_0000119__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 1,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999994_00000_d_0000119__600_0"
+  },
+  {
+   "item": "9999996_00000_d_0000001",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 2,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999996_00000_d_0000001"
+  },
+  {
+   "item": "9999996_00000_d_0000016",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 2,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999996_00000_d_0000016"
+  },
+  {
+   "item": "9999996_00000_d_0000024",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 4,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999996_00000_d_0000024"
+  },
+  {
+   "item": "9999996_00000_d_0000027",
+   "pool": "zero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999996_00000_d_0000027"
+  },
+  {
+   "item": "9999997_00000_d_0000024__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 2,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999997_00000_d_0000024__0_0"
+  },
+  {
+   "item": "9999997_00000_d_0000031__0_250",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 6,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999997_00000_d_0000031__0_250"
+  },
+  {
+   "item": "9999997_00000_d_0000031__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 5,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999997_00000_d_0000031__600_0"
+  },
+  {
+   "item": "9999997_00000_d_0000051__0_250",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 2,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999997_00000_d_0000051__0_250"
+  },
+  {
+   "item": "9999997_00000_d_0000053__0_250",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 1,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999997_00000_d_0000053__0_250"
+  },
+  {
+   "item": "9999997_00000_d_0000068__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 1,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999997_00000_d_0000068__600_0"
+  },
+  {
+   "item": "9999998_00015_d_0000011__0_700",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 1,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999998_00015_d_0000011__0_700"
+  },
+  {
+   "item": "9999998_00059_d_0000045__1200_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 3,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999998_00059_d_0000045__1200_0"
+  },
+  {
+   "item": "9999998_00066_d_0000051__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 2,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999998_00066_d_0000051__600_0"
+  },
+  {
+   "item": "9999998_00067_d_0000052__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 3,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999998_00067_d_0000052__0_0"
+  },
+  {
+   "item": "9999998_00208_d_0000165__1200_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 1,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999998_00208_d_0000165__1200_0"
+  },
+  {
+   "item": "9999998_00224_d_0000180__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 5,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999998_00224_d_0000180__600_0"
+  },
+  {
+   "item": "9999999_00598_d_0000271__0_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 7,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999999_00598_d_0000271__0_0"
+  },
+  {
+   "item": "9999999_00727_d_0000331__600_0",
+   "pool": "zero",
+   "domain": "aitod",
+   "gt": 16,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999999_00727_d_0000331__600_0"
+  }
+ ],
+ "items_nonzero": [
+  {
+   "item": "0000006_01275_d_0000004",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 1,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000006_01275_d_0000004"
+  },
+  {
+   "item": "0000011_00234_d_0000001",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 67,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000011_00234_d_0000001"
+  },
+  {
+   "item": "0000011_01955_d_0000004",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 38,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000011_01955_d_0000004"
+  },
+  {
+   "item": "0000011_02800_d_0000005",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 34,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000011_02800_d_0000005"
+  },
+  {
+   "item": "0000011_05068_d_0000008",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 27,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000011_05068_d_0000008"
+  },
+  {
+   "item": "0000011_06000_d_0000009",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 56,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000011_06000_d_0000009"
+  },
+  {
+   "item": "0000011_08299_d_0000012",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 10,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000011_08299_d_0000012"
+  },
+  {
+   "item": "0000024_01000_d_0000014__160_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 10,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000024_01000_d_0000014__160_0"
+  },
+  {
+   "item": "0000063_03139_d_0000004",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 42,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000063_03139_d_0000004"
+  },
+  {
+   "item": "0000063_07000_d_0000008",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 55,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000063_07000_d_0000008"
+  },
+  {
+   "item": "0000063_12500_d_0000014",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 163,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000063_12500_d_0000014"
+  },
+  {
+   "item": "0000066_01097_d_0000002",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 262,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000066_01097_d_0000002"
+  },
+  {
+   "item": "0000073_01275_d_0000002",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 115,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000073_01275_d_0000002"
+  },
+  {
+   "item": "0000074_03738_d_0000007",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 82,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000074_03738_d_0000007"
+  },
+  {
+   "item": "0000074_06746_d_0000013",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 73,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000074_06746_d_0000013"
+  },
+  {
+   "item": "0000074_09738_d_0000019",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 86,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000074_09738_d_0000019"
+  },
+  {
+   "item": "0000074_11362_d_0000022",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 101,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000074_11362_d_0000022"
+  },
+  {
+   "item": "0000074_11827_d_0000023",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 112,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000074_11827_d_0000023"
+  },
+  {
+   "item": "0000074_12322_d_0000024",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 74,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000074_12322_d_0000024"
+  },
+  {
+   "item": "0000074_14850_d_0000029",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 96,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000074_14850_d_0000029"
+  },
+  {
+   "item": "0000074_15793_d_0000031",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 64,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000074_15793_d_0000031"
+  },
+  {
+   "item": "0000078_01314_d_0000004",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 2,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000078_01314_d_0000004"
+  },
+  {
+   "item": "0000078_02778_d_0000008",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 17,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000078_02778_d_0000008"
+  },
+  {
+   "item": "0000078_03171_d_0000009",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 28,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000078_03171_d_0000009"
+  },
+  {
+   "item": "0000083_00803_d_0000003",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 33,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000083_00803_d_0000003"
+  },
+  {
+   "item": "0000101_01189_d_0000017__0_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 9,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000101_01189_d_0000017__0_0"
+  },
+  {
+   "item": "0000105_02539_d_0000072",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 12,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000105_02539_d_0000072"
+  },
+  {
+   "item": "0000120_00559_d_0000092",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 31,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000120_00559_d_0000092"
+  },
+  {
+   "item": "0000120_02946_d_0000098",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 12,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000120_02946_d_0000098"
+  },
+  {
+   "item": "0000126_11844_d_0000130__1120_280",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 15,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000126_11844_d_0000130__1120_280"
+  },
+  {
+   "item": "0000126_11844_d_0000130__1200_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 8,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000126_11844_d_0000130__1200_0"
+  },
+  {
+   "item": "0000127_00002_d_0000119",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 52,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000127_00002_d_0000119"
+  },
+  {
+   "item": "0000127_01002_d_0000123",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 45,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000127_01002_d_0000123"
+  },
+  {
+   "item": "0000174_00801_d_0000001__160_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 13,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000174_00801_d_0000001__160_0"
+  },
+  {
+   "item": "0000193_02606_d_0000117__160_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 25,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000193_02606_d_0000117__160_0"
+  },
+  {
+   "item": "0000197_02416_d_0000152__0_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 18,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000197_02416_d_0000152__0_0"
+  },
+  {
+   "item": "0000213_02500_d_0000240__600_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 15,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000213_02500_d_0000240__600_0"
+  },
+  {
+   "item": "0000228_00001_d_0000001__1120_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 8,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000228_00001_d_0000001__1120_0"
+  },
+  {
+   "item": "0000244_05400_d_0000012__160_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 19,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000244_05400_d_0000012__160_0"
+  },
+  {
+   "item": "0000249_00603_d_0000003__160_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 4,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000249_00603_d_0000003__160_0"
+  },
+  {
+   "item": "0000259_03000_d_0000007",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 17,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000259_03000_d_0000007"
+  },
+  {
+   "item": "0000259_03500_d_0000008",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 7,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000259_03500_d_0000008"
+  },
+  {
+   "item": "0000265_04500_d_0000010",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 43,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000265_04500_d_0000010"
+  },
+  {
+   "item": "0000265_05000_d_0000011",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 33,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000265_05000_d_0000011"
+  },
+  {
+   "item": "0000270_03801_d_0000372__0_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 26,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000270_03801_d_0000372__0_0"
+  },
+  {
+   "item": "0000271_07201_d_0000408__600_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 8,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000271_07201_d_0000408__600_0"
+  },
+  {
+   "item": "0000272_02000_d_0000005",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 13,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000272_02000_d_0000005"
+  },
+  {
+   "item": "0000278_02251_d_0000001",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 7,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000278_02251_d_0000001"
+  },
+  {
+   "item": "0000278_02451_d_0000003",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 5,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000278_02451_d_0000003"
+  },
+  {
+   "item": "0000299_00000_d_0000088",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 15,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000299_00000_d_0000088"
+  },
+  {
+   "item": "0000299_01800_d_0000100",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 20,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000299_01800_d_0000100"
+  },
+  {
+   "item": "0000299_04000_d_0000105",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 8,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000299_04000_d_0000105"
+  },
+  {
+   "item": "0000299_05500_d_0000108",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 35,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000299_05500_d_0000108"
+  },
+  {
+   "item": "0000303_03601_d_0000201__600_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 12,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000303_03601_d_0000201__600_0"
+  },
+  {
+   "item": "0000310_02500_d_0000123",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 22,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000310_02500_d_0000123"
+  },
+  {
+   "item": "0000310_04000_d_0000126",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 33,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000310_04000_d_0000126"
+  },
+  {
+   "item": "0000314_00000_d_0000142",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 14,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000314_00000_d_0000142"
+  },
+  {
+   "item": "0000314_01000_d_0000144",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 9,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000314_01000_d_0000144"
+  },
+  {
+   "item": "0000320_00450_d_0000005",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 4,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000320_00450_d_0000005"
+  },
+  {
+   "item": "0000320_01200_d_0000010",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 40,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000320_01200_d_0000010"
+  },
+  {
+   "item": "0000320_04375_d_0000014",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 11,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000320_04375_d_0000014"
+  },
+  {
+   "item": "0000328_00300_d_0000020",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 21,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000328_00300_d_0000020"
+  },
+  {
+   "item": "0000328_00600_d_0000022",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 23,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000328_00600_d_0000022"
+  },
+  {
+   "item": "0000328_01050_d_0000025",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 18,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000328_01050_d_0000025"
+  },
+  {
+   "item": "0000337_00500_d_0000037",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 5,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000337_00500_d_0000037"
+  },
+  {
+   "item": "0000337_01000_d_0000038",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 8,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000337_01000_d_0000038"
+  },
+  {
+   "item": "0000337_01500_d_0000039",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 18,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000337_01500_d_0000039"
+  },
+  {
+   "item": "0000337_02500_d_0000041",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 13,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000337_02500_d_0000041"
+  },
+  {
+   "item": "0000337_03000_d_0000042",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 15,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000337_03000_d_0000042"
+  },
+  {
+   "item": "0000347_00800_d_0000049",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 18,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000347_00800_d_0000049"
+  },
+  {
+   "item": "0000353_00500_d_0000189",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 17,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000353_00500_d_0000189"
+  },
+  {
+   "item": "0000353_01000_d_0000190",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 30,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000353_01000_d_0000190"
+  },
+  {
+   "item": "0000353_01500_d_0000191",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 24,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000353_01500_d_0000191"
+  },
+  {
+   "item": "0000355_00000_d_0000206",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 8,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "0000355_00000_d_0000206"
+  },
+  {
+   "item": "0000366_06273_d_0000808__560_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 13,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000366_06273_d_0000808__560_0"
+  },
+  {
+   "item": "0000366_08233_d_0000814__0_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 4,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "0000366_08233_d_0000814__0_0"
+  },
+  {
+   "item": "9999937_00000_d_0000007__0_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 13,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999937_00000_d_0000007__0_0"
+  },
+  {
+   "item": "9999937_00000_d_0000161__1116_278",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 14,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999937_00000_d_0000161__1116_278"
+  },
+  {
+   "item": "9999937_00000_d_0000161__1200_278",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 11,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999937_00000_d_0000161__1200_278"
+  },
+  {
+   "item": "9999937_00000_d_0000168__1116_278",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 3,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999937_00000_d_0000168__1116_278"
+  },
+  {
+   "item": "9999938_00000_d_0000002",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 26,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000002"
+  },
+  {
+   "item": "9999938_00000_d_0000074",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 40,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000074"
+  },
+  {
+   "item": "9999938_00000_d_0000082",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 53,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000082"
+  },
+  {
+   "item": "9999938_00000_d_0000083",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 27,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000083"
+  },
+  {
+   "item": "9999938_00000_d_0000089",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 42,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000089"
+  },
+  {
+   "item": "9999938_00000_d_0000100",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 64,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000100"
+  },
+  {
+   "item": "9999938_00000_d_0000102",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 12,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000102"
+  },
+  {
+   "item": "9999938_00000_d_0000105",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 112,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000105"
+  },
+  {
+   "item": "9999938_00000_d_0000113",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 13,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000113"
+  },
+  {
+   "item": "9999938_00000_d_0000122",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 89,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000122"
+  },
+  {
+   "item": "9999938_00000_d_0000130",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 68,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000130"
+  },
+  {
+   "item": "9999938_00000_d_0000156",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 11,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000156"
+  },
+  {
+   "item": "9999938_00000_d_0000157",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 6,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000157"
+  },
+  {
+   "item": "9999938_00000_d_0000167",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 16,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000167"
+  },
+  {
+   "item": "9999938_00000_d_0000169",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 53,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999938_00000_d_0000169"
+  },
+  {
+   "item": "9999941_00000_d_0000015",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 30,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999941_00000_d_0000015"
+  },
+  {
+   "item": "9999941_00000_d_0000017",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 8,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999941_00000_d_0000017"
+  },
+  {
+   "item": "9999942_00000_d_0000254__0_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 7,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999942_00000_d_0000254__0_0"
+  },
+  {
+   "item": "9999945_00000_d_0000179__0_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 5,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999945_00000_d_0000179__0_0"
+  },
+  {
+   "item": "9999947_00000_d_0000017",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 30,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999947_00000_d_0000017"
+  },
+  {
+   "item": "9999947_00000_d_0000026",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 57,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999947_00000_d_0000026"
+  },
+  {
+   "item": "9999951_00000_d_0000001__600_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 15,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999951_00000_d_0000001__600_0"
+  },
+  {
+   "item": "9999951_00000_d_0000010__600_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 21,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999951_00000_d_0000010__600_0"
+  },
+  {
+   "item": "9999951_00000_d_0000272__0_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 58,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999951_00000_d_0000272__0_0"
+  },
+  {
+   "item": "9999951_00000_d_0000282__600_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 41,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999951_00000_d_0000282__600_0"
+  },
+  {
+   "item": "9999951_00000_d_0000283__600_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 38,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999951_00000_d_0000283__600_0"
+  },
+  {
+   "item": "9999951_00000_d_0000313__0_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 22,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999951_00000_d_0000313__0_0"
+  },
+  {
+   "item": "9999951_00000_d_0000314__0_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 28,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999951_00000_d_0000314__0_0"
+  },
+  {
+   "item": "9999951_00000_d_0000327__0_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 31,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999951_00000_d_0000327__0_0"
+  },
+  {
+   "item": "9999951_00000_d_0000332__0_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 4,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999951_00000_d_0000332__0_0"
+  },
+  {
+   "item": "9999952_00000_d_0000015",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 10,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000015"
+  },
+  {
+   "item": "9999952_00000_d_0000325",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 6,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999952_00000_d_0000325"
+  },
+  {
+   "item": "9999955_00000_d_0000021__0_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 40,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999955_00000_d_0000021__0_0"
+  },
+  {
+   "item": "9999955_00000_d_0000046__600_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 2,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999955_00000_d_0000046__600_0"
+  },
+  {
+   "item": "9999955_00000_d_0000156__600_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 51,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999955_00000_d_0000156__600_0"
+  },
+  {
+   "item": "9999955_00000_d_0000184__600_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 7,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999955_00000_d_0000184__600_0"
+  },
+  {
+   "item": "9999955_00000_d_0000224__600_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 123,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999955_00000_d_0000224__600_0"
+  },
+  {
+   "item": "9999955_00000_d_0000225__600_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 49,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999955_00000_d_0000225__600_0"
+  },
+  {
+   "item": "9999963_00000_d_0000001",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 5,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999963_00000_d_0000001"
+  },
+  {
+   "item": "9999963_00000_d_0000006",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 26,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999963_00000_d_0000006"
+  },
+  {
+   "item": "9999963_00000_d_0000007",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 20,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999963_00000_d_0000007"
+  },
+  {
+   "item": "9999963_00000_d_0000011",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 20,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999963_00000_d_0000011"
+  },
+  {
+   "item": "9999963_00000_d_0000013",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 18,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999963_00000_d_0000013"
+  },
+  {
+   "item": "9999963_00000_d_0000023",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 18,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999963_00000_d_0000023"
+  },
+  {
+   "item": "9999963_00000_d_0000025",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 20,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999963_00000_d_0000025"
+  },
+  {
+   "item": "9999963_00000_d_0000029",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 5,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999963_00000_d_0000029"
+  },
+  {
+   "item": "9999963_00000_d_0000030",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 5,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999963_00000_d_0000030"
+  },
+  {
+   "item": "9999963_00000_d_0000034",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 7,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999963_00000_d_0000034"
+  },
+  {
+   "item": "9999963_00000_d_0000035",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 21,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999963_00000_d_0000035"
+  },
+  {
+   "item": "9999963_00000_d_0000036",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 43,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999963_00000_d_0000036"
+  },
+  {
+   "item": "9999963_00000_d_0000039",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 17,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999963_00000_d_0000039"
+  },
+  {
+   "item": "9999963_00000_d_0000040",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 27,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999963_00000_d_0000040"
+  },
+  {
+   "item": "9999963_00000_d_0000042",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 8,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999963_00000_d_0000042"
+  },
+  {
+   "item": "9999963_00000_d_0000043",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 7,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999963_00000_d_0000043"
+  },
+  {
+   "item": "9999963_00000_d_0000047",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 16,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999963_00000_d_0000047"
+  },
+  {
+   "item": "9999963_00000_d_0000052",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 29,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999963_00000_d_0000052"
+  },
+  {
+   "item": "9999963_00000_d_0000057",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 5,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999963_00000_d_0000057"
+  },
+  {
+   "item": "9999963_00000_d_0000060",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 5,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999963_00000_d_0000060"
+  },
+  {
+   "item": "9999963_00000_d_0000061",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999963_00000_d_0000061"
+  },
+  {
+   "item": "9999963_00000_d_0000064",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 5,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999963_00000_d_0000064"
+  },
+  {
+   "item": "9999963_00000_d_0000067",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 5,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999963_00000_d_0000067"
+  },
+  {
+   "item": "9999963_00000_d_0000070",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 4,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999963_00000_d_0000070"
+  },
+  {
+   "item": "9999965_00000_d_0000033__0_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 12,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999965_00000_d_0000033__0_0"
+  },
+  {
+   "item": "9999966_00000_d_0000015__600_250",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 33,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999966_00000_d_0000015__600_250"
+  },
+  {
+   "item": "9999973_00000_d_0000001",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 7,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999973_00000_d_0000001"
+  },
+  {
+   "item": "9999973_00000_d_0000002",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999973_00000_d_0000002"
+  },
+  {
+   "item": "9999973_00000_d_0000011",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 4,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999973_00000_d_0000011"
+  },
+  {
+   "item": "9999973_00000_d_0000068",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999973_00000_d_0000068"
+  },
+  {
+   "item": "9999974_00000_d_0000019__1200_278",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 1,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999974_00000_d_0000019__1200_278"
+  },
+  {
+   "item": "9999976_00000_d_0000033",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 7,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999976_00000_d_0000033"
+  },
+  {
+   "item": "9999977_00000_d_0000001__600_278",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 5,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999977_00000_d_0000001__600_278"
+  },
+  {
+   "item": "9999977_00000_d_0000002__1116_278",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 5,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999977_00000_d_0000002__1116_278"
+  },
+  {
+   "item": "9999977_00000_d_0000047__0_278",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 3,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999977_00000_d_0000047__0_278"
+  },
+  {
+   "item": "9999977_00000_d_0000051__1116_278",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 8,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999977_00000_d_0000051__1116_278"
+  },
+  {
+   "item": "9999977_00000_d_0000055__0_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 1,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999977_00000_d_0000055__0_0"
+  },
+  {
+   "item": "9999981_00000_d_0000012__600_250",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 12,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999981_00000_d_0000012__600_250"
+  },
+  {
+   "item": "9999982_00000_d_0000007__0_250",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 20,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999982_00000_d_0000007__0_250"
+  },
+  {
+   "item": "9999982_00000_d_0000059__0_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 3,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999982_00000_d_0000059__0_0"
+  },
+  {
+   "item": "9999984_00000_d_0000033__0_250",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 21,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999984_00000_d_0000033__0_250"
+  },
+  {
+   "item": "9999984_00000_d_0000071__0_250",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 14,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999984_00000_d_0000071__0_250"
+  },
+  {
+   "item": "9999984_00000_d_0000092__600_250",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 10,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999984_00000_d_0000092__600_250"
+  },
+  {
+   "item": "9999984_00000_d_0000093__0_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 15,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999984_00000_d_0000093__0_0"
+  },
+  {
+   "item": "9999984_00000_d_0000093__0_250",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 13,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999984_00000_d_0000093__0_250"
+  },
+  {
+   "item": "9999984_00000_d_0000094__0_250",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 6,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999984_00000_d_0000094__0_250"
+  },
+  {
+   "item": "9999984_00000_d_0000102__0_250",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 15,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999984_00000_d_0000102__0_250"
+  },
+  {
+   "item": "9999984_00000_d_0000105__600_250",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 13,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999984_00000_d_0000105__600_250"
+  },
+  {
+   "item": "9999984_00000_d_0000155__600_250",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 2,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999984_00000_d_0000155__600_250"
+  },
+  {
+   "item": "9999984_00000_d_0000158__600_250",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 5,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999984_00000_d_0000158__600_250"
+  },
+  {
+   "item": "9999986_00000_d_0000002",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 30,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999986_00000_d_0000002"
+  },
+  {
+   "item": "9999986_00000_d_0000005",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 24,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999986_00000_d_0000005"
+  },
+  {
+   "item": "9999986_00000_d_0000007",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 28,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999986_00000_d_0000007"
+  },
+  {
+   "item": "9999986_00000_d_0000008",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 23,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999986_00000_d_0000008"
+  },
+  {
+   "item": "9999986_00000_d_0000013",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 14,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999986_00000_d_0000013"
+  },
+  {
+   "item": "9999986_00000_d_0000017",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 10,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999986_00000_d_0000017"
+  },
+  {
+   "item": "9999986_00000_d_0000022",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 2,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999986_00000_d_0000022"
+  },
+  {
+   "item": "9999986_00000_d_0000029",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 8,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999986_00000_d_0000029"
+  },
+  {
+   "item": "9999986_00000_d_0000035",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 8,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999986_00000_d_0000035"
+  },
+  {
+   "item": "9999986_00000_d_0000037",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 8,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999986_00000_d_0000037"
+  },
+  {
+   "item": "9999986_00000_d_0000042",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 11,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999986_00000_d_0000042"
+  },
+  {
+   "item": "9999986_00000_d_0000052",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999986_00000_d_0000052"
+  },
+  {
+   "item": "9999987_00000_d_0000004__600_250",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 21,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999987_00000_d_0000004__600_250"
+  },
+  {
+   "item": "9999987_00000_d_0000009__0_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 29,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999987_00000_d_0000009__0_0"
+  },
+  {
+   "item": "9999987_00000_d_0000018__0_250",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 38,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999987_00000_d_0000018__0_250"
+  },
+  {
+   "item": "9999987_00000_d_0000018__600_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 12,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999987_00000_d_0000018__600_0"
+  },
+  {
+   "item": "9999987_00000_d_0000019__0_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 12,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999987_00000_d_0000019__0_0"
+  },
+  {
+   "item": "9999987_00000_d_0000023__0_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 34,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999987_00000_d_0000023__0_0"
+  },
+  {
+   "item": "9999987_00000_d_0000031__600_250",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 22,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999987_00000_d_0000031__600_250"
+  },
+  {
+   "item": "9999989_00000_d_0000006__600_250",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 48,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999989_00000_d_0000006__600_250"
+  },
+  {
+   "item": "9999990_00000_d_0000012__0_250",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 5,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999990_00000_d_0000012__0_250"
+  },
+  {
+   "item": "9999993_00000_d_0000018",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 7,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999993_00000_d_0000018"
+  },
+  {
+   "item": "9999993_00000_d_0000023",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 42,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999993_00000_d_0000023"
+  },
+  {
+   "item": "9999994_00000_d_0000094__0_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 12,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999994_00000_d_0000094__0_0"
+  },
+  {
+   "item": "9999996_00000_d_0000006",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 3,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999996_00000_d_0000006"
+  },
+  {
+   "item": "9999996_00000_d_0000014",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 20,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999996_00000_d_0000014"
+  },
+  {
+   "item": "9999996_00000_d_0000015",
+   "pool": "nonzero",
+   "domain": "visdrone",
+   "gt": 2,
+   "img_dir": "/root/aerial/visdrone/images",
+   "img_base": "9999996_00000_d_0000015"
+  },
+  {
+   "item": "9999997_00000_d_0000019__600_0",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 5,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999997_00000_d_0000019__600_0"
+  },
+  {
+   "item": "9999997_00000_d_0000065__0_250",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 8,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999997_00000_d_0000065__0_250"
+  },
+  {
+   "item": "9999998_00090_d_0000073__1200_700",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 7,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999998_00090_d_0000073__1200_700"
+  },
+  {
+   "item": "9999998_00221_d_0000177__1200_600",
+   "pool": "nonzero",
+   "domain": "aitod",
+   "gt": 1,
+   "img_dir": "/root/aerial/aitod/images",
+   "img_base": "9999998_00221_d_0000177__1200_600"
+  }
+ ]
+}

@@ -1,0 +1,3922 @@
+{
+ "purpose": "P3R4 §3B **B1 读数臂**的冻结 item 清单（dense 全量：zero 253 + nonzero 229 = 482）",
+ "plan_ref": "_p3r4_exp_3B_plan.md §1.4.2 / §1.6（B 臂仅 dense、仅 base：482 × 3 起 = 1,446 次）",
+ "seed": 20260930,
+ "frozen_pools": {
+  "dense_zero": 253,
+  "dense_nonzero": 229,
+  "dense_union": 482
+ },
+ "sampling_rule": "池 = 7 家族交集；本臂用**全量** dense 池（不做 20 项抽样），item 按字典序冻结",
+ "forbidden": "★ 不得按被测构建的输出筛选 item；不得事后改种子或换 item",
+ "arms": [
+  "base"
+ ],
+ "starts": 3,
+ "workers": 4,
+ "calls": {
+  "per_start": 482,
+  "starts": 3,
+  "total": 1446
+ },
+ "builds": {
+  "B1": {
+   "name": "InternVL3.5-38B-BF16",
+   "path": "/root/models/InternVL3_5-38B-BF16",
+   "port": 8021,
+   "served_name": "InternVL3_5-38B-BF16",
+   "serving": "vLLM 0.29.0, --tensor-parallel-size 2, --gpu-memory-utilization 0.60, VLLM_USE_FLASHINFER_SAMPLER=0, 不传 --mm-processor-kwargs"
+  }
+ },
+ "criteria_ref": "_p3r4_exp_3B_plan.md §1.3（dense zero-pool rate ≥ 30% 且 dense S ≥ 50%）",
+ "md5_of_inputs": {
+  "gemma3-12b|st_a|zero": "3d3239756931718b0b6d5d4cb471a92b",
+  "gemma3-12b|st_a|nonzero": "a9cf9646a0fb2cc28f519d6f2eae79e5",
+  "gemma3-12b|ucf|zero": "a79014f2ff92be83efc58560b7438453",
+  "gemma3-12b|ucf|nonzero": "e3bfa946a0f187869da252b5b06aa7fe",
+  "InternVL3_5-8B|st_a|zero": "826534c3e343c7b12450f78d9bb8898e",
+  "InternVL3_5-8B|st_a|nonzero": "529b72ce6b49119a3f4f9927bb05d2c3",
+  "InternVL3_5-8B|ucf|zero": "51d6c9fe7a13036a51e4384ee00550b0",
+  "InternVL3_5-8B|ucf|nonzero": "0d223a2655eea252c1115e3604f4e480",
+  "Phi-3.5-vision-instruct|st_a|zero": "4eab08184887957ccdadc28798646c89",
+  "Phi-3.5-vision-instruct|st_a|nonzero": "1ee8b97e764b95694a34e723af95ab20",
+  "Phi-3.5-vision-instruct|ucf|zero": "bb27b7c73726bd4109c35042b15564cd",
+  "Phi-3.5-vision-instruct|ucf|nonzero": "1c9f8f761d5a63787f22bd170d5bb413",
+  "llava-onevision-qwen2-7b-ov|st_a|zero": "774433ad3ddc13ee7d22e52c4fb46b6b",
+  "llava-onevision-qwen2-7b-ov|st_a|nonzero": "b57b62edfc84eb82dcd8fda063069e57",
+  "llava-onevision-qwen2-7b-ov|ucf|zero": "c65e5afb9e120124522b72f4a4553673",
+  "llava-onevision-qwen2-7b-ov|ucf|nonzero": "2379d7bc3cd1ae6d53de2ee3646e519b",
+  "qwen3-vl-32b-awq|st_a|zero": "802232f5ddfde03be111e3f582f56819",
+  "qwen3-vl-32b-awq|st_a|nonzero": "1e08c85502fd76981b87d260692cf6cc",
+  "qwen3-vl-32b-awq|ucf|zero": "d5e093658055946a916ee925199cf7c0",
+  "qwen3-vl-32b-awq|ucf|nonzero": "3990d84867867a723fdc0e88e726dbec",
+  "qwen25vl-72b-awq|st_a|zero": "9c403c127acfe79232e045434206e15c",
+  "qwen25vl-72b-awq|st_a|nonzero": "abcd03a1afef00c67ba40b5a27026c66",
+  "qwen25vl-72b-awq|ucf|zero": "6aa85188b66bcd9e59beb0cfd6aa8362",
+  "qwen25vl-72b-awq|ucf|nonzero": "a70fda5c7e88eacfcd65cf778c4af600",
+  "internvl25-8b-awq|st_a|zero": "b00c5321dedd79a6cfa261af7d057fd4",
+  "internvl25-8b-awq|st_a|nonzero": "3c993333dd08b3f8f4601c1c574a01ae",
+  "internvl25-8b-awq|ucf|zero": "25248ec15672ecaa7a7b4a856e46a9ab",
+  "internvl25-8b-awq|ucf|nonzero": "659a177f66a4c371f337967ec845ecf5"
+ },
+ "items_zero": [
+  {
+   "item": "IMG_1",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 172,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_1"
+  },
+  {
+   "item": "IMG_100",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 389,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_100"
+  },
+  {
+   "item": "IMG_104",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 1175,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_104"
+  },
+  {
+   "item": "IMG_106",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 1232,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_106"
+  },
+  {
+   "item": "IMG_108",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 182,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_108"
+  },
+  {
+   "item": "IMG_11",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 1068,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_11"
+  },
+  {
+   "item": "IMG_110",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 1021,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_110"
+  },
+  {
+   "item": "IMG_111",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 452,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_111"
+  },
+  {
+   "item": "IMG_115",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 1191,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_115"
+  },
+  {
+   "item": "IMG_116",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 288,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_116"
+  },
+  {
+   "item": "IMG_117",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 1603,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_117"
+  },
+  {
+   "item": "IMG_12",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 321,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_12"
+  },
+  {
+   "item": "IMG_121",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 1210,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_121"
+  },
+  {
+   "item": "IMG_122",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 1153,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_122"
+  },
+  {
+   "item": "IMG_124",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 226,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_124"
+  },
+  {
+   "item": "IMG_126",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 440,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_126"
+  },
+  {
+   "item": "IMG_127",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 986,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_127"
+  },
+  {
+   "item": "IMG_128",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 419,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_128"
+  },
+  {
+   "item": "IMG_129",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 298,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_129"
+  },
+  {
+   "item": "IMG_13",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 584,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_13"
+  },
+  {
+   "item": "IMG_130",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 921,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_130"
+  },
+  {
+   "item": "IMG_132",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 375,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_132"
+  },
+  {
+   "item": "IMG_137",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 489,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_137"
+  },
+  {
+   "item": "IMG_139",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 355,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_139"
+  },
+  {
+   "item": "IMG_14",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 762,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_14"
+  },
+  {
+   "item": "IMG_141",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 475,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_141"
+  },
+  {
+   "item": "IMG_142",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 211,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_142"
+  },
+  {
+   "item": "IMG_143",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 357,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_143"
+  },
+  {
+   "item": "IMG_146",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 479,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_146"
+  },
+  {
+   "item": "IMG_147",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 587,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_147"
+  },
+  {
+   "item": "IMG_15",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 341,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_15"
+  },
+  {
+   "item": "IMG_150",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 1303,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_150"
+  },
+  {
+   "item": "IMG_154",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 495,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_154"
+  },
+  {
+   "item": "IMG_157",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 390,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_157"
+  },
+  {
+   "item": "IMG_158",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 308,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_158"
+  },
+  {
+   "item": "IMG_16",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 416,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_16"
+  },
+  {
+   "item": "IMG_162",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 219,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_162"
+  },
+  {
+   "item": "IMG_163",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 162,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_163"
+  },
+  {
+   "item": "IMG_165",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 1581,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_165"
+  },
+  {
+   "item": "IMG_168",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 240,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_168"
+  },
+  {
+   "item": "IMG_17",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 1156,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_17"
+  },
+  {
+   "item": "IMG_170",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 670,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_170"
+  },
+  {
+   "item": "IMG_172",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 1171,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_172"
+  },
+  {
+   "item": "IMG_173",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 481,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_173"
+  },
+  {
+   "item": "IMG_175",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 442,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_175"
+  },
+  {
+   "item": "IMG_176",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 213,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_176"
+  },
+  {
+   "item": "IMG_177",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 363,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_177"
+  },
+  {
+   "item": "IMG_178",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 549,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_178"
+  },
+  {
+   "item": "IMG_179",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 400,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_179"
+  },
+  {
+   "item": "IMG_18",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 227,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_18"
+  },
+  {
+   "item": "IMG_180",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 398,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_180"
+  },
+  {
+   "item": "IMG_19",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 230,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_19"
+  },
+  {
+   "item": "IMG_2",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 1111,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_2"
+  },
+  {
+   "item": "IMG_20",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 460,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_20"
+  },
+  {
+   "item": "IMG_21",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 717,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_21"
+  },
+  {
+   "item": "IMG_22",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 212,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_22"
+  },
+  {
+   "item": "IMG_23",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 429,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_23"
+  },
+  {
+   "item": "IMG_26",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 497,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_26"
+  },
+  {
+   "item": "IMG_27",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 760,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_27"
+  },
+  {
+   "item": "IMG_28",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 423,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_28"
+  },
+  {
+   "item": "IMG_29",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 309,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_29"
+  },
+  {
+   "item": "IMG_3",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 297,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_3"
+  },
+  {
+   "item": "IMG_32",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 961,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_32"
+  },
+  {
+   "item": "IMG_33",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 475,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_33"
+  },
+  {
+   "item": "IMG_35",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 567,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_35"
+  },
+  {
+   "item": "IMG_36",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 1266,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_36"
+  },
+  {
+   "item": "IMG_37",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 195,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_37"
+  },
+  {
+   "item": "IMG_38",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 717,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_38"
+  },
+  {
+   "item": "IMG_40",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 236,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_40"
+  },
+  {
+   "item": "IMG_42",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 797,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_42"
+  },
+  {
+   "item": "IMG_44",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 366,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_44"
+  },
+  {
+   "item": "IMG_45",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 138,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_45"
+  },
+  {
+   "item": "IMG_46",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 373,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_46"
+  },
+  {
+   "item": "IMG_47",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 316,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_47"
+  },
+  {
+   "item": "IMG_49",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 511,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_49"
+  },
+  {
+   "item": "IMG_5",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 817,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_5"
+  },
+  {
+   "item": "IMG_50",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 997,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_50"
+  },
+  {
+   "item": "IMG_51",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 297,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_51"
+  },
+  {
+   "item": "IMG_53",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 175,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_53"
+  },
+  {
+   "item": "IMG_54",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 529,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_54"
+  },
+  {
+   "item": "IMG_56",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 349,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_56"
+  },
+  {
+   "item": "IMG_57",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 356,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_57"
+  },
+  {
+   "item": "IMG_59",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 466,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_59"
+  },
+  {
+   "item": "IMG_60",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 291,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_60"
+  },
+  {
+   "item": "IMG_61",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 193,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_61"
+  },
+  {
+   "item": "IMG_62",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 337,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_62"
+  },
+  {
+   "item": "IMG_63",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 1121,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_63"
+  },
+  {
+   "item": "IMG_64",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 287,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_64"
+  },
+  {
+   "item": "IMG_7",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 568,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_7"
+  },
+  {
+   "item": "IMG_70",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 412,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_70"
+  },
+  {
+   "item": "IMG_71",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 602,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_71"
+  },
+  {
+   "item": "IMG_72",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 589,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_72"
+  },
+  {
+   "item": "IMG_74",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 855,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_74"
+  },
+  {
+   "item": "IMG_75",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 665,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_75"
+  },
+  {
+   "item": "IMG_76",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 485,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_76"
+  },
+  {
+   "item": "IMG_78",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 271,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_78"
+  },
+  {
+   "item": "IMG_8",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 1326,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_8"
+  },
+  {
+   "item": "IMG_81",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 356,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_81"
+  },
+  {
+   "item": "IMG_82",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 217,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_82"
+  },
+  {
+   "item": "IMG_90",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 2256,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_90"
+  },
+  {
+   "item": "IMG_92",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 1366,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_92"
+  },
+  {
+   "item": "IMG_97",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 521,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_97"
+  },
+  {
+   "item": "IMG_99",
+   "pool": "zero",
+   "domain": "st_a",
+   "gt": 242,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_99"
+  },
+  {
+   "item": "img_0001",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 977,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0001"
+  },
+  {
+   "item": "img_0002",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 923,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0002"
+  },
+  {
+   "item": "img_0003",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 350,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0003"
+  },
+  {
+   "item": "img_0006",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 436,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0006"
+  },
+  {
+   "item": "img_0010",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 566,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0010"
+  },
+  {
+   "item": "img_0011",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 540,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0011"
+  },
+  {
+   "item": "img_0012",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 434,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0012"
+  },
+  {
+   "item": "img_0013",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1528,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0013"
+  },
+  {
+   "item": "img_0016",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 853,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0016"
+  },
+  {
+   "item": "img_0019",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 137,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0019"
+  },
+  {
+   "item": "img_0022",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 479,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0022"
+  },
+  {
+   "item": "img_0023",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 274,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0023"
+  },
+  {
+   "item": "img_0025",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 319,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0025"
+  },
+  {
+   "item": "img_0028",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 405,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0028"
+  },
+  {
+   "item": "img_0031",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 394,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0031"
+  },
+  {
+   "item": "img_0032",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 674,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0032"
+  },
+  {
+   "item": "img_0035",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1018,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0035"
+  },
+  {
+   "item": "img_0041",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 960,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0041"
+  },
+  {
+   "item": "img_0048",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1211,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0048"
+  },
+  {
+   "item": "img_0052",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 139,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0052"
+  },
+  {
+   "item": "img_0053",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 954,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0053"
+  },
+  {
+   "item": "img_0054",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 597,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0054"
+  },
+  {
+   "item": "img_0059",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 452,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0059"
+  },
+  {
+   "item": "img_0063",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1149,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0063"
+  },
+  {
+   "item": "img_0065",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 490,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0065"
+  },
+  {
+   "item": "img_0071",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1236,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0071"
+  },
+  {
+   "item": "img_0072",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 241,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0072"
+  },
+  {
+   "item": "img_0073",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 481,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0073"
+  },
+  {
+   "item": "img_0074",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 704,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0074"
+  },
+  {
+   "item": "img_0076",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 489,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0076"
+  },
+  {
+   "item": "img_0078",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1116,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0078"
+  },
+  {
+   "item": "img_0080",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 347,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0080"
+  },
+  {
+   "item": "img_0082",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 337,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0082"
+  },
+  {
+   "item": "img_0083",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 693,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0083"
+  },
+  {
+   "item": "img_0084",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 322,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0084"
+  },
+  {
+   "item": "img_0087",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 626,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0087"
+  },
+  {
+   "item": "img_0088",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 197,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0088"
+  },
+  {
+   "item": "img_0089",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1557,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0089"
+  },
+  {
+   "item": "img_0090",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 792,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0090"
+  },
+  {
+   "item": "img_0092",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 645,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0092"
+  },
+  {
+   "item": "img_0102",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 264,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0102"
+  },
+  {
+   "item": "img_0103",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 505,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0103"
+  },
+  {
+   "item": "img_0104",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1387,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0104"
+  },
+  {
+   "item": "img_0106",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1443,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0106"
+  },
+  {
+   "item": "img_0112",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1166,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0112"
+  },
+  {
+   "item": "img_0113",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1278,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0113"
+  },
+  {
+   "item": "img_0116",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 760,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0116"
+  },
+  {
+   "item": "img_0118",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 964,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0118"
+  },
+  {
+   "item": "img_0119",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 723,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0119"
+  },
+  {
+   "item": "img_0120",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 763,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0120"
+  },
+  {
+   "item": "img_0122",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 499,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0122"
+  },
+  {
+   "item": "img_0125",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1256,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0125"
+  },
+  {
+   "item": "img_0128",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 811,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0128"
+  },
+  {
+   "item": "img_0133",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 944,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0133"
+  },
+  {
+   "item": "img_0137",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 751,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0137"
+  },
+  {
+   "item": "img_0139",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 428,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0139"
+  },
+  {
+   "item": "img_0143",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 810,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0143"
+  },
+  {
+   "item": "img_0148",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 819,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0148"
+  },
+  {
+   "item": "img_0151",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 648,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0151"
+  },
+  {
+   "item": "img_0152",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 901,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0152"
+  },
+  {
+   "item": "img_0153",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 641,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0153"
+  },
+  {
+   "item": "img_0154",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 354,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0154"
+  },
+  {
+   "item": "img_0155",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 845,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0155"
+  },
+  {
+   "item": "img_0157",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 471,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0157"
+  },
+  {
+   "item": "img_0159",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 469,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0159"
+  },
+  {
+   "item": "img_0160",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1063,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0160"
+  },
+  {
+   "item": "img_0163",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 372,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0163"
+  },
+  {
+   "item": "img_0164",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1586,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0164"
+  },
+  {
+   "item": "img_0171",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 608,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0171"
+  },
+  {
+   "item": "img_0173",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 883,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0173"
+  },
+  {
+   "item": "img_0174",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 259,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0174"
+  },
+  {
+   "item": "img_0178",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 400,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0178"
+  },
+  {
+   "item": "img_0180",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1315,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0180"
+  },
+  {
+   "item": "img_0183",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1758,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0183"
+  },
+  {
+   "item": "img_0185",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 507,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0185"
+  },
+  {
+   "item": "img_0187",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 403,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0187"
+  },
+  {
+   "item": "img_0190",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 732,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0190"
+  },
+  {
+   "item": "img_0191",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 532,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0191"
+  },
+  {
+   "item": "img_0201",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 719,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0201"
+  },
+  {
+   "item": "img_0202",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 864,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0202"
+  },
+  {
+   "item": "img_0203",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 368,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0203"
+  },
+  {
+   "item": "img_0204",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 522,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0204"
+  },
+  {
+   "item": "img_0205",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 778,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0205"
+  },
+  {
+   "item": "img_0209",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 143,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0209"
+  },
+  {
+   "item": "img_0210",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 421,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0210"
+  },
+  {
+   "item": "img_0214",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 514,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0214"
+  },
+  {
+   "item": "img_0215",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1048,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0215"
+  },
+  {
+   "item": "img_0216",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 593,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0216"
+  },
+  {
+   "item": "img_0217",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1775,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0217"
+  },
+  {
+   "item": "img_0219",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 535,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0219"
+  },
+  {
+   "item": "img_0221",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1709,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0221"
+  },
+  {
+   "item": "img_0224",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 379,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0224"
+  },
+  {
+   "item": "img_0225",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1191,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0225"
+  },
+  {
+   "item": "img_0226",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1665,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0226"
+  },
+  {
+   "item": "img_0227",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 612,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0227"
+  },
+  {
+   "item": "img_0229",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 699,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0229"
+  },
+  {
+   "item": "img_0230",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1454,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0230"
+  },
+  {
+   "item": "img_0231",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 682,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0231"
+  },
+  {
+   "item": "img_0236",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 267,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0236"
+  },
+  {
+   "item": "img_0242",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 238,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0242"
+  },
+  {
+   "item": "img_0251",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 184,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0251"
+  },
+  {
+   "item": "img_0252",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 340,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0252"
+  },
+  {
+   "item": "img_0254",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 829,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0254"
+  },
+  {
+   "item": "img_0258",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 994,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0258"
+  },
+  {
+   "item": "img_0264",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 225,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0264"
+  },
+  {
+   "item": "img_0267",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1103,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0267"
+  },
+  {
+   "item": "img_0268",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1400,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0268"
+  },
+  {
+   "item": "img_0270",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 276,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0270"
+  },
+  {
+   "item": "img_0271",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 916,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0271"
+  },
+  {
+   "item": "img_0272",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1798,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0272"
+  },
+  {
+   "item": "img_0273",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 948,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0273"
+  },
+  {
+   "item": "img_0275",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1070,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0275"
+  },
+  {
+   "item": "img_0278",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 518,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0278"
+  },
+  {
+   "item": "img_0279",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 560,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0279"
+  },
+  {
+   "item": "img_0280",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 558,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0280"
+  },
+  {
+   "item": "img_0281",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 871,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0281"
+  },
+  {
+   "item": "img_0282",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 574,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0282"
+  },
+  {
+   "item": "img_0286",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 937,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0286"
+  },
+  {
+   "item": "img_0287",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 229,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0287"
+  },
+  {
+   "item": "img_0290",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 556,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0290"
+  },
+  {
+   "item": "img_0291",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 357,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0291"
+  },
+  {
+   "item": "img_0292",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 260,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0292"
+  },
+  {
+   "item": "img_0293",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1433,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0293"
+  },
+  {
+   "item": "img_0294",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 791,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0294"
+  },
+  {
+   "item": "img_0295",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1477,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0295"
+  },
+  {
+   "item": "img_0296",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1341,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0296"
+  },
+  {
+   "item": "img_0297",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 429,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0297"
+  },
+  {
+   "item": "img_0298",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 284,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0298"
+  },
+  {
+   "item": "img_0301",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 207,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0301"
+  },
+  {
+   "item": "img_0305",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 654,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0305"
+  },
+  {
+   "item": "img_0307",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1077,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0307"
+  },
+  {
+   "item": "img_0309",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 663,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0309"
+  },
+  {
+   "item": "img_0310",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 642,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0310"
+  },
+  {
+   "item": "img_0311",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 909,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0311"
+  },
+  {
+   "item": "img_0313",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 465,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0313"
+  },
+  {
+   "item": "img_0314",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 820,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0314"
+  },
+  {
+   "item": "img_0315",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 383,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0315"
+  },
+  {
+   "item": "img_0316",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 973,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0316"
+  },
+  {
+   "item": "img_0317",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 811,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0317"
+  },
+  {
+   "item": "img_0318",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1616,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0318"
+  },
+  {
+   "item": "img_0319",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 922,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0319"
+  },
+  {
+   "item": "img_0322",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1613,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0322"
+  },
+  {
+   "item": "img_0324",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 650,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0324"
+  },
+  {
+   "item": "img_0325",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1659,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0325"
+  },
+  {
+   "item": "img_0327",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1408,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0327"
+  },
+  {
+   "item": "img_0329",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 962,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0329"
+  },
+  {
+   "item": "img_0330",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1668,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0330"
+  },
+  {
+   "item": "img_0332",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 770,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0332"
+  },
+  {
+   "item": "img_0333",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 601,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0333"
+  },
+  {
+   "item": "img_0334",
+   "pool": "zero",
+   "domain": "ucf",
+   "gt": 1508,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0334"
+  }
+ ],
+ "items_nonzero": [
+  {
+   "item": "IMG_10",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 502,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_10"
+  },
+  {
+   "item": "IMG_101",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 211,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_101"
+  },
+  {
+   "item": "IMG_102",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 223,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_102"
+  },
+  {
+   "item": "IMG_103",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 431,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_103"
+  },
+  {
+   "item": "IMG_105",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 265,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_105"
+  },
+  {
+   "item": "IMG_107",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 289,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_107"
+  },
+  {
+   "item": "IMG_109",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 379,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_109"
+  },
+  {
+   "item": "IMG_112",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 256,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_112"
+  },
+  {
+   "item": "IMG_113",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 66,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_113"
+  },
+  {
+   "item": "IMG_114",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 141,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_114"
+  },
+  {
+   "item": "IMG_118",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 241,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_118"
+  },
+  {
+   "item": "IMG_119",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 250,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_119"
+  },
+  {
+   "item": "IMG_120",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 133,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_120"
+  },
+  {
+   "item": "IMG_123",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 115,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_123"
+  },
+  {
+   "item": "IMG_125",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 269,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_125"
+  },
+  {
+   "item": "IMG_131",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 604,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_131"
+  },
+  {
+   "item": "IMG_133",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 135,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_133"
+  },
+  {
+   "item": "IMG_134",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 165,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_134"
+  },
+  {
+   "item": "IMG_135",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 72,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_135"
+  },
+  {
+   "item": "IMG_136",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 102,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_136"
+  },
+  {
+   "item": "IMG_138",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 292,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_138"
+  },
+  {
+   "item": "IMG_140",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 93,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_140"
+  },
+  {
+   "item": "IMG_144",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 262,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_144"
+  },
+  {
+   "item": "IMG_145",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 261,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_145"
+  },
+  {
+   "item": "IMG_148",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 208,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_148"
+  },
+  {
+   "item": "IMG_149",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 230,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_149"
+  },
+  {
+   "item": "IMG_151",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 253,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_151"
+  },
+  {
+   "item": "IMG_152",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 277,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_152"
+  },
+  {
+   "item": "IMG_153",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 395,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_153"
+  },
+  {
+   "item": "IMG_155",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 165,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_155"
+  },
+  {
+   "item": "IMG_156",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 199,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_156"
+  },
+  {
+   "item": "IMG_159",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 199,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_159"
+  },
+  {
+   "item": "IMG_160",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 121,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_160"
+  },
+  {
+   "item": "IMG_161",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 266,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_161"
+  },
+  {
+   "item": "IMG_164",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 302,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_164"
+  },
+  {
+   "item": "IMG_166",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 126,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_166"
+  },
+  {
+   "item": "IMG_167",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 112,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_167"
+  },
+  {
+   "item": "IMG_169",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 218,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_169"
+  },
+  {
+   "item": "IMG_171",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 239,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_171"
+  },
+  {
+   "item": "IMG_174",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 129,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_174"
+  },
+  {
+   "item": "IMG_181",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 216,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_181"
+  },
+  {
+   "item": "IMG_182",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 199,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_182"
+  },
+  {
+   "item": "IMG_24",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 553,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_24"
+  },
+  {
+   "item": "IMG_25",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 243,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_25"
+  },
+  {
+   "item": "IMG_30",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 307,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_30"
+  },
+  {
+   "item": "IMG_31",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 250,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_31"
+  },
+  {
+   "item": "IMG_34",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 89,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_34"
+  },
+  {
+   "item": "IMG_39",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 196,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_39"
+  },
+  {
+   "item": "IMG_4",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 170,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_4"
+  },
+  {
+   "item": "IMG_41",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 249,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_41"
+  },
+  {
+   "item": "IMG_43",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 116,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_43"
+  },
+  {
+   "item": "IMG_48",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 384,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_48"
+  },
+  {
+   "item": "IMG_52",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 134,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_52"
+  },
+  {
+   "item": "IMG_55",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 149,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_55"
+  },
+  {
+   "item": "IMG_58",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 198,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_58"
+  },
+  {
+   "item": "IMG_6",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 361,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_6"
+  },
+  {
+   "item": "IMG_65",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 214,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_65"
+  },
+  {
+   "item": "IMG_66",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 823,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_66"
+  },
+  {
+   "item": "IMG_67",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 192,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_67"
+  },
+  {
+   "item": "IMG_68",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 212,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_68"
+  },
+  {
+   "item": "IMG_69",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 166,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_69"
+  },
+  {
+   "item": "IMG_73",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 153,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_73"
+  },
+  {
+   "item": "IMG_77",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 207,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_77"
+  },
+  {
+   "item": "IMG_79",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 186,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_79"
+  },
+  {
+   "item": "IMG_80",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 157,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_80"
+  },
+  {
+   "item": "IMG_83",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 218,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_83"
+  },
+  {
+   "item": "IMG_84",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 122,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_84"
+  },
+  {
+   "item": "IMG_85",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 97,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_85"
+  },
+  {
+   "item": "IMG_86",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 579,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_86"
+  },
+  {
+   "item": "IMG_87",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 417,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_87"
+  },
+  {
+   "item": "IMG_88",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 86,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_88"
+  },
+  {
+   "item": "IMG_89",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 383,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_89"
+  },
+  {
+   "item": "IMG_9",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 371,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_9"
+  },
+  {
+   "item": "IMG_91",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 101,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_91"
+  },
+  {
+   "item": "IMG_93",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 255,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_93"
+  },
+  {
+   "item": "IMG_94",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 69,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_94"
+  },
+  {
+   "item": "IMG_95",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 190,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_95"
+  },
+  {
+   "item": "IMG_96",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 246,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_96"
+  },
+  {
+   "item": "IMG_98",
+   "pool": "nonzero",
+   "domain": "st_a",
+   "gt": 153,
+   "img_dir": "/root/dense/shanghaitech/images/part_A_test",
+   "img_base": "IMG_98"
+  },
+  {
+   "item": "img_0004",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 183,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0004"
+  },
+  {
+   "item": "img_0005",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 103,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0005"
+  },
+  {
+   "item": "img_0007",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 77,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0007"
+  },
+  {
+   "item": "img_0008",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 92,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0008"
+  },
+  {
+   "item": "img_0009",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 237,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0009"
+  },
+  {
+   "item": "img_0014",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 225,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0014"
+  },
+  {
+   "item": "img_0015",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 413,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0015"
+  },
+  {
+   "item": "img_0017",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 191,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0017"
+  },
+  {
+   "item": "img_0018",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 141,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0018"
+  },
+  {
+   "item": "img_0020",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 133,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0020"
+  },
+  {
+   "item": "img_0021",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 127,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0021"
+  },
+  {
+   "item": "img_0024",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 385,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0024"
+  },
+  {
+   "item": "img_0026",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 113,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0026"
+  },
+  {
+   "item": "img_0027",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 181,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0027"
+  },
+  {
+   "item": "img_0029",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 450,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0029"
+  },
+  {
+   "item": "img_0030",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 367,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0030"
+  },
+  {
+   "item": "img_0033",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 129,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0033"
+  },
+  {
+   "item": "img_0034",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 221,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0034"
+  },
+  {
+   "item": "img_0036",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 302,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0036"
+  },
+  {
+   "item": "img_0038",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 297,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0038"
+  },
+  {
+   "item": "img_0039",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 88,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0039"
+  },
+  {
+   "item": "img_0040",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 201,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0040"
+  },
+  {
+   "item": "img_0042",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 130,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0042"
+  },
+  {
+   "item": "img_0043",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 155,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0043"
+  },
+  {
+   "item": "img_0044",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 169,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0044"
+  },
+  {
+   "item": "img_0045",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 153,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0045"
+  },
+  {
+   "item": "img_0046",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 177,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0046"
+  },
+  {
+   "item": "img_0047",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 100,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0047"
+  },
+  {
+   "item": "img_0050",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 425,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0050"
+  },
+  {
+   "item": "img_0051",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 187,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0051"
+  },
+  {
+   "item": "img_0055",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 361,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0055"
+  },
+  {
+   "item": "img_0056",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 194,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0056"
+  },
+  {
+   "item": "img_0057",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 687,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0057"
+  },
+  {
+   "item": "img_0060",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 227,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0060"
+  },
+  {
+   "item": "img_0061",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 236,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0061"
+  },
+  {
+   "item": "img_0067",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 255,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0067"
+  },
+  {
+   "item": "img_0068",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 363,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0068"
+  },
+  {
+   "item": "img_0069",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 547,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0069"
+  },
+  {
+   "item": "img_0070",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 233,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0070"
+  },
+  {
+   "item": "img_0075",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 253,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0075"
+  },
+  {
+   "item": "img_0077",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 203,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0077"
+  },
+  {
+   "item": "img_0081",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 121,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0081"
+  },
+  {
+   "item": "img_0085",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 283,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0085"
+  },
+  {
+   "item": "img_0086",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 176,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0086"
+  },
+  {
+   "item": "img_0091",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 636,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0091"
+  },
+  {
+   "item": "img_0094",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 146,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0094"
+  },
+  {
+   "item": "img_0095",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 370,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0095"
+  },
+  {
+   "item": "img_0096",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 107,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0096"
+  },
+  {
+   "item": "img_0097",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 431,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0097"
+  },
+  {
+   "item": "img_0098",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 249,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0098"
+  },
+  {
+   "item": "img_0099",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 304,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0099"
+  },
+  {
+   "item": "img_0100",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 232,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0100"
+  },
+  {
+   "item": "img_0101",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 175,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0101"
+  },
+  {
+   "item": "img_0105",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 166,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0105"
+  },
+  {
+   "item": "img_0107",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 335,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0107"
+  },
+  {
+   "item": "img_0108",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 188,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0108"
+  },
+  {
+   "item": "img_0109",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 441,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0109"
+  },
+  {
+   "item": "img_0110",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 460,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0110"
+  },
+  {
+   "item": "img_0111",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 157,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0111"
+  },
+  {
+   "item": "img_0115",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 291,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0115"
+  },
+  {
+   "item": "img_0117",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 737,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0117"
+  },
+  {
+   "item": "img_0121",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 150,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0121"
+  },
+  {
+   "item": "img_0123",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 485,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0123"
+  },
+  {
+   "item": "img_0126",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 305,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0126"
+  },
+  {
+   "item": "img_0127",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 408,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0127"
+  },
+  {
+   "item": "img_0129",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 311,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0129"
+  },
+  {
+   "item": "img_0130",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 456,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0130"
+  },
+  {
+   "item": "img_0131",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 475,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0131"
+  },
+  {
+   "item": "img_0132",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 294,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0132"
+  },
+  {
+   "item": "img_0134",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 152,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0134"
+  },
+  {
+   "item": "img_0135",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 314,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0135"
+  },
+  {
+   "item": "img_0136",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 652,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0136"
+  },
+  {
+   "item": "img_0138",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 632,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0138"
+  },
+  {
+   "item": "img_0140",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 398,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0140"
+  },
+  {
+   "item": "img_0141",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 171,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0141"
+  },
+  {
+   "item": "img_0142",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 353,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0142"
+  },
+  {
+   "item": "img_0144",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 446,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0144"
+  },
+  {
+   "item": "img_0145",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 161,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0145"
+  },
+  {
+   "item": "img_0146",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 387,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0146"
+  },
+  {
+   "item": "img_0147",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 135,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0147"
+  },
+  {
+   "item": "img_0149",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 390,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0149"
+  },
+  {
+   "item": "img_0150",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 396,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0150"
+  },
+  {
+   "item": "img_0158",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 247,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0158"
+  },
+  {
+   "item": "img_0161",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 313,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0161"
+  },
+  {
+   "item": "img_0162",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 279,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0162"
+  },
+  {
+   "item": "img_0165",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 198,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0165"
+  },
+  {
+   "item": "img_0168",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 138,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0168"
+  },
+  {
+   "item": "img_0169",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 174,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0169"
+  },
+  {
+   "item": "img_0170",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 148,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0170"
+  },
+  {
+   "item": "img_0172",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 110,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0172"
+  },
+  {
+   "item": "img_0175",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 117,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0175"
+  },
+  {
+   "item": "img_0176",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 326,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0176"
+  },
+  {
+   "item": "img_0177",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 272,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0177"
+  },
+  {
+   "item": "img_0181",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 466,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0181"
+  },
+  {
+   "item": "img_0182",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 269,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0182"
+  },
+  {
+   "item": "img_0186",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 158,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0186"
+  },
+  {
+   "item": "img_0188",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 275,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0188"
+  },
+  {
+   "item": "img_0189",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 122,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0189"
+  },
+  {
+   "item": "img_0192",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 195,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0192"
+  },
+  {
+   "item": "img_0193",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 210,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0193"
+  },
+  {
+   "item": "img_0194",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 159,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0194"
+  },
+  {
+   "item": "img_0195",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 211,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0195"
+  },
+  {
+   "item": "img_0196",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 287,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0196"
+  },
+  {
+   "item": "img_0197",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 165,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0197"
+  },
+  {
+   "item": "img_0198",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 104,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0198"
+  },
+  {
+   "item": "img_0199",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 263,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0199"
+  },
+  {
+   "item": "img_0200",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 299,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0200"
+  },
+  {
+   "item": "img_0207",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 463,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0207"
+  },
+  {
+   "item": "img_0208",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 204,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0208"
+  },
+  {
+   "item": "img_0211",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 434,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0211"
+  },
+  {
+   "item": "img_0212",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 218,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0212"
+  },
+  {
+   "item": "img_0213",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 266,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0213"
+  },
+  {
+   "item": "img_0218",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 712,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0218"
+  },
+  {
+   "item": "img_0228",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 172,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0228"
+  },
+  {
+   "item": "img_0232",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 419,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0232"
+  },
+  {
+   "item": "img_0233",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 332,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0233"
+  },
+  {
+   "item": "img_0234",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 244,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0234"
+  },
+  {
+   "item": "img_0235",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 125,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0235"
+  },
+  {
+   "item": "img_0237",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 178,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0237"
+  },
+  {
+   "item": "img_0238",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 170,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0238"
+  },
+  {
+   "item": "img_0239",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 306,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0239"
+  },
+  {
+   "item": "img_0240",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 329,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0240"
+  },
+  {
+   "item": "img_0241",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 207,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0241"
+  },
+  {
+   "item": "img_0243",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 289,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0243"
+  },
+  {
+   "item": "img_0244",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 228,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0244"
+  },
+  {
+   "item": "img_0245",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 308,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0245"
+  },
+  {
+   "item": "img_0247",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 214,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0247"
+  },
+  {
+   "item": "img_0248",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 205,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0248"
+  },
+  {
+   "item": "img_0249",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 83,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0249"
+  },
+  {
+   "item": "img_0250",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 65,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0250"
+  },
+  {
+   "item": "img_0253",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 163,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0253"
+  },
+  {
+   "item": "img_0259",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 338,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0259"
+  },
+  {
+   "item": "img_0261",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 343,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0261"
+  },
+  {
+   "item": "img_0262",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 550,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0262"
+  },
+  {
+   "item": "img_0263",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 258,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0263"
+  },
+  {
+   "item": "img_0265",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 245,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0265"
+  },
+  {
+   "item": "img_0274",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 457,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0274"
+  },
+  {
+   "item": "img_0276",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 302,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0276"
+  },
+  {
+   "item": "img_0277",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 259,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0277"
+  },
+  {
+   "item": "img_0283",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 241,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0283"
+  },
+  {
+   "item": "img_0284",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 376,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0284"
+  },
+  {
+   "item": "img_0285",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 582,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0285"
+  },
+  {
+   "item": "img_0288",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 216,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0288"
+  },
+  {
+   "item": "img_0289",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 251,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0289"
+  },
+  {
+   "item": "img_0299",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 165,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0299"
+  },
+  {
+   "item": "img_0300",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 236,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0300"
+  },
+  {
+   "item": "img_0302",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 315,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0302"
+  },
+  {
+   "item": "img_0312",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 270,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0312"
+  },
+  {
+   "item": "img_0326",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 165,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0326"
+  },
+  {
+   "item": "img_0328",
+   "pool": "nonzero",
+   "domain": "ucf",
+   "gt": 426,
+   "img_dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+   "img_base": "img_0328"
+  }
+ ]
+}

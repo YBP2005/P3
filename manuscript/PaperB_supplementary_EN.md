@@ -55,8 +55,7 @@ agrees at essentially 100% for the same configuration. The per-image figure abov
 movement, and the paper's rates depend on only one of them. Separating them on the four M.21.10 builds
 across **three fresh service starts at four-worker concurrency**, the **answered-zero classification**
 flips on **4 of 4,136 items (0.097%)**, while the reported count differs by **±1–2 on 4.28%** of items.
-(The per-item records behind this split are those of §M.21.10 and are **not part of the released
-reproduction package**.)
+(The per-item records behind this split are those of §M.21.10 and are in the released package, `data/derived/p3r4_a800/`.)
 The two settings are not comparable — the 22–27% above is a 4-bit stack and counts value differences as
 well — so this is a **boundary on a different setting, not a correction of that figure**. Consequently,
 model-to-model differences below
@@ -2547,7 +2546,7 @@ starts' zero / non-zero classification flips on 12 of 753 item pairs (1.59%).
 
 **The aerial arm of the same build, and the fp8 row's cross-start check.** The identical serving configuration answers zero on **229 / 230 / 230** of the **300** aerial-pool items across the three fresh starts (**76.33 / 76.67 / 76.67%**, Wilson lower bounds **71.21 / 71.56 / 71.56%**), with the zero/non-zero classification flipping on at most **2 of 300** item pairs (**0.67%**) — inside the ≤1% band, so the three starts may be pooled. Its aerial share $S$ is **31.91 / 31.76 / 31.98%**. The fp8 row, by contrast, is archived as a **single** run, so we re-ran it on the identical dense item set with three fresh service starts: **8.87 / 8.91 / 8.47%** (**22/248**, **22/247**, **21/248**), $S$ **22.37 / 21.50 / 20.48%**, with **1.21%** of item pairs flipping — the (1%, 5%] band, where the three starts are read side by side and the most conservative (**8.91%**) is quoted. The archived single run's own per-item records are in the released package, so the re-runs can be paired against it item by item on the **244** items both parse: the differences are **+0.41 / +0.41 / +0.00 pp** (95% **[−1.64, +2.87] / [−1.65, +2.47] / [−2.05, +2.46]**, all crossing zero), with **236–237 of 244** items agreeing in classification. **The "run once" qualifier on that row is therefore a provenance statement, not a stability one**: nothing in these three starts separates them from the single run they repeat.
 
-*Reproduction: the archived single run is in the released package (`data/derived/e2/e1_internvl35-38b-fp8_{st_a,ucf}_base.csv`); recomputing from it reproduces that row's **18/244 = 7.38%** and **[4.72, 11.36]** exactly, which is the acceptance check for the pairing above. The aerial arm and the three fp8 re-runs are per-item records held by the authors (md5s in the evidence record for this round) and are **not part of the released reproduction package**.*
+*Reproduction: the archived single run is in the released package (`data/derived/e2/e1_internvl35-38b-fp8_{st_a,ucf}_base.csv`); recomputing from it reproduces that row's **18/244 = 7.38%** and **[4.72, 11.36]** exactly, which is the acceptance check for the pairing above. The aerial arm and the three fp8 re-runs are per-item records in the released package (`data/derived/p3r4_a800/E5_aerial_{zero,nonzero}_start{1,2,3}.csv` and `E1_fp8_dense{zero,nonzero}_start{1,2,3}.csv`).*
 
 | axis | held fixed | items | readings | paired difference, 95% |
 |---|---|---|---|---|
@@ -2567,8 +2566,8 @@ band and not as a magnitude. That band is the pre-registered reading for the anc
 A same-family, cross-scale sidelight bearing on the same question — and the confound that keeps it
 directional rather than a precision measurement — is recorded separately in §M.19.15.1.
 
-*Reproduction and scope: the BF16 rebuild's per-item records are **not part of the released reproduction
-package**; the frozen item list, the served configuration, and the instrument — a derived probe whose prompt
+*Reproduction and scope: the BF16 rebuild's per-item records are in the released reproduction
+package (`data/derived/p3r4_a800/B1_{zero,nonzero}_start{1,2,3}.csv`); the frozen item list, the served configuration, and the instrument — a derived probe whose prompt
 set and parser are taken verbatim from the panel's own (`19e_probe_multi.py`, md5
 `03edb14c98ffa3aea9ffa20f59b00bc8`), itself at md5 `e7a65fd47345c2fe040fa4d05a3b1d86` — are recorded with
 them. The 38B-fp8 reading is this appendix's existing single-run row and
@@ -2970,7 +2969,7 @@ rate, which is the arithmetic reason the identity above can never fail there. Th
 sits beside is $[\,1/(\kappa+1),\, \min(1, q_C)\,]$, so the contract does not merely move a distribution: **it
 sets what is identifiable.**
 
-*Reproduction: the four builds × three starts are per-item records held by the authors (md5s in the evidence record for this round) and are **not part of the released reproduction package**; the mixture manifest and the frozen true-zero pool are those of §M.21.10.*
+*Reproduction: the four builds × three starts are per-item records in the released package (`data/derived/p3r4_a800/E3_<build>_start{1,2,3}.csv`, twelve files); the mixture manifest (`pf_items_pi0570.json`, md5 `c43d7f94bc192ac0a2d9b697561d90ef`) and the frozen true-zero pool are those of §M.21.10.*
 
 **(f) What a plugged-in $\hat\pi$ costs the headline.** Write the identity logarithmically, $\log\text{precision}=\log p+\log\pi-\log q$, and two regimes follow — and this appendix's sentences sit in different ones. Where $\pi$ and $q$ are measured **independently**, the corpus case, the relative errors add in quadrature, $(\delta P/P)^2=(\delta p/p)^2+(\delta\pi/\pi)^2+(\delta q/q)^2$, so the term §M.44 leaves open is a first-class part of the budget rather than a remainder: feeding §M.44's own numbers into it (a transfer error of 10.80 pp on the recovered proportion, a 95% half-width of 10.2–16.4 pp, and a binomial $q$ at $n=526$) puts **65% of the variance on $\pi$**, 25% on the transfer of $p$ and 10% on $q$. Where the mixture is **constructed**, $q=\pi p+(1-\pi)r$ is a function of $\pi$ and the same perturbation is damped by $\eta\equiv\partial\log\text{precision}/\partial\log\pi=1-(p-r)\pi/q$, computed from the same per-item records as (e): over the four builds $\eta$ runs from **0.050** to **0.770** — a **16-fold** spread — because it is governed by how often a build answers zero on the *non-empty* side, $r$ ranging from **1.8%** (Gemma-3-12B) to **53.4%** (Phi-3.5-Vision). Passing §M.44's resolution (17.8–28.7% relative on a proportion of 0.572) through $\eta$ moves the headline by **0.9% to 22.1%** depending on the build. **A single tolerance quoted for every build would therefore be wrong by more than an order of magnitude**, and any future attempt to close $\pi$ has to carry a build-dependent one.
 

@@ -4034,7 +4034,7 @@ pool of §5.7 measured with the same probe.
 
 **Design and controls.** Five builds (InternVL3.5-8B, Phi-3.5-vision-instruct, Qwen3-VL-32B-Instruct, gemma-3-12b, LLaVA-OneVision-7B) × three **fresh service starts** each × two languages (the frozen
 Chinese arms and their byte-frozen English renderings) × the three contract arms. Each rate below is
-**pooled over the three starts** — every item is one observation per start, and the intervals below treat the 459 item × start observations as independent (a start-clustered reading would widen them); a cell of the 153-item
+**pooled over the three starts** — every item is one observation per start, and the intervals below treat the 459 item × start observations as independent. **We checked the clustering directly rather than assuming its direction**: resampling the three starts as clusters (2,000 draws, seed 20260930) gives intervals that are **narrower**, not wider — the three starts agree to within **2.61 pp** and five of the thirty cells are bit-identical across starts — so the pooled intervals are **conservative** with respect to start clustering (median cluster width **0.0 pp** against a median Wilson width of **7.16 pp**; **0 of 10** `no_people` cells are wider under clustering). `p3r2_plan_m40_cluster.py` reproduces the check from the released records; a cell of the 153-item
 strata rests on 459 observations rather than on any single start; the spread **between** starts is reported
 separately below. Four structural controls
 were asserted before any statistic was computed, and all four pass (`ea2_integrity.py`): every row has

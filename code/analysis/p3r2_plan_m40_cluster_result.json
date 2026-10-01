@@ -1,0 +1,765 @@
+{
+  "purpose": "§M.40 真零行：合并 Wilson 与**按起服聚类**读数的对照",
+  "seed": 20260930,
+  "B": 2000,
+  "rows": [
+    {
+      "build": "InternVL3.5-8B",
+      "pool": "z0easy",
+      "arm": "channel",
+      "metric": "no_people",
+      "n": 459,
+      "k": 399,
+      "pooled": 86.93,
+      "wilson": [
+        83.54,
+        89.71
+      ],
+      "per_start": [
+        86.93,
+        86.93,
+        86.93
+      ],
+      "start_span": 0.0,
+      "cluster_ci": [
+        86.93,
+        86.93
+      ],
+      "cluster_width": 0.0,
+      "wilson_width": 6.17
+    },
+    {
+      "build": "InternVL3.5-8B",
+      "pool": "z0easy",
+      "arm": "channel",
+      "metric": "cannot_judge",
+      "n": 459,
+      "k": 40,
+      "pooled": 8.71,
+      "wilson": [
+        6.46,
+        11.65
+      ],
+      "per_start": [
+        8.5,
+        9.15,
+        8.5
+      ],
+      "start_span": 0.65,
+      "cluster_ci": [
+        8.5,
+        9.15
+      ],
+      "cluster_width": 0.65,
+      "wilson_width": 5.18
+    },
+    {
+      "build": "InternVL3.5-8B",
+      "pool": "z0easy",
+      "arm": "base",
+      "metric": "zero",
+      "n": 459,
+      "k": 358,
+      "pooled": 78.0,
+      "wilson": [
+        73.98,
+        81.54
+      ],
+      "per_start": [
+        77.78,
+        78.43,
+        77.78
+      ],
+      "start_span": 0.65,
+      "cluster_ci": [
+        77.78,
+        78.43
+      ],
+      "cluster_width": 0.65,
+      "wilson_width": 7.56
+    },
+    {
+      "build": "InternVL3.5-8B",
+      "pool": "z0hard",
+      "arm": "channel",
+      "metric": "no_people",
+      "n": 459,
+      "k": 408,
+      "pooled": 88.89,
+      "wilson": [
+        85.68,
+        91.45
+      ],
+      "per_start": [
+        88.89,
+        88.89,
+        88.89
+      ],
+      "start_span": 0.0,
+      "cluster_ci": [
+        88.89,
+        88.89
+      ],
+      "cluster_width": 0.0,
+      "wilson_width": 5.76
+    },
+    {
+      "build": "InternVL3.5-8B",
+      "pool": "z0hard",
+      "arm": "channel",
+      "metric": "cannot_judge",
+      "n": 459,
+      "k": 21,
+      "pooled": 4.58,
+      "wilson": [
+        3.01,
+        6.89
+      ],
+      "per_start": [
+        5.23,
+        4.58,
+        3.92
+      ],
+      "start_span": 1.31,
+      "cluster_ci": [
+        3.92,
+        5.23
+      ],
+      "cluster_width": 1.31,
+      "wilson_width": 3.88
+    },
+    {
+      "build": "InternVL3.5-8B",
+      "pool": "z0hard",
+      "arm": "base",
+      "metric": "zero",
+      "n": 459,
+      "k": 357,
+      "pooled": 77.78,
+      "wilson": [
+        73.75,
+        81.34
+      ],
+      "per_start": [
+        77.78,
+        77.78,
+        77.78
+      ],
+      "start_span": 0.0,
+      "cluster_ci": [
+        77.78,
+        77.78
+      ],
+      "cluster_width": 0.0,
+      "wilson_width": 7.59
+    },
+    {
+      "build": "Phi-3.5-vision-instruct",
+      "pool": "z0easy",
+      "arm": "channel",
+      "metric": "no_people",
+      "n": 459,
+      "k": 322,
+      "pooled": 70.15,
+      "wilson": [
+        65.81,
+        74.16
+      ],
+      "per_start": [
+        68.63,
+        71.24,
+        70.59
+      ],
+      "start_span": 2.61,
+      "cluster_ci": [
+        68.63,
+        71.24
+      ],
+      "cluster_width": 2.61,
+      "wilson_width": 8.34
+    },
+    {
+      "build": "Phi-3.5-vision-instruct",
+      "pool": "z0easy",
+      "arm": "channel",
+      "metric": "cannot_judge",
+      "n": 459,
+      "k": 137,
+      "pooled": 29.85,
+      "wilson": [
+        25.84,
+        34.19
+      ],
+      "per_start": [
+        31.37,
+        28.76,
+        29.41
+      ],
+      "start_span": 2.61,
+      "cluster_ci": [
+        28.76,
+        31.37
+      ],
+      "cluster_width": 2.61,
+      "wilson_width": 8.34
+    },
+    {
+      "build": "Phi-3.5-vision-instruct",
+      "pool": "z0easy",
+      "arm": "base",
+      "metric": "zero",
+      "n": 459,
+      "k": 360,
+      "pooled": 78.43,
+      "wilson": [
+        74.44,
+        81.95
+      ],
+      "per_start": [
+        78.43,
+        78.43,
+        78.43
+      ],
+      "start_span": 0.0,
+      "cluster_ci": [
+        78.43,
+        78.43
+      ],
+      "cluster_width": 0.0,
+      "wilson_width": 7.51
+    },
+    {
+      "build": "Phi-3.5-vision-instruct",
+      "pool": "z0hard",
+      "arm": "channel",
+      "metric": "no_people",
+      "n": 459,
+      "k": 398,
+      "pooled": 86.71,
+      "wilson": [
+        83.3,
+        89.51
+      ],
+      "per_start": [
+        86.93,
+        86.93,
+        86.27
+      ],
+      "start_span": 0.65,
+      "cluster_ci": [
+        86.27,
+        86.93
+      ],
+      "cluster_width": 0.65,
+      "wilson_width": 6.22
+    },
+    {
+      "build": "Phi-3.5-vision-instruct",
+      "pool": "z0hard",
+      "arm": "channel",
+      "metric": "cannot_judge",
+      "n": 459,
+      "k": 61,
+      "pooled": 13.29,
+      "wilson": [
+        10.49,
+        16.7
+      ],
+      "per_start": [
+        13.07,
+        13.07,
+        13.73
+      ],
+      "start_span": 0.65,
+      "cluster_ci": [
+        13.07,
+        13.73
+      ],
+      "cluster_width": 0.65,
+      "wilson_width": 6.22
+    },
+    {
+      "build": "Phi-3.5-vision-instruct",
+      "pool": "z0hard",
+      "arm": "base",
+      "metric": "zero",
+      "n": 459,
+      "k": 372,
+      "pooled": 81.05,
+      "wilson": [
+        77.21,
+        84.37
+      ],
+      "per_start": [
+        81.05,
+        81.05,
+        81.05
+      ],
+      "start_span": 0.0,
+      "cluster_ci": [
+        81.05,
+        81.05
+      ],
+      "cluster_width": 0.0,
+      "wilson_width": 7.16
+    },
+    {
+      "build": "Qwen3-VL-32B-Instruct",
+      "pool": "z0easy",
+      "arm": "channel",
+      "metric": "no_people",
+      "n": 459,
+      "k": 363,
+      "pooled": 79.08,
+      "wilson": [
+        75.13,
+        82.56
+      ],
+      "per_start": [
+        79.08,
+        79.08,
+        79.08
+      ],
+      "start_span": 0.0,
+      "cluster_ci": [
+        79.08,
+        79.08
+      ],
+      "cluster_width": 0.0,
+      "wilson_width": 7.43
+    },
+    {
+      "build": "Qwen3-VL-32B-Instruct",
+      "pool": "z0easy",
+      "arm": "channel",
+      "metric": "cannot_judge",
+      "n": 459,
+      "k": 60,
+      "pooled": 13.07,
+      "wilson": [
+        10.29,
+        16.46
+      ],
+      "per_start": [
+        13.07,
+        13.07,
+        13.07
+      ],
+      "start_span": 0.0,
+      "cluster_ci": [
+        13.07,
+        13.07
+      ],
+      "cluster_width": 0.0,
+      "wilson_width": 6.17
+    },
+    {
+      "build": "Qwen3-VL-32B-Instruct",
+      "pool": "z0easy",
+      "arm": "base",
+      "metric": "zero",
+      "n": 459,
+      "k": 387,
+      "pooled": 84.31,
+      "wilson": [
+        80.7,
+        87.35
+      ],
+      "per_start": [
+        84.31,
+        84.31,
+        84.31
+      ],
+      "start_span": 0.0,
+      "cluster_ci": [
+        84.31,
+        84.31
+      ],
+      "cluster_width": 0.0,
+      "wilson_width": 6.65
+    },
+    {
+      "build": "Qwen3-VL-32B-Instruct",
+      "pool": "z0hard",
+      "arm": "channel",
+      "metric": "no_people",
+      "n": 459,
+      "k": 384,
+      "pooled": 83.66,
+      "wilson": [
+        80.0,
+        86.76
+      ],
+      "per_start": [
+        83.66,
+        83.66,
+        83.66
+      ],
+      "start_span": 0.0,
+      "cluster_ci": [
+        83.66,
+        83.66
+      ],
+      "cluster_width": 0.0,
+      "wilson_width": 6.76
+    },
+    {
+      "build": "Qwen3-VL-32B-Instruct",
+      "pool": "z0hard",
+      "arm": "channel",
+      "metric": "cannot_judge",
+      "n": 459,
+      "k": 31,
+      "pooled": 6.75,
+      "wilson": [
+        4.8,
+        9.43
+      ],
+      "per_start": [
+        6.54,
+        7.19,
+        6.54
+      ],
+      "start_span": 0.65,
+      "cluster_ci": [
+        6.54,
+        7.19
+      ],
+      "cluster_width": 0.65,
+      "wilson_width": 4.63
+    },
+    {
+      "build": "Qwen3-VL-32B-Instruct",
+      "pool": "z0hard",
+      "arm": "base",
+      "metric": "zero",
+      "n": 459,
+      "k": 384,
+      "pooled": 83.66,
+      "wilson": [
+        80.0,
+        86.76
+      ],
+      "per_start": [
+        83.66,
+        83.66,
+        83.66
+      ],
+      "start_span": 0.0,
+      "cluster_ci": [
+        83.66,
+        83.66
+      ],
+      "cluster_width": 0.0,
+      "wilson_width": 6.76
+    },
+    {
+      "build": "gemma-3-12b",
+      "pool": "z0easy",
+      "arm": "channel",
+      "metric": "no_people",
+      "n": 459,
+      "k": 220,
+      "pooled": 47.93,
+      "wilson": [
+        43.4,
+        52.5
+      ],
+      "per_start": [
+        47.71,
+        48.37,
+        47.71
+      ],
+      "start_span": 0.65,
+      "cluster_ci": [
+        47.71,
+        48.37
+      ],
+      "cluster_width": 0.65,
+      "wilson_width": 9.1
+    },
+    {
+      "build": "gemma-3-12b",
+      "pool": "z0easy",
+      "arm": "channel",
+      "metric": "cannot_judge",
+      "n": 459,
+      "k": 212,
+      "pooled": 46.19,
+      "wilson": [
+        41.68,
+        50.76
+      ],
+      "per_start": [
+        46.41,
+        45.75,
+        46.41
+      ],
+      "start_span": 0.65,
+      "cluster_ci": [
+        45.75,
+        46.41
+      ],
+      "cluster_width": 0.65,
+      "wilson_width": 9.08
+    },
+    {
+      "build": "gemma-3-12b",
+      "pool": "z0easy",
+      "arm": "base",
+      "metric": "zero",
+      "n": 459,
+      "k": 242,
+      "pooled": 52.72,
+      "wilson": [
+        48.15,
+        57.25
+      ],
+      "per_start": [
+        52.94,
+        52.29,
+        52.94
+      ],
+      "start_span": 0.65,
+      "cluster_ci": [
+        52.29,
+        52.94
+      ],
+      "cluster_width": 0.65,
+      "wilson_width": 9.1
+    },
+    {
+      "build": "gemma-3-12b",
+      "pool": "z0hard",
+      "arm": "channel",
+      "metric": "no_people",
+      "n": 459,
+      "k": 172,
+      "pooled": 37.47,
+      "wilson": [
+        33.17,
+        41.99
+      ],
+      "per_start": [
+        37.25,
+        37.25,
+        37.91
+      ],
+      "start_span": 0.65,
+      "cluster_ci": [
+        37.25,
+        37.91
+      ],
+      "cluster_width": 0.65,
+      "wilson_width": 8.82
+    },
+    {
+      "build": "gemma-3-12b",
+      "pool": "z0hard",
+      "arm": "channel",
+      "metric": "cannot_judge",
+      "n": 459,
+      "k": 242,
+      "pooled": 52.72,
+      "wilson": [
+        48.15,
+        57.25
+      ],
+      "per_start": [
+        52.94,
+        52.94,
+        52.29
+      ],
+      "start_span": 0.65,
+      "cluster_ci": [
+        52.29,
+        52.94
+      ],
+      "cluster_width": 0.65,
+      "wilson_width": 9.1
+    },
+    {
+      "build": "gemma-3-12b",
+      "pool": "z0hard",
+      "arm": "base",
+      "metric": "zero",
+      "n": 459,
+      "k": 212,
+      "pooled": 46.19,
+      "wilson": [
+        41.68,
+        50.76
+      ],
+      "per_start": [
+        45.75,
+        46.41,
+        46.41
+      ],
+      "start_span": 0.65,
+      "cluster_ci": [
+        45.75,
+        46.41
+      ],
+      "cluster_width": 0.65,
+      "wilson_width": 9.08
+    },
+    {
+      "build": "LLaVA-OneVision-7B",
+      "pool": "z0easy",
+      "arm": "channel",
+      "metric": "no_people",
+      "n": 459,
+      "k": 372,
+      "pooled": 81.05,
+      "wilson": [
+        77.21,
+        84.37
+      ],
+      "per_start": [
+        81.05,
+        81.05,
+        81.05
+      ],
+      "start_span": 0.0,
+      "cluster_ci": [
+        81.05,
+        81.05
+      ],
+      "cluster_width": 0.0,
+      "wilson_width": 7.16
+    },
+    {
+      "build": "LLaVA-OneVision-7B",
+      "pool": "z0easy",
+      "arm": "channel",
+      "metric": "cannot_judge",
+      "n": 459,
+      "k": 87,
+      "pooled": 18.95,
+      "wilson": [
+        15.63,
+        22.79
+      ],
+      "per_start": [
+        18.95,
+        18.95,
+        18.95
+      ],
+      "start_span": 0.0,
+      "cluster_ci": [
+        18.95,
+        18.95
+      ],
+      "cluster_width": 0.0,
+      "wilson_width": 7.16
+    },
+    {
+      "build": "LLaVA-OneVision-7B",
+      "pool": "z0easy",
+      "arm": "base",
+      "metric": "zero",
+      "n": 459,
+      "k": 333,
+      "pooled": 72.55,
+      "wilson": [
+        68.29,
+        76.43
+      ],
+      "per_start": [
+        72.55,
+        72.55,
+        72.55
+      ],
+      "start_span": 0.0,
+      "cluster_ci": [
+        72.55,
+        72.55
+      ],
+      "cluster_width": 0.0,
+      "wilson_width": 8.14
+    },
+    {
+      "build": "LLaVA-OneVision-7B",
+      "pool": "z0hard",
+      "arm": "channel",
+      "metric": "no_people",
+      "n": 459,
+      "k": 414,
+      "pooled": 90.2,
+      "wilson": [
+        87.13,
+        92.59
+      ],
+      "per_start": [
+        90.2,
+        90.2,
+        90.2
+      ],
+      "start_span": 0.0,
+      "cluster_ci": [
+        90.2,
+        90.2
+      ],
+      "cluster_width": 0.0,
+      "wilson_width": 5.46
+    },
+    {
+      "build": "LLaVA-OneVision-7B",
+      "pool": "z0hard",
+      "arm": "channel",
+      "metric": "cannot_judge",
+      "n": 459,
+      "k": 36,
+      "pooled": 7.84,
+      "wilson": [
+        5.72,
+        10.67
+      ],
+      "per_start": [
+        7.84,
+        7.84,
+        7.84
+      ],
+      "start_span": 0.0,
+      "cluster_ci": [
+        7.84,
+        7.84
+      ],
+      "cluster_width": 0.0,
+      "wilson_width": 4.95
+    },
+    {
+      "build": "LLaVA-OneVision-7B",
+      "pool": "z0hard",
+      "arm": "base",
+      "metric": "zero",
+      "n": 459,
+      "k": 339,
+      "pooled": 73.86,
+      "wilson": [
+        69.65,
+        77.67
+      ],
+      "per_start": [
+        73.86,
+        73.86,
+        73.86
+      ],
+      "start_span": 0.0,
+      "cluster_ci": [
+        73.86,
+        73.86
+      ],
+      "cluster_width": 0.0,
+      "wilson_width": 8.02
+    }
+  ],
+  "summary": {
+    "note": "只有 3 个起服 ⇒ 簇自助是最小充分读数；start_span 是三个率本身的极差",
+    "n_cells": 30,
+    "cluster_wider_than_wilson": "0/10",
+    "max_start_span": 2.61,
+    "median_cluster_width": 0.0,
+    "median_wilson_width": 7.16
+  }
+}

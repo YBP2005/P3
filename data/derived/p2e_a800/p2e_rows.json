@@ -1,0 +1,120 @@
+{
+ "criteria_md5": null,
+ "rows": {
+  "detector": {
+   "knob": "detector·yolo11n/whole",
+   "levels": [
+    "1024",
+    "1280",
+    "1536",
+    "640",
+    "896"
+   ],
+   "devs": [
+    -99.99,
+    -99.99,
+    -99.98,
+    -100.0,
+    -100.0
+   ],
+   "span": 0.02,
+   "n_per_level": [
+    182,
+    182,
+    182,
+    182,
+    182
+   ]
+  },
+  "detector_primary_tau0.25": {
+   "knob": "detector·tau=0.25/whole",
+   "levels": [
+    "1024",
+    "1280",
+    "1536",
+    "640",
+    "896"
+   ],
+   "devs": [
+    -97.58,
+    -96.27,
+    -94.36,
+    -98.96,
+    -98.13
+   ],
+   "span": 4.6,
+   "n_per_level": [
+    182,
+    182,
+    182,
+    182,
+    182
+   ]
+  },
+  "density_official_dmcount": {
+   "knob": "density·official DM-Count/st_a",
+   "levels": [
+    "mult|0.5000",
+    "mult|0.7500",
+    "mult|1.0000",
+    "mult|1.2500",
+    "mult|1.5000"
+   ],
+   "devs": [
+    -15.38,
+    -3.02,
+    -1.67,
+    -7.86,
+    -13.45
+   ],
+   "span": 13.71,
+   "n_per_level": [
+    182,
+    182,
+    182,
+    182,
+    182
+   ]
+  }
+ },
+ "verdict": {
+  "C2-span-detector": false,
+  "C3-span-density": {
+   "uncalibrated_span": 13.71,
+   "caliber_note": "与 F.2 的 20.1–34.3 pp（isotonic 校准）不可直接比；本行的主用途是进入六 knob 排序（与 §M.43 四行同口径）"
+  },
+  "C5-ordering": {
+   "order": [
+    "detector",
+    "density",
+    "tiling",
+    "pixel_budget",
+    "output_contract",
+    "prompt_family"
+   ],
+   "spearman_vs_published": -0.8285714285714286
+  }
+ },
+ "m43_printed": {
+  "output_contract": 343.55,
+  "prompt_family": 1561.94,
+  "tiling": 14.56,
+  "pixel_budget": 31.65
+ },
+ "f2_printed": {
+  "detector": [
+   30.0,
+   90.0
+  ],
+  "density": [
+   20.1,
+   34.3
+  ]
+ },
+ "caliber_red_lines": [
+  "The two new rows are NOT from the same serving session as M.43's four rows. They must be labelled as such wherever they are used, and M.43's 3.01 pp same-session noise floor must NOT be borrowed across sessions to argue about them.",
+  "No proxy is substituted. If a knob cannot be driven, it stays 'not measured'.",
+  "The density row is titled with its caliber ('official DM-Count' or 'CSRNet'). Appendix D.1 requires official and reproduction weights to be reported separately.",
+  "Whole image only (upstream decision 2026-10-02). No 2x2 tiling in the primary reading; a tiled variant, if ever run, is a separate stratum and is never pooled with this one."
+ ]
+}

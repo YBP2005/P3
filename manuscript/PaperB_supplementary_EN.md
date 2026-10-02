@@ -4606,9 +4606,27 @@ behaviour — the minimal paraphrase pair (prohibition with and without the digi
 **A pre-registered equal-level rescan of the four VLM knobs.** Each of the four knobs that this machine
 can drive was given **five levels fixed in advance**, on the same 182 images: the output contract (5
 arms), the prompt family (5 wordings), the tiling grid (1, 2, 3, 4, 6) and the pixel budget
-(1,048,576 → 50,000). The detector and density-regression knobs are the two the design's own six-knob
-list also contains, and neither can be driven here — their weights are not on this machine — so they are
-reported as **not measured**, with no proxy substituted.
+(1,048,576 → 50,000). The detector and density-regression knobs are the two the design's own six-knob list also contains. Both have
+since been driven **on the same 182 images with their weights in hand**, and on this pool **neither seats**; we
+report what they read rather than a proxy. The **detector** knob was run as a zero-shot COCO detector (yolo11n,
+whole image — the dense-end instrument of Appendix D.1) over five input sizes fixed in advance (640/896/1024/1280/
+1536 short side) with the confidence threshold held at 0.25. Its pooled deviation runs **−97.6 / −96.3 / −94.4 /
+−99.0 / −98.1%**, a span of **4.6 pp**. That is a **floor effect**, not a small knob: at these densities a
+zero-shot detector recovers 1–6% of the annotated count at every level, so the reading is pinned and its span
+measures the floor; a 65-cell (threshold × size) grid agrees, its least severe cell reading **−74.4%**
+(τ = 0.05, 1536). The **density-regression** knob was run with the **official DM-Count weight for this domain**
+at the five multipliers fixed in advance (0.5 → 1.5): **−15.4 / −3.0 / −1.7 / −7.9 / −13.5%**, a span of
+**13.7 pp**. That is *below* the **20.1–34.3 pp** this appendix prints for the knob, but the two are different
+calibers — F.9's density row is isotonic-calibrated per (knob × domain) unit while this reading is uncalibrated
+and pooled — so it is not read as a contradiction. The same ruler run instead on **CSRNet/st_a** gives
+**−67.1 / −6.9 / +103.8 / +301.9 / +601.9%**, a span of **669 pp** and the **opposite sign** from the 1.25 level
+on. **The density knob's response is therefore a property of the knob *and* the model, not of the knob alone** —
+which is exactly the separation Appendix D.1 already imposes when it requires official and reproduction weights
+to be reported separately. Neither row is folded into the ordering above: one is at the floor and the other
+changes sign with the model, so the ordering statement stays the narrower one this section already makes. Both
+readings come from a **different session** than the four rows above, so the 3.01 pp same-session floor does not
+apply to them; both per-item ladders and the instrument are released
+(`data/derived/p2e_a800/`).
 
 | knob | span, this run | levels (ρ) |
 |---|---|---|

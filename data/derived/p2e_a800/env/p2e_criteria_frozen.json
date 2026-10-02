@@ -1,0 +1,116 @@
+{
+  "round": "p3r9 / P2-E",
+  "title": "Fill the two missing rows of M.43's pre-registered equal-level rescan: the detector and density-regression knobs, on the same 182 ShanghaiTech-A images, whole-image (no tiling)",
+  "why": "M.43 reports \"not measured, with no proxy substituted\" for the detector and density-regression knobs because their weights were not on the serving machine. Both are two of the design's own six-knob list (F.2). Filling them turns the ordering claim from a 4/6 test into a 6/6 test, and gives F.2's detector row (30.0-90.0 pp) and density row (20.1-34.3 pp) their first independent rescan values. Upstream decision 2026-10-02: the tiling protocol is WHOLE IMAGE (no 2x2 tiling).",
+  "preregistered_before_run": true,
+  "frozen_at": "2026-10-02",
+  "machine": "A800 (single card for both halves; neither half needs a vLLM serving session)",
+  "supersedes": "none; this is a new probe. It CHANGES NO PRINTED NUMBER by itself - the two new rows are reported as measured, outside the same-session block of M.43 (see caliber_red_lines).",
+
+  "pool": {
+    "images": "the same 182 ShanghaiTech-A test images used by M.43's four-knob rescan",
+    "gt": "ShanghaiTech-A test point counts (gt per image)"
+  },
+
+  "estimator": {
+    "per_level": "dev(level) = 100 * (sum(pred) - sum(gt)) / sum(gt), over the level's PAIRED ITEM INTERSECTION",
+    "source_of_truth": "code/analysis/a39_unit_calib_heldout.py L183-184 (verbatim)",
+    "span": "max(dev over the five levels) - min(dev over the five levels)",
+    "eligibility": ">=3 levels and >=20 common items (the A39 rule, not relaxed)",
+    "ordering_statistic": "Spearman rank correlation over knob spans"
+  },
+
+  "knobs": {
+    "detector": {
+      "axis": "threshold tau x input size, WHOLE IMAGE (no tiling)",
+      "instrument": "ultralytics YOLO11n, COCO-pretrained (zero-shot), topk = 300 raw detections kept per image",
+      "why_yolo11n": "it is the dense-end instrument this paper's own E5 data already uses (analysis/data/E5_data/det_st_a_test_yolo11n_whole.csv: 182 st_a items, whole image, tau columns 0.05..0.9, n_raw capped at 300)",
+      "primary_levels": {
+        "definition": "five input sizes (short-side-independent: imgsz is passed to the detector directly), tau FIXED at 0.25",
+        "imgsz": [640, 896, 1024, 1280, 1536],
+        "tau": 0.25,
+        "rule_stated_before_the_run": "five log-spaced sizes bracketing the native 1024; tau fixed at the midpoint of the paper's own tau grid (0.05..0.9)"
+      },
+      "secondary_reported_not_adjudicated": [
+        "the full 5 x 13 grid (imgsz x tau in {0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.5,0.6,0.7,0.8,0.9})",
+        "the tau-only ladder at the native size, which is directly comparable to the existing E5 st_a file"
+      ],
+      "families": ["yolo11n (primary)"],
+      "abort": "if fewer than 178 of the 182 images produce a detection run, mark THAT LEVEL not evaluable and report the count; never pad"
+    },
+    "density": {
+      "axis": "input scale (multiplier / fixed short side)",
+      "instrument": "OFFICIAL DM-Count, model_sh_A.pth (the in-domain official weight for ShanghaiTech-A)",
+      "weight_provenance": {
+        "source": "https://drive.google.com/drive/folders/10U7F4iW_aPICM5-qJq21SXLLkzlum9tX (linked from cvlab-stonybrook/DM-Count README)",
+        "fetched_on": "2026-10-02",
+        "files": {
+          "model_sh_A.pth": {"bytes": 86005202, "sha256": "810ea89b2e3de766a2611230d272fc9c1ca1dc17f636ee2ca2aee51ba0f30f9f"},
+          "model_qnrf.pth": {"bytes": 86005202, "sha256": "16ef954a2cef40c66ee664f69273559553b735d5e2c9f90e2444f3c25dd45e05"}
+        },
+        "no_third_party_mirror_used": true
+      },
+      "primary_levels": {
+        "definition": "protocol = mult, value in {0.5, 0.75, 1.0, 1.25, 1.5} (the five smallest of the six multipliers present in the existing CSRNet/st_a ladder; dropping the largest 2.0 is a construction rule fixed before seeing any span)",
+        "protocol": "mult",
+        "value": [0.5, 0.75, 1.0, 1.25, 1.5]
+      },
+      "secondary_reported_not_adjudicated": [
+        "all six mult levels (including 2.0)",
+        "protocol = short with value in {384, 512, 768, 1024}"
+      ],
+      "cross_caliber": {
+        "instrument": "CSRNet / st_a, already on disk (analysis/data/pod_mirror/A/csrsta_ladder_st_a.csv, 182 items x 10 levels)",
+        "role": "zero-new-call cross-check; the two calibers must agree in DIRECTION and be same-order-of-magnitude. If they disagree, report 'caliber-dependent' and do not pick one."
+      },
+      "abort": "if the resize convention cannot be shown to reproduce the existing CSRNet ladder's recorded in_w/in_h, STOP (the ruler would not be the same ruler)"
+    }
+  },
+
+  "gates": {
+    "G0_selfcheck_m43": {
+      "statement": "the shared estimator must reproduce M.43's four printed rows LEVEL BY LEVEL: output contract 343.55 (-54.4/+72.0/+107.1/-98.5/+245.1), prompt family 1561.94, tiling 14.56, pixel budget 31.65",
+      "abort": "if it does not reproduce, the estimator or the record set differs from the printed one -> STOP, do not run anything else, report which level mismatched",
+      "note": "M.43's reproduction sentence names NO file. The four record files / analyser could not be located in the released tree by name (searched m43 / equal_level / rescan / rung / lvl / content 343.55 / 1561.94). Open item: fill p2e/m43_records.json with the four paths, or release them (v0629 candidate)."
+    },
+    "G1_protocol_conformance": {
+      "statement": "the resize convention used for the density half reproduces csrsta_ladder_st_a.csv's recorded in_w/in_h for every (item, protocol, value) within +/-1 px, or exactly for at least 99% of rows",
+      "abort": "else STOP"
+    }
+  },
+
+  "criteria": [
+    {"id": "C1-count", "statement": "every level has all 182 items present in the per-item output; checked per level, not sampled"},
+    {"id": "C2-span-detector", "statement": "report the detector five-level span and its five level values",
+     "dual_direction": "same sign and same order of magnitude as F.2's printed 30.0-90.0 pp; if it is not, report the measured value and say the independent rescan disagrees with the published row - direction is not chosen by preference"},
+    {"id": "C3-span-density", "statement": "report the official-DM-Count five-level span and its five level values",
+     "dual_direction": "the primary row is the UNCALIBRATED pooled span, exactly like M.43's other four rows; it enters the six-knob ordering. F.2's printed density row (20.1-34.3 pp) is ISOTONIC-CALIBRATED (F.9 splits knobs into (knob x domain) units and reports them calibrated), so it is NOT directly comparable to an uncalibrated pooled span - comparing them is a caliber mismatch. Report the calibrated variant as a secondary reading and state the caliber explicitly; do not assert a pass/fail on the F.2 band from the uncalibrated number",
+     "observed_warning_20261002": "the CSRNet/st_a cross-check caliber, five mult levels {0.5,0.75,1.0,1.25,1.5}, uncalibrated: devs [-67.07, -6.90, +103.78, +301.85, +601.85], span 668.92 pp. That is ~20x F.2's calibrated band, which is exactly the caliber mismatch this criterion warns about - and it also shows CSRNet is strongly scale-sensitive at mult>=1.25, so the DM-Count ladder may be a large-span knob. Both are reportable; neither is chosen by preference."},
+    {"id": "C4-caliber", "statement": "the CSRNet/st_a caliber (zero new calls) and the official-DM-Count caliber must agree in DIRECTION; same order of magnitude is reported but not required for a pass",
+     "abort": "if they disagree in direction, report 'caliber-dependent' and do not pick one"},
+    {"id": "C5-ordering", "statement": "with the two new rows added, the six-knob ascending ordering is compared with the published one (F.2 / M.37 per-unit medians): report the Spearman and which knobs swap",
+     "note": "M.43's four-knob rescan already reports a swap at the bottom (Spearman 0.800); the six-knob value is the new quantity"}
+  ],
+
+  "caliber_red_lines": [
+    "The two new rows are NOT from the same serving session as M.43's four rows. They must be labelled as such wherever they are used, and M.43's 3.01 pp same-session noise floor must NOT be borrowed across sessions to argue about them.",
+    "No proxy is substituted. If a knob cannot be driven, it stays 'not measured'.",
+    "The density row is titled with its caliber ('official DM-Count' or 'CSRNet'). Appendix D.1 requires official and reproduction weights to be reported separately.",
+    "Whole image only (upstream decision 2026-10-02). No 2x2 tiling in the primary reading; a tiled variant, if ever run, is a separate stratum and is never pooled with this one."
+  ],
+
+  "outputs": {
+    "detector_raw": "out/p2e_detector_raw.csv  (item,imgsz,gt,W,H,rank,score,is_person)",
+    "detector_ladder": "out/p2e_detector_ladder.csv  (item,weights,tau,imgsz,gt,n_det,n_det_person) - same columns as the existing VisDrone ladder",
+    "density_ladder": "out/p2e_density_ladder.csv  (item,dataset,protocol,value,gt,in_w,in_h,in_px,px_per_obj,pred) - same columns as the existing CSRNet ladder",
+    "analysis": "out/p2e_rows.json + out/p2e_verdict.md",
+    "release": "instrument scripts + weights manifest (sha256) + the two ladder CSVs + this criteria file (md5 frozen) + the analyser"
+  },
+
+  "machine_discipline": [
+    "single card; never machine-level pkill",
+    "never touch /root/cvpr_exp (conference side)",
+    "fetch every artefact back and md5-verify before releasing it",
+    "do not start while another session's job holds the card; that side's handover note says it starts its backlog only after we say we are done"
+  ]
+}

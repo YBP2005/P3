@@ -1,10 +1,10 @@
 {
-  "measured_at": "2026-10-02",
+  "measured_at": "2026-10-03",
   "tool": "Word 16.0 COM ComputeStatistics",
   "authority": ".docx 是官方唯一接受的交付件（PR L573），故以它为准；RTF 代理见 measurement_pr_layout.json",
   "inputs": {
     "docx": "D:\\deepseek\\PaperB\\PaperB_英文稿_PR.docx",
-    "docx_md5": "1bb3678620a0c1e0f7471ac7754b09c5",
+    "docx_md5": "66c2cd547ae42786fd0b0aa8afee652d",
     "markdown": "D:\\deepseek\\PaperB\\PaperB_英文稿_PR_20260919.md",
     "markdown_md5": "e69969771acc20ba13cd53d0350916b1"
   },

@@ -4655,9 +4655,29 @@ this one stops at 50,000; the published tiling ladder is whole/2×2…6×6, this
 statement is narrower than "the ordering replicates": **the top of the ordering replicates; the bottom two
 knobs are level-set-dependent, and their ordering is not portable between level sets.**
 
+**Two further domains were tried, and neither seats this knob.** The same pre-registered form — levels fixed in
+advance, three fresh service starts, the pooled relative deviation and the span it defines — was run on **MTDC**
+(maize tassels) and **GWHD** (wheat heads), two counting domains this ordering evidence had not used, at the
+**eleven** input-scale levels that are the union of this section's eight matched-travel multipliers with the four
+public labels of the released control ladders (the native label absorbs the duplicate), 250 sampled items per
+domain per start, 16{,}500 calls in all. **The readings are degenerate**: the model answers **0** on 250 of 250
+items at every level of both domains (249 of 250 at the two largest budgets), so the pooled deviation is
+**−100%** at every level and the span is **0.02 pp (MTDC)** and **0.01 pp (GWHD)** — far outside the
+**7.04–28.15 pp** band this section's own extension test allows. This is the **same failure mode as the detector
+knob above**: on these two domains the answered-zero channel is saturated, so an input-scale knob has nothing to
+move and the span measures the floor rather than the knob. We therefore report the two domains as **not seating
+the knob** rather than as a counterexample to the ordering — and record it as one more instance of the domain
+dominance this paper reports. Comparability here is limited to *same instrument, same model, same geometry*: the
+new levels only coincide with the released ladders' own five on four labels, so no same-grid claim is made, and
+these readings are not from the same session as the four rows above (that section's 3.01 pp same-session floor
+does not apply to them).
+
 *Reproduction: the frozen criteria (with all twelve instructions verbatim), the runner, the four per-item
-record files and the analyser are released; the analyser recomputes both the within-run spans and the
-same-pool published spans from the released per-item records.*
+record files — released as `data/derived/g56_res/g56_{arms,tile,budget,noise}.csv` — and the analyser are
+released; the analyser recomputes both the within-run spans and the same-pool published spans from the released
+per-item records. The eleven-level rescan's own criteria, runner, analyser, per-cell records (66 files) and
+smoke/pilot controls are released as `data/derived/p1d_a800/`, so every number quoted in the paragraph above is
+recomputable from the package.*
 
 ### M.44 Recovering a known mixture proportion: an identity, its resolution, and the transfer that fails
 

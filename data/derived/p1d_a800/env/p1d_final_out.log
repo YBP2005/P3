@@ -1,0 +1,99 @@
+===== A) 结束与总量 =====
+P1D_ALL_DONE
+件数 66/66 ｜ 数据行 16566
+COUNT_LOW 0 ｜ abort(含旧拒跑) 1
+===== B) 逐档 items/min（从 开跑/结束 时间戳算，250 项/格，两域三起服合并）=====
+  合计 0 项 / 0.0 分钟  ⇒ 全程平均 0.0 项/分
+===== C) 各起服段 =====
+[2026-10-02_15:05:40] ===== 起服 1 / 3 =====
+[2026-10-02_15:27:36] 起服 1 已收服；GPU 现 = 0, 0 MiB 
+[2026-10-02_15:27:36] ===== 起服 2 / 3 =====
+[2026-10-02_15:49:29] 起服 2 已收服；GPU 现 = 0, 0 MiB 
+[2026-10-02_15:49:29] ===== 起服 3 / 3 =====
+[2026-10-02_16:11:22] 起服 3 已收服；GPU 现 = 0, 0 MiB 
+===== D) 分析器 =====
+   st_a      用 4/8 档 ｜ span=3.99
+   ucf       用 4/8 档 ｜ span=14.08
+   visdrone  用 4/8 档 ｜ span=14.6
+-- C4b 扩展 --
+   已发表三域 span=[3.99, 14.08, 14.6] ｜ 中位 14.08 ｜ 容许带 [7.04, 28.15]
+   mtdc  span=0.02 ⇒ **带外**
+   gwhd  span=0.01 ⇒ **带外**
+
+== 结论 ==
+  NOT PASSED：
+   - C4b mtdc span 落在已发表带外
+   - C4b gwhd span 落在已发表带外
+已写 /root/p1d/out/p1d_rows.json
+P1D_ANALYZE_DONE
+===== E) 产物 md5 + GPU =====
+f18f032b9cb2a91933494812c2224359  /root/p1d/res/P1D_gwhd_b0_s1.csv
+6017d6a443754d37535fa03d033e18d3  /root/p1d/res/P1D_gwhd_b0_s2.csv
+61043cb642a23c1abcc7b792a2177ff6  /root/p1d/res/P1D_gwhd_b0_s3.csv
+3077ffb081a7e995b50a887c43cc9c51  /root/p1d/res/P1D_gwhd_b104856_s1.csv
+243959bcc47321c05805d6d0dbb04fd3  /root/p1d/res/P1D_gwhd_b104856_s2.csv
+a99466360046287534d7b382d7135dab  /root/p1d/res/P1D_gwhd_b104856_s3.csv
+073c4c40e5016c5dbc20a0e54e99cff5  /root/p1d/res/P1D_gwhd_b145698_s1.csv
+17ea2affc9c56697ec23fe2b3485826e  /root/p1d/res/P1D_gwhd_b145698_s2.csv
+844b1bb9057925de1a00c2b52978de89  /root/p1d/res/P1D_gwhd_b145698_s3.csv
+138158e333fcbdbb62d865070c23268a  /root/p1d/res/P1D_gwhd_b200000_s1.csv
+ebf4bec067bd6203a40cfa4c58d328e9  /root/p1d/res/P1D_gwhd_b200000_s2.csv
+78979a9149dcd59b9fbbd981ac10372c  /root/p1d/res/P1D_gwhd_b200000_s3.csv
+61ab0ad5f2c304462ae821650a626ab0  /root/p1d/res/P1D_gwhd_b202447_s1.csv
+2eb1d5289404493c82df86bc3e1801bc  /root/p1d/res/P1D_gwhd_b202447_s2.csv
+c34507e8cb9e186936ff94b39e3c8d7e  /root/p1d/res/P1D_gwhd_b202447_s3.csv
+05c849816329c30eef74d061294aec39  /root/p1d/res/P1D_gwhd_b281300_s1.csv
+a770ae76fa87079db0039cf4de84d7ee  /root/p1d/res/P1D_gwhd_b281300_s2.csv
+14c28bcc04a8b6a1076f2a05d870481a  /root/p1d/res/P1D_gwhd_b281300_s3.csv
+9af8b6c93f88b71788452facb6427e63  /root/p1d/res/P1D_gwhd_b390867_s1.csv
+ae8ab96547aa1307d0d21c6b6f8d0ed0  /root/p1d/res/P1D_gwhd_b390867_s2.csv
+3d41ccc48242fc382bc56f501a90aa60  /root/p1d/res/P1D_gwhd_b390867_s3.csv
+f24d4da4014be59519b3ade21521919f  /root/p1d/res/P1D_gwhd_b400000_s1.csv
+78a741da7780310dbd32d4e9913e0cf3  /root/p1d/res/P1D_gwhd_b400000_s2.csv
+cd2633167012773c159543ef4dc3df90  /root/p1d/res/P1D_gwhd_b400000_s3.csv
+891b7de80fea16145ef76613a239d211  /root/p1d/res/P1D_gwhd_b543118_s1.csv
+ccc4275ed3ff1fc7d52754a7d03616ab  /root/p1d/res/P1D_gwhd_b543118_s2.csv
+39eac5b5abb94531dbb0c3421f96dad4  /root/p1d/res/P1D_gwhd_b543118_s3.csv
+dddc484d5e60b36a0b409d8aa79df465  /root/p1d/res/P1D_gwhd_b754655_s1.csv
+691b4f0ef8c3ce63089265ca6c203337  /root/p1d/res/P1D_gwhd_b754655_s2.csv
+be388ecf524549195e189675a5500528  /root/p1d/res/P1D_gwhd_b754655_s3.csv
+3c3bafce22fcd6de94d2c7f322a5aff5  /root/p1d/res/P1D_gwhd_b800000_s1.csv
+5651f1c4b6705bea55620d0a0a8dc7ae  /root/p1d/res/P1D_gwhd_b800000_s2.csv
+6e5296c6f9d5a42fa8f7993305cf0971  /root/p1d/res/P1D_gwhd_b800000_s3.csv
+0940bc75ce3e789faf695f2fc7302d8a  /root/p1d/res/P1D_mtdc_b0_s1.csv
+1c444d82a66077831140d6521c79c612  /root/p1d/res/P1D_mtdc_b0_s2.csv
+19cfb31e0c2c23b74687234c0eadf82d  /root/p1d/res/P1D_mtdc_b0_s3.csv
+8494efbf9fcbf10fbf7e2e769ad009f0  /root/p1d/res/P1D_mtdc_b104856_s1.csv
+5e90715578912c5a865855cc77fab687  /root/p1d/res/P1D_mtdc_b104856_s2.csv
+0d187e4b879a0afeb3d57f225326d7cb  /root/p1d/res/P1D_mtdc_b104856_s3.csv
+9309be34190f981362e8716528035e38  /root/p1d/res/P1D_mtdc_b145698_s1.csv
+79f825c46ee853775a1b6eb002a6605e  /root/p1d/res/P1D_mtdc_b145698_s2.csv
+d931412e21f96adbcebf4ab5fdf3aed4  /root/p1d/res/P1D_mtdc_b145698_s3.csv
+d85b6e9e16bbeb814c102919910fa3c7  /root/p1d/res/P1D_mtdc_b200000_s1.csv
+e81b7c4495441eb54042e0e6613a14e5  /root/p1d/res/P1D_mtdc_b200000_s2.csv
+2064c0ec728e2c331669edbbf4496b52  /root/p1d/res/P1D_mtdc_b200000_s3.csv
+12b5c5bd9f47499273af5c24f8901c96  /root/p1d/res/P1D_mtdc_b202447_s1.csv
+bbb5c19770e6090785cd05a6dcdb85fa  /root/p1d/res/P1D_mtdc_b202447_s2.csv
+80a98c7aef68c9e54fa0c63be5914734  /root/p1d/res/P1D_mtdc_b202447_s3.csv
+5859602c98f438d5eb96140cf2ee78ad  /root/p1d/res/P1D_mtdc_b281300_s1.csv
+b622de245409643aa51e6a22c56c16ce  /root/p1d/res/P1D_mtdc_b281300_s2.csv
+88337e846111f97c07c778428c7e43ce  /root/p1d/res/P1D_mtdc_b281300_s3.csv
+75dde1f05da72b071a1673ce8f8d26bc  /root/p1d/res/P1D_mtdc_b390867_s1.csv
+04de511b15663e8e8954f244ca6092ad  /root/p1d/res/P1D_mtdc_b390867_s2.csv
+4e67095ae96b93778eaf8843894dc99d  /root/p1d/res/P1D_mtdc_b390867_s3.csv
+72d38198e5036b4568677c148723f673  /root/p1d/res/P1D_mtdc_b400000_s1.csv
+376f0d354ff66317056facb58a916b3e  /root/p1d/res/P1D_mtdc_b400000_s2.csv
+c45ea8336fa10808b9f5d91c55127509  /root/p1d/res/P1D_mtdc_b400000_s3.csv
+1d3e7dfcf298c64f10defa21ec3be310  /root/p1d/res/P1D_mtdc_b543118_s1.csv
+f88eb31993cfe300228297bfc379108e  /root/p1d/res/P1D_mtdc_b543118_s2.csv
+fb54937c9196989f29f39689c17db61f  /root/p1d/res/P1D_mtdc_b543118_s3.csv
+9001bc9a8cda92eb1c64c114774b490b  /root/p1d/res/P1D_mtdc_b754655_s1.csv
+9ef981602948f30d0dc7908231aa92ee  /root/p1d/res/P1D_mtdc_b754655_s2.csv
+7b33a85736fa0c73827004be812dda08  /root/p1d/res/P1D_mtdc_b754655_s3.csv
+fb9f82fd58dcf7cf58656c2ebcd2ef9e  /root/p1d/res/P1D_mtdc_b800000_s1.csv
+e0b0bffa82d53bfbb9f2fe4a80669485  /root/p1d/res/P1D_mtdc_b800000_s2.csv
+8e1d3c9a85c16ec58fc5348e473f0855  /root/p1d/res/P1D_mtdc_b800000_s3.csv
+b3b25a934a0c8ae524c84f37b5e027f1  /root/p1d/out/p1d_rows.json
+6ad6f1510c82e8d12c423b7f3a42a963  /root/p1d/_p1d_criteria_frozen.json
+0, 0 %, 0 MiB
+COMBINED_DONE

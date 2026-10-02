@@ -1,0 +1,7 @@
+workers=4 行=200 秒=95 items/min=126.3
+Running: 1 reqs, Waiting: 0 reqs
+Running: 2 reqs, Waiting: 0 reqs
+workers=12 行=200 秒=90 items/min=133.3
+Running: 12 reqs, Waiting: 0 reqs
+Running: 12 reqs, Waiting: 0 reqs
+PILOT_DONE

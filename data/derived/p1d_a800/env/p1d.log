@@ -1,0 +1,491 @@
+[2026-10-02_15:05:11] ===== P1-D 启动（单卡 GPU0；8 档 × 2 域 × 250 项 × 3 起服 = 12,000 次）=====
+[2026-10-02_15:05:11] 判据件 md5=6ad6f1510c82e8d12c423b7f3a42a963
+[2026-10-02_15:05:11] 探针 md5=4b2896617b8f860af80f6f399d21e002 ｜ 起服脚本 md5=1eca04a1c22049e7a7ee077380387314
+[2026-10-02_15:05:11] GPU0 已用 = 71619 MiB（阈值 2000）
+[2026-10-02_15:05:11] !! GPU0 非空（71619 MiB）⇒ 不抢卡，停手
+P1D_ABORT_GPU_BUSY
+[2026-10-02_15:05:40] ===== P1-D 启动（单卡 GPU0；8 档 × 2 域 × 250 项 × 3 起服 = 12,000 次）=====
+[2026-10-02_15:05:40] 判据件 md5=6ad6f1510c82e8d12c423b7f3a42a963
+[2026-10-02_15:05:40] 探针 md5=4b2896617b8f860af80f6f399d21e002 ｜ 起服脚本 md5=1eca04a1c22049e7a7ee077380387314
+[2026-10-02_15:05:40] GPU0 已用 = 0 MiB（阈值 2000）
+[2026-10-02_15:05:40] ===== 起服 1 / 3 =====
+[2026-10-02_15:06:50] 起服 1 就绪（等待 50s）
+[2026-10-02_15:06:50]   [起服1] GPU = 0, 67795 MiB 
+[2026-10-02_15:06:50] 开跑 start1 mtdc b=0（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 0 ｜ domain mtdc ｜ start 1 ｜ workers 4
+  item 数 = 250
+  [mtdc b0 s1] 250 行（parse_ok=250）-> /root/p1d/res/P1D_mtdc_b0_s1.csv
+[2026-10-02_15:08:59]   结束 mtdc b=0 -> 250 行
+[2026-10-02_15:08:59] 开跑 start1 mtdc b=104856（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 104856 ｜ domain mtdc ｜ start 1 ｜ workers 4
+  item 数 = 250
+  [mtdc b104856 s1] 250 行（parse_ok=250）-> /root/p1d/res/P1D_mtdc_b104856_s1.csv
+[2026-10-02_15:09:32]   结束 mtdc b=104856 -> 250 行
+[2026-10-02_15:09:32] 开跑 start1 mtdc b=145698（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 145698 ｜ domain mtdc ｜ start 1 ｜ workers 4
+  item 数 = 250
+  [mtdc b145698 s1] 250 行（parse_ok=250）-> /root/p1d/res/P1D_mtdc_b145698_s1.csv
+[2026-10-02_15:10:07]   结束 mtdc b=145698 -> 250 行
+[2026-10-02_15:10:07] 开跑 start1 mtdc b=200000（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 200000 ｜ domain mtdc ｜ start 1 ｜ workers 4
+  item 数 = 250
+  [mtdc b200000 s1] 250 行（parse_ok=250）-> /root/p1d/res/P1D_mtdc_b200000_s1.csv
+[2026-10-02_15:10:47]   结束 mtdc b=200000 -> 250 行
+[2026-10-02_15:10:47] 开跑 start1 mtdc b=202447（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 202447 ｜ domain mtdc ｜ start 1 ｜ workers 4
+  item 数 = 250
+  [mtdc b202447 s1] 250 行（parse_ok=250）-> /root/p1d/res/P1D_mtdc_b202447_s1.csv
+[2026-10-02_15:11:06]   结束 mtdc b=202447 -> 250 行
+[2026-10-02_15:11:06] 开跑 start1 mtdc b=281300（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 281300 ｜ domain mtdc ｜ start 1 ｜ workers 4
+  item 数 = 250
+  [mtdc b281300 s1] 250 行（parse_ok=250）-> /root/p1d/res/P1D_mtdc_b281300_s1.csv
+[2026-10-02_15:11:54]   结束 mtdc b=281300 -> 250 行
+[2026-10-02_15:11:54] 开跑 start1 mtdc b=390867（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 390867 ｜ domain mtdc ｜ start 1 ｜ workers 4
+  item 数 = 250
+  [mtdc b390867 s1] 250 行（parse_ok=250）-> /root/p1d/res/P1D_mtdc_b390867_s1.csv
+[2026-10-02_15:12:54]   结束 mtdc b=390867 -> 250 行
+[2026-10-02_15:12:54] 开跑 start1 mtdc b=400000（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 400000 ｜ domain mtdc ｜ start 1 ｜ workers 4
+  item 数 = 250
+  [mtdc b400000 s1] 250 行（parse_ok=250）-> /root/p1d/res/P1D_mtdc_b400000_s1.csv
+[2026-10-02_15:13:47]   结束 mtdc b=400000 -> 250 行
+[2026-10-02_15:13:47] 开跑 start1 mtdc b=543118（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 543118 ｜ domain mtdc ｜ start 1 ｜ workers 4
+  item 数 = 250
+  [mtdc b543118 s1] 250 行（parse_ok=250）-> /root/p1d/res/P1D_mtdc_b543118_s1.csv
+[2026-10-02_15:14:58]   结束 mtdc b=543118 -> 250 行
+[2026-10-02_15:14:58] 开跑 start1 mtdc b=754655（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 754655 ｜ domain mtdc ｜ start 1 ｜ workers 4
+  item 数 = 250
+  [mtdc b754655 s1] 250 行（parse_ok=250）-> /root/p1d/res/P1D_mtdc_b754655_s1.csv
+[2026-10-02_15:16:32]   结束 mtdc b=754655 -> 250 行
+[2026-10-02_15:16:32] 开跑 start1 mtdc b=800000（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 800000 ｜ domain mtdc ｜ start 1 ｜ workers 4
+  item 数 = 250
+  [mtdc b800000 s1] 250 行（parse_ok=250）-> /root/p1d/res/P1D_mtdc_b800000_s1.csv
+[2026-10-02_15:18:11]   结束 mtdc b=800000 -> 250 行
+[2026-10-02_15:18:11] 开跑 start1 gwhd b=0（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 0 ｜ domain gwhd ｜ start 1 ｜ workers 4
+  item 数 = 250
+  [gwhd b0 s1] 250 行（parse_ok=250）-> /root/p1d/res/P1D_gwhd_b0_s1.csv
+[2026-10-02_15:20:05]   结束 gwhd b=0 -> 250 行
+[2026-10-02_15:20:05] 开跑 start1 gwhd b=104856（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 104856 ｜ domain gwhd ｜ start 1 ｜ workers 4
+  item 数 = 250
+  [gwhd b104856 s1] 250 行（parse_ok=250）-> /root/p1d/res/P1D_gwhd_b104856_s1.csv
+[2026-10-02_15:20:29]   结束 gwhd b=104856 -> 250 行
+[2026-10-02_15:20:29] 开跑 start1 gwhd b=145698（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 145698 ｜ domain gwhd ｜ start 1 ｜ workers 4
+  item 数 = 250
+  [gwhd b145698 s1] 250 行（parse_ok=250）-> /root/p1d/res/P1D_gwhd_b145698_s1.csv
+[2026-10-02_15:20:54]   结束 gwhd b=145698 -> 250 行
+[2026-10-02_15:20:54] 开跑 start1 gwhd b=200000（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 200000 ｜ domain gwhd ｜ start 1 ｜ workers 4
+  item 数 = 250
+  [gwhd b200000 s1] 250 行（parse_ok=250）-> /root/p1d/res/P1D_gwhd_b200000_s1.csv
+[2026-10-02_15:21:25]   结束 gwhd b=200000 -> 250 行
+[2026-10-02_15:21:25] 开跑 start1 gwhd b=202447（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 202447 ｜ domain gwhd ｜ start 1 ｜ workers 4
+  item 数 = 250
+  [gwhd b202447 s1] 250 行（parse_ok=250）-> /root/p1d/res/P1D_gwhd_b202447_s1.csv
+[2026-10-02_15:21:58]   结束 gwhd b=202447 -> 250 行
+[2026-10-02_15:21:58] 开跑 start1 gwhd b=281300（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 281300 ｜ domain gwhd ｜ start 1 ｜ workers 4
+  item 数 = 250
+  [gwhd b281300 s1] 250 行（parse_ok=250）-> /root/p1d/res/P1D_gwhd_b281300_s1.csv
+[2026-10-02_15:22:36]   结束 gwhd b=281300 -> 250 行
+[2026-10-02_15:22:36] 开跑 start1 gwhd b=390867（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 390867 ｜ domain gwhd ｜ start 1 ｜ workers 4
+  item 数 = 250
+  [gwhd b390867 s1] 250 行（parse_ok=250）-> /root/p1d/res/P1D_gwhd_b390867_s1.csv
+[2026-10-02_15:23:24]   结束 gwhd b=390867 -> 250 行
+[2026-10-02_15:23:24] 开跑 start1 gwhd b=400000（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 400000 ｜ domain gwhd ｜ start 1 ｜ workers 4
+  item 数 = 250
+  [gwhd b400000 s1] 250 行（parse_ok=250）-> /root/p1d/res/P1D_gwhd_b400000_s1.csv
+[2026-10-02_15:23:36]   结束 gwhd b=400000 -> 250 行
+[2026-10-02_15:23:36] 开跑 start1 gwhd b=543118（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 543118 ｜ domain gwhd ｜ start 1 ｜ workers 4
+  item 数 = 250
+  [gwhd b543118 s1] 250 行（parse_ok=250）-> /root/p1d/res/P1D_gwhd_b543118_s1.csv
+[2026-10-02_15:24:40]   结束 gwhd b=543118 -> 250 行
+[2026-10-02_15:24:40] 开跑 start1 gwhd b=754655（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 754655 ｜ domain gwhd ｜ start 1 ｜ workers 4
+  item 数 = 250
+  [gwhd b754655 s1] 250 行（parse_ok=250）-> /root/p1d/res/P1D_gwhd_b754655_s1.csv
+[2026-10-02_15:26:05]   结束 gwhd b=754655 -> 250 行
+[2026-10-02_15:26:05] 开跑 start1 gwhd b=800000（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 800000 ｜ domain gwhd ｜ start 1 ｜ workers 4
+  item 数 = 250
+  [gwhd b800000 s1] 250 行（parse_ok=250）-> /root/p1d/res/P1D_gwhd_b800000_s1.csv
+[2026-10-02_15:27:28]   结束 gwhd b=800000 -> 250 行
+[2026-10-02_15:27:28] 已终止本脚本服务 pid=2008（已校验 --port 8013）
+[2026-10-02_15:27:36] 起服 1 已收服；GPU 现 = 0, 0 MiB 
+[2026-10-02_15:27:36] ===== 起服 2 / 3 =====
+[2026-10-02_15:28:46] 起服 2 就绪（等待 50s）
+[2026-10-02_15:28:46]   [起服2] GPU = 0, 67795 MiB 
+[2026-10-02_15:28:46] 开跑 start2 mtdc b=0（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 0 ｜ domain mtdc ｜ start 2 ｜ workers 4
+  item 数 = 250
+  [mtdc b0 s2] 250 行（parse_ok=250）-> /root/p1d/res/P1D_mtdc_b0_s2.csv
+[2026-10-02_15:30:53]   结束 mtdc b=0 -> 250 行
+[2026-10-02_15:30:53] 开跑 start2 mtdc b=104856（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 104856 ｜ domain mtdc ｜ start 2 ｜ workers 4
+  item 数 = 250
+  [mtdc b104856 s2] 250 行（parse_ok=250）-> /root/p1d/res/P1D_mtdc_b104856_s2.csv
+[2026-10-02_15:31:26]   结束 mtdc b=104856 -> 250 行
+[2026-10-02_15:31:26] 开跑 start2 mtdc b=145698（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 145698 ｜ domain mtdc ｜ start 2 ｜ workers 4
+  item 数 = 250
+  [mtdc b145698 s2] 250 行（parse_ok=250）-> /root/p1d/res/P1D_mtdc_b145698_s2.csv
+[2026-10-02_15:32:01]   结束 mtdc b=145698 -> 250 行
+[2026-10-02_15:32:01] 开跑 start2 mtdc b=200000（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 200000 ｜ domain mtdc ｜ start 2 ｜ workers 4
+  item 数 = 250
+  [mtdc b200000 s2] 250 行（parse_ok=250）-> /root/p1d/res/P1D_mtdc_b200000_s2.csv
+[2026-10-02_15:32:40]   结束 mtdc b=200000 -> 250 行
+[2026-10-02_15:32:40] 开跑 start2 mtdc b=202447（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 202447 ｜ domain mtdc ｜ start 2 ｜ workers 4
+  item 数 = 250
+  [mtdc b202447 s2] 250 行（parse_ok=250）-> /root/p1d/res/P1D_mtdc_b202447_s2.csv
+[2026-10-02_15:32:59]   结束 mtdc b=202447 -> 250 行
+[2026-10-02_15:32:59] 开跑 start2 mtdc b=281300（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 281300 ｜ domain mtdc ｜ start 2 ｜ workers 4
+  item 数 = 250
+  [mtdc b281300 s2] 250 行（parse_ok=250）-> /root/p1d/res/P1D_mtdc_b281300_s2.csv
+[2026-10-02_15:33:46]   结束 mtdc b=281300 -> 250 行
+[2026-10-02_15:33:46] 开跑 start2 mtdc b=390867（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 390867 ｜ domain mtdc ｜ start 2 ｜ workers 4
+  item 数 = 250
+  [mtdc b390867 s2] 250 行（parse_ok=250）-> /root/p1d/res/P1D_mtdc_b390867_s2.csv
+[2026-10-02_15:34:46]   结束 mtdc b=390867 -> 250 行
+[2026-10-02_15:34:46] 开跑 start2 mtdc b=400000（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 400000 ｜ domain mtdc ｜ start 2 ｜ workers 4
+  item 数 = 250
+  [mtdc b400000 s2] 250 行（parse_ok=250）-> /root/p1d/res/P1D_mtdc_b400000_s2.csv
+[2026-10-02_15:35:38]   结束 mtdc b=400000 -> 250 行
+[2026-10-02_15:35:38] 开跑 start2 mtdc b=543118（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 543118 ｜ domain mtdc ｜ start 2 ｜ workers 4
+  item 数 = 250
+  [mtdc b543118 s2] 250 行（parse_ok=250）-> /root/p1d/res/P1D_mtdc_b543118_s2.csv
+[2026-10-02_15:36:51]   结束 mtdc b=543118 -> 250 行
+[2026-10-02_15:36:51] 开跑 start2 mtdc b=754655（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 754655 ｜ domain mtdc ｜ start 2 ｜ workers 4
+  item 数 = 250
+  [mtdc b754655 s2] 250 行（parse_ok=250）-> /root/p1d/res/P1D_mtdc_b754655_s2.csv
+[2026-10-02_15:38:25]   结束 mtdc b=754655 -> 250 行
+[2026-10-02_15:38:25] 开跑 start2 mtdc b=800000（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 800000 ｜ domain mtdc ｜ start 2 ｜ workers 4
+  item 数 = 250
+  [mtdc b800000 s2] 250 行（parse_ok=250）-> /root/p1d/res/P1D_mtdc_b800000_s2.csv
+[2026-10-02_15:40:04]   结束 mtdc b=800000 -> 250 行
+[2026-10-02_15:40:04] 开跑 start2 gwhd b=0（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 0 ｜ domain gwhd ｜ start 2 ｜ workers 4
+  item 数 = 250
+  [gwhd b0 s2] 250 行（parse_ok=250）-> /root/p1d/res/P1D_gwhd_b0_s2.csv
+[2026-10-02_15:41:58]   结束 gwhd b=0 -> 250 行
+[2026-10-02_15:41:58] 开跑 start2 gwhd b=104856（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 104856 ｜ domain gwhd ｜ start 2 ｜ workers 4
+  item 数 = 250
+  [gwhd b104856 s2] 250 行（parse_ok=250）-> /root/p1d/res/P1D_gwhd_b104856_s2.csv
+[2026-10-02_15:42:22]   结束 gwhd b=104856 -> 250 行
+[2026-10-02_15:42:22] 开跑 start2 gwhd b=145698（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 145698 ｜ domain gwhd ｜ start 2 ｜ workers 4
+  item 数 = 250
+  [gwhd b145698 s2] 250 行（parse_ok=250）-> /root/p1d/res/P1D_gwhd_b145698_s2.csv
+[2026-10-02_15:42:48]   结束 gwhd b=145698 -> 250 行
+[2026-10-02_15:42:48] 开跑 start2 gwhd b=200000（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 200000 ｜ domain gwhd ｜ start 2 ｜ workers 4
+  item 数 = 250
+  [gwhd b200000 s2] 250 行（parse_ok=250）-> /root/p1d/res/P1D_gwhd_b200000_s2.csv
+[2026-10-02_15:43:18]   结束 gwhd b=200000 -> 250 行
+[2026-10-02_15:43:18] 开跑 start2 gwhd b=202447（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 202447 ｜ domain gwhd ｜ start 2 ｜ workers 4
+  item 数 = 250
+  [gwhd b202447 s2] 250 行（parse_ok=250）-> /root/p1d/res/P1D_gwhd_b202447_s2.csv
+[2026-10-02_15:43:50]   结束 gwhd b=202447 -> 250 行
+[2026-10-02_15:43:50] 开跑 start2 gwhd b=281300（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 281300 ｜ domain gwhd ｜ start 2 ｜ workers 4
+  item 数 = 250
+  [gwhd b281300 s2] 250 行（parse_ok=250）-> /root/p1d/res/P1D_gwhd_b281300_s2.csv
+[2026-10-02_15:44:28]   结束 gwhd b=281300 -> 250 行
+[2026-10-02_15:44:28] 开跑 start2 gwhd b=390867（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 390867 ｜ domain gwhd ｜ start 2 ｜ workers 4
+  item 数 = 250
+  [gwhd b390867 s2] 250 行（parse_ok=250）-> /root/p1d/res/P1D_gwhd_b390867_s2.csv
+[2026-10-02_15:45:17]   结束 gwhd b=390867 -> 250 行
+[2026-10-02_15:45:17] 开跑 start2 gwhd b=400000（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 400000 ｜ domain gwhd ｜ start 2 ｜ workers 4
+  item 数 = 250
+  [gwhd b400000 s2] 250 行（parse_ok=250）-> /root/p1d/res/P1D_gwhd_b400000_s2.csv
+[2026-10-02_15:45:29]   结束 gwhd b=400000 -> 250 行
+[2026-10-02_15:45:29] 开跑 start2 gwhd b=543118（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 543118 ｜ domain gwhd ｜ start 2 ｜ workers 4
+  item 数 = 250
+  [gwhd b543118 s2] 250 行（parse_ok=250）-> /root/p1d/res/P1D_gwhd_b543118_s2.csv
+[2026-10-02_15:46:33]   结束 gwhd b=543118 -> 250 行
+[2026-10-02_15:46:33] 开跑 start2 gwhd b=754655（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 754655 ｜ domain gwhd ｜ start 2 ｜ workers 4
+  item 数 = 250
+  [gwhd b754655 s2] 250 行（parse_ok=250）-> /root/p1d/res/P1D_gwhd_b754655_s2.csv
+[2026-10-02_15:47:58]   结束 gwhd b=754655 -> 250 行
+[2026-10-02_15:47:58] 开跑 start2 gwhd b=800000（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 800000 ｜ domain gwhd ｜ start 2 ｜ workers 4
+  item 数 = 250
+  [gwhd b800000 s2] 250 行（parse_ok=250）-> /root/p1d/res/P1D_gwhd_b800000_s2.csv
+[2026-10-02_15:49:21]   结束 gwhd b=800000 -> 250 行
+[2026-10-02_15:49:21] 已终止本脚本服务 pid=3078（已校验 --port 8013）
+[2026-10-02_15:49:29] 起服 2 已收服；GPU 现 = 0, 0 MiB 
+[2026-10-02_15:49:29] ===== 起服 3 / 3 =====
+[2026-10-02_15:50:40] 起服 3 就绪（等待 50s）
+[2026-10-02_15:50:40]   [起服3] GPU = 0, 67795 MiB 
+[2026-10-02_15:50:40] 开跑 start3 mtdc b=0（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 0 ｜ domain mtdc ｜ start 3 ｜ workers 4
+  item 数 = 250
+  [mtdc b0 s3] 250 行（parse_ok=250）-> /root/p1d/res/P1D_mtdc_b0_s3.csv
+[2026-10-02_15:52:48]   结束 mtdc b=0 -> 250 行
+[2026-10-02_15:52:48] 开跑 start3 mtdc b=104856（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 104856 ｜ domain mtdc ｜ start 3 ｜ workers 4
+  item 数 = 250
+  [mtdc b104856 s3] 250 行（parse_ok=250）-> /root/p1d/res/P1D_mtdc_b104856_s3.csv
+[2026-10-02_15:53:21]   结束 mtdc b=104856 -> 250 行
+[2026-10-02_15:53:21] 开跑 start3 mtdc b=145698（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 145698 ｜ domain mtdc ｜ start 3 ｜ workers 4
+  item 数 = 250
+  [mtdc b145698 s3] 250 行（parse_ok=250）-> /root/p1d/res/P1D_mtdc_b145698_s3.csv
+[2026-10-02_15:53:57]   结束 mtdc b=145698 -> 250 行
+[2026-10-02_15:53:57] 开跑 start3 mtdc b=200000（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 200000 ｜ domain mtdc ｜ start 3 ｜ workers 4
+  item 数 = 250
+  [mtdc b200000 s3] 250 行（parse_ok=250）-> /root/p1d/res/P1D_mtdc_b200000_s3.csv
+[2026-10-02_15:54:37]   结束 mtdc b=200000 -> 250 行
+[2026-10-02_15:54:37] 开跑 start3 mtdc b=202447（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 202447 ｜ domain mtdc ｜ start 3 ｜ workers 4
+  item 数 = 250
+  [mtdc b202447 s3] 250 行（parse_ok=250）-> /root/p1d/res/P1D_mtdc_b202447_s3.csv
+[2026-10-02_15:54:55]   结束 mtdc b=202447 -> 250 行
+[2026-10-02_15:54:55] 开跑 start3 mtdc b=281300（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 281300 ｜ domain mtdc ｜ start 3 ｜ workers 4
+  item 数 = 250
+  [mtdc b281300 s3] 250 行（parse_ok=250）-> /root/p1d/res/P1D_mtdc_b281300_s3.csv
+[2026-10-02_15:55:43]   结束 mtdc b=281300 -> 250 行
+[2026-10-02_15:55:43] 开跑 start3 mtdc b=390867（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 390867 ｜ domain mtdc ｜ start 3 ｜ workers 4
+  item 数 = 250
+  [mtdc b390867 s3] 250 行（parse_ok=250）-> /root/p1d/res/P1D_mtdc_b390867_s3.csv
+[2026-10-02_15:56:42]   结束 mtdc b=390867 -> 250 行
+[2026-10-02_15:56:42] 开跑 start3 mtdc b=400000（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 400000 ｜ domain mtdc ｜ start 3 ｜ workers 4
+  item 数 = 250
+  [mtdc b400000 s3] 250 行（parse_ok=250）-> /root/p1d/res/P1D_mtdc_b400000_s3.csv
+[2026-10-02_15:57:34]   结束 mtdc b=400000 -> 250 行
+[2026-10-02_15:57:34] 开跑 start3 mtdc b=543118（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 543118 ｜ domain mtdc ｜ start 3 ｜ workers 4
+  item 数 = 250
+  [mtdc b543118 s3] 250 行（parse_ok=250）-> /root/p1d/res/P1D_mtdc_b543118_s3.csv
+[2026-10-02_15:58:45]   结束 mtdc b=543118 -> 250 行
+[2026-10-02_15:58:45] 开跑 start3 mtdc b=754655（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 754655 ｜ domain mtdc ｜ start 3 ｜ workers 4
+  item 数 = 250
+  [mtdc b754655 s3] 250 行（parse_ok=250）-> /root/p1d/res/P1D_mtdc_b754655_s3.csv
+[2026-10-02_16:00:19]   结束 mtdc b=754655 -> 250 行
+[2026-10-02_16:00:19] 开跑 start3 mtdc b=800000（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 800000 ｜ domain mtdc ｜ start 3 ｜ workers 4
+  item 数 = 250
+  [mtdc b800000 s3] 250 行（parse_ok=250）-> /root/p1d/res/P1D_mtdc_b800000_s3.csv
+[2026-10-02_16:01:58]   结束 mtdc b=800000 -> 250 行
+[2026-10-02_16:01:58] 开跑 start3 gwhd b=0（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 0 ｜ domain gwhd ｜ start 3 ｜ workers 4
+  item 数 = 250
+  [gwhd b0 s3] 250 行（parse_ok=250）-> /root/p1d/res/P1D_gwhd_b0_s3.csv
+[2026-10-02_16:03:51]   结束 gwhd b=0 -> 250 行
+[2026-10-02_16:03:51] 开跑 start3 gwhd b=104856（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 104856 ｜ domain gwhd ｜ start 3 ｜ workers 4
+  item 数 = 250
+  [gwhd b104856 s3] 250 行（parse_ok=250）-> /root/p1d/res/P1D_gwhd_b104856_s3.csv
+[2026-10-02_16:04:15]   结束 gwhd b=104856 -> 250 行
+[2026-10-02_16:04:15] 开跑 start3 gwhd b=145698（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 145698 ｜ domain gwhd ｜ start 3 ｜ workers 4
+  item 数 = 250
+  [gwhd b145698 s3] 250 行（parse_ok=250）-> /root/p1d/res/P1D_gwhd_b145698_s3.csv
+[2026-10-02_16:04:41]   结束 gwhd b=145698 -> 250 行
+[2026-10-02_16:04:41] 开跑 start3 gwhd b=200000（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 200000 ｜ domain gwhd ｜ start 3 ｜ workers 4
+  item 数 = 250
+  [gwhd b200000 s3] 250 行（parse_ok=250）-> /root/p1d/res/P1D_gwhd_b200000_s3.csv
+[2026-10-02_16:05:11]   结束 gwhd b=200000 -> 250 行
+[2026-10-02_16:05:11] 开跑 start3 gwhd b=202447（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 202447 ｜ domain gwhd ｜ start 3 ｜ workers 4
+  item 数 = 250
+  [gwhd b202447 s3] 250 行（parse_ok=250）-> /root/p1d/res/P1D_gwhd_b202447_s3.csv
+[2026-10-02_16:05:44]   结束 gwhd b=202447 -> 250 行
+[2026-10-02_16:05:44] 开跑 start3 gwhd b=281300（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 281300 ｜ domain gwhd ｜ start 3 ｜ workers 4
+  item 数 = 250
+  [gwhd b281300 s3] 250 行（parse_ok=250）-> /root/p1d/res/P1D_gwhd_b281300_s3.csv
+[2026-10-02_16:06:22]   结束 gwhd b=281300 -> 250 行
+[2026-10-02_16:06:22] 开跑 start3 gwhd b=390867（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 390867 ｜ domain gwhd ｜ start 3 ｜ workers 4
+  item 数 = 250
+  [gwhd b390867 s3] 250 行（parse_ok=250）-> /root/p1d/res/P1D_gwhd_b390867_s3.csv
+[2026-10-02_16:07:10]   结束 gwhd b=390867 -> 250 行
+[2026-10-02_16:07:10] 开跑 start3 gwhd b=400000（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 400000 ｜ domain gwhd ｜ start 3 ｜ workers 4
+  item 数 = 250
+  [gwhd b400000 s3] 250 行（parse_ok=250）-> /root/p1d/res/P1D_gwhd_b400000_s3.csv
+[2026-10-02_16:07:22]   结束 gwhd b=400000 -> 250 行
+[2026-10-02_16:07:22] 开跑 start3 gwhd b=543118（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 543118 ｜ domain gwhd ｜ start 3 ｜ workers 4
+  item 数 = 250
+  [gwhd b543118 s3] 250 行（parse_ok=250）-> /root/p1d/res/P1D_gwhd_b543118_s3.csv
+[2026-10-02_16:08:26]   结束 gwhd b=543118 -> 250 行
+[2026-10-02_16:08:26] 开跑 start3 gwhd b=754655（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 754655 ｜ domain gwhd ｜ start 3 ｜ workers 4
+  item 数 = 250
+  [gwhd b754655 s3] 250 行（parse_ok=250）-> /root/p1d/res/P1D_gwhd_b754655_s3.csv
+[2026-10-02_16:09:51]   结束 gwhd b=754655 -> 250 行
+[2026-10-02_16:09:51] 开跑 start3 gwhd b=800000（期望 250 行）
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 800000 ｜ domain gwhd ｜ start 3 ｜ workers 4
+  item 数 = 250
+  [gwhd b800000 s3] 250 行（parse_ok=250）-> /root/p1d/res/P1D_gwhd_b800000_s3.csv
+[2026-10-02_16:11:14]   结束 gwhd b=800000 -> 250 行
+[2026-10-02_16:11:14] 已终止本脚本服务 pid=4115（已校验 --port 8013）
+[2026-10-02_16:11:22] 起服 3 已收服；GPU 现 = 0, 0 MiB 
+[2026-10-02_16:11:22] --- 产物 ---
+[2026-10-02_16:11:22]   f18f032b9cb2a91933494812c2224359  251 行  /root/p1d/res/P1D_gwhd_b0_s1.csv
+[2026-10-02_16:11:22]   6017d6a443754d37535fa03d033e18d3  251 行  /root/p1d/res/P1D_gwhd_b0_s2.csv
+[2026-10-02_16:11:22]   61043cb642a23c1abcc7b792a2177ff6  251 行  /root/p1d/res/P1D_gwhd_b0_s3.csv
+[2026-10-02_16:11:22]   3077ffb081a7e995b50a887c43cc9c51  251 行  /root/p1d/res/P1D_gwhd_b104856_s1.csv
+[2026-10-02_16:11:22]   243959bcc47321c05805d6d0dbb04fd3  251 行  /root/p1d/res/P1D_gwhd_b104856_s2.csv
+[2026-10-02_16:11:22]   a99466360046287534d7b382d7135dab  251 行  /root/p1d/res/P1D_gwhd_b104856_s3.csv
+[2026-10-02_16:11:22]   073c4c40e5016c5dbc20a0e54e99cff5  251 行  /root/p1d/res/P1D_gwhd_b145698_s1.csv
+[2026-10-02_16:11:22]   17ea2affc9c56697ec23fe2b3485826e  251 行  /root/p1d/res/P1D_gwhd_b145698_s2.csv
+[2026-10-02_16:11:22]   844b1bb9057925de1a00c2b52978de89  251 行  /root/p1d/res/P1D_gwhd_b145698_s3.csv
+[2026-10-02_16:11:23]   138158e333fcbdbb62d865070c23268a  251 行  /root/p1d/res/P1D_gwhd_b200000_s1.csv
+[2026-10-02_16:11:23]   ebf4bec067bd6203a40cfa4c58d328e9  251 行  /root/p1d/res/P1D_gwhd_b200000_s2.csv
+[2026-10-02_16:11:23]   78979a9149dcd59b9fbbd981ac10372c  251 行  /root/p1d/res/P1D_gwhd_b200000_s3.csv
+[2026-10-02_16:11:23]   61ab0ad5f2c304462ae821650a626ab0  251 行  /root/p1d/res/P1D_gwhd_b202447_s1.csv
+[2026-10-02_16:11:23]   2eb1d5289404493c82df86bc3e1801bc  251 行  /root/p1d/res/P1D_gwhd_b202447_s2.csv
+[2026-10-02_16:11:23]   c34507e8cb9e186936ff94b39e3c8d7e  251 行  /root/p1d/res/P1D_gwhd_b202447_s3.csv
+[2026-10-02_16:11:23]   05c849816329c30eef74d061294aec39  251 行  /root/p1d/res/P1D_gwhd_b281300_s1.csv
+[2026-10-02_16:11:23]   a770ae76fa87079db0039cf4de84d7ee  251 行  /root/p1d/res/P1D_gwhd_b281300_s2.csv
+[2026-10-02_16:11:23]   14c28bcc04a8b6a1076f2a05d870481a  251 行  /root/p1d/res/P1D_gwhd_b281300_s3.csv
+[2026-10-02_16:11:23]   9af8b6c93f88b71788452facb6427e63  251 行  /root/p1d/res/P1D_gwhd_b390867_s1.csv
+[2026-10-02_16:11:23]   ae8ab96547aa1307d0d21c6b6f8d0ed0  251 行  /root/p1d/res/P1D_gwhd_b390867_s2.csv
+[2026-10-02_16:11:23]   3d41ccc48242fc382bc56f501a90aa60  251 行  /root/p1d/res/P1D_gwhd_b390867_s3.csv
+[2026-10-02_16:11:23]   f24d4da4014be59519b3ade21521919f  251 行  /root/p1d/res/P1D_gwhd_b400000_s1.csv
+[2026-10-02_16:11:23]   78a741da7780310dbd32d4e9913e0cf3  251 行  /root/p1d/res/P1D_gwhd_b400000_s2.csv
+[2026-10-02_16:11:23]   cd2633167012773c159543ef4dc3df90  251 行  /root/p1d/res/P1D_gwhd_b400000_s3.csv
+[2026-10-02_16:11:23]   891b7de80fea16145ef76613a239d211  251 行  /root/p1d/res/P1D_gwhd_b543118_s1.csv
+[2026-10-02_16:11:23]   ccc4275ed3ff1fc7d52754a7d03616ab  251 行  /root/p1d/res/P1D_gwhd_b543118_s2.csv
+[2026-10-02_16:11:23]   39eac5b5abb94531dbb0c3421f96dad4  251 行  /root/p1d/res/P1D_gwhd_b543118_s3.csv
+[2026-10-02_16:11:23]   dddc484d5e60b36a0b409d8aa79df465  251 行  /root/p1d/res/P1D_gwhd_b754655_s1.csv
+[2026-10-02_16:11:23]   691b4f0ef8c3ce63089265ca6c203337  251 行  /root/p1d/res/P1D_gwhd_b754655_s2.csv
+[2026-10-02_16:11:23]   be388ecf524549195e189675a5500528  251 行  /root/p1d/res/P1D_gwhd_b754655_s3.csv
+[2026-10-02_16:11:23]   3c3bafce22fcd6de94d2c7f322a5aff5  251 行  /root/p1d/res/P1D_gwhd_b800000_s1.csv
+[2026-10-02_16:11:23]   5651f1c4b6705bea55620d0a0a8dc7ae  251 行  /root/p1d/res/P1D_gwhd_b800000_s2.csv
+[2026-10-02_16:11:23]   6e5296c6f9d5a42fa8f7993305cf0971  251 行  /root/p1d/res/P1D_gwhd_b800000_s3.csv
+[2026-10-02_16:11:23]   0940bc75ce3e789faf695f2fc7302d8a  251 行  /root/p1d/res/P1D_mtdc_b0_s1.csv
+[2026-10-02_16:11:23]   1c444d82a66077831140d6521c79c612  251 行  /root/p1d/res/P1D_mtdc_b0_s2.csv
+[2026-10-02_16:11:23]   19cfb31e0c2c23b74687234c0eadf82d  251 行  /root/p1d/res/P1D_mtdc_b0_s3.csv
+[2026-10-02_16:11:23]   8494efbf9fcbf10fbf7e2e769ad009f0  251 行  /root/p1d/res/P1D_mtdc_b104856_s1.csv
+[2026-10-02_16:11:23]   5e90715578912c5a865855cc77fab687  251 行  /root/p1d/res/P1D_mtdc_b104856_s2.csv
+[2026-10-02_16:11:23]   0d187e4b879a0afeb3d57f225326d7cb  251 行  /root/p1d/res/P1D_mtdc_b104856_s3.csv
+[2026-10-02_16:11:23]   9309be34190f981362e8716528035e38  251 行  /root/p1d/res/P1D_mtdc_b145698_s1.csv
+[2026-10-02_16:11:23]   79f825c46ee853775a1b6eb002a6605e  251 行  /root/p1d/res/P1D_mtdc_b145698_s2.csv
+[2026-10-02_16:11:23]   d931412e21f96adbcebf4ab5fdf3aed4  251 行  /root/p1d/res/P1D_mtdc_b145698_s3.csv
+[2026-10-02_16:11:23]   d85b6e9e16bbeb814c102919910fa3c7  251 行  /root/p1d/res/P1D_mtdc_b200000_s1.csv
+[2026-10-02_16:11:23]   e81b7c4495441eb54042e0e6613a14e5  251 行  /root/p1d/res/P1D_mtdc_b200000_s2.csv
+[2026-10-02_16:11:23]   2064c0ec728e2c331669edbbf4496b52  251 行  /root/p1d/res/P1D_mtdc_b200000_s3.csv
+[2026-10-02_16:11:23]   12b5c5bd9f47499273af5c24f8901c96  251 行  /root/p1d/res/P1D_mtdc_b202447_s1.csv
+[2026-10-02_16:11:23]   bbb5c19770e6090785cd05a6dcdb85fa  251 行  /root/p1d/res/P1D_mtdc_b202447_s2.csv
+[2026-10-02_16:11:23]   80a98c7aef68c9e54fa0c63be5914734  251 行  /root/p1d/res/P1D_mtdc_b202447_s3.csv
+[2026-10-02_16:11:23]   5859602c98f438d5eb96140cf2ee78ad  251 行  /root/p1d/res/P1D_mtdc_b281300_s1.csv
+[2026-10-02_16:11:23]   b622de245409643aa51e6a22c56c16ce  251 行  /root/p1d/res/P1D_mtdc_b281300_s2.csv
+[2026-10-02_16:11:23]   88337e846111f97c07c778428c7e43ce  251 行  /root/p1d/res/P1D_mtdc_b281300_s3.csv
+[2026-10-02_16:11:23]   75dde1f05da72b071a1673ce8f8d26bc  251 行  /root/p1d/res/P1D_mtdc_b390867_s1.csv
+[2026-10-02_16:11:23]   04de511b15663e8e8954f244ca6092ad  251 行  /root/p1d/res/P1D_mtdc_b390867_s2.csv
+[2026-10-02_16:11:23]   4e67095ae96b93778eaf8843894dc99d  251 行  /root/p1d/res/P1D_mtdc_b390867_s3.csv
+[2026-10-02_16:11:23]   72d38198e5036b4568677c148723f673  251 行  /root/p1d/res/P1D_mtdc_b400000_s1.csv
+[2026-10-02_16:11:23]   376f0d354ff66317056facb58a916b3e  251 行  /root/p1d/res/P1D_mtdc_b400000_s2.csv
+[2026-10-02_16:11:23]   c45ea8336fa10808b9f5d91c55127509  251 行  /root/p1d/res/P1D_mtdc_b400000_s3.csv
+[2026-10-02_16:11:23]   1d3e7dfcf298c64f10defa21ec3be310  251 行  /root/p1d/res/P1D_mtdc_b543118_s1.csv
+[2026-10-02_16:11:23]   f88eb31993cfe300228297bfc379108e  251 行  /root/p1d/res/P1D_mtdc_b543118_s2.csv
+[2026-10-02_16:11:23]   fb54937c9196989f29f39689c17db61f  251 行  /root/p1d/res/P1D_mtdc_b543118_s3.csv
+[2026-10-02_16:11:23]   9001bc9a8cda92eb1c64c114774b490b  251 行  /root/p1d/res/P1D_mtdc_b754655_s1.csv
+[2026-10-02_16:11:23]   9ef981602948f30d0dc7908231aa92ee  251 行  /root/p1d/res/P1D_mtdc_b754655_s2.csv
+[2026-10-02_16:11:23]   7b33a85736fa0c73827004be812dda08  251 行  /root/p1d/res/P1D_mtdc_b754655_s3.csv
+[2026-10-02_16:11:23]   fb9f82fd58dcf7cf58656c2ebcd2ef9e  251 行  /root/p1d/res/P1D_mtdc_b800000_s1.csv
+[2026-10-02_16:11:23]   e0b0bffa82d53bfbb9f2fe4a80669485  251 行  /root/p1d/res/P1D_mtdc_b800000_s2.csv
+[2026-10-02_16:11:23]   8e1d3c9a85c16ec58fc5348e473f0855  251 行  /root/p1d/res/P1D_mtdc_b800000_s3.csv
+[2026-10-02_16:11:23] 收尾 GPU = 0, 0 MiB 
+P1D_ALL_DONE
+[2026-10-02_16:11:23] ===== P1-D 结束（12,000 次）=====

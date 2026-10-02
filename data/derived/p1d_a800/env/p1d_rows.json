@@ -1,0 +1,66 @@
+{
+ "criteria_md5": "6ad6f1510c82e8d12c423b7f3a42a963",
+ "domains": {
+  "mtdc": {
+   "devs": [
+    -99.98,
+    -100.0,
+    -99.99,
+    -99.99,
+    -99.99,
+    -99.99,
+    -99.98,
+    -99.98,
+    -99.98,
+    -99.99,
+    -99.98
+   ],
+   "span": 0.02,
+   "inside_published_band": false
+  },
+  "gwhd": {
+   "devs": [
+    -99.99,
+    -100.0,
+    -100.0,
+    -100.0,
+    -100.0,
+    -100.0,
+    -99.99,
+    -99.99,
+    -99.99,
+    -99.99,
+    -99.99
+   ],
+   "span": 0.01,
+   "inside_published_band": false
+  }
+ },
+ "checks": {
+  "C1_mtdc_short_cells": 0,
+  "C1_gwhd_short_cells": 0,
+  "C4b_band": [
+   7.04,
+   28.15
+  ]
+ },
+ "published_recompute": {
+  "st_a": {
+   "span": 3.99,
+   "levels_used": "4/8"
+  },
+  "ucf": {
+   "span": 14.08,
+   "levels_used": "4/8"
+  },
+  "visdrone": {
+   "span": 14.6,
+   "levels_used": "4/8"
+  }
+ },
+ "verdict": "NOT_PASSED",
+ "failures": [
+  "C4b mtdc span 落在已发表带外",
+  "C4b gwhd span 落在已发表带外"
+ ]
+}

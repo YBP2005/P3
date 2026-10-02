@@ -1,0 +1,14 @@
+READY after 140s
+== P1-D ==
+  探针 md5（已断言）e7a65fd47345c2fe ｜ prompt md5 f73e0e9f0868adf2 ｜ budget 0 ｜ domain mtdc ｜ start 0 ｜ workers 4
+  item 数 = 20
+Traceback (most recent call last):
+  File "/root/p1d/p1d_probe.py", line 159, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/root/p1d/p1d_probe.py", line 92, in main
+    fh = open(A.out, 'a', newline='', encoding='utf-8')
+FileNotFoundError: [Errno 2] No such file or directory: '/root/p1d/res/SMOKE_mtdc_b0.csv'
+SMOKE_SECONDS=0
+items/min = inf
+SMOKE_DONE

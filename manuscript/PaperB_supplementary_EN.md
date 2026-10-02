@@ -2616,6 +2616,16 @@ below both bars — a dense rate of 30% and a share of 50% — and the Wilson **
 three starts — the largest, 9.56% — is also below both bars; the three
 starts' zero / non-zero classification flips on 12 of 753 item pairs (1.59%).
 
+*Reproduction: the three service starts' per-item records for this build are released
+(`data/derived/e2/e1_internvl35-38b-bf16_{densezero,densenonzero,aerialzero,aerialnonzero}_s{1,2,3}.csv`,
+twelve files). Recomputing from them reproduces every number in the table above directly: the dense zero-pool
+rate is **24/251 = 9.56%**, **21/251 = 8.37%** and **23/251 = 9.16%** (the denominator is 251 because two of the
+253 items return an empty `pred` in each start), the aerial arm answers zero on **229 / 230 / 230 of the 300**
+pool items, and the share $S$ — the answered-zero channel's contribution to the dense set's under-count,
+$\sum \mathrm{gt}$ over answered-zero items divided by $\sum \mathrm{gt} - \sum \mathrm{pred}$ over the full
+dense set (the 253-item pool plus the 229-item non-zero control) — is **25{,}874/111{,}503 = 23.20%**,
+**22{,}168/108{,}640 = 20.41%** and **24{,}290/110{,}906 = 21.90%** for starts 1–3.*
+
 **The aerial arm of the same build, and the fp8 row's cross-start check.** The identical serving configuration answers zero on **229 / 230 / 230** of the **300** aerial-pool items across the three fresh starts (**76.33 / 76.67 / 76.67%**, Wilson lower bounds **71.21 / 71.56 / 71.56%**), with the zero/non-zero classification flipping on at most **2 of 300** item pairs (**0.67%**) — inside the ≤1% band, so the three starts may be pooled. Its aerial share $S$ is **31.91 / 31.76 / 31.98%**. The fp8 row, by contrast, is archived as a **single** run, so we re-ran it on the identical dense item set with three fresh service starts: **8.87 / 8.91 / 8.47%** (**22/248**, **22/247**, **21/248**), $S$ **22.37 / 21.50 / 20.48%**, with **1.21%** of item pairs flipping — the (1%, 5%] band, where the three starts are read side by side and the most conservative (**8.91%**) is quoted. The archived single run's own per-item records are in the released package, so the re-runs can be paired against it item by item on the **244** items both parse: the differences are **+0.41 / +0.41 / +0.00 pp** (95% **[−1.64, +2.87] / [−1.65, +2.47] / [−2.05, +2.46]**, all crossing zero), with **236–237 of 244** items agreeing in classification. **The "run once" qualifier on that row is therefore a provenance statement, not a stability one**: nothing in these three starts separates them from the single run they repeat.
 
 *Reproduction: the archived single run is in the released package (`data/derived/e2/e1_internvl35-38b-fp8_{st_a,ucf}_base.csv`); recomputing from it reproduces that row's **18/244 = 7.38%** and **[4.72, 11.36]** exactly, which is the acceptance check for the pairing above. The aerial arm and the three fp8 re-runs are per-item records in the released package (`data/derived/p3r4_a800/E5_aerial_{zero,nonzero}_start{1,2,3}.csv` and `E1_fp8_dense{zero,nonzero}_start{1,2,3}.csv`).*

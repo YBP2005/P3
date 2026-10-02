@@ -1,0 +1,53 @@
+{
+  "round": "p3r8 / P0-A",
+  "title": "Second lineage at the anchor's own precision: the English arms and the missing contract arms for InternVL3.5-38B-BF16 (TP=2, three fresh service starts)",
+  "why": "Appendix M.19.17 rebuilt this build at BF16 on the dense 482-item set but ran the CN `base` arm only (arms=['base'] in the frozen manifest). Two named gaps follow: (i) the build's ENGLISH arms were never run, so 'one anchor build AND LANGUAGE' is untested for the second lineage; (ii) the CN `permit`/`channel` contract arms were never run on it, so the 'share is a build-level quantity' evidence rests on the `base` arm alone.",
+  "preregistered_before_run": true,
+  "call_budget": 7230,
+  "design": {
+    "starts": 3,
+    "starts_note": "three fresh service starts, exactly as M.19.17 and the B1 main arm",
+    "cells": ["cn_permit", "cn_channel", "en_base", "en_permit", "en_channel"],
+    "pools": ["zero (253 items)", "nonzero (229 items)"],
+    "items_per_cell": 482,
+    "calls_check": "3 starts x 5 cells x 482 items = 7230",
+    "serve": "/root/pf_serve_b1_tp2_8021.sh  (TP=2, port 8021, served-name InternVL3_5-38B-BF16, gmem 0.60, max-model-len 8192, max-num-seqs 24, limit-mm-per-prompt {image:1}, VLLM_USE_FLASHINFER_SAMPLER=0)",
+    "call_params": "temperature 0, max_tokens 128, retries 5 — inherited from the frozen probe pf_p0_probe.py",
+    "workers": 4
+  },
+  "frozen_inputs": {
+    "manifest": "/root/pf_pilot/pf_items_dense482.json (items_zero 253 + items_nonzero 229; seed 20260930)",
+    "cn_probe": "/root/pf_p0_probe.py (image resolution / b64 / call / parse / CSV schema — reused verbatim by import)",
+    "frozen_cn_prompt_table": "/root/19f_probe_ablation.py md5 28e82b20a7f468680da11b2e9855cff9 (P['permit'], P['channel'] taken verbatim)",
+    "frozen_en_prompt_table": "/root/20b_probe_lang.py (EN['base'], EN['permit'], EN['channel'] taken verbatim — the byte-frozen English renderings)",
+    "wrapper": "/root/p0a/pf_p0a_probe.py (imports the three files above; retypes NO prompt text)"
+  },
+  "disclosed_deviations": [
+    "The wrapper is a NEW file. It is an adaptation, not the untouched 20b_probe_lang.py: 20b hardcodes four pools (z0easy/z0hard/d0_st_a/d0_ucf) that do not contain the 482 dense set, so it cannot address these cells as written. The wrapper reuses (by import, with an md5 assertion on the frozen probe) the same call_img/b64_of/parse and the same prompt tables, so the geometry is unchanged.",
+    "20b_probe_lang.py writes gt = 0 in its output rows. The wrapper writes the TRUE gt from the frozen manifest for the EN cells as well, so that S is computable on the English side and CN/EN are pairable. The CSV schema is unchanged.",
+    "S on the English side is therefore computable with this wrapper (it would not be with 20b as written)."
+  ],
+  "criteria": [
+    {"id": "C1-count", "statement": "every cell has exactly 482 rows (253 zero + 229 nonzero); checked per start, not sampled",
+     "abort": "any cell < 0.95 x expected -> mark THAT CELL not evaluable, keep going, and report the count; never rescore it as a paper failure"},
+    {"id": "C2-cross-start", "statement": "report the across-start range of the answered-zero rate and of S, per cell (this is the start-to-start reproducibility for THIS build on THESE cells)"},
+    {"id": "C3-language", "statement": "paired CN-vs-EN difference for the base arm on the identical 482 items (answered-zero rate and S), with Wilson intervals",
+     "dual_direction": "if EN ~= CN the language axis does not move the quantity for this build; if EN differs materially the main text's 'one anchor build and language' must be NARROWED to the measured range. Both outcomes are reportable; neither is preferred."},
+    {"id": "C4-family", "statement": "against the panel's Qwen3-VL-32B-BF16 readings on the same dense set (already printed in M.19.17), compare on the EN and channel arms: is the family gap (Qwen >> InternVL on answered-zero rate) still large and same-signed?",
+     "dual_direction": "if the gap persists on the new arms the build-level reading is corroborated; if it collapses on some arm, the claim must be narrowed to the arm(s) where it holds."},
+    {"id": "C5-veto", "statement": "no cell may have parse_ok < 95% without being reported as not-evaluable",
+     "abort": "report the parse_ok rate per cell"}
+  ],
+  "outputs": {
+    "csv": "/root/p0a/P0A_<arm>_<pool>_start<S>.csv  (schema item,gt,pred,parse_ok,raw,latency_s)",
+    "log": "/root/logs/pf_p0a.log",
+    "markers": ["PF_P0A_ALL_DONE", "PF_P0A_ABORT_SERVE", "PF_P0A_ABORT_BAD_GPU", "PF_P0A_ABORT_GPU_BUSY", "PF_P0A_COUNT_LOW_<cell>_s<S>"],
+    "release": "wrapper + this criteria file (md5-frozen) + the 30 per-cell CSVs"
+  },
+  "machine_discipline": [
+    "TARGET_GPUS=0,1; refuse to start if either card already holds > 2000 MiB",
+    "never machine-level pkill: only PIDs recorded in this script's PID file, each verified to carry --port 8021 in /proc/<pid>/cmdline (NUL-safe)",
+    "never touch /root/cvpr_exp (conference side)",
+    "fetch every artefact back and md5-verify before releasing it"
+  ]
+}

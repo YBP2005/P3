@@ -2623,7 +2623,9 @@ rate is **24/251 = 9.56%**, **21/251 = 8.37%** and **23/251 = 9.16%** (the denom
 253 items return an empty `pred` in each start), the aerial arm answers zero on **229 / 230 / 230 of the 300**
 pool items, and the share $S$ — the answered-zero channel's contribution to the dense set's under-count,
 $\sum \mathrm{gt}$ over answered-zero items divided by $\sum \mathrm{gt} - \sum \mathrm{pred}$ over the full
-dense set (the 253-item pool plus the 229-item non-zero control) — is **25{,}874/111{,}503 = 23.20%**,
+dense set (the 253-item pool plus the 229-item non-zero control, **480 items after the same exclusions** —
+the two zero-pool rows with an empty `pred` are dropped from $\sum \mathrm{gt}$ as well as from
+$\sum \mathrm{pred}$) — is **25{,}874/111{,}503 = 23.20%**,
 **22{,}168/108{,}640 = 20.41%** and **24{,}290/110{,}906 = 21.90%** for starts 1–3.*
 
 **The aerial arm of the same build, and the fp8 row's cross-start check.** The identical serving configuration answers zero on **229 / 230 / 230** of the **300** aerial-pool items across the three fresh starts (**76.33 / 76.67 / 76.67%**, Wilson lower bounds **71.21 / 71.56 / 71.56%**), with the zero/non-zero classification flipping on at most **2 of 300** item pairs (**0.67%**) — inside the ≤1% band, so the three starts may be pooled. Its aerial share $S$ is **31.91 / 31.76 / 31.98%**. The fp8 row, by contrast, is archived as a **single** run, so we re-ran it on the identical dense item set with three fresh service starts: **8.87 / 8.91 / 8.47%** (**22/248**, **22/247**, **21/248**), $S$ **22.37 / 21.50 / 20.48%**, with **1.21%** of item pairs flipping — the (1%, 5%] band, where the three starts are read side by side and the most conservative (**8.91%**) is quoted. The archived single run's own per-item records are in the released package, so the re-runs can be paired against it item by item on the **244** items both parse: the differences are **+0.41 / +0.41 / +0.00 pp** (95% **[−1.64, +2.87] / [−1.65, +2.47] / [−2.05, +2.46]**, all crossing zero), with **236–237 of 244** items agreeing in classification. **The "run once" qualifier on that row is therefore a provenance statement, not a stability one**: nothing in these three starts separates them from the single run they repeat.
@@ -2656,6 +2658,79 @@ them. The 38B-fp8 reading is this appendix's existing single-run row and
 carries the cross-session term that a multi-start reading would not, so the second row of the table above is
 item-paired but not start-paired.*
 
+
+#### M.19.17.1 The language axis, measured on the same build instead of left to the scope clause
+
+§M.19.17 separated the family axis with the weight format held fixed. The **language** axis on the same build had
+not been run: the table above, like the anchor's own rows, is a Chinese-prompt reading, and §5.5 and §M.39
+therefore scope their shares to "Chinese prompts" and to one anchor build. We ran that missing cell directly — the
+**same BF16 build**, the **same frozen 482 dense items**, the same parser and the **same served configuration** as
+the table above (`max-model-len` 8192, `max-num-seqs` 24, one image per prompt, temperature 0, four-way
+concurrency), over the **same three fresh service starts**, with **only the prompt language changed**. Five cells
+were run per start (Chinese `permit` / `channel`; English `base` / `permit` / `channel`) plus a Chinese `base`
+control on start 1, 7{,}712 calls in all. The criteria were frozen before the run
+(`_p0a_criteria_frozen.json`, md5 `0313b1ad829dd6afd2657f85a37dbffd`).
+
+| dense zero pool (253 items), start 1 | answered zero, of 253 | answered zero, of the answered | refuses to give a number |
+|---|---|---|---|
+| Chinese `base` (this run) | **25 = 9.88%** | 25/250 = 10.00% | 3 = 1.19% |
+| Chinese `base` (archived start 1, §M.19.17) | 24 = 9.49% | **24/251 = 9.56%** | 2 = 0.79% |
+| **English `base` (this run)** | **1 = 0.40%** | 1/156 = 0.64% | **97 = 38.34%** |
+
+**Two readings of the English refusal must be separated, because the difference is a lexicon difference and not a
+type difference.** This appendix's existing analyses recognise a refusal by three words in the raw response
+(`abstain`, `cannot_judge`, `no_people`). Under that lexicon **none of the 97 rows above is recognisable**:
+**95** are prose — *"I'm unable to count the exact number of people in the image."* — carrying **no `count`
+field and no digits at all**, so the instrument's own fallback (a search for `-?\d+` over the whole response)
+finds nothing and records `parse_ok = 0` exactly as it does for an explicit `{"count": "abstain"}`; the remaining
+**2** carry a `count` string that the three words do not cover (`"large crowd"`). The English refusal rate is
+therefore **0.00% (0/253)** on the narrow lexicon and **38.34% (97/253)** on the reading that treats a refusal as
+a refusal however it is worded. Both are reported; neither is used to the exclusion of the other, and the same
+gap applies to this appendix's own Chinese rows, whose refusals are a short Chinese sentence rather than any of
+the three words — which is why the two calibers are reported side by side wherever a refusal rate appears.
+
+**What is invariant across those two readings: the English arm stops producing numbers.** Numeric answers fall
+from **250 of 253** items to **156 of 253**, and the answered-zero count falls from **25 to 1**. The language axis
+therefore neither creates nor removes the abstention channel — it decides **which form the channel takes**. Read
+with §5.5 that is the expected direction: the answered zero is the form the channel takes when the prompt neither
+offers an outlet nor is answered in prose, and an English prompt is answered in prose. The residual *rate* is what
+does not transfer, which is exactly why the shares of §5.5 are scoped to the prompt language: this subsection
+turns that scope from a caveat into a measurement.
+
+Three further readings from the same run. (i) **The build's distance from the anchor survives the language
+change**: over the identical 253 items the Chinese arm is **−54.15 pp** from the anchor's printed `64.03%`
+(itself 162/253 on the dense intersection) and the English arm **−63.63 pp**, both same-signed and both large, so
+§M.19.17's family reading is corroborated on a second axis rather than weakened. (ii) **The contract arms are saturated in both languages**: `permit` and
+`channel` answer zero on none of the 253 items and refuse on **100%** of them, and the same holds on the 229-item
+non-zero control, inside the **88.6–100%** band §M.18.5 already prints for the dense non-zero pool — a
+consistency check, not a new finding. (iii) **The three starts agree**: across starts the answered-zero rate spans
+at most **0.21 pp** and the share $S$ at most **0.74 pp**, well inside the across-repeat band of §A.
+
+**The pre-registered control, reported as it came out.** The Chinese `base` control was frozen with the
+expectation that it reproduces the archived start's **24/251**. **It does not reproduce at that level**: the
+re-run gives **25/253 = 9.88%** (9.49% of 253, 10.00% of the 250 it answered). We record that gate as **failed as
+written** rather than redefining it after the fact. The context that makes it readable is that the archived row is
+itself one of **three** starts whose own answered-zero counts are **24 / 21 / 23** (9.56 / 8.37 / 9.16% — a 1.19 pp
+span on the same instrument), that the re-run lands **+0.32 pp** above that maximum and inside the across-repeat
+band this appendix already prints (**2.15–6.46 pp**, §A), that **239 of 253 items (94.47%)** agree item by item
+and **252 of 253 (99.60%)** agree in answer type, and that all 13 disagreements are single-tier flips of the
+count. A locally served greedy decoder under continuous batching is not bit-identical item by item, which is what
+§A already reports for four-worker concurrency (**4.28%** of items differing by ±1–2). The control's purpose —
+establishing that the wrapper is the same instrument as the archived run — is met at that level; the pre-registered
+wording was stricter than the instrument can deliver, and is recorded as such in the run's own criteria addenda
+rather than silently relaxed.
+
+*Reproduction: all 32 per-cell records are released
+(`data/derived/p0a_a800/P0A_{cn,en}_{base,permit,channel}_{zero,nonzero}_start{1,2,3}.csv`, with the Chinese
+`base` control's two files also under `start1`), together with the instrument actually used (the derived probe
+`pf_p0_probe.py` md5 `e7a65fd47345c2fe040fa4d05a3b1d86`, the wrapper `pf_p0a_probe.py` md5
+`fe83046e7e430bd949fce816fc8b76c6`, the runner `pf_p0a_run.sh` md5 `372d5f71d1b11abcfac3efe1119a2762` and the
+served configuration `pf_serve_b1_tp2_8021.sh` md5 `8b2c48458f8da5200bf0975af67798ff`), the frozen criteria and
+its three addenda, the row classifier (`env/_p0a_cls.py`) and the recomputation script
+(`env/_p0a_recompute.py`, self-contained and path-relative, printing `P0A_RECOMPUTE_OK`), which recomputes every
+number above — both refusal calibers and the control's item-level agreement included — from the released CSVs and
+the archived start. The English arms are the first English readings this build has been run under; before this run
+the A800 side held Chinese arms only.*
 
 ### M.20 The annotation-free legibility proxy, tested rather than promised
 

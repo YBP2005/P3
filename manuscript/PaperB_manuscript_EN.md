@@ -175,9 +175,9 @@ the machinery that separates them on a fixed serving stack in §3.8 and §5.7.
 
 ### 2.7 Evaluation validity: non-determinism and aggregate metrics
 
-Our VLM indicators initially came from single samples. Repeat sampling shows item-level
+Our VLM indicators came from single samples. Repeat sampling shows item-level
 reproducibility for a hosted API to be only about **15%**, while a locally controlled stack agrees at
-essentially 100%, and that aggregate quantities are far more stable (Appendix A).
+essentially 100% (batch ≤ 2), and aggregates are far more stable (Appendix A).
 
 ### 2.8 Crowded-scene occlusion counting
 

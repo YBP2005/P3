@@ -64,6 +64,21 @@ not reported at all. The noise floor is the **across-repeat standard deviation o
 endpoint — computed from the repeated runs of `ds_repeat.py`, whose item-level agreement is the ≈**15%**
 above — and is **2.15–6.46 pp** across cells; §7.3 uses it as such.
 
+**Can the band be re-measured on the local stack the main tables use?** We re-ran the **same instrument**
+(`ds_repeat.py`, unchanged) with its endpoint pointed at the locally served AWQ-4-bit build, on **seven**
+120-item cells drawn from the corpora already in the released package (VisDrone, AI-TOD, ShanghaiTech-A,
+UCF-QNRF, MTDC), **five independent repeats** each. The counts are complete (5 repeats \times 120 items per
+cell) and the per-cell standard deviations are small: **0.00–0.63 pp** on the pooled relative deviation (up to
+**1.32 pp** on the answered-only variant). **We do not adopt that as the noise floor — the conservative
+choice.** On these cells the model **saturates**: the pooled deviation averages **−57% to −100%** because it
+answers zero for essentially every item (on MTDC the answered-only deviation is undefined in **all five**
+repeats), so a small standard deviation is partly a statement about **how little the answer changes**; the
+quantity is better read as a **lower bound** than as a floor. The informative comparison is a cell that is
+**not** saturated: in the synthetic-grid cell of Appendix J.8, re-running with the render seed held **fixed**
+moved the largest single-cell under-count by **2.47 pp** — **inside** the 2.15–6.46 pp band above. We
+therefore keep the hosted-endpoint band, which is the **wider (hence more conservative)** of the two, and
+record the local attempt here so that the borrowing is **disclosed rather than implicit**.
+
 ---
 
 ### A.4 Detail for §2.7 (evaluation validity)
@@ -1187,6 +1202,19 @@ does not**: **every one of the five renders exceeds the 42.5% tabulated above**.
 50%**, and where the single-cell maximum is quoted we quote it as **45–50%** across renders. The reproduction
 note below is amended to match: the table above is one realisation, and reproducing it exactly requires fixing
 `PYTHONHASHSEED`.
+
+**Eight frozen render seeds, and a re-run at a fixed seed.** We extended the check to **eight** explicit seeds
+(`PYTHONHASHSEED` \in \{0,\ldots,7\}). The `base` arm's largest single-cell under-count per seed is
+**47.52 / 50.00 / 46.25 / 50.00 / 47.50 / 47.52 / 50.00 / 50.00 %** (median **48.76%**, minimum **46.25%**):
+**no seed exceeds 50%**, and four of the eight reach exactly **50.00%** — which is why the main text states the
+clean-input under-count as *up to 50%* rather than as a tighter value. In the same eight runs the `base` arm
+abstained on **0 of 400** items in **every** seed, so the structural claim is unchanged.
+\* **Residual spread at a fixed seed.** Re-running seed 0 returned **47.52%** where the original five-render
+sweep recorded **45.05%** for that same seed — a **2.47 pp** shift **with the render seed held fixed**, i.e.
+inside the across-repeat band reported in Appendix A.3 (**2.15–6.46 pp**). The render seed is therefore **not**
+the only source of variation in this quantity, and "up to 50%" is the **observed maximum over these seeds**,
+not a seed-independent bound. (The five original per-seed files are reproduced exactly by their archived
+records: 45.05 / 50.00 / 46.25 / 50.00 / 47.50 %.)
 
 *Reproduction: `synthetic_grid_cells.py` carries the 20 frozen per-cell values and all derivations above,
 and its `--check` mode re-reads this table and asserts cell by cell that it still matches them, that

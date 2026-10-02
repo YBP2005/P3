@@ -729,7 +729,7 @@ under the **pooled relative deviation** (Appendix F.7, M.37).
 on a **common level count** with each ladder's extreme level removed, it is preserved at Spearman
 **0.999 / 0.981 / 0.991** over 24 (knob × domain) units, and at **0.983 / 0.987 / 0.983** on a **fully
 recomputable** unit set at the same level count (31 units; Appendix M.37). A unit bootstrap puts it at
-**0.939–0.996** (31 units) and **0.836–0.983** (36 units, k=3), and **clustering by knob gives 0.913–0.994** (author-side: not independently recomputable from the released package, Appendix F.7);
+**0.939–0.996** (31 units) and **0.836–0.983** (36 units, k=3), and **clustering by knob gives 0.913–0.994** (cluster-level; recomputed from the released package, Appendix F.7);
 a label-permutation test gives $p<5\times10^{-5}$; leaving out any single knob (**36** units) keeps it at **0.883–0.970**; per-unit spans with caliber
 intervals are plotted in **Fig. F.17** (Appendix F.12). It is also **exactly** preserved under shared
 affine calibration (Proposition 5: `span ↦ s·span`) and under no calibration — the M.37 held-out third gives
@@ -1021,6 +1021,6 @@ not-for-profit sectors.
 ## Supplementary material
 
 Item-level tables, protocols, convention notes and pre-registered criteria moved out of the main text are
-provided as a **separate supplementary file** (appendices **A–M**); where the two disagree, the main text
+provided as a **separate supplementary file** (appendices **A–M and Z**); where the two disagree, the main text
 governs.
 

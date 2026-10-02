@@ -196,6 +196,28 @@ print('本轮变化块来自 %s，声明轮次 %s ✓' % (os.path.basename(CHANG
 # 断言 3：页数上限（超限必须当场失败，不许"先写盘再发现"）
 assert pages <= 35, '主稿超页数上限（实测 %d 页）' % pages
 
+# 断言 4（★ 2026-10-02，v0625 新增）：**计数族**的双向闸门。
+#   起因（本轮 3 家评审）：02d 的 Q4 手写「主稿实测 11,552 词」，而材料自述是脚本算的 11,596 词 ——
+#   差 44 词，评审一核就报。v0624 补的双向闸门只管 `本轮 vNNNN` 串（Hy4 逐字指出了这个漏项：
+#   "该行不在双向闸门的覆盖范围内（闸门只管 `本轮 vNNNN` 串）"）。
+#   判据：**框架文字**里每一个「<N> 词」都必须 ∈ {主稿实测词数, 补充材料词数, round(0.1 × 主稿词数)}。
+#   ★ 扫描对象要**正好是**"材料自述 + 02 + 02d"，**不含变化块** —— 变化块按设计必须能引用旧值来
+#     叙述"原写 X ⇒ 改为 Y"（README #22：允许历史值存在，判据看的是"现值必须在"）。
+#     本闸门第一版就是栽在这一点上：它把变化块里的 `11,552` 当成陈旧串（`76` 号：判据要对上对象）。
+_HEAD = pack.split('【本轮相对')[0]                                   # 材料自述（变化块之前）
+_M02 = '<!-- ===== 以下为 %s ===== -->' % PARTS[0][0]
+_M06 = '<!-- ===== 以下为 %s ===== -->' % PARTS[2][0]
+_MID = pack.split(_M02)[1].split(_M06)[0] if _M02 in pack and _M06 in pack else ''
+_FRAME = _HEAD + _MID                                                 # 材料自述 + 02 + 02d
+_suppwords = len(re.findall(r"[A-Za-z][A-Za-z'\-]*", supp))
+_allowed = {words_word, _suppwords, int(round(words_word * 0.10))}
+_hits = [(m.group(1), m.group(0).strip()) for m in re.finditer(r'([\d,]{4,7})\s*词', _FRAME)]
+_bad = [(v, s) for v, s in _hits if int(v.replace(',', '')) not in _allowed]
+if _bad:
+    sys.exit('!! 框架文字里的词数不在实测允许集 %s 内：%s ⇒ 拒绝出包（计数族守卫）'
+             % (sorted(_allowed), _bad[:6]))
+print('框架词数闸门：%d 处 "<N> 词" 全部 ∈ 实测集 %s ✓' % (len(_hits), sorted(_allowed)))
+
 io.open(OUT, 'w', encoding='utf-8', newline='').write(pack)
 print('输出 %s' % OUT)
 print('  字符 %d  md5 %s' % (len(pack), md5s(pack)))

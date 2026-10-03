@@ -111,8 +111,8 @@ def add_unit(name, bylevel):
 
 def build_units():
     for lab, path, pcol in (
-            ('det·in-domain/VisDrone', os.path.join(PM, 'A', 'det_yolo_ladder_visdrone_det.csv'), 'n_det_person'),
-            ('det·zero-shot COCO', os.path.join(PM, 'A', 'det_yolo_ladder_yolo12n.csv'), 'n_det_person'),
+            ('det·in-domain/VisDrone', _first('A', 'det_yolo_ladder_visdrone_det.csv'), 'n_det_person'),
+            ('det·zero-shot COCO', _first('A', 'det_yolo_ladder_yolo12n.csv'), 'n_det_person'),
             ('det·in-domain(micro)/BBBC005', os.path.join(B, 'bbbc_eval', 'ladder.csv'), 'n_det')):
         if not os.path.exists(path):
             continue
@@ -125,8 +125,9 @@ def build_units():
         u = unitize(load(p), ['dataset', 'protocol', 'value'], 'pred')
         for ds in sorted({k[0] for k in u}):
             add_unit('density·official DM-Count / %s' % ds, {k: v for k, v in u.items() if k[0] == ds})
-    for lab, path in (('density·CSRNet', os.path.join(PM, 'A', 'csrsta_ladder_st_a.csv')),
-                      ('density·CSRNet', os.path.join(PM, 'A', 'csrucf_ladder_ucf.csv'))):
+    for lab, path in (('density·CSRNet', _first('A', 'csrsta_ladder_st_a.csv')),
+                      ('density·CSRNet', _first('p2e_a800', 'csrsta_ladder_st_a.csv')),
+                      ('density·CSRNet', _first('A', 'csrucf_ladder_ucf.csv'))):
         if os.path.exists(path):
             u = unitize(load(path), ['protocol', 'value'], 'pred')
             add_unit('%s / %s' % (lab, os.path.basename(path).split('_')[-2]), {k: v for k, v in u.items()})

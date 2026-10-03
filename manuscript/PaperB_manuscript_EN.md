@@ -472,7 +472,7 @@ carry **more** targets per image (§5.6 identifies the ordering variable). (Appe
 ### 5.5 Decomposing the under-count: abstention versus answering
 
 By **Proposition 4** the total under-count is an abstention term plus a scaled answering term, and the
-abstention share has the closed form $S=(1-w)/[1-w(1+\rho_{\text{answered}})]$; evaluated here it gives **82–94%** on the four dense and aerial domains **under the base contract arm, Chinese prompts, one anchor build, and the ground-truth-weighted convention** (three of twenty (language × build) cells leave the unit interval; M.18.9, M.39, M.46(c)). **This is the quantitative core of the paper's central claim (a coverage of the abstention channel, not a precision; Proposition 7): the received
+abstention share has the closed form $S=(1-w)/[1-w(1+\rho_{\text{answered}})]$; evaluated here it gives **82–94%** on the four dense and aerial domains **under the base contract arm, Chinese prompts, one anchor build, and the ground-truth-weighted convention** (three of twenty (language × build) cells leave the unit interval; M.18.9, M.19.16(ii), M.39, M.46(c)). **This is the quantitative core of the paper's central claim (a coverage of the abstention channel, not a precision; Proposition 7): the received
 description "VLMs underestimate dense scenes" is mostly a description of refusals.** (Appendix M.9)
 
 **Table 3.** Proposition 4's terms on the four headline domains.
@@ -661,7 +661,7 @@ Appendix M.31.2–M.31.4).
 
 **On hosted endpoints the abstention is latent rather than absent.** Three proprietary deployments, on the same
 **253** items, never answer zero under a number-only contract (**0.0%**; Wilson 95% upper bound **1.5%** on 0 of 253); permitted to abstain they abstain
-explicitly on **98–100%** of those items (residual 0.00%); and their numbers are no more accurate than the open
+explicitly on **98–100%** of those items (residual 0.00%); and their numbers are more accurate than the open
 families' (**34–47%** median relative error against **59–83%**). The failure that open families express as a zero
 is present in frontier hosted models too; only its expression differs.
 

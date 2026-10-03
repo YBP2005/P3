@@ -366,7 +366,8 @@ would be wrong.
 **Reconciling the three unit sets.** The same knob's span appears at three different magnitudes in this
 paper, and the differences are **unit set and calibration**, not disagreement. The table above reports
 **one span per knob**, pooling that knob over its domains on the **uncalibrated** pooled relative deviation,
-with the detector row flagged below; §F.9 splits **four of the six** knobs into **ten (knob × domain) units**
+with the detector row flagged below (**the six rows are tabulated in `code/analysis/a39_disp4.py`**, whose
+embedded table carries all six ranges and their per-domain breakdown; released with the package); §F.9 splits **four of the six** knobs into **ten (knob × domain) units**
 and reports them **isotonic-calibrated**;
 §M.37 rebuilds **36 configuration-level units** from the same per-item records, uncalibrated. For the two
 knobs a reader is most likely to try to line up:
@@ -1669,7 +1670,7 @@ the zero does not determine the direction.
 | Qwen3-VL-32B-BF16 | visdrone | 0.000 | 0.000 | 0.333 | 0.500 |
 | Qwen3-VL-32B-BF16 | aitod | 0.000 | 0.171 | 0.511 | 0.662 |
 
-The three arms that forbid the zero all overshoot on the dense domains (**4.0–6.3×**) and all remain
+The three arms that forbid the zero all overshoot on the dense domains (**3.5–6.3×**) and all remain
 **below 1** on the aerial domains: the same contract change produces over-estimation in one domain and
 continues to under-estimate in the other.
 
@@ -2047,8 +2048,11 @@ evidence. As a reference for how much room a mixture of the two components leave
 **0.967**, the between-unit ceiling **0.519** and the mixture **0.537** — so the observed 0.586 sits **above**
 that mixture ceiling, and no information-theoretic impossibility is being claimed here.
 
-*Reproduction: the decomposition is `_strat_decomp.py` and the ceiling arithmetic `_bound_check.py`, both
-computed from the released per-item records; the twenty units are the same (family $\times$ domain) units used
+*Reproduction: the decomposition is a two-step procedure — a stratified decomposition followed by a ceiling
+arithmetic — carried out on the released per-item records. (The two author-side scripts that performed it,
+`_strat_decomp.py` and `_bound_check.py`, are **not part of the released package**; the procedure is stated in
+full above and the records it consumes are released, so the arithmetic is reproducible from the package even
+though those two files are not.); the twenty units are the same (family $\times$ domain) units used
 in the table above.*
 
 #### M.19.8 Ablations: the contract effect is scale- and template-invariant; the zero *rate* is not
@@ -2966,7 +2970,8 @@ items as independent (**n = 300**), and **77.6 pp** treating the two pools as th
 an across-session term: the cross-session spread is bounded separately by the three fresh service starts of
 §M.40, whose largest value over every build, language and pool is **2.6 pp**. **The denominator, not just the bound, is the report:** pooling the
 batches of all three passes (**n = 225**) gives **1.32 pp**, so we quote the *most conservative batch-level*
-reading and do **not** quote the point estimate. **These bounds are not the noise floor of §8.1** and the
+reading and do **not** quote the point estimate; **the pass/fail reading of this section is taken on that
+batch level bound (3.92 pp)**, not on either of the other two. **These bounds are not the noise floor of §8.1** and the
 two are not comparable: the **2.15–6.46 pp** figure there is the across-repeat term of the corpus runs,
 whereas these are one-sided bounds on a **zero** count under three different independence assumptions; the
 most conservative of them (**77.6 pp**) is a statement about clustering, not about instrument noise.
@@ -3510,7 +3515,7 @@ with the effect nearly unchanged (**+185 → +195 → +167 pp**), and 8B at **0.
 **+24 to +40 pp**, so abstention rate is not the mediator and the magnitude is governed by the domain. (Appendix M.16)
 
 **A census-side corroboration of the same exclusion.** With the zero forbidden, the median
-predicted/true ratio on the zero pool rises from **0.000** to **4.0–6.3** on the dense domains
+predicted/true ratio on the zero pool rises from **0.000** to **3.5–6.3** on the dense domains
 (ShanghaiTech-A 4.027–6.281 across the three arms and two builds of one 32B checkpoint), yet the
 **same arms stay below 1** in the aerial domains (`bestB` / `bestC`: 0.250 / 0.469 and 0.333 / 0.500 on
 VisDrone; 0.500 / 0.833 and 0.511 / 0.662 on AI-TOD). Forbidding the zero thus overshoots in one domain

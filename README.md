@@ -24,7 +24,7 @@ weakened for release.
 
 | Path | What it is |
 |---|---|
-| `data/derived/` | **All per-image prediction records** (2,338 CSV files) — the released corpus: detection ladders, tiling ladders, density-regression runs, prompt-family and contract arms, aerial and microscopy domains, VLM and detector families. |
+| `data/derived/` | **All per-image prediction records** (2,338 CSV files **at the time of the §M.21.9(e) audit**; the corpus has grown since — the count is a snapshot, not a fixed size) — the released corpus: detection ladders, tiling ladders, density-regression runs, prompt-family and contract arms, aerial and microscopy domains, VLM and detector families. |
 | `data/derived/e2/` | The abstention-channel **census (E2)**: 558 result files = 14 configurations x 6 contracts x {zero pool, non-zero pool} over five usable domains (st_a, st_b, ucf, VisDrone, AI-TOD; CountBench is excluded — see *Known limitations*). Files prefixed `nz__` are the non-zero pool. |
 | `data/derived/e1/` | The discriminating experiment (E1) on the abstention channel: 48 cells over five configurations x two domains x up to six arms. |
 | `data/derived/corpus/` | The nine whole-image corpus tables behind the abstention decomposition. |

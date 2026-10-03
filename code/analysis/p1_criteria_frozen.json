@@ -1,10 +1,11 @@
 {
+  "_sanitized": "review traces removed; no value changed",
   "title": "P1 frozen criteria — does legibility (blur) induce the answered zero in other lineages?",
   "frozen_on": "2026-09-25",
   "answers_review_items": [
-    "glm53flash 实验充分性 −3.5（blur/tiling 对照）",
-    "grok46 实验充分性 −3.0（template × contract 交互）",
-    "dspro 实验充分性 −4.5（1–2 个新 family 落进 dense zero pool；★ 用户 2026-09-25 决定不做其纯文字替代）"
+    "[external-review] 实验充分性 [Δ]（blur/tiling 对照）",
+    "[external-review] 实验充分性 [Δ]（template × contract 交互）",
+    "[external-review] 实验充分性 [Δ]（1–2 个新 family 落进 dense zero pool；★ 用户 2026-09-25 决定不做其纯文字替代）"
   ],
   "design": {
     "grid": {
@@ -122,6 +123,6 @@
   "notes": [
     "生态版（300 张真实图）与受控版（675 张合成网格）**分开报**，不合并成一张表",
     "若 H3 成立：论文那句从'跨家族'改成'家族特异'（更保守、不加词）",
-    "所有新数字先写进权威档（`PaperB_盲审v0527修回证据_20260924.md` §6）再引用，否则 en_check [F] 会拦"
+    "所有新数字先写进权威档（`PaperB_[external-review]修回证据_20260924.md` §6）再引用，否则 en_check [F] 会拦"
   ]
 }

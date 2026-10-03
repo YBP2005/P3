@@ -1,8 +1,9 @@
 {
+  "_sanitized": "review traces removed; no value changed",
   "study_id": "W1-independent-family-prospective",
   "title": "在独立抽样（不含 Qwen）的模型家族人群上，前瞻验证门控预测、旋钮排序规则与人群方差结构",
   "frozen_on": "2026-09-23",
-  "why": "第 5 轮新颖度盲审后，剩余扣分 57.4% 只能靠新数据消掉；其中最大主题是 A（语料谱系与外推范围，4/4 家、-57.3）与 dspro 明确写出的 D2（在独立采样的模型族/域人群上验证可预测的合同中介弃答）。本方案即为该路径，且**全部判据在跑之前冻结**。",
+  "why": "外部核查后，剩余待补[Δ]只能靠新数据消掉；其中最大主题是 A（语料谱系与外推范围）与另一处明确写出的 D2（在独立采样的模型族/域人群上验证可预测的合同中介弃答）。本方案即为该路径，且**全部判据在跑之前冻结**。",
   "instrument": {
     "probe": "/root/19f_probe_ablation.py",
     "probe_md5_12": "28e82b20a7f4",
@@ -14,48 +15,180 @@
   "frame": {
     "rule_frozen": "候选 = 开源权重 VLM，满足：(a) config.json 含视觉字段（多模态）；(b) params >= 2B；(c) instruct 调优版；(d) 权重可得（只读镜像或 ModelScope，单模型 <= 35 GB）；(e) 单张 80 GB A800 上 bf16 或文档化 int8 可载入；(f) **不得是 E2/E3/FSC 面板已用过的家族**。排序键：(血统是否已在旧面板出现=新的优先) -> 发布更新优先 -> 模型名升序。取前 6；每血统最多 1 个模型。",
     "enrolled": [
-      {"id": "minicpmv26",  "model_id": "OpenBMB/MiniCPM-V-2_6",            "served_name": "MiniCPM-V-2_6",        "path": "/model/ModelScope/OpenBMB/MiniCPM-V-2_6",       "lineage": "OpenBMB",      "source": "local mirror", "size_gb": 15.5, "lineage_in_old_panel": false},
-      {"id": "step3vl10b",  "model_id": "stepfun-ai/Step3-VL-10B",          "served_name": "Step3-VL-10B",         "path": "/model/ModelScope/stepfun-ai/Step3-VL-10B",     "lineage": "StepFun",      "source": "local mirror", "size_gb": 19.4, "lineage_in_old_panel": false},
-      {"id": "gemma4_31b",  "model_id": "google/gemma-4-31B-it",            "served_name": "gemma-4-31b-it",       "path": "/model/ModelScope/google/gemma-4-31B-it",       "lineage": "Google",       "source": "local mirror", "size_gb": 59.7, "lineage_in_old_panel": true},
-      {"id": "idefics3_8b", "model_id": "HuggingFaceM4/Idefics3-8B-Llama3", "served_name": "Idefics3-8B-Llama3",   "path": "/root/w1_models/idefics3-8b",                   "lineage": "HuggingFace",  "source": "download",     "size_gb": 16.9, "lineage_in_old_panel": false},
-      {"id": "dsvl2_tiny",  "model_id": "deepseek-ai/deepseek-vl2-tiny",    "served_name": "deepseek-vl2-tiny",    "path": "/root/w1_models/deepseek-vl2-tiny",             "lineage": "DeepSeek",     "source": "download",     "size_gb": 6.8,  "lineage_in_old_panel": false},
-      {"id": "molmo7b",     "model_id": "allenai/Molmo-7B-D-0924",          "served_name": "Molmo-7B-D-0924",      "path": "/root/w1_models/molmo-7b-d",                    "lineage": "AllenAI",      "source": "download",     "size_gb": 32.1, "lineage_in_old_panel": false}
+      {
+        "id": "minicpmv26",
+        "model_id": "OpenBMB/MiniCPM-V-2_6",
+        "served_name": "MiniCPM-V-2_6",
+        "path": "/model/ModelScope/OpenBMB/MiniCPM-V-2_6",
+        "lineage": "OpenBMB",
+        "source": "local mirror",
+        "size_gb": 15.5,
+        "lineage_in_old_panel": false
+      },
+      {
+        "id": "step3vl10b",
+        "model_id": "stepfun-ai/Step3-VL-10B",
+        "served_name": "Step3-VL-10B",
+        "path": "/model/ModelScope/stepfun-ai/Step3-VL-10B",
+        "lineage": "StepFun",
+        "source": "local mirror",
+        "size_gb": 19.4,
+        "lineage_in_old_panel": false
+      },
+      {
+        "id": "gemma4_31b",
+        "model_id": "google/gemma-4-31B-it",
+        "served_name": "gemma-4-31b-it",
+        "path": "/model/ModelScope/google/gemma-4-31B-it",
+        "lineage": "Google",
+        "source": "local mirror",
+        "size_gb": 59.7,
+        "lineage_in_old_panel": true
+      },
+      {
+        "id": "idefics3_8b",
+        "model_id": "HuggingFaceM4/Idefics3-8B-Llama3",
+        "served_name": "Idefics3-8B-Llama3",
+        "path": "/root/w1_models/idefics3-8b",
+        "lineage": "HuggingFace",
+        "source": "download",
+        "size_gb": 16.9,
+        "lineage_in_old_panel": false
+      },
+      {
+        "id": "dsvl2_tiny",
+        "model_id": "deepseek-ai/deepseek-vl2-tiny",
+        "served_name": "deepseek-vl2-tiny",
+        "path": "/root/w1_models/deepseek-vl2-tiny",
+        "lineage": "DeepSeek",
+        "source": "download",
+        "size_gb": 6.8,
+        "lineage_in_old_panel": false
+      },
+      {
+        "id": "molmo7b",
+        "model_id": "allenai/Molmo-7B-D-0924",
+        "served_name": "Molmo-7B-D-0924",
+        "path": "/root/w1_models/molmo-7b-d",
+        "lineage": "AllenAI",
+        "source": "download",
+        "size_gb": 32.1,
+        "lineage_in_old_panel": false
+      }
     ],
     "reserve": [
-      {"id": "phi4mm", "model_id": "microsoft/Phi-4-multimodal-instruct", "path": "/root/w1_models/phi4-mm", "lineage": "Microsoft", "lineage_in_old_panel": true, "rule": "仅当 enrolled 中有家族未通过 smoke 门时按顺序补位，最多补一个"}
+      {
+        "id": "phi4mm",
+        "model_id": "microsoft/Phi-4-multimodal-instruct",
+        "path": "/root/w1_models/phi4-mm",
+        "lineage": "Microsoft",
+        "lineage_in_old_panel": true,
+        "rule": "仅当 enrolled 中有家族未通过 smoke 门时按顺序补位，最多补一个"
+      }
     ],
     "excluded_with_reason": [
-      {"cand": "ATH-MaaS/OvisOCR2", "reason": "文档 OCR 专用，非通用计数（域外）"},
-      {"cand": "LLM-Research/gemma-3-1b-pt", "reason": "预训练基座，非 instruct，不跟随计数指令"},
-      {"cand": "openbmb/MiniCPM-2B-sft-bf16", "reason": "纯文本模型（无视觉）"},
-      {"cand": "ZhipuAI/GLM-Image/vision_language_encoder", "reason": "图像生成模型的视觉编码器组件，非独立 VLM"},
-      {"cand": "Qwen/Qwen2.5-VL-72B-Instruct", "reason": "bf16 140 GB，超出单卡 80 GB 预算"},
-      {"cand": "Qwen/Qwen3-VL-32B-Thinking", "reason": "与已用的 Qwen3-VL-32B-Instruct 同家族，不构成独立样本"},
-      {"cand": "google|Lightricks/gemma-3-12b-it-qat-q4_0-unquantized", "reason": "与已用的 Gemma-3-12B 同家族（构建变体），不构成新家族"},
-      {"cand": "OpenBMB/MiniCPM-V-4_5", "reason": "与入组 MiniCPM-V-2_6 同血统，受'每血统最多 1 个'规则限制"},
-      {"cand": "OpenGVLab/InternVL3-14B / InternVL3_5-14B", "reason": "与已用 InternVL3.5-8B 同血统；且 30 GB"},
-      {"cand": "domain st_b", "reason": "该域语料零池为 0（316 条全部非零），无法构成零池格"}
+      {
+        "cand": "ATH-MaaS/OvisOCR2",
+        "reason": "文档 OCR 专用，非通用计数（域外）"
+      },
+      {
+        "cand": "LLM-Research/gemma-3-1b-pt",
+        "reason": "预训练基座，非 instruct，不跟随计数指令"
+      },
+      {
+        "cand": "openbmb/MiniCPM-2B-sft-bf16",
+        "reason": "纯文本模型（无视觉）"
+      },
+      {
+        "cand": "ZhipuAI/GLM-Image/vision_language_encoder",
+        "reason": "图像生成模型的视觉编码器组件，非独立 VLM"
+      },
+      {
+        "cand": "Qwen/Qwen2.5-VL-72B-Instruct",
+        "reason": "bf16 140 GB，超出单卡 80 GB 预算"
+      },
+      {
+        "cand": "Qwen/Qwen3-VL-32B-Thinking",
+        "reason": "与已用的 Qwen3-VL-32B-Instruct 同家族，不构成独立样本"
+      },
+      {
+        "cand": "google|Lightricks/gemma-3-12b-it-qat-q4_0-unquantized",
+        "reason": "与已用的 Gemma-3-12B 同家族（构建变体），不构成新家族"
+      },
+      {
+        "cand": "OpenBMB/MiniCPM-V-4_5",
+        "reason": "与入组 MiniCPM-V-2_6 同血统，受'每血统最多 1 个'规则限制"
+      },
+      {
+        "cand": "OpenGVLab/InternVL3-14B / InternVL3_5-14B",
+        "reason": "与已用 InternVL3.5-8B 同血统；且 30 GB"
+      },
+      {
+        "cand": "domain st_b",
+        "reason": "该域语料零池为 0（316 条全部非零），无法构成零池格"
+      }
     ],
     "independence_statement": "入组 6 个家族覆盖 6 个血统（OpenBMB / StepFun / Google / HuggingFace / DeepSeek / AllenAI），其中 5 个血统在旧面板（E2/E3/FSC-147）中**从未出现**；**入组家族中 Qwen 家族为 0 个**。旧普查的主题被批评是 Qwen 主导，因此任何在本次样本上仍然成立的效应都不可能是 Qwen 特有产物。"
   },
   "design": {
     "domains": [
-      {"id": "st_a", "kind": "dense", "dir": "/root/dense/shanghaitech/images/part_A_test", "pool_zero": 103, "pool_nonzero": 79},
-      {"id": "ucf", "kind": "dense", "dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test", "pool_zero": 180, "pool_nonzero": 154},
-      {"id": "visdrone", "kind": "aerial", "dir": "/root/aerial/visdrone/images", "pool_zero": 273, "pool_nonzero": 127},
-      {"id": "aitod", "kind": "aerial", "dir": "/root/aerial/aitod/images", "pool_zero": 154, "pool_nonzero": 72}
+      {
+        "id": "st_a",
+        "kind": "dense",
+        "dir": "/root/dense/shanghaitech/images/part_A_test",
+        "pool_zero": 103,
+        "pool_nonzero": 79
+      },
+      {
+        "id": "ucf",
+        "kind": "dense",
+        "dir": "/root/dense/ucf_qnrf/UCF-QNRF_ECCV18/Test",
+        "pool_zero": 180,
+        "pool_nonzero": 154
+      },
+      {
+        "id": "visdrone",
+        "kind": "aerial",
+        "dir": "/root/aerial/visdrone/images",
+        "pool_zero": 273,
+        "pool_nonzero": 127
+      },
+      {
+        "id": "aitod",
+        "kind": "aerial",
+        "dir": "/root/aerial/aitod/images",
+        "pool_zero": 154,
+        "pool_nonzero": 72
+      }
     ],
     "pool_definition": "零池/非零池由 **E2 语料**（/root/dense_results/vlm_<ds>_base_whole.csv，pred==0 与否）定义，与本次入组模型**无关**，且在本次运行前已固定。19f 的抽样是确定性的（按 gt 排序后等间隔取 n）。",
     "n_rule": "每格 n = min(150, 该域该池实际大小)；实际条数一律以产物 CSV 行数为准并写入 frame 表。",
-    "outdir": {"zero": "/root/w1_results/zero", "nonzero": "/root/w1_results/nonzero", "fsc": "/root/w1_results/fsc"},
+    "outdir": {
+      "zero": "/root/w1_results/zero",
+      "nonzero": "/root/w1_results/nonzero",
+      "fsc": "/root/w1_results/fsc"
+    },
     "invocations_per_domain": [
-      {"outdir": "zero",    "args": "--pool zero --arms base,permit,channel --n 150"},
-      {"outdir": "zero",    "args": "--pool zero --arms base --n 150 --imgsz 640"},
-      {"outdir": "nonzero", "args": "--pool nonzero --arms base,permit,channel --n 150"}
+      {
+        "outdir": "zero",
+        "args": "--pool zero --arms base,permit,channel --n 150"
+      },
+      {
+        "outdir": "zero",
+        "args": "--pool zero --arms base --n 150 --imgsz 640"
+      },
+      {
+        "outdir": "nonzero",
+        "args": "--pool nonzero --arms base,permit,channel --n 150"
+      }
     ],
     "hazard_noted": "19f 内部先按 pool 设 OUTD、随后被 --outdir 覆盖，因此**必须**给非零池显式传 --outdir，否则非零池结果会以同名文件追加进零池文件（本项目早期 E3 运行即靠显式 outdir 分离）。",
     "arms": {
-      "existing": ["base", "permit", "channel"],
+      "existing": [
+        "base",
+        "permit",
+        "channel"
+      ],
       "resolution_knob": "base 臂在 --imgsz 640 与 native 各跑一次（分辨率旋钮）",
       "frozen_new_prompts": {
         "exemplar3": "请参考图中给出的 3 个示例目标的框（左上与右下坐标，已归一化到 0-1000）：{boxes}。请数出整幅图中与这些示例**同类**目标的总数，不要遗漏、不要重复。以JSON格式输出：{\"count\": 数量}，只输出JSON。",
@@ -63,7 +196,17 @@
       },
       "exemplar_source": "FSC-147 官方 annotation 的 box_examples_coordinates（每图 3 个示例框），归一化到 0-1000 后以文本给出；**不画框、不改图**。"
     },
-    "fsc": {"images": 300, "ids_file": "/root/fsc147/sample_test_ids.txt", "arms": ["base", "permit", "exemplar3", "exemplar3permit"], "reuse": "既有 9 配置的 base/permit 结果保留不动，本方案只加新家族与 exemplar 臂"}
+    "fsc": {
+      "images": 300,
+      "ids_file": "/root/fsc147/sample_test_ids.txt",
+      "arms": [
+        "base",
+        "permit",
+        "exemplar3",
+        "exemplar3permit"
+      ],
+      "reuse": "既有 9 配置的 base/permit 结果保留不动，本方案只加新家族与 exemplar 臂"
+    }
   },
   "smoke_gate": {
     "rule": "每家族 2 条 item（st_a 零池 1 条 + visdrone 零池 1 条），只用 base 臂、不做任何提示词调整。若两条都 parse 失败（pred 为空）则该家族**排除**，理由写入 frame 表；≤1 条失败则入组。",
@@ -119,7 +262,10 @@
     "script": "analysis/work/w1_judge.py",
     "input": "拉回本地的 analysis/w1_a800/**/e1_*.csv 与 fsc_*.csv",
     "rules_frozen": "本文件的 predictions 即为判定口径；脚本只按此计算，不得在看到数据后修改阈值。任何事后新增的分析必须在报告中标注为 post-hoc。",
-    "outputs": ["w1_results.json", "W1_前瞻验证结果_20260923.md"]
+    "outputs": [
+      "w1_results.json",
+      "W1_前瞻验证结果_20260923.md"
+    ]
   },
   "stop_loss": {
     "smoke_failures": "通过 smoke 门的家族 < 3 个 ⇒ 只跑通过的家族，报告为'部分前瞻样本（n=通过的家族数）'",

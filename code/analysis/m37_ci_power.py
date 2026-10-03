@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """m37_ci_power.py — 为 §7.3 的三条"零 GPU 分析"诉求算出**可引用**的数字，并冻结落盘。
 
-对应盲审条目（v0527）：
-  · #4 dspro：**给 Spearman 加 permutation CI**，为 ordering 稳定性设定并报告阈值；
-  · #2 gpt6sol：以 **M.37 现有留出划分**报告排序相关的**区间** + **逐旋钮置换敏感性**；
-  · #6 glm53flash：对 ordering 主张补**置换检验的功效声明**（在 10 单位与本文噪声底下，
+对应[external-review]条目（v0527）：
+  · #4 [external-review]：**给 Spearman 加 permutation CI**，为 ordering 稳定性设定并报告阈值；
+  · #2 [external-review]：以 **M.37 现有留出划分**报告排序相关的**区间** + **逐旋钮置换敏感性**；
+  · #6 [external-review]：对 ordering 主张补**置换检验的功效声明**（在 10 单位与本文噪声底下，
     可检出的最小分离是多少 pp）。
-  · #23 gpt6sol（部分）：把"图像 bootstrap 只是不确定度的一部分"落实为**端点剔除/逐旋钮**的敏感性区间。
+  · #23 [external-review]（部分）：把"图像 bootstrap 只是不确定度的一部分"落实为**端点剔除/逐旋钮**的敏感性区间。
 
 输入（全部已冻结，不改动）：
   `equalcount36_result.json`（36 单元逐单元 span 与三种去偏后的 span；31 单元 k=4 子集）

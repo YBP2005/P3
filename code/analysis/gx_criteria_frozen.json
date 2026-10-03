@@ -1,77 +1,78 @@
 {
- "round": "gx（收官批：G8b + placebo + G10mix + G9b）",
- "frozen_at": "2026-09-27",
- "frozen_by": "P3 owner (author side)",
- "G8b": {
-  "why": "grok47 X2 的判据是\"**英文四格** $S$ 是否都落 $[0,1]$ 且 ≥70%\"。上一批只把 UCF 那一格做成了本机 BF16，另外三格仍是**另一台机器的 AWQ**。本件把三格在**同一构建（本机 BF16）**上补齐 ⇒ 四格首次同构建可比。",
-  "domains": {
-   "st_a": "/root/dense_results/vlm_st_a_base_whole.csv（182 项）",
-   "visdrone": "/root/dense_results/vlm_visdrone_base_whole.csv（400 项）",
-   "aitod": "/root/dense_results/vlm_aitod_base_whole.csv（226 项）"
+  "_sanitized": "review traces removed; no value changed",
+  "round": "gx（收官批：G8b + placebo + G10mix + G9b）",
+  "frozen_at": "2026-09-27",
+  "frozen_by": "P3 owner (author side)",
+  "G8b": {
+    "why": "[external-review] X2 的判据是\"**英文四格** $S$ 是否都落 $[0,1]$ 且 ≥70%\"。上一批只把 UCF 那一格做成了本机 BF16，另外三格仍是**另一台机器的 AWQ**。本件把三格在**同一构建（本机 BF16）**上补齐 ⇒ 四格首次同构建可比。",
+    "domains": {
+      "st_a": "/root/dense_results/vlm_st_a_base_whole.csv（182 项）",
+      "visdrone": "/root/dense_results/vlm_visdrone_base_whole.csv（400 项）",
+      "aitod": "/root/dense_results/vlm_aitod_base_whole.csv（226 项）"
+    },
+    "arms": [
+      "en:base",
+      "cn:base"
+    ],
+    "prompts_verbatim": {
+      "en:base": "Count the number of people in the image (every head or body in the crowd). Do not miss any and do not double-count. Output in JSON format: {\"count\": number}, output JSON only.",
+      "cn:base": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复，以JSON格式输出：{\"count\": 数量}，只输出JSON。"
+    },
+    "calls": "2 臂 × (182+400+226) = **1,616 次调用**",
+    "criterion": "与 G8 同：每格报 答零率 / ρ_answered / ρ_total / $S$；$S$ 只在 ρ_total<0 时有定义；四格（含上一批的 UCF）同构建后，判\"是否都落 $[0,1]$ 且 ≥70%\"。",
+    "declared": "G8 那批的 UCF 格与本批三格**同构建同会话口径**，可并表；与已发表 AWQ 四格**不并表**。"
   },
-  "arms": [
-   "en:base",
-   "cn:base"
-  ],
-  "prompts_verbatim": {
-   "en:base": "Count the number of people in the image (every head or body in the crowd). Do not miss any and do not double-count. Output in JSON format: {\"count\": number}, output JSON only.",
-   "cn:base": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复，以JSON格式输出：{\"count\": 数量}，只输出JSON。"
+  "placebo": {
+    "why": "[external-review] E-4 要的\"placebo anchors（5/50/100/800）的 anchor-compliance 表\"。§M.19.13 只在 675 张确定性圆点网格上做过；本件把它搬到**真实图像**上。",
+    "arms": [
+      "p5",
+      "p50",
+      "p100",
+      "p800"
+    ],
+    "prompts_verbatim": {
+      "p5": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复，以JSON格式输出：{\"count\": 数量}，只输出JSON。人数可能是 5；若你的判断是 5，就回答 5。",
+      "p50": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复，以JSON格式输出：{\"count\": 数量}，只输出JSON。人数可能是 50；若你的判断是 50，就回答 50。",
+      "p100": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复，以JSON格式输出：{\"count\": 数量}，只输出JSON。人数可能是 100；若你的判断是 100，就回答 100。",
+      "p800": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复，以JSON格式输出：{\"count\": 数量}，只输出JSON。人数可能是 800；若你的判断是 800，就回答 800。"
+    },
+    "items": "st_a 按文件名排序的**前 150 张**（确定性、不抽样）",
+    "calls": "4 臂 × 150 = **600 次调用**",
+    "estimand": "anchor compliance = 该臂的**中位答数**与**命中率**（pred 恰等于被命名值的比例）。",
+    "criterion": "4 个锚里 **≥3 个**的中位答数**恰等于**被命名值 ⇒ 锚被服从（与 §M.19.13 的网格结论同向）；另报 ρ(median, anchor)。"
   },
-  "calls": "2 臂 × (182+400+226) = **1,616 次调用**",
-  "criterion": "与 G8 同：每格报 答零率 / ρ_answered / ρ_total / $S$；$S$ 只在 ρ_total<0 时有定义；四格（含上一批的 UCF）同构建后，判\"是否都落 $[0,1]$ 且 ≥70%\"。",
-  "declared": "G8 那批的 UCF 格与本批三格**同构建同会话口径**，可并表；与已发表 AWQ 四格**不并表**。"
- },
- "placebo": {
-  "why": "qwen38max E-4 要的\"placebo anchors（5/50/100/800）的 anchor-compliance 表\"。§M.19.13 只在 675 张确定性圆点网格上做过；本件把它搬到**真实图像**上。",
-  "arms": [
-   "p5",
-   "p50",
-   "p100",
-   "p800"
-  ],
-  "prompts_verbatim": {
-   "p5": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复，以JSON格式输出：{\"count\": 数量}，只输出JSON。人数可能是 5；若你的判断是 5，就回答 5。",
-   "p50": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复，以JSON格式输出：{\"count\": 数量}，只输出JSON。人数可能是 50；若你的判断是 50，就回答 50。",
-   "p100": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复，以JSON格式输出：{\"count\": 数量}，只输出JSON。人数可能是 100；若你的判断是 100，就回答 100。",
-   "p800": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复，以JSON格式输出：{\"count\": 数量}，只输出JSON。人数可能是 800；若你的判断是 800，就回答 800。"
+  "g10mix": {
+    "why": "G10 的 π 回收是**离线**做的（混合 = 两侧逐项记录的加权并），因此测不到一件事：把真零空窗与非空图**放进同一批请求**是否改变逐项行为。本件真跑一次混合清单。",
+    "builds": [
+      "InternVL3_5-8B",
+      "gemma3-12b"
+    ],
+    "why_these_builds": "本机有**同款权重**（/root/models/InternVL3_5-8B、ModelScope gemma-3-12b-it），且两侧的**Separated 记录**也都在本机（/root/z0_results_* 与 /root/e1_results_nonzero）。",
+    "lists": {
+      "mixed": "真零 100 项（z0easy 前 50 + z0hard 前 50）+ 非空密集 400 项（st_a 前 400）⇒ 顺序按\"两类交错\"固定（交错规则事先写死：每 5 项插 1 个真零）",
+      "sep_zero": "同那 100 项真零，单独一批",
+      "sep_nonzero": "同那 400 项非空，单独一批"
+    },
+    "arms": [
+      "base"
+    ],
+    "calls": "2 构建 × (500+100+400) = **2,000 次调用**",
+    "estimand": "同批 vs 分两侧的**逐项一致率**与两侧答零率之差。",
+    "criterion": "同批与分侧的答零率之差 **≤ 10 pp**（两侧各自）⇒ 混合不改变行为（\"加权并\"是可用的近似）；超过 ⇒ 必须写明\"同批效应\"并把它作为 π 回收的限定。"
   },
-  "items": "st_a 按文件名排序的**前 150 张**（确定性、不抽样）",
-  "calls": "4 臂 × 150 = **600 次调用**",
-  "estimand": "anchor compliance = 该臂的**中位答数**与**命中率**（pred 恰等于被命名值的比例）。",
-  "criterion": "4 个锚里 **≥3 个**的中位答数**恰等于**被命名值 ⇒ 锚被服从（与 §M.19.13 的网格结论同向）；另报 ρ(median, anchor)。"
- },
- "g10mix": {
-  "why": "G10 的 π 回收是**离线**做的（混合 = 两侧逐项记录的加权并），因此测不到一件事：把真零空窗与非空图**放进同一批请求**是否改变逐项行为。本件真跑一次混合清单。",
-  "builds": [
-   "InternVL3_5-8B",
-   "gemma3-12b"
-  ],
-  "why_these_builds": "本机有**同款权重**（/root/models/InternVL3_5-8B、ModelScope gemma-3-12b-it），且两侧的**Separated 记录**也都在本机（/root/z0_results_* 与 /root/e1_results_nonzero）。",
-  "lists": {
-   "mixed": "真零 100 项（z0easy 前 50 + z0hard 前 50）+ 非空密集 400 项（st_a 前 400）⇒ 顺序按\"两类交错\"固定（交错规则事先写死：每 5 项插 1 个真零）",
-   "sep_zero": "同那 100 项真零，单独一批",
-   "sep_nonzero": "同那 400 项非空，单独一批"
+  "g9b": {
+    "why": "上一批 G9 按预注册规则报了\"不可测\"，但**失败原因不是污染**：G_b 逐项不一致 2/20 = 10%，而**平台自身的重复噪声**（G5/G6 实测：同会话两遍同臂一致率 170/182 = 93.41%）就有 **6.6%** ⇒ 原阈值 5% **设在噪声之下**，无法区分\"损坏\"与\"非确定性\"。",
+    "new_preregistered_threshold": "把 G_b 的容忍度改到 **15%**（= 6.6% 噪声的约 2.3 倍，并保留 G_a 批内不变性 ≤5% 不变）。**这是新判据，不是改旧判据**：旧判据仍作为\"上一批报不可测\"的依据留在档里。",
+    "measurement": "135 项（σ=8 那一层）× 3 臂（base / forbid0 / neutral0）× 37 个张量的 $L_2$ 剖面，重点是**倒数第二层**。",
+    "criteria": {
+      "collapse": "拒答臂/base 的中位范数比 < 0.50 ⇒ 表征崩溃",
+      "active": "≥ 0.80 且该位置余弦 ≥ 0.90 ⇒ 主动拒答",
+      "between": "0.50–0.80 ⇒ 未判定，不做任何一侧的声称"
+    },
+    "threshold_is_ours": "三个比值阈值（0.50 / 0.80 / 0.90）是**作者事先定下的**，[external-review]未给。"
   },
-  "arms": [
-   "base"
-  ],
-  "calls": "2 构建 × (500+100+400) = **2,000 次调用**",
-  "estimand": "同批 vs 分两侧的**逐项一致率**与两侧答零率之差。",
-  "criterion": "同批与分侧的答零率之差 **≤ 10 pp**（两侧各自）⇒ 混合不改变行为（\"加权并\"是可用的近似）；超过 ⇒ 必须写明\"同批效应\"并把它作为 π 回收的限定。"
- },
- "g9b": {
-  "why": "上一批 G9 按预注册规则报了\"不可测\"，但**失败原因不是污染**：G_b 逐项不一致 2/20 = 10%，而**平台自身的重复噪声**（G5/G6 实测：同会话两遍同臂一致率 170/182 = 93.41%）就有 **6.6%** ⇒ 原阈值 5% **设在噪声之下**，无法区分\"损坏\"与\"非确定性\"。",
-  "new_preregistered_threshold": "把 G_b 的容忍度改到 **15%**（= 6.6% 噪声的约 2.3 倍，并保留 G_a 批内不变性 ≤5% 不变）。**这是新判据，不是改旧判据**：旧判据仍作为\"上一批报不可测\"的依据留在档里。",
-  "measurement": "135 项（σ=8 那一层）× 3 臂（base / forbid0 / neutral0）× 37 个张量的 $L_2$ 剖面，重点是**倒数第二层**。",
-  "criteria": {
-   "collapse": "拒答臂/base 的中位范数比 < 0.50 ⇒ 表征崩溃",
-   "active": "≥ 0.80 且该位置余弦 ≥ 0.90 ⇒ 主动拒答",
-   "between": "0.50–0.80 ⇒ 未判定，不做任何一侧的声称"
-  },
-  "threshold_is_ours": "三个比值阈值（0.50 / 0.80 / 0.90）是**作者事先定下的**，评审未给。"
- },
- "shared": {
-  "model_stack": "vLLM 0.29.0；一卡一模型；temperature 0、max_tokens 128；一请求一图；Qwen 系带 `max_pixels=1048576, min_pixels=3136`（与本稿语料同一套），InternVL 不带（其 image processor 不接受该参数）。★ 基础设施：`PATH` 需含 conda bin（ninja），且 `VLLM_USE_FLASHINFER_SAMPLER=0`（本镜像无 g++，FlashInfer JIT 必失败；temperature 0 下取值不变）。",
-  "parse": "答零 = `pred == 0`；`abstain`/`cannot_judge`/`no_people` 由 **raw 文本**匹配（§8.1 的既有约定）；未解析项单列、不计入分母。"
- }
+  "shared": {
+    "model_stack": "vLLM 0.29.0；一卡一模型；temperature 0、max_tokens 128；一请求一图；Qwen 系带 `max_pixels=1048576, min_pixels=3136`（与本稿语料同一套），InternVL 不带（其 image processor 不接受该参数）。★ 基础设施：`PATH` 需含 conda bin（ninja），且 `VLLM_USE_FLASHINFER_SAMPLER=0`（本镜像无 g++，FlashInfer JIT 必失败；temperature 0 下取值不变）。",
+    "parse": "答零 = `pred == 0`；`abstain`/`cannot_judge`/`no_people` 由 **raw 文本**匹配（§8.1 的既有约定）；未解析项单列、不计入分母。"
+  }
 }

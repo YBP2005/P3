@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 """p2_rule_sensitivity.py —— 【C-16 闭环】把"重解析规则是否事后任意"变成一个**可报的数**。
 
-背景（4 家评审提的同一件事）：
+背景（[external-review]提的同一件事）：
   冻结探针 `19e_probe_multi.py` 的 `parse()` 要求 `{` 后紧跟键名，而本批输出是**带引号的键**
   ⇒ `channel` 臂 1,199/1,200 次结构化解析落空。处置是**不改冻结件**、改用**离线重解析**从已存
   `raw` 派生 `pred`，并逐行记录命中规则（R1 fenced+quoted / R2 冻结原正则 / R3 first-int）。
-  评审问：**我是不是挑了一个对自己有利的规则？**
+  [external-review]问：**我是不是挑了一个对自己有利的规则？**
 
 本脚本的答法（零新跑，只用已存 CSV）：
   对 P2 的 12 个臂文件，逐项比较**两套分类口径**：
@@ -25,8 +25,14 @@ import os
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
-ROOT = r'<WORKDIR>\PaperB'
-P2 = os.path.join(ROOT, 'analysis', 'p2_a800', 'p2_probe_results_reparsed')
+# 放行版：作者机硬编码 → 复现包统一根（`_repro_root._ALIAS` 把
+#   analysis/p2_a800/p2_probe_results_reparsed 映射到 data/derived/p2_noise4/…）
+try:
+    from _repro_root import resolve as RP
+except ImportError:                      # 单脚本拷走时：就地反推仓库根
+    _r = os.environ.get('PAPERB_ROOT') or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    RP = lambda *q: os.path.join(_r, *q)  # noqa: E731
+P2 = os.environ.get('P2_DIR') or RP('analysis', 'p2_a800', 'p2_probe_results_reparsed')
 KEYS = ('zero', 'nonzero', 'no_people', 'cannot_judge', 'abstain', 'unparsed')
 
 

@@ -2,9 +2,9 @@
 """p3r4_zero_3_parse_all_csv.py —— P3 第 4 轮 ③：把 parse 判据从 654 份扩到**发布件全部 2,338 个 CSV**。
 
 ## 来源与授权
-第 3 轮 qwenflash ③（= 第 3 轮 ③ 类 E-10）：§M.21.9(e) 的巡检口径只覆盖 **654** 份文件
+[round][external-review] ③（= [round]③ 类 E-10）：§M.21.9(e) 的巡检口径只覆盖 **654** 份文件
 （E3 `merged` 228 + E2 `e1_*` 426……实测见下），而发布件 `data/derived/` 自述 **2,338** 个 CSV。
-评审原话："把同一判据扫全发布件 2,338 个 CSV（他们扫 654），差集非空则给出 audited scope 覆盖率%。"
+[external-review]原话："把同一判据扫全发布件 2,338 个 CSV（他们扫 654），差集非空则给出 audited scope 覆盖率%。"
 
 ## 判据（**逐字**沿用 `n2_boundary_rule_audit.py` / `n2_adversarial_probe.py`，不新创）
 拒答词集合 AW = (`abstain`, `cannot_judge`, `no_people`)；
@@ -401,7 +401,7 @@ def main():
           % (tot['empty_raw'], tot['pred_nonnumeric'], tot['pred_refusal_token'],
              tot['pred_other_token'], tot['pred_ge_1e5']))
 
-    # ── 3) 覆盖率（评审原话要的那一项）────────────────────────────────────────
+    # ── 3) 覆盖率（[external-review]原话要的那一项）────────────────────────────────────────
     cov_files = 100.0 * tot['files_evaluable'] / tot['files']
     cov_rows = 100.0 * tot['rows_evaluable'] / tot['rows'] if tot['rows'] else 0.0
     print('\n④ 覆盖率（评审问的"audited scope 覆盖率%%"）')

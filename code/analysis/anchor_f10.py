@@ -122,9 +122,9 @@ def run(frozen, verbose=True):
         frozen['allclass']['spearman_span_eq'], frozen['allclass']['spearman_span_drop_high'],
         frozen['allclass']['spearman_span_drop_low'])
     chk('F.10 正文秩相关三元组（all-det）', trio_a in sseg, '未找到：%s' % trio_a)
-    chk('F.10 正文口径倍率 3.5–5.3×', '**3.5–5.3×**' in sseg, '未找到 3.5–5.3×')
+    chk('F.10 正文口径倍率 2.6–3.9×', '**2.6–3.9×**' in sseg, '未找到 2.6–3.9×')
     chk('F.10 正文量化等点数保留率（1.00 / 最差 0.74）',
-        'median retention **1.00**, worst case **0.74**' in sseg, '未找到量化等点数保留率措辞')
+        'median retention **1.00**, worst case **0.542601**' in sseg, '未找到量化等点数保留率措辞')   # ★ 2026-10-03（v0644）：最差保留率按冻结件 span_equalcount2_result.json 改正为 0.542601（原印 0.74 是错值）
     chk('F.10 正文已声明口径不可相减', 'not the same quantity' in sseg and 'within one caliber at a time' in sseg,
         '未找到口径声明')
 

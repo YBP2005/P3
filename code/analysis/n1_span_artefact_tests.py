@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
-"""n1_span_artefact_tests.py —— 三家评审的"跨度是不是伪影"零新跑检验（N1 / N1b）。
+"""n1_span_artefact_tests.py ——[external-review]的"跨度是不是伪影"零新跑检验（N1 / N1b）。
 
 **只读**：不改任何既有文件；只新建本脚本与其产物 JSON。
 
 ## 三个检验（全部只用**已发布逐项记录**重算，不转录任何数）
 N1   —— 把相对偏差 ρ 换成**无量纲**量，重算 36 单元跨度并重排：
         (i)  ρ（纸面口径，复现闸门用）
-        (ii) L = median( ln(pred+1) − ln(gt+1) )（评审逐字给出的变换）
+        (ii) L = median( ln(pred+1) − ln(gt+1) )（[external-review]逐字给出的变换）
         (iii) R = 逐项 **Spearman(pred, gt)**（我另加：对 pred/gt 的任意单调重标定都完全不变，
              是"绝对数值尺度伪影"这一质疑的**最强形式**，比 L 更彻底）
-       判据（评审给）：Spearman(ρ 序, L 序) **≥ 0.85** ⇒ 该质疑被排除。
+       判据（[external-review]给）：Spearman(ρ 序, L 序) **≥ 0.85** ⇒ 该质疑被排除。
 N1b-1 —— **GT 分层配对**：把各单元按 GT 计数分布配对到同一剖面后重算 ρ 跨度并重排，
-       判据（评审给）：Spearman 相对全集的**降幅 > 0.2** ⇒ 跨度是 GT 口径伪影。
+       判据（[external-review]给）：Spearman 相对全集的**降幅 > 0.2** ⇒ 跨度是 GT 口径伪影。
 N1b-2 —— **有符号绝对计数误差**取代 ρ（median 与 mean 两种），报与 ρ 序的 Spearman。
 外加 —— 随机删档（k=4，不放回）保留率：中位 / 5 分位 / 最小（第三家要的"每个跨度都该带"）。
 

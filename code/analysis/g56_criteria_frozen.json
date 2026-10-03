@@ -1,114 +1,115 @@
 {
- "round": "g5+g6",
- "frozen_at": "2026-09-27",
- "frozen_by": "P3 owner (author side)",
- "why_this_file": "★ 先冻结、后跑。本件在任何一次调用之前写定：问句、臂、档位、判据与阈值。跑完只读不改。",
- "G5": {
-  "requester": "dspro R2（v0573 盲审，标 【阻塞】）",
-  "quote": "anchor-free span 复现：ST-A 上重跑 §7.3 ladder，去除所有数字锚；判据「中性化臂与现臂 span 差 < 30%」",
-  "alternative_being_tested": "§7.3 的跨度**有一部分只是「指令里被命名的那个数值」的函数**。自家反证：§M.19.13 给过 rho(median, anchor) = +1.00。",
-  "numeric_anchor_audit": {
-   "definition": "数字锚 = 指令串里被当作**答案取值**来命名的阿拉伯数字。",
-   "base": "0 个 ⇒ 无锚",
-   "range": "模板 `{low,high}` 里无取值数字 ⇒ 无锚（两臂都保留，故不参与 Δ）",
-   "forbid0": "命名 `0` ⇒ **有锚**",
-   "choice": "命名 `0,10,50,100,500,1000` ⇒ **有锚**",
-   "conclusion": "§7.3 的六旋钮里，只有 output-contract 旋钮的臂命名了数值；故 G5 的操作定义 = **把这两个臂中性化后重跑该旋钮**。"
+  "_sanitized": "review traces removed; no value changed",
+  "round": "g5+g6",
+  "frozen_at": "2026-09-27",
+  "frozen_by": "P3 owner (author side)",
+  "why_this_file": "★ 先冻结、后跑。本件在任何一次调用之前写定：问句、臂、档位、判据与阈值。跑完只读不改。",
+  "G5": {
+    "requester": "[external-review] R2（[external-review]，标 【阻塞】）",
+    "quote": "anchor-free span 复现：ST-A 上重跑 §7.3 ladder，去除所有数字锚；判据「中性化臂与现臂 span 差 < 30%」",
+    "alternative_being_tested": "§7.3 的跨度**有一部分只是「指令里被命名的那个数值」的函数**。自家反证：§M.19.13 给过 rho(median, anchor) = +1.00。",
+    "numeric_anchor_audit": {
+      "definition": "数字锚 = 指令串里被当作**答案取值**来命名的阿拉伯数字。",
+      "base": "0 个 ⇒ 无锚",
+      "range": "模板 `{low,high}` 里无取值数字 ⇒ 无锚（两臂都保留，故不参与 Δ）",
+      "forbid0": "命名 `0` ⇒ **有锚**",
+      "choice": "命名 `0,10,50,100,500,1000` ⇒ **有锚**",
+      "conclusion": "§7.3 的六旋钮里，只有 output-contract 旋钮的臂命名了数值；故 G5 的操作定义 = **把这两个臂中性化后重跑该旋钮**。"
+    },
+    "arms_present": [
+      "base",
+      "forbid0",
+      "range",
+      "choice"
+    ],
+    "arms_neutralised": [
+      "base",
+      "forbid0n",
+      "range",
+      "choicen"
+    ],
+    "neutralisation_rule": "把被命名的数值从指令里**彻底删除**，行为指令（禁止最小值 / 六选一）改用不含数字的说法保留；其余文字逐字不动。★ 声明：不含数字地「禁止 0」在自然语言里只能近似，`forbid0n` 用的是「不要给出最小的可能取值」，这本身仍隐含了最小值这一概念。",
+    "domain": "st_a（ShanghaiTech part_A test，**全 182 张**，与已发表 E1 阶梯同一批图）",
+    "criterion": {
+      "stat": "span_neutralised vs span_present，逐模型；span = 各臂池化相对偏差 rho 的 max-min",
+      "pass": "|Δ| / span_present < 0.30",
+      "fail_reads_as": "Δ 为负且越过 30% ⇒ **跨度有一部分确实是被命名的数值的函数**，§7.3/§7.5 必须写明该限定；Δ 为正或很小 ⇒ 中性化没有把跨度拿走。"
+    },
+    "secondary": "逐臂中位数：若 rho(median, anchor) 机制为真，中性化后 `choice`/`forbid0` 的中位应离开锚值（choice 离开 {0,10,50,100,500,1000} 的取值集合）。"
   },
-  "arms_present": [
-   "base",
-   "forbid0",
-   "range",
-   "choice"
-  ],
-  "arms_neutralised": [
-   "base",
-   "forbid0n",
-   "range",
-   "choicen"
-  ],
-  "neutralisation_rule": "把被命名的数值从指令里**彻底删除**，行为指令（禁止最小值 / 六选一）改用不含数字的说法保留；其余文字逐字不动。★ 声明：不含数字地「禁止 0」在自然语言里只能近似，`forbid0n` 用的是「不要给出最小的可能取值」，这本身仍隐含了最小值这一概念。",
-  "domain": "st_a（ShanghaiTech part_A test，**全 182 张**，与已发表 E1 阶梯同一批图）",
-  "criterion": {
-   "stat": "span_neutralised vs span_present，逐模型；span = 各臂池化相对偏差 rho 的 max-min",
-   "pass": "|Δ| / span_present < 0.30",
-   "fail_reads_as": "Δ 为负且越过 30% ⇒ **跨度有一部分确实是被命名的数值的函数**，§7.3/§7.5 必须写明该限定；Δ 为正或很小 ⇒ 中性化没有把跨度拿走。"
+  "G6": {
+    "requester": "[external-review] E-2（先冻结设计前提）+ [external-review] A5-1（独立 level set）",
+    "quote": "等水平、预注册的归一化 ladder 重扫：六旋钮各取**预注册 5 个水平**",
+    "scope_limit_★": "本机（A800）**只有 VLM 侧可跑**：六旋钮里的 K1「检测 τ×输入尺度」需要 YOLO 权重（visdrone_det.pt / yolo12n / yolo12s），K2「密度回归输入尺度」需要 CSRNet 权重 —— 二者都不在本机模型卷上 ⇒ **本件只做 4 个 VLM 旋钮**，K1/K2 如实标为「本机测不了」，不用代理替代。",
+    "knobs_covered": {
+      "K3 VLM·output contract": [
+        "base",
+        "forbid0",
+        "range",
+        "choice",
+        "neutral0"
+      ],
+      "K4 VLM·prompt family": [
+        "V1_json",
+        "V2_number",
+        "V3_locate",
+        "V4_estimate",
+        "V5_region"
+      ],
+      "K5 VLM·tiling level": [
+        "1x1",
+        "2x2",
+        "3x3",
+        "4x4",
+        "6x6"
+      ],
+      "K6 VLM·pixel budget": [
+        1048576,
+        400000,
+        200000,
+        100000,
+        50000
+      ]
+    },
+    "why_these_levels": "五档全部**先于任何调用**写定；K4 的 V1–V5 逐字取自冻结件，K3 的 base/forbid0/range/choice 逐字取自冻结件 `_probe_gen_remote.py`，K6 的 1048576 与已发表 res_ctrl 行同上限，其余四档按等比内插预注册。",
+    "equal_levels": "四个旋钮各 **5** 档（K5 的 1x1..6x6 由 tilek 表给出）⇒ 满足「等水平」。",
+    "item_set": "st_a 全 182 张（K5 亦同）",
+    "criterion": {
+      "C_a_ordering": "本轮 4 旋钮按 span 的排序与**已发表 M.37 可复算集**中同 4 旋钮的排序**完全一致**（Spearman = 1.00）⇒ 「等水平、独立 level set」下排序复现。",
+      "C_b_top": "最大跨度旋钮不变。",
+      "C_c_normalised": "按**旋钮相对行程**归一后排序不变（与 F.10/G15 同一操作）。",
+      "fail_reads_as": "排序或顶端改变 ⇒ §7.3 的排序主张在该 level set 下不复现，必须写明。"
+    },
+    "noise_floor": "base 臂 3 遍重复（同会话），逐项一致率 + 逐遍 span 极差；判据同 g3：极差 < span 的 20%。"
   },
-  "secondary": "逐臂中位数：若 rho(median, anchor) 机制为真，中性化后 `choice`/`forbid0` 的中位应离开锚值（choice 离开 {0,10,50,100,500,1000} 的取值集合）。"
- },
- "G6": {
-  "requester": "hy4 E-2（先冻结设计前提）+ dsflash A5-1（独立 level set）",
-  "quote": "等水平、预注册的归一化 ladder 重扫：六旋钮各取**预注册 5 个水平**",
-  "scope_limit_★": "本机（A800）**只有 VLM 侧可跑**：六旋钮里的 K1「检测 τ×输入尺度」需要 YOLO 权重（visdrone_det.pt / yolo12n / yolo12s），K2「密度回归输入尺度」需要 CSRNet 权重 —— 二者都不在本机模型卷上 ⇒ **本件只做 4 个 VLM 旋钮**，K1/K2 如实标为「本机测不了」，不用代理替代。",
-  "knobs_covered": {
-   "K3 VLM·output contract": [
-    "base",
-    "forbid0",
-    "range",
-    "choice",
-    "neutral0"
-   ],
-   "K4 VLM·prompt family": [
-    "V1_json",
-    "V2_number",
-    "V3_locate",
-    "V4_estimate",
-    "V5_region"
-   ],
-   "K5 VLM·tiling level": [
-    "1x1",
-    "2x2",
-    "3x3",
-    "4x4",
-    "6x6"
-   ],
-   "K6 VLM·pixel budget": [
-    1048576,
-    400000,
-    200000,
-    100000,
-    50000
-   ]
+  "prompts_verbatim": {
+    "base": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复，以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+    "forbid0": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复。注意：**不要回答 0**；如果你认为可能是 0，请给出你最接近的估计值。以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+    "range": "请估计图片中的人数范围（人群中的每个人头或人体）。以JSON格式输出：{\"low\": 下界, \"high\": 上界}，只输出JSON。",
+    "choice": "请从以下选项中选择最接近图片中实际人数的选项：0, 10, 50, 100, 500, 1000。以JSON格式输出：{\"choice\": 选项}，只输出JSON。",
+    "neutral0": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复。人数可能是 0；若你的判断是 0，就回答 0。以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+    "forbid0n": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复。注意：不要给出最小的可能取值；如果你认为人数极少，请给出你最接近的估计值。以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+    "choicen": "请从你认为合理的候选取值中，选择与图片中实际人数最接近的一项。以JSON格式输出：{\"choice\": 选项}，只输出JSON。",
+    "V1_json": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复，以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+    "V2_number": "图中有多少人？只输出一个阿拉伯数字。",
+    "V3_locate": "请先在图中逐个定位每个人头/人体，再统计总人数，以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+    "V4_estimate": "请估计图中的人数（允许给出近似值），以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+    "V5_region": "请分区域估计人数后求和，以JSON格式输出：{\"count\": 数量}，只输出JSON。"
   },
-  "why_these_levels": "五档全部**先于任何调用**写定；K4 的 V1–V5 逐字取自冻结件，K3 的 base/forbid0/range/choice 逐字取自冻结件 `_probe_gen_remote.py`，K6 的 1048576 与已发表 res_ctrl 行同上限，其余四档按等比内插预注册。",
-  "equal_levels": "四个旋钮各 **5** 档（K5 的 1x1..6x6 由 tilek 表给出）⇒ 满足「等水平」。",
-  "item_set": "st_a 全 182 张（K5 亦同）",
-  "criterion": {
-   "C_a_ordering": "本轮 4 旋钮按 span 的排序与**已发表 M.37 可复算集**中同 4 旋钮的排序**完全一致**（Spearman = 1.00）⇒ 「等水平、独立 level set」下排序复现。",
-   "C_b_top": "最大跨度旋钮不变。",
-   "C_c_normalised": "按**旋钮相对行程**归一后排序不变（与 F.10/G15 同一操作）。",
-   "fail_reads_as": "排序或顶端改变 ⇒ §7.3 的排序主张在该 level set 下不复现，必须写明。"
-  },
-  "noise_floor": "base 臂 3 遍重复（同会话），逐项一致率 + 逐遍 span 极差；判据同 g3：极差 < span 的 20%。"
- },
- "prompts_verbatim": {
-  "base": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复，以JSON格式输出：{\"count\": 数量}，只输出JSON。",
-  "forbid0": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复。注意：**不要回答 0**；如果你认为可能是 0，请给出你最接近的估计值。以JSON格式输出：{\"count\": 数量}，只输出JSON。",
-  "range": "请估计图片中的人数范围（人群中的每个人头或人体）。以JSON格式输出：{\"low\": 下界, \"high\": 上界}，只输出JSON。",
-  "choice": "请从以下选项中选择最接近图片中实际人数的选项：0, 10, 50, 100, 500, 1000。以JSON格式输出：{\"choice\": 选项}，只输出JSON。",
-  "neutral0": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复。人数可能是 0；若你的判断是 0，就回答 0。以JSON格式输出：{\"count\": 数量}，只输出JSON。",
-  "forbid0n": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复。注意：不要给出最小的可能取值；如果你认为人数极少，请给出你最接近的估计值。以JSON格式输出：{\"count\": 数量}，只输出JSON。",
-  "choicen": "请从你认为合理的候选取值中，选择与图片中实际人数最接近的一项。以JSON格式输出：{\"choice\": 选项}，只输出JSON。",
-  "V1_json": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复，以JSON格式输出：{\"count\": 数量}，只输出JSON。",
-  "V2_number": "图中有多少人？只输出一个阿拉伯数字。",
-  "V3_locate": "请先在图中逐个定位每个人头/人体，再统计总人数，以JSON格式输出：{\"count\": 数量}，只输出JSON。",
-  "V4_estimate": "请估计图中的人数（允许给出近似值），以JSON格式输出：{\"count\": 数量}，只输出JSON。",
-  "V5_region": "请分区域估计人数后求和，以JSON格式输出：{\"count\": 数量}，只输出JSON。"
- },
- "shared_design": {
-  "model": "Qwen3-VL-32B-Instruct（BF16），vLLM 0.29.0，端口 8006",
-  "serving": "--max-model-len 8192 --gpu-memory-utilization 0.93 --limit-mm-per-prompt {\"image\":1} --mm-processor-kwargs max_pixels=1048576, min_pixels=3136",
-  "prompt_verbatim_assertion": "runner 启动时逐字断言本件里的每一条提示词与内置常量一致",
-  "temperature": 0.0,
-  "max_tokens": 96,
-  "client_side_resize": "budget>0 时按 res_ctrl.py 的 fit()（28 的整数倍）缩放，上限与已发表行相同",
-  "tiling_rule": "k×k 整数网格（行优先），每块各自成一次调用、各用 V1_json 提示词，pred = 各块解析值之和；**任一块解析失败 ⇒ 该项在该档整条作废**（不填数），并单列块级解析失败率。",
-  "item_pool": "st_a = ShanghaiTech part_A test 全 182 张（counts.csv 的 part_A/test 行）",
-  "gt_source": "/root/dense/shanghaitech/counts.csv",
-  "cost": "契约 7 臂×182 + 问法 5×182 + 像素 5×182 + 切块 182×(1+4+9+16+36) + base 噪声 2×182 ≈ **15,100 次调用**",
-  "deviation_declared": [
-   "构建：已发表 E1 阶梯是 **AWQ-4bit**（q32=ivl 两个部署），本轮是 **BF16** ⇒ G5 的 Δ 只在**本轮内部**（present vs neutralised，同一趟同一构建）判定；已发表行只作跨构建旁证并明确标注。",
-   "K1/K2 两个非 VLM 旋钮本机测不了（见 G6 scope_limit）。"
-  ]
- }
+  "shared_design": {
+    "model": "Qwen3-VL-32B-Instruct（BF16），vLLM 0.29.0，端口 8006",
+    "serving": "--max-model-len 8192 --gpu-memory-utilization 0.93 --limit-mm-per-prompt {\"image\":1} --mm-processor-kwargs max_pixels=1048576, min_pixels=3136",
+    "prompt_verbatim_assertion": "runner 启动时逐字断言本件里的每一条提示词与内置常量一致",
+    "temperature": 0.0,
+    "max_tokens": 96,
+    "client_side_resize": "budget>0 时按 res_ctrl.py 的 fit()（28 的整数倍）缩放，上限与已发表行相同",
+    "tiling_rule": "k×k 整数网格（行优先），每块各自成一次调用、各用 V1_json 提示词，pred = 各块解析值之和；**任一块解析失败 ⇒ 该项在该档整条作废**（不填数），并单列块级解析失败率。",
+    "item_pool": "st_a = ShanghaiTech part_A test 全 182 张（counts.csv 的 part_A/test 行）",
+    "gt_source": "/root/dense/shanghaitech/counts.csv",
+    "cost": "契约 7 臂×182 + 问法 5×182 + 像素 5×182 + 切块 182×(1+4+9+16+36) + base 噪声 2×182 ≈ **15,100 次调用**",
+    "deviation_declared": [
+      "构建：已发表 E1 阶梯是 **AWQ-4bit**（q32=ivl 两个部署），本轮是 **BF16** ⇒ G5 的 Δ 只在**本轮内部**（present vs neutralised，同一趟同一构建）判定；已发表行只作跨构建旁证并明确标注。",
+      "K1/K2 两个非 VLM 旋钮本机测不了（见 G6 scope_limit）。"
+    ]
+  }
 }

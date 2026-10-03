@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""n6_budget_matched.py — #13：**预算匹配跨度**（gpt6sol E-2），零新跑。
+"""n6_budget_matched.py — #13：**预算匹配跨度**（[external-review] E-2），零新跑。
 
 冻结判据：`n6_criteria_frozen.json`（断言 md5）。
 单元与工具：**直接复用** `n5_order_prereg.py`（它自己逐字复制了 `a39_unit_calib_heldout.py` 的构建，

@@ -1,7 +1,7 @@
 #!/bin/bash
 # w1_run.sh — W1 独立家族前瞻验证：**主面板驱动**（单卡串行：逐家族起服 → smoke 门 → 跑格 → 停服）
 #
-# 冻结判据：analysis/work/w1_prereg.json  md5 75eeca6fa68c9be65c2b569d4237d8df（2026-09-23 08:35:05）
+# 冻结判据：analysis/work/w1_prereg.json  md5 0a42e6e5bbfa89543ba9fc1522f1b075（2026-09-23 08:35:05）
 #   本脚本**只执行、不判定**；判定由本地 w1_judge.py 按冻结口径做。
 # 仪器：/root/19f_probe_ablation.py（md5 28e82b20a7f4，提示词/解析器逐字复用 19e）——**不改探针**。
 #
@@ -111,7 +111,7 @@ wait_ready() {         # wait_ready <model_id> <path> —— 以下载日志的"
 }
 
 say "########## W1 主面板开始 ##########"
-say "冻结判据 md5 75eeca6fa68c9be65c2b569d4237d8df；仪器 19f md5 28e82b20a7f4；本脚本不判定"
+say "冻结判据 md5 0a42e6e5bbfa89543ba9fc1522f1b075；仪器 19f md5 28e82b20a7f4；本脚本不判定"
 df -h / | tail -1 >> "$L"
 CM=/model/ModelScope
 

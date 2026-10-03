@@ -1,8 +1,9 @@
 {
+  "_sanitized": "review traces removed; no value changed",
   "title": "P1b frozen criteria — within-family template x contract interaction at sigma=8",
   "frozen_on": "2026-09-25",
   "answers_review_items": [
-    "grok46 实验充分性 −3.0（一族内 template × contract 交互）",
+    "[external-review] 实验充分性 [Δ]（一族内 template × contract 交互）",
     "同时补齐 P1 生态版的前一半（模板轴）"
   ],
   "design": {

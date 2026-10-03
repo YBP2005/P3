@@ -2,7 +2,7 @@
  "round": "n5(order-prereg)",
  "frozen_at": "2026-09-27",
  "frozen_by": "P3 owner (author side)",
- "requester": "dsflash A5-1 + dspro R3（v0573 盲审）",
+ "requester": "[external-review] A5-1 + [external-review] R3（[external-review]）",
  "zero_new_data": "★ 只用**已发布的逐项记录**（M.37 的 36 个单元就是它们建的）；零新跑、零新标注。",
  "unit_set": {
   "construction": "**逐字复制** `a39_unit_calib_heldout.py` 的单元构建（同一批源文件、同一资格规则 ≥3 档且共同 item ≥20）；runner 启动时断言该文件的 md5。",

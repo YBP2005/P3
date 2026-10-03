@@ -1,5 +1,6 @@
 {
-  "purpose": "固定分位数截尾后的跨度（v0547 盲审 gemini38flash −2.5）",
+  "_sanitized": "review traces removed; no value changed",
+  "purpose": "固定分位数截尾后的跨度（[external-review][external-review]",
   "design": "ISO 保序校准后的逐档 ρ；mid80/mid60 = 去掉两端各 10%/20% 档位后的极差",
   "units": [
     {

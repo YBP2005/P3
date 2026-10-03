@@ -1,5 +1,5 @@
 {
-  "purpose": "E2 的真零/非零对照（盲审 #1 的\"混合真零/非零\"要求）",
+  "purpose": "E2 的真零/非零对照（[external-review] #1 的\"混合真零/非零\"要求）",
   "rule": "raw-match，同 a5_judge.cls()",
   "z0": {
     "InternVL3_5-8B|cn|z0easy|base": {

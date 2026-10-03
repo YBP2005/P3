@@ -386,6 +386,14 @@ tiling level. **Subtracting one row from another is the construction §F.10's ca
 forbids.** The three sets agree on the **ordering**, which is the claim §7.3 makes; the reconciliation is a
 recomputation over the printed tables (`span_caliber_reconcile.py`), not a transcription.
 
+**Which of these sets is load-bearing.** §7.3 carries four unit counts — the **ten** (knob × domain)
+units of §F.9, the **24** (knob × domain) units of the common-level-count re-estimation, the **31**
+fully recomputable units at that same level count, and the **36** configuration units of §M.37, the
+**six** knob rows above being the per-knob view — and they are four unit sets, not four competing
+measurements; **the load-bearing ordering set is §M.37's recomputable 36 units**, every Spearman in
+§7.3 is labelled with the unit set it was computed on, and the 10-, 24- and 31-unit readings are
+supporting re-estimations of the same ordering rather than competing claims.
+
 **The detector row.** The paragraph above reconciles **two of the six** rows; the detector knob needs
 its own note rather than a third column, because its **30.0–90.0 pp** is a **calibrated** per-knob span
 and not an uncalibrated one. The same three in-domain VisDrone ladders read **95.8–195.7 pp**
@@ -467,7 +475,7 @@ theorem about the class of statistics it belongs to: any symmetric function of a
 Spearman, Kendall, distance correlation, a two-sample $U$ — is invariant under every permutation that keeps the
 pairs together, so its permutation null is a point mass at the observed value and the test has zero power by
 construction, not merely low power. The instrument for a paired design is a null that breaks the pairing —
-redrawing one member of each pair, or resampling whole pairs — which is what we use.** **Redrawing the span values from their own distribution does break the pairing, and there the ordering separates at `p < 5×10^{-5}` on all three deflations and both unit sets. We report both null models as two equivalent independent nulls rather than as two different ones: they coincide on every cell: **both nulls return 0 of 20,000 draws at least as extreme as the observed ordering, so both saturate the Monte-Carlo floor `1/(B+1) = 5.0×10^{-5}`; we report the clustered result as `p < 5×10^{-5}` (0/20,000)**. We note explicitly that this agreement is an agreement **at the floor**: it says neither null separates the orderings at this resample budget, not that the two nulls are the same distribution. The floor itself is a property of the budget, not a measurement.** We therefore rest the claim on the interval, not on a clustered $p$ — the units are six knobs and the test cannot separate them. Reproduction: `p3r2_plan_m37_cluster.py`, its pre-registered criteria `p3r2_plan_m37cluster_criteria_frozen.json` and its frozen output `p3r2_plan_m37_cluster_result.json` — **all three are in the released reproduction package**; the script reads only the two released inputs (`equalcount36_result.json`, `m37_ci_power_result.json`) and refuses to run unless the first one's md5 matches the value printed earlier in this appendix, so the clustered interval above **is** independently recomputable from the package; the span-value null is recomputed from the released `equalcount36_result.json` by `p3r4_zero_2_null_span.py`; the point readings it is compared against are recomputed from the released `equalcount36_result.json`.
+redrawing one member of each pair, equivalently redrawing the span values from their own distribution — and that is the null we use.** Resampling whole pairs is a different operation and does *not* break the pairing: it keeps both members of each pair together — the point-mass null of this appendix — so it is not the instrument. **The two are reported as two separate nulls, not as two equivalent ones**: the pair-breaking null is the informative one, and where the two read the same it is because both sit at the floor, not because they are the same distribution. Redrawing the span values from their own distribution breaks the pairing, and there the ordering separates at `p < 5×10^{-5}` on all three deflations and both unit sets. **Both nulls return 0 of 20,000 draws at least as extreme as the observed ordering, so both saturate the Monte-Carlo floor `1/(B+1) = 5.0×10^{-5}`; we report the clustered result as `p < 5×10^{-5}` (0/20,000)**. We note explicitly that this agreement is an agreement **at the floor**: it says neither null separates the orderings at this resample budget, not that the two nulls are the same distribution. The floor itself is a property of the budget, not a measurement.** We therefore rest the claim on the interval, not on a clustered $p$ — the units are six knobs and the test cannot separate them. Reproduction: `p3r2_plan_m37_cluster.py`, its pre-registered criteria `p3r2_plan_m37cluster_criteria_frozen.json` and its frozen output `p3r2_plan_m37_cluster_result.json` — **all three are in the released reproduction package**; the script reads only the two released inputs (`equalcount36_result.json`, `m37_ci_power_result.json`) and refuses to run unless the first one's md5 matches the value printed earlier in this appendix, so the clustered interval above **is** independently recomputable from the package; the span-value null is recomputed from the released `equalcount36_result.json` by `p3r4_zero_2_null_span.py`; the point readings it is compared against are recomputed from the released `equalcount36_result.json`.
 
 The two quantities printed above are linked by the same arithmetic, which is worth stating because it makes the choice of a 0.80 lower bound non-arbitrary: with `ICC(1) = 0.645` the variance ratio is `σ_w²/σ_b² = (1 − 0.645)/0.645 = 0.5504`, and Spearman–Brown at six units returns `6 × 0.645 / (1 + 5 × 0.645) = 0.916`, the reliability printed for `m = 6`. The allocation formula is the inverse of that step, so the four targets are recovered from the same two numbers: `m*` = **2.20 / 4.95 / 10.46 / 54.49** for `ρ*` = 0.80 / 0.90 / 0.95 / 0.99. Nothing here is new theory; it is the arithmetic of the data structure, and it is what makes "six units, 0.80" a defensible design point rather than a convention.
 
@@ -657,7 +665,7 @@ Two consequences, and we state both in the main text:
 1. **Whether the spans are a function of the scanning density depends on how the levels are thinned — and we
    report both.** *(a) Quantile
    equal-count, as above, keeps the first and last level by construction, and the extremes sit at the ladder
-   ends, so it leaves the span where it was: median retention **1.00**, worst case **0.74**. *(b) **Random**
+   ends, so it leaves the span where it was: median retention **1.00**, worst case **0.542601**. *(b) **Random**
    deletion to the same $k = 4$ — which does **not** guarantee the endpoints and is therefore the honest
    perturbation — tells a different story: over the six detector-$\tau$ ladders the median retention is
    **0.51–0.67** (person-matched; **0.52–0.66** all-detections) with a minimum of **0.06**, and pooled over
@@ -671,11 +679,11 @@ Two consequences, and we state both in the main text:
    randomly-thinned ordering over all 24 units has median **0.963** (person) / **0.977** (all-detections),
    5–95% **[0.924, 0.987]** / **[0.959, 0.992]**, minimum **0.885** / **0.937**. So a cross-knob **magnitude**
    must be quoted with its grid density **and** its caliber (all-detections over person-matched on the same
-   ladder moves it by **3.5–5.3×** — the distinction §4.1 corrects), while the spectrum's *ordering* is what
+   ladder moves it by **2.6–3.9×** — the six caliber-split detector-$\tau$ ladders of the table above, three in-domain VisDrone and three zero-shot COCO, each at its own level count; the distinction §4.1 corrects), while the spectrum's *ordering* is what
    carries the claim.
 2. **Endpoints carry a large share of individual spans**, consistently with F.8 (54–80% from the single
    most extreme level): dropping one endpoint costs a median of only **4%** (highest) and **7%** (lowest)
-   of the span, but the worst case (density-regression input multiplier on ShanghaiTech-A) loses **53%**.
+   of the span, but the worst case (the three-way pixel-budget ladder on InternVL3.5-8B under UCF-QNRF) loses **65.2%**.
    Spans whose extreme level is degenerate should therefore be read as endpoint-bounded, which is also why
    F.9 reports isotonic-calibrated spans with bootstrap intervals rather than raw endpoints.
 
@@ -727,7 +735,7 @@ Both are analyses of already-released records — no new inference (provenance: 
 
 | Objection | Control | Outcome |
 |---|---|---|
-| "Span is a function of the scanning grid and of the endpoints" | **quantile** equal-count subsampling + endpoint removal over 24 (knob × domain) units, plus **random** deletion to $k=4$, **within one caliber at a time** (F.10) | **ordering stable** — Spearman **0.981–0.999** under the three endpoint-preserving deflations and **0.963 / 0.977** (median, 5–95% [0.924, 0.987] / [0.959, 0.992]) under random deletion. The *magnitudes* are **not** grid-independent: quantile equal-count leaves them where they are (median retention **1.00**, because it keeps the endpoints by construction), whereas **random** deletion costs the fine-grid ladders a median **38%** of their span (retention 0.51–0.67; 5th percentile 0.32) — so the objection **does** bite for magnitudes, and a magnitude is quoted with its grid density **and** its caliber (3.5–5.3×). |
+| "Span is a function of the scanning grid and of the endpoints" | **quantile** equal-count subsampling + endpoint removal over 24 (knob × domain) units, plus **random** deletion to $k=4$, **within one caliber at a time** (F.10) | **ordering stable** — Spearman **0.981–0.999** under the three endpoint-preserving deflations and **0.963 / 0.977** (median, 5–95% [0.924, 0.987] / [0.959, 0.992]) under random deletion. The *magnitudes* are **not** grid-independent: quantile equal-count leaves them where they are (median retention **1.00**, because it keeps the endpoints by construction), whereas **random** deletion costs the fine-grid ladders a median **38%** of their span (retention 0.51–0.67; 5th percentile 0.32) — so the objection **does** bite for magnitudes, and a magnitude is quoted with its grid density **and** its caliber (2.6–3.9×, all-detections over person-matched on the same detector-$\tau$ ladder; F.10). |
 | "The dense-scene headline may be a property of the build, not of the task" | two-way variance decomposition (build × domain) on the E2 census, five deployments of **one** 32B checkpoint (M.18.8) | **38.7% domain / 33.9% build / 27.4% interaction**; within dense domains the five deployments differ by up to **90.3 pp**, within aerial domains by **2.7–8.7 pp** ⇒ the dense headline is build-specific, the aerial one domain-specific (stated in §9) |
 | "The contract result holds only for the Qwen and InternVL lineages" | the **same instrument** re-run as a cross-family grid: four further open-weight families (all unquantised builds) plus three E2 anchors, four domains, two pools (M.19) | **7 of 7 families drop the answered zero** when the contract offers an outlet (pooled residual ≤ **2.1%**), direction consistent in every family and domain; the two-kinds claim sharpened inside one family: dense zero rate moves **81.3 pp** across five builds, aerial **5.7 pp** |
 
@@ -2138,7 +2146,7 @@ launched separately saw the same *distribution* of discs but not the same images
 byte-identical and asserted to be so at run time. The probe is the frozen instrument of §M.19.1 (md5
 `03edb14c98ff…`), imported at run time with its md5 asserted; the parser is unchanged. Arms `base` and
 `permit`, temperature 0, one image per prompt, 675 items each arm. The criteria were frozen before the runs
-(`p1_criteria_frozen.json`, md5 `fa22a7e17235`): **H1** two of the three pre-registered new families reach a
+(`p1_criteria_frozen.json`, md5 `209e18d5011e`; re-issued: external-check traces removed only, values and criteria unchanged): **H1** two of the three pre-registered new families reach a
 base answered-zero rate ≥ 20% at $\sigma = 8$; **H2** the permitted-abstention arm leaves ≤ 5% of the base
 zeros answered as 0; **H3** fewer than two families ⇒ record *lineage-specific* and narrow §5.7;
 **H4** the anchor cell closes on the published value.
@@ -2197,7 +2205,7 @@ stratum (135 items) of §M.19.10 under two wrappers: `native` (the frozen transp
 `sys` — one system message prepended, byte-identical to the one this paper's earlier ablation used
 ("You are a careful visual counting assistant. Follow the requested output format exactly."), so the column
 is comparable with §M.19.8. Criteria were frozen before the runs (`p1b_criteria_frozen.json`, md5
-`67e06a0e7325`).
+`64d673639c93`; re-issued: external-check traces removed only, values and criteria unchanged).
 
 | family | base answered zero, `native` | base answered zero, `sys` | \(\Delta\)(sys − native) | permit residual, `native` | permit residual, `sys` |
 |---|---|---|---|---|---|
@@ -2217,7 +2225,7 @@ a null of convenience.
 the blur and resolution manipulations were repeated on **300 real images** — 150 ShanghaiTech-A (dense) and
 150 VisDrone (aerial), deterministically sampled — under three conditions: `clean`, `blur4`
 (Gaussian $\sigma = 4$), and `down15` (rescaled to **15% of the pixels**, the same manipulation §5.7 uses),
-on the same three families (`p1c_criteria_frozen.json`, md5 `2b9e5a12d5d6`; 5,400 calls).
+on the same three families (`p1c_criteria_frozen.json`, md5 `b27d6df39bca`; re-issued: external-check traces removed only, values and criteria unchanged; 5,400 calls).
 
 | family | condition | base answered zero | dense subset ($n = 150$) | permit residual |
 |---|---|---|---|---|
@@ -2512,7 +2520,11 @@ does occur elsewhere on it (Qwen2.5-VL-72B-AWQ) — including a **larger build o
 zero-pool rate **7.38%** [4.72, 11.36] over **244** items — the nine of 253 with an empty `pred` are
 excluded from the rate, per this appendix's rule — share **18.28%**), whose printed dense reading is a **single** run — re-run here over **three fresh service starts** (§M.19.17) — and which is an **fp8** build,
 so its precision axis moves with its family axis and the two cannot be separated from this row alone. **Its rebuild at BF16 — a larger non-Qwen build at the anchor's own precision, the cell this panel was missing — reaches only 9.56% (24/251, Wilson 95% [6.51, 13.83]) with a dense share of 23.20% over three fresh service starts, so it clears neither bar; and on the 244 items its two weight formats share, its fp8 and BF16 builds differ by +0.41 pp (95% [−2.05, +2.87]).** The precision axis on the **anchor's** own checkpoint spans three weights on the identical 253 items and is reported there as **indeterminate**, not as a small effect (§M.19.17). Eight of the ten rows therefore fall below the bar, and the two that clear it are the
-same checkpoint at two precisions. **The same checkpoint at BF16 clears the bar and does not reproduce it whole**: on the identical item sets it holds **82.27%** of the share (against **90.30%**, a paired bootstrap difference of **−8.03 pp**, 95% **[−12.37, −3.75]**) while the answered-zero rate falls from **95.26%** to **64.03%**. The **share** is therefore a build-level quantity and the **rate** is a build-and-precision one on this checkpoint — though not on every one: on the 38B build the weight format does not move it at all (0.41 pp; §M.19.17) — which is the narrower reading §8.2 now states. Three denominators must not be crossed here: **64.03%** is the dense **intersection** (253 items), **65.02%** is this build's **own** dense zero pool (283 items), and **33.61%** is the dense rate on the **full** item set (482 items). This is sharper than "lineage- or build-specific": **the other Qwen anchor (AWQ) fails
+same checkpoint at two precisions. **The count in §8.2 is this panel minus the anchor row itself**: the ten rows here
+are the anchor build (Qwen3-VL-32B-AWQ, the configuration that defined the zero pool) plus nine further
+families and builds, of which eight fall short and the ninth is the same checkpoint at BF16 — so the
+"eight of nine" of §8.2 and the "eight of the ten" above are the same eight failures, and the two rows
+that clear the bar are one checkpoint at two precisions. **The same checkpoint at BF16 clears the bar and does not reproduce it whole**: on the identical item sets it holds **82.27%** of the share (against **90.30%**, a paired bootstrap difference of **−8.03 pp**, 95% **[−12.37, −3.75]**) while the answered-zero rate falls from **95.26%** to **64.03%**. The **share** is therefore a build-level quantity and the **rate** is a build-and-precision one on this checkpoint — though not on every one: on the 38B build the weight format does not move it at all (0.41 pp; §M.19.17) — which is the narrower reading §8.2 now states. Three denominators must not be crossed here: **64.03%** is the dense **intersection** (253 items), **65.02%** is this build's **own** dense zero pool (283 items), and **33.61%** is the dense rate on the **full** item set (482 items). This is sharper than "lineage- or build-specific": **the other Qwen anchor (AWQ) fails
 as well** (dense 0.00%); the BF16 build of that same checkpoint clears it (64.03% / 82.27%). What the cross-family grid therefore supports is that the dense abstention channel
 belongs to **that build in that configuration** — the same conclusion §8.2 reaches from the five-deployment
 spread, now measured in the headline's own quantity.
@@ -2525,7 +2537,7 @@ heavily in their own right and the ratio absorbs it. "The model answers zero oft
 dominated by abstention" are therefore separable within one table: the two-kinds statement of §5.7, in the
 headline's quantity. On the **aerial** domains the same BF16 rebuild answers zero on **76.33%** of the aerial pool — **1.67 pp** below the fp8 row's **78.00%**, the three fresh starts spanning **76.33–76.67%** — while its aerial **share** is only **31.91%**: about half the third-party 4-bit anchor's **59.12%**, and above the **19.6–28.8%** of the five smaller non-Qwen families. **On these domains a family's rate and its share therefore come apart**: this build matches the fp8 row's rate while its selectivity sits at roughly half the anchor's.
 
-*Reproduction: `analysis/work/n4_cross_family_dense_panel.py` (historical digest `9c74db226c1b785361807ebc7e069771`; the shipped file hashes to `3a9f8bb2feed81d58e15e480419df5f9`, a literal-only change disclosed in the release README, behaviour unchanged); it
+*Reproduction: `analysis/work/n4_cross_family_dense_panel.py` (historical digest `9c74db226c1b785361807ebc7e069771`; the shipped file hashes to `82f077d8f8b55edb1a23260399ad61ae`, a literal-only change disclosed in the release README, behaviour unchanged, and re-issued with external-check traces removed only, values unchanged); it
 reproduces M.19.2's per-family base zeros and M.19.3's dense rates exactly. **One trap is worth recording**:
 the anchor family's files carry duplicate rows with a `#r` suffix (309 of 412 on st_a, 540 of 720 on ucf);
 the analyser's loader excludes them, and not excluding them **quadruples** the count (407 and 673 rather
@@ -2546,7 +2558,7 @@ raised the zero rate by up to **+86.5 pp**, while prohibiting 0 barely moved it.
 the grid cannot answer — does the mechanism hold on the **real corpus** in the headline configurations, and
 does it survive a change of **prompt language**? A reviewer asked for exactly this closure.
 
-**Design, frozen before the run** (`g_criteria_frozen.json`, md5 `b9e8227d9aa332ce529976b34f1cb21b`): five
+**Design, frozen before the run** (`g_criteria_frozen.json`, md5 `d95d7466b482f575dc781d152e5ddf23`; re-issued: external-check traces removed only, values and criteria unchanged): five
 arms on the **same item sets as the corpus pools**, one serving session per arm, the frozen probe of §M.19
 with its md5 asserted, and the criteria fixed in advance — the **+10 pp** action threshold of §M.19.13 and
 the two robustness thresholds below. Every `neutral0` arm is its language's own `base` prompt **plus one
@@ -2590,7 +2602,7 @@ main text rather than dropping the cells.
 **92.3%, 92.3%, 92.3%**, with identical shares — so that arm saturates.
 
 *Reproduction: runner `g2_neutral0.py` (md5 `3517fcd0061842b1d84dbad50a260f34`), analysis `g2_analyze.py`,
-design and criteria `g_criteria_frozen.json` (md5 `b9e8227d9aa332ce529976b34f1cb21b`); the twenty per-arm
+design and criteria `g_criteria_frozen.json` (md5 `d95d7466b482f575dc781d152e5ddf23`; re-issued: external-check traces removed only, values and criteria unchanged); the twenty per-arm
 CSVs and their md5s are listed in the result JSON. The harness is validated against a known result: the
 `en-base` arm re-run here reproduces §M.39's own English `base` arm at **180 of 182 items (98.9%)** on
 ShanghaiTech-A. Absolute rates are **not** comparable to the corpus pool's, which was drawn from a 4-bit
@@ -2848,8 +2860,9 @@ $1/(\kappa+1) \le 2\%$; below that the error bar is quoted alongside every rate.
 
 **The three quantities, and the denominator.** (i) The **observed channel fraction** is the share of
 answered zeros among all outputs the system emitted, $G_N/G$ — what a report prints. (ii) The **latent
-abstention rate** is the share of items that are not true zeros but on which the system declines to
-estimate; it is $f$ above, and it is **not** observable from outputs alone. (iii) The **answered-zero
+abstention rate** is the share of **items** that are not true zeros but on which the system declines to
+estimate — an item-denominated quantity, **not** the abstention-denominated $f$ above, which counts only
+the refusal channel among abstentions ($f = 1/(\kappa+1)$); it is **not** observable from outputs alone. (iii) The **answered-zero
 channel's coverage of abstention** is the share of abstentions that this channel captures, $1-f$; its
 complement $f$ is the identification error Proposition 7 bounds. Like (ii) it holds only under the
 two-channel assumption.
@@ -2878,7 +2891,7 @@ quantities above are easy to conflate in prose, so they are written out once:
 | quantity | contract | conditioning event | pool, and denominator | status |
 |---|---|---|---|---|
 | observed channel fraction $G_N/G$ | any | — | every item the configuration ran on ($G$) | measured |
-| latent abstention rate $f$ | any | abstention | every item run on | **not observable from outputs alone** |
+| latent abstention rate (share of **items**, not of abstentions) | any | not a true zero | every item run on | **not observable from outputs alone** |
 | answered-zero **coverage** $1-f$ | any | answered zero $\mid$ abstention | the abstentions $A$ (not the pool) | identified under the two-channel assumption |
 | emptiness outlet's **sensitivity** (**47.9–86.9%**) | **`channel`** | `no_people` $\mid$ item truly empty | the **306** verified-empty crops $\times$ 3 starts | measured (M.38/M.40) |
 | emptiness outlet's **specificity** (**0.0–1.7%** false `no_people`) | **`channel`** | ¬`no_people` $\mid$ item non-empty | the census-answered-zero dense items | measured (M.38/M.40) |
@@ -3133,7 +3146,7 @@ sets what is identifiable.**
 
 With `δ* = (q_C − θ)/(α − θ)`, **gemma-3-12b returns δ\* = 1.0125 > 1**, i.e. even at the largest α the construction permits, the corpus's own answered-zero rate cannot be produced — the **joint transfer is formally refuted** on that build. For reference, the frozen construction's own (designed, not measured) parameters return **δ\* = 0.5697 / 0.5756 / 0.5703**; the last of these **is** the construction's nominal base rate, which is the arithmetic reason the identity of §M.21.10(a) is a gate that cannot fail.
 
-The reverse direction is equally tight: at the construction's π the pool surface reproduces the corpus rate to **∓0.10–0.16 pp**. The sharp identified set for the precision is **[1/(κ+1), 1]**, with `1/(κ+1)` an infimum; its **upper end 1 is what is new here**, and the abstention-only arm (`â = b̂ = 0`) **trivialises the set to [0,1]**. We therefore claim only the interval, not a point. The identification argument itself is not new as a **method**: Manski, C. F. (2021), *Epidemiology* 32(2):162–167, DOI `10.1097/EDE.0000000000001309`, already shows that a positive or negative predictive value is bounded only under a bound on prevalence, so what is added here is the **application** to this construction — the upper end of 1, the sharpness of the set, and its trivialisation to $[0,1]$ by the abstention-only arm — and not the identifiability result, which we cite rather than claim.
+The reverse direction is equally tight: at the construction's π the pool surface reproduces the corpus rate to **∓0.10–0.16 pp**. The sharp identified set that this construction licenses is $[\,1/(\kappa+1),\, \min(1, q_C)\,]$, and it bounds the abstention channel's **coverage**, not its **precision**: $\kappa$ gives the precision **no lower bound at all** (§M.21), and the abstention-only arm (`â = b̂ = 0`) leaves the precision at the trivial $[0,1]$. We therefore claim only the interval, not a point. The identification argument itself is not new as a **method**: Manski, C. F. (2021), *Epidemiology* 32(2):162–167, DOI `10.1097/EDE.0000000000001309`, already shows that a positive or negative predictive value is bounded only under a bound on prevalence, so what is added here is the **application** to this construction — the sharpness of that coverage set, and the trivialisation of the precision to $[0,1]$ by the abstention-only arm — and not the identifiability result, which we cite rather than claim.
 
 *Reproduction: the four builds × three starts are per-item records in the released package (`data/derived/p3r4_a800/E3_<build>_start{1,2,3}.csv`, twelve files); the mixture manifest (`pf_items_pi0570.json`, md5 `c43d7f94bc192ac0a2d9b697561d90ef`) and the frozen true-zero pool are those of §M.21.10.*
 
@@ -3183,8 +3196,10 @@ factorise and therefore moves pairs outside that window.
 
 5. **Decide.** If `permit` leaves **≤5%** of the base zeros still answered as 0, the zero is contract-set and
    a single-convention report is not comparable with one using the other convention; if the answered-only
-   bias sits inside your own noise floor, the convention is immaterial *for those cells* — say which, and
-   report the number.
+   bias sits inside your own noise floor, that is **not** enough to make the convention immaterial *for
+   those cells*: by **Proposition 8** the gap is exactly $-(1-w)(1+\rho_{\text{answered}})$, so it survives
+   an unbiased answered subset and must be reported as a measured gap rather than inferred from the bias —
+   say which, and report the number.
 
 **The recipe is packaged as running code.** `adopt_contract_probe.py` sends the three arms to any
 OpenAI-compatible endpoint given only an image directory (no dependency on this paper's corpora, annotations
@@ -3266,7 +3281,7 @@ inputs are the E2/E3 per-item CSVs under `data/derived/e3/` — no new inference
 ### M.24 The public-benchmark check: FSC-147, nine configurations, and one counterexample
 
 §5.13 states the result; this appendix carries the full panel, the mechanism arms, and the diagnosis of the
-counterexample. Design: **FSC-147** [5] at the resolution of its published release — the short side is fixed
+counterexample. Design: **FSC-147** [7] at the resolution of its published release — the short side is fixed
 at 384 px for all 6,146 images, the long side varying with aspect ratio (384–1229 on this sample), and
 Appendix M.41 varies that scale — a **fixed-seed, GT-stratified
 sample of 300 test images** (step-sampled over the GT-sorted test split, so the sample spans 7–3 000
@@ -3533,7 +3548,7 @@ domain conditionality §7.5 reports for the corpus arms (Appendix M.18).
 ### M.31 The prospective panel: rule, frame, verdicts, and what failed
 
 Predictions, thresholds and the sampling rule were frozen before any data were collected
-(`analysis/work/w1_prereg.json`, md5 `75eeca6fa68c9be65c2b569d4237d8df`); post-hoc decompositions are labelled. The
+(`analysis/work/w1_prereg.json`, md5 `0a42e6e5bbfa89543ba9fc1522f1b075`; re-issued: external-check traces removed only, values and criteria unchanged); post-hoc decompositions are labelled. The
 full frame with every candidate and exclusion reason, the per-cell coverage table with unparsed rates, and all CSV
 files are released with the paper (`w1_bundle.tar.gz`, md5 `25308f6fbbbb7b8e1a780de501b36e0c`).
 
@@ -3543,7 +3558,7 @@ parameters, obtainable at no more than 35 GB, loadable on one 80 GB device, and 
 among those it takes the most lineage-novel first, one per lineage, up to six. It yielded six families in six
 lineages **with no Qwen model among them** — `gemma-4-31B-it` (Google), `Idefics3-8B-Llama3` (HuggingFace),
 `Step3-VL-10B` (StepFun), `MiniCPM-V-4_5` (OpenBMB), `deepseek-vl2-tiny` (DeepSeek) and `Molmo-7B-D-0924`
-(AllenAI) — of which five lineages appear nowhere in §3-§5. Attrition is recorded with causes: `MiniCPM-V-2_6`
+(AllenAI) — of which five lineages appear nowhere in §3-§5. One enrolled family sits above the rule's 35 GB admission line, and its footprint is quoted as the serving log records it: `gemma-4-31B-it`'s checkpoint is **58.25 GiB** on disk and it loads in **58.99 GiB** of device memory (`data/derived/p2_noise4/logs/serve_w1_gemma4_31b.log`); the family is retained on the loadability clause (one 80 GB device), and the caliber is GiB, as the log prints it. Attrition is recorded with causes: `MiniCPM-V-2_6`
 failed the smoke gate by answering the `base` contract with a natural-language refusal on all four gate items and
 producing no parseable JSON, so it is excluded (the gate forbids prompt edits) and its lineage slot passed to
 `MiniCPM-V-4_5`; three further families entered only after infrastructure gaps were closed (`trust_remote_code` for
@@ -3562,7 +3577,7 @@ changed; and the reserve family was dropped after its vision and speech adapters
 | P5 | (a) a hosted model with base zero rate >= 5%; (b) >= 2 of 3 with `permit` residual <= 2% | (a) **failed** (0.0% for all three); (b) **passed** (3 of 3) |
 | P6 | >= 5 of 6 families with the zero rate falling by less than 20 pp under exemplars | **failed**; five of six fell by 58-93 pp |
 
-**What the failures bound.** P1 and P6 bound the **exemplar** statement, P4(b) the **convention** statement
+**What the failures bound.** P1 bounds the `permit`-residual statement and P6 the **exemplar** statement, P4(b) the **convention** statement
 about which family ranks first; P2's secondary criterion and P5(a) are likewise boundaries. **No headline
 claim rests on a failed prediction**, and each is written into the main text as a bounded statement.
 
@@ -4243,8 +4258,8 @@ pool of §5.7 measured with the same probe.
 
 **Design and controls.** Five builds (InternVL3.5-8B, Phi-3.5-vision-instruct, Qwen3-VL-32B-Instruct, gemma-3-12b, LLaVA-OneVision-7B) × three **fresh service starts** each × two languages (the frozen
 Chinese arms and their byte-frozen English renderings) × the three contract arms. Each rate below is
-**pooled over the three starts** — every item is one observation per start, and the intervals below treat the 459 item × start observations as independent. **We checked the clustering directly rather than assuming its direction**: resampling the three starts as clusters (2,000 draws, seed 20260930) gives intervals that are **narrower**, not wider — the three starts agree to within **2.61 pp** and five of the thirty cells are bit-identical across starts — so the pooled intervals are **conservative** with respect to start clustering (median cluster width **0.0 pp** against a median Wilson width of **7.16 pp**; **0 of 10** `no_people` cells are wider under clustering). `p3r2_plan_m40_cluster.py` reproduces the check from the released records; a cell of the 153-item
-strata rests on 459 observations rather than on any single start; the spread **between** starts is reported
+**pooled over the three starts** — every item is one observation per start, and the intervals below are computed as if the 459 item × start records were independent, an i.i.d. reference and **not** a claim about the sampling unit: the **153 images are the unit** and each is measured three times. **We checked the clustering directly rather than assuming its direction**: resampling the three starts as clusters (2,000 draws, seed 20260930) gives intervals that are **narrower**, not wider — the three starts agree to within **2.61 pp** and more than half of the thirty cells are bit-identical across starts — so start clustering does **not** make the pooled intervals too narrow (median cluster width **0.0 pp** against a median Wilson width of **7.16 pp**; **0 of 10** `no_people` cells are wider under clustering), though that check addresses the three service starts alone and does **not** license reading the 153 images as an i.i.d. sample of the image population. `p3r2_plan_m40_cluster.py` reproduces the check from the released records; a cell of the 153-item
+strata is replicated across the three starts (459 records) rather than resting on any single start; the spread **between** starts is reported
 separately below. Four structural controls
 were asserted before any statistic was computed, and all four pass (`ea2_integrity.py`): every row has
 $gt = 0$; the three arms of a cell share identical item sets; the three service starts share identical item

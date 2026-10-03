@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """w1_judge.py — W1 前瞻验证的**机械判定器**。按冻结口径执行，不参与任何"看到数据再调"的动作。
 
-冻结判据：analysis/work/w1_prereg.json  md5 75eeca6fa68c9be65c2b569d4237d8df（2026-09-23 08:35:05）
+冻结判据：analysis/work/w1_prereg.json  md5 0a42e6e5bbfa89543ba9fc1522f1b075（2026-09-23 08:35:05）
 运行定义（来自冻结文本 §3）：
     answered_zero(item) = pred ∈ {0, 0.0}
     abstained(item)     = pred ∈ {abstain, cannot_judge, no_people}
@@ -49,7 +49,7 @@ AERIAL = ['visdrone', 'aitod']
 ARMS_ZERO = [('base', 'native'), ('permit', 'native'), ('channel', 'native'), ('base', 's640')]
 ABSTAIN = {'abstain', 'cannot_judge', 'no_people'}
 ABSTAIN_WORDS = ('abstain', 'cannot_judge', 'no_people', 'no_objects')
-PREREG_MD5 = '75eeca6fa68c9be65c2b569d4237d8df'
+PREREG_MD5 = '0a42e6e5bbfa89543ba9fc1522f1b075'
 
 
 # ---------------------------------------------------------------- 读数据

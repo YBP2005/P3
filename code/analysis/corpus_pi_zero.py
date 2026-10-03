@@ -4,7 +4,7 @@
 
 Why this exists: the reviewers' largest new-data request is a blind-labelled pool that would measure
 $\\pi$, the mixed corpus's base rate of genuinely empty items, so that the zero channel's **precision**
-$p\\,\\pi/q$ can be reported instead of merely bounded (`gpt6sol` #46, `dspro`, `qwen38max` #10).
+$p\\,\\pi/q$ can be reported instead of merely bounded ([external-review] #46, [external-review], [external-review] #10).
 
 For *this* paper's corpus that measurement is not needed, and the reason is already in the records: the
 corpus's own annotations give **every** item at least one target. §M.21.9 says so in words ("the corpus has

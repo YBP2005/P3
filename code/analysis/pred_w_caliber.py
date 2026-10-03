@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """pred_w_caliber.py — why the calibration table has no family of the form f(pred, w).
 
-Charge (`dsflash` #29, CONFIRMED): Proposition 4 decomposes the aggregate bias with $w=G_N/G$, so a
+Charge ([external-review] #29, CONFIRMED): Proposition 4 decomposes the aggregate bias with $w=G_N/G$, so a
 two-dimensional calibrator taking $(pred, w)$ looks like the most deployable candidate — and it is absent
 from the eleven shapes of §M.37.
 

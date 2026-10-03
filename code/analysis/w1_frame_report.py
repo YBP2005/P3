@@ -76,7 +76,7 @@ def fam_of(p):
 
 def frame_table():
     L = ['# W1 采样框与门控结果（脚本生成，勿手改）', '',
-         '> 规则见 `analysis/work/w1_prereg.json`（md5 `75eeca6fa68c9be65c2b569d4237d8df`）。'
+         '> 规则见 `analysis/work/w1_prereg.json`（md5 `0a42e6e5bbfa89543ba9fc1522f1b075`）。'
          '下表左半为 W0 只读枚举的实测结果，右半为门控与产物覆盖（由 CSV/日志统计）。', '']
     W0 = os.path.join(HERE, 'w0_frame_final.json')
     if os.path.exists(W0):

@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-"""_f10_random_drop.py —— F.10 的**随机删档**敏感性（回应 v0547 盲审 dspro 的 −4.0）。
+"""_f10_random_drop.py —— F.10 的**随机删档**敏感性（回应 [external-review][external-review] 的 [Δ]）。
 
 ## 为什么
 上一轮我把 F.10 的跨口径事故改正后，明写了一件对自己不利的事：**等点数子采样的分位公式必取首尾两档**，
-而极值本来就在端点 ⇒ 对这类阶梯"等点数"是**按构造的空操作**（保留率中位 1.00）。dspro 因此说
+而极值本来就在端点 ⇒ 对这类阶梯"等点数"是**按构造的空操作**（保留率中位 1.00）。[external-review] 因此说
 "equal-count 保留端点，使'扫描密度不伪影'的证据不彻底"，并**具体要求**："在 F.10 补**随机删档** sensitivity"。
 
 ## 做法
@@ -93,7 +93,7 @@ def analyse(seq):
 
 
 def main():
-    res = dict(purpose='F.10 随机删档敏感性（v0547 盲审 dspro 要求）：随机抽 k=4 档，看跨度保留率',
+    res = dict(purpose='F.10 随机删档敏感性（[external-review][external-review] 要求）：随机抽 k=4 档，看跨度保留率',
                design='每条阶梯独立；组合数 ≤2000 时穷举，否则随机抽 2000 组；保留率 = 抽样跨度 / 全长跨度',
                k=K, per_caliber={})
     for cal in ('person', 'allclass'):

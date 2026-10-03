@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """p1c_freeze_criteria.py —— **P1c（生态版：真实图像 × {clean, blur4, down15}）判据，跑之前冻结**。
 
-回答 v0547 盲审 glm53flash 的原话（"在 2–3 个 E3 家族补一组 blur/tiling 对照（每家族 300 张 × 2 臂）"）
-的**真实图像**版本，同时给 dspro 那条补上"真实密集图上非 Qwen 血统会不会答 0"的一面。
+回答 [external-review][external-review] 的原话（"在 2–3 个 E3 家族补一组 blur/tiling 对照（每家族 300 张 × 2 臂）"）
+的**真实图像**版本，同时[external-review] 那条补上"真实密集图上非 Qwen 血统会不会答 0"的一面。
 
 设计：300 张真实图像（150 ShanghaiTech-A 密集 + 150 VisDrone 航拍，确定性抽样）× 3 处理
 **clean / blur4（σ=4 高斯模糊）/ down15（缩到 15% 像素，线性 ×√0.15）** × 2 臂（base/permit）

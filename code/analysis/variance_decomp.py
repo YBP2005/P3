@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-"""★★ 评审 A5-实验 1 / §8.2 的正面回应：**"答 0 率"的方差里，构建占多少、域占多少？**
+"""★★ [external-review] A5-实验 1 / §8.2 的正面回应：**"答 0 率"的方差里，构建占多少、域占多少？**
 
-评审（glm53flash 09-22）的原话：
+[external-review]的原话：
   "跨构建 × 跨语系的弃权率普查…判据是'答 0 份额'的构建内/构建间方差分解；
    预期构建效应在密集域占主导、域效应在航拍占主导；若构建间方差 ≥ 域间方差，标题须加
    configuration-specific 限定。"
@@ -14,7 +14,7 @@
   · item 集合：同域内**跨构建完全一致**（抽样为固定种子；st_a/ucf 为全池，航拍取公共 150 子集），
     故格子间可直接比较。
 
-输出：两因素方差分解（平方和占比）+ 分域/分构建的极差，并给出评审要求的判定：
+输出：两因素方差分解（平方和占比）+ 分域/分构建的极差，并给出[external-review]要求的判定：
      "构建间方差是否 ≥ 域间方差"。
 """
 
@@ -114,7 +114,7 @@ for _, label in BUILDS:
     v = [rate[(label, ds)] for ds in DOMS]
     print('  %-9s 极差 %6.1f pp（%.1f → %.1f）' % (label, max(v) - min(v), min(v), max(v)))
 
-# 5) 评审要求的判定
+# 5) [external-review]要求的判定
 dense = [rate[(l, ds)] for _, l in BUILDS for ds in ('st_a', 'ucf')]
 aerial = [rate[(l, ds)] for _, l in BUILDS for ds in ('visdrone', 'aitod')]
 sp_build_dense = max(dense) - min(dense)

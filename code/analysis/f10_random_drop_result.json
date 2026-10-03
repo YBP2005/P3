@@ -1,5 +1,6 @@
 {
-  "purpose": "F.10 随机删档敏感性（v0547 盲审 dspro 要求）：随机抽 k=4 档，看跨度保留率",
+  "_sanitized": "review traces removed; no value changed",
+  "purpose": "F.10 随机删档敏感性（[external-review][external-review] 要求）：随机抽 k=4 档，看跨度保留率",
   "design": "每条阶梯独立；组合数 ≤2000 时穷举，否则随机抽 2000 组；保留率 = 抽样跨度 / 全长跨度",
   "k": 4,
   "per_caliber": {

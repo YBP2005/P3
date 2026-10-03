@@ -43,12 +43,12 @@ E1_AUTHORITY = RP('PaperB_E1证据_20260920.md')
 # 36.1–92.9%、88.6–100% 等）全部来自这份记录，且由 `verify_s11.py` 逐条断言回原始 CSV。
 # 它既不是中文定稿的翻译、也不是参考文献取回，故与前几组同理单列。
 E2_AUTHORITY = NR('PaperB_E2证据_20260921.md')
-# 第五组：**评审对照证据（09-22）** —— 针对模拟评审两条"可能致命"意见的正面检验：
+# 第五组：**[external-review]对照证据（09-22）** —— 针对模拟[external-review]两条"可能致命"意见的正面检验：
 # ① 跨度的等点数/去端点稳健性（Spearman 0.964/0.977/0.993、τ 单元降 2.2–5.0 倍）
 # ② 答 0 率的构建×域两因素方差分解（38.7/33.9/27.4%、密集域构建极差 90.3 pp、航拍 2.7–8.7 pp）
 # 正文 §5.7/§7.3/§9 引用的正是这些数字，故单列为权威。
 RC_AUTHORITY = NR('PaperB_评审对照证据_20260922.md')
-# ★ 2026-09-24：v0527 盲审修回证据（§7.3 的置换 CI／留出区间／功效等新数字的出处）。
+# ★ 2026-09-24：[external-review]修回证据（§7.3 的置换 CI／留出区间／功效等新数字的出处）。
 #   与 E1/E2/RC/A5 同一机制：新算出的数字必须先进证据档，正文才允许引用。
 V0527_AUTHORITY = NR('PaperB_盲审v0527修回证据_20260924.md')
 
@@ -65,7 +65,15 @@ for _rf in ('_pb_refs_out.json', '_pb_refs2_out.json', '_pb_refs34_out.json', '_
             # ★ 2026-09-27（v0585）：补引 JHU-CROWD++（[55]）的取回记录。
             #   它引入了一个新 DOI 数字令牌（`2020.3035969`），[F] 段正确地把它报成"无法溯源"；
             #   本文件即那份溯源（arXiv abs + Crossref work，均 2026-09-27 实测）。
-            '_pb_refs6_out.json'):
+            '_pb_refs6_out.json',
+            # ★ 2026-10-04（v0644）：本轮主稿新增的两条**回归侧拒答先例**的取回记录。
+            #   [3] Geifman & El-Yaniv, *SelectiveNet*（ICML 2019）——题录带**出版页码**
+            #   `PMLR 97:2151-2159`，其中 `2151` / `2159` 是 [F] 段必须能溯源的新数字令牌；
+            #   [4] Denis, Hebiri & Zaoui, *Regression with Reject Option and Application to kNN*
+            #   （NeurIPS 2020，arXiv:2006.16597）。两页均在**写题录之前**实取
+            #   （PMLR 页与 arXiv abs 页，2026-10-04，HTTP 200），逐字记入 `_pb_refs7_out.json`
+            #   —— 与 v0585 的 JHU-CROWD++（[55]）同一机制：新引用带来的数字先落取回记录，正文才允许印。
+            '_pb_refs7_out.json'):
     _rp = os.path.join(RP('analysis', 'work'), _rf)
     if os.path.exists(_rp):
         ar += io.open(_rp, encoding='utf-8', newline='').read()
@@ -98,7 +106,7 @@ for _lf in ('a_lightfree_result.json', 'a_lightfree_grid.json', 'a_lightfree_quo
             'w1_quoted.json',
             # ★ 2026-09-23 第 8 轮：公开基准上的**口径修正**（回顾性重算；M.35 与 §5.14 末段的数字出处）
             'retro_quoted.json',
-            # ★ 2026-09-23（八模型全量盲审后）：域/家族**方差分量各自的区间**（M.36 新增句的出处）
+            # ★ 2026-09-23（八模型全量[external-review]后）：域/家族**方差分量各自的区间**（M.36 新增句的出处）
             'varcov_ci.json', 'w1_predict.json',
             # ★ 2026-09-23（接力会话）：§7.3 新句与 **M.37** 的全部数字出处——
             #   `calib_scale_quoted.json` 由 `calib_scale_quote.py` 从两份冻结结果**现算**（含正文字面使用的
@@ -182,7 +190,7 @@ chk('顶层标题 17 个（10 章 + 附录指针 + Abstract + PR 要求的 5 节
 chk('末位列 References 之后仅剩补充材料指针段',
     # ★ 2026-09-27（v0592）：本节的标题原为 `## Appendix C (separate supplementary file): migrated detail`，
     #   判据也写死成 `startswith('Appendix C')`。但补充材料里另有一个 `## Appendix C. The legibility
-    #   proxy in full`，两者**同名不同物**；且"migrated detail"是迁移期的内部说法，盲审据此判为
+    #   proxy in full`，两者**同名不同物**；且"migrated detail"是迁移期的内部说法，[external-review]据此判为
     #   "迁移残留"（CONFIRMED）。现改名为 `## Supplementary material`，判据随之改绑该名。
     #   语义不变：它仍是 References 之后**唯一**的补充材料指针段（`h2[-2] == 'References'` 仍绑定）。
     h2[-1] == 'Supplementary material' and h2[-2] == 'References', str(h2[-2:]))
@@ -240,7 +248,12 @@ chk('主文 §3.6 已指向附录 B.1–B.2', 'Appendix B.1–B.2' in en)
 
 # ---------- E. 禁用串与语言 ----------
 print('\n[E] 禁用串与语言纯净度')
-BAD = [(r'⚠', '⚠'), (r'已撤回', '撤回'), (r'\bA\d{1,2}\b', '内部编号'), (r'\bv\d+\b', '版本号'),
+#   ★ 2026-10-04（v0644）：「版本号」这一条加了 `(?<!/)` —— 对象是**我方内部版本号**（`v0617` 这类），
+#     而新题录 [3] 的出版方 URL 里必然带 `/v97/`（PMLR 第 97 卷）。实测：未加该前缀排除时，
+#     `press/v97/geifman19a.html` 会被判成"内部版本号"，属**判据没对上对象**（教训 07）。
+#     URL 路径段不是内部版本号，故按"前面不是 `/`"排除；我方版本号从不出现在斜杠后。
+BAD = [(r'⚠', '⚠'), (r'已撤回', '撤回'), (r'\bA\d{1,2}\b', '内部编号'),
+       (r'(?<!/)\bv\d+\b', '版本号'),
        (r'PaperB_', '内部文档'), (r'[A-Za-z]:\\', '盘符'), (r'/root/', '服务器路径'),
        (r'pod_mirror', '内部机器名'), (r'盲审|六模型|七模型', '评审语'), (r'TODO|TBD|XXX', '占位'),
        (r'本节为待实验内容', '占位符'), (r'见\s*与|详见；', '悬空连接词')]
@@ -280,7 +293,7 @@ EQUIV = {
     # 中文定稿写「约 62 万条记录」（骨架 L13/L71/L80/L429），英文写 620k —— 同一量、同一出处
     '620': '中文「62 万」的英文写法（骨架 L13/L71/L80/L429）',
     # §7.3 的 0.07 是**推导值**：p≈0.008 是 9 个枚举分割点上的最小值 ⇒ 最小可校正值 ≈ 0.008×9。
-    # 该句由 2026-09-20 的 v0487 轮评审（glm53flash）指出后补写，故不在中文定稿里。
+    # 该句由 2026-09-20 的 v0487 轮[external-review]指出后补写，故不在中文定稿里。
     '0.07': '§7.3 多重校正后的最小可校正 p（= 0.008 × 9 个枚举分割点），2026-09-20 补写',
     # ★ 2026-09-29（v0605）：§7.3 新增**按旋钮聚类**的区间端点（簇级整块 bootstrap 2,000 次，
     #   种子 20260924）。它不是中文定稿里的数，因为该区间是本轮**新做的只读复算**；
@@ -291,7 +304,7 @@ EQUIV = {
     '0.994': '§7.3 簇级（按旋钮整块）bootstrap 31 单元上沿，2026-09-29 v0605 只读复算',
     # ★ 2026-09-30（v0607）：§7.3 的 per-unit isotonic 一组两个值（8 单元 0.571 / 36 单元 0.521）。
     #   更正前该处印的是 `0.571 / 0.548` —— 0.548 是**相邻那一行**（per-unit affine, refitted per
-    #   level）的 36 单元值，属**串行**（第 3 轮盲审 dspro 蒸馏器发现，本轮一手核到）。
+    #   level）的 36 单元值，属**串行**（[external-review][external-review] 蒸馏器发现，本轮一手核到）。
     #   0.571 与 0.521 都在**发布包内**的冻结件里：`code/analysis/perknob_rung_8unit_result.json`
     #   （md5 `63ceb33804756655956d873c13a8d62e`，见补充材料 §M.37 的 Reproduction 行），
     #   同一张表印在补充材料 §M.37 的 "per-unit isotonic" 行。0.521 不在中文定稿里（中文定稿没有该表），
@@ -299,7 +312,7 @@ EQUIV = {
     '0.521': '§M.37 表 per-unit isotonic 行的 36 单元值（同一行 8 单元值 = 0.571）；'
              '冻结件 perknob_rung_8unit_result.json 在发布包内，2026-09-30 v0607 更正串行',
     # ★ 2026-10-01（v0619）：§7.3 补进 §M.37 的**抗重标度检验**那一组读数（主稿此前只写口径、
-    #   不载这组数，第 6 轮三家评审均指出）。三个值都**逐字印在补充材料 §M.37**：
+    #   不载这组数，[round][external-review]均指出）。三个值都**逐字印在补充材料 §M.37**：
     #   「…the Spearman against the ρ ordering falls to **0.629**, and under a per-item rank
     #   correlation … to **0.595** … Four subsets … all remain below 0.85 (**0.580–0.754**)」。
     #   故它们不是新造数字，只是首次被主稿引用。
@@ -319,10 +332,23 @@ EQUIV = {
     '8.9': 'W8A8 推断所需的 compute capability（公开规格；本机为 8.0）；逐字印在 §M.46(c)；'
            '2026-10-01 起被主稿 §8.2 的保真度注记引用',
 }
-missing = sorted((en_flat - zh_flat) - WHITE - ARXIV - SECT - set(EQUIV), key=lambda s: -len(s))
+
+# ★ 2026-10-04（v0644）：**随包摘要（md5）的数字片段**一并列为结构 token。
+#   起因（实测）：主稿把随包件摘要逐字印在正文里（§5.14 的 `w1_prereg.json` 等）。摘要是
+#   **标识符**，不是稿件声称的量；它的十进制片段能不能过 [F] 段，此前纯属**碰巧**
+#   ——v0644 换发摘要后，新摘要 `0a42e6e5…1b075` 的三个片段 `89543` / `1522` / `075`
+#   恰好不在任何权威档里，于是被 [F] 段报成"无法溯源"。正确处理与 `SECT` / `ARXIV` 同类：
+#   **由文本自身导出**的结构白名单（只认 32 位十六进制字面量内部的片段），而不是放宽判据、
+#   也不是把摘要片段逐条塞进 EQUIV。
+MD5TOK = set()
+for _m in re.finditer(r'\b[0-9a-f]{32}\b', en):
+    MD5TOK |= set(re.findall(r'\d+(?:[.,]\d+)*', _m.group(0)))
+
+missing = sorted((en_flat - zh_flat) - WHITE - ARXIV - SECT - set(EQUIV) - MD5TOK,
+                 key=lambda s: -len(s))
 chk('无法溯源的数字 token 0 个', not missing, str(missing[:12]))
-print('      （白名单：0–102 结构数 %d；章节号 %d 个；书写等价 %d 条）'
-      % (len(WHITE), len(SECT), len(EQUIV)))
+print('      （白名单：0–102 结构数 %d；章节号 %d 个；书写等价 %d 条；随包摘要片段 %d 个）'
+      % (len(WHITE), len(SECT), len(EQUIV), len(MD5TOK)))
 # ★ 2026-09-24：把本门禁的**固有盲区显式报出来**。WHITE 是为"结构数"（臂数/格数/维数/格位等）设的，
 #   但它对**恰好落在 0–102 的测量值**同样不设防：例如把 "2.6 pp" 误写成 "3.6 pp"、"36 pp" 误写成
 #   "26 pp"，只要该 token 不出现在任何权威档里，本门禁**抓不到**。与其让它当隐含特权，不如印出来：
@@ -414,11 +440,11 @@ if os.path.exists(MEAS):
         print('  参考文献增长实测：27 条=%s 页；35 条=%s 页；45 条=%s 页'
               % (rg.get('refs27'), rg.get('refs35'), rg.get('refs45')))
 
-# ---------- G2. 区间一致性与术语（2026-09-20 由一轮评审抓出的缺陷类别） ----------
+# ---------- G2. 区间一致性与术语（2026-09-20 由一轮[external-review]抓出的缺陷类别） ----------
 print('\n[G2] 区间一致性与术语')
 # (a) 区间一致性：正文任何"a–b%"的弃权份额声称，必须**明确限定其适用范围**，
 #     且附录 J.1 的表不得出现超出该范围的互斥读数。
-#     教训：正文写 82–94%，而附录 J.1 列了 95.7/98.4/99.4% —— 评审 gemini38flash 一眼抓出。
+#     教训：正文写 82–94%，而附录 J.1 列了 95.7/98.4/99.4% —— [external-review][external-review] 一眼抓出。
 _occ = [m for m in re.finditer(r'82–94%', en)]
 # ★ 2026-09-22：判据放宽为"限定语出现 base arm **或** base contract arm"——两者都把该数字限定到
 #   base 契约臂（正文 §5.5 用全称、摘要用简称），判据要看的是"有没有限定"，不是"用哪种写法"。
@@ -450,9 +476,9 @@ for _s, _why in BANNED:
     _hit = _s in en or _s in sup
     chk('已移除「%s」' % _why, not _hit, '命中位置：%s' % ('en' if _s in en else ('sup' if _s in sup else '无')))
 
-# ---------- G4. 附录算术对账（2026-09-20 由 v0487 轮 3 份评审的"三行除法"逼出） ----------
+# ---------- G4. 附录算术对账（2026-09-20 由 v0487 轮 3 份[external-review]的"三行除法"逼出） ----------
 # 既有断言只查"字符串在不在"，**没有一条做算术对账**，于是 J.1 两张表口径不一致（分解表取派生重跑、
-# S 表取主运行）在我们的守卫下全绿通过，却被三份评审各自用三行除法当场证伪。
+# S 表取主运行）在我们的守卫下全绿通过，却被三份[external-review]各自用三行除法当场证伪。
 # ★ 本段循环变量一律加前缀 `_`：首发版本用 `w` 作循环变量，**遮蔽了全局词数 `w`**，
 #   于是摘要行印出"英文稿 0 词"——同族（变量遮蔽）在本会话已出现三次。
 print('\n[G4] 附录 J.1 算术对账（分解表 ⇄ 闭式 S ⇄ §5.11(a) 的 gap）')

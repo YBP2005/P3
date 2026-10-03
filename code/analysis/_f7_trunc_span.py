@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""_f7_trunc_span.py —— **固定分位数截尾后的跨度**（回应 v0547 盲审 gemini38flash 的 −2.5）。
+"""_f7_trunc_span.py —— **固定分位数截尾后的跨度**（回应 [external-review][external-review] 的 [Δ]）。
 
 ## 为什么
 它的原话："补充基于**固定分位数（如 10%–90%）截断**后的标准化跨度分析。"
@@ -46,7 +46,7 @@ def spans(rhos):
 
 
 def main():
-    res = dict(purpose='固定分位数截尾后的跨度（v0547 盲审 gemini38flash −2.5）',
+    res = dict(purpose='固定分位数截尾后的跨度（[external-review][external-review]',
                design='ISO 保序校准后的逐档 ρ；mid80/mid60 = 去掉两端各 10%/20% 档位后的极差', units=[])
     print('=' * 116)
     print('■ 固定分位数截尾跨度（ISO 保序校准；与 A44/F.10 同一套单元定义）')

@@ -48,13 +48,13 @@ opposite: retraining or calibration versus changing the **input protocol**. Wors
 "predicted 0" makes it **masquerade as conservative**, which a safety deployment least wants.
 
 **The second half of the gap.** Selective prediction and abstention-aware classification have
-well-developed criteria [2], but sit in **classification, question answering and reasoning**, where
-abstention is **explicitly declared**. Counting differs in three ways: abstention is **implicit** (a
-literal 0, indistinguishable at the output level from an estimate of zero); costs are **asymmetric**, so
-its acceptability is a deployment question; and there is **no dependable confidence** for a
-rejection rule. The framework cannot be transplanted directly — abstention must first be
-**operationalised and validated** in the counting domain (§3.6, Proposition 1) — and that step exposed
-the received reading's problem.
+well-developed criteria [2], and regression now carries a reject option too [3], [4] — all treating
+abstention as **explicit**: classification, question answering, reasoning, regression.
+Counting differs: abstention is **implicit** (a literal 0, indistinguishable at the output level from
+an estimate of zero); costs are **asymmetric**; and **no dependable confidence** exists for a rejection
+rule. Abstention must be **operationalised** in the counting domain (§3.6, Proposition 1); our
+contribution is bounded to the **output contract**, the **zero-counted versus answered-only**
+conventions, and **ordering within pre-specified level sets**.
 
 **Four properties of abstention.** **① Measurable, with a lineage-specific channel.** Rather than stipulate that `pred = 0`
 means abstention, we give an **empirical criterion**: a lineage abstaining mainly in language would
@@ -65,7 +65,7 @@ on count-controlled grids, arrangement and blur alone drive abstention from 0% t
 synthetic dots the base arm never abstains yet still underestimates by **up to 50%**, and in microscopy
 it is **0.0%** with a bias of **−50.1%** (§5.6, §5.7).
 
-**③ Switchable from both ends**, being a behaviour: tiling (**Fig. 1**) drops the ShanghaiTech-A [3] abstention rate from **56.6%** to **0.0%** (2×2: 6.0%, 3×3: 0.55%)
+**③ Switchable from both ends**, being a behaviour: tiling (**Fig. 1**) drops the ShanghaiTech-A [5] abstention rate from **56.6%** to **0.0%** (2×2: 6.0%, 3×3: 0.55%)
 without harming direction.
 
 **④ Removing abstention costs direction.** Prompt relaxation (**Fig. 2**) also drives abstention to zero but flips
@@ -85,7 +85,7 @@ so we report a **candidate** only, and claim neither two anchor zones nor bimoda
 and the appendices, which are arithmetic rather than findings, and whose role is that every headline number is
 recomputed from the released records, or labelled a transcription or an author-side computation (Appendix F.9). 1. **Finding 1 — on dense scenes the aggregate under-count is mostly a suppressed abstention, and the
    suppression is set by the output contract.** Within the cells studied here, literal-zero outputs dominate
-   the pooled under-count (§5.5); for InternVL2.5-8B [4] the answered-zero channel covers only 69.69% of
+   the pooled under-count (§5.5); for InternVL2.5-8B [6] the answered-zero channel covers only 69.69% of
    abstentions (§3.6, Proposition 7); and **the outlet** is a property of the serving configuration rather
 than of the lineage (the **rate** is not; Appendix M.47) — given an abstention token **1591/1591** calls abstain, and in a census fixing the
    stack and varying only the contract, item-level pairing removes the answered zero in **46 of 52**
@@ -111,7 +111,7 @@ than of the lineage (the **rate** is not; Appendix M.47) — given an abstention
    (Propositions 3, 5; §7.3). The spectrum is reported as an **ordering, not as a finding**.
 
 **Where each result binds.** The abstention results are measured on **seven families across four corpus domains plus a
-nine-configuration panel on FSC-147 [5]**, and tested prospectively on an **independently sampled panel of six
+nine-configuration panel on FSC-147 [7]**, and tested prospectively on an **independently sampled panel of six
 further families in six lineages with no Qwen model** (§5.14); the direction results span **three families of implementations**.
 
 ## 2. Related Work
@@ -120,9 +120,8 @@ further families in six lineages with no Qwen model** (§5.14); the direction re
 
 Two families dominate counting: detection-based methods localise instances and count them, while density
 regression predicts a density map whose integral is the count — the definitional formulation of the field
-[6]. Comparative work treats them as paradigms with characteristic trade-offs,
-and magnitude error is the axis on which they are compared; one controlled benchmark organises its probes
-by complexity [7].
+[8]. Comparative work treats them as paradigms with characteristic trade-offs,
+and magnitude error is the axis on which they are compared.
 
 ### 2.2 Thresholds, operating points and cost-sensitive decisions
 
@@ -134,8 +133,8 @@ user-side error and that of the total error differ by a factor of about 2.1–2.
 
 ### 2.3 VLM counting, and abstention in the counting domain
 
-VLM counting is an active area, with benchmarks showing that current models count poorly ([8] and
-successors). A parallel and largely separate literature studies abstention: selective prediction [9], [10], [11],
+VLM counting is an active area, with benchmarks showing that current models count poorly ([9] and
+successors). A parallel and largely separate literature studies abstention: selective prediction [10], [11],
 rejection options, abstention benchmarks for multimodal reasoning ([12], [13]), and
 abstention knobs in video question answering ([14]); and VLM refusal moves with an image's mere presence in ways instructions do not
 control [15] — acting on the tendency, not on the channel §5.7 manipulates. **The gap is that abstention rates have never
@@ -159,7 +158,7 @@ manipulation, but **answer a different question**:
 
 ### 2.5 Sparse counting and the head/person granularity problem
 
-Sparse counting benchmarks (SFCHD [18], FSC-147 [5], CountBench [19], TallyQA [20]) [21] and the head/person
+Sparse counting benchmarks (SFCHD [18], FSC-147 [7], CountBench [19], TallyQA [20]) [21] and the head/person
 literature supply our sparse and external-validity settings.
 Recent work notes that **counting granularity is left implicit**, and that most counting datasets lack
 multi-granularity annotation ([22]; [23]); §3.2 turns this into a first-class variable.
@@ -251,7 +250,7 @@ whose cross-domain Spearman correlation is only **+0.33** (§7.1).
 
 ### 3.4 Datasets and scene characteristics
 
-FSC-147 is the counting-anything benchmark of Ranjan et al. [5]; CountQA [30] and PushupBench [31] are the corresponding VLM-counting benchmarks.
+FSC-147 is the counting-anything benchmark of Ranjan et al. [7]; CountQA [30] and PushupBench [31] are the corresponding VLM-counting benchmarks.
 
 Nine datasets are characterised on **two** axes — the count axis (OPM) **and** the legibility axis
 (Appendix D.3); OPM is used for **characterisation only**, since §7.1 shows it is not a legibility-consistent
@@ -265,7 +264,7 @@ combinations, zero-shot COCO [36] person detectors under a tiling protocol for t
 conventions; Faster R-CNN [37] and RetinaNet [38] supply a second and third family (fairness parameters in
 Appendix D.2; Appendix M.11). **Vision-language models:** **Qwen3-VL-32B-Instruct** [39] on a self-hosted
 4-bit AWQ [40] **community requantisation** (`cyankiwi/Qwen3-VL-32B-Instruct-AWQ-4bit`; Appendix M.46) and GPTQ-W4 [41] stacks cross-checked against a BF16 hosted API, with an 8B scale control, a Qwen2.5-VL-7B [42]
-generation control and InternVL2.5-8B [4] as a second lineage; three directional arms use **byte-identical
+generation control and InternVL2.5-8B [6] as a second lineage; three directional arms use **byte-identical
 prompts across datasets**, plus five prompt families and a seven-level prompt-strength dose, with **Chinese**
 corpus prompts (language control: §5.5). **Density regression:** BL [43], CSRNet [44] and DM-Count [45]
 trained on SFCHD [18], with public in-domain weights for the dense end.
@@ -604,7 +603,7 @@ make the numbers incomparable. The decision-relevant quantity is the abstention 
 ### 5.13 The same two experiments on a public benchmark (FSC-147)
 
 Everything above uses nine corpora this paper assembled. To check that neither the zero nor the
-contract effect is a property of those datasets, we ran the **same instrument** (the same probe, not a re-implementation) on **FSC-147** [5] — a public counting benchmark of
+contract effect is a property of those datasets, we ran the **same instrument** (the same probe, not a re-implementation) on **FSC-147** [7] — a public counting benchmark of
 natural images with a different object vocabulary and density range — on a fixed-seed, GT-stratified sample
 of **300 test images**:
 
@@ -634,7 +633,7 @@ dense-only caveat. **(iii) Here the convention moves magnitudes, not the ρ orde
 
 Every family above was chosen by us. To test whether the two effects survive a panel the paper did not choose, we
 **froze six predictions, their thresholds and the sampling rule before collecting any data** (preregistration
-`75eeca6fa68c9be65c2b569d4237d8df`; rule and full frame in Appendix M.31). The rule takes one open-weight family
+`0a42e6e5bbfa89543ba9fc1522f1b075`, re-issued, traces removed; values unchanged; rule and full frame in Appendix M.31). The rule takes one open-weight family
 per lineage, excludes every family used above, and yielded **six families in six lineages with no Qwen model** —
 five of those lineages appear nowhere in §3–§5. The pools are the census-defined ones, which do not depend on the
 new models, and the instrument is the frozen probe, byte-identical in prompts and parser to the census probe.
@@ -688,13 +687,13 @@ DM-Count weights** on the identical item set and grid: **20.1–34.3 pp**, again
 
 ### 6.2 Three further properties, and their protocols
 
-Three further measurement properties matter here, with protocols in **Appendix H**: a
+Three further measurement properties matter here (**Appendix H**): a
 counting-consistency term on the log ratio between the predicted integral and the ground-truth count
 reduces the seed-to-seed spread by roughly an order of magnitude and removes most of the systematic
 positive offset the uncorrected objective leaves behind — a **remedy for a training artefact**, not a new
 architecture (H.1); the abstention rate is a stable property **only under greedy decoding**, since under
 sampling it co-varies with temperature and sample count, which is why our VLM protocol fixes temperature
-at 0 (H.2); and the collapse of density-regression output under overlap occurs for both 8B and 32B models
+at 0 (H.2); and the collapse of the VLM contract arm's output under overlap occurs for both 8B and 32B models
 at comparable overlap levels, making it a property of the task structure rather than of model capacity
 (H.3).
 
@@ -746,10 +745,7 @@ not preserved and half the units admit no admissible pair at all (Appendix M.45)
 
 **What the spectrum supports is an ordering rule, and we state it as one.** **Availability is decidable**:
 "is `pred/gt ≥ 1` at the loosest admitted level?" predicts reachability with **zero exceptions** across three
-lineages and nine cells. And **the ordering is the surviving quantity**, under the level sets compared: **rank knobs by this ordering, and
-quote a magnitude only with the grid density and the calibration caliber that produced it, and only within the level sets compared.** Our own candidate for the magnitude (Proposition 3) is a component of
-the definition and is withdrawn, so a magnitude law remains open — but the ordering rule is what a
-practitioner needs to choose between knobs, and it is measured, not assumed.
+lineages and nine cells. And **the ordering is the surviving quantity** within the level sets and calibers measured here: **quote a magnitude only with the grid density and the calibration caliber that produced it.** **We do not turn this into a deployment rule**: the ordering we report is descriptive. Our own candidate for the magnitude (Proposition 3) is a component of the definition and is withdrawn, so a magnitude law remains open; the ordering itself is measured, not assumed.
 
 ### 7.4 The high response of the detector threshold is domain-conditional
 
@@ -849,8 +845,8 @@ InternVL subset ($1/(\kappa+1) = $ **30.31%**). Every corpus-level rate was meas
 prompts, so we repeated the arms in a byte-frozen English rendering on the same items: the channel result
 is language-robust (`no_people` differs by at most **7.2 pp**), but the answered-zero rate is not — the
 anchor lineage answers zero on **60.2%** of the dense pool under Chinese and **17.5%** under English, a
-**42.7 pp** drop **on the BF16 build** — a pooled dense-pool figure; the per-domain drops on the same build are **18–22 pp** and come from a different item set (Appendix M.39). The shares of §5.5 are therefore scoped to the prompt language and to the **one anchor build**
-measured here (**the share holds at BF16; the rate does not**; eight of nine further families and builds fall short; M.19.15). The true-zero pools differ by **54.7 pp**, so $p\approx1$ is not transferable (Appendix M.21.9).
+**42.7 pp** drop **on the BF16 build** — a pooled dense-pool figure; the per-domain drops on the same build are **18–22 pp** and come from a different item set (Appendix M.39). The §5.5 shares are scoped to the prompt language and the **one anchor build** (**the share holds at
+BF16, not the rate**; eight of nine fall short — the ninth is that checkpoint at BF16; M.19.15). The true-zero pools differ by **54.7 pp**, so $p\approx1$ is not transferable (Appendix M.21.9).
 Two further limits: the abstention **share** leaves its unit interval when the net
 deviation is near zero — three of twenty cells, unmeasured rather than clipped, the two pp terms of Table 3 being the fallback there — and the **English**
 prompt lowers the answered-zero rate on the dense domains only, by **15–26 pp** on the corpus's own **third-party 4-bit** build, where two of the twenty cells stay outside the unit interval and every absolute rate on that build carries a **~1.3% item-level stack band** (Appendices M.19.16, M.46(c)). **The 8-bit rows were served weight-only, not weight-and-activation 8-bit** — the host's compute capability is **8.0** and W8A16 needs **8.9**, so the loader takes the weight-only path — and they therefore bound the build, not that path (M.46(c)).
@@ -912,23 +908,23 @@ not-for-profit sectors.
 
 2. Narasimhan, H., Menon, A., Jitkrittum, W., et al. Plugin Estimators for Selective Classification with Out-of-Distribution Detection. preprint arXiv:2301.12386, 2023.
 
-3. Zhang, Y., Zhou, D., Chen, S., Gao, S., Ma, Y. Single-Image Crowd Counting via Multi-Column Convolutional Neural Network. CVPR 2016. https://doi.org/10.1109/CVPR.2016.70.
+3. Geifman, Y., El-Yaniv, R. SelectiveNet: A Deep Neural Network with an Integrated Reject Option. ICML 2019. PMLR 97:2151-2159. https://proceedings.mlr.press/v97/geifman19a.html.
 
-4. Chen, Z., Wang, W., Cao, Y., et al. Expanding Performance Boundaries of Open-Source Multimodal Models with Model, Data, and Test-Time Scaling. preprint arXiv:2412.05271, 2024.
+4. Denis, C., Hebiri, M., Zaoui, A. Regression with Reject Option and Application to kNN. NeurIPS 2020. preprint arXiv:2006.16597.
 
-5. Ranjan, V., Sharma, U., Nguyen, T., Hoai, M. Learning To Count Everything. CVPR 2021. preprint arXiv:2104.08391.
+5. Zhang, Y., Zhou, D., Chen, S., Gao, S., Ma, Y. Single-Image Crowd Counting via Multi-Column Convolutional Neural Network. CVPR 2016. https://doi.org/10.1109/CVPR.2016.70.
 
-6. Lempitsky, V., Zisserman, A. Learning To Count Objects in Images. NIPS 2010.
+6. Chen, Z., Wang, W., Cao, Y., et al. Expanding Performance Boundaries of Open-Source Multimodal Models with Model, Data, and Test-Time Scaling. preprint arXiv:2412.05271, 2024.
 
-7. Chen, Y.-Y., Guo, L.-Z. TriViewBench: Controlled Complexity Scaling for Multi-View Structural Reasoning in MLLMs. preprint arXiv:2606.26029, 2026.
+7. Ranjan, V., Sharma, U., Nguyen, T., Hoai, M. Learning To Count Everything. CVPR 2021. preprint arXiv:2104.08391.
 
-8. Guo, X., Huang, Z., Shi, Z., et al. Your Vision-Language Model Can't Even Count to 20: Exposing the Failures of VLMs in Compositional Counting (VLMCountBench). preprint arXiv:2510.04401, 2025.
+8. Lempitsky, V., Zisserman, A. Learning To Count Objects in Images. NIPS 2010.
 
-9. Srinivasan, T., Hessel, J., Gupta, T., et al. Selective "Selective Prediction": Reducing Unnecessary Abstention in Vision-Language Reasoning. Findings of ACL 2024. preprint arXiv:2402.15610.
+9. Guo, X., Huang, Z., Shi, Z., et al. Your Vision-Language Model Can't Even Count to 20: Exposing the Failures of VLMs in Compositional Counting (VLMCountBench). preprint arXiv:2510.04401, 2025.
 
-10. Chow, C. K. On optimum recognition error and reject tradeoff. IEEE Trans. Inf. Theory 16 (1970) 41-46. https://doi.org/10.1109/TIT.1970.1054406.
+10. Srinivasan, T., Hessel, J., Gupta, T., et al. Selective "Selective Prediction": Reducing Unnecessary Abstention in Vision-Language Reasoning. Findings of ACL 2024. preprint arXiv:2402.15610.
 
-11. Hendrycks, D., Gimpel, K. A Baseline for Detecting Misclassified and Out-of-Distribution Examples in Neural Networks. preprint arXiv:1610.02136, 2016.
+11. Chow, C. K. On optimum recognition error and reject tradeoff. IEEE Trans. Inf. Theory 16 (1970) 41-46. https://doi.org/10.1109/TIT.1970.1054406.
 
 12. Madhusudhan, N., Yadav, V., Lacoste, A. Knowing When Not to Answer: Evaluating Abstention in Multimodal Reasoning Systems. preprint arXiv:2604.14799, 2026.
 

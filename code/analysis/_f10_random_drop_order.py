@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""_f10_random_drop_order.py —— 随机删档下的**24 单元**跨度保留率与**排序**保全率（回应 dspro 的 −4.0 与 T3/T5）。
+"""_f10_random_drop_order.py —— 随机删档下的**24 单元**跨度保留率与**排序**保全率（[external-review] 的 [Δ] 与 T3/T5）。
 
 ## 与 `_f10_random_drop.py` 的分工
 前者只做检测 τ 六条阶梯（`threeway_curves_v2.csv`），答复"随机删档会不会缩短跨度"。
@@ -63,7 +63,7 @@ def spearman(a, b):
 
 def main():
     rnd = random.Random(SEED)
-    res = dict(purpose='F.10 随机删档：24 单元的幅度保留率与排序保全率（v0547 盲审 dspro −4.0 / T3 / T5）',
+    res = dict(purpose='F.10 随机删档：24 单元的幅度保留率与排序保全率（[external-review][external-review]/ T3 / T5）',
                design='随机抽 k=4 档（不放回）%d 次；幅度=抽样跨度/全长跨度；排序=抽样跨度向量与全长跨度向量的 Spearman'
                       % NDRAW, k=K, per_caliber={})
     for cal in ('person', 'allclass'):

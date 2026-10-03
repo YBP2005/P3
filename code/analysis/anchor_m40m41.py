@@ -81,7 +81,7 @@ facts = load('m40m41_facts.json')
 #   它必须进"取值宇宙"，否则 2×2 里的计数/百分比会被本门禁判为"无出处"。
 x2 = load('m40_2x2_result.json')
 assert x2, 'M.40 的 2×2 冻结件缺失：m40_2x2_result.json（跑 gen_m40_2x2.py --apply）'
-# ★ 2026-09-24 夜（v0539 盲审 glm53flash 的 D1d）：逐构建表**每格**都配了 Wilson 95% 区间
+# ★ 2026-09-24 夜（[external-review][external-review] 的 D1d）：逐构建表**每格**都配了 Wilson 95% 区间
 #   （原先只给零格），冻结在 `m40_wilson_result.json`。同样必须进取值宇宙。
 wil = load('m40_wilson_result.json')
 assert wil, 'M.40 的逐构建区间冻结件缺失：m40_wilson_result.json（跑 gen_m40_wilson.py --apply）'

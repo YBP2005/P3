@@ -3,7 +3,7 @@
 """n2_boundary_rule_audit.py — print, and keep printed, the rule and the denominators behind §M.21.9(e)'s
 "no row contains both a refusal word and a digit".
 
-Charge (`glm53flash` #45, CONFIRMED): the section asserts a **zero count** without printing the search rule
+Charge ([external-review] #45, CONFIRMED): the section asserts a **zero count** without printing the search rule
 or the row counts, so a reader cannot check the denominator.
 
 The audited class: the first-integer fallback `re.compile(r'-?\\d+')`, applied to the stored reply with

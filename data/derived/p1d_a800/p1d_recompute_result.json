@@ -1,0 +1,92 @@
+{
+ "C1": {
+  "cells": 66,
+  "rows": 16500,
+  "bad_cells": []
+ },
+ "C5_parse_ok_veto": {
+  "bad": [],
+  "pass": true
+ },
+ "C4a": {
+  "spans": {
+   "st_a": 3.994,
+   "ucf": 14.076,
+   "visdrone": 14.597
+  },
+  "order_ascending": [
+   "st_a",
+   "ucf",
+   "visdrone"
+  ],
+  "common_items": {
+   "st_a": 182,
+   "ucf": 334,
+   "visdrone": 400
+  },
+  "bootstrap_same_order_paired": 0.569,
+  "bootstrap_same_order_unpaired": 0.586,
+  "pass": false,
+  "B": 2000,
+  "seed": 20261002,
+  "ci_paired": {
+   "st_a": [
+    1.22,
+    9.71
+   ],
+   "ucf": [
+    7.27,
+    23.89
+   ],
+   "visdrone": [
+    11.02,
+    19.1
+   ]
+  }
+ },
+ "domains": {
+  "mtdc": {
+   "devs": [
+    -99.98,
+    -100.0,
+    -99.99,
+    -99.99,
+    -99.99,
+    -99.99,
+    -99.98,
+    -99.98,
+    -99.98,
+    -99.99,
+    -99.98
+   ],
+   "span": 0.021
+  },
+  "gwhd": {
+   "devs": [
+    -99.99,
+    -100.0,
+    -100.0,
+    -100.0,
+    -100.0,
+    -100.0,
+    -99.99,
+    -99.99,
+    -99.99,
+    -99.99,
+    -99.99
+   ],
+   "span": 0.008
+  }
+ },
+ "C4b": {
+  "median": 14.08,
+  "band": [
+   7.04,
+   28.15
+  ],
+  "inside": {
+   "mtdc": false,
+   "gwhd": false
+  }
+ }
+}

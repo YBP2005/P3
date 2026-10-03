@@ -1,0 +1,121 @@
+{
+  "_README": "G0 自检闸门（p2e_selfcheck_m43.py）读本文件定位 §M.43（= 机上 G6 那轮）四行的逐项记录。四条路径已于 2026-10-02 在 A800 上找到：/root/g56_res/ 下的 4 个长表。记录是长表（一个文件含多档，靠档位列区分），不是一档一文件。",
+  "_provenance": {
+    "round": "A800 第三批 · G6（机上冻结件 /root/g56_criteria_frozen.json，md5 22869fd86fefb37502ddf9d8dd5bec8b，冻结于 2026-09-27）",
+    "runner_doc": "D:\\deepseek\\PaperB\\P3_A800第三批_G1_G5_G6_G10_结果_20260927.md 第 3 节（G6）",
+    "analyzer_result": "analysis/work/g56_result.json，含四旋钮跨度全精度值 343.5469554411504 / 1561.9411123227917 / 14.559610458776092 / 31.651492480535623",
+    "schema": "item,domain,arm,budget,tilek,rep,gt,pred,parse_ok,tile_ok,ntile,abstain,refuse,http_err,model,raw",
+    "model": "Qwen3-VL-32B-Instruct（BF16，A800）",
+    "note": "M.43 的复现句没给文件名；这四个文件是我在机上找到的原始记录，合起来覆盖 K3/K4/K5/K6。g56_noise.csv 是 base 臂的重复（噪声底 3.01 pp），不在四行之内。",
+    "fetched_to_local": "p2e/ref/（四个文件的本地副本，用 --getb64 取回；仅用于本机验证 G0）"
+  },
+  "_printed_targets": {
+    "output_contract": {
+      "span": 343.55,
+      "levels": [
+        -54.4,
+        72.0,
+        107.1,
+        -98.5,
+        245.1
+      ]
+    },
+    "prompt_family": {
+      "span": 1561.94,
+      "levels": [
+        -53.8,
+        1491.2,
+        -70.8,
+        406.3,
+        365.9
+      ]
+    },
+    "tiling": {
+      "span": 14.56,
+      "levels": [
+        -51.5,
+        -55.2,
+        -47.1,
+        -44.5,
+        -40.6
+      ]
+    },
+    "pixel_budget": {
+      "span": 31.65,
+      "levels": [
+        -54.0,
+        -55.5,
+        -74.2,
+        -77.2,
+        -85.6
+      ]
+    }
+  },
+  "filters": {},
+  "knobs": {
+    "output_contract": {
+      "path": "../../g56_res/g56_arms.csv",
+      "path_local": "../../g56_res/g56_arms.csv",
+      "level_col": "arm",
+      "levels": [
+        "base",
+        "choice",
+        "forbid0",
+        "neutral0",
+        "range"
+      ],
+      "pred_col": "pred",
+      "gt_col": "gt",
+      "item_col": "item"
+    },
+    "prompt_family": {
+      "path": "../../g56_res/g56_arms.csv",
+      "path_local": "../../g56_res/g56_arms.csv",
+      "level_col": "arm",
+      "levels": [
+        "V1_json",
+        "V2_number",
+        "V3_locate",
+        "V4_estimate",
+        "V5_region"
+      ],
+      "pred_col": "pred",
+      "gt_col": "gt",
+      "item_col": "item"
+    },
+    "tiling": {
+      "path": "../../g56_res/g56_tile.csv",
+      "path_local": "../../g56_res/g56_tile.csv",
+      "level_col": "tilek",
+      "levels": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "6"
+      ],
+      "pred_col": "pred",
+      "gt_col": "gt",
+      "item_col": "item"
+    },
+    "pixel_budget": {
+      "path": "../../g56_res/g56_budget.csv",
+      "path_local": "../../g56_res/g56_budget.csv",
+      "level_col": "budget",
+      "levels": [
+        "1048576",
+        "400000",
+        "200000",
+        "100000",
+        "50000"
+      ],
+      "pred_col": "pred",
+      "gt_col": "gt",
+      "item_col": "item"
+    }
+  },
+  "tolerance_pp": 0.05,
+  "note_on_devs": "G6 的逐档值是池化相对偏差 dev = 100*(Σpred−Σgt)/Σgt，与 p2e_common.dev 同源（a39_unit_calib_heldout.py L183-184）。四行必须逐档复现，否则说明估计器或过滤口径与印值不同源。",
+  "_filters_note": "★ 2026-10-02 实测：§M.43 的逐档 ρ 是**该档全部行**的池化值，不做 parse_ok/abstain/rep 过滤（机上 g56 文件按档恰好 182 行/档）。先前加的过滤把 n 压到 58–182，导致第三、四行对不上。",
+  "_order_note": "★ 档位顺序必须按**印值**的顺序声明（判据件按此序对位比较）。output_contract 的印序是 base/choice/forbid0/neutral0/range。"
+}

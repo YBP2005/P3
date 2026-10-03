@@ -13,14 +13,7 @@ import statistics as st
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-# 放行版：作者机私有路径 → 复现包统一根（`_repro_root._ALIAS` 把
-#   analysis/fsc_a800 映射到 data/derived/fsc_res/frozen384）。
-try:
-    from _repro_root import resolve as RP
-except ImportError:                      # 单脚本拷走时：就地反推仓库根
-    _r = os.environ.get('PAPERB_ROOT') or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    RP = lambda *q: os.path.join(_r, *q)  # noqa: E731
-D = os.environ.get('M35_DIR') or RP('analysis', 'fsc_a800')
+D = r'<WORKDIR>\PaperB\analysis\fsc_a800'
 AB = ('abstain', 'cannot_judge', 'no_people', 'no_objects')
 W = lambda s: len(__import__('re').findall(r"[A-Za-z][A-Za-z'\-]*", s))
 

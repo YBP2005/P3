@@ -806,7 +806,7 @@ fixed before the runs (Appendix M.46).
 
 ### 8.1 Disclosure of measurement fragility
 
-Six counts of measurement fragility are itemised with item-level impact in **Appendix M.32**: **Two runner defects**
+Seven counts of measurement fragility are itemised with item-level impact in **Appendix M.32**: **Two runner defects**
 and, separately, a dead parse branch recorded as a **third instrument finding**; **Run-to-run non-determinism**,
 characterised below; **Graded isolation**, with a residue ledger; **a census of anomalous predictions**;
 **No attention-based criterion**; and **Per-cell intervals are lower bounds**, the across-repeat term exceeding

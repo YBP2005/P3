@@ -4619,7 +4619,7 @@ at the five multipliers fixed in advance (0.5 → 1.5): **−15.4 / −3.0 / −
 **13.7 pp**. That is *below* the **20.1–34.3 pp** this appendix prints for the knob, but the two are different
 calibers — F.9's density row is isotonic-calibrated per (knob × domain) unit while this reading is uncalibrated
 and pooled — so it is not read as a contradiction. The same ruler run instead on **CSRNet/st_a** gives
-**−67.1 / −6.9 / +103.8 / +301.9 / +601.9%**, a span of **669 pp** and the **opposite sign** from the 1.25 level
+**−67.1 / −6.9 / +103.8 / +301.9 / +601.9%**, a span of **669 pp** and the **opposite sign** from the 1.0 level
 on. **The density knob's response is therefore a property of the knob *and* the model, not of the knob alone** —
 which is exactly the separation Appendix D.1 already imposes when it requires official and reproduction weights
 to be reported separately. Neither row is folded into the ordering above: one is at the floor and the other
@@ -4659,14 +4659,21 @@ advance, three fresh service starts, the pooled relative deviation and the span 
 (maize tassels) and **GWHD** (wheat heads), two counting domains this ordering evidence had not used, at the
 **eleven** input-scale levels that are the union of this section's eight matched-travel multipliers with the four
 public labels of the released control ladders (the native label absorbs the duplicate), 250 sampled items per
-domain per start, 16{,}500 calls in all. **The readings are degenerate**: the model answers **0** on 250 of 250
-items at every level of both domains (249 of 250 at the two largest budgets), so the pooled deviation is
-**−100%** at every level and the span is **0.02 pp (MTDC)** and **0.01 pp (GWHD)** — far outside the
+domain per start, 16{,}500 calls in all. **The readings are degenerate**: the model answers **0** on **248–250 of
+the 250 items at every level of both domains** (all 250 in **6 of the 22** domain-by-level cells, 249 of 250 in
+the other 16), so the pooled deviation lies between **−100.00%** and **−99.98%** at every level and the span is
+**0.02 pp (MTDC)** and **0.01 pp (GWHD)** — far outside the
 **7.04–28.15 pp** band this section's own extension test allows. This is the **same failure mode as the detector
 knob above**: on these two domains the answered-zero channel is saturated, so an input-scale knob has nothing to
-move and the span measures the floor rather than the knob. We therefore report the two domains as **not seating
-the knob** rather than as a counterexample to the ordering — and record it as one more instance of the domain
-dominance this paper reports. Comparability here is limited to *same instrument, same model, same geometry*: the
+move and the span measures the floor rather than the knob. **One confound belongs with that reading.** The probe
+reuses this instrument's frozen prompt **verbatim**, and that prompt asks for the number of **people**, so no noun
+is substituted here; on maize tassels and wheat heads the instruction is therefore itself mismatched to the
+domain, and part of the answered-zero rate is instruction-appropriate rather than a model failure. §M.49 puts
+**the same two domains to a noun-substituted instrument** and discloses that substitution; that is the instrument
+which could actually seat this knob here, so a noun-substituted re-run at these eleven levels is the experiment
+this null reading calls for — and until it is run we report the two domains as **not seating the knob** rather than
+as a counterexample to the ordering, and record it as one more instance of the domain dominance this paper reports.
+Comparability here is limited to *same instrument, same model, same geometry*: the
 new levels only coincide with the released ladders' own five on four labels, so no same-grid claim is made, and
 these readings are not from the same session as the four rows above (that section's 3.01 pp same-session floor
 does not apply to them).

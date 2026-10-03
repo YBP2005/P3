@@ -41,6 +41,16 @@
 | **C5** 格级 `parse_ok` 否决（任一格 <95% 记 not evaluable） | **PASS**（66 格 parse_ok 率全部 ≥95%，不合格格 0） |
 | **总判定** | **NOT PASSED**（失败项：C4a 的 bootstrap 下界、C4b）；**但 C4b 的失败已定性为"读数退化"而非"ordering 不成立"** |
 
+## 2.1 ★ **仪器混杂（必须与本判定一起读）**
+
+探针**逐字复用**该仪器的冻结提示词（`pf_p0_probe.py` 的 `BASE_PROMPT`，md5 `e7a65fd47345c2fe040fa4d05a3b1d86`），
+而那句提示词问的是**人数**（"请数出图片中的**人数**…"），**本实验未替换任何对象名词**。
+⇒ 在玉米雄穗与小麦穗这两个非人类计数域上，答 0 有相当一部分是**指令与域不匹配的合理行为**，不能全归因于模型失效。
+对照：§M.49 对**同两个域**做了**名词替换**并明文披露（"the object noun phrase … the probe asserts that this
+substitution is the only difference"）。⇒ **能真正让这个旋钮在这两个域上落座的，是名词替换版的仪器**；
+在它跑出来之前，本记录只主张"**这两域不落座**"，**不主张**关于其答零通道的任何结论。
+（补充材料 §M.43 已同句写明这一混杂。）
+
 ## 3 ★ 退化证据（判定的关键，独立统计）
 
 | 域 | 逐档答案分布（各 250 项） |
@@ -80,5 +90,10 @@
 python3 env/p1d_integrity.py                     # 前置件完整性（与基线比对，缺件/变号即 exit 2）
 # 逐格重算（纯 CPU）：见数据/derived/p1d_a800/env/ 下的 p1d_analyze.py 与判定书 §4 的口径
 ```
-判定书（含 C1–C5 逐条、§2.1 对 C4a 的读法、§3 退化证据、§4 逐档吞吐、§9 独立复算）：
-`/root/p1d/out/` 与本地 `_p1d_verdict.md`；本地复算脚本 `_p1d_recompute.py`、结果 `_p1d_recompute/recompute.json`。
+判定书（含 C1–C5 逐条、§2.1 对 C4a 的读法、§3 退化证据、§4 逐档吞吐、§9 独立复算）与复算件
+**随包放行**：`data/derived/p1d_a800/p1d_verdict.md`、`data/derived/p1d_a800/_p1d_recompute.py`、
+`data/derived/p1d_a800/p1d_recompute_result.json`（= 独立复算的 JSON 结果）。
+分析器与判据件在 `data/derived/p1d_a800/env/`（`p1d_analyze.py` 已改为**环境变量优先 + 包内相对默认**，
+不再指向作者机；判据件的档位文字勘误见
+`data/derived/p1d_a800/env/_p1d_criteria_frozen_ERRATUM_20261003.md` —— 该勘误**只说明文字**，
+判据阈值与判据件 md5 均未改动）。

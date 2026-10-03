@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""p1d_analyze.py —— P1-D 分析（纯 CPU）。**判据见同目录 `_p1d_criteria_frozen.json`（跑前冻结；勘误见 `_p1d_criteria_frozen_ERRATUM_20261003.md`）。**
+"""p1d_analyze.py —— P1-D 分析（纯 CPU）。**判据见 /root/p1d/_p1d_criteria_frozen.json（跑前冻结）。**
 
 口径（G0 实测锁定，不许改成"各档交集"）：
     dev(档) = 100*(Σpred − Σgt)/Σgt，**在该档自己的行上池化**（3 次起服的行并在一起）
@@ -24,17 +24,11 @@ import os
 import random
 import sys
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-# 放行版：环境变量优先；缺省按**包内布局**（env/ 的上一层 = data/derived/p1d_a800/，
-#   逐格 CSV 就在该层；控制梯子在 data/derived/res_ctrl__q32/）。
-D = os.environ.get('P1D_DIR') or os.path.dirname(HERE)
-_res = [os.environ.get('P1D_RES'), os.path.join(D, 'res'), D]
-RES = next(x for x in _res if x and os.path.isdir(x))
-_ref = [os.environ.get('P1D_REF'), os.path.join(D, 'ref'),
-        os.path.join(os.path.dirname(D), 'res_ctrl__q32')]
-REF = next((x for x in _ref if x and os.path.isdir(x)), os.path.join(D, 'ref'))
-CRIT = os.environ.get('P1D_CRIT') or os.path.join(HERE, '_p1d_criteria_frozen.json')
-OUT = os.environ.get('P1D_OUT') or os.path.join(HERE, 'out')
+D = '/root/p1d'
+RES = os.path.join(D, 'res')
+REF = os.path.join(D, 'ref')
+CRIT = os.path.join(D, '_p1d_criteria_frozen.json')
+OUT = os.path.join(D, 'out')
 BUDGETS = [0, 104856, 145698, 200000, 202447, 281300, 390867, 400000, 543118, 754655, 800000]
 EXP_ROWS = 250
 B_BOOT = 2000

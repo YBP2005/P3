@@ -46,6 +46,8 @@ AW = ('abstain', 'cannot_judge', 'no_people')
 FIRST = re.compile(r'-?\d+')
 
 EXPECT = dict(files=654, rows=95160, word=35716, word_and_num=0, num_before=0)
+# ★ 2026-10-03（v0642）：EXPECT 是**审计当时**的语料快照；后续轮次继续放行数据后盘面会变大，
+#   故下面的比对**只报告差异、不中止**（核心断言 word_and_num=0 / num_before=0 仍在任何盘面上单独核）。
 AUDITED = {'3,600': '§M.21.9(e)', '95,160': '§M.21.9(e)', '2,496': '§M.6', '55,351': '§M.31.6'}
 
 

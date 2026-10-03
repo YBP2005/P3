@@ -48,6 +48,11 @@ import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
 PM = RP('analysis', 'data', 'pod_mirror')
+# ★ 2026-10-03（v0635）：包内 `pod_mirror` 前缀映射到 `data/derived/pA`，而那批
+#   等水平重扫的控制梯子随包放行在**更具体**的位置 `data/derived/res_ctrl__<mdl>/`。
+#   这里显式回退：若 `PM` 下没有 `res_ctrl__*`，就去找包内那份（作者树上 `PM` 原样命中，不受影响）。
+_rc_alt = os.environ.get('N5_RC') or os.path.join(HERE, '..', '..', 'data', 'derived')
+PM_RC = PM if glob.glob(os.path.join(PM, 'res_ctrl__*')) else _rc_alt
 W = NR('@shared', 'work')
 B = NR('@shared', 'work', 'b_harvest_20260917')
 ANOM, SENT = 1e5, 1234567890
@@ -115,7 +120,7 @@ def build_units():
             u = unitize(load(path), ['protocol', 'value'], 'pred')
             add_unit('%s / %s' % (lab, os.path.basename(path).split('_')[-2]), {k: v for k, v in u.items()})
     for mdl in ('ivl', 'q32'):
-        for f in sorted(glob.glob(os.path.join(PM, 'res_ctrl__%s' % mdl, 'res_ctrl_*.csv'))):
+        for f in sorted(glob.glob(os.path.join(PM_RC, 'res_ctrl__%s' % mdl, 'res_ctrl_*.csv'))):
             ds = os.path.basename(f)[len('res_ctrl_'):-4]
             u = unitize(load(f), ['budget'], 'pred')
             add_unit('VLM·pixel budget / %s / %s' % (mdl, ds), {k: v for k, v in u.items()})

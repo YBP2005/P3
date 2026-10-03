@@ -1,0 +1,669 @@
+﻿item,gt,pred,ntiles,parse_ok,raw,latency_s,abstain
+img_0017,191,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0010,566,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0012,434,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0013,1528,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0006,436,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0003,350,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0011,540,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0026,113,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0031,394,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0022,479,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0007,77,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0030,367,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0028,405,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0037,2530,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0038,297,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0001,977,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0039,88,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0040,201,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0046,177,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0047,100,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0025,319,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0032,674,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0044,169,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0041,960,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0054,597,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0024,385,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0002,923,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0015,413,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0016,853,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0018,141,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0045,153,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0027,181,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0051,187,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0005,103,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0049,2494,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0053,954,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0019,137,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0009,237,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0060,227,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0014,225,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0023,274,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0008,92,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0068,363,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0070,233,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0004,183,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0058,4535,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0029,450,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0036,302,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0033,129,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0072,241,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0081,121,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0048,1211,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0035,1018,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0064,1357,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0062,2638,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0020,133,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0080,347,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0082,337,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0055,361,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0021,127,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0034,221,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0084,322,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0093,1929,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0073,481,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0066,2980,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0092,645,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0076,489,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0052,139,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0063,1149,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0099,304,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0100,232,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0102,264,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0103,505,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0101,175,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0050,425,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0096,107,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0061,236,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0086,176,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0091,636,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0106,1443,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0069,547,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0083,693,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0077,203,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0057,687,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0071,1236,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0110,460,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0078,1116,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0115,291,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0119,723,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0111,157,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0079,1974,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0104,1387,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0085,283,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0120,763,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0121,150,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0105,166,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0097,431,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0094,146,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0098,249,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0109,441,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0074,704,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0128,811,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0056,194,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0067,255,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0114,800,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0116,760,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0125,1256,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0059,452,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0134,152,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0124,757,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0127,408,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0122,499,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0087,626,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0112,1166,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0135,314,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0143,810,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0130,456,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0133,944,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0108,188,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0095,370,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0131,475,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0141,171,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0132,294,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0107,335,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0155,845,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0075,253,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0138,632,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0042,130,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0142,353,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0137,751,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0150,396,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0065,490,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0148,819,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0129,311,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0126,305,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0149,390,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0145,161,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0117,737,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0144,446,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0118,964,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0147,135,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0088,197,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0153,641,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0175,117,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0170,148,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0139,428,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0163,372,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0174,259,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0156,2075,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0090,792,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0043,155,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0161,313,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0177,272,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0159,469,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0123,485,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0162,279,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0151,648,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0113,1278,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0089,1557,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0136,652,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0169,174,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0191,532,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0180,1315,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0188,275,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0195,211,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0171,608,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0194,159,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0166,2315,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0160,1063,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0168,138,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0179,2021,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0154,354,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0176,326,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0165,198,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0157,471,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0189,122,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0158,247,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0152,901,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0186,158,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0202,864,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0167,4195,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0201,719,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0164,1586,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0146,387,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0178,400,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0193,210,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0209,143,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0212,218,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0181,466,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0215,1048,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0197,165,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0200,299,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0205,778,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0203,368,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0219,535,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0183,1758,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0206,2870,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0204,522,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0207,463,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0187,403,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0140,398,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0196,287,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0182,269,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0192,195,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0208,204,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0218,712,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0172,110,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0199,263,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0235,125,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0234,244,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0236,267,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0242,238,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0173,883,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0243,289,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0238,170,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0185,507,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0239,306,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0220,2746,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0227,612,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0184,2166,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0211,434,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0190,732,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0237,178,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0229,699,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0252,340,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0231,682,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0198,104,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0214,514,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0228,172,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0223,1826,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0241,207,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0244,228,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0245,308,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0257,2371,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0225,1191,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0263,258,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0247,214,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0253,163,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0221,1709,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0266,3653,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0267,1103,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0226,1665,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0210,421,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0265,245,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0268,1400,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0269,3304,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0230,1454,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0251,184,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0271,916,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0270,276,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0280,558,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0216,593,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0278,518,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0250,65,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0274,457,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0264,225,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0222,1890,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0275,1070,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0217,1775,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0281,871,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0286,937,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0287,229,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0282,574,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0224,379,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0290,556,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0289,251,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0285,582,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0292,260,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0279,560,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0291,357,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0283,241,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0240,329,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0299,165,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0272,1798,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0276,302,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0213,266,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0255,3970,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0301,207,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0302,315,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0305,654,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0309,663,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0310,642,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0304,2593,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0312,270,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0277,259,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0248,205,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0273,948,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0293,1433,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0262,550,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0233,332,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0298,284,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0284,376,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0300,236,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0321,2472,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0303,2154,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0232,419,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0249,83,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0296,1341,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0307,1077,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0325,1659,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0329,962,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0258,994,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0328,426,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0317,811,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0324,650,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0332,770,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0314,820,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0259,338,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0326,165,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0313,465,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0334,1508,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0333,601,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0288,216,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0260,2116,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0315,383,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0297,429,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0330,1668,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0306,2702,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0308,3568,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0319,922,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0327,1408,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0320,2414,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0311,909,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0316,973,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0261,343,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0254,829,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0331,2607,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0294,791,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0323,2033,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0256,2240,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0322,1613,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0318,1616,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0295,1477,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0246,1036,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0017,191,264,1,4,"{""count"": 72} | {""count"": 57} | {""count"": 78} | {""count"": 57}",14.19,0
+img_0010,566,209,1,4,"{""count"": 1} | {""count"": 58} | {""count"": 100} | {""count"": 50}",15.30,0
+img_0012,434,400,1,4,"{""count"": 100} | {""count"": 100} | {""count"": 100} | {""count"": 100}",15.50,0
+img_0031,394,154,1,4,"{""count"": 1} | {""count"": 52} | {""count"": 1} | {""count"": 100}",15.49,0
+img_0011,540,126,1,4,"{""count"": 1} | {""count"": 62} | {""count"": 1} | {""count"": 62}",16.66,0
+img_0026,113,148,1,4,"{""count"": 24} | {""count"": 37} | {""count"": 37} | {""count"": 50}",16.87,0
+img_0028,405,103,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 1} | {""count"": 1}",18.37,0
+img_0022,479,202,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 1} | {""count"": 100}",18.59,0
+img_0003,350,274,1,4,"{""count"": 120} | {""count"": 30} | {""count"": 100} | {""count"": 24}",18.87,0
+img_0013,1528,400,1,4,"{""count"": 100} | {""count"": 100} | {""count"": 100} | {""count"": 100}",19.06,0
+img_0030,367,220,1,4,"{""count"": 100} | {""count"": 8} | {""count"": 100} | {""count"": 12}",19.06,0
+img_0006,436,202,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 1} | {""count"": 100}",19.07,0
+img_0007,77,92,1,4,"{""count"": 52} | {""count"": 6} | {""count"": 30} | {""count"": 4}",19.11,0
+img_0001,977,548,1,4,"{""count"": 1} | {""count"": 200} | {""count"": 200} | {""count"": 147}",19.79,0
+img_0032,674,202,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 1} | {""count"": 100}",19.97,0
+img_0018,141,204,1,4,"{""count"": 10} | {""count"": 57} | {""count"": 37} | {""count"": 100}",20.19,0
+img_0016,853,202,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 1} | {""count"": 100}",20.41,0
+img_0025,319,153,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 2} | {""count"": 50}",20.45,0
+img_0019,137,171,1,4,"{""count"": 20} | {""count"": 57} | {""count"": 37} | {""count"": 57}",20.86,0
+img_0002,923,202,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 1} | {""count"": 100}",20.87,0
+img_0024,385,309,1,4,"{""count"": 100} | {""count"": 57} | {""count"": 100} | {""count"": 52}",20.90,0
+img_0014,225,191,1,4,"{""count"": 100} | {""count"": 17} | {""count"": 57} | {""count"": 17}",21.13,0
+img_0008,92,128,1,4,"{""count"": 37} | {""count"": 27} | {""count"": 37} | {""count"": 27}",21.32,0
+img_0005,103,94,1,4,"{""count"": 0} | {""count"": 57} | {""count"": 0} | {""count"": 37}",21.55,0
+img_0009,237,159,1,4,"{""count"": 1} | {""count"": 57} | {""count"": 1} | {""count"": 100}",21.77,0
+img_0015,413,357,1,4,"{""count"": 100} | {""count"": 57} | {""count"": 100} | {""count"": 100}",21.81,0
+img_0027,181,169,1,4,"{""count"": 23} | {""count"": 37} | {""count"": 57} | {""count"": 52}",21.82,0
+img_0004,183,188,1,4,"{""count"": 37} | {""count"": 57} | {""count"": 37} | {""count"": 57}",21.99,0
+img_0029,450,309,1,4,"{""count"": 100} | {""count"": 72} | {""count"": 100} | {""count"": 37}",22.02,0
+img_0020,133,161,1,4,"{""count"": 50} | {""count"": 37} | {""count"": 37} | {""count"": 37}",22.24,0
+img_0023,274,200,1,4,"{""count"": 0} | {""count"": 100} | {""count"": 0} | {""count"": 100}",22.24,0
+img_0021,127,129,1,4,"{""count"": 37} | {""count"": 19} | {""count"": 50} | {""count"": 23}",22.43,0
+img_0039,88,114,1,4,"{""count"": 47} | {""count"": 8} | {""count"": 50} | {""count"": 9}",11.05,0
+img_0033,129,114,1,4,"{""count"": 20} | {""count"": 17} | {""count"": 57} | {""count"": 20}",15.66,0
+img_0035,1018,204,1,4,"{""count"": 2} | {""count"": 100} | {""count"": 2} | {""count"": 100}",14.83,0
+img_0054,597,64,1,4,"{""count"": 1} | {""count"": 30} | {""count"": 1} | {""count"": 32}",9.84,0
+img_0037,2530,103,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 1} | {""count"": 1}",14.32,0
+img_0040,201,211,1,4,"{""count"": 57} | {""count"": 50} | {""count"": 77} | {""count"": 27}",12.60,0
+img_0036,302,111,1,4,"{""count"": 37} | {""count"": 22} | {""count"": 37} | {""count"": 15}",15.70,0
+img_0034,221,72,1,4,"{""count"": 20} | {""count"": 8} | {""count"": 37} | {""count"": 7}",16.07,0
+img_0044,169,167,1,4,"{""count"": 50} | {""count"": 37} | {""count"": 50} | {""count"": 30}",12.34,0
+img_0038,297,261,1,4,"{""count"": 100} | {""count"": 14} | {""count"": 100} | {""count"": 47}",17.06,0
+img_0045,153,101,1,4,"{""count"": 37} | {""count"": 12} | {""count"": 37} | {""count"": 15}",16.60,0
+img_0041,960,1174,1,4,"{""count"": 100} | {""count"": 37} | {""count"": 1000} | {""count"": 37}",16.84,0
+img_0043,155,169,1,4,"{""count"": 52} | {""count"": 30} | {""count"": 57} | {""count"": 30}",17.07,0
+img_0047,100,105,1,4,"{""count"": 37} | {""count"": 43} | {""count"": 2} | {""count"": 23}",16.44,0
+img_0046,177,204,1,4,"{""count"": 100} | {""count"": 37} | {""count"": 37} | {""count"": 30}",16.84,0
+img_0042,130,77,1,4,"{""count"": 37} | {""count"": 8} | {""count"": 23} | {""count"": 9}",18.20,0
+img_0051,187,247,1,4,"{""count"": 100} | {""count"": 30} | {""count"": 67} | {""count"": 50}",16.90,0
+img_0049,2494,2002,1,4,"{""count"": 1} | {""count"": 1000} | {""count"": 1} | {""count"": 1000}",18.26,0
+img_0048,1211,601,1,4,"{""count"": 1} | {""count"": 200} | {""count"": 100} | {""count"": 300}",18.49,0
+img_0050,425,400,1,4,"{""count"": 100} | {""count"": 100} | {""count"": 100} | {""count"": 100}",19.15,0
+img_0060,227,148,1,4,"{""count"": 37} | {""count"": 37} | {""count"": 37} | {""count"": 37}",17.85,0
+img_0052,139,96,1,4,"{""count"": 37} | {""count"": 10} | {""count"": 37} | {""count"": 12}",19.20,0
+img_0053,954,486,1,4,"{""count"": 100} | {""count"": 178} | {""count"": 108} | {""count"": 100}",19.40,0
+img_0056,194,118,1,4,"{""count"": 2} | {""count"": 57} | {""count"": 2} | {""count"": 57}",18.92,0
+img_0061,236,223,1,4,"{""count"": 57} | {""count"": 52} | {""count"": 57} | {""count"": 57}",18.72,0
+img_0055,361,357,1,4,"{""count"": 100} | {""count"": 100} | {""count"": 100} | {""count"": 57}",19.68,0
+img_0057,687,231,1,4,"{""count"": 100} | {""count"": 30} | {""count"": 1} | {""count"": 100}",19.22,0
+img_0059,452,400,1,4,"{""count"": 100} | {""count"": 100} | {""count"": 100} | {""count"": 100}",19.37,0
+img_0058,4535,2272,1,4,"{""count"": 1000} | {""count"": 172} | {""count"": 1000} | {""count"": 100}",19.55,0
+img_0063,1149,225,1,4,"{""count"": 100} | {""count"": 13} | {""count"": 100} | {""count"": 12}",19.12,0
+img_0064,1357,400,1,4,"{""count"": 100} | {""count"": 100} | {""count"": 100} | {""count"": 100}",19.15,0
+img_0062,2638,1300,1,4,"{""count"": 1000} | {""count"": 100} | {""count"": 100} | {""count"": 100}",19.57,0
+img_0066,2980,210,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 1} | {""count"": 108}",23.06,0
+img_0065,490,102,1,4,"{""count"": 0} | {""count"": 100} | {""count"": 0} | {""count"": 2}",23.65,0
+img_0068,363,217,1,4,"{""count"": 100} | {""count"": 50} | {""count"": 37} | {""count"": 30}",22.82,0
+img_0067,255,246,1,4,"{""count"": 100} | {""count"": 23} | {""count"": 100} | {""count"": 23}",23.70,0
+img_0070,233,314,1,4,"{""count"": 100} | {""count"": 57} | {""count"": 100} | {""count"": 57}",23.28,0
+img_0069,547,309,1,4,"{""count"": 100} | {""count"": 52} | {""count"": 100} | {""count"": 57}",23.72,0
+img_0072,241,262,1,4,"{""count"": 100} | {""count"": 32} | {""count"": 100} | {""count"": 30}",23.53,0
+img_0073,481,284,1,4,"{""count"": 100} | {""count"": 57} | {""count"": 100} | {""count"": 27}",23.68,0
+img_0071,1236,900,1,4,"{""count"": 200} | {""count"": 300} | {""count"": 200} | {""count"": 200}",24.37,0
+img_0074,704,400,1,4,"{""count"": 100} | {""count"": 100} | {""count"": 100} | {""count"": 100}",23.95,0
+img_0076,489,203,1,4,"{""count"": 2} | {""count"": 100} | {""count"": 1} | {""count"": 100}",23.25,0
+img_0075,253,197,1,4,"{""count"": 100} | {""count"": 23} | {""count"": 54} | {""count"": 20}",23.29,0
+img_0077,203,228,1,4,"{""count"": 57} | {""count"": 57} | {""count"": 57} | {""count"": 57}",23.30,0
+img_0081,121,88,1,4,"{""count"": 30} | {""count"": 12} | {""count"": 32} | {""count"": 14}",21.93,0
+img_0080,347,202,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 1} | {""count"": 100}",22.62,0
+img_0079,1974,483,1,4,"{""count"": 237} | {""count"": 23} | {""count"": 200} | {""count"": 23}",23.48,0
+img_0078,1116,577,1,4,"{""count"": 200} | {""count"": 100} | {""count"": 177} | {""count"": 100}",23.70,0
+img_0084,322,294,1,4,"{""count"": 100} | {""count"": 57} | {""count"": 100} | {""count"": 37}",20.78,0
+img_0082,337,23,1,4,"{""count"": 1} | {""count"": 1} | {""count"": 1} | {""count"": 20}",21.93,0
+img_0083,693,202,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 1} | {""count"": 100}",23.02,0
+img_0085,283,324,1,4,"{""count"": 100} | {""count"": 67} | {""count"": 100} | {""count"": 57}",22.82,0
+img_0086,176,213,1,4,"{""count"": 67} | {""count"": 23} | {""count"": 100} | {""count"": 23}",22.78,0
+img_0093,1929,1051,1,4,"{""count"": 1} | {""count"": 0} | {""count"": 1000} | {""count"": 50}",21.52,0
+img_0092,645,311,1,4,"{""count"": 172} | {""count"": 100} | {""count"": 2} | {""count"": 37}",21.90,0
+img_0088,197,189,1,4,"{""count"": 2} | {""count"": 37} | {""count"": 100} | {""count"": 50}",22.86,0
+img_0087,626,314,1,4,"{""count"": 100} | {""count"": 57} | {""count"": 100} | {""count"": 57}",23.22,0
+img_0091,636,309,1,4,"{""count"": 100} | {""count"": 52} | {""count"": 100} | {""count"": 57}",22.54,0
+img_0090,792,202,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 1} | {""count"": 100}",22.78,0
+img_0089,1557,772,1,4,"{""count"": 100} | {""count"": 300} | {""count"": 200} | {""count"": 172}",23.20,0
+img_0094,146,201,1,4,"{""count"": 57} | {""count"": 37} | {""count"": 57} | {""count"": 50}",22.63,0
+img_0096,107,122,1,4,"{""count"": 57} | {""count"": 7} | {""count"": 52} | {""count"": 6}",22.36,0
+img_0095,370,314,1,4,"{""count"": 100} | {""count"": 57} | {""count"": 100} | {""count"": 57}",23.29,0
+img_0099,304,103,1,4,"{""count"": 2} | {""count"": 50} | {""count"": 1} | {""count"": 50}",19.39,0
+img_0097,431,53,1,4,"{""count"": 1} | {""count"": 2} | {""count"": 23} | {""count"": 27}",21.17,0
+img_0100,232,182,1,4,"{""count"": 100} | {""count"": 17} | {""count"": 50} | {""count"": 15}",20.29,0
+img_0098,249,221,1,4,"{""count"": 57} | {""count"": 57} | {""count"": 57} | {""count"": 50}",21.24,0
+img_0103,505,103,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 1} | {""count"": 1}",20.25,0
+img_0101,175,214,1,4,"{""count"": 50} | {""count"": 57} | {""count"": 50} | {""count"": 57}",20.96,0
+img_0102,264,103,1,4,"{""count"": 37} | {""count"": 15} | {""count"": 37} | {""count"": 14}",20.74,0
+img_0104,1387,202,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 1} | {""count"": 100}",20.96,0
+img_0106,1443,4,1,4,"{""count"": 1} | {""count"": 1} | {""count"": 1} | {""count"": 1}",18.44,0
+img_0105,166,209,1,4,"{""count"": 57} | {""count"": 29} | {""count"": 100} | {""count"": 23}",21.42,0
+img_0115,291,270,1,4,"{""count"": 100} | {""count"": 43} | {""count"": 100} | {""count"": 27}",19.13,0
+img_0108,188,134,1,4,"{""count"": 12} | {""count"": 57} | {""count"": 8} | {""count"": 57}",20.95,0
+img_0109,441,140,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 2} | {""count"": 37}",21.39,0
+img_0111,157,153,1,4,"{""count"": 14} | {""count"": 37} | {""count"": 2} | {""count"": 100}",21.40,0
+img_0110,460,420,1,4,"{""count"": 120} | {""count"": 100} | {""count"": 100} | {""count"": 100}",21.58,0
+img_0107,335,289,1,4,"{""count"": 100} | {""count"": 37} | {""count"": 100} | {""count"": 52}",22.37,0
+img_0113,1278,4,1,4,"{""count"": 1} | {""count"": 1} | {""count"": 1} | {""count"": 1}",21.86,0
+img_0112,1166,402,1,4,"{""count"": 1} | {""count"": 200} | {""count"": 1} | {""count"": 200}",22.12,0
+img_0128,811,4,1,4,"{""count"": 1} | {""count"": 1} | {""count"": 1} | {""count"": 1}",17.57,0
+img_0114,800,350,1,4,"{""count"": 100} | {""count"": 100} | {""count"": 100} | {""count"": 50}",22.07,0
+img_0121,150,140,1,4,"{""count"": 50} | {""count"": 37} | {""count"": 30} | {""count"": 23}",19.29,0
+img_0119,723,274,1,4,"{""count"": 1} | {""count"": 172} | {""count"": 1} | {""count"": 100}",20.21,0
+img_0116,760,400,1,4,"{""count"": 100} | {""count"": 100} | {""count"": 100} | {""count"": 100}",21.83,0
+img_0120,763,595,1,4,"{""count"": 172} | {""count"": 123} | {""count"": 200} | {""count"": 100}",20.48,0
+img_0122,499,301,1,4,"{""count"": 100} | {""count"": 100} | {""count"": 1} | {""count"": 100}",20.70,0
+img_0117,737,447,1,4,"{""count"": 147} | {""count"": 100} | {""count"": 100} | {""count"": 100}",22.45,0
+img_0124,757,294,1,4,"{""count"": 100} | {""count"": 57} | {""count"": 100} | {""count"": 37}",21.38,0
+img_0118,964,454,1,4,"{""count"": 127} | {""count"": 100} | {""count"": 100} | {""count"": 127}",22.53,0
+img_0123,485,372,1,4,"{""count"": 100} | {""count"": 72} | {""count"": 100} | {""count"": 100}",22.01,0
+img_0126,305,258,1,4,"{""count"": 100} | {""count"": 100} | {""count"": 1} | {""count"": 57}",22.06,0
+img_0125,1256,357,1,4,"{""count"": 100} | {""count"": 100} | {""count"": 100} | {""count"": 57}",22.29,0
+img_0127,408,432,1,4,"{""count"": 127} | {""count"": 100} | {""count"": 127} | {""count"": 78}",22.33,0
+img_0134,152,167,1,4,"{""count"": 50} | {""count"": 30} | {""count"": 50} | {""count"": 37}",16.99,0
+img_0129,311,274,1,4,"{""count"": 100} | {""count"": 37} | {""count"": 100} | {""count"": 37}",23.32,0
+img_0130,456,217,1,4,"{""count"": 100} | {""count"": 57} | {""count"": 37} | {""count"": 23}",23.07,0
+img_0132,294,256,1,4,"{""count"": 100} | {""count"": 47} | {""count"": 72} | {""count"": 37}",23.52,0
+img_0131,475,82,1,4,"{""count"": 1} | {""count"": 30} | {""count"": 1} | {""count"": 50}",23.77,0
+img_0133,944,195,1,4,"{""count"": 1} | {""count"": 37} | {""count"": 100} | {""count"": 57}",24.05,0
+img_0135,314,94,1,4,"{""count"": 1} | {""count"": 37} | {""count"": 2} | {""count"": 54}",24.20,0
+img_0137,751,202,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 1} | {""count"": 100}",24.20,0
+img_0136,652,400,1,4,"{""count"": 100} | {""count"": 100} | {""count"": 100} | {""count"": 100}",24.51,0
+img_0138,632,440,1,4,"{""count"": 120} | {""count"": 100} | {""count"": 120} | {""count"": 100}",24.46,0
+img_0143,810,301,1,4,"{""count"": 100} | {""count"": 100} | {""count"": 1} | {""count"": 100}",20.87,0
+img_0139,428,349,1,4,"{""count"": 100} | {""count"": 77} | {""count"": 100} | {""count"": 72}",24.63,0
+img_0140,398,345,1,4,"{""count"": 100} | {""count"": 67} | {""count"": 100} | {""count"": 78}",24.86,0
+img_0141,171,176,1,4,"{""count"": 77} | {""count"": 32} | {""count"": 37} | {""count"": 30}",24.46,0
+img_0144,446,274,1,4,"{""count"": 100} | {""count"": 72} | {""count"": 2} | {""count"": 100}",24.64,0
+img_0142,353,372,1,4,"{""count"": 100} | {""count"": 72} | {""count"": 100} | {""count"": 100}",24.96,0
+img_0145,161,146,1,4,"{""count"": 57} | {""count"": 17} | {""count"": 57} | {""count"": 15}",24.45,0
+img_0148,819,202,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 1} | {""count"": 100}",24.22,0
+img_0147,135,143,1,4,"{""count"": 57} | {""count"": 17} | {""count"": 57} | {""count"": 12}",24.22,0
+img_0146,387,257,1,4,"{""count"": 100} | {""count"": 30} | {""count"": 100} | {""count"": 27}",24.91,0
+img_0150,396,357,1,4,"{""count"": 100} | {""count"": 100} | {""count"": 100} | {""count"": 57}",24.26,0
+img_0149,390,302,1,4,"{""count"": 2} | {""count"": 100} | {""count"": 100} | {""count"": 100}",24.90,0
+img_0155,845,395,1,4,"{""count"": 1} | {""count"": 147} | {""count"": 147} | {""count"": 100}",22.38,0
+img_0151,648,173,1,4,"{""count"": 0} | {""count"": 100} | {""count"": 1} | {""count"": 72}",24.49,0
+img_0153,641,202,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 1} | {""count"": 100}",24.67,0
+img_0152,901,307,1,4,"{""count"": 100} | {""count"": 57} | {""count"": 100} | {""count"": 50}",25.31,0
+img_0154,354,139,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 1} | {""count"": 37}",24.73,0
+img_0156,2075,1301,1,4,"{""count"": 200} | {""count"": 100} | {""count"": 1} | {""count"": 1000}",25.09,0
+img_0157,471,324,1,4,"{""count"": 100} | {""count"": 67} | {""count"": 100} | {""count"": 57}",25.17,0
+img_0158,247,226,1,4,"{""count"": 72} | {""count"": 27} | {""count"": 100} | {""count"": 27}",24.90,0
+img_0159,469,197,1,4,"{""count"": 100} | {""count"": 30} | {""count"": 37} | {""count"": 30}",25.13,0
+img_0160,1063,202,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 1} | {""count"": 100}",25.09,0
+img_0161,313,269,1,4,"{""count"": 100} | {""count"": 47} | {""count"": 100} | {""count"": 22}",24.80,0
+img_0162,279,238,1,4,"{""count"": 37} | {""count"": 100} | {""count"": 1} | {""count"": 100}",24.37,0
+img_0163,372,202,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 1} | {""count"": 100}",24.36,0
+img_0165,198,238,1,4,"{""count"": 57} | {""count"": 57} | {""count"": 67} | {""count"": 57}",24.38,0
+img_0164,1586,2200,1,4,"{""count"": 1000} | {""count"": 100} | {""count"": 1000} | {""count"": 100}",25.06,0
+img_0166,2315,870,1,4,"{""count"": 370} | {""count"": 100} | {""count"": 300} | {""count"": 100}",24.85,0
+img_0177,272,183,1,4,"{""count"": 37} | {""count"": 19} | {""count"": 100} | {""count"": 27}",17.87,0
+img_0168,138,171,1,4,"{""count"": 57} | {""count"": 30} | {""count"": 57} | {""count"": 27}",23.97,0
+img_0167,4195,1500,1,4,"{""count"": 100} | {""count"": 300} | {""count"": 1000} | {""count"": 100}",24.87,0
+img_0169,174,188,1,4,"{""count"": 57} | {""count"": 37} | {""count"": 57} | {""count"": 37}",24.57,0
+img_0170,148,218,1,4,"{""count"": 57} | {""count"": 37} | {""count"": 72} | {""count"": 52}",23.75,0
+img_0171,608,447,1,4,"{""count"": 147} | {""count"": 100} | {""count"": 100} | {""count"": 100}",24.57,0
+img_0175,117,144,1,4,"{""count"": 30} | {""count"": 50} | {""count"": 17} | {""count"": 47}",21.86,0
+img_0174,259,95,1,4,"{""count"": 20} | {""count"": 37} | {""count"": 1} | {""count"": 37}",22.59,0
+img_0172,110,64,1,4,"{""count"": 0} | {""count"": 37} | {""count"": 0} | {""count"": 27}",24.40,0
+img_0173,883,447,1,4,"{""count"": 100} | {""count"": 100} | {""count"": 147} | {""count"": 100}",24.81,0
+img_0176,326,77,1,4,"{""count"": 1} | {""count"": 37} | {""count"": 2} | {""count"": 37}",23.86,0
+img_0179,2021,203,1,4,"{""count"": 1} | {""count"": 200} | {""count"": 1} | {""count"": 1}",23.91,0
+img_0178,400,158,1,4,"{""count"": 0} | {""count"": 57} | {""count"": 1} | {""count"": 100}",24.10,0
+img_0180,1315,574,1,4,"{""count"": 200} | {""count"": 127} | {""count"": 147} | {""count"": 100}",24.33,0
+img_0181,466,125,1,4,"{""count"": 4} | {""count"": 20} | {""count"": 1} | {""count"": 100}",24.11,0
+img_0183,1758,76,1,4,"{""count"": 1} | {""count"": 37} | {""count"": 1} | {""count"": 37}",24.21,0
+img_0182,269,183,1,4,"{""count"": 100} | {""count"": 13} | {""count"": 62} | {""count"": 8}",24.45,0
+img_0191,532,232,1,4,"{""count"": 100} | {""count"": 17} | {""count"": 100} | {""count"": 15}",20.78,0
+img_0186,158,119,1,4,"{""count"": 37} | {""count"": 23} | {""count"": 37} | {""count"": 22}",23.76,0
+img_0185,507,140,1,4,"{""count"": 2} | {""count"": 37} | {""count"": 1} | {""count"": 100}",24.40,0
+img_0184,2166,1926,1,4,"{""count"": 1000} | {""count"": 372} | {""count"": 377} | {""count"": 177}",25.31,0
+img_0187,403,200,1,4,"{   ""count"": 0 } | {""count"": 100} | {""count"": 0} | {""count"": 100}",24.79,0
+img_0188,275,253,1,4,"{""count"": 100} | {""count"": 30} | {""count"": 100} | {""count"": 23}",24.20,0
+img_0189,122,125,1,4,"{""count"": 5} | {""count"": 7} | {""count"": 100} | {""count"": 13}",24.37,0
+img_0190,732,339,1,4,"{""count"": 72} | {""count"": 100} | {""count"": 67} | {""count"": 100}",24.81,0
+img_0192,195,233,1,4,"{""count"": 72} | {""count"": 24} | {""count"": 100} | {""count"": 37}",24.24,0
+img_0194,159,163,1,4,"{""count"": 57} | {""count"": 32} | {""count"": 50} | {""count"": 24}",18.57,0
+img_0195,211,280,1,4,"{""count"": 100} | {""count"": 30} | {""count"": 100} | {""count"": 50}",18.82,0
+img_0193,210,254,1,4,"{""count"": 100} | {""count"": 27} | {""count"": 100} | {""count"": 27}",24.23,0
+img_0202,864,202,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 1} | {""count"": 100}",17.00,0
+img_0196,287,138,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 0} | {""count"": 37}",23.85,0
+img_0197,165,202,1,4,"{""count"": 100} | {""count"": 23} | {""count"": 57} | {""count"": 22}",24.09,0
+img_0198,104,101,1,4,"{""count"": 37} | {""count"": 17} | {""count"": 37} | {""count"": 10}",24.08,0
+img_0201,719,267,1,4,"{""count"": 100} | {""count"": 30} | {""count"": 100} | {""count"": 37}",23.68,0
+img_0199,263,183,1,4,"{""count"": 37} | {""count"": 72} | {""count"": 37} | {""count"": 37}",23.90,0
+img_0203,368,69,1,4,"{""count"": 1} | {""count"": 37} | {""count"": 1} | {""count"": 30}",23.23,0
+img_0200,299,260,1,4,"{""count"": 100} | {""count"": 30} | {""count"": 100} | {""count"": 30}",24.29,0
+img_0204,522,179,1,4,"{""count"": 1} | {""count"": 77} | {""count"": 1} | {""count"": 100}",23.43,0
+img_0205,778,139,1,4,"{""count"": 1} | {""count"": 37} | {""count"": 1} | {""count"": 100}",23.23,0
+img_0206,2870,2002,1,4,"{""count"": 1} | {""count"": 1000} | {""count"": 1} | {""count"": 1000}",24.14,0
+img_0209,143,105,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 1} | {""count"": 3}",22.36,0
+img_0207,463,63,1,4,"{""count"": 1} | {""count"": 30} | {""count"": 2} | {""count"": 30}",23.92,0
+img_0208,204,281,1,4,"{""count"": 72} | {""count"": 52} | {""count"": 100} | {""count"": 57}",24.38,0
+img_0211,434,132,1,4,"{""count"": 57} | {""count"": 37} | {""count"": 1} | {""count"": 37}",24.19,0
+img_0210,421,200,1,4,"{""count"": 0} | {""count"": 100} | {""count"": 0} | {""count"": 100}",24.38,0
+img_0215,1048,4,1,4,"{""count"": 0} | {""count"": 1} | {""count"": 2} | {""count"": 1}",23.18,0
+img_0212,218,246,1,4,"{""count"": 72} | {""count"": 37} | {""count"": 100} | {""count"": 37}",23.73,0
+img_0213,266,208,1,4,"{""count"": 100} | {""count"": 27} | {""count"": 57} | {""count"": 24}",23.97,0
+img_0214,514,309,1,4,"{""count"": 100} | {""count"": 52} | {""count"": 100} | {""count"": 57}",24.13,0
+img_0219,535,384,1,4,"{""count"": 100} | {""count"": 37} | {""count"": 200} | {""count"": 47}",22.54,0
+img_0216,593,400,1,4,"{""count"": 100} | {""count"": 100} | {""count"": 100} | {""count"": 100}",24.14,0
+img_0218,712,202,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 1} | {""count"": 100}",23.23,0
+img_0217,1775,226,1,4,"{""count"": 100} | {""count"": 13} | {""count"": 100} | {""count"": 13}",24.14,0
+img_0221,1709,577,1,4,"{""count"": 200} | {""count"": 100} | {""count"": 200} | {""count"": 77}",23.95,0
+img_0222,1890,800,1,4,"{""count"": 300} | {""count"": 100} | {""count"": 300} | {""count"": 100}",23.72,0
+img_0220,2746,2200,1,4,"{""count"": 1000} | {""count"": 100} | {""count"": 1000} | {""count"": 100}",24.41,0
+img_0223,1826,103,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 1} | {""count"": 1}",23.50,0
+img_0224,379,302,1,4,"{""count"": 100} | {""count"": 50} | {""count"": 100} | {""count"": 52}",23.87,0
+img_0225,1191,301,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 100} | {""count"": 100}",23.65,0
+img_0226,1665,1500,1,4,"{""count"": 300} | {""count"": 100} | {""count"": 1000} | {""count"": 100}",24.11,0
+img_0227,612,314,1,4,"{""count"": 100} | {""count"": 57} | {""count"": 100} | {""count"": 57}",23.49,0
+img_0228,172,260,1,4,"{""count"": 100} | {""count"": 30} | {""count"": 100} | {""count"": 30}",24.11,0
+img_0235,125,173,1,4,"{""count"": 100} | {""count"": 23} | {""count"": 37} | {""count"": 13}",19.26,0
+img_0229,699,348,1,4,"{""count"": 147} | {""count"": 100} | {""count"": 1} | {""count"": 100}",23.32,0
+img_0236,267,91,1,4,"{""count"": 1} | {""count"": 37} | {""count"": 1} | {""count"": 52}",19.76,0
+img_0230,1454,301,1,4,"{""count"": 100} | {""count"": 100} | {""count"": 1} | {""count"": 100}",23.09,0
+img_0231,682,287,1,4,"{""count"": 100} | {""count"": 50} | {""count"": 100} | {""count"": 37}",23.12,0
+img_0234,244,264,1,4,"{""count"": 100} | {""count"": 32} | {""count"": 100} | {""count"": 32}",22.85,0
+img_0232,419,76,1,4,"{""count"": 1} | {""count"": 37} | {""count"": 1} | {""count"": 37}",23.30,0
+img_0233,332,259,1,4,"{""count"": 2} | {""count"": 57} | {""count"": 100} | {""count"": 100}",23.52,0
+img_0238,170,142,1,4,"{""count"": 50} | {""count"": 27} | {""count"": 50} | {""count"": 15}",20.37,0
+img_0239,306,238,1,4,"{""count"": 100} | {""count"": 37} | {""count"": 1} | {""count"": 100}",21.04,0
+img_0237,178,223,1,4,"{""count"": 57} | {""count"": 29} | {""count"": 100} | {""count"": 37}",22.89,0
+img_0240,329,57,1,4,"{""count"": 2} | {""count"": 8} | {""count"": 37} | {""count"": 10}",22.41,0
+img_0242,238,97,1,4,"{""count"": 1} | {""count"": 37} | {""count"": 1} | {""count"": 58}",20.53,0
+img_0243,289,209,1,4,"{""count"": 100} | {""count"": 32} | {""count"": 57} | {""count"": 20}",20.79,0
+img_0241,207,109,1,4,"{""count"": 0} | {""count"": 57} | {""count"": 2} | {""count"": 50}",22.18,0
+img_0245,308,154,1,4,"{""count"": 57} | {""count"": 17} | {""count"": 57} | {""count"": 23}",22.34,0
+img_0244,228,257,1,4,"{""count"": 100} | {""count"": 30} | {""count"": 100} | {""count"": 27}",22.62,0
+img_0246,1036,21,1,4,"{""count"": 1} | {""count"": 10} | {""count"": 2} | {""count"": 8}",22.72,0
+img_0252,340,139,1,4,"{""count"": 1} | {""count"": 37} | {""count"": 1} | {""count"": 100}",19.81,0
+img_0247,214,251,1,4,"{""count"": 100} | {""count"": 57} | {""count"": 57} | {""count"": 37}",22.56,0
+img_0248,205,125,1,4,"{""count"": 54} | {""count"": 17} | {""count"": 37} | {""count"": 17}",22.74,0
+img_0250,65,92,1,4,"{""count"": 37} | {""count"": 17} | {""count"": 23} | {""count"": 15}",22.14,0
+img_0251,184,135,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 7} | {""count"": 27}",22.32,0
+img_0249,83,107,1,4,"{""count"": 24} | {""count"": 23} | {""count"": 37} | {""count"": 23}",23.04,0
+img_0253,163,48,1,4,"{""count"": 30} | {""count"": 9} | {""count"": 3} | {""count"": 6}",22.02,0
+img_0254,829,202,1,4,"{""count"": 2} | {""count"": 100} | {""count"": 0} | {""count"": 100}",22.73,0
+img_0255,3970,2578,1,4,"{""count"": 1000} | {""count"": 200} | {""count"": 1000} | {""count"": 378}",22.71,0
+img_0257,2371,201,1,4,"{""count"": 0} | {""count"": 1} | {""count"": 0} | {""count"": 200}",19.56,0
+img_0256,2240,1619,1,4,"{""count"": 1000} | {""count"": 147} | {""count"": 300} | {""count"": 172}",23.39,0
+img_0258,994,448,1,4,"{""count"": 147} | {""count"": 100} | {""count"": 1} | {""count"": 200}",22.44,0
+img_0259,338,219,1,4,"{""count"": 100} | {""count"": 9} | {""count"": 100} | {""count"": 10}",21.97,0
+img_0260,2116,977,1,4,"{""count"": 300} | {""count"": 100} | {""count"": 377} | {""count"": 200}",22.22,0
+img_0263,258,240,1,4,"{""count"": 100} | {""count"": 17} | {""count"": 100} | {""count"": 23}",18.84,0
+img_0261,343,329,1,4,"{""count"": 100} | {""count"": 57} | {""count"": 100} | {""count"": 72}",21.33,0
+img_0264,225,96,1,4,"{""count"": 1} | {""count"": 37} | {""count"": 1} | {""count"": 57}",20.43,0
+img_0267,1103,103,1,4,"{""count"": 1} | {""count"": 1} | {""count"": 1} | {""count"": 100}",19.46,0
+img_0262,550,230,1,4,"{""count"": 100} | {""count"": 17} | {""count"": 100} | {""count"": 13}",21.35,0
+img_0268,1400,202,1,4,"{""count"": 100} | {""count"": 100} | {""count"": 1} | {""count"": 1}",19.70,0
+img_0265,245,228,1,4,"{""count"": 100} | {""count"": 14} | {""count"": 100} | {""count"": 14}",20.18,0
+img_0266,3653,1002001,1,4,"{""count"": 1000} | {""count"": 1000} | {""count"": 1000000} | {""count"": 1}",20.81,0
+img_0269,3304,1174,1,4,"{""count"": 1} | {""count"": 1000} | {""count"": 172} | {""count"": 1}",19.93,0
+img_0270,276,350,1,4,"{""count"": 100} | {""count"": 50} | {""count"": 100} | {""count"": 100}",19.47,0
+img_0271,916,153,1,4,"{""count"": 1} | {""count"": 2} | {""count"": 100} | {""count"": 50}",19.07,0
+img_0272,1798,104,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 2} | {""count"": 1}",19.00,0
+img_0274,457,400,1,4,"{""count"": 100} | {""count"": 100} | {""count"": 100} | {""count"": 100}",19.48,0
+img_0280,558,109,1,4,"{""count"": 1} | {""count"": 57} | {""count"": 1} | {""count"": 50}",17.03,0
+img_0278,518,314,1,4,"{""count"": 100} | {""count"": 57} | {""count"": 100} | {""count"": 57}",17.53,0
+img_0273,948,585,1,4,"{""count"": 1} | {""count"": 237} | {""count"": 200} | {""count"": 147}",20.20,0
+img_0275,1070,400,1,4,"{""count"": 100} | {""count"": 100} | {""count"": 100} | {""count"": 100}",19.49,0
+img_0279,560,400,1,4,"{""count"": 100} | {""count"": 100} | {""count"": 100} | {""count"": 100}",17.73,0
+img_0281,871,202,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 1} | {""count"": 100}",17.55,0
+img_0282,574,400,1,4,"{""count"": 100} | {""count"": 100} | {""count"": 100} | {""count"": 100}",17.75,0
+img_0285,582,258,1,4,"{""count"": 100} | {""count"": 57} | {""count"": 1} | {""count"": 100}",15.99,0
+img_0287,229,138,1,4,"{""count"": 37} | {""count"": 32} | {""count"": 37} | {""count"": 32}",15.09,0
+img_0286,937,202,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 1} | {""count"": 100}",15.52,0
+img_0276,302,294,1,4,"{""count"": 100} | {""count"": 57} | {""count"": 100} | {""count"": 37}",20.26,0
+img_0289,251,196,1,4,"{""count"": 100} | {""count"": 24} | {""count"": 48} | {""count"": 24}",14.93,0
+img_0277,259,183,1,4,"{""count"": 37} | {""count"": 57} | {""count"": 37} | {""count"": 52}",20.25,0
+img_0283,241,246,1,4,"{""count"": 100} | {""count"": 37} | {""count"": 72} | {""count"": 37}",19.40,0
+img_0291,357,132,1,4,"{""count"": 1} | {""count"": 30} | {""count"": 1} | {""count"": 100}",12.23,0
+img_0284,376,314,1,4,"{""count"": 100} | {""count"": 57} | {""count"": 100} | {""count"": 57}",20.13,0
+img_0290,556,300,1,4,"{""count"": 100} | {""count"": 50} | {""count"": 100} | {""count"": 50}",12.97,0
+img_0292,260,294,1,4,"{""count"": 100} | {""count"": 57} | {""count"": 100} | {""count"": 37}",12.59,0
+img_0299,165,201,1,4,"{""count"": 57} | {""count"": 50} | {""count"": 57} | {""count"": 37}",10.33,0
+img_0301,207,154,1,4,"{""count"": 37} | {""count"": 50} | {""count"": 30} | {""count"": 37}",10.16,0
+img_0302,315,357,1,4,"{""count"": 100} | {""count"": 57} | {""count"": 100} | {""count"": 100}",10.14,0
+img_0305,654,301,1,4,"{""count"": 100} | {""count"": 100} | {""count"": 1} | {""count"": 100}",8.15,0
+img_0309,663,202,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 1} | {""count"": 100}",8.40,0
+img_0310,642,48,1,4,"{""count"": 1} | {""count"": 23} | {""count"": 1} | {""count"": 23}",8.10,0
+img_0288,216,188,1,4,"{""count"": 37} | {""count"": 57} | {""count"": 37} | {""count"": 57}",21.90,0
+img_0312,270,274,1,4,"{""count"": 100} | {""count"": 37} | {""count"": 100} | {""count"": 37}",8.33,0
+img_0304,2593,1003,1,4,"{""count"": 1} | {""count"": 1000} | {""count"": 1} | {""count"": 1}",11.09,0
+img_0321,2472,4,1,4,"{""count"": 1} | {""count"": 1} | {""count"": 1} | {""count"": 1}",7.40,0
+img_0293,1433,1202,1,4,"{""count"": 1} | {""count"": 200} | {""count"": 1} | {""count"": 1000}",23.68,0
+img_0294,791,400,1,4,"{""count"": 100} | {""count"": 100} | {""count"": 100} | {""count"": 100}",24.38,0
+img_0328,426,307,1,4,"{""count"": 100} | {""count"": 57} | {""count"": 100} | {""count"": 50}",10.41,0
+img_0329,962,524,1,4,"{""count"": 100} | {""count"": 177} | {""count"": 100} | {""count"": 147}",10.68,0
+img_0332,770,202,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 1} | {""count"": 100}",9.74,0
+img_0296,1341,274,1,4,"{""count"": 100} | {""count"": 37} | {""count"": 100} | {""count"": 37}",24.01,0
+img_0297,429,159,1,4,"{""count"": 1} | {""count"": 57} | {""count"": 1} | {""count"": 100}",24.58,0
+img_0295,1477,700,1,4,"{""count"": 300} | {""count"": 200} | {""count"": 100} | {""count"": 100}",25.06,0
+img_0298,284,372,1,4,"{""count"": 100} | {""count"": 100} | {""count"": 100} | {""count"": 72}",24.64,0
+img_0300,236,243,1,4,"{""count"": 72} | {""count"": 57} | {""count"": 57} | {""count"": 57}",24.85,0
+img_0324,650,260,1,4,"{""count"": 100} | {""count"": 30} | {""count"": 100} | {""count"": 30}",15.79,0
+img_0303,2154,2200,1,4,"{""count"": 1000} | {""count"": 100} | {""count"": 1000} | {""count"": 100}",26.11,0
+img_0308,3568,103,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 1} | {""count"": 1}",25.43,0
+img_0306,2702,200,1,4,"{""count"": 0} | {""count"": 100} | {""count"": 0} | {""count"": 100}",25.65,0
+img_0307,1077,644,1,4,"{""count"": 100} | {""count"": 200} | {""count"": 172} | {""count"": 172}",25.65,0
+img_0311,909,607,1,4,"{""count"": 187} | {""count"": 120} | {""count"": 200} | {""count"": 100}",25.43,0
+img_0313,465,202,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 1} | {""count"": 100}",25.39,0
+img_0314,820,66,1,4,"{""count"": 1} | {""count"": 37} | {""count"": 1} | {""count"": 27}",25.20,0
+img_0334,1508,4,1,4,"{""count"": 1} | {""count"": 1} | {""count"": 1} | {""count"": 1}",10.43,0
+img_0325,1659,339,1,4,"{""count"": 1} | {""count"": 37} | {""count"": 1} | {""count"": 300}",20.39,0
+img_0333,601,400,1,4,"{""count"": 100} | {""count"": 100} | {""count"": 100} | {""count"": 100}",16.04,0
+img_0315,383,195,1,4,"{""count"": 37} | {""count"": 57} | {""count"": 1} | {""count"": 100}",25.78,0
+img_0316,973,400,1,4,"{""count"": 100} | {""count"": 100} | {""count"": 100} | {""count"": 100}",25.48,0
+img_0317,811,275,1,4,"{""count"": 2} | {""count"": 172} | {""count"": 1} | {""count"": 100}",25.28,0
+img_0318,1616,202,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 1} | {""count"": 100}",25.70,0
+img_0319,922,200,1,4,"{""count"": 0} | {""count"": 100} | {   ""count"": 0 } | {""count"": 100}",25.69,0
+img_0320,2414,2002,1,4,"{""count"": 1} | {""count"": 1000} | {""count"": 1} | {""count"": 1000}",25.67,0
+img_0322,1613,1300,1,4,"{""count"": 1000} | {""count"": 100} | {""count"": 100} | {""count"": 100}",25.66,0
+img_0323,2033,977,1,4,"{""count"": 300} | {""count"": 200} | {""count"": 377} | {""count"": 100}",24.95,0
+img_0326,165,223,1,4,"{""count"": 57} | {""count"": 57} | {""count"": 57} | {""count"": 52}",23.59,0
+img_0327,1408,202,1,4,"{""count"": 1} | {""count"": 100} | {""count"": 1} | {""count"": 100}",23.48,0
+img_0330,1668,2200,1,4,"{""count"": 1000} | {""count"": 100} | {""count"": 1000} | {""count"": 100}",23.02,0
+img_0331,2607,2200,1,4,"{""count"": 1000} | {""count"": 100} | {""count"": 1000} | {""count"": 100}",23.01,0

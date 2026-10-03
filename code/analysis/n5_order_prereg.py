@@ -161,7 +161,7 @@ def build_units():
             u = unitize(load(p), ['arm'], 'pred')
             add_unit('VLM·output contract / %s' % mdl, {k: v for k, v in u.items()})
     for sub, mdl in (('dense_prompt_results', 'Qwen32B'), ('ivl_dense_prompt_results', 'IVL')):
-        d = os.path.join(PM, sub)
+        d = _first(sub)
         if not os.path.isdir(d):
             continue
         groups = collections.defaultdict(dict)

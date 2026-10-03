@@ -1,0 +1,669 @@
+﻿item,gt,pred,ntiles,parse_ok,raw,latency_s,abstain
+img_0031,394,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0026,113,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0028,405,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0012,434,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0006,436,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0013,1528,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0010,566,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0007,77,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0003,350,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0030,367,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0017,191,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0001,977,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0022,479,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0011,540,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0032,674,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0038,297,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0037,2530,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0024,385,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0046,177,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0025,319,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0015,413,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0016,853,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0027,181,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0044,169,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0054,597,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0018,141,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0047,100,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0040,201,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0002,923,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0008,92,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0041,960,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0039,88,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0045,153,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0019,137,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0053,954,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0005,103,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0023,274,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0049,2494,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0009,237,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0014,225,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0004,183,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0051,187,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0068,363,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0058,4535,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0060,227,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0029,450,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0072,241,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0070,233,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0064,1357,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0036,302,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0020,133,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0033,129,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0062,2638,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0073,481,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0082,337,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0081,121,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0048,1211,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0066,2980,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0055,361,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0021,127,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0063,1149,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0035,1018,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0061,236,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0080,347,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0052,139,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0034,221,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0084,322,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0093,1929,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0099,304,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0092,645,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0100,232,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0076,489,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0102,264,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0069,547,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0103,505,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0050,425,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0106,1443,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0077,203,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0091,636,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0096,107,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0071,1236,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0086,176,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0079,1974,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0056,194,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0083,693,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0078,1116,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0101,175,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0110,460,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0111,157,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0085,283,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0097,431,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0115,291,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0119,723,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0104,1387,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0121,150,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0057,687,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0105,166,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0098,249,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0120,763,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0094,146,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0109,441,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0128,811,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0114,800,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0074,704,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0067,255,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0116,760,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0134,152,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0125,1256,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0124,757,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0135,314,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0087,626,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0127,408,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0059,452,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0130,456,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0095,370,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0133,944,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0122,499,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0108,188,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0143,810,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0112,1166,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0107,335,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0132,294,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0131,475,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0129,311,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0150,396,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0075,253,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0148,819,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0137,751,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0138,632,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0142,353,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0141,171,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0147,135,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0155,845,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0126,305,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0042,130,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0144,446,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0149,390,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0145,161,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0065,490,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0153,641,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0151,648,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0117,737,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0170,148,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0156,2075,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0118,964,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0163,372,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0175,117,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0161,313,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0162,279,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0123,485,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0177,272,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0139,428,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0159,469,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0174,259,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0166,2315,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0113,1278,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0171,608,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0088,197,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0154,354,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0191,532,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0164,1586,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0152,901,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0136,652,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0169,174,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0179,2021,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0167,4195,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0090,792,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0186,158,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0168,138,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0194,159,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0195,211,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0043,155,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0176,326,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0180,1315,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0158,247,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0178,400,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0188,275,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0202,864,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0189,122,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0165,198,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0089,1557,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0193,210,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0201,719,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0157,471,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0160,1063,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0146,387,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0207,463,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0197,165,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0209,143,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0212,218,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0215,1048,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0206,2870,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0196,287,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0192,195,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0208,204,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0219,535,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0205,778,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0200,299,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0203,368,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0181,466,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0204,522,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0183,1758,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0187,403,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0234,244,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0235,125,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0140,398,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0231,682,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0218,712,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0182,269,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0199,263,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0227,612,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0236,267,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0172,110,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0242,238,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0185,507,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0220,2746,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0239,306,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0211,434,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0243,289,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0238,170,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0229,699,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0198,104,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0252,340,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0228,172,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0223,1826,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0237,178,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0241,207,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0214,514,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0230,1454,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0253,163,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0257,2371,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0244,228,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0225,1191,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0224,379,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0173,883,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0226,1665,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0251,184,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0263,258,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0221,1709,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0267,1103,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0245,308,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0210,421,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0222,1890,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0190,732,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0184,2166,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0266,3653,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0268,1400,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0271,916,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0264,225,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0269,3304,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0275,1070,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0216,593,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0280,558,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0255,3970,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0270,276,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0278,518,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0250,65,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0281,871,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0247,214,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0279,560,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0282,574,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0274,457,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0265,245,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0286,937,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0287,229,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0291,357,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0290,556,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0276,302,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0285,582,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0213,266,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0289,251,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0292,260,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0283,241,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0272,1798,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0240,329,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0301,207,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0299,165,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0302,315,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0233,332,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0217,1775,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0273,948,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0309,663,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0284,376,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0305,654,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0310,642,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0298,284,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0277,259,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0262,550,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0293,1433,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0304,2593,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0232,419,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0300,236,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0321,2472,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0303,2154,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0248,205,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0312,270,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0325,1659,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0328,426,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0324,650,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0329,962,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0249,83,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0296,1341,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0307,1077,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0317,811,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0332,770,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0288,216,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0313,465,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0326,165,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0315,383,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0334,1508,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0333,601,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0254,829,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0314,820,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0330,1668,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0256,2240,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0258,994,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0306,2702,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0259,338,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0319,922,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0297,429,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0294,791,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0327,1408,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0331,2607,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0316,973,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0308,3568,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0320,2414,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0311,909,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0261,343,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0323,2033,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0260,2116,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0322,1613,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0318,1616,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0295,1477,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0246,1036,,0,0,,<urlopen error [Errno 111] Connection refused>
+img_0017,191,100,1,1,"{""count"": 100}",3.57,0
+img_0006,436,100,1,1,"{""count"": 100}",3.77,0
+img_0013,1528,1000,1,1,"{""count"": 1000}",3.80,0
+img_0007,77,50,1,1,"{""count"": 50}",3.81,0
+img_0010,566,372,1,1,"{""count"": 372}",3.99,0
+img_0012,434,300,1,1,"{""count"": 300}",4.21,0
+img_0031,394,100,1,1,"{""count"": 100}",4.20,0
+img_0026,113,100,1,1,"{""count"": 100}",4.26,0
+img_0022,479,1,1,1,"{""count"": 1}",4.43,0
+img_0003,350,100,1,1,"{""count"": 100}",4.44,0
+img_0030,367,200,1,1,"{""count"": 200}",4.46,0
+img_0028,405,1,1,1,"{""count"": 1}",4.64,0
+img_0011,540,200,1,1,"{""count"": 200}",4.66,0
+img_0001,977,1,1,1,"{""count"": 1}",4.88,0
+img_0016,853,1,1,1,"{""count"": 1}",5.09,0
+img_0025,319,1,1,1,"{""count"": 1}",5.14,0
+img_0024,385,100,1,1,"{""count"": 100}",5.53,0
+img_0032,674,100,1,1,"{""count"": 100}",5.57,0
+img_0002,923,100,1,1,"{""count"": 100}",5.82,0
+img_0018,141,100,1,1,"{""count"": 100}",5.99,0
+img_0015,413,100,1,1,"{""count"": 100}",6.04,0
+img_0019,137,100,1,1,"{""count"": 100}",6.23,0
+img_0005,103,100,1,1,"{""count"": 100}",6.28,0
+img_0009,237,100,1,1,"{""count"": 100}",6.47,0
+img_0008,92,37,1,1,"{""count"": 37}",6.51,0
+img_0027,181,57,1,1,"{""count"": 57}",6.73,0
+img_0014,225,100,1,1,"{""count"": 100}",7.19,0
+img_0004,183,100,1,1,"{""count"": 100}",7.38,0
+img_0023,274,100,1,1,"{""count"": 100}",7.41,0
+img_0029,450,120,1,1,"{""count"": 120}",7.59,0
+img_0021,127,57,1,1,"{""count"": 57}",7.64,0
+img_0020,133,57,1,1,"{""count"": 57}",7.87,0
+img_0037,2530,1,1,1,"{""count"": 1}",6.36,0
+img_0033,129,37,1,1,"{""count"": 37}",7.01,0
+img_0035,1018,2,1,1,"{""count"": 2}",6.78,0
+img_0036,302,57,1,1,"{""count"": 57}",7.01,0
+img_0039,88,67,1,1,"{""count"": 67}",6.64,0
+img_0034,221,37,1,1,"{""count"": 37}",7.28,0
+img_0038,297,100,1,1,"{""count"": 100}",7.06,0
+img_0040,201,100,1,1,"{""count"": 100}",7.04,0
+img_0045,153,3,1,1,"{""count"": 3}",6.85,0
+img_0041,960,300,1,1,"{""count"": 300}",7.07,0
+img_0044,169,100,1,1,"{""count"": 100}",6.89,0
+img_0046,177,100,1,1,"{""count"": 100}",6.91,0
+img_0047,100,52,1,1,"{""count"": 52}",6.93,0
+img_0042,130,37,1,1,"{""count"": 37}",7.79,0
+img_0043,155,100,1,1,"{""count"": 100}",7.75,0
+img_0048,1211,300,1,1,"{""count"": 300}",7.32,0
+img_0049,2494,1000,1,1,"{""count"": 1000}",7.14,0
+img_0051,187,100,1,1,"{""count"": 100}",7.06,0
+img_0050,425,172,1,1,"{""count"": 172}",7.34,0
+img_0053,954,377,1,1,"{""count"": 377}",7.06,0
+img_0054,597,100,1,1,"{""count"": 100}",6.86,0
+img_0055,361,100,1,1,"{""count"": 100}",7.04,0
+img_0052,139,100,1,1,"{""count"": 100}",7.39,0
+img_0056,194,100,1,1,"{""count"": 100}",7.33,0
+img_0057,687,100,1,1,"{""count"": 100}",7.34,0
+img_0058,4535,1000,1,1,"{""count"": 1000}",7.33,0
+img_0060,227,57,1,1,"{""count"": 57}",6.87,0
+img_0061,236,100,1,1,"{""count"": 100}",7.05,0
+img_0059,452,100,1,1,"{""count"": 100}",7.34,0
+img_0063,1149,100,1,1,"{""count"": 100}",7.10,0
+img_0064,1357,100,1,1,"{""count"": 100}",7.09,0
+img_0062,2638,1000,1,1,"{""count"": 1000}",7.37,0
+img_0066,2980,0,1,1,"{""count"": 0}",6.61,1
+img_0065,490,1,1,1,"{""count"": 1}",7.06,0
+img_0068,363,100,1,1,"{""count"": 100}",6.67,0
+img_0067,255,100,1,1,"{""count"": 100}",7.12,0
+img_0070,233,100,1,1,"{""count"": 100}",6.82,0
+img_0071,1236,1,1,1,"{""count"": 1}",6.59,0
+img_0069,547,100,1,1,"{""count"": 100}",7.06,0
+img_0072,241,100,1,1,"{""count"": 100}",6.78,0
+img_0073,481,100,1,1,"{""count"": 100}",6.82,0
+img_0076,489,147,1,1,"{""count"": 147}",6.58,0
+img_0074,704,372,1,1,"{""count"": 372}",7.04,0
+img_0075,253,100,1,1,"{""count"": 100}",7.04,0
+img_0077,203,100,1,1,"{""count"": 100}",6.96,0
+img_0079,1974,100,1,1,"{""count"": 100}",6.83,0
+img_0078,1116,100,1,1,"{""count"": 100}",6.99,0
+img_0080,347,100,1,1,"{""count"": 100}",6.79,0
+img_0081,121,50,1,1,"{""count"": 50}",6.59,0
+img_0082,337,37,1,1,"{""count"": 37}",6.61,0
+img_0083,693,100,1,1,"{""count"": 100}",6.78,0
+img_0084,322,100,1,1,"{""count"": 100}",6.80,0
+img_0085,283,178,1,1,"{""count"": 178}",6.84,0
+img_0086,176,100,1,1,"{""count"": 100}",6.84,0
+img_0087,626,100,1,1,"{""count"": 100}",7.02,0
+img_0091,636,100,1,1,"{""count"": 100}",6.57,0
+img_0092,645,1,1,1,"{""count"": 1}",6.39,0
+img_0088,197,100,1,1,"{""count"": 100}",7.07,0
+img_0089,1557,300,1,1,"{""count"": 300}",7.19,0
+img_0093,1929,1,1,1,"{""count"": 1}",6.52,0
+img_0090,792,200,1,1,"{""count"": 200}",7.24,0
+img_0096,107,67,1,1,"{""count"": 67}",6.60,0
+img_0094,146,100,1,1,"{""count"": 100}",6.85,0
+img_0095,370,100,1,1,"{""count"": 100}",7.21,0
+img_0099,304,100,1,1,"{""count"": 100}",5.84,0
+img_0097,431,1,1,1,"{""count"": 1}",6.38,0
+img_0098,249,100,1,1,"{""count"": 100}",6.61,0
+img_0103,505,1,1,1,"{""count"": 1}",6.30,0
+img_0106,1443,1,1,1,"{""count"": 1}",5.90,0
+img_0100,232,100,1,1,"{""count"": 100}",6.74,0
+img_0102,264,100,1,1,"{""count"": 100}",6.57,0
+img_0101,175,100,1,1,"{""count"": 100}",6.80,0
+img_0108,188,1,1,1,"{""count"": 1}",6.08,0
+img_0104,1387,200,1,1,"{""count"": 200}",6.57,0
+img_0105,166,100,1,1,"{""count"": 100}",6.57,0
+img_0107,335,172,1,1,"{""count"": 172}",6.58,0
+img_0110,460,200,1,1,"{""count"": 200}",6.29,0
+img_0109,441,100,1,1,"{""count"": 100}",6.36,0
+img_0111,157,57,1,1,"{""count"": 57}",6.17,0
+img_0112,1166,1,1,1,"{""count"": 1}",6.13,0
+img_0115,291,137,1,1,"{""count"": 137}",6.32,0
+img_0113,1278,1,1,1,"{""count"": 1}",6.76,0
+img_0114,800,1000,1,1,"{""count"": 1000}",6.59,0
+img_0116,760,100,1,1,"{""count"": 100}",6.41,0
+img_0121,150,57,1,1,"{""count"": 57}",5.62,0
+img_0119,723,1,1,1,"{""count"": 1}",6.07,0
+img_0117,737,500,1,1,"{""count"": 500}",6.58,0
+img_0118,964,1,1,1,"{""count"": 1}",6.37,0
+img_0120,763,327,1,1,"{""count"": 327}",6.37,0
+img_0122,499,100,1,1,"{""count"": 100}",6.36,0
+img_0124,757,100,1,1,"{""count"": 100}",6.36,0
+img_0128,811,1,1,1,"{""count"": 1}",5.27,0
+img_0123,485,172,1,1,"{""count"": 172}",6.60,0
+img_0125,1256,300,1,1,"{""count"": 300}",6.40,0
+img_0127,408,200,1,1,"{""count"": 200}",6.34,0
+img_0126,305,100,1,1,"{""count"": 100}",6.53,0
+img_0129,311,100,1,1,"{""count"": 100}",6.37,0
+img_0130,456,100,1,1,"{""count"": 100}",6.38,0
+img_0131,475,37,1,1,"{""count"": 37}",6.11,0
+img_0133,944,1,1,1,"{""count"": 1}",6.10,0
+img_0132,294,100,1,1,"{""count"": 100}",6.37,0
+img_0134,152,100,1,1,"{""count"": 100}",6.38,0
+img_0135,314,57,1,1,"{""count"": 57}",6.42,0
+img_0137,751,100,1,1,"{""count"": 100}",6.41,0
+img_0138,632,100,1,1,"{""count"": 100}",6.60,0
+img_0139,428,177,1,1,"{""count"": 177}",6.60,0
+img_0136,652,1000,1,1,"{""count"": 1000}",6.83,0
+img_0143,810,1000,1,1,"{""count"": 1000}",6.15,0
+img_0144,446,100,1,1,"{""count"": 100}",6.34,0
+img_0141,171,100,1,1,"{""count"": 100}",6.40,0
+img_0142,353,178,1,1,"{""count"": 178}",6.60,0
+img_0140,398,178,1,1,"{""count"": 178}",6.89,0
+img_0145,161,77,1,1,"{""count"": 77}",6.41,0
+img_0147,135,100,1,1,"{""count"": 100}",6.37,0
+img_0148,819,1,1,1,"{""count"": 1}",6.32,0
+img_0146,387,172,1,1,"{""count"": 172}",6.64,0
+img_0150,396,100,1,1,"{""count"": 100}",6.41,0
+img_0151,648,100,1,1,"{""count"": 100}",6.57,0
+img_0149,390,100,1,1,"{""count"": 100}",6.62,0
+img_0152,901,200,1,1,"{""count"": 200}",7.02,0
+img_0155,845,1,1,1,"{""count"": 1}",6.14,0
+img_0153,641,100,1,1,"{""count"": 100}",6.59,0
+img_0154,354,100,1,1,"{""count"": 100}",6.76,0
+img_0156,2075,1000,1,1,"{""count"": 1000}",6.76,0
+img_0157,471,100,1,1,"{""count"": 100}",6.62,0
+img_0158,247,100,1,1,"{""count"": 100}",6.74,0
+img_0160,1063,100,1,1,"{""count"": 100}",6.55,0
+img_0159,469,100,1,1,"{""count"": 100}",6.72,0
+img_0161,313,100,1,1,"{""count"": 100}",6.56,0
+img_0162,279,100,1,1,"{""count"": 100}",6.59,0
+img_0163,372,147,1,1,"{""count"": 147}",6.62,0
+img_0164,1586,1000,1,1,"{""count"": 1000}",6.79,0
+img_0165,198,100,1,1,"{""count"": 100}",6.61,0
+img_0166,2315,1000,1,1,"{""count"": 1000}",6.60,0
+img_0167,4195,1000,1,1,"{""count"": 1000}",6.74,0
+img_0168,138,100,1,1,"{""count"": 100}",6.51,0
+img_0169,174,100,1,1,"{""count"": 100}",6.36,0
+img_0170,148,100,1,1,"{""count"": 100}",6.33,0
+img_0171,608,200,1,1,"{""count"": 200}",6.38,0
+img_0172,110,37,1,1,"{""count"": 37}",6.51,0
+img_0174,259,100,1,1,"{""count"": 100}",6.29,0
+img_0176,326,57,1,1,"{""count"": 57}",6.07,0
+img_0175,117,100,1,1,"{""count"": 100}",6.32,0
+img_0173,883,1,1,1,"{""count"": 1}",6.76,0
+img_0178,400,100,1,1,"{""count"": 100}",6.50,0
+img_0177,272,100,1,1,"{""count"": 100}",6.50,0
+img_0179,2021,1,1,1,"{""count"": 1}",6.35,0
+img_0180,1315,200,1,1,"{""count"": 200}",6.50,0
+img_0181,466,100,1,1,"{""count"": 100}",6.50,0
+img_0183,1758,2,1,1,"{""count"": 2}",6.34,0
+img_0191,532,1,1,1,"{""count"": 1}",4.79,0
+img_0182,269,100,1,1,"{""count"": 100}",6.75,0
+img_0185,507,37,1,1,"{""count"": 37}",6.48,0
+img_0186,158,100,1,1,"{""count"": 100}",6.30,0
+img_0187,403,1,1,1,"{""count"": 1}",6.13,0
+img_0184,2166,1000,1,1,"{""count"": 1000}",6.78,0
+img_0189,122,57,1,1,"{""count"": 57}",6.31,0
+img_0188,275,100,1,1,"{""count"": 100}",6.35,0
+img_0192,195,120,1,1,"{""count"": 120}",6.34,0
+img_0190,732,100,1,1,"{""count"": 100}",6.96,0
+img_0194,159,100,1,1,"{""count"": 100}",5.77,0
+img_0193,210,100,1,1,"{""count"": 100}",6.51,0
+img_0195,211,100,1,1,"{""count"": 100}",6.25,0
+img_0202,864,1,1,1,"{""count"": 1}",5.21,0
+img_0197,165,77,1,1,"{""count"": 77}",6.08,0
+img_0196,287,100,1,1,"{""count"": 100}",6.31,0
+img_0201,719,100,1,1,"{""count"": 100}",6.05,0
+img_0198,104,57,1,1,"{""count"": 57}",6.28,0
+img_0200,299,100,1,1,"{""count"": 100}",6.31,0
+img_0199,263,100,1,1,"{""count"": 100}",6.35,0
+img_0203,368,100,1,1,"{""count"": 100}",6.25,0
+img_0205,778,100,1,1,"{""count"": 100}",6.12,0
+img_0206,2870,1,1,1,"{""count"": 1}",6.08,0
+img_0204,522,100,1,1,"{""count"": 100}",6.31,0
+img_0207,463,100,1,1,"{""count"": 100}",6.32,0
+img_0208,204,122,1,1,"{""count"": 122}",6.54,0
+img_0209,143,100,1,1,"{""count"": 100}",6.32,0
+img_0210,421,1,1,1,"{""count"": 1}",6.36,0
+img_0211,434,100,1,1,"{""count"": 100}",6.32,0
+img_0212,218,100,1,1,"{""count"": 100}",6.31,0
+img_0215,1048,1,1,1,"{""count"": 1}",6.07,0
+img_0214,514,100,1,1,"{""count"": 100}",6.53,0
+img_0213,266,100,1,1,"{""count"": 100}",6.80,0
+img_0216,593,100,1,1,"{""count"": 100}",6.54,0
+img_0218,712,1,1,1,"{""count"": 1}",6.31,0
+img_0219,535,200,1,1,"{""count"": 200}",6.31,0
+img_0220,2746,1000,1,1,"{""count"": 1000}",6.51,0
+img_0217,1775,100,1,1,"{""count"": 100}",6.81,0
+img_0221,1709,300,1,1,"{""count"": 300}",6.54,0
+img_0223,1826,37,1,1,"{""count"": 37}",6.34,0
+img_0222,1890,1000,1,1,"{""count"": 1000}",6.79,0
+img_0224,379,100,1,1,"{""count"": 100}",6.79,0
+img_0225,1191,100,1,1,"{""count"": 100}",6.87,0
+img_0226,1665,1000,1,1,"{""count"": 1000}",6.82,0
+img_0227,612,100,1,1,"{""count"": 100}",6.58,0
+img_0230,1454,1,1,1,"{""count"": 1}",6.16,0
+img_0228,172,127,1,1,"{""count"": 127}",6.59,0
+img_0229,699,120,1,1,"{""count"": 120}",6.53,0
+img_0231,682,100,1,1,"{""count"": 100}",6.34,0
+img_0234,244,120,1,1,"{""count"": 120}",6.13,0
+img_0235,125,100,1,1,"{""count"": 100}",6.12,0
+img_0236,267,100,1,1,"{""count"": 100}",6.07,0
+img_0232,419,100,1,1,"{""count"": 100}",6.78,0
+img_0237,178,100,1,1,"{""count"": 100}",6.34,0
+img_0238,170,100,1,1,"{""count"": 100}",6.34,0
+img_0233,332,100,1,1,"{""count"": 100}",6.79,0
+img_0239,306,100,1,1,"{""count"": 100}",6.34,0
+img_0240,329,37,1,1,"{""count"": 37}",6.12,0
+img_0242,238,100,1,1,"{""count"": 100}",6.08,0
+img_0241,207,100,1,1,"{""count"": 100}",6.35,0
+img_0243,289,100,1,1,"{""count"": 100}",6.31,0
+img_0245,308,57,1,1,"{""count"": 57}",6.15,0
+img_0252,340,100,1,1,"{""count"": 100}",4.79,0
+img_0244,228,100,1,1,"{""count"": 100}",6.58,0
+img_0247,214,100,1,1,"{""count"": 100}",5.91,0
+img_0250,65,47,1,1,"{""count"": 47}",5.69,0
+img_0246,1036,100,1,1,"{""count"": 100}",6.35,0
+img_0248,205,100,1,1,"{""count"": 100}",6.13,0
+img_0249,83,57,1,1,"{""count"": 57}",6.17,0
+img_0251,184,100,1,1,"{""count"": 100}",5.93,0
+img_0253,163,30,1,1,"{""count"": 30}",5.86,0
+img_0255,3970,1000,1,1,"{""count"": 1000}",5.89,0
+img_0254,829,1,1,1,"{""count"": 1}",5.90,0
+img_0256,2240,1000,1,1,"{""count"": 1000}",5.91,0
+img_0257,2371,1,1,1,"{""count"": 1}",5.37,0
+img_0262,550,100,1,1,"{""count"": 100}",4.98,0
+img_0281,871,1,1,1,"{""count"": 1}",2.68,0
+img_0278,518,172,1,1,"{""count"": 172}",2.94,0
+img_0280,558,1,1,1,"{""count"": 1}",2.89,0
+img_0263,258,100,1,1,"{""count"": 100}",4.99,0
+img_0258,994,2,1,1,"{""count"": 2}",5.65,0
+img_0261,343,100,1,1,"{""count"": 100}",5.60,0
+img_0287,229,100,1,1,"{""count"": 100}",2.05,0
+img_0286,937,1,1,1,"{""count"": 1}",2.28,0
+img_0279,560,1000,1,1,"{""count"": 1000}",3.40,0
+img_0282,574,200,1,1,"{""count"": 200}",3.18,0
+img_0259,338,100,1,1,"{""count"": 100}",6.11,0
+img_0285,582,200,1,1,"{""count"": 200}",2.96,0
+img_0260,2116,1000,1,1,"{""count"": 1000}",6.34,0
+img_0264,225,100,1,1,"{""count"": 100}",6.08,0
+img_0290,556,1,1,1,"{""count"": 1}",1.60,0
+img_0289,251,100,1,1,"{""count"": 100}",1.83,0
+img_0266,3653,10000,1,1,"{""count"": 10000}",6.41,0
+img_0265,245,100,1,1,"{""count"": 100}",6.42,0
+img_0291,357,1,1,1,"{""count"": 1}",1.86,0
+img_0292,260,100,1,1,"{""count"": 100}",1.86,0
+img_0267,1103,1000,1,1,"{""count"": 1000}",6.52,0
+img_0299,165,100,1,1,"{""count"": 100}",1.60,0
+img_0268,1400,1000,1,1,"{""count"": 1000}",6.72,0
+img_0301,207,100,1,1,"{""count"": 100}",1.65,0
+img_0270,276,1,1,1,"{""count"": 1}",6.65,0
+img_0302,315,200,1,1,"{""count"": 200}",1.53,0
+img_0271,916,1,1,1,"{""count"": 1}",6.89,0
+img_0269,3304,1000,1,1,"{""count"": 1000}",7.24,0
+img_0273,948,300,1,1,"{""count"": 300}",7.03,0
+img_0272,1798,1000,1,1,"{""count"": 1000}",7.26,0
+img_0275,1070,300,1,1,"{""count"": 300}",6.91,0
+img_0274,457,200,1,1,"{""count"": 200}",7.04,0
+img_0277,259,57,1,1,"{""count"": 57}",7.08,0
+img_0276,302,100,1,1,"{""count"": 100}",7.09,0
+img_0283,241,100,1,1,"{""count"": 100}",6.67,0
+img_0284,376,200,1,1,"{""count"": 200}",6.69,0
+img_0288,216,100,1,1,"{""count"": 100}",6.26,0
+img_0293,1433,300,1,1,"{""count"": 300}",5.72,0
+img_0294,791,100,1,1,"{""count"": 100}",5.82,0
+img_0296,1341,100,1,1,"{""count"": 100}",5.73,0
+img_0297,429,100,1,1,"{""count"": 100}",5.80,0
+img_0298,284,100,1,1,"{""count"": 100}",5.69,0
+img_0295,1477,300,1,1,"{""count"": 300}",6.05,0
+img_0304,2593,0,1,1,"{""count"": 0}",5.28,1
+img_0300,236,100,1,1,"{""count"": 100}",5.75,0
+img_0306,2702,1,1,1,"{""count"": 1}",5.29,0
+img_0303,2154,1000,1,1,"{""count"": 1000}",5.70,0
+img_0305,654,100,1,1,"{""count"": 100}",5.38,0
+img_0309,663,1,1,1,"{""count"": 1}",5.13,0
+img_0307,1077,200,1,1,"{""count"": 200}",5.45,0
+img_0310,642,1,1,1,"{""count"": 1}",5.24,0
+img_0308,3568,1,1,1,"{""count"": 1}",5.67,0
+img_0312,270,100,1,1,"{""count"": 100}",5.35,0
+img_0313,465,1,1,1,"{""count"": 1}",5.45,0
+img_0311,909,300,1,1,"{""count"": 300}",5.81,0
+img_0314,820,1,1,1,"{""count"": 1}",5.57,0
+img_0316,973,1000,1,1,"{""count"": 1000}",5.92,0
+img_0315,383,100,1,1,"{""count"": 100}",6.03,0
+img_0317,811,1,1,1,"{""count"": 1}",5.78,0
+img_0321,2472,1,1,1,"{""count"": 1}",5.55,0
+img_0319,922,1,1,1,"{""count"": 1}",5.79,0
+img_0318,1616,1000,1,1,"{""count"": 1000}",6.37,0
+img_0320,2414,1,1,1,"{""count"": 1}",5.90,0
+img_0324,650,100,1,1,"{""count"": 100}",5.90,0
+img_0323,2033,1000,1,1,"{""count"": 1000}",6.13,0
+img_0325,1659,1,1,1,"{""count"": 1}",5.79,0
+img_0322,1613,1000,1,1,"{""count"": 1000}",6.47,0
+img_0326,165,100,1,1,"{""count"": 100}",6.00,0
+img_0327,1408,1,1,1,"{""count"": 1}",5.76,0
+img_0328,426,372,1,1,"{""count"": 372}",5.55,0
+img_0329,962,200,1,1,"{""count"": 200}",5.45,0
+img_0332,770,1,1,1,"{""count"": 1}",5.29,0
+img_0334,1508,1,1,1,"{""count"": 1}",5.06,0
+img_0330,1668,1000,1,1,"{""count"": 1000}",5.70,0
+img_0331,2607,1000,1,1,"{""count"": 1000}",5.82,0
+img_0333,601,1000,1,1,"{""count"": 1000}",5.72,0

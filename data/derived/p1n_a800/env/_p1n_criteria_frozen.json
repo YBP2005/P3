@@ -1,0 +1,215 @@
+{
+ "round": "P1-N（名词替换版 P1-D 补测）",
+ "title": "P1-N：名词替换版仪器下 MTDC/GWHD 的输入尺度重扫（11 档 × 2 域 × 250 项 × 3 起服 = 16,500 次）",
+ "why": "P1-D 的探针逐字复用冻结提示词（问\"人数\"），在玉米雄穗/小麦穗上答 0 部分是\"指令与域不匹配\"的合理行为；本轮只替换对象名词短语（断言该替换是唯一差异），检验\"两域不落座\"是模型能力上限还是问错对象所致。",
+ "preregistered_before_run": true,
+ "frozen_at": "2026-10-03",
+ "machine": "A800, SINGLE CARD, GPU1 only (GPU0 belongs to another session and is never touched)",
+ "design": {
+  "knob": "VLM·pixel budget (the knob whose ladder the appendix itself calls thin in MTDC)",
+  "knob_note": "This round drives ONE knob. The appendix's own thin-row complaint is about this ladder (the 1.10x travel band contains a single level in MTDC), and the knob is the only one whose eight levels were already pre-registered by the paper itself in the matched-travel ladder - so re-using them keeps the new domains comparable to the published ones.",
+  "levels": [
+   0,
+   104856,
+   145698,
+   200000,
+   202447,
+   281300,
+   390867,
+   400000,
+   543118,
+   754655,
+   800000
+  ],
+  "levels_table": [
+   {
+    "idx": 1,
+    "budget_px": 0,
+    "tag": "native(=1048576 by the paper's rule)",
+    "ratio_to_native": 1.0
+   },
+   {
+    "idx": 2,
+    "budget_px": 104856,
+    "tag": "matched-travel value",
+    "ratio_to_native": 0.1
+   },
+   {
+    "idx": 3,
+    "budget_px": 145698,
+    "tag": "matched-travel value",
+    "ratio_to_native": 0.1389
+   },
+   {
+    "idx": 4,
+    "budget_px": 200000,
+    "tag": "published res_ctrl label",
+    "ratio_to_native": 0.1907
+   },
+   {
+    "idx": 5,
+    "budget_px": 202447,
+    "tag": "matched-travel value",
+    "ratio_to_native": 0.1931
+   },
+   {
+    "idx": 6,
+    "budget_px": 281300,
+    "tag": "matched-travel value",
+    "ratio_to_native": 0.2683
+   },
+   {
+    "idx": 7,
+    "budget_px": 390867,
+    "tag": "matched-travel value",
+    "ratio_to_native": 0.3728
+   },
+   {
+    "idx": 8,
+    "budget_px": 400000,
+    "tag": "published res_ctrl label",
+    "ratio_to_native": 0.3815
+   },
+   {
+    "idx": 9,
+    "budget_px": 543118,
+    "tag": "matched-travel value",
+    "ratio_to_native": 0.518
+   },
+   {
+    "idx": 10,
+    "budget_px": 754655,
+    "tag": "matched-travel value",
+    "ratio_to_native": 0.7197
+   },
+   {
+    "idx": 11,
+    "budget_px": 800000,
+    "tag": "published res_ctrl label",
+    "ratio_to_native": 0.7629
+   }
+  ],
+  "levels_note": "11 levels = the 5 labels the released res_ctrl__q32 ladders carry ({0,200000,400000,800000} plus native, with 1048576 folded into 0 by the paper's own rule) UNION the 8 matched-travel values. The union is deliberate: the ordering units of F.2/M.37 are built FROM res_ctrl__*, so a new domain can only be ADDED to that unit set if it carries the same budget labels - otherwise it can only be reported descriptively, which does not answer the ordering question. 11 >= 8 also satisfies the equal-level requirement. Resize convention pinned by per-row inversion of the released ladders: budget=0 => native, no resize; otherwise s=sqrt(budget/(W*H)) only when the image exceeds the budget, then each side is floored to a multiple of 28 (Qwen smart_resize factor 28). Anchored on a real row: 902x409 at budget 200000 -> the released eff is 644x280, which is exactly floor(902*s/28)*28 x floor(409*s/28)*28.",
+  "domains": {
+   "mtdc": {
+    "role": "new (not previously used for the ordering)",
+    "pool": "/root/mtdc/images (361 items)",
+    "items": 250
+   },
+   "gwhd": {
+    "role": "new (not previously used for the ordering)",
+    "pool": "GlobalWheatHeadDataset2021 test split (1,381 items) extracted from parquet",
+    "items": 250
+   }
+  },
+  "sampling": "deterministic: sort the pool by item, then draw 250 indices with random.Random(20261002).sample; the drawn list is frozen in /root/p1d/data/sample_<domain>.csv. Items whose gt is 0 ARE KEPT (they are part of the domain); their counts are reported. Nothing is dropped or added after seeing a prediction.",
+  "items_per_cell": 250,
+  "starts": 3,
+  "starts_note": "three fresh service starts, exactly as the earlier ladder runs",
+  "calls_check": "2 domains x 11 levels x 250 items x 3 starts = 16500",
+  "serve": "/root/pf_serve_awq4bit_8013.sh (Qwen3-VL-32B-Instruct-AWQ, port 8013, single card, gmem 0.85, max-model-len 8192, max-num-seqs 24, limit-mm-per-prompt {image:1}, mm-processor max_pixels 1048576 / min_pixels 3136)",
+  "call_params": "temperature 0, max_tokens 128, retries 5, workers 4 - inherited VERBATIM from the frozen probe /root/pf_p0_probe.py (call_img / b64_of / parse are imported, never retyped)"
+ },
+ "frozen_inputs": {
+  "probe": "/root/pf_p0_probe.py md5 e7a65fd47345c2fe040fa4d05a3b1d86 (call_img / b64_of / parse / BASE_PROMPT)",
+  "serve_script": "/root/pf_serve_awq4bit_8013.sh md5 1eca04a1c22049e7a7ee077380387314",
+  "published_comparator": "analysis/data/pod_mirror/res_ctrl__q32/res_ctrl_{st_a,ucf,visdrone}.csv (the paper's own pixel-budget ladders, same 8 budgets, same served model) - released in the reproduction package",
+  "schema_comparator": "item,dataset,budget,gt,nat_w,nat_h,eff_w,eff_h,eff_px,px_per_obj,pred,parse_ok,abstain,refuse,http_err,model,raw"
+ },
+ "estimator": {
+  "per_level": "dev(level) = 100 * (sum(pred) - sum(gt)) / sum(gt), pooled over THAT LEVEL'S OWN items (the caliber locked by the G0 self-check; never the common-item intersection)",
+  "span": "max(dev over the eight levels) - min(dev over the eight levels)",
+  "ordering": "Spearman rank correlation over the per-domain spans of this knob, published domains + new domains together",
+  "bootstrap": "item-level resample within each domain, B = 2000, seed 20261002, report the 2.5th percentile of the Spearman as the lower bound"
+ },
+ "criteria": [
+  {
+   "id": "C1-count",
+   "statement": "every (domain x level x start) cell holds all 250 items; checked per cell, not sampled",
+   "abort": "if a cell is short, mark THAT CELL not evaluable, keep going, and report the count; never pad"
+  },
+  {
+   "id": "C2-levels",
+   "statement": "both domains carry all eight levels (no gaps)",
+   "abort": "a domain with fewer than eight levels is reported as NOT COVERED and is excluded from the ordering; interpolation to fill a level is forbidden"
+  },
+  {
+   "id": "C3-spans",
+   "statement": "report, per domain, the eight level devs and the span"
+  },
+  {
+   "id": "C4a-recompute-gate",
+   "statement": "recompute the three published domains' spans for this knob from the released ladders (res_ctrl__q32/res_ctrl_{st_a,ucf,visdrone}.csv), using ONLY the same eight budgets (the released ladders also carry a native=0 row, which is excluded); this is the estimator gate - if my dev/span does not reproduce the published per-domain values and their ordering, nothing below is comparable",
+   "decision_rule": "PASS if the recomputed per-domain spans rank-order identically to the published ordering (Spearman = 1.00) and the item-level bootstrap (B=2000, seed 20261002) lower bound on that Spearman is >= 0.80"
+  },
+  {
+   "id": "C4b-extension",
+   "statement": "with the two new domains added, report the five-domain span vector and check whether each new span falls inside [0.5x, 2.0x] of the median of the three published spans",
+   "decision_rule": "PASS if both new spans are inside that band; otherwise report NOT PASSED and say which domain fell outside. The band is stated here, before the run, so that a large or a tiny new span is a finding rather than a re-drawn target",
+   "why_the_band": "the knob's span is claimed to be a property of the knob, so a new domain should land in the same order of magnitude as the domains already measured; a factor of two either way is the loosest band that still excludes the degenerate readings (a floor effect or a sign flip) that the same test produced in the detector/density knobs"
+  },
+  {
+   "id": "C5-veto",
+   "statement": "no cell may have parse_ok < 95% without being reported as not evaluable; the served model and the probe md5 must match the frozen values or the run aborts"
+  }
+ ],
+ "dual_direction": "Both outcomes are reportable. If the ordering does not reproduce, that is the finding: the appendix's own note says the MTDC row was thin, and a thin row is exactly what a new domain can falsify.",
+ "caliber_red_lines": [
+  "Single card via CUDA_VISIBLE_DEVICES=1; GPU0 belongs to another session and is never touched; /root/cvpr_exp is never entered.",
+  "The budget is applied client-side; the serve-side mm-processor kwargs stay at their frozen values, so the only thing that moves between levels is the pixel budget.",
+  "No interpolation to reach eight levels, and no proxy for a domain that cannot be prepared.",
+  "Never machine-level pkill: only PIDs recorded by this run's own PID file, each verified to carry --port 8013 in /proc/<pid>/cmdline (NUL-safe)."
+ ],
+ "outputs": {
+  "csv": "P1D_<domain>_b<budget>_s<start>.csv (schema identical to the published res_ctrl files)",
+  "log": "/root/logs/p1d.log",
+  "markers": [
+   "P1D_ALL_DONE",
+   "P1D_ABORT_SERVE",
+   "P1D_ABORT_BAD_GPU",
+   "P1D_ABORT_GPU_BUSY",
+   "P1D_COUNT_LOW_<cell>",
+   "P1D_NOTCOVERED_<domain>"
+  ],
+  "release": "this criteria file (md5-frozen) + the runner + the two per-item ladders"
+ },
+ "appendices": {
+  "A1_C4a_comparator_budget_mismatch": "事前（尚未跑任何调用）核对放行的 res_ctrl__q32 三件时发现：它们携带的 budget 集合是 {0,200000,400000,800000,1048576}（0 = native），与本轮冻结的 8 档 matched-travel 阶梯**只有一个值（1048576）重合** ⇒ C4a 不可能按『同一组 8 档』算。处置：C4a 如实记为 NOT COMPUTABLE at the eight-level caliber，并**只**按放行件自己的 5 个值描述性报出三域 span（不做跨阶梯比较）；因此新域与已发表域的可比性**限定为同仪器/同模型/同几何**，不声称同档位网格。不影响 C1/C2/C3/C4b/C5。",
+  "A1_union_of_level_labels": "PRE-RUN CHANGE (2026-10-02, final): the levels are the UNION of the released res_ctrl__q32 labels {0,200000,400000,800000,native} and the 8 matched-travel values, with 1048576 folded into 0 => 11 labels. Reason: the purpose of P1-D is to ADD the two new domains to the F.2/M.37 ordering unit set, whose budget units are built from res_ctrl__*; a level set that overlaps that set in only one value cannot be added, only reported alongside. With the union, C4a is computable again: it recomputes the three published domains on the FIVE COMMON labels (0/200000/400000/800000 + native) and requires the same ordering with a bootstrap lower bound >= 0.80. Budget therefore becomes 16,500 calls.",
+  "A3_resize_convention": "PRE-RUN FIX: the probe originally scaled by round(W*s), which does NOT reproduce the released ladders (902x409 at budget 200000 gives 664x301 by round, but the released file records 644x280). The released convention is floor-to-multiple-of-28, and budget=0 means native with no resize. The probe now implements exactly that, so the new domains' eff_w/eff_h are on the same ruler as the published ones.",
+  "A2_workers_decision": "PRE-RUN DECISION (2026-10-02, taken before the full run): smoke 20 items w4 = 109.1 items/min, vLLM 'Running: 4, Waiting: 0'. Concurrency pilot, same card/level/domain, 200 items each: workers=4 -> 126.3 items/min; workers=12 -> 133.3 items/min (Running: 12, Waiting: 0). w12 is only +5.5%, which the rule written before the pilot does not count as 'materially higher', and it doubles in-flight KV pressure; the rule therefore keeps workers=4. The full run uses workers=4 throughout."
+ },
+ "instrument": {
+  "noun_substitution": {
+   "old": "人数（人群中的每个人头或人体）",
+   "new": {
+    "mtdc": "玉米雄穗的数量（图中的每一根雄穗）",
+    "gwhd": "小麦穗的数量（图中的每一个麦穗）"
+   },
+   "assertion": "可逆性断言：substituted.replace(new, old) == BASE_PROMPT（不成立即拒绝运行）",
+   "reference": "§M.49（同两域的名词替换仪器，断言\"该替换是唯一差异\"）"
+  }
+ },
+ "criteria_addendum": {
+  "C2_zero_cells": "替换后\"每档 250/250 全零\"的格数 ≤ 6/22 记未改善；≤ 1/22 记改善（阈值跑前写死）",
+  "C3_span_band": "span 落在 §F.2 扩展带 [7.04, 28.15] pp 记\"落座\"；否则记\"不落座\"",
+  "C4_paired_diff": "与 P1-D 同档逐档 dev 配对差（同 item 集、同档位）",
+  "disposition": "落座 ⇒ §M.43 改写为\"原读数由仪器错配造成\"；仍不落座 ⇒ 升级为\"两种问法下都不落座\"。两种情形均不改任何已印值。"
+ },
+ "amendments": [
+  {
+   "at": "2026-10-03 03:4x UTC",
+   "kind": "code-binding fix（重冻，不改任何阈值/口径）",
+   "why": "首格即死：p1n_probe.py 在模块级裸用 BASE_PROMPT（该名只在 load() 后绑定）⇒ NameError，崩在可逆性断言之前；run.sh:79 缺续行反斜杠 ⇒ 第 80 行被当独立命令。两者都是实现缺陷，**不涉及判据阈值与 disposition**。",
+   "fixed": "① 名词替换的构造移入 main()、在载入冻结提示词之后执行，断言照旧；② 补回续行反斜杠；③ exit 5 路径补写 P1N_ABORT_PROBE_RC。",
+   "md5_after": {
+    "p1n_probe.py": "a5a15a17b84ed9d5fad76037aa56b37c",
+    "p1n_run.sh": "c133c061ed0f0b0b3f4d5f18b3a5c1de",
+    "p1n_analyze.py": "8bb304c65c95d5b65ef921affa2b1857",
+    "p1n_integrity.py": "a7bfbfb45ccb2b674c293d528c4ffad6"
+   },
+   "unchanged": "11 档、item 集、3 起服、16,500 次、C1–C6、criteria_addendum.disposition 全部未改",
+   "correction": "※ 记账更正（2026-10-03）：本条原填 af69ab61…（补丁落地前的旧值）；实际执行的是 c133c061…（含续行反斜杠与 P1N_ABORT_PROBE_RC 两项修复，已字节核验）。阈值与 disposition 未改。"
+  }
+ ]
+}

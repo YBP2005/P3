@@ -4683,6 +4683,20 @@ new levels only coincide with the released ladders' own five on four labels, so 
 these readings are not from the same session as the four rows above (that section's 3.01 pp same-session floor
 does not apply to them).
 
+**The noun-substituted re-run, and what it changes.** The confound above was tested directly: the same eleven levels, the
+same 250 sampled items per domain per start, three fresh service starts, **16,500 calls**, with **only the object noun phrase
+substituted** — and a probe assertion that this substitution is the **only** difference (the rule §M.49 already uses). **The
+answered-zero column does not survive it**: the number of domain-by-level cells in which all 250 items answer zero falls from
+**6 of 22** to **0 of 22**, and the first cell's deviation moves from **−99.98%** to **−14.77%**. The two domains then behave
+**differently**, and neither is the degenerate floor the original reading showed: **GWHD falls inside this section's own
+extension band** (**26.30 pp**, band 7.04–28.15) while **MTDC overshoots it** (**57.36 pp**). Every one of the eleven paired
+level differences is positive (medians **+62.46 pp** and **+39.09 pp**), so the substituted instrument counts far more than the
+person-worded one. The honest reading is therefore the composite one: **on these two domains the knob does not seat under
+either wording** — but **not for the same reason in the two cases**. The original reading is a floor produced by asking for
+*people*; the substituted reading is a real response, excessive in one domain. Neither is a counterexample to the ordering
+above, and no printed value changes. The re-run's own criteria, probe, per-cell records (66 files) and verdict are released
+as `data/derived/p1n_a800/`.
+
 *Reproduction: the frozen criteria (with all twelve instructions verbatim), the runner, the four per-item
 record files — released as `data/derived/g56_res/g56_{arms,tile,budget,noise}.csv` — and the analyser are
 released; the analyser recomputes both the within-run spans and the same-pool published spans from the released

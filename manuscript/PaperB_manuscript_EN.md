@@ -578,7 +578,7 @@ non-zero pools pooled within a domain, so that no rank difference can come from 
 (the quantities and the denominator are defined in Appendix M.21) — the convention changes how large a
 configuration's measured bias appears, and in the dense domains changes the order:
 
-**Table 5.** What one convention costs.
+**Table 5.** What one convention costs. The two ranked columns use **two orderings**: the Spearman is on **|ρ|**, the inversion count on the **signed** ρ.
 
 | domain | configurations | common n | Spearman between the two rankings | largest single \|Δρ\| | rank-pair inversions |
 |---|---|---|---|---|---|

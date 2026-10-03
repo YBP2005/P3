@@ -1382,7 +1382,7 @@ numbers, it produces systematic **over**-estimation.
 is the **per-item median** of $\text{pred}/\text{gt}$ over the items of a cell (the column headed
 `median pred/gt` in the table above). It is **not** the **pooled** deviation
 $\rho=100\,(\sum\text{pred}-\sum\text{gt})/\sum\text{gt}$, which is the caliber of the `pooled` column and
-of §M.2's summary table; the same cells give pooled values of **307.2%–1471.7%**, i.e. an order of
+of §M.2's summary table; the same cells give pooled values of **269.8%–1471.7%**, i.e. an order of
 magnitude larger, because a pooled ratio is dominated by the highest-count items. The two are neither
 interchangeable nor comparable, and quoting one without its caliber is exactly the failure mode §4.1
 corrects for the detector ladder — so the main text says "per-item median" explicitly and both columns are

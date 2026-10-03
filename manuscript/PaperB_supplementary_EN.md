@@ -4644,8 +4644,7 @@ so the swap is not an artefact of mixing pools. (b) The **top** of the ordering 
 the prompt family is the largest-response knob in all three sources; the contract knob's span
 (**343.5 pp**) reproduces the published value for one build (**355.3 pp**) to **3%** across builds and
 service starts. (c) Normalising each span by its knob's relative travel, which is definable only for the
-two numeric knobs, **keeps their order** rather than flipping it: tiling 14.56 < pixel budget 31.65 raw, and 0.404 against 1.509 per unit of travel
-unit of travel.
+two numeric knobs, **keeps their order** rather than flipping it: tiling 14.56 < pixel budget 31.65 raw, and 0.404 against 1.509 per unit of travel.
 
 **Noise, and why the swap is not noise.** Three same-session repeats of one arm agree item-by-item on
 **170/182 = 93.41%** of items and move that arm's ρ by **3.01 pp**. The two swapped knobs span 14.6 and
@@ -4677,7 +4676,8 @@ record files — released as `data/derived/g56_res/g56_{arms,tile,budget,noise}.
 released; the analyser recomputes both the within-run spans and the same-pool published spans from the released
 per-item records. The eleven-level rescan's own criteria, runner, analyser, per-cell records (66 files) and
 smoke/pilot controls are released as `data/derived/p1d_a800/`, so every number quoted in the paragraph above is
-recomputable from the package.*
+recomputable from the package; the density cross-check's own per-item ladder, from which the CSRNet row above is
+computed, is released as `data/derived/p2e_a800/csrsta_ladder_st_a.csv`.*
 
 ### M.44 Recovering a known mixture proportion: an identity, its resolution, and the transfer that fails
 

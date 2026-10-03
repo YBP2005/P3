@@ -53,6 +53,17 @@ PM = RP('analysis', 'data', 'pod_mirror')
 #   这里显式回退：若 `PM` 下没有 `res_ctrl__*`，就去找包内那份（作者树上 `PM` 原样命中，不受影响）。
 _rc_alt = os.environ.get('N5_RC') or os.path.join(HERE, '..', '..', 'data', 'derived')
 PM_RC = PM if glob.glob(os.path.join(PM, 'res_ctrl__*')) else _rc_alt
+# ★ 2026-10-03（v0636）：包内 `pod_mirror` 前缀映射到 `data/derived/pA`，而**多处语料是平铺在
+#   `data/derived/<name>` 下**（tile_results / dense_prompt_results / ivl_dense_prompt_results / p2e_a800 等）。
+#   这里加一个两根源解析：先在作者树根 `PM` 下找，再在包内 `data/derived` 下找；都没有则返回 PM 下那个，
+#   保持原有"缺件即跳过"的语义不变。
+_ALT_DERIVED = os.path.join(HERE, '..', '..', 'data', 'derived')
+def _first(*rel):
+    for _base in (PM, _ALT_DERIVED):
+        _p = os.path.join(_base, *rel)
+        if os.path.exists(_p):
+            return _p
+    return os.path.join(PM, *rel)
 W = NR('@shared', 'work')
 B = NR('@shared', 'work', 'b_harvest_20260917')
 ANOM, SENT = 1e5, 1234567890
@@ -126,7 +137,7 @@ def build_units():
             add_unit('VLM·pixel budget / %s / %s' % (mdl, ds), {k: v for k, v in u.items()})
     for sub, mdl in (('tile_results', 'Qwen32B'), ('b2__out_32b_ctile', 'Qwen32B(ctile)'),
                      ('b2__out_8b_ctile', 'Qwen8B(ctile)')):
-        d = os.path.join(PM, sub)
+        d = _first(sub)
         if not os.path.isdir(d):
             continue
         groups = collections.defaultdict(dict)
@@ -144,8 +155,8 @@ def build_units():
             groups[(dom, arm)][lvl] = d2
         for (dom, arm), bl in sorted(groups.items()):
             add_unit('VLM·tiling / %s / %s / %s' % (mdl, dom, arm), bl)
-    for mdl, p in (('ivl', os.path.join(PM, 'b2__out_ivl', 'E1.csv')),
-                   ('q32', os.path.join(PM, 'b2__out_q32', 'E1.csv'))):
+    for mdl, p in (('ivl', _first('b2__out_ivl', 'E1.csv')),
+                   ('q32', _first('b2__out_q32', 'E1.csv'))):
         if os.path.exists(p):
             u = unitize(load(p), ['arm'], 'pred')
             add_unit('VLM·output contract / %s' % mdl, {k: v for k, v in u.items()})

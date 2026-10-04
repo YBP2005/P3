@@ -387,10 +387,10 @@ def holm(pvals):
 # ══════════════════════════════════════════════════════════════════════════════
 def write_criteria():
     crit = {
-        "round": "P3R2 / class-3 / §4 (hy4 #16)",
+        "round": "P3R2 / class-3 / §4 (外部核查 #16)",
         "frozen_at": "2026-09-29T00:00:00+08:00",
         "frozen_by": "P3R2 施工代理（依 `_p3r2_experiment_plan.md` §4.2 逐条落成）",
-        "why_this_file": "hy4 #16 指控 31 单元嵌套在 6 knob x 4 域里，自由标签置换会反保守；"
+        "why_this_file": "外部核查 #16 指控 31 单元嵌套在 6 个 knob x 4 个域里，自由标签置换会反保守；"
                          "现文只补了 leave-one-knob-out，其下沿 0.883 < 0.9。本件把簇级口径**跑前**写死。",
         "question": "§7.3 的排序稳定性在**按 knob（或 knob x 域/构建）聚类**的重采样/置换下，下沿还 >= 0.80 吗？",
         "what_already_exists": {
@@ -668,7 +668,7 @@ def main():
 
     # ── 落盘 ─────────────────────────────────────────────────────────────────
     out = dict(
-        purpose='P3R2 §4（hy4 #16）：把 §7.3 排序稳定性的重采样结构从 i.i.d. 换成**按 knob 聚类**，'
+        purpose='P3R2 §4（外部核查 #16）：把 §7.3 排序稳定性的重采样结构从 i.i.d. 换成**按 knob 聚类**，'
                 '给簇级置换 p、块 bootstrap 95% 区间与留一簇极差。0 次推理 / 0 新数据。',
         inputs=dict(equalcount36=os.path.basename(EQ), equalcount36_md5=eq_md5,
                     m37_ci_power_result=os.path.basename(M37RES),

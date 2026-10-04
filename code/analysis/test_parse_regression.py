@@ -24,7 +24,7 @@ import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-P = RP('analysis', 'work', '_test_review_dir', 'm4prime_review_dsflash_20990101_000000.md')
+P = RP('analysis', 'work', '_test_review_dir', 'm4prime_review_[external-review]_20990101_000000.md')
 t = io.open(P, encoding='utf-8').read()
 
 EXP = {'新颖性': (12.5, 15), '技术严谨': (11.5, 15), '实验充分': (13.5, 15),

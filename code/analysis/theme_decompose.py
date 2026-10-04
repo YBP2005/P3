@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
-"""theme_decompose.py — 把新颖度[external-review]的 D1 扣分**按主题**分解，用于跨轮对比。
+"""theme_decompose.py — 把新颖度[external-review]的 D1 意见**按主题**分解，用于跨轮对比。
 
-为什么要有这个脚本：第 4 轮的主题表是人工目测归类出来的，跨轮再目测一次就会得到
+为什么要有这个脚本：上一版的主题表是人工目测归类出来的，跨轮再目测一次就会得到
 "看起来在缩小的主题"——这正是本项目已经吃过一次的亏（自证式比较）。所以这里把
 分类口径**写成显式关键词规则**，对第 4、5 两轮**同一份代码**执行，并且：
-  · 每条扣分都必须被归类；无法归类 → UNCLASSIFIED 并显式报出（不静默丢弃）；
+  · 每条意见都必须被归类；无法归类 → UNCLASSIFIED 并显式报出（不静默丢弃）；
   · 命中多个主题时按**优先级顺序**取唯一归属，并把命中的关键词一起打印，便于人工复核；
-  · 主题总额必须等于 D1 扣分总额（脚本内 assert）。
+  · 主题总额必须等于 D1 意见总额（脚本内 assert）。
 
-主题定义（与第 4 轮记录中的 A–F 同名，但口径以本文件为准）：
+主题定义（与上一版记录中的 A–F 同名，但口径以本文件为准）：
   D_IDENTITIES   命题/对偶口径"只是算术恒等式、只是记账"——即 D 主题
   F_SPECTRUM_NEG 方向谱/量级律撤回/机制未解释/阴性结果——即 F 主题
   E_PROXY        可见性代理、无标注替代、检测框不可恢复
@@ -41,11 +41,11 @@ MODELS = ['dsflash', 'dspro', 'grok46', 'glm53flash']
 
 # 顺序即优先级：越具体的主题越靠前。
 # ★ 2026-09-23 修正（本轮自查抓到，必须记下来）：原先把 D_IDENTITIES 排在 F 之前，
-#   结果 [external-review] 第 5 轮那条 [Δ]（原文 "Directional-span spectrum is implementation×domain×protocol,
+#   结果 [external-review] 上一版那条 [Δ]（原文 "Directional-span spectrum is implementation×domain×protocol,
 #   with magnitude law withdrawn (Prop. 3) … Would need a portable predictor of span size"）
 #   因为句中出现了 "(Prop. 3)" 而被归到 D，**掩盖了"谱系投诉仍在"这一事实**，
 #   从而把"F 主题下降"算得过大（−28.0 → −15.0）。这类"分类器优先级制造出来的结论"
-#   正是本项目要防的自证。现在：F 先于 D；并且对每条扣分**同时报告全部命中主题**（见 also 列），
+#   正是本项目要防的自证。现在：F 先于 D；并且对每条意见**同时报告全部命中主题**（见 also 列），
 #   主归属只用于求和，重叠情况一律显式打印。
 THEMES = [
     ('F_SPECTRUM_NEG', r'spectrum|magnitude law|negative result|knob|threshold|NMS|'
@@ -108,11 +108,11 @@ for tag in sys.argv[1:]:
             total += x['pts']
             detail.append((m, theme, x['pts'], hit, x['cls'], x['reason'], also))
     report[tag] = dict(per=per, total=round(total, 1), detail=detail, scores=d.get('scores'))
-    # 总额校验：主题合计必须等于 D1 总额（否则说明有扣分未被计入）
+    # 总额校验：主题合计必须等于 D1 总额（否则说明有意见未被计入）
     s = round(sum(v['pts'] for v in per.values()), 1)
     assert abs(s - total) < 1e-6, '%s 主题合计 %.1f ≠ D1 总额 %.1f' % (tag, s, total)
 
-print('## 主题分解（同一分类器机械套用；每条扣分必有归属）')
+print('## 主题分解（同一分类器机械套用；每条意见必有归属）')
 print()
 order = [k for k in NAMES if k != 'UNCLASSIFIED'] + ['UNCLASSIFIED']
 print('### 口径一：**模型层面覆盖率**（任一主题命中即计入，多标签 ∪ —— 对优先级稳健，推荐用于结论）')
@@ -174,7 +174,7 @@ if uncls:
     for tag, (m, theme, pts, hit, cls, reason, also) in uncls:
         print('- `%s`/`%s` −%.1f [%s]：%s' % (tag, m, pts, cls, reason[:160]))
 else:
-    print('未归类条目：0 条（全部扣分均已归属主题）。')
+    print('未归类条目：0 条（全部意见均已归属主题）。')
 print()
 overlap = [(tag, x) for tag in sys.argv[1:] for x in report[tag]['detail'] if x[6]]
 print('**同时命中多个主题的条目（主归属只用于求和，重叠在此显式列出，共 %d 条）**' % len(overlap))

@@ -2,7 +2,7 @@
 """gen_m40_2x2.py —— 为 M.40 生成[external-review]要求的**逐项 2×2 表**：出口（`no_people` / `cannot_judge`）
 × 图像类型（真零池 / 非零密集池），并冻结成 `m40_2x2_result.json`。
 
-## 为什么加这张表（[external-review]，[external-review] 的扣分项）
+## 为什么加这张表（[external-review] 的整改项）
 M.40 原文把"真零图上用 `no_people`、真有人图上改用 `cannot_judge`"写成**区间**
 （真零 `no_people` 47.9–86.9%、非零密集 `cannot_judge` 92.1–100%、`no_people` 0.0–1.7%）。
 [external-review] 要的是**同一张 2×2 表里的计数**，理由是区间看不出"两个出口被有区别地使用"这一事实的

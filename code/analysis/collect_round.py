@@ -112,7 +112,7 @@ for m, p in sel.items():
                    veto=clean(veto.group(0) if veto else ''),
                    dec=clean(dec.group(0) if dec else ''))
     got = sum(1 for k, _ in DIMS if k in sc)
-    # 越界核对：可打分值不得超过满分（评分表规则第 1 条）
+    # 越界核对：可得分值不得超过满分（评分表规则第 1 条）
     _over = [k for k, full in DIMS if k in sc and sc[k][0] > full + 1e-9]
     # 自洽核对：8 维之和应等于总分（评分表规则第 4 条）
     _sum = round(sum(v[0] for v in sc.values()), 1) if sc else None

@@ -291,7 +291,7 @@ def main():
 
     t0 = time.time()
     print('=' * 120)
-    print('P3R4-④ hy4 #23 X1：answered-only 口径重算 + GT 量级回归残差排序（0 次新调用）')
+    print('P3R4-④ 外部核查 #23 X1：answered-only 口径重算 + GT 量级回归残差排序（0 次新调用）')
     print('=' * 120)
 
     build_units()
@@ -397,7 +397,7 @@ def main():
              '更大（未收缩到检测器之下）' if (con_max['span_answered'] or 0) > (det_max['span_answered'] or 0)
              else '**已不再更大**'))
 
-    print('\n③ 按旋钮看收缩（hy4 原话的检查项）')
+    print('\n③ 按旋钮看收缩（外部核查原话的检查项）')
     byk = collections.defaultdict(list)
     for r in rows:
         if r['ratio_answered_over_pooled'] is not None:
@@ -460,7 +460,7 @@ def main():
     top_res = max(rows, key=lambda r: r['log_span_residual'])
     bot_res = min(rows, key=lambda r: r['log_span_residual'])
     print('\n⑤ 不依赖 β 的对照：OLS  log10(span_pooled) ~ log10(GT median)')
-    print('   斜率 β̂ = %.4f（hy4 的 β 网格正好跨在它两侧）｜ R² = %.4f' % (fit['slope'], fit['r2']))
+    print('   斜率 β̂ = %.4f（外部核查的 β 网格正好跨在该点两侧）｜ R² = %.4f' % (fit['slope'], fit['r2']))
     print('   最大正残差 = %s（%s，%+.4f）' % (top_res['unit'], top_res['knob'], top_res['log_span_residual']))
     print('   最大负残差 = %s（%s，%+.4f）' % (bot_res['unit'], bot_res['knob'], bot_res['log_span_residual']))
     # 残差序 vs pooled 序 / answered 序
@@ -470,10 +470,10 @@ def main():
           % (rho_res_pool, rho_res_ans))
 
     out = dict(
-        purpose='P3R4-④：hy4 第 3 轮 #23 的 X1 —— answered-only 口径下的 36 单元响应谱重算，'
+        purpose='P3R4-④：外部核查 #23 的 X1 —— answered-only 口径下的 36 单元响应谱重算，'
                 '以及 GT 量级的回归残差排序。0 次新调用、0 新数据。',
         provenance=dict(
-            requester='hy4 第 3 轮 #23（替代解释 ③ + X1 判据）',
+            requester='外部核查 #23（替代解释 ③ + X1 判据）',
             coordinator_confirmed_absent='§M.37 只做 GT-形状匹配（0.983）；绝对匹配被作者自判不可构造'
                                          '（公共剖面 9 项 < 20 项资格线）⇒ answered-only 重算与'
                                          'GT 量级残差排序包内确实未做过',

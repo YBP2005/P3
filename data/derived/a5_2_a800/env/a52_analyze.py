@@ -247,6 +247,31 @@ def _invert(A):
 
 
 # ════════════════════════════ 设计矩阵 ════════════════════════════
+# ★ 2026-10-04（v0646）：判据件 `C3_main_effects_in_order.predictors.nuisance_mains` 登记的是
+#   **`size_level` / `blur_level` / `overlap_level`**（"按有序处理（连续编码）"），而本函数原先读的是
+#   `radius`（原始像素半径 3/8/24）⇒ 放行默认编码 ≠ 刊载读数所用的档位编码（0/1/2），
+#   评审按放行件复跑得到 −4.4947 而不是刊载的 −4.3696。此处改回判据件登记的档位编码。
+_LEVELS = {'radius': [3.0, 8.0, 24.0], 'blur': [0.0, 4.0, 8.0], 'overlap': [1.45, 1.15, 0.85]}
+
+
+def level_of(r, key):
+    """判据件登记的有序档位（0/1/2）。优先读现成的 `<key>_level` 列，否则按预注册档位表映射原值。"""
+    for cand in (key + '_level', key):
+        v = r.get(cand)
+        if v is None or str(v).strip() == '':
+            continue
+        fv = fnum(v)
+        if fv is None:
+            continue
+        lv = _LEVELS.get(key)
+        if lv:
+            for i, x in enumerate(lv):
+                if abs(fv - x) < 1e-9:
+                    return float(i)
+        return fv
+    return 0.0
+
+
 def design_vec(r, mu, sd):
     """单行的设计向量（与 build_design 同一个顺序；bootstrap 复用它以免反复建矩阵）。"""
     c = fnum(r['count_gt']) or 0.0
@@ -256,9 +281,9 @@ def design_vec(r, mu, sd):
     z.append(cs * (1.0 if r['contract'] == 'permit' else 0.0))
     for b in BUILDS[1:]:
         z.append(cs * (1.0 if r['build'] == b else 0.0))
-    z.append(fnum(r.get('radius', r.get('size_level'))) or 0.0)
-    z.append(fnum(r.get('blur', r.get('blur_level'))) or 0.0)
-    z.append(fnum(r.get('overlap', r.get('overlap_level'))) or 0.0)
+    z.append(level_of(r, 'radius'))
+    z.append(level_of(r, 'blur'))
+    z.append(level_of(r, 'overlap'))
     for cname in CONTRACTS[1:]:
         z.append(1.0 if r['contract'] == cname else 0.0)
     for b in BUILDS[1:]:
@@ -516,6 +541,30 @@ def analyze(d, stim=None, want_boot=True, verbose=True):
     rows = [r for v in cells.values() for r in v]
     rep['n_files'] = len(cells)
     rep['n_rows'] = len(rows)
+    # ★★ 2026-10-04（v0646，B4 口径统一）：预注册的「整格排除」必须同时作用于 C1 非空检查与
+    #    C3/C4/C5/NC3。此前只作用于 C1 的分母，C3/C4 仍用全量 ⇒ 与稿件
+    #    "excluded before any analysis" 不一致。
+    #    **主口径 = 整格排除**（rows_kept）；**对照 = 含排除格**（rows，= v0645 及以前印出的读数）。
+    excl_ids = {}
+    _up = os.path.join(stim, '_unrealizable.csv') if stim else None
+    if not (_up and os.path.exists(_up)):
+        _up = os.path.join(os.path.dirname(os.path.abspath(d.rstrip('/' + chr(92)))),
+                           'a5_2_stim', '_unrealizable.csv')
+    if os.path.exists(_up):
+        for _r in csv.DictReader(io.open(_up, encoding='utf-8-sig', newline='')):
+            excl_ids[_r['cell_id']] = _r.get('reason', '')
+    rows_kept = [r for r in rows if r.get('cell_id') not in excl_ids]
+    # count_std 的标准化常数取自**全量**设计网格，两种口径共用 ⇒ 两个拟合只差记录集
+    _acts = [fnum(r['count_gt']) for r in rows]
+    _mu = sum(_acts) / len(_acts)
+    ctr = (_mu, math.sqrt(sum((x - _mu) ** 2 for x in _acts) / len(_acts)))
+    rep['caliber'] = {
+        'primary': 'whole-cell exclusion of the pre-registered unrealizable cells',
+        'unrealizable_file': _up, 'excluded_cells': sorted(excl_ids),
+        'n_rows_primary': len(rows_kept), 'n_rows_including_excluded': len(rows),
+        'count_std_centering': {'mean': _mu, 'sd': ctr[1],
+                                'note': '取自全量设计网格，两种口径共用（只差记录集）'},
+        'contrast': 'including the excluded cells (= the caliber printed up to v0645)'}
     if verbose:
         print('== A5-2 分析 ==')
         print('  IRLS 后端 = %s（numpy %s）' % (BACKEND, _np.__version__ if _np is not None else '未装'))
@@ -602,8 +651,10 @@ def analyze(d, stim=None, want_boot=True, verbose=True):
         rep['verdicts']['C4'] = {'status': 'NOT EVALUABLE'}
         rep['verdicts']['C5'] = {'status': 'NOT EVALUABLE'}
         return rep
-    c3 = fit_c3(rows, want_boot=want_boot)
+    c3 = fit_c3(rows_kept, ctr=ctr, want_boot=want_boot)      # 主口径：整格排除
     rep['checks']['C3_model'] = c3
+    c3x = fit_c3(rows, ctr=ctr, want_boot=False)               # 对照：含排除格
+    rep['checks']['C3_model_including_excluded_cells'] = c3x
     band = 0.2
     ci = c3.get('ci')
     informative = c3.get('ci_informative', True)
@@ -614,12 +665,20 @@ def analyze(d, stim=None, want_boot=True, verbose=True):
         'count_main_std_logodds': c3.get('beta_count'), 'ci': ci, 'se': c3.get('se_count'),
         'interactions': c3.get('interactions'), 'degenerate_count': c3.get('degenerate_count', False),
         'separation': c3.get('separation', False), 'outcome_rate': c3.get('outcome_rate'),
+        'n_rows': len(rows_kept), 'caliber': 'whole-cell exclusion (primary)',
         'note': c3.get('note', '')}
     rep['verdicts']['C4'] = {
         'passed': c4_pass if informative else None, 'band': band, 'ci': ci,
         'ci_informative': informative, 'separation': c3.get('separation', False),
         'rule': 'CI 完全落在 ±0.2 内 ⇒ 可称"无实质作用"',
+        'n_rows': len(rows_kept), 'caliber': 'whole-cell exclusion (primary)',
         'cluster_bootstrap': c3.get('cluster_bootstrap'),
+        'contrast_including_excluded_cells': {
+            'n_rows': len(rows), 'beta_count': c3x.get('beta_count'), 'se': c3x.get('se_count'),
+            'ci': c3x.get('ci'),
+            'passed': (bool(c3x.get('ci') and c3x['ci'][0] > -band and c3x['ci'][1] < band)
+                       if c3x.get('ci_informative', True) else None),
+            'note': 'v0645 及以前印出的口径（含 3 个预注册 unrealizable 格）'},
         'disposition': ('保留"count 无实质作用"并加一句"在控制可读性后仍成立（A5-2）"' if c4_pass
                         else ('**不可评**（响应近饱和/分离；先查数据再看结论）' if not informative
                               else '撤回该表述；§5.6 改写为"count 的作用在控制可读性后仍可见"'))}
@@ -630,12 +689,16 @@ def analyze(d, stim=None, want_boot=True, verbose=True):
             print('     %-24s β=%s  CI=%s  p=%.4f' % (nm, _fmt(v['beta']), _fmt(v['ci']), v['p_wald']))
         print('  C4 无实质作用带 ±%.1f：%s ⇒ %s' % (band, 'CI 完全落入' if c4_pass else 'CI 未完全落入',
                                                  'PASS（可称无实质作用）' if c4_pass else 'FAIL（撤回该表述）'))
+        _cx = c3x.get('ci')
+        print('     口径：主口径 = 整格排除（n=%d，排除 %s）；对照 = 含排除格（n=%d，β=%s，CI=%s）'
+              % (len(rows_kept), ','.join(sorted(excl_ids)) or '—', len(rows),
+                 _fmt(c3x.get('beta_count')), _fmt(_cx)))
         cb = c3.get('cluster_bootstrap')
         if cb:
             print('     聚类 bootstrap（按布局，B=%d，n_ok=%d）：CI = %s' % (cb['B'], cb['n_ok'], _fmt(cb.get('ci'))))
 
     # ── C5 以布局为组留出 ──────────────────────────────────────────
-    c5 = groupwise_cv(rows)
+    c5 = groupwise_cv(rows_kept)
     st = c5.get('stability') or {}
     rep['checks']['C5_cv'] = c5
     rep['verdicts']['C5'] = {'passed': bool(st) and (not st.get('unstable', True))
@@ -653,7 +716,7 @@ def analyze(d, stim=None, want_boot=True, verbose=True):
     # ── NC3 独立重解析（从 raw 列）────────────────────────────────
     mismatch = 0
     checked = 0
-    for r in rows:
+    for r in rows_kept:
         raw = r.get('raw') or ''
         if raw.startswith('ERR:'):
             continue

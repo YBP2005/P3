@@ -55,7 +55,7 @@ agrees at essentially 100% for the same configuration. The per-image figure abov
 movement, and the paper's rates depend on only one of them. Separating them on the four M.21.10 builds
 across **three fresh service starts at four-worker concurrency**, the **answered-zero classification**
 flips on **4 of 4,136 items (0.097%)**, while the reported count differs by **±1–2 on 4.28%** of items.
-(The per-item records behind this split are those of §M.21.10 and are in the released package, `data/derived/p3r4_a800/`.)
+(The per-item records behind this split are those of §M.21.10 and are in the released package, the released per-item record directory, listed in `MANIFEST.csv`.)
 The two settings are not comparable — the 22–27% above is a 4-bit stack and counts value differences as
 well — so this is a **boundary on a different setting, not a correction of that figure**. Consequently,
 model-to-model differences below
@@ -469,13 +469,13 @@ regression (4), output contract (2), pixel budget (6), prompt family (6) and til
 two agree because the interval's two ends are two of the six knobs. The **31**-unit set above carries no
 leave-one-out reading, and `m37_ci_power.py` is the generator of the frozen field only.
 
-**The intervals do not depend on treating the units as independent.** The units are nested in six knobs, so we re-ran the resampling at the **cluster** level: resampling whole knobs with replacement gives a 95% interval of **0.913–0.994** over the **31** unit set (2,000 draws, seed 20260924), against **0.939–0.996** under the unit bootstrap printed above — a lower bound **2.6 pp** below the i.i.d. one and still well above the **0.80** bar this paper would have read as instability (F.10). The same substitution on the **36** unit set gives **0.883–0.998**, and removing any one knob whole leaves **0.883–0.970** as above. We report the clustered interval alongside the unit one rather than instead of it. **Why the interval is the right instrument here, stated exactly.** A permutation test is informative only if it perturbs what the statistic depends on, and this statistic is a rank correlation over the **paired** unit readings: permuting *whole knobs* moves those pairs about but does not break them, so the statistic is
+**The intervals do not depend on treating the units as independent.** The units are nested in six knobs, so we re-ran the resampling at the **cluster** level: resampling whole knobs with replacement gives a 95% interval of **0.913–0.994** over the **31** unit set (2,000 draws, seed 20260924), against **0.939–0.996** under the unit bootstrap printed above — a lower bound **2.6 pp** below the i.i.d. one and still well above the **0.80** bar this paper would have read as instability (F.10). The same substitution on the **36** unit set gives **0.711–0.998** (the 36-unit clustered reading stored in the frozen clustered result file released with this appendix, 2,000 draws, seed 20260924) — a lower bound **below** the **0.80** bar, so this wider-set robustness check does **not** clear the bar that the 31-unit interval clears; the registered criterion value (`block_boot_lower`) is the 31-unit one, **0.913**. Removing any one knob whole leaves **0.883–0.970** as above. We report the clustered interval alongside the unit one rather than instead of it. **Why the interval is the right instrument here, stated exactly.** A permutation test is informative only if it perturbs what the statistic depends on, and this statistic is a rank correlation over the **paired** unit readings: permuting *whole knobs* moves those pairs about but does not break them, so the statistic is
 bit-identical under all 720 block permutations and `p = 1`. **This is not a defect of this implementation but a
 theorem about the class of statistics it belongs to: any symmetric function of a set of *paired* readings —
 Spearman, Kendall, distance correlation, a two-sample $U$ — is invariant under every permutation that keeps the
 pairs together, so its permutation null is a point mass at the observed value and the test has zero power by
 construction, not merely low power. The instrument for a paired design is a null that breaks the pairing —
-redrawing one member of each pair, equivalently redrawing the span values from their own distribution — and that is the null we use.** Resampling whole pairs is a different operation and does *not* break the pairing: it keeps both members of each pair together — the point-mass null of this appendix — so it is not the instrument. **The two are reported as two separate nulls, not as two equivalent ones**: the pair-breaking null is the informative one, and where the two read the same it is because both sit at the floor, not because they are the same distribution. Redrawing the span values from their own distribution breaks the pairing, and there the ordering separates at `p < 5×10^{-5}` on all three deflations and both unit sets. **Both nulls return 0 of 20,000 draws at least as extreme as the observed ordering, so both saturate the Monte-Carlo floor `1/(B+1) = 5.0×10^{-5}`; we report the clustered result as `p < 5×10^{-5}` (0/20,000)**. We note explicitly that this agreement is an agreement **at the floor**: it says neither null separates the orderings at this resample budget, not that the two nulls are the same distribution. The floor itself is a property of the budget, not a measurement.** We therefore rest the claim on the interval, not on a clustered $p$ — the units are six knobs and the test cannot separate them. Reproduction: `p3r2_plan_m37_cluster.py`, its pre-registered criteria `p3r2_plan_m37cluster_criteria_frozen.json` and its frozen output `p3r2_plan_m37_cluster_result.json` — **all three are in the released reproduction package**; the script reads only the two released inputs (`equalcount36_result.json`, `m37_ci_power_result.json`) and refuses to run unless the first one's md5 matches the value printed earlier in this appendix, so the clustered interval above **is** independently recomputable from the package; the span-value null is recomputed from the released `equalcount36_result.json` by `p3r4_zero_2_null_span.py`; the point readings it is compared against are recomputed from the released `equalcount36_result.json`.
+redrawing one member of each pair, equivalently redrawing the span values from their own distribution — and that is the null we use.** Resampling whole pairs is a different operation and does *not* break the pairing: it keeps both members of each pair together — the point-mass null of this appendix — so it is not the instrument. **The two are reported as two separate nulls, not as two equivalent ones**: the pair-breaking null is the informative one, and where the two read the same it is because both sit at the floor, not because they are the same distribution. Redrawing the span values from their own distribution breaks the pairing, and there the ordering separates at `p < 5×10^{-5}` on all three deflations and both unit sets. **Both nulls return 0 of 20,000 draws at least as extreme as the observed ordering, so both saturate the Monte-Carlo floor `1/(B+1) = 5.0×10^{-5}`; we report the clustered result as `p < 5×10^{-5}` (0/20,000)**. We note explicitly that this agreement is an agreement **at the floor**: it says neither null separates the orderings at this resample budget, not that the two nulls are the same distribution. The floor itself is a property of the budget, not a measurement.** We therefore rest the claim on the interval, not on a clustered $p$ — the units are six knobs and the test cannot separate them. Reproduction: the clustered-interval driver script released with this appendix, its pre-registered criteria file and its frozen result file — **all three are in the released reproduction package**, each listed in `MANIFEST.csv`; the script reads only the two released inputs (`equalcount36_result.json`, `m37_ci_power_result.json`) and refuses to run unless the first one's md5 matches the value printed earlier in this appendix, so the clustered interval above **is** independently recomputable from the package; the span-value null is recomputed from the released `equalcount36_result.json` by a second released script; the point readings it is compared against are recomputed from the released `equalcount36_result.json`.
 
 The two quantities printed above are linked by the same arithmetic, which is worth stating because it makes the choice of a 0.80 lower bound non-arbitrary: with `ICC(1) = 0.645` the variance ratio is `σ_w²/σ_b² = (1 − 0.645)/0.645 = 0.5504`, and Spearman–Brown at six units returns `6 × 0.645 / (1 + 5 × 0.645) = 0.916`, the reliability printed for `m = 6`. The allocation formula is the inverse of that step, so the four targets are recovered from the same two numbers: `m*` = **2.20 / 4.95 / 10.46 / 54.49** for `ρ*` = 0.80 / 0.90 / 0.95 / 0.99. Nothing here is new theory; it is the arithmetic of the data structure, and it is what makes "six units, 0.80" a defensible design point rather than a convention.
 
@@ -1105,8 +1105,8 @@ $1/551.6 = 0.18\%$ and $6{,}096/20{,}111 = 30.31\%$ (equivalently $1/(\kappa+1)$
 $\kappa = 14{,}015/6{,}096 = 2.2990$, which rounds to the 2.3 : 1 printed in Table 2; the rounded
 $\kappa = 2.3$ gives 30.30%, so the exact ratio is used here).
 
-**Proposition 8.** The bound follows from the identity of Proposition 4 by taking absolute values, and
-attainment for $\rho_{\text{answered}}<0$ is immediate because both factors are then positive. Numerically,
+**Proposition 8.** The bound follows from the identity of Proposition 4 by taking absolute values. The
+$\lvert\rho_{\text{answered}}\rvert$ form holds with **equality if and only if** $\rho_{\text{answered}} \ge 0$ (§M.21); for $\rho_{\text{answered}} < 0$ it is **strict**, and at $w = 1$ both sides are $0$. All four measured cells have $\rho_{\text{answered}} < 0$, so the exact form $\lvert\rho_{\text{total}} - \rho_{\text{answered}}\rvert = (1-w)(1+\rho_{\text{answered}})$ is the one used there.
 using the canonical primary runs of Appendix J.1 ($w$ and $\rho_{\text{answered}}$ printed in that table):
 
 | Domain | $w$ | $\rho_{\text{answered}}$ | identity $(1-w)(1+\rho_{\text{ans}})$ | observed gap |
@@ -1520,7 +1520,7 @@ possible target to be counted, so it never abstains — and the dense `base` cel
 convention an abstained item contributes $pred=0$, so this term is **identically** the abstention rate itself
 (the last column of Table 3), which is why it is printed as a positive percentage while the ground-truth-weighted
 term beside it is negative. The
-two differ by **38–40 pp** on ShanghaiTech-A and UCF, which is why both must be reported. Case-resampling the per-item records (2,000 draws, seed 20260924, the convention of §7.3) puts $S$ at **90.8–97.0%** on ShanghaiTech-A and **91.2–96.0%** on UCF-QNRF. (*Reproduction: `p3r4_zero_1_S_ci.py`.*) Setting refusals
+two differ by **38–40 pp** on ShanghaiTech-A and UCF, which is why both must be reported. Case-resampling the per-item records (2,000 draws, seed 20260924, the convention of §7.3) puts $S$ at **90.8–97.0%** on ShanghaiTech-A and **91.2–96.0%** on UCF-QNRF. (*Reproduction: a released resampling script.*) Setting refusals
 aside entirely, the answered-only relative deviation is only **−19.8%** and **−29.2%** — these models are
 much closer to unbiased than the aggregate suggests.
 
@@ -1589,8 +1589,7 @@ and **none** of the three arms moves the direction positive — the opposite of 
 **Stimulus (synthetic).** A full **3⁴ factorial** over count × dot radius (size) × blur × overlap factor
 gives **81 cells**, **8 layouts per cell ⇒ 648 rendered images**. **3 cells were pre-registered as
 unrealizable** (`_unrealizable.csv`: one where the blurred small dots merge into no discernible blob,
-two where 80 targets do not fit at the required minimum spacing) and are excluded before any analysis,
-leaving **78 non-empty cells**. Count is therefore pushed to its extremes (8 / 32 / 80 dots) while
+two where 80 targets do not fit at the required minimum spacing) and are excluded **before any analysis — from the C1 non-empty check *and* from the C3/C4/C5/NC3 fits**, leaving **78 non-empty cells = 11,232 records** (the previously printed 11,664-record readings included the three excluded cells and are reported below as the contrast caliber). Count is therefore pushed to its extremes (8 / 32 / 80 dots) while
 legibility (radius, blur, overlap) is varied orthogonally — exactly the contrast the corpus panel of
 §5.6 could not isolate. The stimulus is **synthetic dots**, rendered on a different platform, and is an
 **independent stimulus** from the 675-image grid of §5.6 / §C.2; its readings **must not be differenced
@@ -1612,9 +1611,22 @@ starts = **18 cells × 648 items = 11,664 calls**, **0 aborts**.
 | service starts | 12 | **6** |
 | calls | 23,328 | **11,664** |
 
-**Criterion C4 read out: FAIL ⇒ the "count has no material effect" reading is withdrawn.** A regression
-on the pooled 11,664 records, with the legibility covariates (size, blur, overlap) and the
-contract/build terms included, gives
+**Criterion C4 read out: FAIL ⇒ the "count has no material effect" reading is withdrawn.** Two
+regressions are reported with the **same** legibility covariates (size, blur, overlap, in the ordinal
+`*_level` coding registered in the frozen criteria file) and the same contract/build terms; they differ
+**only in the record set** — **primary = whole-cell exclusion of the three pre-registered unrealizable
+cells (n = 11,232)**; **contrast = including them (n = 11,664, the caliber printed in the previous release)**.
+
+**Primary caliber (whole-cell exclusion, n = 11,232):**
+
+| term | β | SE | z | p | Wald 95% CI |
+|---|---:|---:|---:|---:|---|
+| `count_std` (main effect) | **−4.2059** | 0.2248 | −18.71 | ~0 | **[−4.6465, −3.7653]** |
+| `count_std × strict` | −0.4224 | 0.2677 | −1.58 | 0.115 | [−0.9471, 0.1023] |
+| `count_std × permit` | **−3.4937** | 0.5504 | −6.35 | 2.2e−10 | [−4.5725, −2.4149] |
+| `count_std × b2` | −0.2083 | 0.2519 | −0.83 | 0.408 | [−0.7019, 0.2854] |
+
+**Contrast caliber (including the three excluded cells, n = 11,664):**
 
 | term | β | SE | z | p | Wald 95% CI |
 |---|---:|---:|---:|---:|---|
@@ -1623,15 +1635,18 @@ contract/build terms included, gives
 | `count_std × permit` | **−2.1767** | 0.3807 | −5.72 | 1.1e−08 | [−2.9228, −1.4305] |
 | `count_std × b2` | +0.1920 | 0.2372 | 0.81 | 0.418 | [−0.2730, 0.6570] |
 
-The pre-registered practical-null band was **±0.2** (`ci_lo > −0.2 AND ci_hi < +0.2`). The interval
-**[−4.8066, −3.9327]** lies **entirely outside that band — it does not even contain 0** ⇒ **C4 FAIL**,
-with a **negative** sign (more dots, fewer correct answers). A layout-clustered bootstrap (8 layouts
-resampled, B = 500, seed 20261004) gives **[−6.2051, −3.1896]** (median −4.4624) — the same sign and
-wider, so this is not a sampling accident. Because C4 failed, the pre-registered disposition
-`verdict_if_fail` applies verbatim: **the claim that count has no material effect is withdrawn**, and
-§5.6 is rewritten as "count's role remains visible after controlling legibility".
+The pre-registered practical-null band was **±0.2** (`ci_lo > −0.2 AND ci_hi < +0.2`).
+**In both calibers the interval lies entirely outside that band — it does not even contain 0 ⇒ C4 FAIL**, with a **negative** sign (more dots, fewer correct answers): the primary interval is **[−4.6465, −3.7653]**, the contrast interval **[−4.8066, −3.9327]**. A layout-clustered bootstrap (8 layouts resampled, B = 500, seed 20261004) on the primary caliber gives **[−6.3291, −2.7775]** (median −4.2571) — the same sign and wider, so this is not a sampling accident. Because C4 failed in both calibers, the pre-registered disposition `verdict_if_fail` applies verbatim: **the claim that count has no material effect is withdrawn**, and §5.6 is rewritten as "count's role remains visible after controlling legibility".
 
-**Pooled by count level (all 11,664 records).**
+**Pooled by count level — primary caliber (whole-cell exclusion, n = 11,232).**
+
+| count level | correct | rate |
+|---|---:|---:|
+| 8 | 1870 / 3744 | **49.9%** |
+| 32 | 80 / 3888 | **2.1%** |
+| 80 | 17 / 3600 | **0.5%** |
+
+**Pooled by count level — contrast caliber (including the excluded cells, n = 11,664; the values printed in the previous release).**
 
 | count level | correct | rate |
 |---|---:|---:|
@@ -1639,7 +1654,18 @@ wider, so this is not a sampling accident. Because C4 failed, the pre-registered
 | 32 | 80 / 3888 | **2.1%** |
 | 80 | 23 / 3888 | **0.6%** |
 
-**Per build × contract (n = 1944 per cell) — the mandatory pooled read-out.**
+**Per build × contract — primary caliber (n = 1872 per cell).**
+
+| build | contract | n | correct | rate | abstain | pred = 0 |
+|---|---|---:|---:|---:|---:|---:|
+| b0 (AWQ 4-bit) | base | 1872 | 326 | **17.41%** | 0 | 656 |
+| b0 (AWQ 4-bit) | strict | 1872 | 326 | **17.41%** | 0 | 657 |
+| b0 (AWQ 4-bit) | permit | 1872 | 314 | **16.77%** | **933** | 0 |
+| b2 (BF16) | base | 1872 | 337 | **18.00%** | 0 | 659 |
+| b2 (BF16) | strict | 1872 | 336 | **17.95%** | 0 | 657 |
+| b2 (BF16) | permit | 1872 | 328 | **17.52%** | **962** | 0 |
+
+**Per build × contract — contrast caliber (n = 1944 per cell; the values printed in the previous release).**
 
 | build | contract | n | correct | rate | abstain | pred = 0 |
 |---|---|---:|---:|---:|---:|---:|
@@ -1650,16 +1676,9 @@ wider, so this is not a sampling accident. Because C4 failed, the pre-registered
 | b2 (BF16) | strict | 1944 | 353 | **18.16%** | 0 | 681 |
 | b2 (BF16) | permit | 1944 | 331 | **17.03%** | **1010** | 0 |
 
-`base` and `strict` are **numerically identical** within each build (341/341 and 353/353): `strict` only
-adds "output JSON only", and both were already 100% parseable, so it changed nothing. The `permit`
-contract converts "answers 0" into "abstains" (abstain 51.2%, `pred = 0` driven to zero) at a small cost
-in correctness.
+`base` and `strict` are **numerically identical** within each build in the contrast caliber (341/341 and 353/353), and differ by at most one item in the primary caliber (326/326 and 337/336): `strict` only adds "output JSON only", and both were already 100% parseable, so it changed almost nothing. In both calibers the `permit` contract converts "answers 0" into "abstains" at a small cost in correctness.
 
-**Independent recomputation.** A separately written parser and analysis (`_a52_indep.py`, which **does
-not import the frozen analyzer**) re-derived the panel from the released per-item records: **C1 PASS,
-C2 PASS (shrunk accounting), C3 PASS, C4 FAIL, C5 PASS**; the negative controls NC1, NC3 and NC-const
-all PASS. Reparsing all 11,664 rows independently gave **0** disagreements in `parse_ok`, `pred` and the
-abstain flag.
+**Independent recomputation.** A separately written parser and analysis (an independent script that **does not import the frozen analyzer**) re-derived the panel from the released per-item records: **C1 PASS, C2 PASS (shrunk accounting), C3 PASS, C4 FAIL, C5 PASS**; the negative controls NC1, NC3 and NC-const all PASS. Reparsing the primary 11,232 rows independently gave **0** disagreements in `parse_ok`, `pred` and the abstain flag (the 11,664-row contrast is likewise 0).
 
 **Two honest registrations (thresholds unchanged).**
 
@@ -1675,12 +1694,11 @@ abstain flag.
 
 **Provenance (md5).** criteria `758962a2643e1035698682abefec5748`; stimulus generator
 `edd4a9708cf97ece4d376964a72160d3`; probe `2f9d53cd3098990aa29b69e4946de2b0`; frozen orchestration
-`a93ecd519341fba79bb7d993eb6641b8`; revised orchestration `a52_run_v2.sh`
-`7fa412d96c6a21717d946a287156403c`; analyzer `bf873c5e7da083dae42cb379efe9af9d`; official stimulus lock
+`a93ecd519341fba79bb7d993eb6641b8`; revised orchestration driver script
+`7fa412d96c6a21717d946a287156403c`; analyzer `77f87f49b0e447fba54ea2a0435f80c8`; official stimulus lock
 `stim/manifest.csv` = `d2dde2a8100eca8eda88143f6cbb04ba`, with `manifest_sha256.txt` **648/648 OK**;
-stimulus config `e6adaa4825c90fe4574e0c11a877f994`; run log (ALL_DONE) `a52_v2d.log` =
-`5ed9aeb00b96799d47f5ba1ff82dc415`. Released under `data/derived/a5_2_stim/` and
-`data/derived/a5_2_a800/`.
+stimulus config `e6adaa4825c90fe4574e0c11a877f994`; run log (ALL_DONE) `5ed9aeb00b96799d47f5ba1ff82dc415`.
+Released under two `data/derived/` subdirectories, each listed in `MANIFEST.csv`.
 
 ### M.14 Numeric detail for §§6.2, 7.7 and 7.9
 
@@ -2749,7 +2767,7 @@ $\sum \mathrm{pred}$) — is **25{,}874/111{,}503 = 23.20%**,
 
 **The aerial arm of the same build, and the fp8 row's cross-start check.** The identical serving configuration answers zero on **229 / 230 / 230** of the **300** aerial-pool items across the three fresh starts (**76.33 / 76.67 / 76.67%**, Wilson lower bounds **71.21 / 71.56 / 71.56%**), with the zero/non-zero classification flipping on at most **2 of 300** item pairs (**0.67%**) — inside the ≤1% band, so the three starts may be pooled. Its aerial share $S$ is **31.91 / 31.76 / 31.98%**. The fp8 row, by contrast, is archived as a **single** run, so we re-ran it on the identical dense item set with three fresh service starts: **8.87 / 8.91 / 8.47%** (**22/248**, **22/247**, **21/248**), $S$ **22.37 / 21.50 / 20.48%**, with **1.21%** of item pairs flipping — the (1%, 5%] band, where the three starts are read side by side and the most conservative (**8.91%**) is quoted. The archived single run's own per-item records are in the released package, so the re-runs can be paired against it item by item on the **244** items both parse: the differences are **+0.41 / +0.41 / +0.00 pp** (95% **[−1.64, +2.87] / [−1.65, +2.47] / [−2.05, +2.46]**, all crossing zero), with **236–237 of 244** items agreeing in classification. **The "run once" qualifier on that row is therefore a provenance statement, not a stability one**: nothing in these three starts separates them from the single run they repeat.
 
-*Reproduction: the archived single run is in the released package (`data/derived/e2/e1_internvl35-38b-fp8_{st_a,ucf}_base.csv`); recomputing from it reproduces that row's **18/244 = 7.38%** and **[4.72, 11.36]** exactly, which is the acceptance check for the pairing above. The aerial arm and the three fp8 re-runs are per-item records in the released package (`data/derived/p3r4_a800/E5_aerial_{zero,nonzero}_start{1,2,3}.csv` and `E1_fp8_dense{zero,nonzero}_start{1,2,3}.csv`).*
+*Reproduction: the archived single run is in the released package (`data/derived/e2/e1_internvl35-38b-fp8_{st_a,ucf}_base.csv`); recomputing from it reproduces that row's **18/244 = 7.38%** and **[4.72, 11.36]** exactly, which is the acceptance check for the pairing above. The aerial arm and the three fp8 re-runs are per-item records in the released package (`the released aerial per-item records `E5_aerial_{zero,nonzero}_start{1,2,3}.csv`` and `E1_fp8_dense{zero,nonzero}_start{1,2,3}.csv`).*
 
 | axis | held fixed | items | readings | paired difference, 95% |
 |---|---|---|---|---|
@@ -2770,7 +2788,7 @@ A same-family, cross-scale sidelight bearing on the same question — and the co
 directional rather than a precision measurement — is recorded separately in §M.19.15.1.
 
 *Reproduction and scope: the BF16 rebuild's per-item records are in the released reproduction
-package (`data/derived/p3r4_a800/B1_{zero,nonzero}_start{1,2,3}.csv`); the frozen item list, the served configuration, and the instrument — a derived probe whose prompt
+package (`the released per-item records `B1_{zero,nonzero}_start{1,2,3}.csv``); the frozen item list, the served configuration, and the instrument — a derived probe whose prompt
 set and parser are taken verbatim from the panel's own (`19e_probe_multi.py`, md5
 `03edb14c98ffa3aea9ffa20f59b00bc8`), itself at md5 `e7a65fd47345c2fe040fa4d05a3b1d86` — are recorded with
 them. The 38B-fp8 reading is this appendix's existing single-run row and
@@ -3113,7 +3131,7 @@ only misread a cell if a reply carries **both** a refusal word and a digit. We c
 assuming it away (`n2_adversarial_probe.py`): over the **95,160** stored rows of **654** files, **35,716**
 contain one of the three refusal words (`abstain`, `cannot_judge`, `no_people`, matched as lower-case
 substrings) and **0** contain a refusal word **and** a digit — so **the class is empty at the audited scope of this probe** (654 files, 95,160 rows — **the counts are the audit's own file list and are a snapshot of that date, not a fixed size**: the released corpus has grown since, and the same probe re-run on the current tree would report a larger scope without changing the empty class at the audited scope: 35,716 carry a refusal word, **0** carry a refusal word and a digit; **0** of those place the digit first, which is the only ordering the fallback can misread). We record the breakdown in full rather than the bare zero, because the scope of the count is itself a finding: whether a wider sample contains such a row is **not** decided here, and that is what makes
-the invariance an empirical property of this corpus rather than a theorem. Extending the same criterion to the whole released set settles the question the paragraph above leaves open: over the **2,338** CSV files under `data/derived/` — **2,304** of them evaluable (the 34 that carry no `raw` column are not), **791,139** rows — **three** rows do contain a refusal word and a digit with the digit first, all of them LLaVA-OneVision-7B replies that state an incidental number in prose or in a multi-object JSON before reaching `{"count": "abstain"}`. All three are stored exactly as the frozen rule reads them (`parse_ok = 1`), so they are the rule's documented weakness rather than a defect in the records; each moves at most one item of its table. A separate convention difference is worth recording: 2,242 rows across eight files of `data/derived/p2_noise4/p2_probe_results_reparsed/` carry the refusal token in the `pred` column, where every other released file leaves `pred` empty and the token in `raw`. (*Reproduction: `p3r4_zero_3_parse_all_csv.py`.*) A constructed reply such as
+the invariance an empirical property of this corpus rather than a theorem. Extending the same criterion to the whole released set settles the question the paragraph above leaves open: over the **2,338** CSV files under `data/derived/` — **2,304** of them evaluable (the 34 that carry no `raw` column are not), **791,139** rows — **three** rows do contain a refusal word and a digit with the digit first, all of them LLaVA-OneVision-7B replies that state an incidental number in prose or in a multi-object JSON before reaching `{"count": "abstain"}`. All three are stored exactly as the frozen rule reads them (`parse_ok = 1`), so they are the rule's documented weakness rather than a defect in the records; each moves at most one item of its table. A separate convention difference is worth recording: 2,242 rows across eight files of `data/derived/p2_noise4/p2_probe_results_reparsed/` carry the refusal token in the `pred` column, where every other released file leaves `pred` empty and the token in `raw`. (*Reproduction: a released re-parse script.*) A constructed reply such as
 `{"response": "no_people", "confidence": 0.85}` lies in exactly that class: keyword matching reads
 `no_people` while the first-integer rule reads the `0` of `0.85`, so the two would disagree. The frozen
 artefact is left byte-unchanged, so both readings remain available.
@@ -3237,21 +3255,21 @@ side, the protocol gives
 | Phi-3.5-Vision-4.2B | 99.54% | 53.68% | 69.98% | **0.3555** |
 | gemma-3-12b | 35.32% | 1.77% | 35.74% | **1.0125** |
 
-A value below $1$ is a usable base rate; **a value above $1$ is a refutation**: on gemma-3-12b no
+A value below $1$ is a usable base rate; **a value above $1$ means the two are not jointly transferable on that build**: on gemma-3-12b no
 $\pi_C \in [0,1]$ reconciles the corpus with the pool, because $\alpha = 35.32\% < q_C = 35.74\%$, so on that
-build the two are not jointly transferable however well the identity holds within each. The quantity is sharp
+build the two are not jointly transferable however well the identity holds within each. The quantity is exact
 in $\alpha$ and must be reported **with $\alpha$'s caliber attached**: substituting the $p$ printed in
 §M.21.10(e) for $\alpha$ on that construction's own 526-item mixture returns 0.5697 / 0.5756 / 0.5703 for
 InternVL3.5-8B, Phi-3.5-Vision and gemma-3-12b — and the last is *exactly* that construction's nominal base
-rate, which is the arithmetic reason the identity above can never fail there. The identification set this
-sits beside is $[\,1/(\kappa+1),\, \min(1, q_C)\,]$, so the contract does not merely move a distribution: **it
-sets what is identifiable.**
+rate, which is the arithmetic reason the identity above can never fail there. The interval this
+sits beside is $[\,1/(\kappa+1),\, \min(1, q_C)\,]$ — a coverage interval, not a sharp identified set
+(§M.21) — so the contract does not merely move a distribution: **it changes which quantities the report can bound.**
 
-With `δ* = (q_C − θ)/(α − θ)`, **gemma-3-12b returns δ\* = 1.0125 > 1**, i.e. even at the largest α the construction permits, the corpus's own answered-zero rate cannot be produced — the **joint transfer is formally refuted** on that build. For reference, the frozen construction's own (designed, not measured) parameters return **δ\* = 0.5697 / 0.5756 / 0.5703**; the last of these **is** the construction's nominal base rate, which is the arithmetic reason the identity of §M.21.10(a) is a gate that cannot fail.
+With `δ* = (q_C − θ)/(α − θ)`, **gemma-3-12b returns δ\* = 1.0125 > 1**, i.e. even at the largest α the construction permits, the corpus's own answered-zero rate cannot be produced — the joint transfer is **not reproducible** on that build — a **plug-in incompatibility on these pools, without a sampling-based transfer guarantee**. For reference, the frozen construction's own (designed, not measured) parameters return **δ\* = 0.5697 / 0.5756 / 0.5703**; the last of these **is** the construction's nominal base rate, which is the arithmetic reason the identity of §M.21.10(a) is a gate that cannot fail.
 
-The reverse direction is equally tight: at the construction's π the pool surface reproduces the corpus rate to **∓0.10–0.16 pp**. The sharp identified set that this construction licenses is $[\,1/(\kappa+1),\, \min(1, q_C)\,]$, and it bounds the abstention channel's **coverage**, not its **precision**: $\kappa$ gives the precision **no lower bound at all** (§M.21), and the abstention-only arm (`â = b̂ = 0`) leaves the precision at the trivial $[0,1]$. We therefore claim only the interval, not a point. The identification argument itself is not new as a **method**: Manski, C. F. (2021), *Epidemiology* 32(2):162–167, DOI `10.1097/EDE.0000000000001309`, already shows that a positive or negative predictive value is bounded only under a bound on prevalence, so what is added here is the **application** to this construction — the sharpness of that coverage set, and the trivialisation of the precision to $[0,1]$ by the abstention-only arm — and not the identifiability result, which we cite rather than claim.
+The reverse direction is equally tight: at the construction's π the pool surface reproduces the corpus rate to **∓0.10–0.16 pp**. The coverage interval that this construction licenses is $[\,1/(\kappa+1),\, \min(1, q_C)\,]$, and it bounds the abstention channel's **coverage**, not its **precision**: $\kappa$ gives the precision **no lower bound at all** (§M.21), and the abstention-only arm (`â = b̂ = 0`) leaves the precision at the trivial $[0,1]$. We therefore claim only the interval, not a point. The identification argument itself is not new as a **method**: Manski, C. F. (2021), *Epidemiology* 32(2):162–167, DOI `10.1097/EDE.0000000000001309`, already shows that a positive or negative predictive value is bounded only under a bound on prevalence, so what is added here is the **application** to this construction — the width of that coverage interval, and the trivialisation of the precision to $[0,1]$ by the abstention-only arm — and not the identifiability result, which we cite rather than claim.
 
-*Reproduction: the four builds × three starts are per-item records in the released package (`data/derived/p3r4_a800/E3_<build>_start{1,2,3}.csv`, twelve files); the mixture manifest (`pf_items_pi0570.json`, md5 `c43d7f94bc192ac0a2d9b697561d90ef`) and the frozen true-zero pool are those of §M.21.10.*
+*Reproduction: the four builds × three starts are per-item records in the released package (the released per-build per-item records `E3_<build>_start{1,2,3}.csv`, twelve files); the mixture manifest (`pf_items_pi0570.json`, md5 `c43d7f94bc192ac0a2d9b697561d90ef`) and the frozen true-zero pool are those of §M.21.10.*
 
 **(f) What a plugged-in $\hat\pi$ costs the headline.** Write the identity logarithmically, $\log\text{precision}=\log p+\log\pi-\log q$, and two regimes follow — and this appendix's sentences sit in different ones. Where $\pi$ and $q$ are measured **independently**, the corpus case, the relative errors add in quadrature, $(\delta P/P)^2=(\delta p/p)^2+(\delta\pi/\pi)^2+(\delta q/q)^2$, so the term §M.44 leaves open is a first-class part of the budget rather than a remainder: feeding §M.44's own numbers into it (a transfer error of 10.80 pp on the recovered proportion, a 95% half-width of 10.2–16.4 pp, and a binomial $q$ at $n=526$) puts **65% of the variance on $\pi$**, 25% on the transfer of $p$ and 10% on $q$. Where the mixture is **constructed**, $q=\pi p+(1-\pi)r$ is a function of $\pi$ and the same perturbation is damped by $\eta\equiv\partial\log\text{precision}/\partial\log\pi=1-(p-r)\pi/q$, computed from the same per-item records as (e): over the four builds $\eta$ runs from **0.050** to **0.770** — a **16-fold** spread — because it is governed by how often a build answers zero on the *non-empty* side, $r$ ranging from **1.8%** (Gemma-3-12B) to **53.4%** (Phi-3.5-Vision). Passing §M.44's resolution (17.8–28.7% relative on a proportion of 0.572) through $\eta$ moves the headline by **0.9% to 22.1%** depending on the build. **A single tolerance quoted for every build would therefore be wrong by more than an order of magnitude**, and any future attempt to close $\pi$ has to carry a build-dependent one.
 
@@ -3307,7 +3325,7 @@ factorise and therefore moves pairs outside that window.
 **The recipe is packaged as running code.** `adopt_contract_probe.py` sends the three arms to any
 OpenAI-compatible endpoint given only an image directory (no dependency on this paper's corpora, annotations
 or detectors; the prompt texts are byte-identical to the census probe), and `adopt_report.py` with the
-frozen `adopt_criteria.json` prints the channel diagnosis, the abstention mass $w$ and the two-convention
+frozen `adopt_criteria.json` prints the channel diagnosis, the **item-answered fraction** $w$ (a different quantity from the ground-truth-weighted $w$ of Proposition 4) and the two-convention
 numbers with their verdicts. Both are in the reproduction package, and both were exercised end to end on a
 held-out configuration before release.
 
@@ -3372,9 +3390,9 @@ Three readings, and the third is the mechanism.
    **abstention** but **answer quality** is not identifiable from outputs alone, so a quality signal must come
    from outside the answers (annotation geometry, §3.3/§M.20, or another modality).
 
-**What this buys the paper.** The honest answer to "an annotation-free rule that works" is a *measured
-closure* of the answer-level route, plus the two outputs that do transfer — the contract diagnosis and the
-dual-convention reporting step of §M.22, whose consequence §5.12 measures.
+**What this buys the paper.** The honest answer to "an annotation-free rule that works" is that the three
+signals measured here do not form the deployment rule defined above: this closes the answer-level route **as specified here**, not every output-derived signal. Two outputs do transfer — the contract
+diagnosis and the dual-convention reporting step of §M.22, whose consequence §5.12 measures.
 
 *Reproduction: `code/analysis/b2_pilot{,_phrasing,_consensus}.py` and their frozen `b2_pilot*_result.json`;
 inputs are the E2/E3 per-item CSVs under `data/derived/e3/` — no new inference.*
@@ -3515,11 +3533,11 @@ at magnified scale, consistent with its computed statistics.
 
 *(Full detail in Appendix A.)*
 
-#### 7.8 An independent endorsement of enumeration over regression
+#### 7.8 Enumeration versus regression: what this corpus measures
 
 Our finding that enumeration-style counting is more directionally controllable than regression-style
-counting is not isolated: work on other tasks has independently reached the same conclusion that
-regress-then-round pipelines lose the property being measured. 
+counting is measured on this corpus; the regress-then-round pipelines we test lose the property being
+measured. No external work is cited here as independent corroboration of it.
 
 *(Full detail in Appendix F.)*
 
@@ -4209,7 +4227,7 @@ calibration analysis above also runs.
 
 *Reproduction: `eb2_equalcount36.py`; frozen result `equalcount36_result.json`.*
 
-Both alternative explanations are now measured rather than assumed. Recomputing every unit's span on its **answered** items only — the convention that excludes the abstention term — leaves the ordering at Spearman **0.962** against the pooled one and does not change the top knob, so the spectrum is not an abstention-quality artefact. Normalising each span by its unit's median ground truth leaves **99.99%** of the ordering intact for every β we tried, and the ground-truth magnitude explains **under 1%** of the log-span variance (OLS, β̂ = 0.082); the single change is the **top** unit at β = 1. (*Reproduction: `p3r4_zero_4_answered_only.py`.*)
+Both alternative explanations are now measured rather than assumed. Recomputing every unit's span on its **answered** items only — the convention that excludes the abstention term — leaves the ordering at Spearman **0.962** against the pooled one and does not change the top knob, so the spectrum is not an abstention-quality artefact. Normalising each span by its unit's median ground truth leaves **99.99%** of the ordering intact for every β we tried, and the ground-truth magnitude explains **under 1%** of the log-span variance (OLS, β̂ = 0.082); the single change is the **top** unit at β = 1. (*Reproduction: a released answered-only recomputation script.*)
 
 ### M.38 A true-zero control for the answered zero
 
@@ -4361,7 +4379,7 @@ pool of §5.7 measured with the same probe.
 
 **Design and controls.** Five builds (InternVL3.5-8B, Phi-3.5-vision-instruct, Qwen3-VL-32B-Instruct, gemma-3-12b, LLaVA-OneVision-7B) × three **fresh service starts** each × two languages (the frozen
 Chinese arms and their byte-frozen English renderings) × the three contract arms. Each rate below is
-**pooled over the three starts** — every item is one observation per start, and the intervals below are computed as if the 459 item × start records were independent, an i.i.d. reference and **not** a claim about the sampling unit: the **153 images are the unit** and each is measured three times. **We checked the clustering directly rather than assuming its direction**: resampling the three starts as clusters (2,000 draws, seed 20260930) gives intervals that are **narrower**, not wider — the three starts agree to within **2.61 pp** and more than half of the thirty cells are bit-identical across starts — so start clustering does **not** make the pooled intervals too narrow (median cluster width **0.0 pp** against a median Wilson width of **7.16 pp**; **0 of 10** `no_people` cells are wider under clustering), though that check addresses the three service starts alone and does **not** license reading the 153 images as an i.i.d. sample of the image population. `p3r2_plan_m40_cluster.py` reproduces the check from the released records; a cell of the 153-item
+**pooled over the three starts** — every item is one observation per start, and the intervals below are computed as if the 459 item × start records were independent, an i.i.d. reference and **not** a claim about the sampling unit: the **153 images are the unit** and each is measured three times. **We checked the clustering directly rather than assuming its direction**: resampling the three starts as clusters (2,000 draws, seed 20260930) gives intervals that are **narrower**, not wider — the three starts agree to within **2.61 pp** and more than half of the thirty cells are bit-identical across starts — so start clustering does **not** make the pooled intervals too narrow (median cluster width **0.0 pp** against a median Wilson width of **7.16 pp**; **0 of 10** `no_people` cells are wider under clustering), though that check addresses the three service starts alone and does **not** license reading the 153 images as an i.i.d. sample of the image population. A released clustering script reproduces the check from the released records; a cell of the 153-item
 strata is replicated across the three starts (459 records) rather than resting on any single start; the spread **between** starts is reported
 separately below. Four structural controls
 were asserted before any statistic was computed, and all four pass (`ea2_integrity.py`): every row has

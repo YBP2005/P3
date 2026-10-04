@@ -39,10 +39,14 @@ ROOT = NR()
 SRC = RP('PaperB_英文稿_PR_20260919.md')
 OUT = NR('PaperB_英文稿_PR.docx')
 FIGDIR = RP('analysis', 'figures')
+# ★ 2026-10-04（v0646，B6）：图号与 **Appendix D.4 / I.2 的图题**对齐 ——
+#   此前 Fig.2/3/4 依次挂 F11/F12/F8，与 D.4 的「Fig.2 提示强度剂量-响应 / Fig.3 阈值清洗 /
+#   Fig.4 两失效模式的四面板分离」整体错位。按包内图题（F12 的 suptitle=提示词强度剂量-响应、
+#   F8 = 阈值清洗、F11_v2 的 suptitle=弃权与低估两种可分离失效模式）更正。
 FIGS = [('F6b_abstention_vs_tile.png', 'Fig. 1'),
-        ('F11_abstention_vs_undercount.png', 'Fig. 2'),
-        ('F12_prompt_dose.png', 'Fig. 3'),
-        ('F8_tau_cleaning.png', 'Fig. 4')]
+        ('F12_prompt_dose.png', 'Fig. 2'),
+        ('F8_tau_cleaning.png', 'Fig. 3'),
+        ('F11_abstention_vs_undercount.png', 'Fig. 4')]
 # ★ 2026-09-23：正文 35 页顶格，插图宽度 11.4 → 10.4 cm（约省 4 cm 高 ≈ 0.12 页）
 # ★ 2026-09-24：为拿回页数余量 10.4 → 9.4 cm（图件 aspect 0.62–0.73 ⇒ 四张合计省约 2.7 cm 高）。
 # ★ 2026-09-24：为收回"文字项批次"顶出的页数，10.4 → 9.4 → 9.0 → 8.2 cm（内容不改，只改排版高度）。

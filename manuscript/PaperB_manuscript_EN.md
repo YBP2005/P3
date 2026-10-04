@@ -152,7 +152,7 @@ manipulation, but **answer a different question**:
 
 | Dimension | NumerosityVLM | This work |
 |---|---|---|
-| Stimuli | Synthetic, orthogonally manipulated | Synthetic **and** real; pixel budget, blur, contrast, crowding, tiling, prompt |
+| Stimuli | **10,800** synthetic images, **six** controlled conditions, **seven** VLMs | Synthetic **and** real; pixel budget, blur, contrast, crowding, tiling, prompt |
 | Dependent variable | **Accuracy** | **Signed error direction and abstention** |
 | Conclusion | Architecture explains most variance | Direction is governed by {implementation × training domain × data domain × protocol} |
 
@@ -486,10 +486,10 @@ description "VLMs underestimate dense scenes" is mostly a description of refusal
 *(Terms are pp of the pooled relative deviation and sum to it exactly; $S$ is the ground-truth-weighted
 share and the last column the same **rate** under the item-count convention. Appendix J.1.)*
 
-### 5.6 Causal attribution of abstention: count beyond legibility
+### 5.6 Count and correctness under controlled rendering factors
 
-A new synthetic-dot experiment (two implementations) holds legibility fixed, yet count stays decisive:
-β = −4.3696, CI [−4.8066, −3.9327], accuracy 49.6% → 2.1% → 0.6% (M.11.1).
+A new synthetic-dot experiment holds the rendering fixed: count predicts correctness, not abstention.
+β = −4.2059, CI [−4.6465, −3.7653], 49.9% → 2.1% → 0.5% (11,232 = primary; contrast in M.11.1).
 
 ### 5.7 Abstention and under-counting are two separable failure modes
 
@@ -770,32 +770,30 @@ operating range?"** — a requirement forming independently in the perception li
 silently under blur, noise, compression and resolution change ([49]–[50]). **Legibility can decide whether to
 answer; changing the direction requires changing the protocol, the prompt, or the family.** It is an **analytical diagnostic**, not a reporting or gating rule: it needs annotation boxes, so the
 **adoption recipe** for a third party with none is in Appendix M.22.
-**A rule that works was looked for and not found.** Three annotation-free signals — cross-scale,
+**The three annotation-free signals tested do not form the rule defined above** — cross-scale,
 cross-phrasing and cross-family agreement — were tested on **45** (family × domain) cells against a bar fixed
 before the runs (AUC ≥ 0.65 *and* the error on the most-agreeing 20% at ≤ 0.6× the overall error):
 **1 of 45 passes**, and in the aerial domains the agreement signals are *anti*-correlated with error, because
 the other models share the same domain-specific bias. Quality, like abstention (Proposition 1), is therefore
-**not identifiable from outputs alone** — it has to come from outside the answers (Appendices M.23, M.14).
+**not identifiable from these output-level signals** — it has to come from outside the answers (Appendices M.23, M.14).
 
-### 7.8 An independent endorsement of enumeration over regression
+### 7.8 Enumeration versus regression: what this corpus measures
 
-That enumeration-style counting is more directionally controllable than regression-style counting is not
-isolated to this paper: work on other tasks independently finds that regress-then-round pipelines lose
-the property being measured. (Appendix M.26)
+Enumeration-style counting is more directionally controllable than regression-style counting on this
+corpus: the regress-then-round pipelines we test lose the property being measured. (Appendix M.26)
 
 
 ### 7.9 An adoptable protocol, released as running code
 
-The paper's transferable object is a **protocol**, not a finding: `adopt_contract_probe.py` runs the three
-contract arms against any OpenAI-compatible endpoint given only a directory of images — no dependency on
-our corpora, annotations or detectors, and with prompt texts byte-identical to the census probe — and
-`adopt_report.py` prints the **channel diagnosis** with its Wilson interval, the **abstention mass** $w$,
-and both conventions' deviations with their verdicts. The thresholds are frozen in `adopt_criteria.json`
-(residual ≤5% read from the point estimate — several cells rest on 2–25 items, so their upper bounds are wide and they are direction readings, Appendix M.46(a) ⇒ contract-set; >30% ⇒ record a counterexample and retry with the three-option wording; a
-convention gap below the 7 pp noise floor ⇒ immaterial for that cell). Adoption costs one serving session
-and yields the two quantities §5.3–§5.13 turn on, which is what makes these comparisons reproducible
+The transferable object is a **protocol**, not a finding: `adopt_contract_probe.py` runs the three
+arms against any OpenAI-compatible endpoint given only images — no dependency on
+our corpora, annotations or detectors, and prompt texts byte-identical to the census probe — and
+`adopt_report.py` prints the **channel diagnosis** with its Wilson interval and the **item-answered fraction** $w$
+(not Proposition 4's ground-truth-weighted $w$); the two deviations need reference counts on the same scored subset, so without them only that diagnosis is licensed. The thresholds are frozen in `adopt_criteria.json`
+(residual ≤5% read from the point estimate — several cells rest on 2–25 items, so their upper bounds are wide: direction readings, M.46(a) ⇒ contract-set; >30% ⇒ record a counterexample and retry with the three-option wording; below the 7 pp noise floor ⇒ immaterial). Adoption costs one serving session
+and yields the two quantities §5.3–§5.13 turn on, making these comparisons reproducible
 elsewhere (M.22). In a first independent use it was run, unchanged, on two corpora whose recipe
-residual had never been reported — including a large unconstrained dense-crowd release (JHU-CROWD++ [51]) — with the criteria
+residual had never been reported including a large unconstrained dense-crowd release (JHU-CROWD++ [51]), with the criteria
 fixed before the runs (Appendix M.46).
 
 ## 8. Limitations
@@ -848,7 +846,7 @@ anchor lineage answers zero on **60.2%** of the dense pool under Chinese and **1
 **42.7 pp** drop **on the BF16 build** — a pooled dense-pool figure; the per-domain drops on the same build are **18–22 pp** and come from a different item set (Appendix M.39). The §5.5 shares are scoped to the prompt language and the **one anchor build** (**the share holds at
 BF16, not the rate**; eight of nine fall short — the ninth is that checkpoint at BF16; M.19.15). The true-zero pools differ by **54.7 pp**, so $p\approx1$ is not transferable (Appendix M.21.9).
 Two further limits: the abstention **share** leaves its unit interval when the net
-deviation is near zero — three of twenty cells, unmeasured rather than clipped, the two pp terms of Table 3 being the fallback there — and the **English**
+deviation is not an under-count (§3.8) — three of twenty cells, unmeasured rather than clipped, the two pp terms of Table 3 being the fallback there — and the **English**
 prompt lowers the answered-zero rate on the dense domains only, by **15–26 pp** on the corpus's own **third-party 4-bit** build, where two of the twenty cells stay outside the unit interval and every absolute rate on that build carries a **~1.3% item-level stack band** (Appendices M.19.16, M.46(c)). **The 8-bit rows were served weight-only, not weight-and-activation 8-bit** — the host's compute capability is **8.0** and W8A16 needs **8.9**, so the loader takes the weight-only path — and they therefore bound the build, not that path (M.46(c)).
 
 **Domain composition is not systematic**: the nine datasets span a legibility range rather than a stated

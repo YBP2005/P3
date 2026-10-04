@@ -1,7 +1,7 @@
 {
   "_sanitized": "review traces removed; no value changed",
   "purpose": "多条在册条目：把检测 τ 旋钮按输入尺寸拆为独立单元，检验分离检验的功效是否被解开",
-  "method": "与原 A44 逐字同源的单元构造与 iso 跨度 + 200 次 bootstrap CI；分离检验 = 枚举切分点找最大 CI 间隙 + 20000 次置换 + Bonferroni 最小可达校正 p",
+  "method": "与原 A44 逐字同源的单元构造与 iso 跨度 + 200 个种子下的随机半样本切分区间（每种子把 item 随机对半分成校准半/评测半，非有放回重抽的 bootstrap）；分离检验 = 枚举切分点找最大 CI 间隙 + 20000 次置换 + Bonferroni 最小可达校正 p",
   "regression_vs_a44": "逐位一致 ✓（10 个单元全对）",
   "units_10": [
     {

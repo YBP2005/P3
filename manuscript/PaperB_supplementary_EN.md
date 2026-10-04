@@ -418,7 +418,7 @@ who wants this row's ordering evidence should use the recomputable per-unit set 
 | $k = 2, 4, 5, 6, 7, 8, 9$ | — | — | −5.4 to −81.0 pp | intervals overlap |
 
 The ten units over which these splits are enumerated are listed with their spans and
-bootstrap intervals in **F.9**; the three that form the low group at $k = 3$ are the pixel-budget
+half-sample-split intervals in **F.9**; the three that form the low group at $k = 3$ are the pixel-budget
 units, and the remaining seven are the high group.
 
 ---
@@ -456,8 +456,10 @@ corrected value is therefore $0.075$, which is not significant at this sample si
 group **6 of 6 adjacent pairs overlap**.
 
 **The ordering, with intervals.** On the same unit sets the ordering is *certified* rather than asserted: over
-the **36** units at a common level count $k=3$ the Spearman between the two readings is **0.933** with a
-unit-bootstrap 95% interval **0.834–0.984**, and over the **31** fully recomputable units at $k=4$ it is
+the **36** units at a common level count $k=3$ the Spearman between the two readings is **0.933** with a 95%
+interval **0.834–0.984** from a **random half-sample split, resampled over 200 seeds** (`a44_split16.py`; a fresh
+fold seed per replicate), and over the **31** fully
+recomputable units at $k=4$ it is
 **0.983** (**0.943–0.996**). Both are the **smallest of the three endpoint rules**, whose three values M.37
 prints in full (0.933 / 0.947 / 0.983 at $k=3$; 0.983 / 0.987 / 0.983 at $k=4$), and the frozen
 `equalcount36_result.json` carries both the three values and this minimum; a label-permutation test gives $p<5\times10^{-5}$, and on the same **36** units
@@ -517,7 +519,7 @@ of the statement that the ordering claim is scoped to the first two calibers.
 **splitting the detector-$\tau$ knob by input size** (the three detector units are pooled over
 $640/1024/1536$) would take the spectrum from **10 to 16 units** and lift the structural floor: the corresponding **3 vs 13** split has $\binom{16}{3} = 560$ assignments, so its smallest
 attainable corrected $p$ would be $15/560 = 0.027$, i.e. **inside** the significant region. We ran it on the
-same per-item records with the same unit construction and the same 200-resample bootstrap
+same per-item records with the same unit construction and the same random half-sample split, resampled over 200 seeds
 (`a44_split16.py`; frozen `a44_split16_result.json`; the script first **reproduces the 10-unit table
 bit-for-bit** as a check that it is the same pipeline):
 
@@ -547,7 +549,7 @@ that could in principle certify a split finds nothing to certify. This is a stro
 for the candidate wording of §7.3 than the power limit alone, and we report it as a **negative result about
 our own candidate**, not as a defence of it.
 
-*Reproduction: `a44_split16.py` (unit construction, iso-calibrated spans, 200-resample bootstrap CIs, cut-point
+*Reproduction: `a44_split16.py` (unit construction, iso-calibrated spans, 200-seed half-sample-split CIs, cut-point
 enumeration, 20,000-permutation test) over the frozen detector ladders and per-item records of the reproduction
 package; frozen `a44_split16_result.json`. Both unit tables and both split tests are in the frozen file.*
 
@@ -561,8 +563,8 @@ $\lvert\rho\rvert$ at 32.7 with one of the smallest spans.
 
 The span spectrum of F.2 pools each knob over its domains; the split-point enumeration of F.3 instead runs
 over **ten (knob × domain) units**, listed here in full so that the enumeration is reproducible. Spans are
-in percentage points of the pooled relative deviation; the interval is a **200-resample** unit-level
-bootstrap 95% CI under the
+in percentage points of the pooled relative deviation; the interval is a **random half-sample split, resampled
+over 200 seeds**, 95% CI under the
 isotonic-calibrated (monotone, shape-free) reading, which is the reading §7.3 quotes. The **group** column
 gives the $k = 3$ split of F.3: the three pixel-budget units form the low group, the other seven the high
 group.
@@ -685,7 +687,7 @@ Two consequences, and we state both in the main text:
    most extreme level): dropping one endpoint costs a median of only **4%** (highest) and **7%** (lowest)
    of the span, but the worst case (the three-way pixel-budget ladder on InternVL3.5-8B under UCF-QNRF) loses **65.2%**.
    Spans whose extreme level is degenerate should therefore be read as endpoint-bounded, which is also why
-   F.9 reports isotonic-calibrated spans with bootstrap intervals rather than raw endpoints.
+   F.9 reports isotonic-calibrated spans with half-sample-split intervals rather than raw endpoints.
 
 *Reproduction: `code/analysis/span_equalcount2.py` over `data/derived/` (quantile equal-count and the ordering
 under the three deflations) and `_f10_random_drop.py` / `_f10_random_drop_order.py` over the same ladders
@@ -697,7 +699,7 @@ and should not be used.*
 
 **Unit coverage.** Of the 24 units here, 16 are drawn from pre-computed pooled-relative-deviation tables
 rather than per-item records and cannot enter a per-item held-out analysis; **M.37** uses the 8 that can, and
-recomputes the three deflations of this section on a **fully recomputable** 36-unit set.
+recomputes the three deflations of this section on a 36-unit set of the same per-item sources.
 
 **Is the span just the knob's travel?** A span is a range that a knob moves a quantity over, so the rival
 reading is that it measures each knob's *allowed travel* rather than the model's behaviour. Normalising
@@ -3527,7 +3529,7 @@ contrast across sides: only **ten units on four sides** exist.
 #### M.25.1 Statistical structure
 
 **Statistical structure.** For the ten (knob × domain) units we took the isotonic-calibrated span with its
-unit-level bootstrap interval (**200 resamples**, F.9) and enumerated **all** single split points (Appendix F.3). Exactly one split
+random half-sample split interval (**200 seeds**, F.9) and enumerated **all** single split points (Appendix F.3). Exactly one split
 separates, by **1.6 pp** at permutation $p \approx 0.008$ **before** correction for the nine enumerated
 split points — and that gap is itself **below this paper's own noise floor (2.15–6.46 pp)**, with the
 smallest attainable corrected value is 0.075. We therefore report that separation as a **candidate
@@ -4260,17 +4262,19 @@ rotated by split (a different subset from the one above), the per-unit families 
 **0.514 / 0.562 / 0.534 / 0.428**), a single shared **affine** map again preserves the ordering exactly
   (**0.984**, ≥0.9 in **100%** of 200 splits, identical to the no-calibration control), and a single shared
 **isotonic** map lands in between at **0.810** (≥0.8 in **100%**, ≥0.9 in **0%**). The ordering is thus robust
-to *shared* calibration of either kind and destroyed only by **per-unit refitting**
-(`a39_sharediso_fold2_result.json`).
+to *shared* calibration of either kind and destroyed by **per-unit refitting** — as other operations
+reported in this appendix also lower the 36-unit ordering (`a39_sharediso_fold2_result.json`).
 
-**The same robustness on a fully recomputable unit set.** The three deflations of F.10 — equal-count
+**The same robustness on a unit set of the same per-item sources.** The three deflations of F.10 — equal-count
 gridding, and removal of each ladder's highest and lowest level — were recomputed on the 36 units of this
-section, which are built **only** from per-item records. At the same level count (the 31 units with at least
+section, which are built **only** from per-item records (**two** of those per-item counterparts, for the BBBC005
+and DM-Count units, are held by the authors; §F.2). At the same level count (the 31 units with at least
 four levels; equal-count target *k* = 4) the ordering is preserved at Spearman **0.983 / 0.987 / 0.983**,
 against **0.999 / 0.981 / 0.991** for the 24-unit frozen set of F.10 (person-matched; **1.000 / 0.978 /
 0.990** all-detections — the F.10 set carries both calibers and they are never pooled). On the whole 36-unit set, where the
 equal-count target falls to *k* = 3, the three values are 0.933 / 0.947 / 0.983. The F.10 set remains the
-pre-registered object; the set used here is its fully recomputable counterpart, and it is the set on which the
+pre-registered object; the set used here is its per-item counterpart, recomputable from the released
+records, and it is the set on which the
 calibration analysis above also runs.
 
 *Reproduction: `eb2_equalcount36.py`; frozen result `equalcount36_result.json`.*

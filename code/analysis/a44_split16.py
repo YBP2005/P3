@@ -14,7 +14,8 @@ $\\binom{16}{3}=560$ ⇒ 最小可达校正 $p = 15/560 = 0.0268 \\le 0.05$ ⇒ 
 ## 本脚本做什么
 1. **回归自检**（必须先过）：用原 A44 的单元构造复算出 `a44_result.json` 的 10 个单元
    （iso 跨度与 95% CI 逐位一致），证明本脚本是从原口径**忠实复制**而来，不是"另写一套"；
-2. 把三个检测单元**按 `imgsz` 拆开**，得到 **16 单元**，同样算 iso 跨度 + 200 次 bootstrap CI；
+2. 把三个检测单元**按 `imgsz` 拆开**，得到 **16 单元**，同样算 iso 跨度 + 200 个种子下的
+   **随机半样本切分区间**（每种子把 item 随机对半分成校准半/评测半，非有放回重抽的 bootstrap）；
 3. 对 10 单元与 16 单元**各跑一遍 B2 的分离检验**（枚举切分点 → 找最大间隙 → 置换检验 → 内部重叠），
    并给出各自的"最小可达校正 p"与功效；
 4. 冻结 `a44_split16_result.json`（含两套单元表与两套检验结果），供 M.37/F.7/§7.3 引用。
@@ -186,7 +187,7 @@ def build(split_detector):
 def measure(units, tag):
     out = []
     print('\n' + '=' * 118)
-    print('■ %s：%d 个单元（iso 保序校准跨度 + %d 次 bootstrap 95%% CI）' % (tag, len(units), NBOOT))
+    print('■ %s：%d 个单元（iso 保序校准跨度 + %d 个种子下的随机半样本切分 95%% 区间）' % (tag, len(units), NBOOT))
     print('=' * 118)
     print('%-32s %-16s %5s %9s   %s' % ('单元', '大类', '档位', 'ISO 跨度', '95% CI'))
     for lab, kind, unit in units:
@@ -291,7 +292,8 @@ def main():
     r16, _ = split_test(six, '16 单元（检测 τ 按输入尺寸拆开）')
 
     out = dict(purpose='多条在册条目：把检测 τ 旋钮按输入尺寸拆为独立单元，检验分离检验的功效是否被解开',
-               method='与原 A44 逐字同源的单元构造与 iso 跨度 + 200 次 bootstrap CI；'
+               method='与原 A44 逐字同源的单元构造与 iso 跨度 + 200 个种子下的随机半样本切分区间'
+                      '（每种子把 item 随机对半分成校准半/评测半，非有放回重抽的 bootstrap）；'
                       '分离检验 = 枚举切分点找最大 CI 间隙 + 20000 次置换 + Bonferroni 最小可达校正 p',
                regression_vs_a44=reg, units_10=ten, units_16=six, split_10=r10, split_16=r16)
     io.open(OUT, 'w', encoding='utf-8', newline='\n').write(json.dumps(out, ensure_ascii=False, indent=2))

@@ -68,9 +68,9 @@ it is **0.0%** with a bias of **−50.1%** (§5.6, §5.7).
 **③ Switchable from both ends**, being a behaviour: tiling (**Fig. 1**) drops the ShanghaiTech-A [5] abstention rate from **56.6%** to **0.0%** (2×2: 6.0%, 3×3: 0.55%)
 without harming direction.
 
-**④ Removing abstention costs direction.** Prompt relaxation (**Fig. 2**) also drives abstention to zero but flips
-$\rho$ from **−82%** to **+234%…+345%**, so **accuracy and directional controllability cannot both be
-obtained**; tiling is the only mechanism that improves both. *(Per-property numbers: Appendix L.)*
+**④ Removing abstention costs direction among the tested interventions.** Prompt relaxation (**Fig. 2**) also
+drives abstention to zero but flips $\rho$ from **−82%** to **+234%…+345%**; **among the tested interventions,
+tiling is the only one that improves both.** *(Per-property numbers: Appendix L.)*
 
 **Supporting result: the response spectrum of direction.** The signed direction can be moved
 continuously, but its **achievable span is an empirical property of {implementation × training domain ×
@@ -775,7 +775,7 @@ cross-phrasing and cross-family agreement — were tested on **45** (family × d
 before the runs (AUC ≥ 0.65 *and* the error on the most-agreeing 20% at ≤ 0.6× the overall error):
 **1 of 45 passes**, and in the aerial domains the agreement signals are *anti*-correlated with error, because
 the other models share the same domain-specific bias. Quality, like abstention (Proposition 1), is therefore
-**not identifiable from these output-level signals** — it has to come from outside the answers (Appendices M.23, M.14).
+**not identified by the three tested output-level signals** — it must come from outside the answers (Appendices M.23, M.14).
 
 ### 7.8 Enumeration versus regression: what this corpus measures
 

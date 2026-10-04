@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 """corpus_pi_zero.py — the corpus's empty-item base rate is zero, and it is checkable.
 
-Why this exists: the reviewers' largest new-data request is a blind-labelled pool that would measure
+Why this exists: the natural new-data request is a blind-labelled pool that would measure
 $\\pi$, the mixed corpus's base rate of genuinely empty items, so that the zero channel's **precision**
-$p\\,\\pi/q$ can be reported instead of merely bounded ([external-review] #46, [external-review], [external-review] #10).
+$p\\,\\pi/q$ can be reported instead of merely bounded.
 
 For *this* paper's corpus that measurement is not needed, and the reason is already in the records: the
 corpus's own annotations give **every** item at least one target. §M.21.9 says so in words ("the corpus has
@@ -12,8 +12,8 @@ no true zeros"); this script makes it a number that can be checked, and §M.21.9
 
 Scope: this is a statement about the **ground-truth annotations**, not about the images. An item could in
 principle be truly empty and carry a spurious box; that residual is a property of the source datasets, and
-it is named as an assumption rather than measured. What the count rules out is the reading the reviewers
-were worried about — that the corpus's own true-zero rate is unknown and could be large.
+it is named as an assumption rather than measured. What the count rules out is the reading in which the
+corpus's own true-zero rate is unknown and could be large.
 
 Usage:
   python corpus_pi_zero.py            # recount and print
@@ -120,7 +120,7 @@ def selftest():
     z = sum(1 for r in probe if str(r.get('gt')).strip() in ('0', '0.0', ''))
     ctl.append(('the zero-GT detector finds %d of 3 synthetic rows (2 zeros + 1 blank)' % z, z == 2))
 
-    # (3) The reading this rules out is the one the reviewers raised: if pi were large, precision
+    # (3) The reading this rules out: if pi were large, precision
     #     p*pi/q would be large.  Assert the paper still declines to identify precision.
     sq = squash(io.open(SUPP, encoding='utf-8').read())
     ctl.append(('§M.21.9 still declines to identify the precision',

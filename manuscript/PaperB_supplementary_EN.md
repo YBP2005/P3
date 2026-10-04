@@ -475,13 +475,13 @@ theorem about the class of statistics it belongs to: any symmetric function of a
 Spearman, Kendall, distance correlation, a two-sample $U$ — is invariant under every permutation that keeps the
 pairs together, so its permutation null is a point mass at the observed value and the test has zero power by
 construction, not merely low power. The instrument for a paired design is a null that breaks the pairing —
-redrawing one member of each pair, equivalently redrawing the span values from their own distribution — and that is the null we use.** Resampling whole pairs is a different operation and does *not* break the pairing: it keeps both members of each pair together — the point-mass null of this appendix — so it is not the instrument. **The two are reported as two separate nulls, not as two equivalent ones**: the pair-breaking null is the informative one, and where the two read the same it is because both sit at the floor, not because they are the same distribution. Redrawing the span values from their own distribution breaks the pairing, and there the ordering separates at `p < 5×10^{-5}` on all three deflations and both unit sets. **Both nulls return 0 of 20,000 draws at least as extreme as the observed ordering, so both saturate the Monte-Carlo floor `1/(B+1) = 5.0×10^{-5}`; we report the clustered result as `p < 5×10^{-5}` (0/20,000)**. We note explicitly that this agreement is an agreement **at the floor**: it says neither null separates the orderings at this resample budget, not that the two nulls are the same distribution. The floor itself is a property of the budget, not a measurement.** We therefore rest the claim on the interval, not on a clustered $p$ — the units are six knobs and the test cannot separate them. Reproduction: the clustered-interval driver script released with this appendix, its pre-registered criteria file and its frozen result file — **all three are in the released reproduction package**, each listed in `MANIFEST.csv`; the script reads only the two released inputs (`equalcount36_result.json`, `m37_ci_power_result.json`) and refuses to run unless the first one's md5 matches the value printed earlier in this appendix, so the clustered interval above **is** independently recomputable from the package; the span-value null is recomputed from the released `equalcount36_result.json` by a second released script; the point readings it is compared against are recomputed from the released `equalcount36_result.json`.
+redrawing one member of each pair, equivalently redrawing the span values from their own distribution — and that is the null we use.** Resampling whole pairs is a different operation and does *not* break the pairing: it keeps both members of each pair together — the point-mass null of this appendix — so it is not the instrument. **The nulls are reported separately, not as equivalents.** Redrawing the span values from their own distribution breaks the pairing, and there the ordering separates on all three deflations and both unit sets: the **free label-permutation** null returns **0 of 20,000** draws at least as extreme, i.e. the Monte-Carlo floor `1/(B+1) = 5.0×10^{-5}`. **Three objects, not two, and they do not all read the same.** (i) The **whole-pair** null is the degenerate point mass, `p = 1`. (ii) The **free label-permutation** null breaks the pairing and sits at the floor, `5.0×10^{-5}` (0 of 20,000). (iii) The **clustered** null — the one the pre-registered criterion is defined on — uses a statistic that depends on the *cluster structure of the labels* (`between_rank_r2` over the unit→knob label map, with the unit-to-knob assignment shuffled), and it is **not** at the floor: on the registered reading it returns **1 of 20,000** draws at least as extreme, i.e. **`p = 1.0×10^{-4}` (= `2/20001`)**, one Monte-Carlo step above the floor. We therefore report the clustered result as **`p = 1.0×10^{-4}` (1 of 20,000)** against the pre-registered `p < 0.05` bar; the floor `5.0×10^{-5}` is a different number and is named as the budget's own resolution, not as the clustered reading. The floor itself is a property of the budget, not a measurement.** We therefore rest the claim on the interval, not on a clustered $p$ — the units are six knobs and the test cannot separate them. Reproduction: the clustered-interval driver script released with this appendix, its pre-registered criteria file and its frozen result file — **all three are in the released reproduction package**, each listed in `MANIFEST.csv`; the script reads only the two released inputs (`equalcount36_result.json`, `m37_ci_power_result.json`) and refuses to run unless the first one's md5 matches the value printed earlier in this appendix, so the clustered interval above **is** independently recomputable from the package; the span-value null is recomputed from the released `equalcount36_result.json` by a second released script; the point readings it is compared against are recomputed from the released `equalcount36_result.json`.
 
 The two quantities printed above are linked by the same arithmetic, which is worth stating because it makes the choice of a 0.80 lower bound non-arbitrary: with `ICC(1) = 0.645` the variance ratio is `σ_w²/σ_b² = (1 − 0.645)/0.645 = 0.5504`, and Spearman–Brown at six units returns `6 × 0.645 / (1 + 5 × 0.645) = 0.916`, the reliability printed for `m = 6`. The allocation formula is the inverse of that step, so the four targets are recovered from the same two numbers: `m*` = **2.20 / 4.95 / 10.46 / 54.49** for `ρ*` = 0.80 / 0.90 / 0.95 / 0.99. Nothing here is new theory; it is the arithmetic of the data structure, and it is what makes "six units, 0.80" a defensible design point rather than a convention.
 
 The null that permutes **whole pairs** — relabelling the units while keeping each unit's two members together — leaves every **symmetric function of the paired multiset** literally unchanged. The resampling distribution is therefore a **point mass**, and a test against that null has **zero power by construction**. This is a property of the design, not of our implementation. A numerical check agrees **to machine precision**; at full float precision it does **not** return a single distinct value, because the summation order inside the correlation differs across permutations, so we do not quote "one distinct value" as the evidence. The **pair-breaking** null is the informative one: over the 720 permutations of a six-unit set it returns **470 distinct values** spanning **−0.90 to +0.95**, which is what separates the orderings — and it is why the claim rests on the interval rather than on a clustered $p$.
 
-The clustered bootstrap draws from a set of only `C(11,6) = 462` distinct resamples, so a 2,000-draw run repeats each of them several times over and any `p` it reports is quantised at `1/20001`. We therefore report the clustered result at the floor rather than at full float precision, and we state the design fact behind it: **the six knobs are a design choice, not a random sample of clusters**, which is why the clustered interval is used as a robustness check on the pooled one and not as the interval of record.
+The block bootstrap resamples whole knobs, and with six knobs it draws from a set of only `C(11,6) = 462` distinct resamples, so a 2,000-draw run repeats each of them several times over and its interval is reported to three decimals rather than at full float precision. The **permutation** budget is separate: `B = 20,000` draws, so `p = (1 + #as-extreme)/(1 + B)` is quantised at `1/20001 = 5.0×10^{-5}`, and the registered clustered reading sits **one step above that floor** at `2/20001 = 1.0×10^{-4}`. We state the design fact behind it: **the six knobs are a design choice, not a random sample of clusters**, which is why the clustered interval is used as a robustness check on the pooled one and not as the interval of record.
 
 **How many units are enough, when the knob means are what is being read.** The same six-knob nesting also
 prices a design. Treating the 36 log-spans as one-way nested in the six knobs — detector 12, density 4,
@@ -1598,8 +1598,9 @@ against those already-printed numbers**.
 **Implementations: two, not four.** Only **b0 = AWQ 4-bit** and **b2 = BF16** were run. **No same-family
 FP8 and no same-family GPTQ weights exist in this environment** ⇒ the pre-registered four-build budget
 was **shrunk before the run started**, and this must **not** be described as a "four-build" experiment.
-Build variance is estimated on **two levels only**; the `count × build` term for b2 is not significant
-(**+0.1920**, p = 0.418).
+Build variance is estimated on **two levels only**; the `count × build` term for b2 is not significant in
+either caliber (**−0.2083**, p = 0.408 on the primary n = 11,232; **+0.1920**, p = 0.418 on the contrast
+n = 11,664).
 
 **Design and budget (post-shrink).** 3 output contracts (base / strict / permit) × 3 independent service
 starts = **18 cells × 648 items = 11,664 calls**, **0 aborts**.
@@ -3329,10 +3330,21 @@ frozen `adopt_criteria.json` prints the channel diagnosis, the **item-answered f
 numbers with their verdicts. Both are in the reproduction package, and both were exercised end to end on a
 held-out configuration before release.
 
+**A failed call is not a removed zero.** The three kinds of non-numeric record are kept apart: an explicit
+abstention (`abstain` / `cannot_judge` / `no_people`) is the contract working as designed, while a
+**failure** — a timeout, an empty response or an output the frozen parser cannot read — is **not**. Failures
+are listed separately, they stay in the denominator, and they make the residual a **lower bound** whose
+conservative upper bound is printed beside it; with no decidable record at all the report prints
+*undecidable* rather than an interval of zero width, and a missing arm record is listed rather than silently
+dropped. `adopt_report.py --selftest` is the standing negative control: it injects a timeout and requires
+the report to say *undecidable*.
+
 **Worked example, one of the seven families end to end.** LLaVA-OneVision-7B, four domains, both pools,
 $n = 150$ per domain, one serving session on the stack of §M.19.1: **235** base zeros, of which `permit`
-leaves **5** (**2.1%**, Wilson [0.9%, 4.9%]) and `channel` fewer; the same grid also exposes the family's
-own caveats — in the dense domains its `raw` output is prose in the prompt's language with no parseable
+leaves **5** (**2.1%**, Wilson [0.9%, 4.9%]) and `channel` fewer. **The failure count is zero here and is
+still reported:** of the 235 `permit` records **226** are explicit abstentions and **4** are numeric
+non-zero answers, so no record is undecidable and the residual's conservative upper bound equals its point
+estimate. The same grid also exposes the family's own caveats — in the dense domains its `raw` output is prose in the prompt's language with no parseable
 number (**38.8%** parsed on st_a), while in the aerial domains it answers `0` on **78.3%** of the items the
 corpus answered 0. The third party therefore learns three things in one session: the contract removes its
 zeros, its dense-domain numbers are not always parseable, and its aerial zeros are as frequent as the
@@ -3387,7 +3399,7 @@ Three readings, and the third is the mechanism.
 3. **Why.** §M.19.8 shows the answer barely moves with scale (Δ ≤ 0.7 pp) and §M.19.7 that it moves with the
    *contract*, not the demand; so the difference between two encodings of one model — or between two models
    sharing a bias — is mostly noise plus shared bias. This is Proposition 1 one level up: not only
-   **abstention** but **answer quality** is not identifiable from outputs alone, so a quality signal must come
+   **abstention** but **answer quality** is **not identified by these three signals**, so a quality signal must come
    from outside the answers (annotation geometry, §3.3/§M.20, or another modality).
 
 **What this buys the paper.** The honest answer to "an annotation-free rule that works" is that the three
@@ -3431,6 +3443,13 @@ caliber; we sample the package as distributed and say so, rather than silently r
 | Qwen3-VL-4B | Qwen | 276 / 300 | **9** (3.3%) | [1.7%, 6.1%] | — |
 | Qwen3-VL-30B-A3B (MoE) | Qwen | 201 / 300 | **12** (6.0%) | [3.4%, 10.1%] | — |
 | **Qwen3-VL-32B (BF16)** | Qwen | 277 / 300 | **251** (90.6%) | [86.6%, 93.5%] | **0** |
+
+**Failures are reported, not folded in.** On the LLaVA-OneVision-7B row **6** of the 187 `permit` records
+are unparsable prose, so that row's residual is a lower bound: the conservative upper bound is 6/187 =
+**3.2%**, still inside the 5% bar, and the six items are listed in the released per-item records. **No other
+row of the table has an undecidable `permit` record**, so the remaining residuals stand as printed. The
+general rule — an explicit abstention is the contract working, a failed or unparsable call is not — is
+stated in §M.22.
 
 **Eight of nine configurations comply** (residual ≤ 6%; the frozen criterion of §7.9 is ≤ 5%, under which the 12 of 201 = 6.0% of Qwen3-VL-30B-A3B also fails — both thresholds are reported rather than one); the ninth is the counterexample §5.13 reports and
 §M.24.3 diagnoses.

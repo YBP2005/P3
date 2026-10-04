@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
-"""p3r4_zero_2_null_span.py —— P3 第 4 轮 ②：ordering 的 **"span 值随机"零模型**与既有
+"""p3r4_zero_2_null_span.py —— ordering 的 **"span 值随机"零模型**与既有
 label-permutation 的对照。
 
 ## 来源与授权
-早前两次核查的 版本 glm52 之 #8 条 / E-5 条：包内的零模型是 **label-permutation**（随机置换一侧的
-标签）；[external-review]指出 "**span 值随机**" 是**另一个**零模型，两者不可互相替代，要求按原话构造并重算
+包内既有的零模型是 **label-permutation**（随机置换一侧的标签）；"**span 值随机**" 是**另一个**零模型，
+两者不可互相替代。本脚本按该零模型的字面定义构造它，并重算
 §7.3 的排序统计量在该零模型下的分布。
 
-## ★ 本脚本必须先回答的问题（第 3 轮遗留的退化警告）
-第 2/3 轮出现过 "**置换统计量在本设定下数学退化**"：`perm_cluster_order` 口径下，
+## ★ 本脚本必须先回答的问题（先前报过的退化警告）
+先前出现过 "**置换统计量在本设定下数学退化**"：`perm_cluster_order` 口径下，
 统计量 = 全局 Spearman 只依赖 (x_i, y_i) 的**配对集合**，而"把整块簇换个位置"只改**顺序**、
 不改配对 ⇒ 每次置换统计量与观测**逐位相同**，完整枚举 720 种 distinct = 1、p ≡ 1。
 本脚本对**本轮构造的零模型**逐一做同一项检查，结论写在结果 JSON 的 `degeneracy` 段。
@@ -17,7 +17,7 @@ label-permutation 的对照。
 **H0-A：label-permutation（既有口径，阴性对照）** —— `m37_ci_power.py::perm_p()` **逐字**
 （随机 `rnd.shuffle` 一侧标签；p = (1+#{>=obs})/(1+N)，N=20000，seed 20260924）。
 
-**H0-B："span 值随机"（glm52 原话口径，本脚本新增）** —— 保持**被排序的那一侧**（去偏 span）
+**H0-B："span 值随机"（字面口径，本脚本新增）** —— 保持**被排序的那一侧**（去偏 span）
 不变，把 **span 值**从拟合的边缘分布里**独立重抽**（重抽会改变 (span, span_eq4) 的配对），
 重算统计量。三个边缘规格，全部跑、全部印：
   B1 `empirical_per_item`：从该单元集的 31 个 **span 值本身**有放回重抽（经验边缘，无分布假设）；
@@ -136,7 +136,7 @@ def null_random_span(a, b, spec, n_draw=N_DRAW, seed=SEED):
 
 def degeneracy_probe(a, b, labels=None, n_perm=2000, seed=SEED):
     """★ 退化自证：三类操作下统计量是否变化。
-    (i) **单元顺序置换**（= 第 3 轮报退化的那种操作）：只改顺序、不改配对。
+    (i) **单元顺序置换**（= 先前报过退化的那种操作）：只改顺序、不改配对。
     (ii) **簇标签置换**（把整块簇换位置）：同上，配对不变。
     (iii) **span 值重抽/反复置换**（本轮零模型）：改配对。
     返回各自 distinct 统计量个数 —— (i)(ii) 应为 1（退化），(iii) 应远大于 1。"""
@@ -175,7 +175,7 @@ def degeneracy_probe(a, b, labels=None, n_perm=2000, seed=SEED):
         value_shuffle_invariant=(len(s_value) == 1),
         note='(i)(ii) 只改单元的**顺序/分组**，而全局 Spearman 只依赖 (x,y) 配对集合 ⇒ distinct=1（退化）；'
              '(iii) 改的是**配对本身** ⇒ distinct 远大于 1（非退化）。'
-             '★ 故"span 值随机"零模型在本设定下**不退化**；退化的只是第 2/3 轮那个'
+             '★ 故"span 值随机"零模型在本设定下**不退化**；退化的只是先前那个'
              '"按簇换位置"的实现。')
 
 
@@ -282,9 +282,9 @@ def main():
                        if all_sig else '**有读数不显著** ⇒ 需逐格看'))
 
     out = dict(
-        purpose='P3R4-②：按 glm52 #8 原话构造 "span 值随机" 零模型，重算 §7.3 排序统计量在该零模型下的'
+        purpose='"span 值随机"零模型的字面实现：重算 §7.3 排序统计量在该零模型下的'
                 '分布，并与包内既有的 label-permutation 对照。0 次推理、0 新数据。',
-        question='评审："包内现有的是 label-permutation，而 span 值随机是另一个零模型，两者不可互相替代。"'
+        question='包内现有的是 label-permutation，而 span 值随机是另一个零模型，两者不可互相替代。'
                  '本脚本把后者按字面实现，并回答"它是否与前者可区分"。',
         statistic='Spearman(full-ladder span, deflated span)，逐字同 m37_ci_power.py::spearman；'
                   '被排序的是**两种去偏口径给出同一排序**这件事。',
@@ -292,7 +292,7 @@ def main():
             H0_A=dict(name='label_permutation', source='m37_ci_power.py::perm_p() 逐字',
                       n=N_PERM, seed=SEED, tail='p=(1+#{stat>=obs})/(1+N)'),
             H0_B=dict(name='random_span_values',
-                      source='glm52 #8 原话："随机生成同分布无结构的 span 值，算与真实 ordering 的 Spearman"',
+                      source='字面定义："随机生成同分布无结构的 span 值，算与真实 ordering 的 Spearman"',
                       specs=dict(B1='从观测到的 span 值本身有放回重抽（经验边缘，无分布假设）',
                                  B2='从 span 的对数正态 MLE 重抽（字面的"同分布、无结构"）'),
                       n=N_DRAW, seed=SEED, held_fixed='去偏 span 一侧保持不动'),
@@ -300,7 +300,7 @@ def main():
         degeneracy=deg,
         degeneracy_verdict='★ **本轮构造的 "span 值随机" 零模型不退化**：它改的是 (span, deflated span) 的'
                            '**配对本身**，统计量随每次重抽变化（实测 distinct 统计量 = %d / %d）。'
-                           '第 2/3 轮报的退化的只是那个"把整块簇换个位置"的实现（只改顺序、不改配对，'
+                           '先前报的退化的只是那个"把整块簇换个位置"的实现（只改顺序、不改配对，'
                            'distinct=1、p≡1）；本脚本把两者都实测并印在同一处，避免再被误读成'
                            '"所有置换类零模型都不可评"。'
                            % (deg['31unit_k4']['value_shuffle_distinct'],

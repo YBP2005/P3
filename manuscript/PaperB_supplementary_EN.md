@@ -2566,7 +2566,7 @@ been completed at a longer context: **179 of 180** items for both families, agai
 before. The remaining single item still exceeds the context.
 
 **(b) The residual stream.** For the same family on the σ = 8 stratum (135 items), three arms were generated
-greedily and the hidden states were read at the position that *predicts* the value token, for all 37 tensors
+greedily and the hidden states were read at the position that *predicts* the first generated token, for all 37 tensors
 (embedding output plus 36 layers). At that position the probability of the token `0` averages **0.432** under
 `base`, **0.355** under `forbid0` and **0.998** under `neutral0` — so the arm that merely names zero all but
 guarantees it, as §M.19.13 would predict.
@@ -2626,7 +2626,9 @@ to 71.50% against the correct 28.78%.
 *`n/a` marks a cell with no abstentions. That is **not** the same as $S$ being undefined: the closed form
 $S=(1-w)/[1-w(1+\rho_{\text{answered}})]$ is defined at $w=1$, where it returns **$S=0$** (no abstention,
 no abstention share), and the cell would then print `0`. `n/a` is reserved for the genuinely undefined case,
-where the denominator vanishes — a **net over-count on the answered subset**, $\rho_{\text{total}}\ge0$, so
+a **net over-count on the answered subset**, $\rho_{\text{answered}}>0$, which carries $S$ above 1 — the
+denominator $1-w(1+\rho_{\text{answered}})$ itself vanishes only at the boundary
+$w(1+\rho_{\text{answered}})=1$, which is a different condition — so
 the share has no interpretation; that is the same condition §3.8 states in closed form and the one §M.46(b)
 uses to mark ShanghaiTech-A's English share. A no-abstention cell and a net-over-count cell therefore do not
 belong under one label.* Comparable item sets:
@@ -3034,7 +3036,7 @@ quantities above are easy to conflate in prose, so they are written out once:
 | emptiness outlet's **sensitivity** (**47.9–86.9%**) | **`channel`** | `no_people` $\mid$ item truly empty | the **306** verified-empty crops $\times$ 3 starts | measured (M.38/M.40) |
 | emptiness outlet's **specificity** (**0.0–1.7%** false `no_people`) | **`channel`** | ¬`no_people` $\mid$ item non-empty | the census-answered-zero dense items | measured (M.38/M.40) |
 | answered zero's **sensitivity on genuine zeros** (**98–100%** on pool S-1, three of four builds) | **`base`** | answered zero $\mid$ item truly empty | **two external** true-zero pools, 300 items $\times$ 4 builds | measured (§M.21.9) |
-| zero-channel **precision** $P(\text{genuine zero}\mid\text{answered zero})$ | **`base`** | genuine zero $\mid$ answered zero | the **mixed** corpus | **still not identified, but its conditioning numerator is now measured** (§M.21.9): precision $=p\,\pi/q$, where $p=P(\text{answered zero}\mid\text{truly empty})$ is measured on those pools but **assumed, and re-measured on a constructed mix** (M.21.10), domain-invariant, $q$ the corpus's answered-zero rate is measured, and $\pi$ — the corpus's base rate of truly empty items — remains the **only** unmeasured factor |
+| zero-channel **precision** $P(\text{genuine zero}\mid\text{answered zero})$ | **`base`** | genuine zero $\mid$ answered zero | the **mixed** corpus | **still not identified, but its conditioning numerator is now measured** (§M.21.9): precision $=p\,\pi/q$, where $p=P(\text{answered zero}\mid\text{truly empty})$ is measured on those pools but **assumed, and re-measured on a constructed mix** (M.21.10), domain-invariant, $q$ the corpus's answered-zero rate is measured, and $\pi$ — the corpus's base rate of truly empty items — remains the **only** unmeasured factor **on the mixed corpus**; on the census corpora it is **zero by annotation** (§M.21.9) |
 
 The last row is the quantity the section is *about*, and the table is the reason we do not quote a number for
 it: every pool we have is single-sided, so what can be measured is the **pair** of conditional rates above,
@@ -3278,13 +3280,13 @@ build the two are not jointly transferable however well the identity holds withi
 in $\alpha$ and must be reported **with $\alpha$'s caliber attached**: substituting the $p$ printed in
 §M.21.10(e) for $\alpha$ on that construction's own 526-item mixture returns 0.5697 / 0.5756 / 0.5703 for
 InternVL3.5-8B, Phi-3.5-Vision and gemma-3-12b — and the last is *exactly* that construction's nominal base
-rate, which is the arithmetic reason the identity above can never fail there. The interval this
-sits beside is $[\,\kappa/(\kappa+1),\, \min(1, q_C)\,]$ — a coverage bracket, not a sharp identified set
+rate, which is the arithmetic reason the identity above can never fail there. The quantity this
+sits beside is the abstention channel's coverage, which under the exhaustive two-channel assumption is the point $\kappa/(\kappa+1)$ (Proposition 7), not an identified set
 (§M.21) — so the contract does not merely move a distribution: **it changes which quantities the report can bound.**
 
 With `δ* = (q_C − θ)/(α − θ)`, **gemma-3-12b returns δ\* = 1.0125 > 1**, i.e. even at the largest α the construction permits, the corpus's own answered-zero rate cannot be produced — the joint transfer is **not reproducible** on that build — a **plug-in incompatibility on these pools, without a sampling-based transfer guarantee**. For reference, the frozen construction's own (designed, not measured) parameters return **δ\* = 0.5697 / 0.5756 / 0.5703**; the last of these **is** the construction's nominal base rate, which is the arithmetic reason the identity of §M.21.10(a) is a gate that cannot fail.
 
-The reverse direction is equally tight: at the construction's π the pool surface reproduces the corpus rate to **∓0.10–0.16 pp**. **The coverage bracket this construction licenses is $[\,\kappa/(\kappa+1),\, \min(1, q_C)\,]$, and its lower endpoint is mis-stated if written as $1/(\kappa+1)$.** $\kappa$ is the ratio of answered zeros to textual refusals, so the missed-refusal share is $f=1/(\kappa+1)$ and the answered-zero channel therefore captures **at least** $\kappa/(\kappa+1)$ of the abstentions; $1/(\kappa+1)$ bounds $f$, not the coverage, and differs from the correct floor by a factor of $\kappa$ — on a corpus with **200 items, 100 answered zeros, 1 textual refusal and 99 ordinary answers** ($\kappa=100$, $q_C=0.5$) the true coverage is $100/101=\mathbf{99.01\%}$, the bracket is $[99.01\%,50\%]$, and the printed "interval" $[1/101,0.5]=[0.99\%,50\%]$ **does not contain the truth**. Two further readings follow and are stated rather than left implicit: the bracket is **empty** whenever $q_C<\kappa/(\kappa+1)$, which is a statement that the two-channel assumption and the measured $q_C$ cannot both hold on that corpus rather than a bound; and it bounds the abstention channel's **coverage**, not its **precision**: $\kappa$ gives the precision **no lower bound at all** (§M.21), and the abstention-only arm (`â = b̂ = 0`) leaves the precision at the trivial $[0,1]$. We therefore claim only the bracket, not a point, and not a coverage claim where it is empty. The identification argument itself is not new as a **method**: Manski, C. F. (2021), *Epidemiology* 32(2), DOI `10.1097/EDE.0000000000001309`, already shows that a positive or negative predictive value is bounded only under a bound on prevalence, so what is added here is the **application** to this construction — the width of that bracket, and the trivialisation of the precision to $[0,1]$ by the abstention-only arm — and not the identifiability result, which we cite rather than claim.
+The reverse direction is equally tight: at the construction's π the pool surface reproduces the corpus rate to **∓0.10–0.16 pp**. **The coverage of the abstention channel is mis-stated if its lower endpoint is written as $1/(\kappa+1)$.** $\kappa$ is the ratio of answered zeros to textual refusals, so the missed-refusal share is $f=1/(\kappa+1)$ and the answered-zero channel therefore captures **at least** $\kappa/(\kappa+1)$ of the abstentions; $1/(\kappa+1)$ bounds $f$, not the coverage, and differs from the correct floor by a factor of $\kappa$ — on a corpus with **200 items, 100 answered zeros, 1 textual refusal and 99 ordinary answers** ($\kappa=100$) the true coverage is $100/101=\mathbf{99.01\%}$, and the printed "interval" $[1/101,0.5]=[0.99\%,50\%]$ **does not contain the truth**. Under the exhaustive two-channel assumption that coverage is exactly $\kappa/(\kappa+1)$ (Proposition 7); the item-denominated answered-zero rate $q_C$ has a different denominator — all items, not abstentions — and does not bound that conditional coverage without additional prevalence information, so no interval is claimed for it here. What does follow is that this quantity bounds the abstention channel's **coverage**, not its **precision**: $\kappa$ gives the precision **no lower bound at all** (§M.21), and the abstention-only arm (`â = b̂ = 0`) leaves the precision at the trivial $[0,1]$. The identification argument itself is not new as a **method**: Manski, C. F. (2021), *Epidemiology* 32(2), DOI `10.1097/EDE.0000000000001309`, already shows that a positive or negative predictive value is bounded only under a bound on prevalence, so what is added here is the **application** to this construction — the coverage identification just given, and the trivialisation of the precision to $[0,1]$ by the abstention-only arm — and not the identifiability result, which we cite rather than claim.
 
 *Reproduction: the four builds × three starts are per-item records in the released package (the released per-build per-item records `E3_<build>_start{1,2,3}.csv`, twelve files); the mixture manifest (`pf_items_pi0570.json`, md5 `c43d7f94bc192ac0a2d9b697561d90ef`) and the frozen true-zero pool are those of §M.21.10.*
 
@@ -3578,7 +3580,7 @@ measured. No external work is cited here as independent corroboration of it.
 
 ---
 
-### M.27 Does the convention change a *decision*? Tested three ways, and the answer is no
+### M.27 Does the convention change a *decision*? Tested three ways, and the answer depends on the convention
 
 §5.12 shows that a single-convention report moves a configuration's measured bias by up to 48.2 pp. The
 practical question is whether it also changes what a user *does*, so we tested three decision forms on the
@@ -3587,27 +3589,28 @@ with the thresholds fixed before the runs:
 
 | decision form | definition | cells tested | verdicts that change with the convention |
 |---|---|---|---|
-| **deliverability** | deployable iff ≥ θ of images fall inside a ±tol relative-error band | 5 datasets × 16–18 configurations × θ ∈ {0.30, 0.50, 0.70} × tol ∈ {10%, 20%, 50%} | **1** (UCF-QNRF, tol 50%, θ = 0.70: Qwen2.5-VL-72B passes only under the answered-only convention) |
+| **deliverability** | deployable iff ≥ θ of images fall inside a ±tol relative-error band | 5 datasets × 16–18 configurations × θ ∈ {0.30, 0.50, 0.70} × tol ∈ {10%, 20%, 50%} | **78** under this section's convention (an answered `0` is also an abstention; FSC-147 2, AI-TOD 20, ShanghaiTech-A 14, UCF-QNRF 10, VisDrone 32); **3** if only textual refusals are excluded (ShanghaiTech-A at tol 20%/θ 0.50 and tol 50%/θ 0.30, UCF-QNRF at tol 50%/θ = 0.70); a third reading, **75**, is not reproducible from the released files |
 | **service level** | the same test read at a stated pass mark | as above | as above |
-| **selection set** | the three best configurations per dataset under each convention's own metric | 5 datasets | **0 of 5** — the selected *sets* are identical everywhere; only ranks inside a set swap |
+| **selection set** | the three best configurations per dataset under each convention's own metric | 5 datasets | **4 of 5** differ under this section's convention (FSC-147 alone is unchanged); **0 of 5** if only textual refusals are excluded, where only ranks inside a set swap |
 
 **Convention A** counts an abstention (or an answered `0`) as full error; **convention B** removes abstained
 items from the delivered set and scores only the answered ones.
 
-**Two design choices in this analysis, stated because a null result is only as good as the test that
+**Two design choices in this analysis, stated because either reading is only as good as the test that
 produced it.** (i) A single θ (0.70) would put *both* conventions outside the region where the statistics
 differ, where the test can only ever return "no change"; the 3 × 3 grid above is used instead. (ii) Scoring
 both conventions with the *same* metric would make the selection sets identical by construction; each
 convention is therefore scored with its own metric (full-error for A, answered-only for B).
 
-**Why the answer is no — and why that is the useful statement.** The convention changes *how large* an error
-looks but not the *structure* that drives a decision: configurations that abstain heavily are weak counters
-either way, so their answered subsets are weak too, and the ordering and the threshold verdicts survive the
-shift. This is the same fact §M.23 reports from the other direction — the answers themselves do not carry
-the information a decision would need. The actionable reading is therefore narrow and clean: **the
-convention is a comparability problem, not a decision problem** — it cannot make a user deploy the wrong
-model, but it can make the numbers incomparable with everyone else's — and the decision-relevant quantity is
-the **abstention mass**, which a report must state alongside its convention.
+**Why the answer depends on the convention — and what that changes.** The convention changes *how large* an
+error looks and, once the numerical `0` is read as an abstention, it also changes threshold verdicts (78
+cells) and the top-ranked sets (4 of 5 datasets): heavily abstaining configurations are weak counters either
+way, but which of two weak counters clears a pass mark, and which one ranks first, is convention-dependent.
+This is the same fact §M.23 reports from the other direction — the answers themselves do not carry the
+information a decision would need. The actionable reading is therefore narrow but not empty: under the
+convention this section defines, the convention **can** move a user onto a different model, and what it
+always changes is that the numbers become incomparable with everyone else's — so the quantity a report must
+state alongside its convention is the **abstention mass**.
 
 *Reproduction: `code/analysis/deploy_decision2.py` over `data/derived/fsc_res/frozen384/` and
 `data/derived/{e3,e2_pools}/`; frozen result `deploy_decision2_result.json`. Thresholds (§M.27 table)
@@ -3714,7 +3717,7 @@ parameters, obtainable at no more than 35 GB, loadable on one 80 GB device, and 
 among those it takes the most lineage-novel first, one per lineage, up to six. It yielded six families in six
 lineages **with no Qwen model among them** — `gemma-4-31B-it` (Google), `Idefics3-8B-Llama3` (HuggingFace),
 `Step3-VL-10B` (StepFun), `MiniCPM-V-4_5` (OpenBMB), `deepseek-vl2-tiny` (DeepSeek) and `Molmo-7B-D-0924`
-(AllenAI) — of which five lineages appear nowhere in §3-§5. One enrolled family sits above the rule's 35 GB admission line, and its footprint is quoted as the serving log records it: `gemma-4-31B-it`'s checkpoint is **58.25 GiB** on disk and it loads in **58.99 GiB** of device memory (`data/derived/p2_noise4/logs/serve_w1_gemma4_31b.log`); the family is retained on the loadability clause (one 80 GB device), and the caliber is GiB, as the log prints it. Attrition is recorded with causes: `MiniCPM-V-2_6`
+(AllenAI) — of which five lineages appear nowhere in §3-§5. One enrolled family sits above the rule's 35 GB admission line, and its footprint is quoted as the serving log records it: `gemma-4-31B-it`'s checkpoint is **58.25 GiB** on disk and it loads in **58.99 GiB** of device memory (`data/derived/p2_noise4/logs/serve_w1_gemma4_31b.log`); the family is retained on the loadability clause (one 80 GB device), and the caliber is GiB, as the log prints it. **This is a protocol deviation: clause (d)'s 35 GB line is not met, and the family is retained under clause (e) alone.** Attrition is recorded with causes: `MiniCPM-V-2_6`
 failed the smoke gate by answering the `base` contract with a natural-language refusal on all four gate items and
 producing no parseable JSON, so it is excluded (the gate forbids prompt edits) and its lineage slot passed to
 `MiniCPM-V-4_5`; three further families entered only after infrastructure gaps were closed (`trust_remote_code` for
@@ -3805,11 +3808,11 @@ reply, and answering zero is a successful parse with value zero, which the integ
 analyses were re-run under raw matching after this was found, which is why the hosted table reads as abstention
 rather than as failure to parse.
 
-#### M.31.8 The two failed predictions in full (§5.14)
+#### M.31.8 The four failed predictions in full (§5.14)
 
 The main text states the failures in one sentence; the elaboration is reproduced here so that no wording is lost.
 
-**Two predictions failed, and both failures are informative.** First, the convention can change the *choice*: the
+**Four predictions failed outright — P1, P4, P5 and P6 — with P2's second conjunct not evaluable and P3 passing (§M.31.2); the two elaborated below are the informative ones.** First, the convention can change the *choice*: the
 top-ranked family changes between conventions in **two of four** domains (Spearman **0.83** on UCF-QNRF), so the
 "the decision does not move" asymmetry of §5.12 is a property of that configuration set rather than of the
 convention. Excluding the one family whose dense output is unparsable it still changes in one domain, where the
@@ -5122,15 +5125,14 @@ numbers are the two conventions, and both are reported.
 All four families' `base` / `permit` / `channel` rows — 4 files, **1,800 data rows each, 7,200 rows in
 total** — are released as `data/derived/g3_res/g3_<family>.csv`, carry a `family,domain,item,arm,gt,pred,
 parse_ok,abstain,http_err,raw` header, and appear in `MANIFEST.csv`. The arithmetic of the table is two
-counts per family: the **base zero count** (rows whose `base` arm is an abstention, i.e. an empty `pred`
-with `abstain = 1`) and the **permit residual** (the subset of those items whose `permit` arm is still an
-abstention), each summed over the two domains, with the pooled rate the ratio of the two sums. Recomputed
+counts per family: the **base zero count** (rows whose `base` arm answers the numerical `0`, i.e. `pred = '0'`)
+and the **permit residual** (the subset of those items whose `permit` arm also answers `0`), each summed over the two domains, with the pooled rate the ratio of the two sums. Recomputed
 from the released files: base zeros **13 / 49 / 84 / 14** for Qwen2.5-VL-3B, Qwen3-VL-4B, Qwen3-VL-32B and
 InternVL3.5-8B (**160** in total, the figure §M.46(a) prints as the "eight" cells' original zeros), permit
 residuals **0 / 1 / 3 / 0**, giving **0.00% / 2.04% / 3.57% / 0.00%** pooled and **0.00% / 4.00% /
 21.43% / 0.00%** on TallyQA-short — the rates printed in the table above, cell for cell. *Entry point for
 that recomputation (three lines, no repository state needed beyond the file):*
-`python -c "import csv,collections as C; r=list(csv.DictReader(open('data/derived/g3_res/g3_Qwen3-VL-4B-Instruct.csv',encoding='utf-8-sig'))); z=lambda x:(x['pred'] or '').strip()=='' and x['abstain']=='1'; b={(x['domain'],x['item']) for x in r if x['arm']=='base' and z(x)}; p={(x['domain'],x['item']) for x in r if x['arm']=='permit' and z(x)}; print(len(b),len(b&p))"`
+`python -c "import csv,collections as C; r=list(csv.DictReader(open('data/derived/g3_res/g3_Qwen3-VL-4B-Instruct.csv',encoding='utf-8-sig'))); z=lambda x:(x['pred'] or '').strip()=='0'; b={(x['domain'],x['item']) for x in r if x['arm']=='base' and z(x)}; p={(x['domain'],x['item']) for x in r if x['arm']=='permit' and z(x)}; print(len(b),len(b&p))"`
 — it prints `49 1` for that family, i.e. the `1/25 = 4.00%` TallyQA-short cell and its `0/24` JHU-Crowd++
 companion. The four files are the analysers' own inputs, not a re-derivation: the runners are
 `code/analysis/g3_run.py` and `g3_res_matched.py`, and no aggregation script sits between them and the
@@ -5267,7 +5269,7 @@ as a floor rather than as a value to report.
 
 **(a) The penultimate layer: refusal, not collapse.** A reviewer asked for the $L_2$ norm of the
 penultimate-layer representation, to separate *active refusal* from *representation collapse*. The probe
-reads the hidden states at the position that predicts the value token, for all 37 tensors, on 135 items of
+reads the hidden states at the position that predicts the first generated token, for all 65 tensors (the 64-layer build), on 135 items of
 the same stratum as §M.19.14, under three arms.
 
 **The instrument had to be certified first, and the first attempt at certifying it failed for a reason worth

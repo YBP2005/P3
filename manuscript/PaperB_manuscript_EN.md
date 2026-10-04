@@ -594,7 +594,7 @@ other — the operational reading of Proposition 8, and what the released protoc
 
 **What a decision costs depends on a second convention.** Three decision forms — a **deliverability verdict**, a **service level** and a **selection set** (the three best
 configurations per dataset) — over five datasets and a 3 × 3 grid of θ × tol are evaluated under both readings of "answered".
-Read as *textual refusals only*, **one verdict flips** and the selection sets are **identical in five**;
+Read as *textual refusals only*, **three verdicts flip** and the selection sets are **identical in five**;
 read as §M.27 defines them — a numerical `0` is *also* an abstention — **78 verdicts flip** and the sets differ in **4 of 5**.
 Whether the convention is a comparability or a decision problem is convention-dependent; the decision-relevant quantity remains the abstention *mass* (§5.11, M.27).
 
@@ -647,8 +647,7 @@ output is 99% unparsable, so its numbers are a format failure and a genuine fami
 The contract knob moves the zero rate by at least 10 pp more than the resolution knob in **10 of 12** qualifying
 cells (83%; exact binomial $P(X\ge10\mid n=12, p=1/2)=0.019$), while the resolution knob alone never moves it by more than **32.0 pp**. Decomposing the 24 cell-level
 rates gives a variance component of **0.0959** for domain against **0.0037** for family — a factor of **25.8** —
-with a bootstrap interval that excludes zero — the frozen record value **`[0.0831, 0.1002]`**, item level, as printed in Appendix M.31.2. That is the population-level statement the earlier corpora could not
-make.
+with a bootstrap interval that excludes zero — the frozen record value **`[0.0831, 0.1002]`**, item level (Appendix M.31.2). That is a fixed, partially protocol-deviating panel statement, not a population interval over families.
 
 **Four of the six pre-registered predictions failed outright** (a prediction fails unless every
 conjunct passes; P2's second is not evaluable), and they bear on scope rather than on the

@@ -1626,7 +1626,7 @@ cells (n = 11,232)**; **contrast = including them (n = 11,664, the caliber print
 | `count_std × permit` | **−3.4937** | 0.5504 | −6.35 | 2.2e−10 | [−4.5725, −2.4149] |
 | `count_std × b2` | −0.2083 | 0.2519 | −0.83 | 0.408 | [−0.7019, 0.2854] |
 
-**Contrast caliber (including the three excluded cells, n = 11,664):**
+**Contrast caliber (including the three excluded cells, n = 11,664)** — the readings printed in the previous release. They are **not superseded or withdrawn**: they are the correct readings of the same records under that caliber, retained here for comparability, and **both calibers FAIL C4**.
 
 | term | β | SE | z | p | Wald 95% CI |
 |---|---:|---:|---:|---:|---|

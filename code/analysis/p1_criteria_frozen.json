@@ -3,9 +3,9 @@
   "title": "P1 frozen criteria — does legibility (blur) induce the answered zero in other lineages?",
   "frozen_on": "2026-09-25",
   "answers_review_items": [
-    "[external-review] 实验充分性 [Δ]（blur/tiling 对照）",
-    "[external-review] 实验充分性 [Δ]（template × contract 交互）",
-    "[external-review] 实验充分性 [Δ]（1–2 个新 family 落进 dense zero pool；★ 用户 2026-09-25 决定不做其纯文字替代）"
+    "预注册补充：blur/tiling 对照",
+    "预注册补充：一族内 template × contract 交互",
+    "预注册补充：1–2 个新 family 落进 dense zero pool；★ 用户 2026-09-25 决定不做其纯文字替代"
   ],
   "design": {
     "grid": {

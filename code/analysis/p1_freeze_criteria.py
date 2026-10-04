@@ -30,9 +30,9 @@ CRIT = {
     "title": "P1 frozen criteria — does legibility (blur) induce the answered zero in other lineages?",
     "frozen_on": "2026-09-25",
     "answers_review_items": [
-        "glm53flash 实验充分性 −3.5（blur/tiling 对照）",
-        "grok46 实验充分性 −3.0（template × contract 交互）",
-        "dspro 实验充分性 −4.5（1–2 个新 family 落进 dense zero pool；★ 用户 2026-09-25 决定不做其纯文字替代）",
+        "预注册补充：blur/tiling 对照",
+        "预注册补充：一族内 template × contract 交互",
+        "预注册补充：1–2 个新 family 落进 dense zero pool；★ 用户 2026-09-25 决定不做其纯文字替代",
     ],
     "design": {
         "grid": {"n": [100, 400, 800], "r": [2, 4, 8], "sigma": [0.0, 1.0, 2.0, 4.0, 8.0],

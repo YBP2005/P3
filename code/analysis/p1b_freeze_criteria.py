@@ -27,7 +27,7 @@ MD5 = OUT + '.md5'
 CRIT = {
     "title": "P1b frozen criteria — within-family template x contract interaction at sigma=8",
     "frozen_on": "2026-09-25",
-    "answers_review_items": ["grok46 实验充分性 −3.0（一族内 template × contract 交互）",
+    "answers_review_items": ["预注册补充：一族内 template × contract 交互",
                              "同时补齐 P1 生态版的前一半（模板轴）"],
     "design": {
         "grid": "P1 的 675 张 n×r×σ 网格，**只取 σ=8 那一层**（135 项）",

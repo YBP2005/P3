@@ -3,8 +3,8 @@
   "title": "P1c frozen criteria — legibility manipulations on real corpus images, across families",
   "frozen_on": "2026-09-25",
   "answers_review_items": [
-    "[external-review] 实验充分性 [Δ]（2–3 个 E3 家族的真实图像 blur/legibility 对照）",
-    "[external-review] 实验充分性 [Δ] 的另一面（真实密集图上非 Qwen 血统会不会答 0）",
+    "预注册补充：2–3 个 E3 家族的真实图像 blur/legibility 对照",
+    "预注册补充：真实密集图上非 Qwen 血统是否答 0（同一条目的另一面）",
     "§5.7 的'模糊而不是分辨率'在**真实图像**上的跨家族复现"
   ],
   "design": {

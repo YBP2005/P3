@@ -60,7 +60,7 @@ conventions, and **ordering within pre-specified level sets**.
 means abstention, we give an **empirical criterion**: a lineage abstaining mainly in language would
 show an answered-zero-to-refusal ratio approaching 0.
 
-**② Gated by per-instance legibility, not by target count**, and **decoupled from directional bias**:
+**② Gated by per-instance legibility, and by target count**, and **decoupled from directional bias**:
 on count-controlled grids, arrangement and blur alone drive abstention from 0% to 90%, while on clean
 synthetic dots the base arm never abstains yet still underestimates by **up to 50%**, and in microscopy
 it is **0.0%** with a bias of **−50.1%** (§5.6, §5.7).
@@ -140,7 +140,7 @@ abstention knobs in video question answering ([14]); and VLM refusal moves with 
 control [15] — acting on the tendency, not on the channel §5.7 manipulates. **The gap is that abstention rates have never
 been measured on counting tasks**, and that none addresses the **implicit** case: a literal
 zero that the output level cannot distinguish from a genuine zero. On counting tasks we
-**reproduce rather than claim** the legibility gating — it is gated by per-instance legibility, not by object count — and for the
+**reproduce rather than claim** the legibility gating — it is gated by per-instance legibility, and by object count — and for the
 dominant lineage it appears as that literal zero (§3.6, §5.6).
 
 ### 2.4 A same-source study: numerosity stimuli under orthogonal manipulation
@@ -486,10 +486,10 @@ description "VLMs underestimate dense scenes" is mostly a description of refusal
 *(Terms are pp of the pooled relative deviation and sum to it exactly; $S$ is the ground-truth-weighted
 share and the last column the same **rate** under the item-count convention. Appendix J.1.)*
 
-### 5.6 Causal attribution of abstention: not count, but legibility
+### 5.6 Causal attribution of abstention: count beyond legibility
 
-Three controlled manipulations refute the intuitive "too many objects" explanation: the gate is **per-instance legibility** (§3.3), and count retains only a secondary within-domain
-role (M.11).
+A new synthetic-dot experiment (two implementations) holds legibility fixed, yet count stays decisive:
+β = −4.3696, CI [−4.8066, −3.9327], accuracy 49.6% → 2.1% → 0.6% (M.11.1).
 
 ### 5.7 Abstention and under-counting are two separable failure modes
 

@@ -1,0 +1,6 @@
+b0|/root/pf_serve_awq4bit_8013.sh|1eca04a1c22049e7a7ee077380387314|/root/models/Qwen3-VL-32B-Instruct-AWQ-4bit|8013|Qwen3-VL-32B-Instruct-AWQ
+b0|/root/pf_serve_awq4bit_8013.sh|1eca04a1c22049e7a7ee077380387314|/root/models/Qwen3-VL-32B-Instruct-AWQ-4bit|8013|Qwen3-VL-32B-Instruct-AWQ
+b0|/root/pf_serve_awq4bit_8013.sh|1eca04a1c22049e7a7ee077380387314|/root/models/Qwen3-VL-32B-Instruct-AWQ-4bit|8013|Qwen3-VL-32B-Instruct-AWQ
+b2|/root/p3_serve_bf16_A.sh|7e291790a80646b3e0ba3a990282dd49|/model/ModelScope/Qwen/Qwen3-VL-32B-Instruct|8012|Qwen3-VL-32B-Instruct
+b2|/root/p3_serve_bf16_A.sh|7e291790a80646b3e0ba3a990282dd49|/model/ModelScope/Qwen/Qwen3-VL-32B-Instruct|8012|Qwen3-VL-32B-Instruct
+b2|/root/p3_serve_bf16_A.sh|7e291790a80646b3e0ba3a990282dd49|/model/ModelScope/Qwen/Qwen3-VL-32B-Instruct|8012|Qwen3-VL-32B-Instruct

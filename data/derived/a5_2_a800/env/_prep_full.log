@@ -1,0 +1,23 @@
+items ⇒ /root/a52/stim/items.csv（648 行）
+UNREALIZABLE c08_s3_b8_o0 可辨 blob = 0（r=3 σ=8 下全部并成一团且峰值 < 0.10）
+UNREALIZABLE c80_s24_b0_o0 放不下：目标 80 个，最小间距 69.6px 时只放下 79 个（每次布局）
+UNREALIZABLE c80_s24_b4_o0 放不下：目标 80 个，最小间距 69.6px 时只放下 76 个（每次布局）
+  ⚠ 可辨数偏少 c08_s3_b8_o0_L01：目标 8，几何可辨 1（< 目标/3）⇒ 该刺激"塌成团"，照常测但 C1 会报 detection_frac
+  ⚠ 可辨数偏少 c08_s3_b8_o0_L02：目标 8，几何可辨 2（< 目标/3）⇒ 该刺激"塌成团"，照常测但 C1 会报 detection_frac
+  ⚠ 可辨数偏少 c08_s3_b8_o0_L03：目标 8，几何可辨 1（< 目标/3）⇒ 该刺激"塌成团"，照常测但 C1 会报 detection_frac
+  ⚠ 可辨数偏少 c08_s3_b8_o0_L06：目标 8，几何可辨 2（< 目标/3）⇒ 该刺激"塌成团"，照常测但 C1 会报 detection_frac
+  ⚠ 可辨数偏少 c08_s3_b8_o1_L00：目标 8，几何可辨 2（< 目标/3）⇒ 该刺激"塌成团"，照常测但 C1 会报 detection_frac
+  ⚠ 可辨数偏少 c08_s3_b8_o1_L02：目标 8，几何可辨 2（< 目标/3）⇒ 该刺激"塌成团"，照常测但 C1 会报 detection_frac
+  ⚠ 可辨数偏少 c08_s3_b8_o1_L03：目标 8，几何可辨 2（< 目标/3）⇒ 该刺激"塌成团"，照常测但 C1 会报 detection_frac
+  ⚠ 可辨数偏少 c08_s3_b8_o1_L04：目标 8，几何可辨 2（< 目标/3）⇒ 该刺激"塌成团"，照常测但 C1 会报 detection_frac
+  ⚠ 可辨数偏少 c08_s3_b8_o1_L05：目标 8，几何可辨 1（< 目标/3）⇒ 该刺激"塌成团"，照常测但 C1 会报 detection_frac
+  ⚠ 可辨数偏少 c08_s3_b8_o1_L06：目标 8，几何可辨 2（< 目标/3）⇒ 该刺激"塌成团"，照常测但 C1 会报 detection_frac
+  ⚠ 可辨数偏少 c08_s3_b8_o1_L07：目标 8，几何可辨 2（< 目标/3）⇒ 该刺激"塌成团"，照常测但 C1 会报 detection_frac
+  ⚠ 可辨数偏少 c08_s3_b8_o2_L00：目标 8，几何可辨 2（< 目标/3）⇒ 该刺激"塌成团"，照常测但 C1 会报 detection_frac
+  ⚠ …另有 60 张同类（见 manifest 的 n_dots_detected_gt）
+
+已生成 648 张 PNG ⇒ /root/a52/stim/images
+manifest /root/a52/stim/manifest.csv（md5 d2dde2a8100e）｜ 每格 8 张 = True ｜ sha256 齐 = True
+格数 = 81（应 81）｜ 非空格数 = 78 = 81 − 3（预注册排除）= True（**先声明后排除**；未排除格全非空 = True）
+UNREALIZABLE 格数 = 3（预注册先声明后排除）｜ 配置件 /root/a52/stim/A52_STIM_CONFIG.json（md5 e6adaa4825c9）
+A52_PREP_DONE rows=648 cells=81 unrealizable=3

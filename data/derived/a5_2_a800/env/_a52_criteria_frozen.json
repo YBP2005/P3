@@ -1,0 +1,292 @@
+{
+ "title": "A5-2 预注册判据（计数 × 可读性正交冻结刺激）— 跑前冻结",
+ "frozen_on": "2026-10-04",
+ "source_plan": "_p3r7_r9评审抽取/_A800方案/A800实验方案_A5_20261004.md §2 (A5-2) / §3 / §4 / §5 / §6",
+ "answers_review_items": [
+  "§5.6 / C.2：控制可读性（blur）后，count 是否仍有实质作用",
+  "GPT6-astra 评审 §A5「只允许再补两个实验」之一（标为【增益】、非送出前必修）"
+ ],
+ "freeze_rule": "本件在**任何一次推理之前**冻结；判据件的 md5 必须原样写进《_a52_运行单.md》与结果件的 criteria_md5 字段。判据一旦冻结，**任何改动都要另存新文件、记新 md5**，不得就地改。",
+ "discipline": [
+  "绝不机器级 pkill、绝不用 pkill -f；只按 PID 且先核 --port 8013",
+  "绝不碰 /root/cvpr_exp",
+  "不碰方案 §2 之外的门槛与检验顺序；不许事后挑格、事后改阈值",
+  "凭据不进任何产物"
+ ],
+ "design": {
+  "stimuli": {
+   "factors": {
+    "count": {
+     "levels": [
+      8,
+      32,
+      80
+     ],
+     "names": [
+      "low",
+      "mid",
+      "high"
+     ],
+     "role": "主因子（测试对象）"
+    },
+    "size": {
+     "levels": [
+      3,
+      8,
+      24
+     ],
+     "unit": "px 半径",
+     "names": [
+      "small",
+      "mid",
+      "large"
+     ],
+     "role": "可读性协变量"
+    },
+    "blur": {
+     "levels": [
+      0.0,
+      4.0,
+      8.0
+     ],
+     "unit": "GaussianBlur sigma",
+     "names": [
+      "none",
+      "mid",
+      "strong"
+     ],
+     "role": "可读性协变量"
+    },
+    "overlap": {
+     "levels": [
+      1.45,
+      1.15,
+      0.85
+     ],
+     "unit": "相邻圆心间距 / 直径",
+     "names": [
+      "low",
+      "mid",
+      "high"
+     ],
+     "role": "可读性协变量"
+    }
+   },
+   "cross_product": "3^4 = 81 格（**完整叉积，不跳格**）",
+   "per_cell": 8,
+   "layouts": "每格 8 个**独立布局**（同一格参数、不同布局种子）",
+   "images": 648,
+   "canvas": 1024,
+   "renderer": "a52_prep_stim.py（与 /root/p1_prep_grid.py md5 7d9476f24c31c95fe2602d680a024955 **绘制算法同源**：画布 1024 / BG(235,235,235) / DOT(30,60,200) / 格内均匀抖动 / GaussianBlur / PNG）",
+   "seed": 20261004,
+   "seed_rule": "seed = (20261004 + 7919*cell_idx + 104729*layout) & 0x7fffffff —— **显式固定，不用 abs(hash(item))**（后者在 PYTHONHASHSEED 下逐进程随机化，臂间就不是逐位配对）",
+   "persist_rule": "**一次落盘**：648 张 PNG 只生成一次，所有构建 × 合同 × 起服都读同一批文件 ⇒ 逐位配对；sha256 与 manifest 交叉锁定",
+   "manifest_cols": [
+    "cell_id",
+    "layout_id",
+    "count_gt",
+    "size_level",
+    "blur_level",
+    "overlap_level",
+    "seed",
+    "px",
+    "n_dots_detected_gt",
+    "sha256"
+   ],
+   "preregistered_unrealizable": "生成器 `--verify`/落盘时打印 `UNREALIZABLE <cell_id> <原因>` 的格**在预注册里先声明后排除**（记入 manifest 与运行单），**不得事后剔除**；排除原因只允许两类：① 目标个数在该档最小间距下**放不下**（packing 失败）；② 该格任意布局**一个可辨 blob 都数不出来**（n_dots_detected_gt < 1）。"
+  },
+  "arms": {
+   "builds": {
+    "note": "4 个**构建**，与 §5.6/C.2 的既有表同源（避免'换模型冒充新贡献'）；运行服务端的四个量化/实现构建，按 `A52_BUILDS` 的别名落文件名与 build 列，逐构建在运行单里记 served-name 与来源。",
+    "order": [
+     "b0",
+     "b1",
+     "b2",
+     "b3"
+    ],
+    "default_aliases": {
+     "b0": "AWQ4bit（cyankiwi/Qwen3-VL-32B-Instruct-AWQ-4bit，compressed-tensors）",
+     "b1": "FP8（同族 FP8 权重）",
+     "b2": "BF16（同族 BF16 权重）",
+     "b3": "第三方 4bit 第二构建（**GPTQ 量化**，与 §5.6/C.2 同源；非换模型）"
+    },
+    "alias_rule": "同一族内 4 个构建用于估计**构建方差**；若某构建在预检时不可用，唯一的合法处置是**整体放弃该实验并重跑**，不得少跑构建后仍报原判据。",
+    "amendments": [
+     {
+      "at": "2026-10-04 开机前（上级裁定）",
+      "kind": "pre-launch：**维持原判据的四构建定义**（更正一次误改）",
+      "why": "判据件原文的四构建是**同一族的四种量化/实现构建**（AWQ 4bit / FP8 / BF16 / 第三方 4bit 第二构建 = GPTQ），与论文 §5.6/C.2 \"four builds of one\" 一致；此前上级\"第 4 个 = LLaVA-OneVision-7B\"的裁定建立在**误述的前提**上（把\"四构建\"当成了四个不同模型族），现按判据件原意更正。",
+      "scope": "仅补别名与 served-name 记录；**不改任何判据阈值、不改预算、不改 C1–C5**",
+      "note": "若开机时本机没有该构建的服务件，按 `A52_BUILDS` 收到实际可跑集合，并把\"缺哪个构建\"如实写进判决书与披露项",
+      "consequence": "★ 单卡 80 GB **同一时刻只能服务一个构建**（FP8/BF16 的 32B 权重各自 ~60+ GB）⇒ 编排必须**按构建分阶段换模型**，不能用当前\"一次起服跑 4 构建 × 3 合同\"的写法；`a52_run.sh` 需改成**外层按构建、内层按合同×起服**，每换一个构建重启一次服务并跑探针自检。"
+     }
+    ],
+    "aliases_final": {
+     "b0": "AWQ4bit（cyankiwi/Qwen3-VL-32B-Instruct-AWQ-4bit，compressed-tensors）",
+     "b1": "FP8（同族 FP8 权重）",
+     "b2": "BF16（同族 BF16 权重）",
+     "b3": "第三方 4bit 第二构建（**GPTQ 量化**，与 §5.6/C.2 同源；非换模型）"
+    }
+   },
+   "contracts": {
+    "note": "输出合同 3 档：base / strict(强制 JSON) / permit(允许弃答)。**提示词文本逐字冻结在本文件里**，探针 `a52_probe.py` 启动即断言 md5（见 prompts_md5）。",
+    "levels": [
+     "base",
+     "strict",
+     "permit"
+    ]
+   },
+   "starts": {
+    "n": 3,
+    "note": "3 次**独立起服**（每次全新进程 + 全新显存），用于估计服务栈方差（沿用 M.40 口径）"
+   }
+  },
+  "budget": {
+   "per_start": "648 图 × 4 构建 × 3 合同 = 7,776 行",
+   "formula": "648 × 4 × 3 × 3 = 23,328",
+   "total_rows": 23328,
+   "cells": "4 构建 × 3 合同 × 3 起服 = 36 个逐格 CSV，每格 648 行",
+   "file_naming": "A52_<build>_<contract>_s<start>.csv"
+  },
+  "temperature": 0.0,
+  "one_image_per_prompt": true,
+  "service": {
+   "script": "/root/pf_serve_awq4bit_8013.sh",
+   "script_md5": "1eca04a1c22049e7a7ee077380387314",
+   "port": 8013,
+   "gpu_gate_mib": 2000
+  }
+ },
+ "prompts_frozen": {
+  "note": "★ 对象=**合成圆点**；本提示词与既有 675 张网格（p1_grid / G.2 规格）**同源**：把冻结人版里**恰好出现一次**的对象短语整段换成圆点短语，**其余逐字节不变**。base/permit 是机械替换的结果，与 `p1_probe.circle_prompts()` 一致。★ 注意 base 臂的第一个分句用 `，` 收尾（不是 `。`）⇒ 自检按**对象短语**切分，不按句号切分。strict 是**新造**的一档（原工程里没有）：由 **base** 派生 —— 在'对象短语 + 分隔符'之后、JSON 指令之前插入一句'只输出JSON，不要输出任何其他文字。'（分隔符改用 `。`），其余逐字不变。",
+  "base": "请数出图片中的圆形数量（画面中的每一个圆点），不要遗漏，不要重复，以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+  "strict": "请数出图片中的圆形数量（画面中的每一个圆点）。只输出JSON，不要输出任何其他文字。不要遗漏，不要重复，以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+  "permit": "请数出图片中的圆形数量（画面中的每一个圆点）。如果你无法逐个确证，请回答 abstain，而不要猜测。以JSON格式输出：{\"count\": 数量} 或 {\"count\": \"abstain\"}，只输出JSON。",
+  "parser": "照抄冻结解析器（/root/19e_probe_multi.py 的 `parse()`，md5 03edb14c98ffa3aea9ffa20f59b00bc8）：先正则取 `{\"count\"|\"response\"|计数|数量|人数 : <数字|abstain|cannot_judge|no_people>}`（**允许键带引号**），命中即返回；否则兜底取文中第一个整数。",
+  "grammar": "{\"count\": <整数>} | {\"count\": \"abstain\"}",
+  "self_check": "探针启动即跑：① 提示词 md5 断言；② 严格语法解析用例 12 条（含 {\"count\": 7}、{\"count\":\"7\"}、键带反引号、缺键、空串、纯文字数字、abstain、cannot_judge、带逗号数字、前后废话、嵌套、非法 JSON）；③ **可逆性/唯一性自检**：把对象短语换回人版必须**唯一且可逆**（replace 后 == 原冻结文本），三个合同的'句号之后'必须逐字相同（strict 除外，它按冻结件显式插入一句）；不通过即 exit 3。"
+ },
+ "criteria": {
+  "C1_coverage": {
+   "statement": "648 图全部生成成功、**81 格全非空**（每格 8 张、sha256 齐、manifest.md5 可核）。",
+   "threshold": {
+    "images": 648,
+    "cells": 81,
+    "per_cell": 8,
+    "sha256_len": 64,
+    "manifest_md5_recheck": true
+   },
+   "non_empty_definition": "该格 8 个布局中**每个布局**都存在至少 1 个可辨 blob（n_dots_detected_gt ≥ 1）；否则该格为空 ⇒ C1 FAIL。",
+   "unrealizable_rule": "若生成器打印 `UNREALIZABLE <cell_id> <原因>`，该格按**预注册先声明后排除**：从 81 格里移出，C1 的分母随之变为 81 − #排除，**但必须在判决书里逐格列出原因**。**不得事后剔除。**",
+   "report_also": "逐格 `detection_frac = n_dots_detected_gt / count_gt` 的分布（这是刺激的**设计后果**，用于分层，不作为排除理由）。",
+   "verdict_if_fail": "C1 FAIL ⇒ 整轮判不可评（先修渲染器/参数再重跑），不得只报通过的那部分。"
+  },
+  "C2_integrity": {
+   "statement": "23,328 行落盘；**逐格 parse_ok ≥ 95%**。",
+   "threshold": {
+    "total_rows": 23328,
+    "per_cell_rows": 648,
+    "cell_parse_ok_min": 0.95,
+    "scan_for_missing_files": true
+   },
+   "units": "1 图 = 1 行；`parse_ok=1` ⇔ 冻结解析器返回整数或 abstain 标记；http_err=1 行单独计数。",
+   "flag_rule": "任一格 parse_ok < 95% ⇒ 该格**加旗标并排除出池化**（不是整轮 FAIL），但必须在判决书里列出；**整轮 ≥ 5 格低解析 ⇒ 停手查解析器/服务**。"
+  },
+  "C3_main_effects_in_order": {
+   "statement": "四因子模型（控制可读性）里，按**预注册顺序**报三个量：① count 主效应；② count × 合同 交互；③ count × 构建 交互。",
+   "response": {
+    "name": "correct（答对）",
+    "definition": "pred 为整数且 |pred − n_dots_detected_gt| ≤ max(1, 0.05·n_dots_detected_gt)；abstain / 拒答 / 解析失败 / http_err 计为 **0**（不计入 parse_ok 分母之外；C2 已单独把关）。",
+    "scale": "log-odds（logistic 回归）",
+    "why": "任务要的是'count 有没有实质作用'——作用必须落在**作答质量**上；答对/答错是最直接、可预注册的二值响应。"
+   },
+   "predictors": {
+    "count_main": "count_std（count ∈ {8,32,80} 先 z 标准化）",
+    "interactions": [
+     "count_std × contract",
+     "count_std × build"
+    ],
+    "nuisance_mains": [
+     "size_level",
+     "blur_level",
+     "overlap_level",
+     "contract",
+     "build"
+    ],
+    "reference_levels": {
+     "contract": "base",
+     "build": "b0"
+    },
+    "note": "合同与构建用哑变量（参考档为 base / b0）；size/blur/overlap 按**有序**处理（连续编码）。"
+   },
+   "standardization": "β_std = β̂_count × sd(count_std)（若 count_std 已 z 标准化则 β_std = β̂_count）；报 β_std 与 95% CI（Wald，见 C4）。",
+   "interaction_reporting": "两个交互各自报 β_std 与 95% CI 与 p；**不看 p 挑结论**，按顺序报。",
+   "fit": "IRLS logistic（纯 Python，无外部依赖），rank 检查必须通过（无完全共线）。"
+  },
+  "C4_practical_null_band": {
+   "statement": "标准化 log-odds 的 **count 主效应 95% CI 完全落在 ±0.2 内** ⇒ 可称『无实质作用』；否则**撤回该表述**。",
+   "threshold": {
+    "band": 0.2,
+    "rule": "ci_lo > -0.2 AND ci_hi < +0.2（完全落入）",
+    "alpha": 0.05,
+    "scale": "标准化 log-odds"
+   },
+   "ci_method": "Wald：β_std ± 1.96·SE(β̂_count)·sd(count)（Fisher 信息 = X'WX 的逆）",
+   "cluster_note": "另报**按布局聚类的 cluster bootstrap** 95% CI（B=500、seed 20261004，重抽布局）作为稳健性检查；主判定用 Wald CI。",
+   "verdict_if_pass": "稿件保留『count 无实质作用』并加一句『在控制可读性后仍成立（A5-2）』",
+   "verdict_if_fail": "撤回该表述，§5.6 改写为『count 的作用在控制可读性后仍可见』"
+  },
+  "C5_groupwise_holdout": {
+   "statement": "**以布局为组**留出（8 布局分折），**同源变体必须同折**；报 group-wise 交叉验证的稳定性。",
+   "folds": {
+    "k": 8,
+    "assign_rule": "layout_id mod 8（layout_id 为 0..7 的整数）；同一布局的所有 36 个 (构建×合同×起服) 变体、以及同格的 8 个布局在**同一折**里不拆散到不同侧",
+    "note": "本设计里同一布局只有一份图 ⇒ 同源变体即『同一 layout 的全部构建/合同/起服细胞』；这些细胞必须整组同折，绝不跨折。"
+   },
+   "metrics": {
+    "per_fold_beta_count_std": "逐折（留出的那一折当测试）在其余 7 折上重估 β_std(count)",
+    "stability": "8 个折 β_std 的 min / max / median / sd / 符号一致性",
+    "sign_consistency_threshold": 1.0,
+    "cv_estimand": "group-wise（8 折）"
+   },
+   "role": "次要但**预注册**：C5 不通过（符号不一致或 sd > 0.5·|median|）⇒ 在正文里把 C4 的结论标为『对布局留出不稳定』，**不得**只报全样本那一版。"
+  }
+ },
+ "negative_controls": {
+  "NC1_count_constant": {
+   "statement": "把 count 设**常数**（渲染一批 count 全等的刺激）⇒ C3 的 count 主效应**必须消失**（|β_std| < 0.05 且 C4 的 CI 落在 ±0.2 内）。",
+   "how": "a52_analyze.py --negctl 从真实 CSV 重抽响应，令 pred ⊥ count（在给定 (size,blur,overlap,contract,build) 的条件下按该层的边际答对率独立重抽），**count 变量本身保持原样** ⇒ 等价于 count_gt 恒定时的计数主效应必须为 0。",
+   "why_not_rerender": "本轮**不跑任何推理**，故无法真重渲染一批常数 count 的图；用**同分布重抽**做同口径的阴性对照（等价性论证写在判决书里）。真重渲染留到开机那天做，判据同本条。",
+   "verdict": "NC1 必须给出 PASS（效应消失）；NC1 一旦出现 |β_std| ≥ 0.05 ⇒ 分析管线有泄漏，**主结论不得报出**。"
+  },
+  "NC2_parser": {
+   "statement": "用已知伪输出喂解析器，parse_ok/答零率必须按预期跳变（见 prompts_frozen.self_check 的 12 条用例）。",
+   "verdict": "任一用例不符预期 ⇒ 探针拒绝运行（exit 3）。"
+  },
+  "NC3_parser_recompute": {
+   "statement": "独立复算：绕开探针的 pred/parse_ok 列，直接从 raw 列重解析，逐行核对 parse_ok 与 pred 一致（沿用 P1-D 的 _p1d_indep_check.py 做法）。",
+   "verdict": "不一致行数 > 0 ⇒ 解析列不可信，主结论不得报出。"
+  }
+ },
+ "reporting_rules": [
+  "所有比例给 Wilson 95% 区间；跨构建/合同只比**预先写死的阈值判定**，不比绝对率的排序",
+  "配对比较只在**同一 layout 交集**上做（本设计里各臂读同一批 PNG ⇒ 交集即全集 648）",
+  "解析失败：逐格计数并报出，**排除在池化率之外**；任一格 parse_ok < 95% 加旗标",
+  "逐行 CSV 必须存**完整 raw（不截断）**——独立复算（NC3）要靠它复现解析",
+  "'答零' = 解析出的计数恰为 0；'弃答' = 文本含弃答标记（两列分开报，不混为一件）",
+  "结果件必须携带本判据文件的 md5；判据一旦冻结，任何改动都写新文件新 md5",
+  "阴性对照（NC1/NC2/NC3）的结果**和主判据一起报**，不得只报主判据"
+ ],
+ "cost_estimate": {
+  "inference_calls": 23328,
+  "wall_clock": "按同机型同服务综合 ≈267 项/分 ⇒ ≈1.6–2.0 h（含 3 次起服加载 ≈60–70 s/次）",
+  "render_cpu": "648 图 + 实现性检查：本机实测 **20 s**（方案估 10–20 分钟，留足余量）",
+  "note": "★ 本轮**只备脚本，不跑推理**：A800 的 GPU 现被 P4 占用。"
+ },
+ "change_log": [
+  {
+   "at": "2026-10-04",
+   "what": "首冻结（本件）。判据 C1–C5 逐条落地自方案 §2 的 A5-2 部分；合同提示词 3 档文本冻结；响应量定义为 correct（答对）的 log-odds。"
+  }
+ ]
+}

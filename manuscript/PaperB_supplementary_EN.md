@@ -1540,13 +1540,15 @@ a small one. The zero reappears only under the numeric-only contract, and then o
 family: the corpus-matched hosted checkpoint answers 0 on **25.8–31.7%** of these items, whereas
 `plus`, `flash` and `235b` answer 0 on **0–0.4%**.
 
-**5.6 Causal attribution of abstention: not count, but legibility.** On
+**5.6 Causal attribution of abstention: count beyond legibility.** On
 **count-controlled synthetic grids**, changing only arrangement and blur drives abstention from 0% to
-90%. **Across domains**, abstention relates weakly to target count ($r = +0.33$; ShanghaiTech-B with 124
-targets abstains at 0% while VisDrone with 22 abstains at 68%). And **within a grid**, holding count,
+90%. **Across domains**, the raw association between abstention and target count is weak ($r = +0.33$;
+ShanghaiTech-B with 124 targets abstains at 0% while VisDrone with 22 abstains at 68%) — but a raw
+association cannot separate count from legibility. And **within a grid**, holding count,
 size and blur fixed and varying only arrangement: dispersed gives 0% abstention and $\rho = -58\%$,
 clustered gives 90% and $\rho = -100\%$ — a 90 pp jump in abstention and 42 pp in bias from arrangement
-alone.
+alone. **Once legibility is held fixed, count's role remains clearly visible**; the earlier reading that
+count has no material effect is therefore **withdrawn** (new synthetic-dot experiment, §M.11.1).
 
 **7.2 Same-scale accuracy comparison across the three families.** **Density regression attains the highest accuracy** on all three datasets once the scale
 protocol is matched — 71.3 / 221.3 / 9.8 against 220.5 / 287.3 / 31.2 for detection and 201.7 / 284.3 /
@@ -1578,6 +1580,107 @@ legibility; destroys accuracy)** also drives abstention from **53–57%** to zer
 
 **5.10 Aerial domain: the legibility extreme.** Whole-image abstention rates are **68.2%** and **68.1%**,
 and **none** of the three arms moves the direction positive — the opposite of the crowd domain.
+
+### M.11.1 New synthetic-dot experiment: count visible under a legibility control
+
+**Status: a newly run experiment, reported here for the first time.** It is **not** the corpus grid of
+§C.2 and it is **not** the source of any other number printed in this paper.
+
+**Stimulus (synthetic).** A full **3⁴ factorial** over count × dot radius (size) × blur × overlap factor
+gives **81 cells**, **8 layouts per cell ⇒ 648 rendered images**. **3 cells were pre-registered as
+unrealizable** (`_unrealizable.csv`: one where the blurred small dots merge into no discernible blob,
+two where 80 targets do not fit at the required minimum spacing) and are excluded before any analysis,
+leaving **78 non-empty cells**. Count is therefore pushed to its extremes (8 / 32 / 80 dots) while
+legibility (radius, blur, overlap) is varied orthogonally — exactly the contrast the corpus panel of
+§5.6 could not isolate. The stimulus is **synthetic dots**, rendered on a different platform, and is an
+**independent stimulus** from the 675-image grid of §5.6 / §C.2; its readings **must not be differenced
+against those already-printed numbers**.
+
+**Implementations: two, not four.** Only **b0 = AWQ 4-bit** and **b2 = BF16** were run. **No same-family
+FP8 and no same-family GPTQ weights exist in this environment** ⇒ the pre-registered four-build budget
+was **shrunk before the run started**, and this must **not** be described as a "four-build" experiment.
+Build variance is estimated on **two levels only**; the `count × build` term for b2 is not significant
+(**+0.1920**, p = 0.418).
+
+**Design and budget (post-shrink).** 3 output contracts (base / strict / permit) × 3 independent service
+starts = **18 cells × 648 items = 11,664 calls**, **0 aborts**.
+
+| | pre-registered | as run (shrunk before start) |
+|---|---:|---:|
+| implementations | 4 (b0, b1, b2, b3) | **2 (b0 = AWQ 4-bit, b2 = BF16)** |
+| cells | 36 | **18** |
+| service starts | 12 | **6** |
+| calls | 23,328 | **11,664** |
+
+**Criterion C4 read out: FAIL ⇒ the "count has no material effect" reading is withdrawn.** A regression
+on the pooled 11,664 records, with the legibility covariates (size, blur, overlap) and the
+contract/build terms included, gives
+
+| term | β | SE | z | p | Wald 95% CI |
+|---|---:|---:|---:|---:|---|
+| `count_std` (main effect) | **−4.3696** | 0.2229 | −19.60 | ~0 | **[−4.8066, −3.9327]** |
+| `count_std × strict` | −0.3183 | 0.2577 | −1.24 | 0.217 | [−0.8235, 0.1868] |
+| `count_std × permit` | **−2.1767** | 0.3807 | −5.72 | 1.1e−08 | [−2.9228, −1.4305] |
+| `count_std × b2` | +0.1920 | 0.2372 | 0.81 | 0.418 | [−0.2730, 0.6570] |
+
+The pre-registered practical-null band was **±0.2** (`ci_lo > −0.2 AND ci_hi < +0.2`). The interval
+**[−4.8066, −3.9327]** lies **entirely outside that band — it does not even contain 0** ⇒ **C4 FAIL**,
+with a **negative** sign (more dots, fewer correct answers). A layout-clustered bootstrap (8 layouts
+resampled, B = 500, seed 20261004) gives **[−6.2051, −3.1896]** (median −4.4624) — the same sign and
+wider, so this is not a sampling accident. Because C4 failed, the pre-registered disposition
+`verdict_if_fail` applies verbatim: **the claim that count has no material effect is withdrawn**, and
+§5.6 is rewritten as "count's role remains visible after controlling legibility".
+
+**Pooled by count level (all 11,664 records).**
+
+| count level | correct | rate |
+|---|---:|---:|
+| 8 | 1930 / 3888 | **49.6%** |
+| 32 | 80 / 3888 | **2.1%** |
+| 80 | 23 / 3888 | **0.6%** |
+
+**Per build × contract (n = 1944 per cell) — the mandatory pooled read-out.**
+
+| build | contract | n | correct | rate | abstain | pred = 0 |
+|---|---|---:|---:|---:|---:|---:|
+| b0 (AWQ 4-bit) | base | 1944 | 341 | **17.54%** | 0 | 680 |
+| b0 (AWQ 4-bit) | strict | 1944 | 341 | **17.54%** | 0 | 681 |
+| b0 (AWQ 4-bit) | permit | 1944 | 314 | **16.15%** | **981** | 0 |
+| b2 (BF16) | base | 1944 | 353 | **18.16%** | 0 | 683 |
+| b2 (BF16) | strict | 1944 | 353 | **18.16%** | 0 | 681 |
+| b2 (BF16) | permit | 1944 | 331 | **17.03%** | **1010** | 0 |
+
+`base` and `strict` are **numerically identical** within each build (341/341 and 353/353): `strict` only
+adds "output JSON only", and both were already 100% parseable, so it changed nothing. The `permit`
+contract converts "answers 0" into "abstains" (abstain 51.2%, `pred = 0` driven to zero) at a small cost
+in correctness.
+
+**Independent recomputation.** A separately written parser and analysis (`_a52_indep.py`, which **does
+not import the frozen analyzer**) re-derived the panel from the released per-item records: **C1 PASS,
+C2 PASS (shrunk accounting), C3 PASS, C4 FAIL, C5 PASS**; the negative controls NC1, NC3 and NC-const
+all PASS. Reparsing all 11,664 rows independently gave **0** disagreements in `parse_ok`, `pred` and the
+abstain flag.
+
+**Two honest registrations (thresholds unchanged).**
+
+1. **Pre-run shrinkage.** The four-build budget (23,328 calls / 36 cells / 12 starts) became
+   **11,664 calls / 18 cells / 6 starts**, because FP8 and same-family GPTQ weights do not exist in this
+   environment. The shrink happened **before the run began** and is recorded, not hidden.
+2. **C2 has two accounting calibers, and both are reported.** The frozen criteria file writes
+   `C2_integrity.threshold.total_rows = 23,328`, so the **frozen analyzer, run as-is, returns
+   `C2 passed = false`** (the 18 b1/b3 cells are missing). The **independent recomputation judges C2
+   PASS** on the attained **18 × 648 = 11,664** rows (per-cell `parse_ok` = 1.000 for 18/18 cells, no
+   short cells, `http_err` = 0). Neither caliber is suppressed: the PASS caliber reflects the experiment
+   that was actually run, the FAIL caliber reflects the pre-registered threshold.
+
+**Provenance (md5).** criteria `758962a2643e1035698682abefec5748`; stimulus generator
+`edd4a9708cf97ece4d376964a72160d3`; probe `2f9d53cd3098990aa29b69e4946de2b0`; frozen orchestration
+`a93ecd519341fba79bb7d993eb6641b8`; revised orchestration `a52_run_v2.sh`
+`7fa412d96c6a21717d946a287156403c`; analyzer `bf873c5e7da083dae42cb379efe9af9d`; official stimulus lock
+`stim/manifest.csv` = `d2dde2a8100eca8eda88143f6cbb04ba`, with `manifest_sha256.txt` **648/648 OK**;
+stimulus config `e6adaa4825c90fe4574e0c11a877f994`; run log (ALL_DONE) `a52_v2d.log` =
+`5ed9aeb00b96799d47f5ba1ff82dc415`. Released under `data/derived/a5_2_stim/` and
+`data/derived/a5_2_a800/`.
 
 ### M.14 Numeric detail for §§6.2, 7.7 and 7.9
 

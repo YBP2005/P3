@@ -1,0 +1,66 @@
+{
+  "generator": "a52_prep_stim.py",
+  "a52_plan": "A800实验方案_A5_20261004.md §2 (A5-2) / §3",
+  "same_source_as": "p1_prep_grid.py (md5 7d9476f24c31c95fe2602d680a024955, /root/p1_prep_grid.py)",
+  "same_source_note": "绘制算法逐字同源：画布/配色/抖动规则/GaussianBlur/PNG 全部照抄 p1_prep_grid.py；只加四因子、8 布局与 sha256+可辨数真值。种子改为显式（不用 abs(hash(item))，那条会在 PYTHONHASHSEED 下逐进程漂移）。",
+  "canvas": 1024,
+  "bg": [
+    235,
+    235,
+    235
+  ],
+  "dot": [
+    30,
+    60,
+    200
+  ],
+  "counts": [
+    8,
+    32,
+    80
+  ],
+  "radii": [
+    3,
+    8,
+    24
+  ],
+  "blurs": [
+    0.0,
+    4.0,
+    8.0
+  ],
+  "overlap_factors": [
+    1.45,
+    1.15,
+    0.85
+  ],
+  "level_names": {
+    "count": [
+      "low",
+      "mid",
+      "high"
+    ],
+    "size": [
+      "small",
+      "mid",
+      "large"
+    ],
+    "blur": [
+      "none",
+      "mid",
+      "strong"
+    ],
+    "overlap": [
+      "low",
+      "mid",
+      "high"
+    ]
+  },
+  "per_cell": 8,
+  "cells": 81,
+  "images": 648,
+  "merge_rule": "blob 合并判据：圆心间距 < 2r + 0.3*sigma",
+  "seed": 20261004,
+  "seed_rule": "seed = (20261004 + 7919*cell_idx + 104729*layout) & 0x7fffffff",
+  "canvas_1024_note": "图片在 1024x1024 上渲染；客户端不缩放（服务端 mm-processor 为冻结值）"
+}

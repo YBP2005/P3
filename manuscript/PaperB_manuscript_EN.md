@@ -339,10 +339,9 @@ $\kappa=\#\{y=0\}/\#\{\text{textual refusals}\}$ and report the measured value �
 missed-refusal share **0.18%** for Qwen3-VL-32B ($\kappa = 550.6$) and **30.31%** for InternVL2.5-8B ($\kappa = 2.3$) — which is
 the arithmetic reason §3.6 reports the two lineages separately rather than pooled.
 
-**Proposition 2 (the two conventions diverge exactly when the per-image ratio correlates with ground
-truth).** $\rho_{\text{pooled}}-\bar\rho=\operatorname{Cov}_g(g,r)/\bar g$, and abstention is itself
-GT-dependent, so the covariance is non-zero in dense domains by construction. Both conventions are therefore
-always reported — and §5.12 measures what a single convention costs.
+**Proposition 2 (the two conventions diverge exactly when the per-image ratio correlates with
+ground truth).** $\rho_{\text{pooled}}-\bar\rho=\operatorname{Cov}_g(g,r)/\bar g$; abstention is itself
+GT-dependent, but that alone does not fix the covariance's sign or size: it is **measured per domain, not assumed**. §5.12 reports those values. Both conventions are therefore
 
 **Proposition 3 (span is a functional of the admitted level set).** Any candidate predictor built from its
 extremes is a **component of the definition** (partial correlation exactly $\pm 1$). That is why we withdraw
@@ -593,12 +592,11 @@ VisDrone is convention-invariant (**ρ = 1.000**, no inversion) while AI-TOD is 
 other — the operational reading of Proposition 8, and what the released protocol of §7.9 reports as a matter of course.
 *(Reproduction: `convention_rank.py`; frozen result `convention_rank_result.json`.)*
 
-**What it does *not* cost: the decision.** Three decision forms — a **deliverability verdict** (deployable
-iff ≥θ of images fall inside a ±tol band), a **service level**, and a **selection set** (the three best
-configurations per dataset) — over five datasets, ≈800 verdicts and a 3 × 3 grid of θ × tol: **one verdict
-flips**, and the selected sets are **identical in all five datasets**. The convention is therefore a
-**comparability problem, not a decision problem** for the three decision forms tested here: across those forms it cannot make a user deploy the wrong model, but it can
-make the numbers incomparable. The decision-relevant quantity is the abstention *mass* (§5.11, M.27).
+**What a decision costs depends on a second convention.** Three decision forms — a **deliverability verdict**, a **service level** and a **selection set** (the three best
+configurations per dataset) — over five datasets and a 3 × 3 grid of θ × tol are evaluated under both readings of "answered".
+Read as *textual refusals only*, **one verdict flips** and the selection sets are **identical in five**;
+read as §M.27 defines them — a numerical `0` is *also* an abstention — **78 verdicts flip** and the sets differ in **4 of 5**.
+Whether the convention is a comparability or a decision problem is convention-dependent; the decision-relevant quantity remains the abstention *mass* (§5.11, M.27).
 
 ### 5.13 The same two experiments on a public benchmark (FSC-147)
 
@@ -638,8 +636,9 @@ per lineage, excludes every family used above, and yielded **six families in six
 five of those lineages appear nowhere in §3–§5. The pools are the census-defined ones, which do not depend on the
 new models, and the instrument is the frozen probe, byte-identical in prompts and parser to the census probe.
 
-**The gate replicates in the dense domains; the ordering rule holds; and the zero rate is a property of the
-domain rather than of the family.** Under `permit` the answered zero falls to **0.0%** in both dense domains for
+**The gate replicates in the dense domains; the zero rate is a property of the
+domain, not the family; the contract knob’s ordering margin passes its first conjunct only.**
+Under `permit` the answered zero falls to **0.0%** in both dense domains for
 all five families that honour the JSON contract; pooled over four domains **four of six** families reach ≤2%
 (0.00%, 0.00%, 0.00%, 0.18%). The two exceptions are diagnostic rather than fatal. Idefics3-8B leaves **7.23%**,
 but its residual sits on sparse aerial items whose ground truth is one to three objects — a missed tiny target, not
@@ -651,8 +650,8 @@ rates gives a variance component of **0.0959** for domain against **0.0037** for
 with a bootstrap interval that excludes zero — the frozen record value **`[0.0831, 0.1002]`**, item level, as printed in Appendix M.31.2. That is the population-level statement the earlier corpora could not
 make.
 
-**Two of the six pre-registered predictions failed outright** (two further sub-items failed; a prediction
-counts as failed only when its primary criterion failed), and both bear on scope rather than on the
+**Four of the six pre-registered predictions failed outright** (a prediction fails unless every
+conjunct passes; P2's second is not evaluable), and they bear on scope rather than on the
 measurement: the convention can change the top-ranked family in **two of four** domains, and the exemplar
 arm removes the zero (by **58–93 pp** in five of six families) without making the counts accurate —
 **removing the zero is not the same as becoming able to count** (full verdicts and per-family numbers:
@@ -728,7 +727,7 @@ under the **pooled relative deviation** (Appendix F.7, M.37).
 on a **common level count** with each ladder's extreme level removed, it is preserved at Spearman
 **0.999 / 0.981 / 0.991** over 24 (knob × domain) units, and at **0.983 / 0.987 / 0.983** on a **fully
 recomputable** unit set at the same level count (31 units; Appendix M.37). A unit bootstrap puts it at
-**0.939–0.996** (31 units) and **0.836–0.983** (36 units, k=3), and **clustering by knob gives 0.913–0.994** (cluster-level; recomputed from the released package, Appendix F.7);
+**0.943–0.996** (31 units) and **0.834–0.984** (36 units, k=3), and **clustering by knob gives 0.913–0.994** (cluster-level; recomputed from the released package, Appendix F.7);
 a label-permutation test gives $p<5\times10^{-5}$; leaving out any single knob (**36** units) keeps it at **0.883–0.970**; per-unit spans with caliber
 intervals are plotted in **Fig. F.17** (Appendix F.12). It is also **exactly** preserved under shared
 affine calibration (Proposition 5: `span ↦ s·span`) and under no calibration — the M.37 held-out third gives

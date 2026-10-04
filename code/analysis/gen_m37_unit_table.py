@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """gen_m37_unit_table.py — 从冻结的 `equalcount36_result.json` **生成** M.37 的逐单元可复算表（防手打）。
 
-[external-review] #26（[external-review]）："将 F.9 加一个可复算的 36-unit 版作为并列表"；#24（[external-review]，阻塞）：
+在册条目 26（在册条目）："将 F.9 加一个可复算的 36-unit 版作为并列表"；#24（在册条目，阻塞）：
 "用 M.37 逐项记录生成正文表"。于是把 36 个单元的 span / k=4 等点数 span 排成紧凑表，
 放到 M.37（可复算集所在的那一节），并在表下写明冻结件与 md5。
 输出：`_m37_unit_table.md`（供补丁脚本插入正文），并打印词数供预算核算。

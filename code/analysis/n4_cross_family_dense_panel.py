@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-"""n4_cross_family_dense_panel.py — N4（只读）：[external-review]要的"跨家族密集域频率面板"是否**已经在手**？
+"""n4_cross_family_dense_panel.py — N4（只读）：在册条目要的"跨家族密集域频率面板"是否**已经在手**？
 
 ═══════════════════════════════════════════════════════════════════════════════════════
-【[external-review]的请求（逐字大意）】
+【在册条目的请求（逐字大意）】
   5 个**非 Qwen** 家族 × {ShanghaiTech-A, UCF-QNRF} × 各 150 项 × {`base`, `permit`, `channel`}
   ≈ 4,500 次调用；判据：**至少 2/5 家族**同时满足 base 答零率 ≥ 30% 且弃答份额 $S \ge 50\%$，
-  且 Wilson 95% **下界** > 20%。[external-review]预期："有些家族不会复现密集域的零"。
+  且 Wilson 95% **下界** > 20%。在册条目预期："有些家族不会复现密集域的零"。
 
 【为什么我认为它已经在手】
   补充材料 §M.19.2（7 家族 × base/permit 配对）与 §M.19.3（7 家族 × dense/aerial 的 base 答零率
@@ -53,7 +53,7 @@ sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 E3 = RP('analysis', 'e2xt_a800')
 ZDIR, NZDIR = RP('analysis', 'e2xt_a800', 'merged'), RP('analysis', 'e2xt_a800', 'nonzero')
 ANCHORS = {'qwen3-vl-32b-awq', 'qwen25vl-72b-awq', 'internvl25-8b-awq'}   # 论文点名的三个锚
-# ★ [external-review]说的"5 个非 Qwen 家族"= 本材料里**非 Qwen** 的五个（两个 Qwen 锚除外）：
+# ★ 在册条目说的"5 个非 Qwen 家族"= 本材料里**非 Qwen** 的五个（两个 Qwen 锚除外）：
 NONQWEN = ['gemma3-12b', 'InternVL3_5-8B', 'Phi-3.5-vision-instruct',
            'llava-onevision-qwen2-7b-ov', 'internvl25-8b-awq']
 QWEN = ['qwen3-vl-32b-awq', 'qwen25vl-72b-awq']

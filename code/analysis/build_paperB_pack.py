@@ -16,7 +16,7 @@
   ③ 附录是否计入页数上限**不由我方断言**（官方原文自相矛盾），只写事实。
   ④ ★ **"本轮变化块"不再硬编码在本脚本里**。根因见 2026-09-26 审计件
      `..\发射前审计_v0562_发现两处陈旧_20260926.md`：该块曾是常量，于是 v0557–v0562
-     **连续六枚 pin 逐字节相同**，[external-review]被"告知"的是早已审过的 [round]–[round]改动。
+     **连续六枚 pin 逐字节相同**，在册条目被"告知"的是早已审过的 前两轮改动。
      现改为从 `02f_本轮变化块_<tag>.md` 读入，并**三重断言**：
      (a) 文件首行的 `change-block-round` == 本轮 tag；
      (b) 块内不含**上一轮特有**的陈旧串；
@@ -102,7 +102,7 @@ supp = rd(os.path.join(NR(), PARTS[3][1]))
 prompt = rd(os.path.join(NR('review_pkg_20260919'), PARTS[0][0]))
 qset = rd(os.path.join(NR('review_pkg_20260919'), PARTS[1][0]))
 
-# —— 材料自述（写给[external-review]人看的"这份材料是什么"）——
+# —— 材料自述（写给在册条目人看的"这份材料是什么"）——
 prose = len(re.findall(r'\S+', re.sub(r'(?m)^\|.*$', '', manu)))   # \S+ 口径：不含表格行
 withtab = len(re.findall(r'\S+', manu))                             # \S+ 口径：含表格行
 nref = len(re.findall(r'(?m)^\d+\.\s', manu[manu.index('## References'):]))
@@ -119,7 +119,7 @@ if not _m:
 if _m.group(1) != TAG:
     sys.exit('!! 变化块声明轮次 %s ≠ 本轮 tag %s ⇒ 拒绝出包'
              '（这正是 v0557–v0562 连续六枚 pin 陈旧的那个失效模式）' % (_m.group(1), TAG))
-# 剥掉开头两段 HTML 注释（change-block-round 标记 + 写给维护者的说明），只留[external-review]可见正文
+# 剥掉开头两段 HTML 注释（change-block-round 标记 + 写给维护者的说明），只留在册条目可见正文
 _b = re.sub(r'^\s*<!--.*?-->\s*', '', change, flags=re.S)
 _b = re.sub(r'^\s*<!--.*?-->\s*', '', _b, flags=re.S)
 BODY = _b.strip('\n')
@@ -197,8 +197,8 @@ print('本轮变化块来自 %s，声明轮次 %s ✓' % (os.path.basename(CHANG
 assert pages <= 35, '主稿超页数上限（实测 %d 页）' % pages
 
 # 断言 4（★ 2026-10-02，v0625 新增）：**计数族**的双向闸门。
-#   起因（本轮[external-review]）：02d 的 Q4 手写「主稿实测 11,552 词」，而材料自述是脚本算的 11,596 词 ——
-#   差 44 词，[external-review]一核就报。[round]补的双向闸门只管 `本轮 vNNNN` 串（Hy4 逐字指出了这个漏项：
+#   起因（本轮在册条目）：02d 的 Q4 手写「主稿实测 11,552 词」，而材料自述是脚本算的 11,596 词 ——
+#   差 44 词，在册条目一核就报。上一轮补的双向闸门只管 `本轮 vNNNN` 串（Hy4 逐字指出了这个漏项：
 #   "该行不在双向闸门的覆盖范围内（闸门只管 `本轮 vNNNN` 串）"）。
 #   判据：**框架文字**里每一个「<N> 词」都必须 ∈ {主稿实测词数, 补充材料词数, round(0.1 × 主稿词数)}。
 #   ★ 扫描对象要**正好是**"材料自述 + 02 + 02d"，**不含变化块** —— 变化块按设计必须能引用旧值来

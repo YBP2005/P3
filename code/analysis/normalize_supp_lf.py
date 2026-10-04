@@ -3,7 +3,7 @@
 
 为什么做：补充材料 4,419 行全是 CRLF，而主稿与其余送审源都是 LF ⇒ 拼出的评审包**行尾混杂**。
 `_pin_pack.py` 用 `io.open(...).read()`（universal newlines，把 CRLF 折成 LF）算 md5 与字数，
-而 `md5sum` 对**原始字节**算 ⇒ 两个 md5 永远对不上。新[external-review]形态里[external-review]与协调都要核 md5，这坑会踩上。
+而 `md5sum` 对**原始字节**算 ⇒ 两个 md5 永远对不上。新在册条目形态里在册条目与协调都要核 md5，这坑会踩上。
 
 本脚本的**安全保证**：
   1. 先备份 `<file>.bak_crlf_20260928`；

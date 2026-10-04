@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""p1b_freeze_criteria.py —— **P1b（模板轴）的判据，跑之前冻结**（[external-review][external-review]。
+"""p1b_freeze_criteria.py —— **P1b（模板轴）的判据，跑之前冻结**（多条在册条目。
 
 要回答的那条原话："一族内 **template × contract** 交互"。
 

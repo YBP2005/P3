@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """m37_ci_power.py — 为 §7.3 的三条"零 GPU 分析"诉求算出**可引用**的数字，并冻结落盘。
 
-对应[external-review]条目（v0527）：
-  · #4 [external-review]：**给 Spearman 加 permutation CI**，为 ordering 稳定性设定并报告阈值；
-  · #2 [external-review]：以 **M.37 现有留出划分**报告排序相关的**区间** + **逐旋钮置换敏感性**；
-  · #6 [external-review]：对 ordering 主张补**置换检验的功效声明**（在 10 单位与本文噪声底下，
+对应在册条目（v0527）：
+  · #4 在册条目：**给 Spearman 加 permutation CI**，为 ordering 稳定性设定并报告阈值；
+  · #2 在册条目：以 **M.37 现有留出划分**报告排序相关的**区间** + **逐旋钮置换敏感性**；
+  · #6 在册条目：对 ordering 主张补**置换检验的功效声明**（在 10 单位与本文噪声底下，
     可检出的最小分离是多少 pp）。
-  · #23 [external-review]（部分）：把"图像 bootstrap 只是不确定度的一部分"落实为**端点剔除/逐旋钮**的敏感性区间。
+  · #23 在册条目（部分）：把"图像 bootstrap 只是不确定度的一部分"落实为**端点剔除/逐旋钮**的敏感性区间。
 
 输入（全部已冻结，不改动）：
   `equalcount36_result.json`（36 单元逐单元 span 与三种去偏后的 span；31 单元 k=4 子集）
@@ -53,12 +53,32 @@ print('36 单元样例名：%s' % [u['unit'] for u in units[:6]])
 print('单元键：%s' % list(units[0].keys()))
 
 
+def _avg_ranks(v):
+    """平均秩（并列取平均）。★ 2026-10-04（v0648）口径统一。
+
+    原文用 `{v: i for i, v in enumerate(sorted(x))}`：字典**覆盖**同名键 ⇒ 并列值一律取**最大秩**，
+    与同轮的 `n5_order_prereg.py:215-225` 与 `span_equalcount.py:200`（两者都写"本数据有并列，用平均秩"）
+    口径不一致。本函数把三处统一到**平均秩**；`m37_ci_power_result.json` 的 obs 与 2000 次 bootstrap
+    区间随之重算（逐处点名见本轮变化块）。
+    """
+    order = sorted(range(len(v)), key=lambda i: v[i])
+    r = [0.0] * len(v)
+    i = 0
+    while i < len(order):
+        j = i
+        while j + 1 < len(order) and v[order[j + 1]] == v[order[i]]:
+            j += 1
+        avg = (i + j) / 2.0 + 1.0
+        for k in range(i, j + 1):
+            r[order[k]] = avg
+        i = j + 1
+    return r
+
+
 def spearman(x, y):
     n = len(x)
-    rx = {v: i for i, v in enumerate(sorted(x))}
-    ry = {v: i for i, v in enumerate(sorted(y))}
-    ax = [rx[v] for v in x]
-    ay = [ry[v] for v in y]
+    ax = _avg_ranks(x)
+    ay = _avg_ranks(y)
     mx, my = sum(ax) / n, sum(ay) / n
     num = sum((a - mx) * (b - my) for a, b in zip(ax, ay))
     dx = sum((a - mx) ** 2 for a in ax) ** 0.5

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """ea2_mixed_analyze.py — E2 的**非零对照侧**：用已冻结的普查三臂结果算"gt>0 项目"上的通道构成，
-与 E2 的真零池（gt=0）并列，回答[external-review] #1 的"**混合真零／非零**图像"这一条。
+与 E2 的真零池（gt=0）并列，回答在册条目 1 的"**混合真零／非零**图像"这一条。
 
 数据：`/root/e1_results`（123 份，已拉回 `analysis/e1_results_census/`）——与 E1/E3 同一支探针、同一批构建。
 口径：raw-match（同 `a5_judge.cls()`）；**只统计 gt>0 的项目**（真零侧由 Z0 的 gt=0 单独报告）。

@@ -1,5 +1,5 @@
 #!/bin/bash
-# p2_noise4.sh —— ① `--workers 4` 噪声底（[external-review] 5 家共同要求）。
+# p2_noise4.sh —— ① `--workers 4` 噪声底（在册记录 5 家共同要求）。
 #
 # 与 p2_noise.sh 的差别（**每一处都要能说出理由**）：
 #   · workers 1 → **4**：主探针就跑在 4 并发；原自测只在 1 并发下做，**不覆盖主探针条件**。

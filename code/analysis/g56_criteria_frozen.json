@@ -5,7 +5,7 @@
   "frozen_by": "P3 owner (author side)",
   "why_this_file": "★ 先冻结、后跑。本件在任何一次调用之前写定：问句、臂、档位、判据与阈值。跑完只读不改。",
   "G5": {
-    "requester": "[external-review] R2（[external-review]，标 【阻塞】）",
+    "requester": "在册条目 R2（在册条目，标 【阻塞】）",
     "quote": "anchor-free span 复现：ST-A 上重跑 §7.3 ladder，去除所有数字锚；判据「中性化臂与现臂 span 差 < 30%」",
     "alternative_being_tested": "§7.3 的跨度**有一部分只是「指令里被命名的那个数值」的函数**。自家反证：§M.19.13 给过 rho(median, anchor) = +1.00。",
     "numeric_anchor_audit": {
@@ -38,7 +38,7 @@
     "secondary": "逐臂中位数：若 rho(median, anchor) 机制为真，中性化后 `choice`/`forbid0` 的中位应离开锚值（choice 离开 {0,10,50,100,500,1000} 的取值集合）。"
   },
   "G6": {
-    "requester": "[external-review] E-2（先冻结设计前提）+ [external-review] A5-1（独立 level set）",
+    "requester": "在册条目 E-2（先冻结设计前提）+ 在册条目 A5-1（独立 level set）",
     "quote": "等水平、预注册的归一化 ladder 重扫：六旋钮各取**预注册 5 个水平**",
     "scope_limit_★": "本机（A800）**只有 VLM 侧可跑**：六旋钮里的 K1「检测 τ×输入尺度」需要 YOLO 权重（visdrone_det.pt / yolo12n / yolo12s），K2「密度回归输入尺度」需要 CSRNet 权重 —— 二者都不在本机模型卷上 ⇒ **本件只做 4 个 VLM 旋钮**，K1/K2 如实标为「本机测不了」，不用代理替代。",
     "knobs_covered": {

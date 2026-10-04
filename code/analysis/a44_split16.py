@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """a44_split16.py —— **把"检测 τ×尺寸"三个单元按输入尺寸拆开**，看排序/分离检验的功效是否被解开。
 
-## 为什么做（[external-review][external-review] 的 [Δ]，原话）
+## 为什么做（同一整改主题的多条在册条目，原话）
 "增加旋钮单元数——最可行的路径是将**检测阈值在不同输入尺寸下拆为独立单元**
 （当前合并为一个 `threshold × input size` 旋钮），可将单元数从 **10 增至约 14–16**。"
 
@@ -290,7 +290,7 @@ def main():
     r10, _ = split_test(ten, '10 单元（原口径）')
     r16, _ = split_test(six, '16 单元（检测 τ 按输入尺寸拆开）')
 
-    out = dict(purpose='[external-review][external-review]：把检测 τ 旋钮按输入尺寸拆为独立单元，检验分离检验的功效是否被解开',
+    out = dict(purpose='多条在册条目：把检测 τ 旋钮按输入尺寸拆为独立单元，检验分离检验的功效是否被解开',
                method='与原 A44 逐字同源的单元构造与 iso 跨度 + 200 次 bootstrap CI；'
                       '分离检验 = 枚举切分点找最大 CI 间隙 + 20000 次置换 + Bonferroni 最小可达校正 p',
                regression_vs_a44=reg, units_10=ten, units_16=six, split_10=r10, split_16=r16)

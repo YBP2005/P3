@@ -3,7 +3,7 @@
   "round": "g3",
   "frozen_at": "2026-09-27",
   "frozen_by": "P3 owner (author side)",
-  "requester": "[external-review] A5-2（[external-review]）",
+  "requester": "在册条目 A5-2（在册条目）",
   "quote_verbatim": "第三方可复跑的协议外验：一个本稿未用的密集语料（NWPU-Crowd / JHU-Crowd++）+ 一个非 FSC-147 的公开基准；≥4 家族（≥2 个未测）× 2 域 × 300 图 × 3 臂；判据：残差 ≤5% 在 ≥3/4 族成立 ⇒ 协议可迁移；若 <3/4，则\"契约决定通道\"是作者栈的性质",
   "design": {
     "domains": {
@@ -21,8 +21,8 @@
       "Qwen3-VL-32B-Instruct": "已测的锚定家族（对照组）",
       "InternVL3_5-8B": "已测家族（对照组；本机 `/root/models/`）"
     },
-    "why_these_families": "[external-review]要求 **≥4 家族且 ≥2 个未测**：上面 4 个里 **2 个未测**、2 个已测作对照。★ 本机卷上还有 `Qwen2.5-VL-72B-Instruct`，但 **BF16 下放不进 80 GB 卡** ⇒ **不用它**、也不拿量化版冒充（如实标注）。",
-    "calls": "4 家族 × 2 域 × 300 项 × 3 臂 = **7,200 次调用**（与[external-review]自报规模一致）",
+    "why_these_families": "在册条目要求 **≥4 家族且 ≥2 个未测**：上面 4 个里 **2 个未测**、2 个已测作对照。★ 本机卷上还有 `Qwen2.5-VL-72B-Instruct`，但 **BF16 下放不进 80 GB 卡** ⇒ **不用它**、也不拿量化版冒充（如实标注）。",
+    "calls": "4 家族 × 2 域 × 300 项 × 3 臂 = **7,200 次调用**（与在册条目自报规模一致）",
     "serving": "vLLM 0.29.0，一卡一次一个家族；temperature 0、max_tokens 128、一请求一图；`--mm-processor-kwargs max_pixels=1048576, min_pixels=3136`（与本稿语料同一套上限）。"
   },
   "prompts_verbatim": {
@@ -39,7 +39,7 @@
       "channel": "{q} You may: (1) give a number; (2) answer \"cannot_judge\" if you cannot judge; (3) answer \"no_people\" if there are no recognizable individuals in the image. Output in JSON format: {\"response\": ...}, output JSON only."
     },
     "language_note": "TallyQA 的问题是**英文** ⇒ 该域用英文契约句（取自冻结件 `20b_probe_lang.py::EN`）；JHU 那域用**中文**原文。**语言差异属于域差异**，如实声明，不作为被检验的因子。",
-    "declared_deviation": "★ 这是\"**最小改写**\"，不是逐字原样：名词短语被删除。[external-review]若要求零改写，则该域须换成\"数人\"的问答式语料——本机没有，如实标为偏差。"
+    "declared_deviation": "★ 这是\"**最小改写**\"，不是逐字原样：名词短语被删除。在册条目若要求零改写，则该域须换成\"数人\"的问答式语料——本机没有，如实标为偏差。"
   },
   "estimands": {
     "answered_zero": "pred == 0",
@@ -50,7 +50,7 @@
   },
   "criteria_fixed_in_advance": {
     "C1_reviewer": {
-      "statement": "★ [external-review]原文判据。",
+      "statement": "★ 在册条目原文判据。",
       "rule": "**每个家族**把两域并起来的 residual ≤ **5%**；**≥ 3/4 个家族**满足 ⇒ \"契约决定通道\"这条协议**可迁移**；若 < 3/4 ⇒ 它是**作者栈的性质**，须在主稿里改写成后者。",
       "note": "两域分开的 residual 一并报出（不只用并起来的那个数）。"
     },

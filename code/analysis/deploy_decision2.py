@@ -56,16 +56,29 @@ def load_csv(p):
 
 
 def rates(items, tol):
+    """两种口径的度量。
+
+    ★ 2026-10-04（v0648）**口径 B 的实现改正**。原文只把"三出口词"记为弃答，数值 `0` 保留在
+    `ans`（已答集）里 ⇒ 打印的 `errB`/`hB`/`covered` 实际是"只去掉文本弃答"，并不是稿内声明的
+    B（"弃权**或答 0**"）。现按声明实现：口径 B 的交付集排除**数值 0**（写作 `answered-zero` 的
+    那一类），`ansB` 因此比原文的 `ans` 小；口径 A 不受影响（它的定义本来就是"弃权/答 0 记满误差"，
+    分母是全部 item）。
+
+    两个集合分别保留，是因为**两个口径的交付集本来就不同**：
+      · A：分母 = 全部 item；弃权与答 0 都记满误差 1.0。
+      · B：分母 = 已答**且非数值 0** 的 item；答 0 与文本弃答一并移出交付集。
+    """
     n = len(items)
-    ans = [(v, g) for v, g in items if v is not None]
+    ansB = [(v, g) for v, g in items if v is not None and v != 0.0]   # 口径 B 的交付集
     hit_all = sum(1 for v, g in items if v is not None and g > 0 and abs(v - g) / g <= tol)
-    hit_ans = sum(1 for v, g in ans if g > 0 and abs(v - g) / g <= tol)
-    errB = (sum(min(abs(v - g) / g, 1.0) for v, g in ans) / len(ans)) if ans else None
+    hit_ans = sum(1 for v, g in ansB if g > 0 and abs(v - g) / g <= tol)
+    errB = (sum(min(abs(v - g) / g, 1.0) for v, g in ansB) / len(ansB)) if ansB else None
     # ★ 口径 A 的度量：**全部 item 计错**，弃权/答 0 记为满误差 1.0（这正是"弃权当错"的字面含义）
-    errA = (sum(min(abs(v - g) / g, 1.0) for v, g in ans) + (n - len(ans))) / n if n else None
-    return dict(n=n, n_ans=len(ans), hA=hit_all / n if n else None,
-                hB=hit_ans / len(ans) if ans else None, errA=errA, errB=errB,
-                covered=len(ans) / n if n else None)
+    errA = (sum(min(abs(v - g) / g, 1.0)
+                for v, g in items if v is not None and v != 0.0) + (n - len(ansB))) / n if n else None
+    return dict(n=n, n_ans=len(ansB), hA=hit_all / n if n else None,
+                hB=hit_ans / len(ansB) if ansB else None, errA=errA, errB=errB,
+                covered=len(ansB) / n if n else None)
 
 
 # 收集：{数据集: {配置: items}}

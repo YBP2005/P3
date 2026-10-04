@@ -1,6 +1,5 @@
 {
-  "_sanitized": "review traces removed; no value changed",
-  "purpose": "[external-review]条目 #2/#4/#6/#23 的零 GPU 分析：ordering 的置换 p 与 bootstrap CI、逐旋钮敏感性、M.37 留出区间（引用）、10 单元下的最小可检出分离",
+  "purpose": "v0527 盲审条目 #2/#4/#6/#23 的零 GPU 分析：ordering 的置换 p 与 bootstrap CI、逐旋钮敏感性、M.37 留出区间（引用）、10 单元下的最小可检出分离",
   "inputs": {
     "equalcount36": "equalcount36_result.json",
     "a39": "a39_unit_calib_heldout_result.json",
@@ -16,48 +15,48 @@
     "36unit_k3": {
       "n": 36,
       "boot_ci": {
-        "obs": 0.9324881740039196,
-        "p025": 0.8362896474108009,
-        "p975": 0.9834305991652087
+        "obs": 0.9328785655458736,
+        "p025": 0.8342183654966974,
+        "p975": 0.9838075147153805
       },
       "perm": {
-        "obs": 0.9324881740039196,
+        "obs": 0.9328785655458736,
         "p": 4.999750012499375e-05,
         "n_perm": 20000
       },
       "quoted": {
-        "obs": 0.932
+        "obs": 0.933
       }
     },
     "31unit_k4": {
       "n": 31,
       "boot_ci": {
-        "obs": 0.9820813939117907,
-        "p025": 0.9390905416017907,
-        "p975": 0.995845707414122
+        "obs": 0.9831636303618928,
+        "p025": 0.9429735234215886,
+        "p975": 0.9959415584415584
       },
       "perm": {
-        "obs": 0.9820813939117907,
+        "obs": 0.9831636303618928,
         "p": 4.999750012499375e-05,
         "n_perm": 20000
       },
       "quoted": {
-        "obs": 0.982
+        "obs": 0.983
       }
     }
   },
   "leave_one_knob_out": {
     "output contract": {
       "n_dropped": 2,
-      "rho_36": 0.939
+      "rho_36": 0.94
     },
     "pixel budget": {
       "n_dropped": 6,
-      "rho_36": 0.883
+      "rho_36": 0.884
     },
     "prompt family": {
       "n_dropped": 6,
-      "rho_36": 0.97
+      "rho_36": 0.971
     },
     "tiling": {
       "n_dropped": 6,
@@ -65,11 +64,11 @@
     },
     "CSRNet": {
       "n_dropped": 2,
-      "rho_36": 0.92
+      "rho_36": 0.921
     },
     "official DM-Count": {
       "n_dropped": 2,
-      "rho_36": 0.92
+      "rho_36": 0.921
     },
     "in-domain(micro)": {
       "n_dropped": 4,
@@ -81,7 +80,7 @@
     },
     "zero-shot COCO": {
       "n_dropped": 3,
-      "rho_36": 0.917
+      "rho_36": 0.918
     }
   },
   "heldout_intervals": {
@@ -176,20 +175,20 @@
     }
   },
   "quoted_display": {
-    "rho_36_k3": 0.932,
+    "rho_36_k3": 0.933,
     "rho_36_k3_ci": [
-      0.836,
-      0.983
+      0.834,
+      0.984
     ],
-    "rho_31_k4": 0.982,
+    "rho_31_k4": 0.983,
     "rho_31_k4_ci": [
-      0.939,
+      0.943,
       0.996
     ],
     "perm_p_36": 4.999750012499375e-05,
     "loo_range": [
-      0.883,
-      0.97
+      0.884,
+      0.971
     ],
     "min_corrected_p_3v7": 0.075,
     "min_corrected_p_5v5": 0.036,

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """n1b_extras.py —— N1/N1b 的**加做**部分（承上：`n1_span_artefact_tests.py`）。
 
-承上结果：L 与 rankcorr 的 Spearman 都远低于[external-review]的 0.85；而 GT 分层的"最小剖面"配对
+承上结果：L 与 rankcorr 的 Spearman 都远低于在册条目的 0.85；而 GT 分层的"最小剖面"配对
 退化到 9 项（不可用）。本脚本回答三个跟进问题：
 
 A. **低 Spearman 是不是"池化 → 逐项"这一轴造成的？**（而不是"量纲/尺度"这一轴）

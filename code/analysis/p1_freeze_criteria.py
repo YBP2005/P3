@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 """p1_freeze_criteria.py —— **在开机之前**把 P1 的判据与报告口径写死并冻结（md5 旁车）。
 
-对应 [external-review]的三条需实验意见：
-  * [external-review]（实验充分性）："在 2–3 个 E3 家族补一组 blur/tiling 对照（每家族 300 张 × 2 臂）"；
-  * [external-review]："一族内 template × contract 交互"；
-  * [external-review]："至少补 2–3 个新 family 于 dense zero pool"（用户已决定**不做**其文字替代）。
+对应 在册条目的三条需实验意见：
+  * 在册条目（实验充分性）："在 2–3 个 E3 家族补一组 blur/tiling 对照（每家族 300 张 × 2 臂）"；
+  * 在册条目："一族内 template × contract 交互"；
+  * 在册条目："至少补 2–3 个新 family 于 dense zero pool"（用户已决定**不做**其文字替代）。
 
 ## 为什么必须先冻结
-本项目已有先例：判据事后改一次，整轮结论就不可复核（见 `PaperB_[external-review]修回证据_20260924.md`
+本项目已有先例：判据事后改一次，整轮结论就不可复核（见 `PaperB_在册条目修回证据_20260924.md`
 §6(s) 的"永真断言"与 §6(w) 的过度更正）。本脚本把 H1–H4、层定义、排除规则写进 JSON 并记 md5；
 `p1_analyze.py` 会把该 md5 一并写进结果件，于是"这份结果是用哪套判据读的"**由产物本身携带**。
 

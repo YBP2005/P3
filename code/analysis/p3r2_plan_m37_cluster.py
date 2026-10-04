@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""p3r2_plan_m37_cluster.py — P3R2 [round]§4（[external-review] #16）：31/36 单元的**按 knob 聚类**置换检验与块 bootstrap。
+"""p3r2_plan_m37_cluster.py — P3R2 上一轮§4（在册条目 16）：31/36 单元的**按 knob 聚类**置换检验与块 bootstrap。
 
 ## 要回答的问题（方案 §4.1）
 §7.3 印的排序稳定性 "a label-permutation test gives p<5e-5; leaving out any single knob keeps it

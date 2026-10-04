@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""theme_decompose.py — 把新颖度[external-review]的 D1 意见**按主题**分解，用于跨轮对比。
+"""theme_decompose.py — 把新颖度在册条目的 D1 意见**按主题**分解，用于跨轮对比。
 
 为什么要有这个脚本：上一版的主题表是人工目测归类出来的，跨轮再目测一次就会得到
 "看起来在缩小的主题"——这正是本项目已经吃过一次的亏（自证式比较）。所以这里把
@@ -41,7 +41,7 @@ MODELS = ['dsflash', 'dspro', 'grok46', 'glm53flash']
 
 # 顺序即优先级：越具体的主题越靠前。
 # ★ 2026-09-23 修正（本轮自查抓到，必须记下来）：原先把 D_IDENTITIES 排在 F 之前，
-#   结果 [external-review] 上一版那条 [Δ]（原文 "Directional-span spectrum is implementation×domain×protocol,
+#   结果 在册条目上一版那条 在册条目（原文 "Directional-span spectrum is implementation×domain×protocol,
 #   with magnitude law withdrawn (Prop. 3) … Would need a portable predictor of span size"）
 #   因为句中出现了 "(Prop. 3)" 而被归到 D，**掩盖了"谱系投诉仍在"这一事实**，
 #   从而把"F 主题下降"算得过大（−28.0 → −15.0）。这类"分类器优先级制造出来的结论"

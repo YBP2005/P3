@@ -77,7 +77,7 @@ def circle_prompts(F):
 def call_img_sys(F, b64, prompt, model, system, timeout=180, retries=5):
     """与冻结 `19e.call_img` **逐字同构**，只在消息列表**最前面**插一条 system 消息。
 
-    用途：P1 的 template 轴（[external-review][external-review]："一族内 template × contract 交互"）。
+    用途：P1 的 template 轴（多条在册条目："一族内 template × contract 交互"）。
     system 文本沿用本项目此前那次消融用过的同一条（`a800_ablate.sh`），以便与 M.19.8 的 `+system` 列可比：
         "You are a careful visual counting assistant. Follow the requested output format exactly."
     不加 `--system` 时**一律走冻结传输**（见 main 里的分支），所以主网格的结果不受本函数影响。

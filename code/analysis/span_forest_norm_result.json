@@ -1,6 +1,6 @@
 {
   "_sanitized": "review traces removed; no value changed",
-  "purpose": "[external-review] #3（跨度森林图 + 可复算区间）、#23（命题 7 第三渠道敏感性）、#35（归一化跨度）",
+  "purpose": "在册条目 3（跨度森林图 + 可复算区间）、#23（命题 7 第三渠道敏感性）、#35（归一化跨度）",
   "inputs": {
     "equalcount36": "equalcount36_result.json",
     "md5": "bd70867b1453cc5e3ceeb97572d26eea"

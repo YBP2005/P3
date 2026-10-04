@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-"""_variance_boot.py —— 给 M.18.8 的两因素方差分解补 **item 级 bootstrap 区间**（[external-review][external-review]。
+"""_variance_boot.py —— 给 M.18.8 的两因素方差分解补 **item 级 bootstrap 区间**（多条在册条目。
 
 ## 为什么
-[external-review] 要"给 M.18.8 方差分解**补 bootstrap 区间**并进主稿"。现有点估计是
+在册条目要"给 M.18.8 方差分解**补 bootstrap 区间**并进主稿"。现有点估计是
 域 38.7% / 构建 33.9% / 交互 27.4%，**没有区间** ⇒ 无法判断"构建占主导"这一判定是否稳。
-另有多家（[external-review]、[external-review]）提"区间只是下界/未传播"（主题 T3，本轮真恶化 +12.5）——补区间同时打在 T3 上。
+另有多家（多条在册条目）提"区间只是下界/未传播"（主题 T3，本轮真恶化 +12.5）——补区间同时打在 T3 上。
 
 ## 口径（与 `variance_decomp.py` **逐字同源**）
 5 构建（同一份 Qwen3-VL-32B 权重的 5 种部署）× 4 域 = 20 格平衡设计；因变量 = 该格在**公共 item 子集**上的
@@ -101,7 +101,7 @@ def main():
     bs_b = sorted(x[0] for x in bs); bs_d = sorted(x[1] for x in bs); bs_r = sorted(x[2] for x in bs)
     q = lambda v, p: round(100 * v[int(p * len(v))], 1)
     med = lambda v: round(100 * v[len(v) // 2], 1)
-    res = dict(purpose='M.18.8 两因素方差分解的 item 级 bootstrap 区间（[external-review][external-review]',
+    res = dict(purpose='M.18.8 两因素方差分解的 item 级 bootstrap 区间（多条在册条目',
                design='5 构建 × 4 域平衡设计；因变量 = 公共 item 子集上的答 0 率；'
                       'bootstrap = 域内 item 重采样 %d 次（同一域内 5 个构建共用同一下标，保持配对）' % NBOOT,
                common_items={ds: len(keys[ds]) for ds in DOMS},

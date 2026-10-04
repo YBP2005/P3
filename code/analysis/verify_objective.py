@@ -162,7 +162,7 @@ AU = rd(NR('PaperB_命题4-6验证记录_20260919.md'))
 nz = lambda s: set(x.replace(',', '') for x in re.findall(r'\d+(?:[.,]\d+)*', s))
 SECT = set(re.findall(r'(?m)^#{2,4}\s+(\d+(?:\.\d+)*)(?=\s)', en)) | set(re.findall(r'§\s*(\d+(?:\.\d+)*)', en))
 # 与 en_check 同源：第三/第四权威 = P40 上的 arXiv/Crossref 取回记录；
-# '0.07' 是 §7.3 的推导值（0.008×9），2026-09-20 由 v0487 轮[external-review]指出后补写。
+# '0.07' 是 §7.3 的推导值（0.008×9），2026-09-20 由 v0487 轮在册条目指出后补写。
 _arx = ''
 for _f in ['_arxiv_records.json', '_refs_inventory.json', '_refs_extra.json',
            '_pb_refs_out.json', '_pb_refs2_out.json', '_pb_refs34_out.json', '_pb_refs5_out.json']:

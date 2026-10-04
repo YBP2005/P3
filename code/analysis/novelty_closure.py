@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""[external-review] **23 条意见的闭环核查**：每一条都绑定"稿件里证明它已被处理"的断言锚点。
+"""在册条目**23 条意见的闭环核查**：每一条都绑定"稿件里证明它已被处理"的断言锚点。
 
 与 `verify_novelty_complaints.py` 的分工：
   · verify_novelty_complaints.py：核实"模型陈述的**事实**是否属实"（8/8 属实）——那是**输入**；
@@ -69,7 +69,7 @@ ANCHOR = {
     # D 方向/恒等式
     'D1': [('EN', r'consistency check on the numbers printed in this paper'),
            ('EN', r'verification'), ('EN', r'Proposition 8')],
-    # ★ 2026-09-23（[round]后）：[external-review]仍以"负结果/无量级预测子"扣 D2（合计 −28 落在 F/D），
+    # ★ 2026-09-23（上一轮后）：在册条目仍以"负结果/无量级预测子"扣 D2（合计 −28 落在 F/D），
     #   故把 §7.3 从"设计选择，不是退让"（原锚点 `design choice|treats the negative`）
     #   **改写为正面结论**："序稳健 ⇒ 报序不报量级"的操作规则。锚点随**新表述**更新；
     #   事实（序稳健、量级不可预测、可用性可判）不变，仍可现查。

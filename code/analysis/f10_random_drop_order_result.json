@@ -1,6 +1,6 @@
 {
   "_sanitized": "review traces removed; no value changed",
-  "purpose": "F.10 随机删档：24 单元的幅度保留率与排序保全率（[external-review][external-review]/ T3 / T5）",
+  "purpose": "F.10 随机删档：24 单元的幅度保留率与排序保全率（多条在册条目/ T3 / T5）",
   "design": "随机抽 k=4 档（不放回）2000 次；幅度=抽样跨度/全长跨度；排序=抽样跨度向量与全长跨度向量的 Spearman",
   "k": 4,
   "per_caliber": {

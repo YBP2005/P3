@@ -2,7 +2,7 @@
 """build_paperB_pack.py — 组装 PaperB 的**盲审包**（本轮 = 修订版评分表 + 改稿后的英文送审件）。
 
 包结构（与上一轮 01d 逐段同构，便于跨轮比较）：
-    <!-- ===== 材料自述 ===== -->                       （由本脚本生成：长度事实 + **本轮变化块**）
+    <!-- ===== 材料自述 ===== -->                       （由本脚本生成：长度事实；★ v0652 起**不含**变化块）
     <!-- ===== 以下为 02_评审提示词.txt ===== -->        （提示词 + 内联的 8 维评分表附录）
     <!-- ===== 以下为 02d_问句集_PR版.txt ===== -->
     <!-- ===== 以下为 06_英文稿_EN.md ===== -->
@@ -14,13 +14,13 @@
      并且**四段全部**断言"包内 == 源"——2026-09-26 审计发现旧版只断言了"四段存在"，
      而 `en_check.py` 的 [I] 只覆盖 06/08 ⇒ **02d 陈旧了一整个轮次而门禁全绿**。
   ③ 附录是否计入页数上限**不由我方断言**（官方原文自相矛盾），只写事实。
-  ④ ★ **"本轮变化块"不再硬编码在本脚本里**。根因见 2026-09-26 审计件
-     `..\发射前审计_v0562_发现两处陈旧_20260926.md`：该块曾是常量，于是 v0557–v0562
-     **连续六枚 pin 逐字节相同**，在册条目被"告知"的是早已审过的 前两轮改动。
-     现改为从 `02f_本轮变化块_<tag>.md` 读入，并**三重断言**：
-     (a) 文件首行的 `change-block-round` == 本轮 tag；
-     (b) 块内不含**上一轮特有**的陈旧串；
-     (c) 该块确实进了包。任一不满足即**拒绝出包**（先校验、后落盘）。
+  ④ ★ **"本轮变化块"自 v0652 起不进评审面**（上级裁定 (乙)：撤出评审面）。历史根因见 2026-09-26
+     审计件 `..\发射前审计_v0562_发现两处陈旧_20260926.md`：该块曾是本脚本里的硬编码常量，于是
+     v0557–v0562 **连续六枚 pin 逐字节相同**，在册条目被"告知"的是早已审过的前两轮改动。
+     v0563 起改为从 `02f_本轮变化块_<tag>.md` 读入并**三重断言**（首行轮次 == tag、无上一轮陈旧串、
+     确已进包）；**v0652 起该块彻底撤出评审面** —— 它只作**作者侧内部台账**（按轮写、不进包、
+     不进任务书），本脚本**不再读它**，并改为**反向断言**：包里**不得出现** `【本轮相对`。
+     任一不满足即**拒绝出包**（先校验、后落盘）。
 
 用法：
     python build_paperB_pack.py [tag] [date]      # tag 缺省 = 已有最大编号 +1
@@ -64,7 +64,6 @@ def next_tag():
 TAG = sys.argv[1] if len(sys.argv) > 1 else next_tag()
 DATE = sys.argv[2] if len(sys.argv) > 2 else time.strftime('%Y%m%d')
 OUT = os.path.join(NR('review_pkg_20260919'), '03_评审包_%s_%s.md' % (TAG, DATE))
-CHANGE_SRC = os.path.join(NR('review_pkg_20260919'), '02f_本轮变化块_%s.md' % TAG)
 print('本轮 tag = %s（%s）；输出 %s'
       % (TAG, '命令行给定' if len(sys.argv) > 1 else '自动取已有最大编号 +1', os.path.basename(OUT)))
 
@@ -107,31 +106,12 @@ prose = len(re.findall(r'\S+', re.sub(r'(?m)^\|.*$', '', manu)))   # \S+ 口径�
 withtab = len(re.findall(r'\S+', manu))                             # \S+ 口径：含表格行
 nref = len(re.findall(r'(?m)^\d+\.\s', manu[manu.index('## References'):]))
 
-# —— 纪律④：读入"本轮变化块"并断言它**确实是本轮的** ——
-if not os.path.exists(CHANGE_SRC):
-    sys.exit('!! 找不到本轮变化块 %s ⇒ 拒绝出包（纪律④：该块必须按轮提供，不得沿用旧块）'
-             % os.path.basename(CHANGE_SRC))
-change = rd(CHANGE_SRC).strip('\n')
-_m = re.search(r'^<!--\s*change-block-round:\s*(\S+?)\s*-->', change)
-if not _m:
-    sys.exit('!! %s 首行缺少 `<!-- change-block-round: <tag> -->` ⇒ 无法判定它属于哪一轮，拒绝出包'
-             % os.path.basename(CHANGE_SRC))
-if _m.group(1) != TAG:
-    sys.exit('!! 变化块声明轮次 %s ≠ 本轮 tag %s ⇒ 拒绝出包'
-             '（这正是 v0557–v0562 连续六枚 pin 陈旧的那个失效模式）' % (_m.group(1), TAG))
-# 剥掉开头两段 HTML 注释（change-block-round 标记 + 写给维护者的说明），只留在册条目可见正文
-_b = re.sub(r'^\s*<!--.*?-->\s*', '', change, flags=re.S)
-_b = re.sub(r'^\s*<!--.*?-->\s*', '', _b, flags=re.S)
-BODY = _b.strip('\n')
-if not BODY:
-    sys.exit('!! %s 剥掉注释后没有正文 ⇒ 拒绝出包' % os.path.basename(CHANGE_SRC))
-
-# 陈旧串黑名单：这些是**上一轮（v0547）**特有的说法，出现在"本轮变化块"里即为沿用旧块。
-STALE = ['跨口径相减被查出并更正', 'zero-channel precision', '12.7% vs 48.7%',
-         '18 次起服 / 21,600 次调用', 'M.40 新增逐项 2×2 表', 'within-family paired']
-_hit = [s for s in STALE if s in BODY]
-if _hit:
-    sys.exit('!! 本轮变化块里出现**上一轮特有**的陈旧串 %r ⇒ 拒绝出包' % _hit)
+# —— 纪律④（★ v0652 取反）：**不再读入"本轮变化块"** ——
+#   上级裁定 (乙)：把变化块**撤出评审面**。它只作**作者侧内部台账**（`02f_本轮变化块_<tag>.md`，
+#   按轮写；留在 review_pkg_20260919\ 或 `_p3_发射件\_变化块台账\`，**不进包、不进任务书**）。
+#   判据随之取反：旧版是"该块必须在包里"（三重断言 + 上一轮陈旧串黑名单）；现在改为
+#   **反向断言"包里不得出现 `【本轮相对`"**（见下方断言 2）。原 4 处 `sys.exit` 与 STALE 黑名单
+#   的判断对象已不存在，故整块删除（不是放宽——是没有被判断的对象了）。
 
 HEADER = """<!-- ===== 材料自述（由 build_paperB_pack.py 生成；数字全部来自测量，不手写）===== -->
 
@@ -160,7 +140,7 @@ HEADER = """<!-- ===== 材料自述（由 build_paperB_pack.py 生成；数字�
        len(re.findall(r"[A-Za-z][A-Za-z'\-]*", supp)),
        md_md5,
        hashlib.md5(prompt.encode('utf-8')).hexdigest(),
-       hashlib.md5(supp.encode('utf-8')).hexdigest()) + BODY + '\n'
+       hashlib.md5(supp.encode('utf-8')).hexdigest()) + '\n'
 
 buf = []
 buf.append(HEADER)
@@ -189,10 +169,13 @@ for name, src in PARTS:
     origin = rd(SRC_PATH[name])
     assert seg == origin.strip('\n'), '包内 %s 与源文件不一致' % name
 print('四段齐全且与源文件逐字一致 ✓（含 02 提示词 / 02d 问句集——旧版门禁只查 06/08）')
-# 断言 2：本轮变化块确实进了包，且声明轮次 == 本轮 tag
-assert BODY in pack, '本轮变化块未进包'
-assert _m.group(1) == TAG, '变化块轮次不符'
-print('本轮变化块来自 %s，声明轮次 %s ✓' % (os.path.basename(CHANGE_SRC), _m.group(1)))
+# 断言 2（★ v0652 **反向**）：**评审面不得含"本轮变化块"**。
+#   上级裁定 (乙)：该块撤出评审面 ⇒ 判据从"它必须在包里"取反为"包里不得出现它"。
+#   轮次一致性的**其余部分**保留：包文件名必须带本轮 tag（TAG 是 OUT 名字的唯一来源，
+#   而 ⑤b `pack_sync_check.py` 另核"包 tag == 核验 tag == 内部台账自报轮次"）。
+assert '【本轮相对' not in pack, '评审面不得含变化块（v0652 起撤出评审面）'
+assert TAG in os.path.basename(OUT), '包文件名必须带本轮 tag（轮次一致性）'
+print('反向断言 ✓：包内**不含**「本轮变化块」；包名带本轮 tag %s' % TAG)
 # 断言 3：页数上限（超限必须当场失败，不许"先写盘再发现"）
 assert pages <= 35, '主稿超页数上限（实测 %d 页）' % pages
 
@@ -204,7 +187,9 @@ assert pages <= 35, '主稿超页数上限（实测 %d 页）' % pages
 #   ★ 扫描对象要**正好是**"材料自述 + 02 + 02d"，**不含变化块** —— 变化块按设计必须能引用旧值来
 #     叙述"原写 X ⇒ 改为 Y"（README #22：允许历史值存在，判据看的是"现值必须在"）。
 #     本闸门第一版就是栽在这一点上：它把变化块里的 `11,552` 当成陈旧串（`76` 号：判据要对上对象）。
-_HEAD = pack.split('【本轮相对')[0]                                   # 材料自述（变化块之前）
+#     ★ v0652 起变化块**已不在包内**（反向断言见上）⇒ 扫描对象天然只剩"材料自述 + 02 + 02d"；
+#       `_HEAD` 不再需要按「【本轮相对」切分（该串按断言 2 必须不存在），直接取 HEADER。
+_HEAD = HEADER                                                        # 材料自述
 _M02 = '<!-- ===== 以下为 %s ===== -->' % PARTS[0][0]
 _M06 = '<!-- ===== 以下为 %s ===== -->' % PARTS[2][0]
 _MID = pack.split(_M02)[1].split(_M06)[0] if _M02 in pack and _M06 in pack else ''

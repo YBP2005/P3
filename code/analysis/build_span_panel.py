@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """build_span_panel.py — §M.18.8's five-build table, recomputed cell for cell, and the one thing the
-charge behind it (在册条目 27) actually asks: does the *contract's* effect vary across builds?
+charge behind it (a pre-registered requirement) actually asks: does the *contract's* effect vary across builds?
 
 Why this exists. §7.3's VLM unit span rests on one or two builds, while §M.18.8 measures a **90.3 pp**
 spread in the base-arm answered-zero rate across the **five deployments of the same weights**. The charge

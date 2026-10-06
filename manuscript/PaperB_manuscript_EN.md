@@ -618,9 +618,9 @@ of **300 test images**:
 Three readings, one of which is a counterexample and is reported as one. **(i) The zero is not a property of
 our corpora**: four of five families answer exactly `0` on **62–91%** of a public benchmark's images, so the
 phenomenon is not an artefact of the nine datasets above.
-**(ii) The gate replicates in eight of nine configurations and fails in one.** Across the full panel
+**(ii) The gate replicates in eight of nine configurations (≤6%), seven at the frozen ≤5%.** Across the full panel
 (Appendix M.24.1) `permit` leaves ≤ 6% of those zeros in **eight**; the exception is the **Qwen3-VL-32B
-build, keeping 251 of those 277** while the *same* build on ShanghaiTech-A leaves **0 of 62**
+build, keeping 251 of 277** while the *same* build on ShanghaiTech-A leaves **0 of 62**
 (§M.19.8). Its diagnosis is informative: under the three-option `channel` contract
 that build leaves **0** zeros — for it the outlet must be **enumerated as an option**
 rather than *permitted* (Appendix M.24.3). The gate is therefore
@@ -726,7 +726,7 @@ under the **pooled relative deviation** (Appendix F.7, M.37).
 on a **common level count** with each ladder's extreme level removed, it is preserved at Spearman
 **0.999 / 0.981 / 0.991** over 24 (knob × domain) units, and at **0.983 / 0.987 / 0.983** on a **fully
 recomputable** unit set at the same level count (31 units; Appendix M.37). A unit bootstrap puts it at
-**0.943–0.996** (31 units) and **0.834–0.984** (36 units, k=3), and **clustering by knob gives 0.913–0.994** (cluster-level; recomputed from the released package, Appendix F.7);
+**0.943–0.996** (31 units) and **0.834–0.984** (36 units, k=3), and **clustering by knob gives 0.913–0.994** (recomputed from the released package, Appendix F.7);
 a label-permutation test gives $p<5\times10^{-5}$; leaving out any single knob (**36** units) keeps it at **0.883–0.970**; per-unit spans with caliber
 intervals are plotted in **Fig. F.17** (Appendix F.12). It is also **exactly** preserved under shared
 affine calibration (Proposition 5: `span ↦ s·span`) and under no calibration — the M.37 held-out third gives

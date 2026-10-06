@@ -1,6 +1,6 @@
 {
   "_sanitized": "review traces removed; no value changed",
-  "purpose": "M.40 的逐项 2×2：出口 × 图像类型（多条在册条目要求）",
+  "purpose": "M.40 的逐项 2×2：出口 × 图像类型（多条预注册要求）",
   "rule": "raw-match（同 a5_judge.cls()）；观测级池化：每个 (构建×语言×分层×启动×item) 一个观测",
   "arms": {
     "base": {

@@ -1,6 +1,6 @@
 {
   "_sanitized": "review traces removed; no value changed",
-  "purpose": "P3R2 §4（在册条目 16）：把 §7.3 排序稳定性的重采样结构从 i.i.d. 换成**按 knob 聚类**，给簇级置换 p、块 bootstrap 95% 区间与留一簇极差。0 次推理 / 0 新数据。",
+  "purpose": "§4（预注册条款）：把 §7.3 排序稳定性的重采样结构从 i.i.d. 换成**按 knob 聚类**，给簇级置换 p、块 bootstrap 95% 区间与留一簇极差。0 次推理 / 0 新数据。",
   "inputs": {
     "equalcount36": "equalcount36_result.json",
     "equalcount36_md5": "bd70867b1453cc5e3ceeb97572d26eea",

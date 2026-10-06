@@ -4,7 +4,7 @@
   "frozen_at": "2026-09-28",
   "frozen_by": "P3 owner (author side)",
   "status": "DRAFT — 等用户过目后再上机；权重下载与来源指纹已固化，见 artifact_frozen",
-  "why_this_file": "在册条目要求把英文臂放到**语料基线同一个构建**上重跑。§M.19.16 / `g2_neutral0.py` 的 deviation_declared 逐字承认：语料基线用的是 Qwen3-VL-32B-**AWQ-4bit**，而当年本机没有该权重，英文臂跑在 **BF16** 上，因此**绝对率不可与语料池直接比**。本轮补上这一格。判据同样必须先冻结。",
+  "why_this_file": "预注册要求把英文臂放到**语料基线同一个构建**上重跑。§M.19.16 / `g2_neutral0.py` 的 deviation_declared 逐字承认：语料基线用的是 Qwen3-VL-32B-**AWQ-4bit**，而当年本机没有该权重，英文臂跑在 **BF16** 上，因此**绝对率不可与语料池直接比**。本轮补上这一格。判据同样必须先冻结。",
   "question": "在**与语料基线同一个 4-bit 构建**上重跑五个臂（cn-base / cn-neutral0 / en-base / en-neutral0 / en-neutral0em）于四个头条域：① 语言对答零率的**绝对**效应是多少（带 95% 区间）；② 它是否与 BF16 上读到的方向一致；③ §M.19.16 报的『$S$ 离开单位区间』在 4-bit 构建上是否同样出现。",
   "artifact_frozen": {
     "repo": "cyankiwi/Qwen3-VL-32B-Instruct-AWQ-4bit (HuggingFace, public, gated=false)",

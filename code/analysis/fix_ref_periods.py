@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """fix_ref_periods.py — strip the duplicated sentence period after DOIs/URLs in the references.
 
-Charge (在册条目 23, CONFIRMED): references 1, 2, 14, 18, 19, 31-33, 35-37, 41, 42, 45, 46 end with
+Charge (CONFIRMED): references 1, 2, 14, 18, 19, 31-33, 35-37, 41, 42, 45, 46 end with
 ".." because the DOI string already carries the reference-terminating period.  15 entries.
 
 This script asserts that exactly those 15 lines match, so it cannot silently rewrite something else.

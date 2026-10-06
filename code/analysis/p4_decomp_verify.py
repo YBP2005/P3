@@ -30,9 +30,41 @@ except ImportError:                      # 只拷走单个脚本时：就地反�
 import io, os, re, sys, csv, hashlib
 import numpy as np
 sys.stdout.reconfigure(encoding='utf-8')
-PM = RP('analysis', 'data', 'pod_mirror')
 REC = NR('PaperB_命题4-6验证记录_20260919.md')
 NAME = re.compile(r'^(vlm|aer|ext)_(.+?)_(base|over|under)(?:_(whole|tile\d+))?\.csv$')
+
+# ★ 2026-10-06（v0653）：**语料根的取数**。
+#   作者树上 `analysis/data/pod_mirror` 是一棵完整镜像；放行树把它的子目录**平铺**在
+#   `data/derived/<子目录>` 下，而 `data/derived/pA` 只是其中 **20 件**受控网格输入
+#   （`b2__out_*_blurct` / `*_occlct` / `ivl_blurct`），**不含**任何 `vlm_/aer_/ext_` 结果。
+#   旧写法只解析**单一根** `RP('analysis','data','pod_mirror')` ⇒ 放行树上命中 0 份
+#   （`pA` 下没有匹配 `NAME` 的文件），并且 §5.11(a) 的复现段会直接 `FileNotFoundError`。
+#   现在改为**按子目录逐个解析**（每条都走 `_repro_root` 的前缀映射表，放行树上落到同名
+#   `data/derived/<子目录>`），缺目录**报出并跳过**，不再静默命中 0、也不再让整支脚本崩。
+PM_SUBDIRS = (
+    'dense_results', 'aerial_results', 'ext_results', 'e8b_results', 'e8b_aerial',
+    'q25_dense_results', 'q25_aerial_results', 'ivl_dense_results', 'ivl_aerial_results',
+    'ivl_ext_results', 'tile_results', 'aerial_tile_results', 'ivl_aerial_tile_results',
+    'b2__out_32b_ctile', 'b2__out_8b_ctile',
+)
+
+
+def pm_roots():
+    """语料的每个子根（作者树：`pod_mirror/<子目录>`；放行树：`data/derived/<子目录>`）。
+
+    这 15 个子目录是**实测的匹配全集**：`NAME` 正则在全 `pod_mirror` 上命中 **139** 份，
+    139 份**全部**落在这 15 个子目录里（其余 63 个子目录命中 0）。故逐子目录解析与
+    「走整棵镜像」**逐份等价**，印值不变。
+    ★ 根列表**按路径排序**：旧写法 `os.walk(整棵镜像)` 在 NTFS 上按目录名字典序下降，排序后
+    逐子目录走**与旧写法同序** ⇒ 连「同一配置两份副本」在表里的先后也逐字不变。"""
+    roots = []
+    for d in PM_SUBDIRS:
+        p = RP('analysis', 'data', 'pod_mirror', d)
+        if os.path.isdir(p):
+            roots.append(p)
+        else:
+            print('  ⚠ 缺语料子目录（跳过）：%s' % p)
+    return sorted(roots)
 
 
 def model_of(d):
@@ -132,23 +164,28 @@ def unit_stats(path):
 
 # ---------- 扫描与计算 ----------
 units = {}
-for root, dirs, files in os.walk(PM):
-    for fn in files:
-        m = NAME.match(fn)
-        if not m:
-            continue
-        key = (model_of(os.path.basename(root)), m.group(2), m.group(3), m.group(4) or 'whole')
-        units.setdefault(key, []).append(os.path.join(root, fn))
+for _pm in pm_roots():
+    for root, dirs, files in os.walk(_pm):
+        for fn in files:
+            m = NAME.match(fn)
+            if not m:
+                continue
+            key = (model_of(os.path.basename(root)), m.group(2), m.group(3), m.group(4) or 'whole')
+            # 相对路径仍按「子目录/文件名」记（与旧写法 os.path.relpath(p, pod_mirror) 逐字相同）
+            units.setdefault(key, []).append(
+                (os.path.join(os.path.basename(_pm),
+                              os.path.relpath(os.path.join(root, fn), _pm)),
+                 os.path.join(root, fn)))
 
 recs = []
 for key in sorted(units):
-    for p in units[key]:
+    for _rel, p in units[key]:
         try:
             s = unit_stats(p)
         except Exception as e:
             s = None
         if s:
-            recs.append((key, os.path.relpath(p, PM), s))
+            recs.append((key, _rel, s))
 
 appl = [(k, r, s) for k, r, s in recs if s['applicable']]
 inappl = [(k, r, s) for k, r, s in recs if not s['applicable']]
@@ -317,13 +354,21 @@ else:
 
 # ---------- 补充：命题 4 对 §5.11(a) 已报双口径差的独立预测 ----------
 import csv as _csv
-TGT = [('ShanghaiTech-A', r'dense_results\vlm_st_a_base_whole.csv', 61.3),
-       ('UCF-QNRF',       r'dense_results\vlm_ucf_base_whole.csv', 57.5),
-       ('AI-TOD',         r'aerial_results\aer_aitod_base.csv',    40.6),
-       ('VisDrone',       r'aerial_results\aer_visdrone_base.csv', 40.6)]
+# ★ 2026-10-06（v0653）：路径写成**分段元组**（不再用 `\` 拼一个整串）—— 前缀映射表按 `/`
+#   分段匹配，整串里的反斜杠会让 `pod_mirror/dense_results` 那条映射**命中不了**，于是旧写法
+#   在放行树上又落回不存在的 `pA/dense_results\...`。缺件改为**报出并跳过**（旧写法无保护，
+#   整个脚本当场 `FileNotFoundError`，连前面的终端报告都看不到）。
+TGT = [('ShanghaiTech-A', ('dense_results', 'vlm_st_a_base_whole.csv'), 61.3),
+       ('UCF-QNRF',       ('dense_results', 'vlm_ucf_base_whole.csv'), 57.5),
+       ('AI-TOD',         ('aerial_results', 'aer_aitod_base.csv'),    40.6),
+       ('VisDrone',       ('aerial_results', 'aer_visdrone_base.csv'), 40.6)]
 gaps = []
 for _n, _rel, _doc in TGT:
-    _s = unit_stats(os.path.join(RP('analysis', 'data', 'pod_mirror'), _rel))
+    _p = RP('analysis', 'data', 'pod_mirror', *_rel)
+    if not os.path.exists(_p):
+        print('  ⚠ 缺 §5.11(a) 复现输入（跳过）：%s' % _p)
+        continue
+    _s = unit_stats(_p)
     if not _s or not _s.get('applicable'):
         continue
     _pred = -(1 - _s['w']) * (1 + _s['rho_a'])

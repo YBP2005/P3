@@ -69,6 +69,56 @@ _ALIAS = (
     ('analysis/A_res_20260928', 'data/derived/A_res_20260928'),
     ('analysis/B_res_20260928', 'data/derived/B_res_20260928'),
     ('analysis/h20_rescue_20260922/extract', 'data/derived/e2_pools'),
+    # ★ 2026-10-06（v0653）：`pod_mirror` 是**整棵语料镜像**，而放行树把它**按子目录平铺**到
+    #   `data/derived/<子目录>`；旧表只有最后那一条 `pod_mirror -> data/derived/pA`，而 `pA`
+    #   只是 20 件受控网格输入（`b2__out_*_blurct` / `*_occlct` / `ivl_blurct`），**不含**任何
+    #   `vlm_/aer_/ext_` 结果。于是 `resolve('analysis','data','pod_mirror','dense_results', ...)`
+    #   落到一条**不存在**的 `data/derived/pA/dense_results/...`。
+    #   实测后果（两家盲审各自独立报到）：`p4_decomp_verify.py` 在放行树上 `os.walk` 命中 **0** 份，
+    #   并在 §5.11(a) 复现段 `FileNotFoundError` ⇒ 附录 J.1 的「136 / 131」在包内**不可复算**。
+    #   下表每条都按 `sync_repro.py` 的落点实测：作者树子目录与放行树同名子目录**逐文件比对**，
+    #   作者侧文件**全部**都在放行侧（覆盖率 100%）。映射按段数从长到短匹配 ⇒ 这些更长前缀先命中；
+    #   `pA` 那 5 个子目录**不在**下表里，仍由最后那条兜底映射接住，行为一字不变。
+    ('analysis/data/pod_mirror/abstain_results', 'data/derived/abstain_results'),
+    ('analysis/data/pod_mirror/aerial_results', 'data/derived/aerial_results'),
+    ('analysis/data/pod_mirror/aerial_tile_results', 'data/derived/aerial_tile_results'),
+    ('analysis/data/pod_mirror/b2__out_32b_ctile', 'data/derived/b2__out_32b_ctile'),
+    ('analysis/data/pod_mirror/b2__out_8b_ctile', 'data/derived/b2__out_8b_ctile'),
+    ('analysis/data/pod_mirror/decouple_results', 'data/derived/decouple_results'),
+    ('analysis/data/pod_mirror/dense_prompt_results', 'data/derived/dense_prompt_results'),
+    ('analysis/data/pod_mirror/dense_results', 'data/derived/dense_results'),
+    ('analysis/data/pod_mirror/dose_results', 'data/derived/dose_results'),
+    ('analysis/data/pod_mirror/dose_tile_results', 'data/derived/dose_tile_results'),
+    ('analysis/data/pod_mirror/e4_results', 'data/derived/e4_results'),
+    ('analysis/data/pod_mirror/e8b_aerial', 'data/derived/e8b_aerial'),
+    ('analysis/data/pod_mirror/e8b_results', 'data/derived/e8b_results'),
+    ('analysis/data/pod_mirror/ext_results', 'data/derived/ext_results'),
+    ('analysis/data/pod_mirror/ivl_abstain_results', 'data/derived/ivl_abstain_results'),
+    ('analysis/data/pod_mirror/ivl_aerial_results', 'data/derived/ivl_aerial_results'),
+    ('analysis/data/pod_mirror/ivl_aerial_tile_results', 'data/derived/ivl_aerial_tile_results'),
+    ('analysis/data/pod_mirror/ivl_dense_prompt_results', 'data/derived/ivl_dense_prompt_results'),
+    ('analysis/data/pod_mirror/ivl_dense_results', 'data/derived/ivl_dense_results'),
+    ('analysis/data/pod_mirror/ivl_dose_results', 'data/derived/ivl_dose_results'),
+    ('analysis/data/pod_mirror/ivl_dose_tile_results', 'data/derived/ivl_dose_tile_results'),
+    ('analysis/data/pod_mirror/ivl_e4_results', 'data/derived/ivl_e4_results'),
+    ('analysis/data/pod_mirror/ivl_ext_results', 'data/derived/ivl_ext_results'),
+    ('analysis/data/pod_mirror/ivl_occl_results', 'data/derived/ivl_occl_results'),
+    ('analysis/data/pod_mirror/ivl_person_results', 'data/derived/ivl_person_results'),
+    ('analysis/data/pod_mirror/ivl_ref_results', 'data/derived/ivl_ref_results'),
+    ('analysis/data/pod_mirror/ivl_selfconsist_results', 'data/derived/ivl_selfconsist_results'),
+    ('analysis/data/pod_mirror/legigap_results', 'data/derived/legigap_results'),
+    ('analysis/data/pod_mirror/occl_results', 'data/derived/occl_results'),
+    ('analysis/data/pod_mirror/occl_results_8b', 'data/derived/occl_results_8b'),
+    ('analysis/data/pod_mirror/person_results', 'data/derived/person_results'),
+    ('analysis/data/pod_mirror/q25_aerial_results', 'data/derived/q25_aerial_results'),
+    ('analysis/data/pod_mirror/q25_dense_results', 'data/derived/q25_dense_results'),
+    ('analysis/data/pod_mirror/res_ctrl__ivl', 'data/derived/res_ctrl__ivl'),
+    ('analysis/data/pod_mirror/res_ctrl__q32', 'data/derived/res_ctrl__q32'),
+    ('analysis/data/pod_mirror/selfconsist_results', 'data/derived/selfconsist_results'),
+    ('analysis/data/pod_mirror/selfconsist_results_8b', 'data/derived/selfconsist_results_8b'),
+    ('analysis/data/pod_mirror/t2_results', 'data/derived/t2_results'),
+    ('analysis/data/pod_mirror/t2_results_32b', 'data/derived/t2_results_32b'),
+    ('analysis/data/pod_mirror/tile_results', 'data/derived/tile_results'),
     ('analysis/data/pod_mirror', 'data/derived/pA'),
     ('analysis/figures', 'figures'),
     ('analysis/g2_neutral0', 'data/derived/g2_neutral0'),

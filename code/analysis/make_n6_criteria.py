@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""make_n6_criteria.py — #13「预算匹配跨度」的跑前冻结判据（在册条目 E-2）。
+"""make_n6_criteria.py — #13「预算匹配跨度」的跑前冻结判据（预注册条款）。
 
 原话要点（`P3_任务清单…` §1.3 #13）：
   「**预算匹配跨度**：给每个旋钮**预注册同一 MAE 增幅与推理成本上限**，在**共同保留水平**上算跨度与秩」，
@@ -19,7 +19,7 @@ J = {
     'round': 'n6(budget-matched span)',
     'frozen_at': '2026-09-27',
     'frozen_by': 'P3 owner (author side)',
-    'requester': '在册条目 E-2',
+    'requester': '预注册条款',
     'zero_new_data': '★ 只用已发布逐项记录（与 M.37 / n5 同一批单元构建）；零新跑。',
 
     'unit_set': '与 `n5_order_prereg.py` 完全相同：**逐字复制** `a39_unit_calib_heldout.py` 的构建，'

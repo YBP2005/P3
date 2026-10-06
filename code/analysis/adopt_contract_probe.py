@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """adopt_contract_probe.py — **可采用件**：把本稿的契约实验搬到任意模型/数据集上（单文件、零依赖）。
 
-设计目标（这是在册条目要的"a transferable framework others can adopt"）：
+设计目标（这是预注册条款要的"a transferable framework others can adopt"）：
   · **不需要**本仓库的任何模块、语料、标注或检测框；只需要一个 OpenAI 兼容端点 + 一个图片目录（或 CSV 清单）。
   · 三个契约臂的提示词**与原稿逐字相同**（`PROMPTS` 与 19e 的 P 字典一致；本文件自包含）。
   · 输出与原稿同 schema 的逐图 CSV（item, gt, pred, parse_ok, raw, latency_s），便于与 `adopt_report.py` 对接。

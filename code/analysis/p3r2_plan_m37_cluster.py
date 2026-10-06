@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""p3r2_plan_m37_cluster.py — P3R2 上一轮§4（在册条目 16）：31/36 单元的**按 knob 聚类**置换检验与块 bootstrap。
+"""p3r2_plan_m37_cluster.py — 本轮§4（预注册条款）：31/36 单元的**按 knob 聚类**置换检验与块 bootstrap。
 
 ## 要回答的问题（方案 §4.1）
 §7.3 印的排序稳定性 "a label-permutation test gives p<5e-5; leaving out any single knob keeps it
@@ -387,10 +387,10 @@ def holm(pvals):
 # ══════════════════════════════════════════════════════════════════════════════
 def write_criteria():
     crit = {
-        "round": "P3R2 / class-3 / §4 (外部核查 #16)",
+        "scope": "§4 的预注册设计决定（簇级重采样/置换口径）",
         "frozen_at": "2026-09-29T00:00:00+08:00",
-        "frozen_by": "P3R2 施工代理（依 `_p3r2_experiment_plan.md` §4.2 逐条落成）",
-        "why_this_file": "外部核查 #16 指控 31 单元嵌套在 6 个 knob x 4 个域里，自由标签置换会反保守；"
+        "frozen_by": "设计冻结（依本轮实验方案 §4.2 逐条落成）",
+        "why_this_file": "一条预注册条款指出 31 单元嵌套在 6 个 knob x 4 个域里，自由标签置换会反保守；"
                          "现文只补了 leave-one-knob-out，其下沿 0.883 < 0.9。本件把簇级口径**跑前**写死。",
         "question": "§7.3 的排序稳定性在**按 knob（或 knob x 域/构建）聚类**的重采样/置换下，下沿还 >= 0.80 吗？",
         "what_already_exists": {

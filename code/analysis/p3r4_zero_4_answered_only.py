@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-"""p3r4_zero_4_answered_only.py —— P3 上一轮④：在册条目（本轮）#23 的 **X1**
+"""p3r4_zero_4_answered_only.py —— P3 上一轮④：预注册条款的 **X1**
 （answered-only 口径重算 + GT 量级回归残差排序）。
 
-## 来源与授权（在册条目（本轮）#23 逐字）
+## 来源与授权（预注册条款逐字）
 > **③ "契约旋钮的大跨度"可能主要是弃权质量 w 的跨度，而非方向调控的跨度。**
 > **检验方法**：在 **answered-only 约定**下重算全套 36 单元的 span 与排序（数据已在包内，纯 ANALYSIS）。
 > 若 VLM 单元跨度显著收缩而检测器单元不变、顶部旋钮改变，则必须把排序主张降为
@@ -13,7 +13,7 @@
 > **顶部旋钮不变** ⇒ 排序不是弃权质量的副产物；(ii) 对 β∈{0,0.25,0.5,1} 的 `span/GT^β` 排序，
 > 顶部旋钮在全部 β 上不变 ⇒ 排序不是 GT 量级的副产物。
 
-在册条目自陈并**由协调方一手确认**：§M.37 只做了 GT-**形状**匹配（0.983）、绝对匹配被作者自判
+原意见自陈并**由协调方一手确认**：§M.37 只做了 GT-**形状**匹配（0.983）、绝对匹配被作者自判
 不可构造（公共剖面仅 9 项 < 20 项资格线）⇒ **answered-only 重算 + GT 量级残差排序 包内确实没做过**。
 
 ## 铁律合规
@@ -381,7 +381,7 @@ def main():
                            verdict='PASS' if (pa >= 0.85 and same) else 'FAIL')
         print('   %-26s Spearman = %.4f（>=0.85 ? %s）｜ 顶部旋钮不变 ? %s ⇒ %s'
               % (tag, pa, pa >= 0.85, same, '通过' if (pa >= 0.85 and same) else '未通过'))
-    # 契约族 vs 检测器族：在册条目原话是"若 VLM 单元跨度显著收缩而检测器单元不变"
+    # 契约族 vs 检测器族：预注册条款原话是"若 VLM 单元跨度显著收缩而检测器单元不变"
     con = [r for r in rows if r['knob'] in ('output_contract', 'prompt_family', 'tiling')]
     det = [r for r in rows if r['knob'] == 'detection_threshold']
     print('   契约族（output_contract + prompt_family + tiling，n=%d）比值中位 %.3f'

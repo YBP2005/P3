@@ -3,8 +3,8 @@
   "round": "g2",
   "frozen_at": "2026-09-26",
   "frozen_by": "P3 owner (author side)",
-  "why_this_file": "★ 先冻结、后跑。在册条目本轮反复说的是『设计前提缺失 / 判据事后自订』（在册条目 A5-1、在册条目 E-2）。所以本件在**任何一次调用之前**写定：问句、域与 item 集、臂、提示词逐字、模型、以及**判据与阈值**。跑完只读不改；若本件 md5 变了，该轮结果作废。",
-  "question": "★ 在册条目原话（在册条目 A5-1）：「头条格语言×措辞收口：ST-A/UCF/VisDrone/AI-TOD × {英文 base、英文 neutral0、中文 base} × 3 起点 × 300 项 ≈ 1.1 万调用；判据：$S$ 是否保持为份额及区间」。",
+  "why_this_file": "★ 先冻结、后跑。预注册条款反复说的是『设计前提缺失 / 判据事后自订』（两条预注册条款）。所以本件在**任何一次调用之前**写定：问句、域与 item 集、臂、提示词逐字、模型、以及**判据与阈值**。跑完只读不改；若本件 md5 变了，该轮结果作废。",
+  "question": "★ 预注册条款原话：「头条格语言×措辞收口：ST-A/UCF/VisDrone/AI-TOD × {英文 base、英文 neutral0、中文 base} × 3 起点 × 300 项 ≈ 1.1 万调用；判据：$S$ 是否保持为份额及区间」。",
   "what_already_exists": {
     "cn_base": "语料池本身（/root/dense_results/vlm_<ds>_base_whole.csv）即是中文 base 的记录",
     "en_base": "M.39 的英文 base 臂（/root/ec3_en/<ds>_base_en.csv），已跑、已写入补充材料",
@@ -48,12 +48,12 @@
   },
   "criteria_fixed_in_advance": {
     "C1_share_remains_a_share": {
-      "statement": "在册条目原话的判据：$S$ 是否**保持为份额**。",
+      "statement": "预注册条款原话的判据：$S$ 是否**保持为份额**。",
       "rule": "在每个 (域 × 臂) 格上计算 $S=(G-G_N)/(G-P)$（等价于命题 4 的闭式）。**S 有定义当且仅当 ρ_total<0**；把 ρ_total ≥ 0 的格**显式记为 undefined 而不是 0**。",
       "pass": "四个域 × 五个臂全部要么在 [0,1] 内、要么被显式记为 undefined（即**不得出现越界值**）"
     },
     "C2_interval": {
-      "statement": "在册条目原话的『及区间』。",
+      "statement": "预注册条款原话的『及区间』。",
       "rule": "答零率给 Wilson 95% 区间；$S$ 给 **2,000 次 item 级 bootstrap** 的 95% 区间（与 census 同一协议）。",
       "pass": "每个非 undefined 的格都给出两类区间"
     },

@@ -1,6 +1,6 @@
 {
   "_sanitized": "review traces removed; no value changed",
-  "purpose": "M.18.8 两因素方差分解的 item 级 bootstrap 区间（多条在册条目",
+  "purpose": "M.18.8 两因素方差分解的 item 级 bootstrap 区间（多条预注册条款",
   "design": "5 构建 × 4 域平衡设计；因变量 = 公共 item 子集上的答 0 率；bootstrap = 域内 item 重采样 2000 次（同一域内 5 个构建共用同一下标，保持配对）",
   "common_items": {
     "st_a": 103,

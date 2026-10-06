@@ -3,7 +3,7 @@
 """span_caliber_reconcile.py — reconcile the three unit sets whose spans for the same knob differ by
 3-10x in this paper.
 
-Charge (在册条目 9, CONFIRMED): the same knob's span reads **26.8-53.7 pp** in §F.2, **85.9 / 97.7** in
+Charge (CONFIRMED): the same knob's span reads **26.8-53.7 pp** in §F.2, **85.9 / 97.7** in
 §F.9 and **160.7 / 259.4** in §M.37's unit table -- a 3-10x difference with no sentence in the main text
 converting between them, so a reader cannot tell whether the paper contradicts itself.
 

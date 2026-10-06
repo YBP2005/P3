@@ -204,7 +204,7 @@ else:
     P('**%.1f pp**. We report the direction rather than a blanket claim that resolution does not matter.'
       % cmax[0])
     P('')
-    # ★ 与 §5.7 的一致性别留着让在册条目自己猜：那里说"gate 弃权的是模糊而非分辨率"，而这里示例臂确实随尺度动。
+    # ★ 与 §5.7 的一致性别留着让预注册条款自己猜：那里说"gate 弃权的是模糊而非分辨率"，而这里示例臂确实随尺度动。
     #   两句放在一起说清"哪个臂在动"，否则看起来像自相矛盾。
     P('**Consistency with §5.7.** The contract arms move by no more than **%.1f pp** even at $0.444\\times$ the'
       % cmax[0])

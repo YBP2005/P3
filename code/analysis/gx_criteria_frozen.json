@@ -4,7 +4,7 @@
   "frozen_at": "2026-09-27",
   "frozen_by": "P3 owner (author side)",
   "G8b": {
-    "why": "在册条目 X2 的判据是\"**英文四格** $S$ 是否都落 $[0,1]$ 且 ≥70%\"。上一批只把 UCF 那一格做成了本机 BF16，另外三格仍是**另一台机器的 AWQ**。本件把三格在**同一构建（本机 BF16）**上补齐 ⇒ 四格首次同构建可比。",
+    "why": "预注册条款的判据是\"**英文四格** $S$ 是否都落 $[0,1]$ 且 ≥70%\"。上一批只把 UCF 那一格做成了本机 BF16，另外三格仍是**另一台机器的 AWQ**。本件把三格在**同一构建（本机 BF16）**上补齐 ⇒ 四格首次同构建可比。",
     "domains": {
       "st_a": "/root/dense_results/vlm_st_a_base_whole.csv（182 项）",
       "visdrone": "/root/dense_results/vlm_visdrone_base_whole.csv（400 项）",
@@ -23,7 +23,7 @@
     "declared": "G8 那批的 UCF 格与本批三格**同构建同会话口径**，可并表；与已发表 AWQ 四格**不并表**。"
   },
   "placebo": {
-    "why": "在册条目 E-4 要的\"placebo anchors（5/50/100/800）的 anchor-compliance 表\"。§M.19.13 只在 675 张确定性圆点网格上做过；本件把它搬到**真实图像**上。",
+    "why": "预注册条款要的\"placebo anchors（5/50/100/800）的 anchor-compliance 表\"。§M.19.13 只在 675 张确定性圆点网格上做过；本件把它搬到**真实图像**上。",
     "arms": [
       "p5",
       "p50",
@@ -69,7 +69,7 @@
       "active": "≥ 0.80 且该位置余弦 ≥ 0.90 ⇒ 主动拒答",
       "between": "0.50–0.80 ⇒ 未判定，不做任何一侧的声称"
     },
-    "threshold_is_ours": "三个比值阈值（0.50 / 0.80 / 0.90）是**作者事先定下的**，在册条目未给。"
+    "threshold_is_ours": "三个比值阈值（0.50 / 0.80 / 0.90）是**作者事先定下的**，预注册条款未给。"
   },
   "shared": {
     "model_stack": "vLLM 0.29.0；一卡一模型；temperature 0、max_tokens 128；一请求一图；Qwen 系带 `max_pixels=1048576, min_pixels=3136`（与本稿语料同一套），InternVL 不带（其 image processor 不接受该参数）。★ 基础设施：`PATH` 需含 conda bin（ninja），且 `VLLM_USE_FLASHINFER_SAMPLER=0`（本镜像无 g++，FlashInfer JIT 必失败；temperature 0 下取值不变）。",

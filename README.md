@@ -263,6 +263,10 @@ password, a host or a key.
 | `code/experiments/h20_e2_scripts/pull_from_m.py` | 2 | `66035318C592519DDE8A723110EF4219` | `DEF4CA724FE6A2B9330FC96FA35BC02C` |
 | `code/experiments/newh20.py` | 4 | `9E58DDF5047D794C946B5167C7D8777F` | `719B88C7FD32645DB5D41616CA6951E7` |
 | `code/experiments/newh20_sync.py` | 2 | `AFA1D7342B71C5CC2626B0A27B5B2002` | `3767DF2EB12ED504FB50B60013D0DFE5` |
+| `data/derived/a52_ext/A800_A5-2_扩构建_实测报告_20261006.md` | 2 | `77D163EFDF189FDAA2D90D8432D429E1` | `13E87462503E852B7E13358477071037` |
+| `data/derived/a52_ext/A800_A5-2_最终报告_b1全量+b3定案_20261006.md` | 2 | `EE2B3A1D0D0672DE87A5EE23BB0196A6` | `5B642108D898DA09D8F7AB4DD4A06DD5` |
+| `data/derived/a5_2_a800/env/_a52_criteria_frozen.json` | 2 | `758962A2643E1035698682ABEFEC5748` | `25972A82EEDE02EAEC59C4E53B9337BF` |
+| `data/derived/a5_2_a800/env/_a52_运行单.md` | 4 | `708A0BDD7C9BFF33E1A2133BEB5F4D0C` | `2ADF3B07C164BA9D0EEFBD8C3A4682EA` |
 | `env/a800_logs_20260927/A800交接说明_给P3_20260926.md` | 1 | `4E58B4AB9CB3E86647C08BBB806AA3AA` | `7AE554772095669FBE556F79F5601F89` |
 | `env/a800_logs_20260927/A800交接说明_给P3_20260927.md` | 1 | `9F3DBEBDD82B13B3AC4BC6960B3D9664` | `F50892F0674467E4007E3044D325752B` |
 | `env/a800_logs_20260927/RUNNING.md` | 1 | `AB904CC2C17FD4FE042ED97CBBB864ED` | `3E7519B9FB9DF0739453ED9561333812` |
@@ -278,10 +282,11 @@ package root). The first two are about *paths*, the last two about the *sanitise
    scripts added to the released set since. Each imports `code/analysis/_repro_root.py`:
    `grep -rl "from _repro_root import" code | wc -l` → **157**.
 2. **0** of those scripts carries an author-machine path, and no script's *data* path is absolute:
-   `grep -rEl "(^|[^A-Za-z0-9])[A-Za-z]:[\\\\/]" code --include='*.py' --include='*.sh'` → **2** files, and
+   `grep -rEl "(^|[^A-Za-z0-9])[A-Za-z]:[\\\\/]" code --include='*.py' --include='*.sh'` → **3** files, and
    neither is a data path: `_repro_root.py` itself (its single env-overridable `PAPERB_SHARED` default) and
    `w0_frame.py`, where the match is the fragment `e:\n` inside a quoted Python-code template
-   (`'except Exception as e:\n'`), not a path.
+   (`'except Exception as e:\n'`), and `derive_release_numbers.py`, which quotes that same fragment
+   in its substitution strings below — none of the three is a path.
    Widening the same scan to **every** text file in the package gives **21** files, still none of them a
    script's data path. They are frozen artefacts and run logs whose recorded strings hold the authors'
    prefix in backslash-escaped form (e.g. `A_result.json`, `ea2_z0_result.json`, `fsc_res_result.json`,
@@ -294,7 +299,7 @@ package root). The first two are about *paths*, the last two about the *sanitise
    scripts (**143** under `code/analysis/`, **3** under `code/experiments/`) plus **6** non-scripts. Those are
    the "146 / 152" figures in this package's earlier history; they counted *files with a placeholder*, not
    files with wrong numbers, and they are no longer the live count because the placeholder is gone.
-3. **32** files were rewritten by the sanitiser, in **64** substitutions (the table above). This set cannot be
+3. **34** files were rewritten by the sanitiser, in **68** substitutions (the table above). This set cannot be
    recomputed from this package alone — doing so needs the authors' pre-sanitisation sources, which are
    deliberately not released. What *is* checkable here is that the table agrees with the manifest: the
    `md5 in this package` column equals the `MANIFEST.csv` row for the same path (verified when this file was
@@ -304,10 +309,10 @@ package root). The first two are about *paths*, the last two about the *sanitise
    passwords. **v0610 changed none of these numbers**: it removed eight residue files instead (see
    *Write-back policy*), which took the package **at that revision** from **3,659** to **3,651** manifested
    files and left both the rewritten set and the substitution count untouched. **At this revision
-   `MANIFEST.csv` registers 4703 files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **3787**
+   `MANIFEST.csv` registers 4757 files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **3829**
    of them — both are re-derived by `code/analysis/derive_release_numbers.py`.
-4. **37** files merely *contain* one of the placeholder strings: `grep -rlE '<REDACTED-|<WORKDIR>|<SHARED-DIR>' . | wc -l`
-   → **37** (the sanitiser's own rewritten set is count 3 above; the remainder only quote a placeholder
+4. **39** files merely *contain* one of the placeholder strings: `grep -rlE '<REDACTED-|<WORKDIR>|<SHARED-DIR>' . | wc -l`
+   → **39** (the sanitiser's own rewritten set is count 3 above; the remainder only quote a placeholder
    string — this `README.md` does so on purpose).
    *Before v0608* the same count was **161** (160 + this file).
 
@@ -340,9 +345,9 @@ Worked examples, each re-checked against `MANIFEST.csv` when this file was gener
   change**, only the literals that located its inputs, so both numbers are stated rather than one of them
   being silently corrected.
 
-Of the **31** distinct 32-hex digests printed in the manuscript and the supplementary material, **26**
-equal the `MANIFEST.csv` md5 of a file this package ships, before or after v0608. The remaining **5** are
-not shipped-file digests: `0a42e6e5bbfa89543ba9fc1522f1b075`, `758962a2643e1035698682abefec5748`, `9c74db226c1b785361807ebc7e069771`, `aca4444c7f681b0596db4e4a84578b62`, `d95d7466b482f575dc781d152e5ddf23`.
+Of the **32** distinct 32-hex digests printed in the manuscript and the supplementary material, **26**
+equal the `MANIFEST.csv` md5 of a file this package ships, before or after v0608. The remaining **6** are
+not shipped-file digests: `0a42e6e5bbfa89543ba9fc1522f1b075`, `758962a2643e1035698682abefec5748`, `9c74db226c1b785361807ebc7e069771`, `aca4444c7f681b0596db4e4a84578b62`, `bf873c5e7da083dae42cb379efe9af9d`, `d95d7466b482f575dc781d152e5ddf23`.
 
 **The earlier accounting in this section is superseded.** A previous revision counted "39 md5-valued JSON
 fields, 28 matching a shipped file and 11 not", and listed the eleven unmatched ones. The serialisation of
@@ -357,11 +362,14 @@ sanitiser and the path refactor.
 
 ### What the sanitiser did **not** touch
 
-**Nothing under `data/` was altered.** Every one of the **3787** files under `data/` is byte-identical to
-the corresponding source file. Two independent checks say so: (i) a sanitiser substitution always leaves one
-of the six placeholder patterns above in the file, and a scan of all 3787 released data files finds **zero**
-placeholder patterns — hence zero substitutions anywhere under `data/`; (ii) a per-file `path / bytes / md5`
-manifest of `data/` taken before and after the release script ran is **unchanged**. In particular the 138
+**Almost nothing under `data/` was altered.** Of the **3829** files under `data/`, **4** are text files
+the sanitiser rewrote (they are the `data/` rows of the table above); every one of the remaining **3825** is
+byte-identical to the corresponding source file. Two independent checks say so: (i) a sanitiser substitution always leaves one
+of the six placeholder patterns above in the file, and a scan of all 3829 released data files finds **3**
+carrying one of them — the remaining rewritten data file carries a neutral internal-name placeholder
+instead of a host/path placeholder; (ii) a per-file `path / bytes / md5`
+manifest of `data/` taken before and after the release script ran differs **only in the rows the sanitiser
+rewrote** (the table above). In particular the 138
 A-round and B-round products added in this revision (`data/derived/A_res_20260928/` 71 files,
 `data/derived/B_res_20260928/` 67 files) are verified item by item against the `MD5SUMS_A.txt` /
 `MD5SUMS_B.txt` manifest shipped beside them — both in the source directory and again in this package.

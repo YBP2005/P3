@@ -1,0 +1,76 @@
+[2026-10-06_06:35:51] START Qwen/Qwen3-VL-32B-Instruct-FP8 rev=4bf2c2f39c37 -> /root/models/Qwen3-VL-32B-Instruct-FP8
+[2026-10-06_06:35:51] free before = root 65.15 GB / model 12472.25 GB
+Fetching 18 files:   0%|          | 0/18 [00:00<?, ?it/s][2026-10-06_06:36:11] WATCH free_root=64.76 GB free_model=12472.25 GB partial=24.48 GB
+[2026-10-06_06:36:31] WATCH free_root=64.24 GB free_model=12472.25 GB partial=25.00 GB
+[2026-10-06_06:36:51] WATCH free_root=63.77 GB free_model=12472.25 GB partial=25.46 GB
+[2026-10-06_06:37:11] WATCH free_root=63.33 GB free_model=12472.25 GB partial=25.90 GB
+[2026-10-06_06:37:31] WATCH free_root=62.92 GB free_model=12472.25 GB partial=26.31 GB
+[2026-10-06_06:37:51] WATCH free_root=62.56 GB free_model=12472.25 GB partial=26.68 GB
+[2026-10-06_06:38:11] WATCH free_root=62.07 GB free_model=12472.25 GB partial=27.17 GB
+[2026-10-06_06:38:31] WATCH free_root=61.58 GB free_model=12472.25 GB partial=27.65 GB
+[2026-10-06_06:38:51] WATCH free_root=61.11 GB free_model=12472.25 GB partial=28.12 GB
+[2026-10-06_06:39:11] WATCH free_root=60.63 GB free_model=12472.25 GB partial=28.61 GB
+[2026-10-06_06:39:31] WATCH free_root=60.15 GB free_model=12472.25 GB partial=29.09 GB
+[2026-10-06_06:39:51] WATCH free_root=59.65 GB free_model=12472.25 GB partial=29.58 GB
+[2026-10-06_06:40:11] WATCH free_root=59.22 GB free_model=12472.25 GB partial=30.01 GB
+[2026-10-06_06:40:31] WATCH free_root=58.73 GB free_model=12472.25 GB partial=30.50 GB
+[2026-10-06_06:40:51] WATCH free_root=58.26 GB free_model=12472.25 GB partial=30.98 GB
+[2026-10-06_06:41:11] WATCH free_root=57.82 GB free_model=12472.25 GB partial=31.42 GB
+[2026-10-06_06:41:31] WATCH free_root=57.44 GB free_model=12472.25 GB partial=31.79 GB
+[2026-10-06_06:41:51] WATCH free_root=57.04 GB free_model=12472.25 GB partial=32.19 GB
+[2026-10-06_06:42:11] WATCH free_root=56.58 GB free_model=12472.25 GB partial=32.65 GB
+[2026-10-06_06:42:31] WATCH free_root=56.09 GB free_model=12472.25 GB partial=33.15 GB
+[2026-10-06_06:42:51] WATCH free_root=55.70 GB free_model=12472.25 GB partial=33.54 GB
+[2026-10-06_06:43:11] WATCH free_root=55.29 GB free_model=12472.25 GB partial=33.94 GB
+[2026-10-06_06:43:31] WATCH free_root=54.81 GB free_model=12472.25 GB partial=34.43 GB
+[2026-10-06_06:43:51] WATCH free_root=54.34 GB free_model=12472.25 GB partial=34.90 GB
+[2026-10-06_06:44:11] WATCH free_root=53.91 GB free_model=12472.25 GB partial=35.33 GB
+[2026-10-06_06:44:31] WATCH free_root=53.41 GB free_model=12472.25 GB partial=35.82 GB
+[2026-10-06_06:44:51] WATCH free_root=52.93 GB free_model=12472.25 GB partial=36.30 GB
+[2026-10-06_06:45:11] WATCH free_root=52.47 GB free_model=12472.25 GB partial=36.76 GB
+[2026-10-06_06:45:31] WATCH free_root=51.99 GB free_model=12472.25 GB partial=37.25 GB
+[2026-10-06_06:45:52] WATCH free_root=51.51 GB free_model=12472.25 GB partial=37.73 GB
+[2026-10-06_06:46:12] WATCH free_root=51.03 GB free_model=12472.25 GB partial=38.20 GB
+[2026-10-06_06:46:32] WATCH free_root=50.54 GB free_model=12472.25 GB partial=38.69 GB
+[2026-10-06_06:46:52] WATCH free_root=50.08 GB free_model=12472.25 GB partial=39.16 GB
+[2026-10-06_06:47:12] WATCH free_root=49.65 GB free_model=12472.25 GB partial=39.59 GB
+[2026-10-06_06:47:32] WATCH free_root=49.14 GB free_model=12472.25 GB partial=40.10 GB
+[2026-10-06_06:47:52] WATCH free_root=48.74 GB free_model=12472.25 GB partial=40.50 GB
+[2026-10-06_06:48:12] WATCH free_root=48.27 GB free_model=12472.25 GB partial=40.97 GB
+[2026-10-06_06:48:32] WATCH free_root=47.76 GB free_model=12472.25 GB partial=41.47 GB
+[2026-10-06_06:48:52] WATCH free_root=47.31 GB free_model=12472.25 GB partial=41.92 GB
+[2026-10-06_06:49:12] WATCH free_root=46.82 GB free_model=12472.25 GB partial=42.42 GB
+[2026-10-06_06:49:32] WATCH free_root=46.44 GB free_model=12472.25 GB partial=42.79 GB
+[2026-10-06_06:49:52] WATCH free_root=46.22 GB free_model=12472.25 GB partial=43.01 GB
+[2026-10-06_06:50:12] WATCH free_root=45.80 GB free_model=12472.25 GB partial=43.43 GB
+[2026-10-06_06:50:32] WATCH free_root=45.28 GB free_model=12472.25 GB partial=43.96 GB
+[2026-10-06_06:50:52] WATCH free_root=44.78 GB free_model=12472.25 GB partial=44.45 GB
+[2026-10-06_06:51:12] WATCH free_root=44.34 GB free_model=12472.25 GB partial=44.89 GB
+[2026-10-06_06:51:32] WATCH free_root=43.87 GB free_model=12472.25 GB partial=45.36 GB
+[2026-10-06_06:51:52] WATCH free_root=43.45 GB free_model=12472.25 GB partial=45.79 GB
+[2026-10-06_06:52:12] WATCH free_root=43.04 GB free_model=12472.25 GB partial=46.19 GB
+[2026-10-06_06:52:32] WATCH free_root=42.55 GB free_model=12472.25 GB partial=46.68 GB
+[2026-10-06_06:52:52] WATCH free_root=42.06 GB free_model=12472.25 GB partial=47.18 GB
+[2026-10-06_06:53:12] WATCH free_root=41.59 GB free_model=12472.25 GB partial=47.65 GB
+[2026-10-06_06:53:32] WATCH free_root=41.15 GB free_model=12472.25 GB partial=48.09 GB
+[2026-10-06_06:53:52] WATCH free_root=40.64 GB free_model=12472.25 GB partial=48.59 GB
+Fetching 18 files:  72%|███████▏  | 13/18 [18:13<07:00, 84.14s/it][2026-10-06_06:54:12] WATCH free_root=40.15 GB free_model=12472.25 GB partial=49.09 GB
+[2026-10-06_06:54:32] WATCH free_root=39.75 GB free_model=12472.25 GB partial=49.48 GB
+[2026-10-06_06:54:52] WATCH free_root=39.28 GB free_model=12472.25 GB partial=49.96 GB
+Fetching 18 files:  78%|███████▊  | 14/18 [19:10<05:25, 81.39s/it][2026-10-06_06:55:12] WATCH free_root=38.80 GB free_model=12472.25 GB partial=50.44 GB
+[2026-10-06_06:55:32] WATCH free_root=38.47 GB free_model=12472.25 GB partial=50.76 GB
+[2026-10-06_06:55:52] WATCH free_root=38.13 GB free_model=12472.25 GB partial=51.11 GB
+[2026-10-06_06:56:12] WATCH free_root=37.69 GB free_model=12472.25 GB partial=51.55 GB
+[2026-10-06_06:56:32] WATCH free_root=37.30 GB free_model=12472.25 GB partial=51.94 GB
+Fetching 18 files:  83%|████████▎ | 15/18 [20:41<04:07, 82.58s/it][2026-10-06_06:56:52] WATCH free_root=37.04 GB free_model=12472.25 GB partial=52.20 GB
+[2026-10-06_06:57:12] WATCH free_root=36.80 GB free_model=12472.25 GB partial=52.44 GB
+[2026-10-06_06:57:32] WATCH free_root=36.56 GB free_model=12472.25 GB partial=52.68 GB
+[2026-10-06_06:57:52] WATCH free_root=36.32 GB free_model=12472.25 GB partial=52.92 GB
+[2026-10-06_06:58:12] WATCH free_root=36.08 GB free_model=12472.25 GB partial=53.16 GB
+[2026-10-06_06:58:32] WATCH free_root=35.84 GB free_model=12472.25 GB partial=53.39 GB
+Fetching 18 files:  89%|████████▉ | 16/18 [22:51<02:59, 89.80s/it][2026-10-06_06:58:52] WATCH free_root=35.60 GB free_model=12472.25 GB partial=53.64 GB
+[2026-10-06_06:59:12] WATCH free_root=35.36 GB free_model=12472.25 GB partial=53.88 GB
+[2026-10-06_06:59:32] WATCH free_root=35.12 GB free_model=12472.25 GB partial=54.11 GB
+Fetching 18 files:  94%|█████████▍| 17/18 [23:41<01:22, 82.78s/it]Fetching 18 files: 100%|██████████| 18/18 [23:49<00:00, 67.56s/it]Fetching 18 files: 100%|██████████| 18/18 [23:49<00:00, 79.40s/it]
+[2026-10-06_06:59:41] SNAPSHOT_OK /root/models/Qwen3-VL-32B-Instruct-FP8 elapsed=1429.2s (23.82 min) free_after=root 35.00 GB / model 12472.25 GB
+[2026-10-06_06:59:41] PAYLOAD_FILES=18 PAYLOAD_BYTES=35532290088 (35.532 GB)

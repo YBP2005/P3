@@ -1,0 +1,260 @@
+[2026-10-06_07:07:02] ===== A5-2 启动（单卡 GPU0；按构建分阶段：外层构建 × 内层合同×起服；648 图/格）=====
+[2026-10-06_07:07:02] 判据件 md5=758962a2643e1035698682abefec5748
+[2026-10-06_07:07:02] 探针 md5=2f9d53cd3098990aa29b69e4946de2b0
+[2026-10-06_07:07:02] 刺激 manifest md5=d2dde2a8100eca8eda88143f6cbb04ba
+== a52_probe 自检 ==
+  ① 提示词（由冻结人版机械派生，对象=圆形数量（画面中的每一个圆点））
+     base   md5 54f82556b1d1  len 65
+     strict md5 22d6f7619ebf  len 84
+     permit md5 9df112d214e5  len 106
+  ② 唯一差异 = 对象短语：三档前缀逐字相同 = True ｜ base 分隔符 '，' ｜ permit 分隔符 '。' ｜ strict 由 base 派生（插句 '只输出JSON，不要输出任何其他文字。'）
+  ③ 唯一性：三档各含 '圆形数量（画面中的每一个圆点）' 恰好 1 次、均不含人版短语 ✓
+  ④ 解析器行为用例 12/12 通过
+  ⑤ 弃答标记 12 个（abstain/cannot/无法/数不清…）✓
+  ⑥ 与 _a52_criteria_frozen.json 的三档提示词逐字一致 = True
+  自检结论：★ 通过（可逆/唯一/语法/判据一致）
+[2026-10-06_07:07:02]   探针自检通过（提示词可逆/解析器 12 条用例/判据一致）
+== a52_probe 自检 ==
+  ① 提示词（由冻结人版机械派生，对象=圆形数量（画面中的每一个圆点））
+     base   md5 54f82556b1d1  len 65
+     strict md5 22d6f7619ebf  len 84
+     permit md5 9df112d214e5  len 106
+  ② 唯一差异 = 对象短语：三档前缀逐字相同 = True ｜ base 分隔符 '，' ｜ permit 分隔符 '。' ｜ strict 由 base 派生（插句 '只输出JSON，不要输出任何其他文字。'）
+  ③ 唯一性：三档各含 '圆形数量（画面中的每一个圆点）' 恰好 1 次、均不含人版短语 ✓
+  ④ 解析器行为用例 12/12 通过
+  ⑤ 弃答标记 12 个（abstain/cannot/无法/数不清…）✓
+  ⑥ 与 _a52_criteria_frozen.json 的三档提示词逐字一致 = True
+  自检结论：★ 通过（可逆/唯一/语法/判据一致）
+[2026-10-06_07:07:02]   刺激：行/格/sha256齐/非空格 = 648 81 648 78（应 648 81 648 78）
+[2026-10-06_07:07:02] 构建集 = [b1]（1 个）｜合同 = [base strict permit]｜起服 = [1 2 3] ⇒ 格数 = 9；起服次数 = 3
+[2026-10-06_07:07:02] !! ★ 构建集 < 4：按判据件 amendments[0].note 的**收缩路径**运行 ⇒ 判决书与披露项**必须**写明缺哪个构建（缺 b1=FP8、b3=GPTQ）
+A52_BUILDS_SHRUNK builds=[b1] missing=b1(FP8),b3(GPTQ)
+[2026-10-06_07:07:02] ===== 构建 b1：srv='/root/a52_ext_serve_fp8.sh' port=8015 served=Qwen3-VL-32B-Instruct-FP8 model='/root/models/Qwen3-VL-32B-Instruct-FP8' =====
+[2026-10-06_07:07:02] ----- b1 起服 1 / 3 -----
+[2026-10-06_07:07:02]   gpu_clear：GPU0 = 0 MiB（阈值 2000）⇒ 可以起服
+[2026-10-06_07:07:02]   起服 b1：srv=/root/a52_ext_serve_fp8.sh（md5 7cadc6deb4cd524d7e2a410f64fa3721）port=8015 served=Qwen3-VL-32B-Instruct-FP8
+[2026-10-06_07:07:02]          model=/root/models/Qwen3-VL-32B-Instruct-FP8
+[2026-10-06_07:08:12]   起服就绪（等待 50s）｜ served=Qwen3-VL-32B-Instruct-FP8 ｜ GPU = 0, 71863 MiB 
+== a52_probe 自检 ==
+  ① 提示词（由冻结人版机械派生，对象=圆形数量（画面中的每一个圆点））
+     base   md5 54f82556b1d1  len 65
+     strict md5 22d6f7619ebf  len 84
+     permit md5 9df112d214e5  len 106
+  ② 唯一差异 = 对象短语：三档前缀逐字相同 = True ｜ base 分隔符 '，' ｜ permit 分隔符 '。' ｜ strict 由 base 派生（插句 '只输出JSON，不要输出任何其他文字。'）
+  ③ 唯一性：三档各含 '圆形数量（画面中的每一个圆点）' 恰好 1 次、均不含人版短语 ✓
+  ④ 解析器行为用例 12/12 通过
+  ⑤ 弃答标记 12 个（abstain/cannot/无法/数不清…）✓
+  ⑥ 与 _a52_criteria_frozen.json 的三档提示词逐字一致 = True
+  自检结论：★ 通过（可逆/唯一/语法/判据一致）
+[2026-10-06_07:08:12]   探针自检通过（b1/s1）
+[2026-10-06_07:08:12]   开跑 b1/base/s1（期望 648 行；port=8015）
+== A5-2 采集 ==
+  ⑥ 与 _a52_criteria_frozen.json 的三档提示词逐字一致 = True
+  自检结论：★ 通过（可逆/唯一/语法/判据一致）
+  探针自检 ✓ ｜ 冻结来源 /root/19e_probe_multi.py（md5 03edb14c98ff，仅记录）
+  build=b1 ｜ served-model=Qwen3-VL-32B-Instruct-FP8 ｜ contract=base ｜ start=1 ｜ workers=4
+  prompt md5 = 54f82556b1d13042b3320786241a95b9
+  manifest md5 d2dde2a8100e ｜ 648 行
+  本格 648 行 / 已完成 0 / 本次 648 ｜ out=/root/a52/res/A52_b1_base_s1.csv
+    200/648  1.98 it/s  parse_ok=200 http_err=0 abstain=0
+    400/648  1.94 it/s  parse_ok=400 http_err=0 abstain=0
+    600/648  1.93 it/s  parse_ok=600 http_err=0 abstain=0
+  DONE：本格 648 行（累计 648 行，parse_ok=648 http_err=0 abstain=0）→ /root/a52/res/A52_b1_base_s1.csv
+A52_PROBE_DONE b1 base s1 rows=648
+[2026-10-06_07:13:49]   结束 b1/base/s1 -> 648 行（parse_ok=648）｜ md5 570a2efdab7e14e7c24998f1e331dded
+[2026-10-06_07:13:49]   开跑 b1/strict/s1（期望 648 行；port=8015）
+== A5-2 采集 ==
+  ⑥ 与 _a52_criteria_frozen.json 的三档提示词逐字一致 = True
+  自检结论：★ 通过（可逆/唯一/语法/判据一致）
+  探针自检 ✓ ｜ 冻结来源 /root/19e_probe_multi.py（md5 03edb14c98ff，仅记录）
+  build=b1 ｜ served-model=Qwen3-VL-32B-Instruct-FP8 ｜ contract=strict ｜ start=1 ｜ workers=4
+  prompt md5 = 22d6f7619ebfb27a512a27c96bdaa989
+  manifest md5 d2dde2a8100e ｜ 648 行
+  本格 648 行 / 已完成 0 / 本次 648 ｜ out=/root/a52/res/A52_b1_strict_s1.csv
+    200/648  1.94 it/s  parse_ok=200 http_err=0 abstain=0
+    400/648  1.92 it/s  parse_ok=400 http_err=0 abstain=0
+    600/648  1.91 it/s  parse_ok=600 http_err=0 abstain=0
+  DONE：本格 648 行（累计 648 行，parse_ok=648 http_err=0 abstain=0）→ /root/a52/res/A52_b1_strict_s1.csv
+A52_PROBE_DONE b1 strict s1 rows=648
+[2026-10-06_07:19:29]   结束 b1/strict/s1 -> 648 行（parse_ok=648）｜ md5 dc1bda2f845608cae35a418c890bbdaa
+[2026-10-06_07:19:29]   开跑 b1/permit/s1（期望 648 行；port=8015）
+== A5-2 采集 ==
+  ⑥ 与 _a52_criteria_frozen.json 的三档提示词逐字一致 = True
+  自检结论：★ 通过（可逆/唯一/语法/判据一致）
+  探针自检 ✓ ｜ 冻结来源 /root/19e_probe_multi.py（md5 03edb14c98ff，仅记录）
+  build=b1 ｜ served-model=Qwen3-VL-32B-Instruct-FP8 ｜ contract=permit ｜ start=1 ｜ workers=4
+  prompt md5 = 9df112d214e5ba8996ede331034f460d
+  manifest md5 d2dde2a8100e ｜ 648 行
+  本格 648 行 / 已完成 0 / 本次 648 ｜ out=/root/a52/res/A52_b1_permit_s1.csv
+    200/648  1.90 it/s  parse_ok=200 http_err=0 abstain=75
+    400/648  1.87 it/s  parse_ok=400 http_err=0 abstain=157
+    600/648  1.86 it/s  parse_ok=600 http_err=0 abstain=290
+  DONE：本格 648 行（累计 648 行，parse_ok=648 http_err=0 abstain=338）→ /root/a52/res/A52_b1_permit_s1.csv
+A52_PROBE_DONE b1 permit s1 rows=648
+[2026-10-06_07:25:18]   结束 b1/permit/s1 -> 648 行（parse_ok=648）｜ md5 f7399eff123ffe5bf2b57f77fff27dfb
+[2026-10-06_07:25:18]   已停本脚本服务 pid=8702（已核 --port 8015）
+[2026-10-06_07:25:21]   b1 起服 1 已收服；GPU 现 = 0, 0 MiB 
+[2026-10-06_07:25:21] ----- b1 起服 2 / 3 -----
+[2026-10-06_07:25:21]   gpu_clear：GPU0 = 0 MiB（阈值 2000）⇒ 可以起服
+[2026-10-06_07:25:21]   起服 b1：srv=/root/a52_ext_serve_fp8.sh（md5 7cadc6deb4cd524d7e2a410f64fa3721）port=8015 served=Qwen3-VL-32B-Instruct-FP8
+[2026-10-06_07:25:21]          model=/root/models/Qwen3-VL-32B-Instruct-FP8
+[2026-10-06_07:26:31]   起服就绪（等待 50s）｜ served=Qwen3-VL-32B-Instruct-FP8 ｜ GPU = 0, 71863 MiB 
+== a52_probe 自检 ==
+  ① 提示词（由冻结人版机械派生，对象=圆形数量（画面中的每一个圆点））
+     base   md5 54f82556b1d1  len 65
+     strict md5 22d6f7619ebf  len 84
+     permit md5 9df112d214e5  len 106
+  ② 唯一差异 = 对象短语：三档前缀逐字相同 = True ｜ base 分隔符 '，' ｜ permit 分隔符 '。' ｜ strict 由 base 派生（插句 '只输出JSON，不要输出任何其他文字。'）
+  ③ 唯一性：三档各含 '圆形数量（画面中的每一个圆点）' 恰好 1 次、均不含人版短语 ✓
+  ④ 解析器行为用例 12/12 通过
+  ⑤ 弃答标记 12 个（abstain/cannot/无法/数不清…）✓
+  ⑥ 与 _a52_criteria_frozen.json 的三档提示词逐字一致 = True
+  自检结论：★ 通过（可逆/唯一/语法/判据一致）
+[2026-10-06_07:26:31]   探针自检通过（b1/s2）
+[2026-10-06_07:26:31]   开跑 b1/base/s2（期望 648 行；port=8015）
+== A5-2 采集 ==
+  ⑥ 与 _a52_criteria_frozen.json 的三档提示词逐字一致 = True
+  自检结论：★ 通过（可逆/唯一/语法/判据一致）
+  探针自检 ✓ ｜ 冻结来源 /root/19e_probe_multi.py（md5 03edb14c98ff，仅记录）
+  build=b1 ｜ served-model=Qwen3-VL-32B-Instruct-FP8 ｜ contract=base ｜ start=2 ｜ workers=4
+  prompt md5 = 54f82556b1d13042b3320786241a95b9
+  manifest md5 d2dde2a8100e ｜ 648 行
+  本格 648 行 / 已完成 0 / 本次 648 ｜ out=/root/a52/res/A52_b1_base_s2.csv
+    200/648  1.98 it/s  parse_ok=200 http_err=0 abstain=0
+    400/648  1.94 it/s  parse_ok=400 http_err=0 abstain=0
+    600/648  1.93 it/s  parse_ok=600 http_err=0 abstain=0
+  DONE：本格 648 行（累计 648 行，parse_ok=648 http_err=0 abstain=0）→ /root/a52/res/A52_b1_base_s2.csv
+A52_PROBE_DONE b1 base s2 rows=648
+[2026-10-06_07:32:08]   结束 b1/base/s2 -> 648 行（parse_ok=648）｜ md5 3ab1c6635d57b140be4c4188043113fd
+[2026-10-06_07:32:08]   开跑 b1/strict/s2（期望 648 行；port=8015）
+== A5-2 采集 ==
+  ⑥ 与 _a52_criteria_frozen.json 的三档提示词逐字一致 = True
+  自检结论：★ 通过（可逆/唯一/语法/判据一致）
+  探针自检 ✓ ｜ 冻结来源 /root/19e_probe_multi.py（md5 03edb14c98ff，仅记录）
+  build=b1 ｜ served-model=Qwen3-VL-32B-Instruct-FP8 ｜ contract=strict ｜ start=2 ｜ workers=4
+  prompt md5 = 22d6f7619ebfb27a512a27c96bdaa989
+  manifest md5 d2dde2a8100e ｜ 648 行
+  本格 648 行 / 已完成 0 / 本次 648 ｜ out=/root/a52/res/A52_b1_strict_s2.csv
+    200/648  1.94 it/s  parse_ok=200 http_err=0 abstain=0
+    400/648  1.92 it/s  parse_ok=400 http_err=0 abstain=0
+    600/648  1.91 it/s  parse_ok=600 http_err=0 abstain=0
+  DONE：本格 648 行（累计 648 行，parse_ok=648 http_err=0 abstain=0）→ /root/a52/res/A52_b1_strict_s2.csv
+A52_PROBE_DONE b1 strict s2 rows=648
+[2026-10-06_07:37:48]   结束 b1/strict/s2 -> 648 行（parse_ok=648）｜ md5 7a807e665ffd5236c447892edd652677
+[2026-10-06_07:37:48]   开跑 b1/permit/s2（期望 648 行；port=8015）
+== A5-2 采集 ==
+  ⑥ 与 _a52_criteria_frozen.json 的三档提示词逐字一致 = True
+  自检结论：★ 通过（可逆/唯一/语法/判据一致）
+  探针自检 ✓ ｜ 冻结来源 /root/19e_probe_multi.py（md5 03edb14c98ff，仅记录）
+  build=b1 ｜ served-model=Qwen3-VL-32B-Instruct-FP8 ｜ contract=permit ｜ start=2 ｜ workers=4
+  prompt md5 = 9df112d214e5ba8996ede331034f460d
+  manifest md5 d2dde2a8100e ｜ 648 行
+  本格 648 行 / 已完成 0 / 本次 648 ｜ out=/root/a52/res/A52_b1_permit_s2.csv
+    200/648  1.89 it/s  parse_ok=200 http_err=0 abstain=75
+    400/648  1.87 it/s  parse_ok=400 http_err=0 abstain=157
+    600/648  1.86 it/s  parse_ok=600 http_err=0 abstain=289
+  DONE：本格 648 行（累计 648 行，parse_ok=648 http_err=0 abstain=337）→ /root/a52/res/A52_b1_permit_s2.csv
+A52_PROBE_DONE b1 permit s2 rows=648
+[2026-10-06_07:43:37]   结束 b1/permit/s2 -> 648 行（parse_ok=648）｜ md5 90a1fbeeb019869aa9297c692131fef6
+[2026-10-06_07:43:37]   已停本脚本服务 pid=17973（已核 --port 8015）
+[2026-10-06_07:43:40]   b1 起服 2 已收服；GPU 现 = 0, 0 MiB 
+[2026-10-06_07:43:40] ----- b1 起服 3 / 3 -----
+[2026-10-06_07:43:40]   gpu_clear：GPU0 = 0 MiB（阈值 2000）⇒ 可以起服
+[2026-10-06_07:43:40]   起服 b1：srv=/root/a52_ext_serve_fp8.sh（md5 7cadc6deb4cd524d7e2a410f64fa3721）port=8015 served=Qwen3-VL-32B-Instruct-FP8
+[2026-10-06_07:43:40]          model=/root/models/Qwen3-VL-32B-Instruct-FP8
+[2026-10-06_07:45:00]   起服就绪（等待 60s）｜ served=Qwen3-VL-32B-Instruct-FP8 ｜ GPU = 0, 71863 MiB 
+== a52_probe 自检 ==
+  ① 提示词（由冻结人版机械派生，对象=圆形数量（画面中的每一个圆点））
+     base   md5 54f82556b1d1  len 65
+     strict md5 22d6f7619ebf  len 84
+     permit md5 9df112d214e5  len 106
+  ② 唯一差异 = 对象短语：三档前缀逐字相同 = True ｜ base 分隔符 '，' ｜ permit 分隔符 '。' ｜ strict 由 base 派生（插句 '只输出JSON，不要输出任何其他文字。'）
+  ③ 唯一性：三档各含 '圆形数量（画面中的每一个圆点）' 恰好 1 次、均不含人版短语 ✓
+  ④ 解析器行为用例 12/12 通过
+  ⑤ 弃答标记 12 个（abstain/cannot/无法/数不清…）✓
+  ⑥ 与 _a52_criteria_frozen.json 的三档提示词逐字一致 = True
+  自检结论：★ 通过（可逆/唯一/语法/判据一致）
+[2026-10-06_07:45:00]   探针自检通过（b1/s3）
+[2026-10-06_07:45:00]   开跑 b1/base/s3（期望 648 行；port=8015）
+== A5-2 采集 ==
+  ⑥ 与 _a52_criteria_frozen.json 的三档提示词逐字一致 = True
+  自检结论：★ 通过（可逆/唯一/语法/判据一致）
+  探针自检 ✓ ｜ 冻结来源 /root/19e_probe_multi.py（md5 03edb14c98ff，仅记录）
+  build=b1 ｜ served-model=Qwen3-VL-32B-Instruct-FP8 ｜ contract=base ｜ start=3 ｜ workers=4
+  prompt md5 = 54f82556b1d13042b3320786241a95b9
+  manifest md5 d2dde2a8100e ｜ 648 行
+  本格 648 行 / 已完成 0 / 本次 648 ｜ out=/root/a52/res/A52_b1_base_s3.csv
+    200/648  1.98 it/s  parse_ok=200 http_err=0 abstain=0
+    400/648  1.95 it/s  parse_ok=400 http_err=0 abstain=0
+    600/648  1.93 it/s  parse_ok=600 http_err=0 abstain=0
+  DONE：本格 648 行（累计 648 行，parse_ok=648 http_err=0 abstain=0）→ /root/a52/res/A52_b1_base_s3.csv
+A52_PROBE_DONE b1 base s3 rows=648
+[2026-10-06_07:50:37]   结束 b1/base/s3 -> 648 行（parse_ok=648）｜ md5 7d742bb4cd4c12d8d5094200f5a717b5
+[2026-10-06_07:50:37]   开跑 b1/strict/s3（期望 648 行；port=8015）
+== A5-2 采集 ==
+  ⑥ 与 _a52_criteria_frozen.json 的三档提示词逐字一致 = True
+  自检结论：★ 通过（可逆/唯一/语法/判据一致）
+  探针自检 ✓ ｜ 冻结来源 /root/19e_probe_multi.py（md5 03edb14c98ff，仅记录）
+  build=b1 ｜ served-model=Qwen3-VL-32B-Instruct-FP8 ｜ contract=strict ｜ start=3 ｜ workers=4
+  prompt md5 = 22d6f7619ebfb27a512a27c96bdaa989
+  manifest md5 d2dde2a8100e ｜ 648 行
+  本格 648 行 / 已完成 0 / 本次 648 ｜ out=/root/a52/res/A52_b1_strict_s3.csv
+    200/648  1.93 it/s  parse_ok=200 http_err=0 abstain=0
+    400/648  1.91 it/s  parse_ok=400 http_err=0 abstain=0
+    600/648  1.90 it/s  parse_ok=600 http_err=0 abstain=0
+  DONE：本格 648 行（累计 648 行，parse_ok=648 http_err=0 abstain=0）→ /root/a52/res/A52_b1_strict_s3.csv
+A52_PROBE_DONE b1 strict s3 rows=648
+[2026-10-06_07:56:17]   结束 b1/strict/s3 -> 648 行（parse_ok=648）｜ md5 13c217607485e4ea343e1a96f54e065d
+[2026-10-06_07:56:17]   开跑 b1/permit/s3（期望 648 行；port=8015）
+== A5-2 采集 ==
+  ⑥ 与 _a52_criteria_frozen.json 的三档提示词逐字一致 = True
+  自检结论：★ 通过（可逆/唯一/语法/判据一致）
+  探针自检 ✓ ｜ 冻结来源 /root/19e_probe_multi.py（md5 03edb14c98ff，仅记录）
+  build=b1 ｜ served-model=Qwen3-VL-32B-Instruct-FP8 ｜ contract=permit ｜ start=3 ｜ workers=4
+  prompt md5 = 9df112d214e5ba8996ede331034f460d
+  manifest md5 d2dde2a8100e ｜ 648 行
+  本格 648 行 / 已完成 0 / 本次 648 ｜ out=/root/a52/res/A52_b1_permit_s3.csv
+    200/648  1.90 it/s  parse_ok=200 http_err=0 abstain=75
+    400/648  1.87 it/s  parse_ok=400 http_err=0 abstain=157
+    600/648  1.86 it/s  parse_ok=600 http_err=0 abstain=288
+  DONE：本格 648 行（累计 648 行，parse_ok=648 http_err=0 abstain=336）→ /root/a52/res/A52_b1_permit_s3.csv
+A52_PROBE_DONE b1 permit s3 rows=648
+[2026-10-06_08:02:06]   结束 b1/permit/s3 -> 648 行（parse_ok=648）｜ md5 e9c93b580a1ff2170f5213b30834d078
+[2026-10-06_08:02:06]   已停本脚本服务 pid=26353（已核 --port 8015）
+[2026-10-06_08:02:09]   b1 起服 3 已收服；GPU 现 = 0, 0 MiB 
+[2026-10-06_08:02:09] ===== 构建 b1 完成（3 合同 × 3 起服）=====
+[2026-10-06_08:02:09]   跳过 pid=26353（命令行不含 --port ⇒ 不是本脚本的服务）
+[2026-10-06_08:02:12] --- 产物 ---
+[2026-10-06_08:02:12]   28ad1550f31a72de701b90fa152e03ce  648 行  /root/a52/res/A52_b0_base_s1.csv
+[2026-10-06_08:02:12]   23907faf29c335a555713c1ca6885ff5  648 行  /root/a52/res/A52_b0_base_s2.csv
+[2026-10-06_08:02:12]   7d96c85d9358765d42b2b7f793fcf9e3  648 行  /root/a52/res/A52_b0_base_s3.csv
+[2026-10-06_08:02:12]   b79b03ba1b39826999a941b96bc1dca0  648 行  /root/a52/res/A52_b0_permit_s1.csv
+[2026-10-06_08:02:12]   9454faa0b3d1330bd8ba32133c414786  648 行  /root/a52/res/A52_b0_permit_s2.csv
+[2026-10-06_08:02:12]   b91733df5f0b7c7c04ecc9e46dc27632  648 行  /root/a52/res/A52_b0_permit_s3.csv
+[2026-10-06_08:02:12]   55566c80b16bbaf29ed77ea2e26db399  648 行  /root/a52/res/A52_b0_strict_s1.csv
+[2026-10-06_08:02:12]   6d01dee59ebb3731700a8bcab483e45e  648 行  /root/a52/res/A52_b0_strict_s2.csv
+[2026-10-06_08:02:12]   90dbe3877d1c6cd13e60f2e7d161bc07  648 行  /root/a52/res/A52_b0_strict_s3.csv
+[2026-10-06_08:02:12]   570a2efdab7e14e7c24998f1e331dded  648 行  /root/a52/res/A52_b1_base_s1.csv
+[2026-10-06_08:02:12]   3ab1c6635d57b140be4c4188043113fd  648 行  /root/a52/res/A52_b1_base_s2.csv
+[2026-10-06_08:02:12]   7d742bb4cd4c12d8d5094200f5a717b5  648 行  /root/a52/res/A52_b1_base_s3.csv
+[2026-10-06_08:02:12]   f7399eff123ffe5bf2b57f77fff27dfb  648 行  /root/a52/res/A52_b1_permit_s1.csv
+[2026-10-06_08:02:12]   90a1fbeeb019869aa9297c692131fef6  648 行  /root/a52/res/A52_b1_permit_s2.csv
+[2026-10-06_08:02:12]   e9c93b580a1ff2170f5213b30834d078  648 行  /root/a52/res/A52_b1_permit_s3.csv
+[2026-10-06_08:02:12]   dc1bda2f845608cae35a418c890bbdaa  648 行  /root/a52/res/A52_b1_strict_s1.csv
+[2026-10-06_08:02:12]   7a807e665ffd5236c447892edd652677  648 行  /root/a52/res/A52_b1_strict_s2.csv
+[2026-10-06_08:02:12]   13c217607485e4ea343e1a96f54e065d  648 行  /root/a52/res/A52_b1_strict_s3.csv
+[2026-10-06_08:02:12]   d8f7d323bc71e56548e6fdad0fff3b34  648 行  /root/a52/res/A52_b2_base_s1.csv
+[2026-10-06_08:02:12]   268887e6612917f2334f0ad10f8cb788  648 行  /root/a52/res/A52_b2_base_s2.csv
+[2026-10-06_08:02:12]   ba17f33115d4e2ffabee3f4ae2de5bca  648 行  /root/a52/res/A52_b2_base_s3.csv
+[2026-10-06_08:02:12]   a9dfef7e8f8ca75c5692ba8b77338213  648 行  /root/a52/res/A52_b2_permit_s1.csv
+[2026-10-06_08:02:12]   f52fc8372107391216ce988b39a342ee  648 行  /root/a52/res/A52_b2_permit_s2.csv
+[2026-10-06_08:02:12]   419aa2f4c76b7159571331eb3d659b11  648 行  /root/a52/res/A52_b2_permit_s3.csv
+[2026-10-06_08:02:12]   dae961d56f2d37364dd01fbe30fceea7  648 行  /root/a52/res/A52_b2_strict_s1.csv
+[2026-10-06_08:02:12]   b5ca63dfc62d6f22f9fbad9b55edb675  648 行  /root/a52/res/A52_b2_strict_s2.csv
+[2026-10-06_08:02:12]   c350d188a5cd9a84e3b4b9297f1b0c58  648 行  /root/a52/res/A52_b2_strict_s3.csv
+[2026-10-06_08:02:12] 收尾 GPU = 0, 0 MiB 
+[2026-10-06_08:02:12] 完成格数 = 9 / 9
+[2026-10-06_08:02:12] !! 完成但**构建集已收缩**（1/4）⇒ 判决书与披露项须写明缺 b1(FP8)/b3(GPTQ)
+A52_ALL_DONE_SHRUNK builds=1/9 cells=9
+A52_ALL_DONE
+[2026-10-06_08:02:12] ===== A5-2 结束（5832 次）=====

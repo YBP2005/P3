@@ -1,0 +1,45 @@
+[2026-10-06_06:14:58] === driver TAG=b0 PORT=8013 SRV=/root/pf_serve_awq4bit_8013.sh ===
+[2026-10-06_06:14:58] serve md5 = 1eca04a1c22049e7a7ee077380387314
+[2026-10-06_06:14:59] pre-check OK: port free, gpu=0 MiB
+[2026-10-06_06:14:59] launched serve launcher pid=2168 -> /root/a52_ext_smoke/serve_b0_8013.log
+[2026-10-06_06:14:59] serve PID=2168 cmdline-check: /usr/local/miniconda3/bin/python -m vllm.entrypoints.openai.api_server --model /root/models/Qwen3-VL-32B-Instruct-AWQ-4b
+[2026-10-06_06:17:36] HEALTH_OK=1 LOAD_S=157.0
+== A5-2 ext smoke ==
+  ⑥ 与 _a52_criteria_frozen.json 的三档提示词逐字一致 = True
+  自检结论：★ 通过（可逆/唯一/语法/判据一致）
+  frozen probe selfcheck OK | manifest 40 rows | using first 40
+  port=8013 served=Qwen3-VL-32B-Instruct-AWQ == A5-2 ext smoke ==
+  ⑥ 与 _a52_criteria_frozen.json 的三档提示词逐字一致 = True
+  自检结论：★ 通过（可逆/唯一/语法/判据一致）
+  frozen probe selfcheck OK | manifest 40 rows | using first 40
+  port=8013 served=Qwen3-VL-32B-Instruct-AWQ tag=b0 load_s=219.6
+  WARMUP c08_s3_b0_o0_L00  latency=0.60s http=0.57s ctok=7 raw='{"count": 8}'
+    seq c08_s3_b0_o0_L01       0.58s ctok=7
+    seq c08_s3_b0_o0_L02       0.61s ctok=7
+    seq c08_s3_b0_o0_L03       0.61s ctok=7
+    seq c08_s3_b0_o0_L04       0.58s ctok=7
+    seq c08_s3_b0_o0_L05       0.58s ctok=7
+    seq c08_s3_b0_o0_L06       0.56s ctok=7
+    seq c08_s3_b0_o0_L07       0.57s ctok=7
+    seq c08_s3_b0_o1_L00       0.59s ctok=8
+    seq c08_s3_b0_o1_L01       0.59s ctok=8
+    seq c08_s3_b0_o1_L02       0.58s ctok=7
+    seq c08_s3_b0_o1_L03       0.57s ctok=7
+    seq c08_s3_b0_o1_L04       0.58s ctok=7
+    seq c08_s3_b0_o1_L05       0.59s ctok=8
+    seq c08_s3_b0_o1_L06       0.59s ctok=8
+    seq c08_s3_b0_o1_L07       0.18s ctok=8
+  [seq/workers=1] n=15 wall=8.4s  latency mean=0.56 p50=0.58 p90=0.61 min=0.18 max=0.61
+       http mean=0.54 p50=0.56 p90=0.57 | enc mean=0.019
+       completion_tokens mean=7.3 min=7 max=8 | prompt_tokens mean=1070 | http_err=0
+       effective throughput = 1.79 calls/s (wall 8.4s)
+  [conc/workers=4] n=24 wall=10.2s  latency mean=1.69 p50=1.82 p90=1.84 min=1.39 max=1[2026-10-06_06:17:55] smoke rc=0
+[2026-10-06_06:17:55] stopping PID=2168 (cmdline verified) via SIGTERM
+[2026-10-06_06:17:57] GPU back to 0 MiB after 4 s
+[2026-10-06_06:17:57] final gpu_used=0 MiB | leftover port pids: 
+[2026-10-06_06:17:57] DRIVER_DONE b0 rc=0 load_s=157.0
+6-10-06_06:17:55] smoke rc=0
+[2026-10-06_06:17:55] stopping PID=2168 (cmdline verified) via SIGTERM
+[2026-10-06_06:17:57] GPU back to 0 MiB after 4 s
+[2026-10-06_06:17:57] final gpu_used=0 MiB | leftover port pids: 
+[2026-10-06_06:17:57] DRIVER_DONE b0 rc=0 load_s=219.6

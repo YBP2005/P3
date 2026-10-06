@@ -1,0 +1,377 @@
+{
+ "b1_run_facts": {
+  "cells_done": [
+   9,
+   9
+  ],
+  "first_timestamp": "2026-10-06_07:07:02",
+  "gpu_back_to_zero_after_each_start": true,
+  "gpu_hours": 0.9194,
+  "gpu_zero_readings_mib": [
+   0,
+   0,
+   0
+  ],
+  "last_timestamp": "2026-10-06_08:02:12",
+  "log": "data/derived/a52_ext/analysis/a52_b1.runner.log",
+  "log_md5": "a0851a3ea4eaff4aee95e6cef222bbcb",
+  "service_starts": 3,
+  "wall_clock_hms": "55 min 10 s",
+  "wall_clock_s": 3310.0
+ },
+ "by_build": {
+  "b0": {
+   "abstain": 981,
+   "calls": 5832,
+   "cells": 9,
+   "correct_by_count": {
+    "32": {
+     "correct": 37,
+     "n": 1944,
+     "rate": 1.9033
+    },
+    "8": {
+     "correct": 949,
+     "n": 1944,
+     "rate": 48.8169
+    },
+    "80": {
+     "correct": 10,
+     "n": 1944,
+     "rate": 0.5144
+    }
+   },
+   "http_err": 0,
+   "latency_s": {
+    "max": 2.13,
+    "mean": 1.821,
+    "min": 1.35,
+    "p50": 1.83,
+    "p90": 1.87
+   },
+   "parse_ok": 5832,
+   "parse_ok_pct": 100.0,
+   "refuse": 0,
+   "rows_per_cell_max": 648,
+   "rows_per_cell_min": 648,
+   "zero_cells": 0
+  },
+  "b1": {
+   "abstain": 1011,
+   "calls": 5832,
+   "cells": 9,
+   "correct_by_count": {
+    "32": {
+     "correct": 50,
+     "n": 1944,
+     "rate": 2.572
+    },
+    "8": {
+     "correct": 977,
+     "n": 1944,
+     "rate": 50.2572
+    },
+    "80": {
+     "correct": 14,
+     "n": 1944,
+     "rate": 0.7202
+    }
+   },
+   "http_err": 0,
+   "latency_s": {
+    "max": 2.37,
+    "mean": 2.1092,
+    "min": 1.56,
+    "p50": 2.12,
+    "p90": 2.18
+   },
+   "parse_ok": 5832,
+   "parse_ok_pct": 100.0,
+   "refuse": 0,
+   "rows_per_cell_max": 648,
+   "rows_per_cell_min": 648,
+   "zero_cells": 0
+  },
+  "b2": {
+   "abstain": 1010,
+   "calls": 5832,
+   "cells": 9,
+   "correct_by_count": {
+    "32": {
+     "correct": 43,
+     "n": 1944,
+     "rate": 2.2119
+    },
+    "8": {
+     "correct": 981,
+     "n": 1944,
+     "rate": 50.463
+    },
+    "80": {
+     "correct": 13,
+     "n": 1944,
+     "rate": 0.6687
+    }
+   },
+   "http_err": 0,
+   "latency_s": {
+    "max": 2.35,
+    "mean": 1.7047,
+    "min": 1.1,
+    "p50": 1.71,
+    "p90": 1.78
+   },
+   "parse_ok": 5832,
+   "parse_ok_pct": 100.0,
+   "refuse": 0,
+   "rows_per_cell_max": 648,
+   "rows_per_cell_min": 648,
+   "zero_cells": 0
+  }
+ },
+ "disclosures": {
+  "fp8_download_facts": {
+   "bytes": 35532290088,
+   "correction": "the pre-run declaration in the download script (line 21) said 19 files; the measured count is 18 (off by one)",
+   "declared_files_before_the_run": 19,
+   "files": 18,
+   "per_file_sha256_matched_hf_lfs": "18/18",
+   "repository": "Qwen/Qwen3-VL-32B-Instruct-FP8",
+   "revision": "4bf2c2f39c37c0fede78bede4056e1f18cdf8109"
+  },
+  "fp8_not_faster_on_this_host": {
+   "frozen_full_run_p50_s": {
+    "b0": 1.83,
+    "b1": 2.12,
+    "b2": 1.71
+   },
+   "matched_smoke_protocol": {
+    "p50_s": {
+     "b0": 1.8242037296295166,
+     "b1": 2.027024507522583
+    },
+    "p50_s_b2_from_frozen_full_run": 1.71,
+    "protocol": "workers = 4, n = 24, one service start per build",
+    "slower_than_b0_pct_exact": 11.12,
+    "slower_than_b0_pct_rounded_pair": 11.54,
+    "slower_than_b2_pct_exact": 18.54,
+    "slower_than_b2_pct_rounded_pair": 18.71,
+    "source_files": [
+     "data/derived/a52_ext/b0_smoke_summary.json",
+     "data/derived/a52_ext/b1_smoke_summary.json"
+    ]
+   },
+   "statement": "On this Ampere part (compute capability 8.0) the FP8 build is not faster: W8A8 needs 8.9, so the loader takes the weight-only (W8A16) path and dequantises. The comparison this section licenses is about numerical-format robustness, not about speed."
+  },
+  "second_four_bit_build_not_producible": {
+   "probe_scripts": [
+    "code/analysis/a52_ext_rtn_quant.py",
+    "code/analysis/a52_ext_verify_rtn.py",
+    "code/analysis/a52_ext_verify_ctl.py"
+   ],
+   "routes": {
+    "bitsandbytes_NF4": "vLLM 0.29.0 has no bitsandbytes quantization method and no bitsandbytes_loader module, so a quantised artifact could not be served",
+    "in_house_RTN_INT4": "structure mirrored the working AWQ artifact and vLLM loaded it, but the packing round-trip was wrong (ModelCompressor relative error ~1.07) and the 4B smoke run degenerated (128 completion tokens, repeated token) => stopped by the pre-registered \"degenerate => stop\" rule",
+    "llmcompressor_oneshot": "the version-matched llmcompressor declares transformers <= 5.10.1 while the shared environment has 5.17.0 (GraniteMoeParallelExperts removed) => ImportError"
+   },
+   "statement": "No usable second 4-bit implementation could be produced in this environment (vLLM 0.29.0 + compressed-tensors 0.17.0); changing the shared library versions is a hard constraint."
+  }
+ },
+ "frozen_pooled_analysis_as_run": {
+  "C3": {
+   "beta_count": -4.53056073586139,
+   "ci": [
+    -4.942692379255743,
+    -4.118429092467037
+   ],
+   "interactions": {
+    "count_std_x_b1": {
+     "beta": 0.38388949057625743,
+     "p_wald": 0.10084465568508072
+    },
+    "count_std_x_b2": {
+     "beta": 0.19615031823229842,
+     "p_wald": 0.41080507262257115
+    },
+    "count_std_x_b3": {
+     "beta": 0.0,
+     "p_wald": 1.0
+    },
+    "count_std_x_permit": {
+     "beta": -2.0113868495786846,
+     "p_wald": 5.398641941624973e-12
+    },
+    "count_std_x_strict": {
+     "beta": -0.23975869284805754,
+     "p_wald": 0.2465012637247882
+    }
+   },
+   "passed": true,
+   "se": 0.21027124662977204
+  },
+  "C4": {
+   "band": 0.2,
+   "ci": [
+    -4.942692379255743,
+    -4.118429092467037
+   ],
+   "cluster_bootstrap_ci": [
+    -6.753769908208193,
+    -3.2791811109675013
+   ],
+   "disposition_zh": "撤回该表述；§5.6 改写为\"count 的作用在控制可读性后仍可见\"",
+   "passed": false
+  },
+  "C5": {
+   "folds": [
+    -4.8606,
+    -4.6778,
+    -4.2494,
+    -4.1602,
+    -4.4546,
+    -4.5206,
+    -5.1754,
+    -4.2892
+   ],
+   "median": -4.4546,
+   "passed": true,
+   "sign_consistency": 1.0
+  },
+  "NC3": {
+   "checked": 17496,
+   "mismatch": 0,
+   "passed": true
+  },
+  "criteria_md5_printed": "758962a2643e1035698682abefec5748",
+  "json": "data/derived/a52_ext/b1_analysis_pooled.json",
+  "json_md5": "71d1552a69b973ec5395d7c8670bca8b",
+  "pool_files": 27,
+  "pool_rows": 17496
+ },
+ "per_item_records": {
+  "md5": {
+   "b0/base/s1": "28ad1550f31a72de701b90fa152e03ce",
+   "b0/base/s2": "23907faf29c335a555713c1ca6885ff5",
+   "b0/base/s3": "7d96c85d9358765d42b2b7f793fcf9e3",
+   "b0/permit/s1": "b79b03ba1b39826999a941b96bc1dca0",
+   "b0/permit/s2": "9454faa0b3d1330bd8ba32133c414786",
+   "b0/permit/s3": "b91733df5f0b7c7c04ecc9e46dc27632",
+   "b0/strict/s1": "55566c80b16bbaf29ed77ea2e26db399",
+   "b0/strict/s2": "6d01dee59ebb3731700a8bcab483e45e",
+   "b0/strict/s3": "90dbe3877d1c6cd13e60f2e7d161bc07",
+   "b1/base/s1": "570a2efdab7e14e7c24998f1e331dded",
+   "b1/base/s2": "3ab1c6635d57b140be4c4188043113fd",
+   "b1/base/s3": "7d742bb4cd4c12d8d5094200f5a717b5",
+   "b1/permit/s1": "f7399eff123ffe5bf2b57f77fff27dfb",
+   "b1/permit/s2": "90a1fbeeb019869aa9297c692131fef6",
+   "b1/permit/s3": "e9c93b580a1ff2170f5213b30834d078",
+   "b1/strict/s1": "dc1bda2f845608cae35a418c890bbdaa",
+   "b1/strict/s2": "7a807e665ffd5236c447892edd652677",
+   "b1/strict/s3": "13c217607485e4ea343e1a96f54e065d",
+   "b2/base/s1": "d8f7d323bc71e56548e6fdad0fff3b34",
+   "b2/base/s2": "268887e6612917f2334f0ad10f8cb788",
+   "b2/base/s3": "ba17f33115d4e2ffabee3f4ae2de5bca",
+   "b2/permit/s1": "a9dfef7e8f8ca75c5692ba8b77338213",
+   "b2/permit/s2": "f52fc8372107391216ce988b39a342ee",
+   "b2/permit/s3": "419aa2f4c76b7159571331eb3d659b11",
+   "b2/strict/s1": "dae961d56f2d37364dd01fbe30fceea7",
+   "b2/strict/s2": "b5ca63dfc62d6f22f9fbad9b55edb675",
+   "b2/strict/s3": "c350d188a5cd9a84e3b4b9297f1b0c58"
+  },
+  "n_files": 27,
+  "n_rows": 17496
+ },
+ "record": "synthetic-dot count x legibility experiment: third build (FP8) extension",
+ "record_version": 1,
+ "response_definition": {
+  "md5": "77f87f49b0e447fba54ea2a0435f80c8",
+  "rule": "correct = pred is an integer and |pred - n_dots_detected_gt| <= max(1, 0.05 * n_dots_detected_gt); abstain / refuse / parse failure / http error count as incorrect",
+  "source": "data/derived/a5_2_a800/env/a52_analyze.py"
+ },
+ "scope": {
+  "builds": {
+   "b0": "AWQ 4-bit (community requantisation)",
+   "b1": "FP8 (official FP8 checkpoint, W8A16 dequantisation on this host)",
+   "b2": "BF16 (hosted API)"
+  },
+  "contracts": [
+   "base",
+   "strict",
+   "permit"
+  ],
+  "items_per_cell": 648,
+  "note": "every number below is derived from the released per-item records / logs; no value is hand-typed",
+  "service_starts_per_build": 3
+ },
+ "shipped_analyzer_recomputation": {
+  "C4_primary_passed": false,
+  "C5_sign_consistency": 1.0,
+  "NC3_checked": 16848,
+  "NC3_mismatch": 0,
+  "analyzer": "data/derived/a5_2_a800/env/a52_analyze.py",
+  "analyzer_md5": "77f87f49b0e447fba54ea2a0435f80c8",
+  "caliber_contrast": "including the excluded cells (= the caliber printed up to v0645)",
+  "caliber_primary": "whole-cell exclusion of the pre-registered unrealizable cells",
+  "contrast": {
+   "beta_count": -4.410100883751517,
+   "ci": [
+    -4.816519624691818,
+    -4.003682142811217
+   ],
+   "interactions": {
+    "count_std_x_b1": {
+     "beta": 0.3760168577948756,
+     "p_wald": 0.10543915739451969
+    },
+    "count_std_x_b2": {
+     "beta": 0.1914336519178738,
+     "p_wald": 0.4188690019470667
+    },
+    "count_std_x_b3": {
+     "beta": 0.0,
+     "p_wald": 1.0
+    },
+    "count_std_x_permit": {
+     "beta": -1.9884106821436864,
+     "p_wald": 7.74187811403022e-12
+    },
+    "count_std_x_strict": {
+     "beta": -0.23597312840804008,
+     "p_wald": 0.2502692350605509
+    }
+   },
+   "se": 0.20735650047974544
+  },
+  "primary": {
+   "beta_count": -4.2356477587263575,
+   "ci": [
+    -4.645569881731862,
+    -3.825725635720853
+   ],
+   "interactions": {
+    "count_std_x_b1": {
+     "beta": 0.2102073701181886,
+     "p_wald": 0.3811450295008561
+    },
+    "count_std_x_b2": {
+     "beta": -0.20742410260968724,
+     "p_wald": 0.40972054271224534
+    },
+    "count_std_x_b3": {
+     "beta": 0.0,
+     "p_wald": 1.0
+    },
+    "count_std_x_permit": {
+     "beta": -3.5783348395387424,
+     "p_wald": 1.4730595206243956e-15
+    },
+    "count_std_x_strict": {
+     "beta": -0.29885444795985233,
+     "p_wald": 0.15676499348003833
+    }
+   },
+   "n_rows": 16848,
+   "se": 0.2091439403089307
+  }
+ }
+}

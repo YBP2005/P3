@@ -1597,22 +1597,96 @@ legibility (radius, blur, overlap) is varied orthogonally — exactly the contra
 **independent stimulus** from the 675-image grid of §5.6 / §C.2; its readings **must not be differenced
 against those already-printed numbers**.
 
-**Implementations: two, not four.** Only **b0 = AWQ 4-bit** and **b2 = BF16** were run. **No same-family
-FP8 and no same-family GPTQ weights exist in this environment** ⇒ the pre-registered four-build budget
-was **shrunk before the run started**, and this must **not** be described as a "four-build" experiment.
-Build variance is estimated on **two levels only**; the `count × build` term for b2 is not significant in
-either caliber (**−0.2083**, p = 0.408 on the primary n = 11,232; **+0.1920**, p = 0.418 on the contrast
-n = 11,664).
+**Implementations: three, one of which uses the FP8 storage format.** The main batch ran **two builds** —
+**b0 = AWQ 4-bit** and **b2 = BF16** — because neither a same-family FP8 nor a same-family GPTQ artifact
+was on the host when that batch started, so the pre-registered four-build budget was **shrunk before the
+run started**; this must still **not** be described as a "four-build" experiment. A **third build,
+b1 = FP8**, was then obtained from the official `Qwen/Qwen3-VL-32B-Instruct-FP8` release (revision
+`4bf2c2f39c37c0fede78bede4056e1f18cdf8109`) and run later on the **same instrument** — same probe,
+prompts, parser, stimulus, frozen criteria and analysis code — as an **extension** of the same experiment.
+Build variance is therefore estimated on **three levels**; **neither** `count × build` interaction is
+significant in any caliber: `count × b1` **+0.3839** (p = 0.101) and `count × b2` **+0.1962** (p = 0.411)
+on the pooled 27-cell / 17,496-record fit, and **+0.2102** (p = 0.381) / **−0.2074** (p = 0.410) on the
+caliber-corrected refit below. **No material difference between builds is claimed**; the two-build terms
+quoted in the previous release remain valid for that batch.
 
-**Design and budget (post-shrink).** 3 output contracts (base / strict / permit) × 3 independent service
-starts = **18 cells × 648 items = 11,664 calls**, **0 aborts**.
+**Design and budget.** 3 output contracts (base / strict / permit) × 3 independent service starts per build.
 
-| | pre-registered | as run (shrunk before start) |
-|---|---:|---:|
-| implementations | 4 (b0, b1, b2, b3) | **2 (b0 = AWQ 4-bit, b2 = BF16)** |
-| cells | 36 | **18** |
-| service starts | 12 | **6** |
-| calls | 23,328 | **11,664** |
+| | pre-registered | main batch (shrunk before start) | FP8 extension (later, same instrument) | pooled |
+|---|---:|---:|---:|---:|
+| implementations | 4 (b0, b1, b2, b3) | **2 (b0 = AWQ 4-bit, b2 = BF16)** | **+1 (b1 = FP8)** | **3 (b0, b1, b2)** |
+| cells | 36 | **18** | **+9** | **27** |
+| service starts | 12 | **6** | **+3** | **9** |
+| calls | 23,328 | **11,664** | **+5,832** | **17,496** |
+
+**The third build: measured run facts.** **9 of 9** cells complete, **5,832** calls, `parse_ok`
+**5,832/5,832 = 100.0%**, **0** HTTP errors, **0** missing or short cells, **1,011** explicit abstentions
+(all of them under `permit`) and **0** refusals. Single-request latency at workers = 4 over all 5,832
+records: mean **2.11 s**, **P50 2.12 s**, **P90 2.18 s**. Total wall clock **55 min 10 s = 0.919 GPU·h**,
+**three** service starts, and the accelerator was back at **0 MiB** after each of the three. Every value in
+this paragraph is re-derived from the released per-item records and the orchestration log by the released
+generator script (`code/analysis/`, named in *MANIFEST.csv*), which also writes the machine-readable run
+record released beside them. The pre-run model estimate for this build (0.877 GPU·h) was **4.8% low**.
+
+**Three-build pooled fit (27 cells / 17,496 records).** `C3` **PASS** (design rank-ok; `count` main
+effect β = **−4.5306**, 95% CI **[−4.9427, −4.1184]**; the FP8 build alone gives β = **−4.2096**,
+CI [−4.7036, −3.7156]); `C5` **PASS** (8 layout-grouped folds, sign consistency **1.00**, fold β range
+[−5.175, −4.160]); `NC3` **PASS** (17,496 rows re-parsed independently from `raw`, **0** disagreements);
+**`C4` FAIL** in both calibers, so the withdrawal in §5.6 stands unchanged. Accuracy by count level,
+under the frozen `is_correct` definition, over the per-item records of each build:
+
+| count level | b0 (AWQ 4-bit) | **b1 (FP8)** | b2 (BF16) | pooled (3 builds) |
+|---|---:|---:|---:|---:|
+| 8 | 48.82% (949/1944) | **50.26%** (977/1944) | 50.46% (981/1944) | 49.85% (2907/5832) |
+| 32 | 1.90% (37/1944) | **2.57%** (50/1944) | 2.21% (43/1944) | 2.23% (130/5832) |
+| 80 | 0.51% (10/1944) | **0.72%** (14/1944) | 0.67% (13/1944) | 0.63% (37/5832) |
+
+The three builds collapse with count in the same way. The FP8 build is the middle one at count = 8 (50.26%
+against 50.46% for BF16 and 48.82% for AWQ 4-bit) and the highest at counts 32 and 80, and **no ordering
+between builds is claimed**: the gaps are at most 1.6 pp (count 8) and 0.7 pp (counts 32 and 80), and the
+build × count interactions are non-significant in every caliber.
+
+**A caliber and revision registration for the three-build fit.** The 27-cell fit above was produced by the
+analysis code as it stood on the host at run time. That revision carries **neither** of the two corrections
+present in the copy shipped here: it codes the legibility covariates by the original size radius (not the
+registered ordinal levels) and does **not** apply the pre-registered whole-cell exclusion, so it fits every
+attained record — structurally the *contrast* caliber of the two-build fit, under the older covariate
+coding. The copy shipped in this package is the later revision, which (a) codes the legibility covariates
+at the registered ordinal levels and (b) applies the whole-cell exclusion to C3/C4/C5/NC3 as the **primary**
+caliber. Re-running **the shipped revision over the same 27 released files** gives **primary n = 16,848,
+β = −4.2356, CI [−4.6456, −3.8257]** and **contrast n = 17,496, β = −4.4101, CI [−4.8165, −4.0037]**,
+with build × count **+0.2102** (p = 0.381) and **−0.2074** (p = 0.410); **both calibers PASS C3 and FAIL
+C4**, and `C5` keeps sign consistency 1.00 and `NC3` 0 disagreements. Both readings are printed rather than
+one of them being silently replaced: no threshold, band, caliber definition or criterion changes between
+them.
+
+**FP8 is not faster on this host, so this is not a speed comparison.** The host's compute capability is
+**8.0**, and native weight-and-activation FP8 needs **8.9**; the loader therefore takes the weight-only
+(W8A16) path and dequantises. Under the matched smoke protocol (workers = 4, n = 24, one service start per
+build) the single-request P50 is **2.03 s** for the FP8 build against **1.82 s** for AWQ 4-bit and
+**1.71 s** for BF16 — i.e. **~11.5%** slower than AWQ 4-bit and **~18.7%** slower than BF16 (exact P50s
+2.0270 s and 1.8242 s, i.e. +11.1%). The frozen full-run per-item records give P50 **2.12 s** (FP8)
+against **1.83 s** (AWQ 4-bit) and **1.71 s** (BF16) — the same ordering. What is compared here is
+**numerical-format robustness**, not speed, and no build is claimed to be faster than another.
+
+**The second 4-bit implementation could not be produced in this environment.** The pre-registered fourth
+cell was a second 4-bit build of the same family. Three routes were attempted and none produced a servable
+artifact, while **changing the shared library versions is a hard constraint**: bitsandbytes NF4 is
+unreachable because the serving stack exposes no bitsandbytes quantization method and ships no such loader;
+the official one-shot compressor route fails at import because the version that pins the installed
+quantization library declares an older `transformers` than the shared environment provides (the class it
+imports no longer exists); and an in-house round-to-nearest INT4 build reproduced the working artifact's
+structure and was accepted by the loader, but its packing round-trip was wrong (independent dequantisation
+relative error ≈ **1.07**) and its smoke run degenerated (all 39 calls hit the token cap with repeated
+output), which trips the pre-registered *degenerate ⇒ stop* rule. The experiment is therefore reported as
+**three implementations**, the fourth cell is **empty and disclosed**, and no substitute implementation is
+described as if it had run. The three probes and their checks are released under `code/analysis/` (see
+*MANIFEST.csv*).
+
+**Download facts for the FP8 build.** The official artifact repository holds **18 files totalling
+35,532,290,088 bytes**; per-file SHA-256 was verified against the hub's LFS metadata **18 of 18**. Our
+pre-run declaration said **19** files — an off-by-one corrected here (the byte total and the revision were
+correct as declared).
 
 **Criterion C4 read out: FAIL ⇒ the "count has no material effect" reading is withdrawn.** Two
 regressions are reported with the **same** legibility covariates (size, blur, overlap, in the ordinal
@@ -1683,25 +1757,39 @@ The pre-registered practical-null band was **±0.2** (`ci_lo > −0.2 AND ci_hi 
 
 **Independent recomputation.** A separately written parser and analysis (an independent script that **does not import the frozen analyzer**) re-derived the panel from the released per-item records: **C1 PASS, C2 PASS (shrunk accounting), C3 PASS, C4 FAIL, C5 PASS**; the negative controls NC1, NC3 and NC-const all PASS. Reparsing the primary 11,232 rows independently gave **0** disagreements in `parse_ok`, `pred` and the abstain flag (the 11,664-row contrast is likewise 0).
 
-**Two honest registrations (thresholds unchanged).**
+**Three honest registrations (thresholds unchanged).**
 
-1. **Pre-run shrinkage.** The four-build budget (23,328 calls / 36 cells / 12 starts) became
-   **11,664 calls / 18 cells / 6 starts**, because FP8 and same-family GPTQ weights do not exist in this
-   environment. The shrink happened **before the run began** and is recorded, not hidden.
+1. **Pre-run shrinkage, and the later extension.** The four-build budget (23,328 calls / 36 cells /
+   12 starts) became **11,664 calls / 18 cells / 6 starts** for the main batch, because neither a
+   same-family FP8 nor a same-family GPTQ artifact was on the host when it began. The shrink happened
+   **before the run began** and is recorded, not hidden. A same-family FP8 artifact was obtained later and
+   run as the extension reported above (**+5,832 calls / +9 cells / +3 starts**); the second 4-bit route
+   remains unreachable in this environment. The four-build budget was therefore **never executed in full**,
+   and the attained pool is **27 of 36 cells / 17,496 of 23,328 calls**, all of the shortfall being the
+   9 cells of the empty second 4-bit build.
 2. **C2 has two accounting calibers, and both are reported.** The frozen criteria file writes
    `C2_integrity.threshold.total_rows = 23,328`, so the **frozen analyzer, run as-is, returns
-   `C2 passed = false`** (the 18 b1/b3 cells are missing). The **independent recomputation judges C2
-   PASS** on the attained **18 × 648 = 11,664** rows (per-cell `parse_ok` = 1.000 for 18/18 cells, no
-   short cells, `http_err` = 0). Neither caliber is suppressed: the PASS caliber reflects the experiment
-   that was actually run, the FAIL caliber reflects the pre-registered threshold.
+   `C2 passed = false`** (on the main batch: the 18 FP8/GPTQ cells missing; on the pooled set: the 9 cells
+   of the empty second 4-bit build missing). The **independent recomputation judges C2 PASS** on the
+   attained rows — **18 × 648 = 11,664** for the main batch and **27 × 648 = 17,496** for the pooled set
+   (per-cell `parse_ok` = 1.000 for every attained cell, no short cells, `http_err` = 0). Neither caliber
+   is suppressed: the PASS caliber reflects the experiment that was actually run, the FAIL caliber reflects
+   the pre-registered threshold.
+3. **The third build's pooled fit carries its analysis-revision history.** The as-run and the
+   caliber-corrected readings differ in the legibility-covariate coding and in the primary record set, and
+   both are printed (see the registration above). The as-run revision is the **predecessor** of the shipped
+   one — the revision that produced the pre-correction two-build readings, whose corrected successors are
+   the two-build numbers printed above; the shipped revision is the corrected one. Changing the printed
+   values silently in either direction would have been the wrong trade.
 
 **Provenance (md5).** criteria `758962a2643e1035698682abefec5748`; stimulus generator
 `edd4a9708cf97ece4d376964a72160d3`; probe `2f9d53cd3098990aa29b69e4946de2b0`; frozen orchestration
 `a93ecd519341fba79bb7d993eb6641b8`; revised orchestration driver script
-`7fa412d96c6a21717d946a287156403c`; analyzer `77f87f49b0e447fba54ea2a0435f80c8`; official stimulus lock
+`7fa412d96c6a21717d946a287156403c`; analyzer as shipped `77f87f49b0e447fba54ea2a0435f80c8` (and, for the
+third build, the as-run copy `bf873c5e7da083dae42cb379efe9af9d`); official stimulus lock
 `stim/manifest.csv` = `d2dde2a8100eca8eda88143f6cbb04ba`, with `manifest_sha256.txt` **648/648 OK**;
 stimulus config `e6adaa4825c90fe4574e0c11a877f994`; run log (ALL_DONE) `5ed9aeb00b96799d47f5ba1ff82dc415`.
-Released under two `data/derived/` subdirectories, each listed in `MANIFEST.csv`.
+Released under three `data/derived/` subdirectories, each listed in `MANIFEST.csv`.
 
 ### M.14 Numeric detail for §§6.2, 7.7 and 7.9
 

@@ -1,0 +1,339 @@
+{
+  "criteria_md5": "758962a2643e1035698682abefec5748",
+  "dir": "/root/a52_ext_full/_pooled_b0b1b2",
+  "checks": {
+    "C1_stim": {
+      "manifest": "/root/a52/stim/manifest.csv",
+      "manifest_md5": "d2dde2a8100eca8eda88143f6cbb04ba",
+      "rows": 648,
+      "cells": 81,
+      "per_cell": 8,
+      "excluded_preregistered": {
+        "c08_s3_b8_o0": "可辨 blob = 0（r=3 σ=8 下全部并成一团且峰值 < 0.10）",
+        "c80_s24_b0_o0": "放不下：目标 80 个，最小间距 69.6px 时只放下 79 个（每次布局）",
+        "c80_s24_b4_o0": "放不下：目标 80 个，最小间距 69.6px 时只放下 76 个（每次布局）"
+      },
+      "n_kept": 78,
+      "all_nonempty_after_exclusion": true,
+      "all_nonempty_including_excluded": false,
+      "sha256_complete": true,
+      "detection_frac_mean": 0.7589699074074074
+    },
+    "C2": {
+      "missing_cells": [
+        "b3/base/s1",
+        "b3/base/s2",
+        "b3/base/s3",
+        "b3/strict/s1",
+        "b3/strict/s2",
+        "b3/strict/s3",
+        "b3/permit/s1",
+        "b3/permit/s2",
+        "b3/permit/s3"
+      ],
+      "short_cells": [],
+      "low_parse_cells": [],
+      "n_rows": 17496,
+      "expect_rows": 23328
+    },
+    "C3_model": {
+      "count_mean": 40.0,
+      "count_sd": 29.93325909419153,
+      "n_rows": 17496,
+      "rank_ok": true,
+      "n_iter": 10,
+      "beta_count": -4.53056073586139,
+      "se_count": 0.21027124662977204,
+      "ci": [
+        -4.942692379255743,
+        -4.118429092467037
+      ],
+      "outcome_rate": 0.1756973022405121,
+      "separation": false,
+      "ci_informative": true,
+      "interactions": {
+        "count_std_x_strict": {
+          "beta": -0.23975869284805754,
+          "se": 0.20688660158414318,
+          "ci": [
+            -0.6452564319529782,
+            0.16573904625686312
+          ],
+          "p_wald": 0.2465012637247882
+        },
+        "count_std_x_permit": {
+          "beta": -2.0113868495786846,
+          "se": 0.29173029449260546,
+          "ci": [
+            -2.583178226784191,
+            -1.439595472373178
+          ],
+          "p_wald": 5.398641941624973e-12
+        },
+        "count_std_x_b1": {
+          "beta": 0.38388949057625743,
+          "se": 0.23396875457347277,
+          "ci": [
+            -0.0746892683877492,
+            0.842468249540264
+          ],
+          "p_wald": 0.10084465568508072
+        },
+        "count_std_x_b2": {
+          "beta": 0.19615031823229842,
+          "se": 0.23848709567674536,
+          "ci": [
+            -0.27128438929412246,
+            0.6635850257587194
+          ],
+          "p_wald": 0.41080507262257115
+        },
+        "count_std_x_b3": {
+          "beta": 0.0,
+          "se": 10000.0,
+          "ci": [
+            -19600.0,
+            19600.0
+          ],
+          "p_wald": 1.0
+        }
+      },
+      "nuisance": {
+        "radius": 0.1225181016315772,
+        "blur": -0.15106993670042723,
+        "overlap": 2.2659956824011958
+      },
+      "n_correct": 3074,
+      "cluster_bootstrap": {
+        "B": 500,
+        "n_ok": 500,
+        "seed": 20261004,
+        "ci": [
+          -6.753769908208193,
+          -3.2791811109675013
+        ],
+        "median": -4.6415465650569985,
+        "note": "按布局聚类重抽（同布局的全部变体同进同出）"
+      }
+    },
+    "C5_cv": {
+      "k": 8,
+      "assign_rule": "layout_id 的序号 mod k ⇒ 同布局的全部变体同折",
+      "per_fold": [
+        {
+          "fold": 0,
+          "beta_count": -4.8606217211545415,
+          "n_train": 15309,
+          "n_test": 2187,
+          "n_test_layouts": 81,
+          "rank_ok": true
+        },
+        {
+          "fold": 1,
+          "beta_count": -4.677772634887257,
+          "n_train": 15309,
+          "n_test": 2187,
+          "n_test_layouts": 81,
+          "rank_ok": true
+        },
+        {
+          "fold": 2,
+          "beta_count": -4.2493719562266765,
+          "n_train": 15309,
+          "n_test": 2187,
+          "n_test_layouts": 81,
+          "rank_ok": true
+        },
+        {
+          "fold": 3,
+          "beta_count": -4.160173759443676,
+          "n_train": 15309,
+          "n_test": 2187,
+          "n_test_layouts": 81,
+          "rank_ok": true
+        },
+        {
+          "fold": 4,
+          "beta_count": -4.454636279227878,
+          "n_train": 15309,
+          "n_test": 2187,
+          "n_test_layouts": 81,
+          "rank_ok": true
+        },
+        {
+          "fold": 5,
+          "beta_count": -4.520592536204529,
+          "n_train": 15309,
+          "n_test": 2187,
+          "n_test_layouts": 81,
+          "rank_ok": true
+        },
+        {
+          "fold": 6,
+          "beta_count": -5.17537165278165,
+          "n_train": 15309,
+          "n_test": 2187,
+          "n_test_layouts": 81,
+          "rank_ok": true
+        },
+        {
+          "fold": 7,
+          "beta_count": -4.289214049519176,
+          "n_train": 15309,
+          "n_test": 2187,
+          "n_test_layouts": 81,
+          "rank_ok": true
+        }
+      ],
+      "stability": {
+        "n_folds": 8,
+        "min": -5.17537165278165,
+        "max": -4.160173759443676,
+        "median": -4.454636279227878,
+        "sd": 0.3209736610856416,
+        "sign_consistency": 1.0,
+        "unstable": false
+      }
+    },
+    "NC3_parse_recompute": {
+      "checked": 17496,
+      "mismatch": 0
+    }
+  },
+  "verdicts": {
+    "C1": {
+      "passed": true,
+      "stim": {
+        "manifest": "/root/a52/stim/manifest.csv",
+        "manifest_md5": "d2dde2a8100eca8eda88143f6cbb04ba",
+        "rows": 648,
+        "cells": 81,
+        "per_cell": 8,
+        "excluded_preregistered": {
+          "c08_s3_b8_o0": "可辨 blob = 0（r=3 σ=8 下全部并成一团且峰值 < 0.10）",
+          "c80_s24_b0_o0": "放不下：目标 80 个，最小间距 69.6px 时只放下 79 个（每次布局）",
+          "c80_s24_b4_o0": "放不下：目标 80 个，最小间距 69.6px 时只放下 76 个（每次布局）"
+        },
+        "n_kept": 78,
+        "all_nonempty_after_exclusion": true,
+        "all_nonempty_including_excluded": false,
+        "sha256_complete": true,
+        "detection_frac_mean": 0.7589699074074074
+      },
+      "note": "UNREALIZABLE 格由生成器**先声明后排除**（记入 _unrealizable.csv），已从非空检查的分母里移出；不得事后剔除"
+    },
+    "C2": {
+      "passed": false
+    },
+    "C3": {
+      "passed": true,
+      "order": [
+        "① count 主效应",
+        "② count×合同",
+        "③ count×构建"
+      ],
+      "count_main_std_logodds": -4.53056073586139,
+      "ci": [
+        -4.942692379255743,
+        -4.118429092467037
+      ],
+      "se": 0.21027124662977204,
+      "interactions": {
+        "count_std_x_strict": {
+          "beta": -0.23975869284805754,
+          "se": 0.20688660158414318,
+          "ci": [
+            -0.6452564319529782,
+            0.16573904625686312
+          ],
+          "p_wald": 0.2465012637247882
+        },
+        "count_std_x_permit": {
+          "beta": -2.0113868495786846,
+          "se": 0.29173029449260546,
+          "ci": [
+            -2.583178226784191,
+            -1.439595472373178
+          ],
+          "p_wald": 5.398641941624973e-12
+        },
+        "count_std_x_b1": {
+          "beta": 0.38388949057625743,
+          "se": 0.23396875457347277,
+          "ci": [
+            -0.0746892683877492,
+            0.842468249540264
+          ],
+          "p_wald": 0.10084465568508072
+        },
+        "count_std_x_b2": {
+          "beta": 0.19615031823229842,
+          "se": 0.23848709567674536,
+          "ci": [
+            -0.27128438929412246,
+            0.6635850257587194
+          ],
+          "p_wald": 0.41080507262257115
+        },
+        "count_std_x_b3": {
+          "beta": 0.0,
+          "se": 10000.0,
+          "ci": [
+            -19600.0,
+            19600.0
+          ],
+          "p_wald": 1.0
+        }
+      },
+      "degenerate_count": false,
+      "separation": false,
+      "outcome_rate": 0.1756973022405121,
+      "note": ""
+    },
+    "C4": {
+      "passed": false,
+      "band": 0.2,
+      "ci": [
+        -4.942692379255743,
+        -4.118429092467037
+      ],
+      "ci_informative": true,
+      "separation": false,
+      "rule": "CI 完全落在 ±0.2 内 ⇒ 可称\"无实质作用\"",
+      "cluster_bootstrap": {
+        "B": 500,
+        "n_ok": 500,
+        "seed": 20261004,
+        "ci": [
+          -6.753769908208193,
+          -3.2791811109675013
+        ],
+        "median": -4.6415465650569985,
+        "note": "按布局聚类重抽（同布局的全部变体同进同出）"
+      },
+      "disposition": "撤回该表述；§5.6 改写为\"count 的作用在控制可读性后仍可见\""
+    },
+    "C5": {
+      "passed": true,
+      "stability": {
+        "n_folds": 8,
+        "min": -5.17537165278165,
+        "max": -4.160173759443676,
+        "median": -4.454636279227878,
+        "sd": 0.3209736610856416,
+        "sign_consistency": 1.0,
+        "unstable": false
+      }
+    },
+    "NC3": {
+      "passed": true,
+      "checked": 17496,
+      "mismatch": 0
+    }
+  },
+  "flags": [
+    "C2 缺格 ['b3/base/s1', 'b3/base/s2', 'b3/base/s3', 'b3/strict/s1', 'b3/strict/s2', 'b3/strict/s3', 'b3/permit/s1', 'b3/permit/s2', 'b3/permit/s3']"
+  ],
+  "n_files": 27,
+  "n_rows": 17496
+}

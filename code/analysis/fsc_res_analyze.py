@@ -181,7 +181,7 @@ for field in ('zero', 'abstain'):
 print('\n■ 最大位移：Δzero %s ；Δabstain %s' % (mx['zero'], mx['abstain']))
 
 out = dict(
-    purpose='E1（盲审 #5）：FSC-147 的分辨率敏感性；并记录"384 是发布件的短边约束"这一事实',
+    purpose='E1：FSC-147 的分辨率敏感性；并记录"384 是发布件的短边约束"这一事实',
     fact_official_release='FSC-147 官方发布件 images_384_VarV2：6146 张图**短边恒为 384**（100%），'
                           '长边随长宽比在 384–1918 之间（本批样本长边 384–1229，长宽比 1.00–3.20）；'
                           '原始分辨率无官方下载点 ⇒ 384 由数据集决定，不是本文管道的选择',

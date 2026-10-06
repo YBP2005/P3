@@ -159,7 +159,7 @@ print('data/：%d 件；台账登记被改写 %d 件；内容命中占位符 %d 
       % (N_DATA, N_DATA_SAN, N_PH_DATA, N_DATA - N_DATA_SAN))
 
 # ── ①b 冻结件旁车（`*.md5`）：登记值必须等于**产物实物 md5**（★ v0654 新增）──────────
-#   起因（本轮盲审，三家独立报同一处，且**上面那三条断言全是绿的**）：
+#   起因（一次全树复核实测到**旁车登记值与产物实物不一致**，而**上面那三条断言全是绿的**）：
 #     `code/analysis/m37_ci_power_result.json.md5` 的**内容**登记 `44D5AE2E…`，而它所指的
 #     `m37_ci_power_result.json` 实物是 `DFBDDF0B…`。MANIFEST 那一行本身**没错**（第 224 行登记的
 #     是**旁车文件自身**的 md5 `50CA1A41…`）⇒ "按 MANIFEST 逐行核 bytes+md5"这一类检查**结构上

@@ -223,7 +223,7 @@ for sigma in (2.15, 6.46):
     print('  σ=%.2f pp、未校正（仅作参考）：最小可检出分离 = %.2f pp' % (sigma, d_u))
 
 out = dict(
-    purpose='v0527 盲审条目 #2/#4/#6/#23 的零 GPU 分析：ordering 的置换 p 与 bootstrap CI、逐旋钮敏感性、'
+    purpose='零 GPU 分析：ordering 的置换 p 与 bootstrap CI、逐旋钮敏感性、'
             'M.37 留出区间（引用）、10 单元下的最小可检出分离',
     inputs=dict(equalcount36=os.path.basename(EQ), a39=os.path.basename(A39),
                 equalcount36_md5=hashlib.md5(io.open(EQ, 'rb').read()).hexdigest(),

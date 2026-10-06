@@ -1588,6 +1588,15 @@ and **none** of the three arms moves the direction positive — the opposite of 
 **Status: a newly run experiment, reported here for the first time.** It is **not** the corpus grid of
 §C.2 and it is **not** the source of any other number printed in this paper.
 
+**Reading guide — the five additions in this section.** Since the previous release this section carries:
+(i) a **third implementation**, the same family in the **FP8 storage format**, alongside the AWQ 4-bit and
+BF16 builds; (ii) the **per-count-level table** for the three builds; (iii) the **host-level timing** —
+FP8 is **~11.5% slower than AWQ 4-bit and ~18.7% slower than BF16** on this host, so nothing below is a
+speed comparison; (iv) the disclosure that the **pre-registered second 4-bit build could not be produced**
+in this environment, with all three attempted routes and their failure modes recorded; and (v) the
+**download facts** for the FP8 artifact (**18 files, 35,532,290,088 bytes**, per-file SHA-256 verified
+**18 of 18**). The main text points here from §5.6.
+
 **Stimulus (synthetic).** A full **3⁴ factorial** over count × dot radius (size) × blur × overlap factor
 gives **81 cells**, **8 layouts per cell ⇒ 648 rendered images**. **3 cells were pre-registered as
 unrealizable** (`_unrealizable.csv`: one where the blurred small dots merge into no discernible blob,

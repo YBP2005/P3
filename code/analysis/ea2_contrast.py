@@ -120,7 +120,7 @@ for f in glob.glob(RP('analysis', 'e1_results_nonzero', '*.csv')):
 print('=' * 118)
 print('■ 真零池（E2 新测，306 张核实图）vs 非零池（已冻结）—— 同一支探针、同一分类口径')
 print('=' * 118)
-out = dict(purpose='E2 的真零/非零对照（盲审 #1 的"混合真零/非零"要求）',
+out = dict(purpose='E2 的真零/非零对照（"混合真零/非零"要求）',
            rule='raw-match，同 a5_judge.cls()', z0=dict(), nonzero=dict())
 
 print('\n【非零池（gt>0 为主）】')

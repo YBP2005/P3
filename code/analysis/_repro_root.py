@@ -74,7 +74,7 @@ _ALIAS = (
     #   只是 20 件受控网格输入（`b2__out_*_blurct` / `*_occlct` / `ivl_blurct`），**不含**任何
     #   `vlm_/aer_/ext_` 结果。于是 `resolve('analysis','data','pod_mirror','dense_results', ...)`
     #   落到一条**不存在**的 `data/derived/pA/dense_results/...`。
-    #   实测后果（两家盲审各自独立报到）：`p4_decomp_verify.py` 在放行树上 `os.walk` 命中 **0** 份，
+    #   实测后果：`p4_decomp_verify.py` 在放行树上 `os.walk` 命中 **0** 份，
     #   并在 §5.11(a) 复现段 `FileNotFoundError` ⇒ 附录 J.1 的「136 / 131」在包内**不可复算**。
     #   下表每条都按 `sync_repro.py` 的落点实测：作者树子目录与放行树同名子目录**逐文件比对**，
     #   作者侧文件**全部**都在放行侧（覆盖率 100%）。映射按段数从长到短匹配 ⇒ 这些更长前缀先命中；
@@ -123,7 +123,7 @@ _ALIAS = (
     #   `data/derived/A`（实测 3 件；作者侧 9 件里只有这 3 件随包，其余 6 件是**同内容的重命名副本**
     #   与未放行件，`st_a` 那一条另在 `data/derived/p2e_a800/`）。旧表没有这条 ⇒ `resolve(...)`
     #   落到兜底的 `data/derived/pA/A/…`（不存在）⇒ `f10_grid8_declared.py` **开箱即崩**：
-    #   `FileNotFoundError: …\data\derived\pA\A\det_yolo_ladder_yolo12n.csv`（两家盲审各自报到）。
+    #   `FileNotFoundError: …\data\derived\pA\A\det_yolo_ladder_yolo12n.csv`。
     #   实测：A 的作者侧 3 个已放行件与 `data/derived/A` 同名件 **md5 逐一相同**、无只在一侧的件；
     #   `B` 的唯一件（`visdrone_det.pt`）**不在放行树**，故**不给 B 加别名**（加了只会把一个
     #   不存在的路径换成另一个不存在的路径，不产生信息）。

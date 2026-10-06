@@ -47,6 +47,26 @@ FIGS = [('F6b_abstention_vs_tile.png', 'Fig. 1'),
         ('F12_prompt_dose.png', 'Fig. 2'),
         ('F8_tau_cleaning.png', 'Fig. 3'),
         ('F11_abstention_vs_undercount.png', 'Fig. 4')]
+FIGFILE = dict((label, fn) for fn, label in FIGS)
+# ★ 2026-10-06（v0657）：**图题注**。此前 Table 1–6 有正文题注（`**Table N.** …` 段）而
+#   Fig. 1–4 **只有图、没有任何题注段**（实测：`w:drawing` = 4，`Fig.\s*\d` 的 4 次命中
+#   **全是正文引用**）。现在每张图的**首次引用段之后**紧跟一条 `**Fig. N.** …` 题注段。
+#   版式：官方版式给的是「图注 8 pt」（见文件头），故按 `CAP_PT` 渲染，与正文 10 pt 区分。
+#
+#   ★ 两处落点（缺一即下一轮重建就丢）：
+#     · **源稿**（`PaperB_英文稿_PR_20260919.md`）里那四段 `**Fig. N.** …` —— 题注的**正文副本**；
+#     · **本表** —— 构建期的**权威副本 + 同名断言**：每遇到一个题注段，就断言它与本表**逐字相等**，
+#       不等即**抛错停链**（防"改了源稿忘了这里"或反之而两份悄悄漂移）。
+#   两处**不是重复排版**：docx 里只出现一次（正文那份被本表校验后原地渲染）。
+FIGCAPS = {
+    'Fig. 1': 'Tiling removes the ShanghaiTech-A abstention without harming direction.',
+    'Fig. 2': 'The prompt-strength dose–response: relaxation also drives abstention to zero, '
+              'but flips $\\rho$ from −82% to +234%…+345%.',
+    'Fig. 3': 'The threshold-cleaning curve separating reachable from unreachable levels.',
+    'Fig. 4': 'The four-panel separation of the two failure modes: abstention and under-count decouple.',
+}
+assert set(FIGCAPS) == set(FIGFILE), 'FIGCAPS 与 FIGS 的图号不是一一对应'
+RE_CAP = re.compile(r'^\*\*(Fig\.\s*\d+)\.\*\*\s*(.+)$')
 # ★ 2026-09-23：正文 35 页顶格，插图宽度 11.4 → 10.4 cm（约省 4 cm 高 ≈ 0.12 页）
 # ★ 2026-09-24：为拿回页数余量 10.4 → 9.4 cm（图件 aspect 0.62–0.73 ⇒ 四张合计省约 2.7 cm 高）。
 # ★ 2026-09-24：为收回"文字项批次"顶出的页数，10.4 → 9.4 → 9.0 → 8.2 cm（内容不改，只改排版高度）。
@@ -151,6 +171,22 @@ def build(md, path):
     add_page_number(sec.footer.paragraphs[0])
 
     fig_used = set()
+    cap_done = []
+
+    def place_fig(label):
+        """把 `label` 的图件插成**居中、单倍行距、宽度 TEXT_W_CM** 的独立段落。
+
+        返回 True 表示真的插了图（图件缺失时静默不插，保持既有行为）。
+        """
+        fp = os.path.join(RP('analysis', 'figures'), FIGFILE[label])
+        if not os.path.exists(fp):
+            return False
+        ip = doc.add_paragraph()
+        ip.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        ip.paragraph_format.line_spacing = 1.0
+        ip.add_run().add_picture(fp, width=Cm(TEXT_W_CM))
+        return True
+
     for b in blocks:
         if b[0] == 'hr':
             p = doc.add_paragraph()
@@ -175,6 +211,21 @@ def build(md, path):
                     add_inline(par, txt, size=TBL_PT, bold_all=(ri == 0))
             doc.add_paragraph()
         elif b[0] == 'p':
+            _mc = RE_CAP.match(b[1].strip())
+            if _mc and _mc.group(1) in FIGCAPS:
+                # ★ v0657：题注段 —— 先把图件插在它**上面**，再把它按 `CAP_PT` 渲染成题注。
+                _lab = _mc.group(1)
+                _txt = ' '.join(_mc.group(2).split())
+                assert _txt == FIGCAPS[_lab], (
+                    '图题注两处不一致 ⇒ 停链：源稿 md 为 %r，build_pr_docx.FIGCAPS 为 %r'
+                    % (_txt, FIGCAPS[_lab]))
+                if _lab not in fig_used:
+                    fig_used.add(_lab)
+                    place_fig(_lab)
+                _cp = doc.add_paragraph()
+                add_inline(_cp, '**%s.** %s' % (_lab, _txt), size=CAP_PT)
+                cap_done.append(_lab)
+                continue
             p = doc.add_paragraph()
             add_inline(p, b[1])
             # 图件插在**首次引用该图**的段落之后（不是插在文末）
@@ -183,20 +234,18 @@ def build(md, path):
                     continue
                 if re.search(r'\b%s\b' % re.escape(label), b[1]):
                     fig_used.add(label)
-                    fp = os.path.join(RP('analysis', 'figures'), fn)
-                    if os.path.exists(fp):
-                        ip = doc.add_paragraph()
-                        ip.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
-                        ip.paragraph_format.line_spacing = 1.0
-                        ip.add_run().add_picture(fp, width=Cm(TEXT_W_CM))
+                    place_fig(label)
+    assert sorted(cap_done) == sorted(set(FIGCAPS)), (
+        '缺图题注 ⇒ 停链：已渲染 %s，期望 %s（每张图必须恰有一条 `**Fig. N.** …` 题注段）'
+        % (sorted(cap_done), sorted(FIGCAPS)))
     doc.save(path)
-    return len(blocks), sorted(fig_used)
+    return len(blocks), sorted(fig_used), sorted(cap_done)
 
 
 def main():
     md = io.open(SRC, encoding='utf-8', newline='').read()
-    n, used = build(md, OUT)
-    print('blocks=%d  已插图=%s' % (n, used))
+    n, used, caps = build(md, OUT)
+    print('blocks=%d  已插图=%s  已渲染题注=%s' % (n, used, caps))
     print('输出 %s（%d B）' % (OUT, os.path.getsize(OUT)))
     missing = [l for _, l in FIGS if l not in used]
     if missing:

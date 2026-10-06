@@ -132,7 +132,7 @@ def main():
                       % (build, lang, key, rng['no_people'], rng['zero']))
 
     out = dict(
-        purpose='E2（盲审 #1）：真零池 × 多构建 × 双语言 × 3 次服务启动 —— 通道构成、分层/语言对照、服务级噪声',
+        purpose='E2：真零池 × 多构建 × 双语言 × 3 次服务启动 —— 通道构成、分层/语言对照、服务级噪声',
         inputs=dict(root=A.root, n_files=len(files)),
         rule='raw-match：先扫 raw 小写文本的 abstain/cannot_judge/no_people，再退回 pred（同 a5_judge.cls()）',
         by_build=res, serving_noise=noise,

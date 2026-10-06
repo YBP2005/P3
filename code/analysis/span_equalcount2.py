@@ -273,7 +273,7 @@ def shrink_txt(r):
     ★ 2026-10-06（v0654）：`analyse()` 只在**检测 τ 阶梯确实建成**时才写下
     `tau_shrink_in_domain` / `tau_shrink_coco`（那两族阶梯来自 `threeway_curves_v2.csv`）。
     旧代码在 `main()` 里**无条件**取这两个键 ⇒ 输入缺席时抛 `KeyError: 'tau_shrink_in_domain'`，
-    把"我少读了一族阶梯"报成"脚本坏了"（两家盲审各自实测到：放行树 + 缺输入 ⇒ `build('person')`
+    把"我少读了一族阶梯"报成"脚本坏了"（实测：放行树 + 缺输入 ⇒ `build('person')`
     只产 2 单元，随后崩在这一行）。现在缺键即**具名报出**缺哪一族，既不静默也不崩。
     """
     a, b = r.get('tau_shrink_in_domain'), r.get('tau_shrink_coco')

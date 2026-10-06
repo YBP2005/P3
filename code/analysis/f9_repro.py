@@ -256,7 +256,7 @@ print('  ⇒ %s' % ('**全部 unit 命中同一组合 %s** ⇒ 可把该族该�
                  '**可核验转录**，其口径组合在本仓库内无实现。' % (n_noimpl, len(verdicts))))
 
 out = {
-    'purpose': 'F.9 十行跨度能否由已发布记录重算（盲审 #10/#25/#28 的决定性实验）',
+    'purpose': 'F.9 十行跨度能否由已发布记录重算（决定性实验）',
     'rule': '<5% 记为命中该族该口径；两族都 >20% 记为"该口径组合在仓库内无实现"',
     'inputs': {
         'det_ladder_visdrone': 'analysis/data/pod_mirror/A/det_yolo_ladder_visdrone_det.csv',

@@ -99,7 +99,7 @@ plt.close(fig)
 print('\n森林图写出 %s（%.0f KB）' % (png, os.path.getsize(png) / 1024))
 
 out = dict(
-    purpose='盲审 #3（跨度森林图 + 可复算区间）、#23（命题 7 第三渠道敏感性）、#35（归一化跨度）',
+    purpose='跨度森林图与可复算区间、命题 7 第三渠道敏感性、归一化跨度',
     inputs=dict(equalcount36=os.path.basename(EQ),
                 md5=hashlib.md5(io.open(EQ, 'rb').read()).hexdigest()),
     noise_floor_pp=[NF_LO, NF_HI],

@@ -1,5 +1,5 @@
 {
-  "purpose": "v0527 盲审条目 #2/#4/#6/#23 的零 GPU 分析：ordering 的置换 p 与 bootstrap CI、逐旋钮敏感性、M.37 留出区间（引用）、10 单元下的最小可检出分离",
+  "purpose": "零 GPU 分析：ordering 的置换 p 与 bootstrap CI、逐旋钮敏感性、M.37 留出区间（引用）、10 单元下的最小可检出分离",
   "inputs": {
     "equalcount36": "equalcount36_result.json",
     "a39": "a39_unit_calib_heldout_result.json",

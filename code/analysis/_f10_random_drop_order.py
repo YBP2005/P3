@@ -26,7 +26,7 @@ import tempfile
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 W = os.path.dirname(os.path.abspath(__file__))
 # ★ 2026-10-06（v0654）：**默认不写回**。
-#   起因（gpt-5.6 / gpt-6.1 两份盲审各自实测）：旧版 `main()` 把产物**无条件写进本目录**
+#   起因（放行树上实测到）：旧版 `main()` 把产物**无条件写进本目录**
 #   （放行树上就是 `code/analysis/`，即**评审面自身**），而且——因为放行树上 `sec2.build()`
 #   因输入未放行只能建出 **2** 个单元——它会**静默**把随包冻结的 24 单元件覆盖成
 #   `n_units: 2`，把"我少读了 10 族阶梯"伪装成"这一轮算出来的就是 2 个单元"。

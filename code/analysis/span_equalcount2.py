@@ -106,7 +106,7 @@ def build(caliber):
             L[unit] = seq
 
     # ① 检测 τ —— ★ 修正点：按 match 取行
-    p = NR('analysis', 'data', 'threeway_curves_v2.csv')
+    p = RP('analysis', 'data', 'threeway_curves_v2.csv')
     if os.path.exists(p):
         rows = list(csv.DictReader(io.open(p, encoding='utf-8-sig')))
         for para in sorted(set(r['paradigm'] for r in rows)):
@@ -124,7 +124,7 @@ def build(caliber):
             assert all(len(v) == 1 for v in calibers_seen.values())
 
     # ② 密度回归输入尺度
-    p = NR('analysis', 'data', 'threeway_curves.csv')
+    p = RP('analysis', 'data', 'threeway_curves.csv')
     if os.path.exists(p):
         rows = list(csv.DictReader(io.open(p, encoding='utf-8-sig')))
         for ds in sorted(set(r['domain'] for r in rows if r['paradigm'] == '密度回归')):
@@ -142,8 +142,13 @@ def build(caliber):
                     L['pxbudget(threeway) / %s / %s' % (para.split('·')[1], ds)] = seq
 
     # ③ 像素预算（res_ctrl：逐图，可重算）
+    #   ★ 2026-10-06（v0654）：旧写法先把整根 `pod_mirror` 交给 `RP`（放行树上兜底到
+    #   `data/derived/pA`），**再**用 `os.path.join` 接子目录名 ⇒ **绕过**前缀映射表里那些更长、
+    #   更具体的条目，glob 在放行树上命中 0（`data/derived/pA/res_ctrl__q32/` 不存在）。现在把子目录
+    #   一并交给 `RP`，由映射表按最长前缀解析到 `data/derived/res_ctrl__q32/`。**值不变**。
     for mdl in ('q32', 'ivl'):
-        for f in sorted(glob.glob(os.path.join(RP('analysis', 'data', 'pod_mirror'), 'res_ctrl__%s' % mdl, 'res_ctrl_*.csv'))):
+        for f in sorted(glob.glob(os.path.join(
+                RP('analysis', 'data', 'pod_mirror', 'res_ctrl__%s' % mdl), 'res_ctrl_*.csv'))):
             ds = os.path.basename(f)[len('res_ctrl_'):-4]
             with io.open(f, encoding='utf-8-sig') as fh:
                 rr = list(csv.DictReader(fh))
@@ -262,6 +267,22 @@ def analyse(L, tag):
     return res
 
 
+def shrink_txt(r):
+    """τ 缩小倍率那一行（**带缺键保护**）。
+
+    ★ 2026-10-06（v0654）：`analyse()` 只在**检测 τ 阶梯确实建成**时才写下
+    `tau_shrink_in_domain` / `tau_shrink_coco`（那两族阶梯来自 `threeway_curves_v2.csv`）。
+    旧代码在 `main()` 里**无条件**取这两个键 ⇒ 输入缺席时抛 `KeyError: 'tau_shrink_in_domain'`，
+    把"我少读了一族阶梯"报成"脚本坏了"（两家盲审各自实测到：放行树 + 缺输入 ⇒ `build('person')`
+    只产 2 单元，随后崩在这一行）。现在缺键即**具名报出**缺哪一族，既不静默也不崩。
+    """
+    a, b = r.get('tau_shrink_in_domain'), r.get('tau_shrink_coco')
+    if not a or not b:
+        return ('  τ 缩小倍率：n/a（本机缺 `threeway_curves_v2.csv` ⇒ 检测 τ 阶梯未建，'
+                '该行不可报）')
+    return '  τ 缩小倍率：域内 %.2f–%.2f ｜ COCO %.2f–%.2f' % (a[0], a[1], b[0], b[1])
+
+
 def main():
     print('=' * 100)
     print('span_equalcount2.py ｜ %s' % ('--reproduce-bug：复算原版错值' if REPRO_BUG else '修正版：按口径分开'))
@@ -270,9 +291,7 @@ def main():
         L = build(None)
         r = analyse(L, 'MIXED(原版行为)')
         print('  τ 档数：%s' % {u.split(' / ')[-1]: len(L[u]) for u in L if 'tau' in u})
-        print('  τ 缩小倍率：域内 %.2f–%.2f ｜ COCO %.2f–%.2f'
-              % (r['tau_shrink_in_domain'][0], r['tau_shrink_in_domain'][1],
-                 r['tau_shrink_coco'][0], r['tau_shrink_coco'][1]))
+        print(shrink_txt(r))
         print('  （原版冻结件：域内 2.22–2.30、COCO 4.94–9.96 ⇒ 本脚本应复现出同一组数）')
         return 0
 
@@ -293,9 +312,7 @@ def main():
               % (r['spearman_span_eq'], r['spearman_span_drop_high'], r['spearman_span_drop_low']))
         print('  等点数保留率中位 %.2f ｜ 去高档中位降幅 %.0f%% ｜ 去低档中位降幅 %.0f%%'
               % (r['shrink_eq_median'], 100 * r['drop_high_median'], 100 * r['drop_low_median']))
-        print('  τ 缩小倍率：域内 %.2f–%.2f ｜ COCO %.2f–%.2f'
-              % (r['tau_shrink_in_domain'][0], r['tau_shrink_in_domain'][1],
-                 r['tau_shrink_coco'][0], r['tau_shrink_coco'][1]))
+        print(shrink_txt(r))
 
     # 非 τ 单元在两种口径下必须逐字相同（它们与 match 无关）—— 又一条结构性断言
     fa = {x['unit']: x['span'] for x in ALL['person']['units'] if 'tau' not in x['unit']}

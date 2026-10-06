@@ -18,9 +18,21 @@ import os
 import re
 import sys
 
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# ★ 2026-10-06（v0654）：与 `pA_analyze.py` 同一处病。本脚本此前硬拼 `PAPER/analysis/…`，
+#   而放行树没有 `analysis/` 这一层 ⇒ `family_arm()` 的 `glob` 命中 0（返回 `None` 被当成
+#   "该血统无数据"）、`grid()` 见文件不存在即 `return None` —— **独立复算会静默退化成空**，
+#   最后报 `INDEP_FAIL` 却指不出"是路径错了还是结果错了"。现在一律走 `_repro_root` 的映射表。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
+
 sys.stdout.reconfigure(encoding='utf-8')
 W = os.path.dirname(os.path.abspath(__file__))
-PAPER = os.path.dirname(os.path.dirname(W))
 ABST = re.compile(r'"?(abstain|cannot_judge|no_people)"?', re.I)
 ZERO = re.compile(r'^\s*0(\.0+)?\s*$')
 DOMS = ['st_a', 'st_b', 'ucf', 'visdrone', 'aitod', 'countbench']
@@ -64,7 +76,7 @@ def family_arm(fam, arm, root=None, min_n=20):
     这一步必须与主脚本一致，否则 Qwen3-VL-32B 会因把 countbench(n=6) 算进来而差 0.8 pp
     —— 该差异已被复算定位并记录在 SKIPPED 里，不是隐藏的取整。
     """
-    root = root or os.path.join(PAPER, 'analysis', 'e2xt_a800', 'merged')
+    root = root or RP('analysis', 'e2xt_a800', 'merged')
     tot = [0, 0, 0, 0]
     hits = []
     for d in DOMS:
@@ -83,7 +95,7 @@ def family_arm(fam, arm, root=None, min_n=20):
 
 
 def grid(dirname, prefix, arm):
-    p = os.path.join(PAPER, 'analysis', 'data', 'pod_mirror', dirname, '%s_%s.csv' % (prefix, arm))
+    p = os.path.join(RP('analysis', 'data', 'pod_mirror', dirname), '%s_%s.csv' % (prefix, arm))
     if not os.path.exists(p):
         return None
     rows = load(p)

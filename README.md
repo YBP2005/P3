@@ -51,13 +51,13 @@ weakened for release.
 | The tiling ladder (56.6% -> 6.0% (2x2) -> 0.0% (4x4 and finer) on ShanghaiTech-A) | `code/analysis/tile_ladder.py` over `data/derived/tile_results/` + `data/gold/`. |
 | **The span spectrum is not a function of the scanning grid** (ordering preserved at Spearman 0.999 / 0.981 / 0.991 over 24 knob x domain units; the detector-threshold **magnitudes** are governed by the caliber, not by the grid) | `code/analysis/span_equalcount2.py` over `data/derived/`; frozen result `code/analysis/span_equalcount2_result.json`; written up in supplementary F.10/F.11. **Withdrawn:** the superseded `span_equalcount.py` and its `span_equalcount_result.json` are kept here **byte-identical for audit only** — that pair is the caliber-mixed version, its numbers are withdrawn, and nothing in the manuscript quotes them (supplementary Z.3). |
 | **The dense-scene answered zero is build-specific** (variance decomposition: 38.7% domain / 33.9% build / 27.4% interaction; five deployments of one checkpoint differ by 90.3 pp on ShanghaiTech-A but 2.7-8.7 pp on the aerial domains) | `code/analysis/variance_decomp.py` over `data/derived/e2/`; frozen result `code/analysis/variance_decomp_result.json`; written up in supplementary M.18.8. |
-| Pagination (35 pages, single column, 1.5 spacing, numbered) | `code/analysis/build_pr_docx.py` rebuilds the submission `.docx` under the journal's layout (10 pt text, 1.5 spacing, 4.3/4.8/4.3/4.8 cm margins) and `code/analysis/freeze_docx_measurement.py` times it with the word processor's own paginator; the frozen result is `manuscript/pagination_measurement.json`. `code/analysis/measure_pr_layout.py` gives the RTF-proxy reading with its **positive control** (injecting 600 words must change the page count) and is kept as `manuscript/pagination_measurement_rtf_proxy.json`. |
+| Pagination (35 pages, single column, 1.5 spacing, numbered) | `code/analysis/build_pr_docx.py` rebuilds the submission `.docx` under the journal's layout (10 pt text, 1.5 spacing, 4.3/4.8/4.3/4.8 cm margins) and `code/analysis/freeze_docx_measurement.py` times it with the word processor's own paginator; the frozen result is `manuscript/pagination_measurement.json`. `code/analysis/measure_pr_layout.py` gives the RTF-proxy reading with its **positive control** (injecting 600 words must change the page count) and is kept as `manuscript/pagination_measurement_rtf_proxy.json`. **The measurement itself is *inside* this package and its two numbers are checkable here:** `manuscript/pagination_measurement.json` is registered in `MANIFEST.csv` and records `"pages": 35`, `"words": 11601`, `"tool": "Word 16.0 COM ComputeStatistics"`, `"limit_pages": 35` and `"margin_pages": 0`, and its `inputs.docx_md5` is **byte-identical** to the measured artefact shipped beside it, `manuscript/PaperB_manuscript_PR_layout.docx` — so *the result and the identity of the file measured* can both be verified without Word. **Re-running the measurement, however, needs the authors' machine**: the record's `inputs.docx` / `inputs.markdown` fields name the author-side paths, so `freeze_docx_measurement.py` cannot be re-executed from this package alone. That is a scope limit on *re-measurement*, not a missing record. |
 | Every structural/consistency assertion used before submission | `code/analysis/en_check.py`, `verify_objective.py`, `cite_guard.py`, `pr_compliance_check.py`, `verify_s11.py` |
 
 ## How to run: the package root
 
 **No script in this package hardcodes an author-machine path.** Every script under `code/` that resolves a
-data path at all — **149** of them — imports `code/analysis/_repro_root.py` and resolves its inputs through
+data path at all — **157** of them — imports `code/analysis/_repro_root.py` and resolves its inputs through
 it, so the package can be unpacked into any directory and run from there:
 
 ```bash
@@ -274,9 +274,9 @@ password, a host or a key.
 **Four counts that are easy to confuse**, each with the command that produces it (run from the
 package root). The first two are about *paths*, the last two about the *sanitiser*.
 
-1. **154** scripts resolve their inputs through the shared root: the **146** converted in v0608 plus the
+1. **157** scripts resolve their inputs through the shared root: the **146** converted in v0608 plus the
    scripts added to the released set since. Each imports `code/analysis/_repro_root.py`:
-   `grep -rl "from _repro_root import" code | wc -l` → **154**.
+   `grep -rl "from _repro_root import" code | wc -l` → **157**.
 2. **0** of those scripts carries an author-machine path, and no script's *data* path is absolute:
    `grep -rEl "(^|[^A-Za-z0-9])[A-Za-z]:[\\\\/]" code --include='*.py' --include='*.sh'` → **2** files, and
    neither is a data path: `_repro_root.py` itself (its single env-overridable `PAPERB_SHARED` default) and
@@ -304,7 +304,7 @@ package root). The first two are about *paths*, the last two about the *sanitise
    passwords. **v0610 changed none of these numbers**: it removed eight residue files instead (see
    *Write-back policy*), which took the package **at that revision** from **3,659** to **3,651** manifested
    files and left both the rewritten set and the substitution count untouched. **At this revision
-   `MANIFEST.csv` registers 4701 files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **3785**
+   `MANIFEST.csv` registers 4703 files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **3787**
    of them — both are re-derived by `code/analysis/derive_release_numbers.py`.
 4. **37** files merely *contain* one of the placeholder strings: `grep -rlE '<REDACTED-|<WORKDIR>|<SHARED-DIR>' . | wc -l`
    → **37** (the sanitiser's own rewritten set is count 3 above; the remainder only quote a placeholder
@@ -357,9 +357,9 @@ sanitiser and the path refactor.
 
 ### What the sanitiser did **not** touch
 
-**Nothing under `data/` was altered.** Every one of the **3785** files under `data/` is byte-identical to
+**Nothing under `data/` was altered.** Every one of the **3787** files under `data/` is byte-identical to
 the corresponding source file. Two independent checks say so: (i) a sanitiser substitution always leaves one
-of the six placeholder patterns above in the file, and a scan of all 3785 released data files finds **zero**
+of the six placeholder patterns above in the file, and a scan of all 3787 released data files finds **zero**
 placeholder patterns — hence zero substitutions anywhere under `data/`; (ii) a per-file `path / bytes / md5`
 manifest of `data/` taken before and after the release script ran is **unchanged**. In particular the 138
 A-round and B-round products added in this revision (`data/derived/A_res_20260928/` 71 files,

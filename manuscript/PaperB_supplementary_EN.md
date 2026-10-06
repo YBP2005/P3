@@ -2917,7 +2917,12 @@ corpus images; not part of the released package**) and the corpus predictions
 derivations, verification records and scope notes are reproduced **in full** below; nothing here is
 new, and none of it is offered as an empirical finding — the eight statements are either identities of
 the reporting convention (2, 4, 8), decidability statements about observable quantities (1, 3),
-equivariance statements (5), or a monotonicity argument that licenses a stratifier (6).
+equivariance statements (5), or a monotonicity argument that licenses a stratifier (6). **One item below is
+a measurement rather than a statement, and it is easy to miss when scanning the numbered statements**:
+**§M.21.10** is the calibration on a **constructed mixture with a known true-zero base rate** ($\pi$ =
+5.04% / 19.86% / 39.89%, rebuilt to 0.5703) — the experiment that supplies the answered-zero **precision**
+the corpus itself cannot supply, and the reason §3.8 can say the paper's $\pi$ is unknown while the
+conditioning numerator is still measured.
 
 #### M.21.1 Statements 1–7 (Proposition 8 is stated at the end of §M.21.9)
 
@@ -3056,6 +3061,9 @@ annotation**, and the precision $p\,\pi/q$ is zero with it: every answered zero 
 zero the annotation says is wrong. That is why the identification argument does not rest on an unmeasured
 $\pi$ here, and why we still report **coverage rather than precision** as the general statement — the
 residual assumption is that the source annotations are complete, which we name rather than measure.
+**That is a statement about *this* corpus**: on the **mixed** corpus, where $\pi$ is *not* zero by
+annotation, the corresponding calibration is the construction with a **known** $\pi$ at **§M.21.10**
+below (see also its row in the table of this subsection).
 To widen the conditioning event, we built **two external true-zero pools** under three gates —
 (i) the dataset annotation contains no person box; (ii) **two independent detectors** (YOLO11n and RT-DETR,
 at `conf ≥ 0.05`, IoU 0.5/0.7) also report no person; (iii) a deterministic 30-image sample per pool was

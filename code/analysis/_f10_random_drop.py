@@ -35,17 +35,27 @@ import io
 import itertools
 import json
 import os
+import argparse
 import random
 import statistics as st
 import sys
+import tempfile
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 W = os.path.dirname(os.path.abspath(__file__))
 DATA = NR('analysis', 'data')
-OUT = os.path.join(W, 'f10_random_drop_result.json')
+# ★ 2026-10-06（v0654）：与 `_f10_random_drop_order.py` 同款的**默认不写回**。
+#   本脚本的产物是**随包冻结件**；旧版把它**无条件写进本目录**（放行树上就是评审面自身的
+#   `code/analysis/`）⇒ 任何人在树内跑一次，就会改写冻结件**与其 `.md5` 旁车**，
+#   使 `MANIFEST.csv` 的逐行核验出现"并非数据问题"的不符（上一轮已实测发生过）。
+#   默认落临时目录；要回写树内冻结件须显式 `--apply`。
+FROZEN = os.path.join(W, 'f10_random_drop_result.json')
+TMP_OUT = os.path.join(tempfile.gettempdir(), 'f10_random_drop_result.json')
 K = 4
 NDRAW = 2000
 SEED = 20260924
+# 期望的检测 τ 阶梯数（2 个 paradigm × 3 个 knob，见冻结件 `f10_random_drop_result.json`）。
+EXP_LADDERS_PER_CALIBER = 6
 
 
 def span(seq):
@@ -54,8 +64,18 @@ def span(seq):
 
 
 def ladders(caliber):
-    rows = list(csv.DictReader(io.open(NR('analysis', 'data', 'threeway_curves_v2.csv'),
-                                       encoding='utf-8-sig')))
+    # ★ 2026-10-06（v0654）：这件输入此前走 `not_released()` ⇒ 放行树上落到一个**故意不存在**的
+    #   `_NOT_RELEASED/…` 路径，`io.open` 抛 `FileNotFoundError`（等于"开箱即崩"，且报错只给一个
+    #   路径、不说为什么）。现在（a）改为 `resolve()`：作者树上原样、放行树上映射到
+    #   `data/derived/threeway_curves_v2.csv`（**该件已随本轮放行**）；（b）**仍然**做显式存在性检查
+    #   并给出可读原因——缺件必须**报出来**，不许静默、也不许把"我少读了一族阶梯"混进结果里。
+    p = RP('analysis', 'data', 'threeway_curves_v2.csv')
+    if not os.path.exists(p):
+        raise SystemExit('!! 缺输入：%s\n'
+                         '   它是 F.10 检测 τ 阶梯的**唯一来源**，缺它就复算不出本表。\n'
+                         '   该件应随 `data/derived/threeway_curves_v2.csv` 发布；请核对复现包完整性。'
+                         % p)
+    rows = list(csv.DictReader(io.open(p, encoding='utf-8-sig')))
     out = collections.defaultdict(list)
     for r in rows:
         if caliber and r.get('match') != caliber:
@@ -66,6 +86,10 @@ def ladders(caliber):
             pass
     for k in out:
         out[k].sort(key=lambda x: x[0])
+    if len(out) != EXP_LADDERS_PER_CALIBER:
+        raise SystemExit('!! 检测 τ 阶梯读到 %d 条（期望 %d，口径 = %s）⇒ 输入不完整或口径列变了，'
+                         '拒绝**静默**出一个残缺的表。%s'
+                         % (len(out), EXP_LADDERS_PER_CALIBER, caliber, sorted(out)))
     return out
 
 
@@ -93,6 +117,13 @@ def analyse(seq):
 
 
 def main():
+    ap = argparse.ArgumentParser(description='F.10 随机删档敏感性：随机抽 k=4 档的跨度保留率')
+    ap.add_argument('--out', default=TMP_OUT,
+                    help='写出路径（默认 = 临时目录；★ 不覆盖包内任何件）')
+    ap.add_argument('--apply', action='store_true',
+                    help='写回树内冻结件 %s（+ .md5）；不给该开关则一次都不碰本树' % FROZEN)
+    _ARGS = ap.parse_args()          # ★ 变量名不用 `a`：函数体里 `a = analyse(...)` 会覆盖它
+    dest = FROZEN if _ARGS.apply else _ARGS.out
     res = dict(purpose='F.10 随机删档敏感性（多条预注册要求）：随机抽 k=4 档，看跨度保留率',
                design='每条阶梯独立；组合数 ≤2000 时穷举，否则随机抽 2000 组；保留率 = 抽样跨度 / 全长跨度',
                k=K, per_caliber={})
@@ -123,11 +154,13 @@ def main():
     print('\n检测 τ 单元的中位保留率：')
     for k, v in s.items():
         print('  %-34s %s' % (k, v))
-    io.open(OUT, 'w', encoding='utf-8', newline='\n').write(json.dumps(res, ensure_ascii=False, indent=2))
-    h = hashlib.md5(io.open(OUT, 'rb').read()).hexdigest()
-    io.open(OUT + '.md5', 'w', encoding='utf-8', newline='\n').write(
-        '%s  %s  (_f10_random_drop.py)\n' % (h, os.path.basename(OUT)))
-    print('\n已冻结 %s（md5 %s）' % (os.path.basename(OUT), h[:12]))
+    io.open(dest, 'w', encoding='utf-8', newline='\n').write(json.dumps(res, ensure_ascii=False, indent=2))
+    h = hashlib.md5(io.open(dest, 'rb').read()).hexdigest()
+    if _ARGS.apply:
+        io.open(dest + '.md5', 'w', encoding='utf-8', newline='\n').write(
+            '%s  %s  (_f10_random_drop.py)\n' % (h, os.path.basename(dest)))
+    print('\n已写 %s（md5 %s）%s' % (dest, h[:12],
+                                    '＋旁车 .md5' if _ARGS.apply else '（默认落临时目录；树内冻结件未动）'))
     return 0
 
 

@@ -65,10 +65,31 @@ import json
 import os
 import re
 import sys
+import tempfile
+
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# ★ 2026-10-06（v0654）：本脚本此前**硬拼** `PAPER/analysis/…`（`PAPER` = 本文件的上两级）。
+#   作者树上那是真的，**放行树上没有 `analysis/` 这一层** ⇒ 四个驱动脚本里至少两个读不到，
+#   `build()` 只会打印"读取失败"然后**少出臂**（`--selftest` 直接红）。现在四个来源一律走
+#   `_repro_root` 的前缀映射表（作者树原样；放行树落到 `code/experiments/**` 的同名件）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 
 sys.stdout.reconfigure(encoding='utf-8')
 W = os.path.dirname(os.path.abspath(__file__))
-PAPER = os.path.dirname(os.path.dirname(W))
+
+
+def _req(path, what):
+    """读驱动脚本前先报缺件（**具名**失败，不许静默少读一臂）。"""
+    if not os.path.exists(path):
+        raise RuntimeError('缺驱动脚本（%s）：%s' % (what, path))
+    return path
+
 
 TYPES = ['TASK', 'ENUM', 'ABSTAIN_PERMIT', 'ZERO_FORBID', 'FORMAT', 'PREMISE']
 
@@ -184,28 +205,35 @@ def _mod(path, name):
 
 
 def load_19e():
-    m = _mod(os.path.join(W, '19e_probe_multi.py'), 'pf_19e')
+    m = _mod(_req(RP('analysis', 'work', '19e_probe_multi.py'), '19e'), 'pf_19e')
     return {k: v for k, v in m.P.items() if isinstance(v, str)}, '19e(E2/E3 主实验)'
 
 
 def load_probe_gen():
-    p = os.path.join(PAPER, 'analysis', 'pod_evidence', 'scripts', 'probe_gen.py')
-    os.environ.setdefault('PROBE_OUT', os.path.join(W, '_promptfeat_tmp'))
+    p = _req(RP('analysis', 'pod_evidence', 'scripts', 'probe_gen.py'), 'probe_gen')
+    # ★ 2026-10-06（v0654）：`probe_gen.py` 在 **import 期**就 `os.makedirs(PROBE_OUT)`。
+    #   旧默认写在本脚本自己所在目录（`<pkg>/code/analysis/_promptfeat_tmp`）⇒ 评审者在**放行树内**
+    #   跑一次本脚本就会在包里**多出一个目录**（正是任务书 §… 明令避免的写盘副作用）。
+    #   改成临时目录：本脚本**只读** `PROMPTS`，产物落点与它无关。
+    os.environ.setdefault('PROBE_OUT', os.path.join(tempfile.gettempdir(), '_promptfeat_tmp'))
     m = _mod(p, 'pf_pgen')
     return {k: v for k, v in dict(m.PROMPTS).items() if isinstance(v, str)}, 'probe_gen(语料普查)'
 
 
 PARA_CANDIDATES = [
-    os.path.join(PAPER, 'analysis', 'h20_rescue_20260922', 'extract', '19c_probe_paraphrase.py'),
-    os.path.join(PAPER, 'analysis', 'work', '19c_probe_paraphrase.py'),
-    os.path.join(PAPER, 'analysis', 'e2xt_a800', 'env', 'a800_scripts', '19c_probe_paraphrase.py'),
+    ('analysis', 'h20_rescue_20260922', 'extract', '19c_probe_paraphrase.py'),
+    ('analysis', 'work', '19c_probe_paraphrase.py'),
+    ('analysis', 'e2xt_a800', 'env', 'a800_scripts', '19c_probe_paraphrase.py'),
 ]
 PARA_ARMS = ('permitB', 'permitC', 'channelB')
 
 
 def load_paraphrase():
     """换措辞臂。**必须**读到 3 臂；同时报出所用文件的 md5-12 供复核。"""
-    for p in PARA_CANDIDATES:
+    tried = []
+    for parts in PARA_CANDIDATES:
+        p = RP(*parts)
+        tried.append(p)
         if not os.path.exists(p):
             continue
         m = _mod(p, 'pf_19c')
@@ -213,7 +241,7 @@ def load_paraphrase():
         if len(out) == 3:
             md5 = hashlib.md5(io.open(p, 'rb').read()).hexdigest()[:12]
             return out, '19c(换措辞臂) md5=%s' % md5
-    raise RuntimeError('未找到含 %s 的 19c 驱动；候选路径都不可用' % (PARA_ARMS,))
+    raise RuntimeError('未找到含 %s 的 19c 驱动；候选路径都不可用：%s' % (PARA_ARMS, tried))
 
 
 def load_w1():
@@ -234,9 +262,9 @@ ARM_RE = re.compile(r'^(?:e1_)?.*?_(st_a|st_b|ucf|visdrone|aitod|countbench)_'
 
 def experiment_arms():
     arms = set()
-    dirs = [os.path.join(PAPER, 'analysis', 'e1_results_census'),
-            os.path.join(PAPER, 'analysis', 'e2_newh20'),
-            os.path.join(PAPER, 'analysis', 'e2xt_a800', 'merged')]
+    dirs = [RP('analysis', 'e1_results_census'),
+            RP('analysis', 'e2_newh20'),
+            RP('analysis', 'e2xt_a800', 'merged')]
     for d in dirs:
         for f in glob.glob(os.path.join(d, '*.csv')):
             m = ARM_RE.match(os.path.basename(f))

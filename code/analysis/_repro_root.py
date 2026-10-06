@@ -119,7 +119,32 @@ _ALIAS = (
     ('analysis/data/pod_mirror/t2_results', 'data/derived/t2_results'),
     ('analysis/data/pod_mirror/t2_results_32b', 'data/derived/t2_results_32b'),
     ('analysis/data/pod_mirror/tile_results', 'data/derived/tile_results'),
+    # ★ 2026-10-06（v0654）：`pod_mirror/A` 与 `pod_mirror/B` 是**另两个平铺子目录**，放行树落成
+    #   `data/derived/A`（实测 3 件；作者侧 9 件里只有这 3 件随包，其余 6 件是**同内容的重命名副本**
+    #   与未放行件，`st_a` 那一条另在 `data/derived/p2e_a800/`）。旧表没有这条 ⇒ `resolve(...)`
+    #   落到兜底的 `data/derived/pA/A/…`（不存在）⇒ `f10_grid8_declared.py` **开箱即崩**：
+    #   `FileNotFoundError: …\data\derived\pA\A\det_yolo_ladder_yolo12n.csv`（两家盲审各自报到）。
+    #   实测：A 的作者侧 3 个已放行件与 `data/derived/A` 同名件 **md5 逐一相同**、无只在一侧的件；
+    #   `B` 的唯一件（`visdrone_det.pt`）**不在放行树**，故**不给 B 加别名**（加了只会把一个
+    #   不存在的路径换成另一个不存在的路径，不产生信息）。
+    ('analysis/data/pod_mirror/A', 'data/derived/A'),
+    # ★ 2026-10-06（v0654）：两件**先前未放行的阶梯输入**。README 的"如何复现主要结果"一表把
+    #   §7.3 的"跨度不是扫描网格的函数（24 个 knob×域单元）"挂在 `code/analysis/span_equalcount2.py`
+    #   **over `data/derived/`** 上，而该脚本的 ① 检测 τ 阶梯与 ② 密度回归阶梯读的正是这两件；
+    #   它们此前只走 `not_released()` ⇒ 放行树上**静默少掉 10 个单元**（24 → 14），
+    #   且 `_f10_random_drop.py` 直接崩在 `NR(...)` 上。两件都只有 5,792 / 10,151 字节，
+    #   是**既有派生产物的逐字节副本**（不新造数据、不新增任何调用），故放行。
+    ('analysis/data/threeway_curves_v2.csv', 'data/derived/threeway_curves_v2.csv'),
+    ('analysis/data/threeway_curves.csv', 'data/derived/threeway_curves.csv'),
     ('analysis/data/pod_mirror', 'data/derived/pA'),
+    # ★ 2026-10-06（v0654）：三条**脚本件**的映射。`prompt_features.py` 要读三个"驱动脚本"来取
+    #   提示词原文（`19e_probe_multi.py` 的 `P`、`probe_gen.py` 的 `PROMPTS`、
+    #   `19c_probe_paraphrase.py` 的换措辞臂），而它们随包发布在 `code/experiments/**` **而不是**
+    #   作者侧的那几个目录 ⇒ 旧写法（`PAPER/analysis/…` 硬拼）在放行树上必崩/静默少读。
+    ('analysis/work/19e_probe_multi.py', 'code/experiments/19e_probe_multi.py'),
+    ('analysis/pod_evidence/scripts/probe_gen.py', 'code/experiments/probe_gen.py'),
+    ('analysis/h20_rescue_20260922/extract/19c_probe_paraphrase.py',
+     'code/experiments/h20_e2_scripts/19c_probe_paraphrase.py'),
     ('analysis/figures', 'figures'),
     ('analysis/g2_neutral0', 'data/derived/g2_neutral0'),
     ('analysis/p2_a800', 'data/derived/p2_noise4'),

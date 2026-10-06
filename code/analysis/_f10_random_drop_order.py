@@ -12,6 +12,7 @@
 阶梯构造**直接 import** `span_equalcount2.py` 的 `build()`（不另写一遍），故口径与 F.10 逐字一致。
 产物：`f10_random_drop_order_result.json`（+ .md5）。用法：python -u _f10_random_drop_order.py
 """
+import argparse
 import hashlib
 import importlib.util
 import io
@@ -20,10 +21,20 @@ import os
 import random
 import statistics as st
 import sys
+import tempfile
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 W = os.path.dirname(os.path.abspath(__file__))
-OUT = os.path.join(W, 'f10_random_drop_order_result.json')
+# ★ 2026-10-06（v0654）：**默认不写回**。
+#   起因（gpt-5.6 / gpt-6.1 两份盲审各自实测）：旧版 `main()` 把产物**无条件写进本目录**
+#   （放行树上就是 `code/analysis/`，即**评审面自身**），而且——因为放行树上 `sec2.build()`
+#   因输入未放行只能建出 **2** 个单元——它会**静默**把随包冻结的 24 单元件覆盖成
+#   `n_units: 2`，把"我少读了 10 族阶梯"伪装成"这一轮算出来的就是 2 个单元"。
+#   现在两条一起改：(a) 默认写到**临时目录**，只有显式 `--apply` 才写回树内冻结件；
+#   (b) `EXP_UNITS` 断言：单元数不等于 24 **即报错退出**（不许静默出残缺件）。
+FROZEN = os.path.join(W, 'f10_random_drop_order_result.json')
+TMP_OUT = os.path.join(tempfile.gettempdir(), 'f10_random_drop_order_result.json')
+EXP_UNITS = 24
 K, NDRAW, SEED = 4, 2000, 20260924
 
 spec = importlib.util.spec_from_file_location('sec2', os.path.join(W, 'span_equalcount2.py'))
@@ -62,6 +73,14 @@ def spearman(a, b):
 
 
 def main():
+    ap = argparse.ArgumentParser(description='F.10 随机删档：24 单元的幅度保留率与排序保全率')
+    ap.add_argument('--out', default=TMP_OUT,
+                    help='写出路径（默认 = 临时目录；★ 不覆盖包内任何件）')
+    ap.add_argument('--apply', action='store_true',
+                    help='写回树内冻结件 %s（+ .md5）；不给该开关则一次都不碰本树' % FROZEN)
+    a = ap.parse_args()
+    dest = FROZEN if a.apply else a.out
+
     rnd = random.Random(SEED)
     res = dict(purpose='F.10 随机删档：24 单元的幅度保留率与排序保全率（多条预注册条款/ T3 / T5）',
                design='随机抽 k=4 档（不放回）%d 次；幅度=抽样跨度/全长跨度；排序=抽样跨度向量与全长跨度向量的 Spearman'
@@ -69,6 +88,15 @@ def main():
     for cal in ('person', 'allclass'):
         L = sec2.build(cal)                     # 与 F.10 同一套 24 单元
         units = sorted(L)
+        # ★ 断言：单元集必须与冻结件同规模。放行树上若输入缺族，这里**当场报错**，
+        #   而不是安静地写出一个只有 2 个单元、却顶着同名 `.md5` 的"新冻结件"。
+        if len(units) != EXP_UNITS:
+            raise SystemExit(
+                '!! 单元数 %d ≠ 期望 %d（口径 %s）⇒ 拒绝出件（不许静默）。\n'
+                '   缺的族通常是检测 τ（`data/derived/threeway_curves_v2.csv`）与密度回归\n'
+                '   （`data/derived/threeway_curves.csv`）：两件缺席时只剩 %d 个单元。\n'
+                '   本脚本的产物是**随包冻结件**，残缺件会冒充真件 ⇒ 直接失败。'
+                % (len(units), EXP_UNITS, cal, len(units)))
         full = [span(L[u]) for u in units]
         rets, rhos = [], []
         for _ in range(NDRAW):
@@ -102,11 +130,14 @@ def main():
         print('  排序（抽样跨度 vs 全长跨度的 Spearman）：中位 %.3f ｜ 5–95%% [%.3f, %.3f] ｜ 最小 %.3f'
               % (d['ordering_spearman']['median'], d['ordering_spearman']['p05'],
                  d['ordering_spearman']['p95'], d['ordering_spearman']['minimum']))
-    io.open(OUT, 'w', encoding='utf-8', newline='\n').write(json.dumps(res, ensure_ascii=False, indent=2))
-    h = hashlib.md5(io.open(OUT, 'rb').read()).hexdigest()
-    io.open(OUT + '.md5', 'w', encoding='utf-8', newline='\n').write(
-        '%s  %s  (_f10_random_drop_order.py)\n' % (h, os.path.basename(OUT)))
-    print('\n已冻结 %s（md5 %s）' % (os.path.basename(OUT), h[:12]))
+    os.makedirs(os.path.dirname(os.path.abspath(dest)) or '.', exist_ok=True)
+    io.open(dest, 'w', encoding='utf-8', newline='\n').write(json.dumps(res, ensure_ascii=False, indent=2))
+    h = hashlib.md5(io.open(dest, 'rb').read()).hexdigest()
+    if a.apply:
+        io.open(dest + '.md5', 'w', encoding='utf-8', newline='\n').write(
+            '%s  %s  (_f10_random_drop_order.py)\n' % (h, os.path.basename(dest)))
+    print('\n已写 %s（md5 %s）%s' % (dest, h[:12],
+                                    '＋旁车 .md5' if a.apply else '（默认落临时目录；树内冻结件未动）'))
     return 0
 
 

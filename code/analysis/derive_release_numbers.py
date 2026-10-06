@@ -101,6 +101,29 @@ check('目录文件数 − MANIFEST 行数（应恰为 MANIFEST.csv 与 data.zip
 N_MAN = len(rows)
 N_DATA = sum(1 for p, _b, _m in rows if p.startswith('data/'))
 
+# ── ①b 冻结件旁车（`*.md5`）：登记值必须等于**产物实物 md5**（★ v0654 新增）──────────
+#   起因（本轮盲审，三家独立报同一处，且**上面那三条断言全是绿的**）：
+#     `code/analysis/m37_ci_power_result.json.md5` 的**内容**登记 `44D5AE2E…`，而它所指的
+#     `m37_ci_power_result.json` 实物是 `DFBDDF0B…`。MANIFEST 那一行本身**没错**（第 224 行登记的
+#     是**旁车文件自身**的 md5 `50CA1A41…`）⇒ "按 MANIFEST 逐行核 bytes+md5"这一类检查**结构上
+#     看不见它**，只有"把旁车打开、跟产物对一遍"才看得见。
+#   根因：一次**全树清理**重写了产物 json 的字节，而 `.md5` 是**冻结记录**、没有任何环节重新派生它。
+#   ⇒ 把"旁车登记值 == 产物实物 md5"变成**可复跑的派生断言**（下面 `DERIVED_SIDECARS` 是显式名单：
+#     只覆盖"登记值就是产物摘要"的记录；`w1_prereg.md5` 一类**带冻结时间戳的 append-only 记录**
+#     不在名单里，它们的语义是"冻结那一刻的值"，不由本支重写）。
+DERIVED_SIDECARS = ('code/analysis/m37_ci_power_result.json.md5',)
+print('\n①b 派生旁车（登记值 vs 产物实物）')
+for _rel in DERIVED_SIDECARS:
+    _fp = os.path.join(ROOT, _rel.replace('/', os.sep))
+    if not os.path.exists(_fp):
+        check('派生旁车在位：%s' % _rel, False, True)
+        continue
+    _m = re.match(r'\s*([0-9a-fA-F]{32})\s+(\S+)', rd(_fp))
+    _tgt = os.path.join(os.path.dirname(_fp), _m.group(2)) if _m else ''
+    check('派生旁车登记值 == 产物实物 md5：%s' % _rel,
+          _m.group(1).upper() if _m else '解析失败',
+          md5f(_tgt) if (_m and os.path.exists(_tgt)) else '缺产物')
+
 # ── ② 论文明细里的 32 位摘要 vs MANIFEST ───────────────────────────────────
 hx = re.compile(r'\b[0-9a-fA-F]{32}\b')
 printed = set()
@@ -191,9 +214,11 @@ equal the `MANIFEST.csv` md5 of a file this package ships, before or after v0608
 not shipped-file digests: %s.'''
      % (len(printed), len(hits), len(miss), ', '.join('`%s`' % d for d in miss))),
     # 四类计数（当场重算）
-    ('1. **149** scripts resolve their inputs through the shared root: the **146** converted in v0608 plus the\n'
-     '   three scripts added to the released set in v0609–v0610. Each imports `code/analysis/_repro_root.py`:\n'
-     '   `grep -rl "from _repro_root import" code | wc -l` → **149**.',
+    # ★ OLD = README **现印**的那一份（"上次印出的值"）；NEW = 当场派生。数目一变，本支就报红并要求
+    #   把 OLD 同步到新印值 —— 这正是"不许手抄、必须派生"的落地方式。
+    ('1. **154** scripts resolve their inputs through the shared root: the **146** converted in v0608 plus the\n'
+     '   scripts added to the released set since. Each imports `code/analysis/_repro_root.py`:\n'
+     '   `grep -rl "from _repro_root import" code | wc -l` → **154**.',
      '1. **%d** scripts resolve their inputs through the shared root: the **146** converted in v0608 plus the\n'
      '   scripts added to the released set since. Each imports `code/analysis/_repro_root.py`:\n'
      '   `grep -rl "from _repro_root import" code | wc -l` → **%d**.' % (n_shared, n_shared)),
@@ -210,11 +235,19 @@ not shipped-file digests: %s.'''
      '   `n1_span_artefact_result.json`, `n2_rule_spread_inventory.json`, the per-image records under\n'
      '   `data/derived/`, the `env/` handover notes, and this `README.md`, which quotes\n'
      '   the `e:\\n` fragment above). The frozen artefacts are **deliberately not modified** — they are reported'),
-    ('3. **30** files were rewritten by the sanitiser, in **58** substitutions (the table above). This set cannot be',
-     '3. **%d** files were rewritten by the sanitiser, in **%d** substitutions (the table above). This set cannot be'
-     % (len(san['files']) if san else 30, san['substitutions'] if san else 58)),
-    ('   *Write-back policy*), which took the package from **3,659** to **3,651** manifested files and left\n'
-     '   both the rewritten set and the substitution count untouched.',
+    # ★ v0654：这一条**依赖作者侧消毒台账**（取件数/替换数）。此前它在 `san is None` 时
+    #   仍按写死的退路值 30/58 去替换 ⇒ 在**放行树里**跑本支时必然"命中 0 次"而**报红**，
+    #   而真因只是"放行树没有台账"。现在它只在有台账时参与（值一律由台账派生）。
+    # ★ v0654：README 里"共享根脚本数"**出现两次**（"How to run" 段一次、计数 1 一次），
+    #   旧支只改后者 ⇒ 两处会长期互不一致（实测本轮接手时：一处 **149**、一处 **154**，真值 154）。
+    #   这两条把 "How to run" 那一处也纳入派生（值同 `n_shared`）。
+    ('data path at all — **149** of them — imports `code/analysis/_repro_root.py` and resolves its inputs through',
+     'data path at all — **%d** of them — imports `code/analysis/_repro_root.py` and resolves its inputs through'
+     % n_shared),
+    ('   *Write-back policy*), which took the package **at that revision** from **3,659** to **3,651** manifested\n'
+     '   files and left both the rewritten set and the substitution count untouched. **At this revision\n'
+     '   `MANIFEST.csv` registers 4701 files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **3785**\n'
+     '   of them — both are re-derived by `code/analysis/derive_release_numbers.py`.',
      '   *Write-back policy*), which took the package **at that revision** from **3,659** to **3,651** manifested\n'
      '   files and left both the rewritten set and the substitution count untouched. **At this revision\n'
      '   `MANIFEST.csv` registers %d files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **%d**\n'
@@ -225,14 +258,20 @@ not shipped-file digests: %s.'''
      "   → **%d** (the sanitiser's own rewritten set is count 3 above; the remainder only quote a placeholder\n"
      "   string — this `README.md` does so on purpose)." % (n_ph, n_ph)),
     # data/ 文件数（本轮投了 6 个 e8b_aerial CSV，旧值 2,767 已不成立）
-    ('**Nothing under `data/` was altered.** Every one of the **2,767** files under `data/` is byte-identical to',
+    ('**Nothing under `data/` was altered.** Every one of the **3785** files under `data/` is byte-identical to',
      '**Nothing under `data/` was altered.** Every one of the **%d** files under `data/` is byte-identical to' % N_DATA),
-    ('of the six placeholder patterns above in the file, and a scan of all 2,767 released data files finds **zero**',
+    ('of the six placeholder patterns above in the file, and a scan of all 3785 released data files finds **zero**',
      'of the six placeholder patterns above in the file, and a scan of all %d released data files finds **zero**' % N_DATA),
 ]
 
 readme = rd(README)
 SUB = [x for x in SUB if x is not None]
+# 依赖消毒台账的那一条：**只在台账在场时**参与（见上）。
+if san is not None:
+    SUB.append((
+        '3. **30** files were rewritten by the sanitiser, in **58** substitutions (the table above). This set cannot be',
+        '3. **%d** files were rewritten by the sanitiser, in **%d** substitutions (the table above). This set cannot be'
+        % (len(san['files']), san['substitutions'])))
 if san is None:
     print('  ⚠ 未找到消毒台账（作者侧）⇒ 跳过依赖它的替换；其余照常。')
 plan = []

@@ -25,9 +25,23 @@ import random
 import re
 import sys
 
+# ── 复现包统一根：`_repro_root.py`（与本文件同目录）──────────────────────────────
+# ★ 2026-10-06（v0654）：本脚本此前硬拼 `PAPER/analysis/…`（`PAPER` = 本文件的上两级）。
+#   作者树上那是真的；**放行树上没有 `analysis/` 这一层** ⇒ 三处 Block A/B/C 的取数全部落空：
+#   `scan_dir()` 见 `os.path.isdir` 为假就**静默返回空**、`block_pairs()` 见文件不存在就 continue
+#   ⇒ 出来一张"零单元格"的表却**不报错**。现在一律走 `_repro_root` 的前缀映射表
+#   （作者树原样；放行树：`analysis/e2xt_a800` → `data/derived/e3`、`analysis/e2_newh20` →
+#   `data/derived/e2`、`analysis/data/pod_mirror/<子目录>` → `data/derived/<子目录>`）。
+try:
+    from _repro_root import resolve as RP, not_released as NR
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根，无前缀映射表
+    import os as _o
+    _r = _o.environ.get('PAPERB_ROOT') or _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
+    RP = lambda *p: _o.path.join(_r, *p)
+    NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
+
 sys.stdout.reconfigure(encoding='utf-8')
 W = os.path.dirname(os.path.abspath(__file__))
-PAPER = os.path.dirname(os.path.dirname(W))
 FRZ = os.path.join(W, 'pA_criteria_frozen_v2.json')
 ABST_RE = re.compile(r'abstain|cannot_judge|no_people', re.I)
 
@@ -109,10 +123,18 @@ def zero_abst(rows):
 
 
 # ── Block A ───────────────────────────────────────────────────────────────────
-def scan_dir(d, min_n, skip_nz=True, only_nz=False):
+def scan_dir(d, min_n, skip_nz=True, only_nz=False, label=None):
+    """扫一个实验目录。
+
+    ★ 2026-10-06（v0654）：`src` 是**出处标注**，必须逐字稳定。旧写法用
+    `os.path.basename(d)` —— 作者树上是 `e2_newh20`、放行树上是 `data/derived/e2` ⇒ 同一个
+    单元格在两种布局下印出两个不同的 `src`（实测 270 格），产物 md5 随之改变。改为由调用方
+    显式给 `label`（作者侧目录名，两种布局同一），**不改任何统计量**。
+    """
     cells = {}
     if not os.path.isdir(d):
         return cells
+    lab = label or os.path.basename(d)
     for fn in sorted(os.listdir(d)):
         isnz = fn.startswith('nz__')
         if skip_nz and isnz:
@@ -129,7 +151,7 @@ def scan_dir(d, min_n, skip_nz=True, only_nz=False):
             continue
         cells[(fam, dom, arm)] = dict(
             family=fam, lineage=ALINEAGE.get(fam, fam), domain=dom, arm=arm,
-            n=n, n_zero=z, n_abst=a, n_err=e, src=os.path.join(os.path.basename(d), fn),
+            n=n, n_zero=z, n_abst=a, n_err=e, src=os.path.join(lab, fn),
             zero=z / n, abst=a / n, err=e / n)
     return cells
 
@@ -137,9 +159,10 @@ def scan_dir(d, min_n, skip_nz=True, only_nz=False):
 def block_a(min_n):
     """Block A：真实语料主块（**排除 nz__ 非零池**，见 v2 amendments）。"""
     cells, seen = {}, set()
-    for d in [os.path.join(PAPER, 'analysis', 'e2xt_a800', 'merged'),
-              os.path.join(PAPER, 'analysis', 'e2_newh20')]:
-        for k, v in scan_dir(d, min_n).items():
+    # ★ label = **作者侧目录名**（`src` 出处标注跨布局逐字稳定；见 `scan_dir` 的注）。
+    for parts, lab in ((('analysis', 'e2xt_a800', 'merged'), 'merged'),
+                       (('analysis', 'e2_newh20'), 'e2_newh20')):
+        for k, v in scan_dir(RP(*parts), min_n, label=lab).items():
             if k in seen:
                 continue
             seen.add(k)
@@ -150,8 +173,8 @@ def block_a(min_n):
 def block_d(min_n):
     """Block D：非零池反向对照（只作描述，不参与判定）。"""
     cells = {}
-    d = os.path.join(PAPER, 'analysis', 'e2_newh20')
-    for k, v in scan_dir(d, min_n, skip_nz=False, only_nz=True).items():
+    d = RP('analysis', 'e2_newh20')
+    for k, v in scan_dir(d, min_n, skip_nz=False, only_nz=True, label='e2_newh20').items():
         cells[k] = v
     return cells
 
@@ -215,7 +238,7 @@ B_ARMS = ['base', 'forbid0', 'choice', 'range']
 def block_pairs(runs, prefix):
     out = []
     for dname, label in runs:
-        d = os.path.join(PAPER, 'analysis', 'data', 'pod_mirror', dname)
+        d = RP('analysis', 'data', 'pod_mirror', dname)
         per = {}
         for arm in B_ARMS:
             p = os.path.join(d, '%s_%s.csv' % (prefix, arm))
@@ -556,8 +579,8 @@ def audit(cells, dcells):
         a[3] += c['n_zero']
     # n_empty_pred 不单独存，用 n_err + n_abst 近似不可靠 ⇒ 直接重扫一遍拿准确数
     raw = collections.defaultdict(lambda: [0, 0, 0, 0, 0])
-    for d in [os.path.join(PAPER, 'analysis', 'e2xt_a800', 'merged'),
-              os.path.join(PAPER, 'analysis', 'e2_newh20')]:
+    for d in [RP('analysis', 'e2xt_a800', 'merged'),
+              RP('analysis', 'e2_newh20')]:
         if not os.path.isdir(d):
             continue
         for fn in sorted(os.listdir(d)):

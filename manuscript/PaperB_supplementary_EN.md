@@ -1694,7 +1694,7 @@ regressions are reported with the **same** legibility covariates (size, blur, ov
 **only in the record set** — **primary = whole-cell exclusion of the three pre-registered unrealizable
 cells (n = 11,232)**; **contrast = including them (n = 11,664, the caliber printed in the previous release)**.
 
-**Primary caliber (whole-cell exclusion, n = 11,232):**
+**Primary caliber (main batch, whole-cell exclusion, n = 11,232):**
 
 | term | β | SE | z | p | Wald 95% CI |
 |---|---:|---:|---:|---:|---|
@@ -1715,7 +1715,7 @@ cells (n = 11,232)**; **contrast = including them (n = 11,664, the caliber print
 The pre-registered practical-null band was **±0.2** (`ci_lo > −0.2 AND ci_hi < +0.2`).
 **In both calibers the interval lies entirely outside that band — it does not even contain 0 ⇒ C4 FAIL**, with a **negative** sign (more dots, fewer correct answers): the primary interval is **[−4.6465, −3.7653]**, the contrast interval **[−4.8066, −3.9327]**. A layout-clustered bootstrap (8 layouts resampled, B = 500, seed 20261004) on the primary caliber gives **[−6.3291, −2.7775]** (median −4.2571) — the same sign and wider, so this is not a sampling accident. Because C4 failed in both calibers, the pre-registered disposition `verdict_if_fail` applies verbatim: **the claim that count has no material effect is withdrawn**, and §5.6 is rewritten as "count's role remains visible after controlling legibility".
 
-**Pooled by count level — primary caliber (whole-cell exclusion, n = 11,232).**
+**Pooled by count level — main-batch primary caliber (whole-cell exclusion, n = 11,232).**
 
 | count level | correct | rate |
 |---|---:|---:|

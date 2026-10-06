@@ -16,7 +16,12 @@
 用法：
     python derive_release_numbers.py            # 只核对 + 打印（不写盘）
     python derive_release_numbers.py --check    # 同上（显式）
+    python derive_release_numbers.py --selftest # 只核对 + ⑥ 的正反例自测（不写盘）
     python derive_release_numbers.py --apply    # 写回 README.md（须显式）
+
+★ v0656 起本支另含 **⑥ 持久陈旧串断言**：一个 append-only 注册表（旧叙述 / 旧计数 / 旧"发布形态"
+  摘要）必须在**替换后的 README** 里 **0 命中**；`--selftest` 跑正例（当前 README 绿）与负例
+  （注入陈旧串必须红）。该断言已挂进 `final_gates.py` 的调用链（⑦）。判据**只加不放宽**。
 """
 import csv
 import hashlib
@@ -246,9 +251,12 @@ SUB += [
     # ★ v0655：OLD 同步到 README **现印**的那一份（31/26/5）—— 本轮补充材料新增了一个
     #   "印在 provenance 行、但随包发的是**更正后**那一版"的摘要（机上实跑用的分析器副本），
     #   故派生结果为 32/26/6；新串由 `printed`/`hits`/`miss` 当场算出。
-    ('''Of the **31** distinct 32-hex digests printed in the manuscript and the supplementary material, **26**
-equal the `MANIFEST.csv` md5 of a file this package ships, before or after v0608. The remaining **5** are
-not shipped-file digests: `0a42e6e5bbfa89543ba9fc1522f1b075`, `758962a2643e1035698682abefec5748`, `9c74db226c1b785361807ebc7e069771`, `aca4444c7f681b0596db4e4a84578b62`, `d95d7466b482f575dc781d152e5ddf23`.''',
+    # ★ v0656：老串再次同步到 README **现印**的那一份（32/26/6 —— 因为本轮把`bf873c5e…`
+    #   （被取代的机上分析器）作为存档件放进 `archives/`，它**从"未随包摘要"变成"随包摘要"**，
+    #   故派生结果为 32/27/5；被换下的那一条已进 ⑥ 的持久注册表，不删。）
+    ('''Of the **32** distinct 32-hex digests printed in the manuscript and the supplementary material, **26**
+equal the `MANIFEST.csv` md5 of a file this package ships, before or after v0608. The remaining **6** are
+not shipped-file digests: `0a42e6e5bbfa89543ba9fc1522f1b075`, `758962a2643e1035698682abefec5748`, `9c74db226c1b785361807ebc7e069771`, `aca4444c7f681b0596db4e4a84578b62`, `bf873c5e7da083dae42cb379efe9af9d`, `d95d7466b482f575dc781d152e5ddf23`.''',
      '''Of the **%d** distinct 32-hex digests printed in the manuscript and the supplementary material, **%d**
 equal the `MANIFEST.csv` md5 of a file this package ships, before or after v0608. The remaining **%d** are
 not shipped-file digests: %s.'''
@@ -301,7 +309,7 @@ not shipped-file digests: %s.'''
      % n_shared),
     ('   *Write-back policy*), which took the package **at that revision** from **3,659** to **3,651** manifested\n'
      '   files and left both the rewritten set and the substitution count untouched. **At this revision\n'
-     '   `MANIFEST.csv` registers 4703 files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **3787**\n'
+     '   `MANIFEST.csv` registers 4757 files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **3829**\n'
      '   of them — both are re-derived by `code/analysis/derive_release_numbers.py`.',
      '   *Write-back policy*), which took the package **at that revision** from **3,659** to **3,651** manifested\n'
      '   files and left both the rewritten set and the substitution count untouched. **At this revision\n'
@@ -317,13 +325,18 @@ not shipped-file digests: %s.'''
     #   下面三条的老串 = **本轮落笔时 README 里的原文**；新串由实物算出。三条合起来把那句
     #   既存的**假全称句**（"Nothing under data/ was altered … finds zero placeholder patterns"）
     #   换成一个**可复核**的陈述：改了几件、其余逐字节相同、manifest 只在被改写的行上变化。
-    ('**Nothing under `data/` was altered.** Every one of the **3787** files under `data/` is byte-identical to\n'
-     'the corresponding source file.',
+    # ★ v0656：老串同步到 README **现印**的那一份（3829/4/3825）；被换下的"假全称句"那条
+    #   （`**Nothing under data/ was altered.** Every one of the **3787** …`）已进 ⑥ 的持久注册表。
+    ('**Almost nothing under `data/` was altered.** Of the **3829** files under `data/`, **4** are text files\n'
+     'the sanitiser rewrote (they are the `data/` rows of the table above); every one of the remaining **3825** is\n'
+     'byte-identical to the corresponding source file.',
      '**Almost nothing under `data/` was altered.** Of the **%d** files under `data/`, **%d** are text files\n'
      'the sanitiser rewrote (they are the `data/` rows of the table above); every one of the remaining **%d** is\n'
      'byte-identical to the corresponding source file.' % (N_DATA, N_DATA_SAN, N_DATA - N_DATA_SAN)),
-    ('of the six placeholder patterns above in the file, and a scan of all 3787 released data files finds **zero**\n'
-     'placeholder patterns — hence zero substitutions anywhere under `data/`; (ii)',
+    # ★ v0656：老串同步到 README **现印**的那一份（3829 / **3**）；被换下的"finds **zero**"那条已进 ⑥。
+    ('of the six placeholder patterns above in the file, and a scan of all 3829 released data files finds **3**\n'
+     'carrying one of them — the remaining rewritten data file carries a neutral internal-name placeholder\n'
+     'instead of a host/path placeholder; (ii)',
      'of the six placeholder patterns above in the file, and a scan of all %d released data files finds **%d**\n'
      'carrying one of them — the remaining rewritten data file carries a neutral internal-name placeholder\n'
      'instead of a host/path placeholder; (ii)' % (N_DATA, N_PH_DATA)),
@@ -355,6 +368,83 @@ for old, new in SUB:
         continue
     readme = readme.replace(old, new)
     plan.append(old[:60])
+
+# ── ⑥ ★ v0656：**持久陈旧串断言**（把"上一代老串"升级为常设判据）────────────────────────────
+#   机制弱点（v0655 §7 登记、本轮修）：⑤ 的替换表是**逐代手抄的老串**。它只在"老串仍印在 README
+#   里"的那一轮起一次作用；计数一变，老串与新串两边都不命中 ⇒ 要么报红、要么落进"已应用"分支
+#   **静默跳过**。更要紧的是：**更早几代**的陈旧值（更旧的清单行数、更旧的目录计数、更旧的
+#   "发布形态"摘要）**此后没有任何一条判据再看一眼** —— 旧模板一旦被重新生成，陈旧数字会原地
+#   复活而闸门照样全绿。
+#   处置：把所有**已知陈旧串**收进一个 **append-only 注册表**（只增不减），并断言它们在
+#   **替换后的 README** 里命中 **0 次**。⑤ 的"每条恰好命中 1 次 / 或已应用"两条判据**一字未改**
+#   —— 本段是**只加断言，不放宽任何现有判据**。
+#   ★ 范围（为什么只查 README）：本支的守卫对象就是 README 的派生数字。放行树里另有三处**冻结
+#     编排件**按纪律保留 `19 文件` 的历史叙述（登记不改；见本轮检查单 §25.2），故不做树级断言。
+#   ★ 注册表维护：每轮更新 ⑤ 的老串时，把**被换下的那一条**移入下表（而不是删掉）。
+STALE_STRINGS = [
+    # —— 跨代陈旧叙述（官方 FP8 件的件数，原写多算 1）——
+    ('FP8 官方件数（旧叙述，中文）', '19 文件'),
+    ('FP8 官方件数（旧叙述，英文）', '19 files'),
+    # —— 跨代陈旧计数 ——
+    ('清单登记行数（上一代）', 'registers 4703 files'),
+    ('清单登记行数（更早一代）', 'registers 4701 files'),
+    ('data/ 件数（上一代）', 'holds **3787**'),
+    ('data/ 件数（更早一代）', 'holds **3785**'),
+    ('共享根脚本数（上一代）', '**154** scripts resolve their inputs'),
+    ('共享根脚本数（更早一代）', '**149** of them'),
+    ('全树作者机路径件数（上一代）', 'gives **15** files'),
+    ('含占位符件数（上一代）', '**37** files merely *contain*'),
+    ('印出摘要数（上一代）', '**31** distinct 32-hex digests'),
+    ('消毒替换处数（上一代）', '**64** substitutions'),
+    ('假全称句（v0655 已改为派生式陈述）', 'Nothing under `data/` was altered.'),
+    ('占位符扫描的假零（v0655 已改为派生式陈述）',
+     'scan of all 3787 released data files finds **zero**'),
+    # —— 旧"发布形态"md5 摘要（README 已不再印它们；复活即说明 README 被从旧模板重生成）——
+    ('A_analyze.py 旧发布摘要', 'F795CD0233C4EA03C7E4C9D70CAC8BD2'),
+    ('review_control_evidence.md 旧摘要', '7052DE8CCB7FC67C57150619A570F742'),
+    ('n4 脚本旧发布摘要', '3A9F8BB2FEED81D58E15E480419DF5F9'),
+    ('w1_prereg 旧摘要', '75eeca6fa68c9be65c2b569d4237d8df'),
+    ('被取代的机上分析器（本轮已随 archives/ 放行 ⇒ 不再是"未随包"摘要）',
+     'bf873c5e7da083dae42cb379efe9af9d'),
+] + [('（⑤ 上一代替换串）%s' % old[:44], old) for old, _n in SUB]
+
+
+def stale_hits(txt):
+    """注册表里每一条陈旧串在 txt 里的命中（只列非 0 的）。"""
+    return [(lab, nd, txt.count(nd)) for lab, nd in STALE_STRINGS if txt.count(nd)]
+
+
+print('\n⑥ 持久陈旧串断言（对象 = 替换后的 README；注册表 %d 条，append-only）'
+      % len(STALE_STRINGS))
+_hits = stale_hits(readme)
+if _hits:
+    for lab, nd, c in _hits:
+        print('  ★ 陈旧串复活 %d 次：%s → %r' % (c, lab, nd[:72]))
+        FAILS.append('陈旧串在 README 里复活 %d 次：%s' % (c, lab))
+else:
+    print('  0 命中 ✓（%d 条已知陈旧串逐条核过：旧叙述 / 旧计数 / 旧摘要）'
+          % len(STALE_STRINGS))
+
+# —— 自测（正例 + 负例；`--selftest` 时才跑，仍不写盘）——
+if '--selftest' in sys.argv:
+    _POS = (len(stale_hits(readme)) == 0)
+    _PROBES = ['19 文件', 'registers 4703 files', 'F795CD0233C4EA03C7E4C9D70CAC8BD2']
+    for _p in _PROBES:
+        assert any(_p == _nd for _l, _nd in STALE_STRINGS), \
+            '负例探针不在注册表里：%r（自测本身无意义）' % _p
+    _NEG = [p for p in _PROBES if stale_hits(readme + '\n' + p + '\n')]
+    print('  [自测] 正例（当前 README 必须绿）：%s' % ('PASS' if _POS else 'FAIL'))
+    print('  [自测] 负例（注入 %d 条陈旧串必须逐条抓住）：%s（抓住 %d/%d）'
+          % (len(_PROBES), 'PASS' if len(_NEG) == len(_PROBES) else 'FAIL',
+             len(_NEG), len(_PROBES)))
+    for _p in _PROBES:
+        if _p not in _NEG:
+            print('     ★ 漏抓：%r' % _p)
+    if _POS and len(_NEG) == len(_PROBES):
+        print('  ⇒ STALE_SELFTEST_PASS')
+    else:
+        FAILS.append('持久陈旧串断言的自测未通过（正例=%s / 负例 %d/%d）'
+                     % (_POS, len(_NEG), len(_PROBES)))
 
 print('\n%s' % ('=' * 96))
 if FAILS:

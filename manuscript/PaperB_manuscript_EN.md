@@ -488,7 +488,7 @@ share and the last column the same **rate** under the item-count convention. App
 ### 5.6 Count and correctness under controlled rendering factors
 
 A new synthetic-dot experiment holds rendering fixed: count predicts correctness, not abstention.
-β = −4.2059, CI [−4.6465, −3.7653], 49.9% → 2.1% → 0.5% (11,232 = two-build primary; contrast in M.11.1).
+β = −4.2059, CI [−4.6465, −3.7653], 49.9% → 2.1% → 0.5% (11,232 = main-batch primary; contrast in M.11.1).
 
 ### 5.7 Abstention and under-counting are two separable failure modes
 

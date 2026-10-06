@@ -309,7 +309,7 @@ package root). The first two are about *paths*, the last two about the *sanitise
    passwords. **v0610 changed none of these numbers**: it removed eight residue files instead (see
    *Write-back policy*), which took the package **at that revision** from **3,659** to **3,651** manifested
    files and left both the rewritten set and the substitution count untouched. **At this revision
-   `MANIFEST.csv` registers 4757 files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **3829**
+   `MANIFEST.csv` registers 4759 files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **3831**
    of them — both are re-derived by `code/analysis/derive_release_numbers.py`.
 4. **39** files merely *contain* one of the placeholder strings: `grep -rlE '<REDACTED-|<WORKDIR>|<SHARED-DIR>' . | wc -l`
    → **39** (the sanitiser's own rewritten set is count 3 above; the remainder only quote a placeholder
@@ -345,9 +345,9 @@ Worked examples, each re-checked against `MANIFEST.csv` when this file was gener
   change**, only the literals that located its inputs, so both numbers are stated rather than one of them
   being silently corrected.
 
-Of the **32** distinct 32-hex digests printed in the manuscript and the supplementary material, **26**
-equal the `MANIFEST.csv` md5 of a file this package ships, before or after v0608. The remaining **6** are
-not shipped-file digests: `0a42e6e5bbfa89543ba9fc1522f1b075`, `758962a2643e1035698682abefec5748`, `9c74db226c1b785361807ebc7e069771`, `aca4444c7f681b0596db4e4a84578b62`, `bf873c5e7da083dae42cb379efe9af9d`, `d95d7466b482f575dc781d152e5ddf23`.
+Of the **32** distinct 32-hex digests printed in the manuscript and the supplementary material, **27**
+equal the `MANIFEST.csv` md5 of a file this package ships, before or after v0608. The remaining **5** are
+not shipped-file digests: `0a42e6e5bbfa89543ba9fc1522f1b075`, `758962a2643e1035698682abefec5748`, `9c74db226c1b785361807ebc7e069771`, `aca4444c7f681b0596db4e4a84578b62`, `d95d7466b482f575dc781d152e5ddf23`.
 
 **The earlier accounting in this section is superseded.** A previous revision counted "39 md5-valued JSON
 fields, 28 matching a shipped file and 11 not", and listed the eleven unmatched ones. The serialisation of
@@ -362,10 +362,10 @@ sanitiser and the path refactor.
 
 ### What the sanitiser did **not** touch
 
-**Almost nothing under `data/` was altered.** Of the **3829** files under `data/`, **4** are text files
-the sanitiser rewrote (they are the `data/` rows of the table above); every one of the remaining **3825** is
+**Almost nothing under `data/` was altered.** Of the **3831** files under `data/`, **4** are text files
+the sanitiser rewrote (they are the `data/` rows of the table above); every one of the remaining **3827** is
 byte-identical to the corresponding source file. Two independent checks say so: (i) a sanitiser substitution always leaves one
-of the six placeholder patterns above in the file, and a scan of all 3829 released data files finds **3**
+of the six placeholder patterns above in the file, and a scan of all 3831 released data files finds **3**
 carrying one of them — the remaining rewritten data file carries a neutral internal-name placeholder
 instead of a host/path placeholder; (ii) a per-file `path / bytes / md5`
 manifest of `data/` taken before and after the release script ran differs **only in the rows the sanitiser

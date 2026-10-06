@@ -27,7 +27,7 @@
 
 > ★ **不得表述为"四构建"**。本轮是**两个构建（b0 + b2）的收缩路径**（判据件 `amendments[0].note` 允许，且经上级明确裁定）；编排件自身亦在日志写下
 > `A52_BUILDS_SHRUNK builds=[b0 b2] missing=b1(FP8),b3(GPTQ)`。
-> 缺件反证（只读勘查，逐条可复跑）：`ls /root/models/Qwen3-VL-32B-Instruct-FP8` ⇒ 不存在；`p4_download.sh` L45/L49 **只声明**该仓 19 文件/35.53 GB、从未落盘；`find /root /model -iname '*gptq*'` ⇒ 仅两件**纯文本**非 VL 模型；`find -iname '*Qwen3-VL*GPTQ*'` ⇒ 空。
+> 缺件反证（只读勘查，逐条可复跑）：`ls /root/models/Qwen3-VL-32B-Instruct-FP8` ⇒ 不存在；`p4_download.sh` L45/L49 **只声明**该仓（**该两行原写"19 文件/35.53 GB"，件数多算 1；官方件实测 18 文件 / 35,532,290,088 B、SHA256 18-of-18 匹配**）、从未落盘；`find /root /model -iname '*gptq*'` ⇒ 仅两件**纯文本**非 VL 模型；`find -iname '*Qwen3-VL*GPTQ*'` ⇒ 空。
 > **b3 特别禁令已遵守**：从未把 b0 的 AWQ 权重换 served-name 冒充第三方 4bit。
 
 ---

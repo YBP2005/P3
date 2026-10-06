@@ -129,12 +129,31 @@ for _p, _b, _m in rows:
     if _RX_PH.search(_s):
         N_PH_DATA += 1
 N_DATA_SAN = 0
+N_DATA_SAN_SRC = '（无）'
 if os.path.exists(SANLOG):
     try:
         _sl = json.loads(io.open(SANLOG, encoding='utf-8').read())
         N_DATA_SAN = len([f for f in _sl['files'] if f['path'].startswith('data/')])
+        N_DATA_SAN_SRC = '作者侧消毒台账'
     except Exception:
         N_DATA_SAN = 0
+else:
+    # ★ v0656 修（**本轮核出的既存缺陷**，不是本轮引入）：作者侧消毒台账**按设计不随包**，于是
+    #   在**放行树里**直接跑本支（包外复核时会这么做）时，上面这条断言必然 `3 ≤ 0` 报红、
+    #   而 §5 里依赖同一算量的那条替换也会"两边都不命中"而报红 —— 真因只是"放行树没有台账"，
+    #   与 v0654 已修过的那一类缺陷**同源**（见下 §5 那条注释）。
+    #   处置：退回到 **README 自己的消毒表**（它是台账的**派生形态**，且本支要重写的那句话说的
+    #   正是 "the `data/` rows of the table above"）。这不是循环论证：作者树里仍以台账为准，
+    #   两条路径在作者树里已实测**同值**（放行树：34 行 / 68 处替换 / `data/` 4 行）。
+    try:
+        _rows_san = re.findall(
+            r'(?m)^\|\s*`([^`|]+)`\s*\|\s*(\d+)\s*\|\s*`([0-9A-Fa-f]{32})`\s*\|'
+            r'\s*`([0-9A-Fa-f]{32})`\s*\|', rd(README))
+        N_DATA_SAN = len([r for r in _rows_san if r[0].startswith('data/')])
+        N_DATA_SAN_SRC = 'README 消毒表（台账缺席时的派生形态）'
+    except Exception:
+        N_DATA_SAN = 0
+print('  「data/ 被改写」来源：%s ⇒ %d 件' % (N_DATA_SAN_SRC, N_DATA_SAN))
 check('data/ 下含占位符的件数 ≤ 台账里 data/ 被改写的件数', N_PH_DATA <= N_DATA_SAN, True)
 print('data/：%d 件；台账登记被改写 %d 件；内容命中占位符 %d 件（其余 %d 件应与源逐字节相同）'
       % (N_DATA, N_DATA_SAN, N_PH_DATA, N_DATA - N_DATA_SAN))
@@ -347,14 +366,22 @@ not shipped-file digests: %s.'''
 
 readme = rd(README)
 SUB = [x for x in SUB if x is not None]
-# 依赖消毒台账的那一条：**只在台账在场时**参与（见上）。
+# 依赖消毒台账的那一条：台账在场时用台账；**台账缺席（放行树）时改用 README 消毒表**的同名算量。
+# ★ v0656：此处先前在台账缺席时**整段跳过**，于是放行树里的读数与 README 现印的 34/68 无人核对；
+#   而一旦有人把它写成"两边都不命中"，本支在放行树里就必然报红（包外复核会照 README 跑本支）。
+#   现在两条路径**都参与**，来源在上一段已显式打印（台账 vs README 表），判据一字未改。
 if san is not None:
-    SUB.append((
-        '3. **32** files were rewritten by the sanitiser, in **64** substitutions (the table above). This set cannot be',
-        '3. **%d** files were rewritten by the sanitiser, in **%d** substitutions (the table above). This set cannot be'
-        % (len(san['files']), san['substitutions'])))
-if san is None:
-    print('  ⚠ 未找到消毒台账（作者侧）⇒ 跳过依赖它的替换；其余照常。')
+    _N_SAN_FILES, _N_SAN_SUBS = len(san['files']), san['substitutions']
+else:
+    _rm = re.findall(r'(?m)^\|\s*`([^`|]+)`\s*\|\s*(\d+)\s*\|\s*`([0-9A-Fa-f]{32})`\s*\|\s*`([0-9A-Fa-f]{32})`\s*\|',
+                     readme)
+    _N_SAN_FILES, _N_SAN_SUBS = len(_rm), sum(int(r[1]) for r in _rm)
+    print('  ⚠ 未找到消毒台账（作者侧）⇒ 该两条派生量改用 README 消毒表：%d 个文件 / %d 处替换。'
+          % (_N_SAN_FILES, _N_SAN_SUBS))
+SUB.append((
+    '3. **32** files were rewritten by the sanitiser, in **64** substitutions (the table above). This set cannot be',
+    '3. **%d** files were rewritten by the sanitiser, in **%d** substitutions (the table above). This set cannot be'
+    % (_N_SAN_FILES, _N_SAN_SUBS)))
 plan = []
 for old, new in SUB:
     c = readme.count(old)

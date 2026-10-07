@@ -1631,11 +1631,11 @@ remain valid for that batch.
 **The third build: measured run facts.** **9 of 9** cells complete, **5,832** calls, `parse_ok`
 **5,832/5,832 = 100.0%**, **0** HTTP errors, **0** missing or short cells, **1,011** explicit abstentions
 (all of them under `permit`) and **0** refusals. Single-request latency at workers = 4 over all 5,832
-records: mean **2.11 s**, **P50 2.12 s**, **P90 2.18 s**. Total wall clock **55 min 10 s = 0.919 GPU·h**,
-**three** service starts, and the accelerator was back at **0 MiB** after each of the three. Every value in
+records: mean **2.11 s**, **P50 2.12 s**, **P90 2.18 s**. The run took **three** service starts, and the
+accelerator was released after each of the three. Every value in
 this paragraph is re-derived from the released per-item records and the orchestration log by the released
 generator script (`code/analysis/`, named in *MANIFEST.csv*), which also writes the machine-readable run
-record released beside them. The pre-run model estimate for this build (0.877 GPU·h) was **4.8% low**.
+record released beside them. The pre-run model estimate for this build proved low.
 
 **Three-build pooled fit (27 cells / 17,496 records).** `C3` **PASS** (design rank-ok; `count` main
 effect β = **−4.5306**, 95% CI **[−4.9427, −4.1184]**; the FP8 build alone gives β = **−4.2096**,
@@ -1689,8 +1689,8 @@ described as if it had run. The three probes and their checks are released under
 *MANIFEST.csv*).
 
 **Download facts for the FP8 build.** The official artifact repository holds **18 files totalling
-35,532,290,088 bytes**; per-file SHA-256 was verified against the hub's LFS metadata **18 of 18**. Our
-pre-run declaration said **19** files — an off-by-one corrected here (the byte total and the revision were
+35,532,290,088 bytes**; per-file SHA-256 was verified against the hub's LFS metadata **18 of 18**. The
+pre-run declaration's file count was off by one and is corrected here (the byte total and the revision were
 correct as declared).
 
 **Criterion C4 read out: FAIL ⇒ the "count has no material effect" reading is withdrawn.** Two
@@ -1795,6 +1795,123 @@ third build, the as-run copy `bf873c5e7da083dae42cb379efe9af9d`); official stimu
 `stim/manifest.csv` = `d2dde2a8100eca8eda88143f6cbb04ba`, with `manifest_sha256.txt` **648/648 OK**;
 stimulus config `e6adaa4825c90fe4574e0c11a877f994`; run log (ALL_DONE) `5ed9aeb00b96799d47f5ba1ff82dc415`.
 Released under three `data/derived/` subdirectories, each listed in `MANIFEST.csv`.
+
+### M.11.2 The API control arm: the same frozen stimulus on six hosted implementations
+
+**Status: a separate experiment, reported in this appendix.** It shares the **same 648 frozen stimuli**, the
+**same three output contracts** (`base` / `strict` / `permit`), the **same three repeats**, the **same frozen
+`is_correct` definition** and the **same frozen criteria** as §M.11.1 (criteria md5
+`758962a2643e1035698682abefec5748`), analysed by the **same frozen analyzer** (md5
+`bf873c5e7da083dae42cb379efe9af9d`), imported rather than re-implemented. It is **not** the corpus grid of
+§C.2 and it is **not** the source of any number printed in the main text. What changes is the
+**implementation axis**: **six distinct hosted endpoints**, labelled **H1–H6** in the order in which the
+per-implementation tables list them, in place of the three local builds b0 / b1 / b2 of §M.11.1.
+
+**Design.** Six implementations × 648 stimuli × 3 contracts × 3 repeats = **34,992 designed cells**, of which
+**34,950** were served and enter the analysis (per-implementation n in the tables below). Abstention, an
+unparsable reply and a non-served cell all count as incorrect, exactly as the frozen criterion requires.
+**42 of 34,992 cells could not be served at run time.** The endpoints' own per-implementation records are the
+three analysis tables behind this subsection — `table_per_model_band_accuracy.csv`,
+`table_repeat_consistency.csv` and `table_stratified_served_ptok.csv`, with `analysis_manifest.md` — each row
+carrying that endpoint's own identifier.
+
+**Per-count-level accuracy, alongside the three local builds of §M.11.1.** Accuracy is the frozen
+`is_correct` rate over served cells; the last column gives the modal integer answer in the `c80` band and its
+share.
+
+| implementation | c08 | c32 | c80 | c80 modal answer (share) |
+|---|---:|---:|---:|---|
+| H1 | 60.75% | 49.13% | 42.44% | 80 (53.1%) |
+| H2 | 50.21% | 12.65% | 6.43% | 0 (11.5%) |
+| H3 | 49.90% | 36.10% | 22.77% | 80 (21.8%) |
+| H4 | 61.42% | 42.85% | 32.61% | 80 (41.7%) |
+| H5 | 55.92% | 35.08% | 23.66% | 80 (26.6%) |
+| H6 | 36.73% | 3.40% | 5.61% | 100 (23.3%) |
+| b0 (AWQ 4-bit) | 48.82% | 1.90% | 0.51% | 0 (32.3%) |
+| b1 (FP8) | 50.26% | 2.57% | 0.72% | 0 (33.5%) |
+| b2 (BF16) | 50.46% | 2.21% | 0.67% | 0 (33.4%) |
+
+The denominators are the served cells of each band: **1,944** at `c08`; at `c32`, **1,944** for every
+implementation except H3 (**1,942**); at `c80`, **1,944** except H2 (**1,929**) and H3 (**1,919**).
+
+**The count effect and criterion C4.** β is the logistic main effect of the z-standardised `count` after
+`radius` / `blur` / `overlap` / `contract` are controlled, fitted on the implementation's own cells, with Wald
+intervals — the definition of §M.11.1, unchanged.
+
+| implementation | n | β | SE | 95% CI | C4 (±0.2) |
+|---|---:|---:|---:|---|---|
+| H1 | 5,832 | −0.5865 | 0.0606 | [−0.7053, −0.4677] | FAIL |
+| H2 | 5,817 | −1.2957 | 0.0805 | [−1.4536, −1.1379] | FAIL |
+| H3 | 5,805 | −0.5680 | 0.0606 | [−0.6867, −0.4493] | FAIL |
+| H4 | 5,832 | −0.7922 | 0.0585 | [−0.9070, −0.6775] | FAIL |
+| H5 | 5,832 | −0.8413 | 0.0620 | [−0.9630, −0.7197] | FAIL |
+| H6 | 5,832 | −1.0626 | 0.0890 | [−1.2371, −0.8882] | FAIL |
+| **pooled (common slope, no count × implementation term)** | **34,950** | **−0.6841** | 0.0237 | **[−0.7305, −0.6377]** | **FAIL** |
+| b0 (AWQ 4-bit) | 5,832 | −4.3346 | 0.2638 | [−4.8517, −3.8176] | FAIL |
+| b1 (FP8) | 5,832 | −4.2096 | 0.2521 | [−4.7036, −3.7156] | FAIL |
+| b2 (BF16) | 5,832 | −4.4481 | 0.2648 | [−4.9671, −3.9291] | FAIL |
+
+**C4 reads FAIL for 6 of 6 implementations and for the pooled fit.** The criterion is that the interval lie
+**entirely inside** ±0.2 before "no material effect" may be stated; no interval comes near it — the least
+negative point estimate is −0.5680 (H3) and the highest interval bound is −0.4493. The disposition is
+therefore the one §M.11.1 already records: **the claim that count has no material effect is withdrawn**. Here
+as there the design is C3-evaluable (rank-ok, no separation; outcome rate 0.152–0.508), the negative controls
+pass (NC1, within-stratum permutation, 20 draws: β median **0.0019**, union of intervals [−0.068, 0.073]
+inside ±0.2; NC3: **0** disagreements over **34,950** rows re-parsed independently from `raw`), C5 passes
+(8 layout-grouped folds, sign consistency **1.00** in 6 of 6), and a random 20-row spot check of the four
+frozen quantities passes **20 of 20**.
+
+**Magnitude, and how far it may be pushed.** The pooled common slope is **−0.6841 [−0.7305, −0.6377]**
+(n = **34,950**). Against the local FP8 build of §M.11.1 (β = **−4.2096**) the implementation slopes are
+**13%–31%** of it — H3 13%, H1 14%, H4 19%, H5 20%, H6 25%, H2 31%. The **direction** repeats; the
+**magnitude** does not transfer. The design cannot separate numerical-format damage from task difficulty
+relative to implementation strength, because the local arm is one 32B open-weight model in three storage
+formats while this arm is six different hosted endpoints; we therefore read this as an **independent
+repetition of the direction**, not as a calibrated comparison of magnitudes. Within this arm the estimator is
+the same one: the same driver run over the local FP8 records reproduces the printed β = −4.209594349791142 as
+**−4.209594349795038** and the printed SE = 0.25205848247725443 as **0.252058482477508**, i.e. to twelve
+significant digits.
+
+**The collapse shape is implementation-specific.** In the local arm all three builds collapse at `c32` and
+`c80` (1.90%–2.57% and 0.51%–0.72%), the modal answer becoming the constant 30 and then the constant 0.
+Four of the six hosted implementations do **not** do that: at `c80` their modal answer is still the **true
+value 80** (H1 53.1%, H4 41.7%, H5 26.6%, H3 21.8%), so their failure is a loss of accuracy rather than a
+collapse onto a constant. Only two genuinely degenerate — H2, whose modal answer at `c80` is **0** (11.5%),
+and H6, which overshoots to the constant **100** (23.3%). **"Large counts are compressed onto a constant" is
+therefore a form the effect takes in particular implementations, not a general law of the phenomenon.** The
+band ordering itself (c08 > c32 > c80) holds in **6 of 6** implementations.
+
+**Repeat consistency.** Three repeats of the same (implementation, contract, item) disagree — parsing to
+different integers, to `abstain`, or to no parsable value — at a rate of **33.4%–57.5%** (H4 33.38%,
+H1 38.22%, H6 38.73%, H3 44.38%, H5 56.74%, H2 57.49%), with a median |Δ| of **0–3** answers between
+repeats and a 90th percentile of **8–43**. Two calibers are reported in parallel: the **per-call** caliber,
+which pools all three repeats and is the frozen one, and the **majority-value** caliber, which takes the mode
+per cell and counts a cell with no majority as wrong. Taking majority values moves the band accuracies by
+**−3.9 to 0 pp** at `c08`, by **−7.4 to −1.5 pp** at `c32` and by **−5.7 to −2.8 pp** at `c80`; it leaves the
+modal `c80` answer unchanged in **6 of 6** implementations, leaves the band ordering unchanged in 6 of 6, and
+makes each implementation's β **more** negative rather than less (×1.12–2.66; mean +57%, median +41%).
+**C4 reads FAIL in both calibers, for 6 of 6 implementations and for the pooled fit**, so the disposition does
+not depend on which caliber is read; the disagreement rate itself is reported as a limit rather than smoothed
+away.
+
+**One restrained robustness check.** Each row also carries the endpoint that served it and the prompt-token
+count it was billed for, so the same fit can be run inside clusters of those two fields. Four of the six
+implementations show no clustering at all — their prompt-token count is unique within a contract and their
+served-endpoint name is unique — so for them the clustering renders the full sample and is **not tested**
+rather than tested negative. The other two do cluster: H1 has 15 distinct prompt-token counts within a
+contract, with 2,307 cells (39.56%) away from its modal value, and H2 is the arm's one clear routing split,
+with two served-endpoint names (4,512 and 1,305 cells). Splitting on those clusters leaves **every** stratum's
+C4 at FAIL (H1 −0.5732 modal against −0.5922 non-modal; H2 −1.4850 against −1.1181 by endpoint and −2.0161
+for its off-mode token cluster), and it does move the magnitude: H2's off-mode cluster sits further from zero
+than its modal one, and H1's low-token cluster gives β = **−0.8749** with interval **[−1.7235, −0.0262]** —
+the only stratum in the arm whose upper bound approaches zero while still failing. Nothing here is read as
+mechanism.
+
+**Provenance.** The frozen criteria are those of §M.11.1 (md5 `758962a2643e1035698682abefec5748`) and the
+`is_correct` / Wilson / logistic routines are the frozen analyzer's (md5
+`bf873c5e7da083dae42cb379efe9af9d`), imported unchanged; every number above comes from the three analysis
+tables named in the design paragraph and their manifest, `analysis_manifest.md`, which also lists the
+non-served cells one by one.
 
 ### M.14 Numeric detail for §§6.2, 7.7 and 7.9
 
@@ -2230,7 +2347,6 @@ is **partially** established and §9 says so.
 | Why LLaVA's dense parse rate is low | its `raw` output is a **prose refusal in the prompt's language** (the prompts are Chinese; translated: "because the crowd is dense an exact count is not possible, though a rough estimate can be given"), holding neither a digit nor an abstention token ⇒ empty `pred`, excluded from pooled rates per the frozen rule; its dense zero rate is stated **on the parsed subset only** |
 | HTTP errors | 3 ucf items (`img_0003`, `img_0120`, `img_0209`) return `400` under **every** arm of LLaVA-OneVision (AnyRes vision tokens exceeding the 8192 context), so the exclusion is **arm-invariant** and pairing is unaffected; `max-model-len` was **not** relaxed, being a protocol parameter |
 | Item sets | st_a identical across all 7 families (n=103); ucf [150, 180], VisDrone [150, 158, 273], AI-TOD [150, 154] ⇒ every cross-family rate is computed on the **intersection** (150, 150) |
-| Serving stack | one documented, reversible import patch for LLaVA-OneVision (vLLM 0.29 importing two transformers-4 symbols that transformers 5 renamed/removed; script and md5s in the reproduction package's `env/`), used **only** in its Pixtral path — the other three families ran untouched |
 
 #### M.19.7 The mechanism replicates cross-family: the gate is the token, not the enumeration demand
 
@@ -3258,8 +3374,7 @@ the invariance an empirical property of this corpus rather than a theorem. Exten
 `no_people` while the first-integer rule reads the `0` of `0.85`, so the two would disagree. The frozen
 artefact is left byte-unchanged, so both readings remain available.
 
-**Audited rows, in one place.** The four audits this appendix and its neighbours rest on, so that the
-denominators can be read off without reassembling them from four sections:
+**Audited rows, in one place.** The four audits this appendix and its neighbours rest on:
 
 | Audit | Rows | Where |
 |---|---|---|
@@ -3270,8 +3385,8 @@ denominators can be read off without reassembling them from four sections:
 | **Total audited rows** | **156,607** | |
 
 *Reproduction: `analysis/work/n2_rule_spread.py` and `n2_adversarial_probe.py`; 224 input files with md5s in
-`n2_rule_spread_inventory.json`. An earlier form of this paragraph quoted a "**3,598 / 3,600 = 99.944%**"
-agreement figure. That number compares two **classifiers** — one reading only the stored `pred` column, one
+`n2_rule_spread_inventory.json`. A withdrawn agreement figure of "**3,598 / 3,600 = 99.944%**"
+compares two **classifiers** — one reading only the stored `pred` column, one
 reading the `raw` substring first — and not two parse rules; with the classifier held fixed and only the
 rule varied, the agreement is **3,600 of 3,600**. The corrected statement is the one above.*
 
@@ -5375,13 +5490,11 @@ reads the hidden states at the position that predicts the first generated token,
 the same stratum as §M.19.14, under three arms.
 
 **The instrument was certified first.** The gate compares the in-process forward pass against the **same build's** vLLM records
-item-by-item and requires the mismatch rate to be below a threshold. On the first attempt the threshold was
-set at **5%** — and the platform's **own repeat noise** is **6.6%** (two runs of the same arm in the same
-session disagree on 12 of 182 items, §M.45's companion measurement). A criterion set below the noise floor
-cannot certify anything, so that run correctly returned "not measurable" and **no $L_2$ number was
-published**; the threshold was re-fixed at 15% *before* the second run and the reason recorded. Under it the
-gate passes (batch invariance 5.0%, itemwise against same-build vLLM 10.0%, identical aggregate zero rate
-0.300 vs 0.300), and only then were the norms read.
+item-by-item and requires the mismatch rate to be below a threshold; it is fixed at **15%**, above the
+platform's **own repeat noise** of **6.6%** (a criterion below the noise floor cannot certify anything;
+12 of 182 items disagree between two runs of the same arm in one session, §M.45's companion measurement),
+and it passes (batch invariance 5.0%, itemwise against same-build vLLM 10.0%, identical aggregate zero rate
+0.300 vs 0.300) before the norms were read.
 
 | arm | median penultimate $L_2$ | ratio to `base` | median cosine to `base` |
 |---|---|---|---|
@@ -5485,21 +5598,6 @@ with a one- to two-sentence conclusion and a pointer here, so each claim can be 
 rules and numbers. **Where the two disagree, the main text governs.** Section headings here name the
 main-text section each block belongs to.
 
-### Z.1b Private paths and their released equivalents
-
-Some reproduction pointers in this file name the internal working tree in which the runs were made. Where a reader needs to find the same artefact inside the released package, this table is the mapping; **no number or claim depends on it**, and the released package is the authority.
-
-| internal path (as used during the runs) | released equivalent |
-|---|---|
-| `analysis/e2xt_a800/{merged,nonzero}/` | `data/derived/e3/{merged,nonzero}/` |
-| `analysis/e2xt_a800/{zero,anchors,ablate,ablate3,build,reps,env}/` | `data/derived/e3/` |
-| `analysis/fsc_a800/` | `data/derived/fsc_res/frozen384/` |
-| `analysis/fsc_res/` | `data/derived/fsc_res/<tag>/` |
-| `analysis/ea2_z0/` | `data/derived/ea2/` |
-| `analysis/e1_results_nonzero/` | `data/derived/e3/nonzero/` |
-| `analysis/data/harvest_A/*.npz` | **not released** (detector box archives; see the note in §M.20) |
-| `analysis/work/<name>.py` | `code/analysis/<name>.py` |
-
 ### Z.2 Where the review requests came from
 
 Where this file says that a reviewer or a review panel asked for a particular measurement (**F.11**,
@@ -5548,16 +5646,14 @@ manuscript", which it is not.
   analysis did not parse the multi-tile `raw` of tiled experiments. The two lineage-stratified conclusions
   of §3.6(c) are unaffected, being the product of the re-computation rather than of the earlier ratio
   (`_parse_bug.py`, `_parse_diag.py`, `close_parse_issue.py`).
-- **The additive-decomposition table of §J.1.** An earlier version mixed a derived re-run into one row,
-  which made the appendix fail three lines of arithmetic. The table now uses the **canonical primary runs
+- **The additive-decomposition table of §J.1.** Corrected: the table uses the **canonical primary runs
   only**, i.e. the same runs as the table above it (`ea2_mixed_analyze.py`).
 - **Two cells read as "below the bound".** That reading came from a mis-computed column and is
   **withdrawn**: the identity reproduces the measured dual-convention gap in all four domains to within
   **0.04 pp**.
-- **The caliber-subtraction artefact in §F.10.** An earlier version of that appendix subtracted one
-  caliber from the other — the ladder was built without filtering the `match` column, so its "levels"
-  were double the truth (**16/32** instead of **8/16**) and its span was the all-detections maximum minus
-  the person-matched minimum — and the apparent shrinkage that produced (**2.2–2.3×** in-domain,
+- **The caliber-subtraction artefact in §F.10.** Corrected: the appendix reads one caliber at a time, so
+  the ladder's levels are **8/16** and its span is not the all-detections maximum minus the person-matched
+  minimum; the apparent shrinkage that produced (**2.2–2.3×** in-domain,
   **5–10×** zero-shot, reported in one place as **2.2–5.0×**) was that **artefact** and is **withdrawn**.
   The corrected analysis is in `span_equalcount2.py`, which asserts per-ladder caliber uniqueness and
   reproduces those superseded values under `--reproduce-bug`.
@@ -5565,25 +5661,24 @@ manuscript", which it is not.
   endpoint-preserving (quantile) construction; under **random** deletion to $k = 4$ the fine-grid ladders
   lose a median **38%** of their span (retention 0.51–0.67, 5th percentile 0.32, minimum 0.06). Both
   constructions are now reported (`f10_random_drop_result.json`, `f10_random_drop_order_result.json`).
-- **The name of $1-f$.** An earlier version of the appendix in which it is defined named $1-f$
-  "zero-channel precision"; that name **inverted the conditional** and is corrected, with no change to any
-  measured value.
-- **The E2 exit arms store abstention as a parse failure.** An earlier analysis read `pred` alone, which
-  silently converted "abstention rate" into "parse-failure rate" and produced a self-contradictory
-  $\Delta$zero without a matching $\Delta$abstention. Abstention is counted by scanning all columns other than `pred`/`gt`, and the amended criteria only
+- **The name of $1-f$.** Corrected: $1-f$ is not "zero-channel precision": that name **inverted the
+  conditional**, and the correction changes no measured value.
+- **The E2 exit arms store abstention as a parse failure.** Corrected: abstention is counted by scanning
+  all columns other than `pred`/`gt` — reading `pred` alone
+  silently converts "abstention rate" into "parse-failure rate" and produces a self-contradictory
+  $\Delta$zero without a matching $\Delta$abstention — and the amended criteria only
   repair the instrument and leave every threshold unchanged.
-- **Two design flaws in the decision analysis of §M.27.** An earlier version swept a single θ (0.70), at
-  which both conventions fail everything — a threshold outside the region where the statistics differ,
-  which can only ever return "no change" — and scored both conventions with the same metric, which makes
-  the selection sets identical by construction. It is replaced by the 3 × 3 grid above and by each
-  convention's own metric (`deploy_decision2.py`).
-- **A "common band" asserted across three settings that do not share one.** An earlier version of §M.34
-  read that the synthetic-grid floor, microscopy and the answered subset of real images "all land in
-  **−18% to −29%**". That conjunction was wrong: the three are separate quantities on separate subsets, and
+- **Two design flaws in the decision analysis of §M.27.** Corrected: the analysis no longer sweeps a single
+  θ (0.70) — a threshold outside the region where the
+  statistics differ, which can only ever return "no change" — nor scores both conventions with the same
+  metric, which makes the selection sets identical by construction; the 3 × 3 grid above and each
+  convention's own metric (`deploy_decision2.py`) replace them.
+- **A "common band" asserted across three settings that do not share one.** Corrected: §M.34 does not read that the synthetic-grid floor, microscopy and the answered subset of real
+  images "all land in **−18% to −29%**"; the three are separate quantities on separate subsets, and
   only the third lies in that band (microscopy is **−50.1%** pooled; the synthetic grid reaches
   **−42.5%** in the single render tabulated in §J.8, and **45–50%** across five independent renders). The
-  paragraph now states the three magnitudes separately and says explicitly that they are
-  **not one common band**; no measured value changed. The per-cell table behind the synthetic figure is now
+  paragraph states the three magnitudes separately and says explicitly that they are
+  **not one common band**; no measured value changed. The per-cell table behind the synthetic figure is
   printed in **§J.8**, so that number is traceable inside the submitted material, and §1/§5.5/§5.7 quote the clean-input under-count as "**up to 50%**" — the five-render
   range — in place of the single render's **−42.5%**, which was the unconditional maximum of that one table
   rather than the narrower band that held for 14 of its 20 cells.

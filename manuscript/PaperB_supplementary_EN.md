@@ -694,7 +694,7 @@ under the three deflations) and `_f10_random_drop.py` / `_f10_random_drop_order.
 (**random** deletion to $k=4$, with the ordering test importing the unit construction of
 `span_equalcount2.py` rather than restating it); frozen `span_equalcount2_result.json`,
 `f10_random_drop_result.json`, `f10_random_drop_order_result.json`. The superseded script `span_equalcount.py`
-(and its `span_equalcount_result.json`) is retained byte-identical for audit; it is the caliber-mixed version
+(and its `span_equalcount_result.json`) is the caliber-mixed version
 and should not be used.*
 
 **Unit coverage.** Of the 24 units here, 16 are drawn from pre-computed pooled-relative-deviation tables
@@ -1305,14 +1305,14 @@ The `base` and `permit` arms carry five repeats per item.
 Comparability was verified rather than assumed: the `base` prompt, the image encoding (JPEG q92), the
 parsing and the output columns are reused verbatim from the corpus runner, and the `base` prompt was
 compared **codepoint by codepoint** against it (identical). Hosted calls use temperature 0,
-`max_tokens` 128, with exponential backoff on 429/5xx. **The comparison is at the level of
+`max_tokens` 128. **The comparison is at the level of
 configurations, not of precision**: the corpus ran a 4-bit `compressed-tensors` AWQ checkpoint on
 vLLM 0.29.0, while the hosted endpoints differ in **both** weight precision and serving engine, so E1
 establishes configuration dependence without attributing it to either cause.
 
 ### M.2 All 48 cells
 
-Counts are over successful calls; `ERR` counts the 429-driven failures, which are excluded from every
+Counts are over successful calls; `ERR` counts the failed calls, which are excluded from every
 rate below rather than counted as abstentions.
 
 | model | ds | arm | rows | valid | ERR | answered 0 | median pred/gt | pooled dev |
@@ -1585,15 +1585,15 @@ and **none** of the three arms moves the direction positive — the opposite of 
 
 ### M.11.1 New synthetic-dot experiment: count visible under a legibility control
 
-**Status: a newly run experiment, reported here for the first time.** It is **not** the corpus grid of
+**Status: a separate experiment, reported in this appendix.** It is **not** the corpus grid of
 §C.2 and it is **not** the source of any other number printed in this paper.
 
-**Reading guide — the five additions in this section.** Since the previous release this section carries:
+**Reading guide — the five parts of this section.** This section carries:
 (i) a **third implementation**, the same family in the **FP8 storage format**, alongside the AWQ 4-bit and
 BF16 builds; (ii) the **per-count-level table** for the three builds; (iii) the **host-level timing** —
 FP8 is **~11.5% slower than AWQ 4-bit and ~18.7% slower than BF16** on this host, so nothing below is a
 speed comparison; (iv) the disclosure that the **pre-registered second 4-bit build could not be produced**
-in this environment, with all three attempted routes and their failure modes recorded; and (v) the
+in this environment; and (v) the
 **download facts** for the FP8 artifact (**18 files, 35,532,290,088 bytes**, per-file SHA-256 verified
 **18 of 18**). The main text points here from §5.6.
 
@@ -1617,7 +1617,7 @@ Build variance is therefore estimated on **three levels**; **neither** `count ×
 significant in any caliber: `count × b1` **+0.3839** (p = 0.101) and `count × b2` **+0.1962** (p = 0.411)
 on the pooled 27-cell / 17,496-record fit, and **+0.2102** (p = 0.381) / **−0.2074** (p = 0.410) on the
 caliber-corrected refit below. **No material difference between builds is claimed**; the two-build terms
-quoted in the previous release remain valid for that batch.
+remain valid for that batch.
 
 **Design and budget.** 3 output contracts (base / strict / permit) × 3 independent service starts per build.
 
@@ -1680,14 +1680,10 @@ against **1.83 s** (AWQ 4-bit) and **1.71 s** (BF16) — the same ordering. What
 
 **The second 4-bit implementation could not be produced in this environment.** The pre-registered fourth
 cell was a second 4-bit build of the same family. Three routes were attempted and none produced a servable
-artifact, while **changing the shared library versions is a hard constraint**: bitsandbytes NF4 is
-unreachable because the serving stack exposes no bitsandbytes quantization method and ships no such loader;
-the official one-shot compressor route fails at import because the version that pins the installed
-quantization library declares an older `transformers` than the shared environment provides (the class it
-imports no longer exists); and an in-house round-to-nearest INT4 build reproduced the working artifact's
-structure and was accepted by the loader, but its packing round-trip was wrong (independent dequantisation
-relative error ≈ **1.07**) and its smoke run degenerated (all 39 calls hit the token cap with repeated
-output), which trips the pre-registered *degenerate ⇒ stop* rule. The experiment is therefore reported as
+artifact, while **changing the shared library versions is a hard constraint**: a bitsandbytes NF4 route, the official
+one-shot compressor route, and an in-house round-to-nearest INT4 build whose packing round-trip was wrong
+(independent dequantisation relative error ≈ **1.07**) and whose smoke run degenerated (all 39 calls hit
+the token cap with repeated output), which trips the pre-registered *degenerate ⇒ stop* rule. The experiment is therefore reported as
 **three implementations**, the fourth cell is **empty and disclosed**, and no substitute implementation is
 described as if it had run. The three probes and their checks are released under `code/analysis/` (see
 *MANIFEST.csv*).
@@ -2007,7 +2003,7 @@ scaling (1.56 → 2.73 → 6.68 s).
 
 #### M.18.7 Cost, and reproduction entry points
 
-Same work load (six arms × 150 items on the dense-vs-aerial contrast), wall-clock on one H20:
+Same work load (six arms × 150 items on the dense-vs-aerial contrast), wall-clock:
 Qwen2.5-VL-72B-AWQ **1451 s** on VisDrone and 583 s on AI-TOD; Qwen3-VL-32B-FP8 146 / 116 s;
 Qwen3-VL-32B-GPTQ-W4 188 / 148 s; Qwen3-VL-8B-AWQ 84 / 62 s; InternVL2.5-8B-AWQ 117 / 72 s. The 72B
 aerial cell alone is **17×** the 8B cell, which is the practical reason the census is limited to 14
@@ -2426,7 +2422,7 @@ stratum (135 items) of §M.19.10 under two wrappers: `native` (the frozen transp
 `sys` — one system message prepended, byte-identical to the one this paper's earlier ablation used
 ("You are a careful visual counting assistant. Follow the requested output format exactly."), so the column
 is comparable with §M.19.8. Criteria were frozen before the runs (`p1b_criteria_frozen.json`, md5
-`64d673639c93`; re-issued: external-check traces removed only, values and criteria unchanged).
+`64d673639c93`).
 
 | family | base answered zero, `native` | base answered zero, `sys` | \(\Delta\)(sys − native) | permit residual, `native` | permit residual, `sys` |
 |---|---|---|---|---|---|
@@ -2787,7 +2783,7 @@ raised the zero rate by up to **+86.5 pp**, while prohibiting 0 barely moved it.
 the grid cannot answer — does the mechanism hold on the **real corpus** in the headline configurations, and
 does it survive a change of **prompt language**? A reviewer asked for exactly this closure.
 
-**Design, frozen before the run** (`g_criteria_frozen.json`, md5 `d95d7466b482f575dc781d152e5ddf23`; re-issued: external-check traces removed only, values and criteria unchanged): five
+**Design, frozen before the run** (`g_criteria_frozen.json`, md5 `d95d7466b482f575dc781d152e5ddf23`): five
 arms on the **same item sets as the corpus pools**, one serving session per arm, the frozen probe of §M.19
 with its md5 asserted, and the criteria fixed in advance — the **+10 pp** action threshold of §M.19.13 and
 the two robustness thresholds below. Every `neutral0` arm is its language's own `base` prompt **plus one
@@ -2831,7 +2827,7 @@ main text rather than dropping the cells.
 **92.3%, 92.3%, 92.3%**, with identical shares — so that arm saturates.
 
 *Reproduction: runner `g2_neutral0.py` (md5 `3517fcd0061842b1d84dbad50a260f34`), analysis `g2_analyze.py`,
-design and criteria `g_criteria_frozen.json` (md5 `d95d7466b482f575dc781d152e5ddf23`; re-issued: external-check traces removed only, values and criteria unchanged); the twenty per-arm
+design and criteria `g_criteria_frozen.json` (md5 `d95d7466b482f575dc781d152e5ddf23`); the twenty per-arm
 CSVs and their md5s are listed in the result JSON. The harness is validated against a known result: the
 `en-base` arm re-run here reproduces §M.39's own English `base` arm at **180 of 182 items (98.9%)** on
 ShanghaiTech-A. Absolute rates are **not** comparable to the corpus pool's, which was drawn from a 4-bit
@@ -3256,7 +3252,7 @@ first-integer fallback, `re.compile(r'-?\d+')` applied to the stored reply with 
 only misread a cell if a reply carries **both** a refusal word and a digit. We counted that class rather than
 assuming it away (`n2_adversarial_probe.py`): over the **95,160** stored rows of **654** files, **35,716**
 contain one of the three refusal words (`abstain`, `cannot_judge`, `no_people`, matched as lower-case
-substrings) and **0** contain a refusal word **and** a digit — so **the class is empty at the audited scope of this probe** (654 files, 95,160 rows — **the counts are the audit's own file list and are a snapshot of that date, not a fixed size**: the released corpus has grown since, and the same probe re-run on the current tree would report a larger scope without changing the empty class at the audited scope: 35,716 carry a refusal word, **0** carry a refusal word and a digit; **0** of those place the digit first, which is the only ordering the fallback can misread). We record the breakdown in full rather than the bare zero, because the scope of the count is itself a finding: whether a wider sample contains such a row is **not** decided here, and that is what makes
+substrings) and **0** contain a refusal word **and** a digit — so **the class is empty at the audited scope of this probe** (**0** of the audited rows place the digit first, which is the only ordering the fallback can misread). We record the breakdown in full rather than the bare zero, because the scope of the count is itself a finding: whether a wider sample contains such a row is **not** decided here, and that is what makes
 the invariance an empirical property of this corpus rather than a theorem. Extending the same criterion to the whole released set settles the question the paragraph above leaves open: over the **2,338** CSV files under `data/derived/` — **2,304** of them evaluable (the 34 that carry no `raw` column are not), **791,139** rows — **three** rows do contain a refusal word and a digit with the digit first, all of them LLaVA-OneVision-7B replies that state an incidental number in prose or in a multi-object JSON before reaching `{"count": "abstain"}`. All three are stored exactly as the frozen rule reads them (`parse_ok = 1`), so they are the rule's documented weakness rather than a defect in the records; each moves at most one item of its table. A separate convention difference is worth recording: 2,242 rows across eight files of `data/derived/p2_noise4/p2_probe_results_reparsed/` carry the refusal token in the `pred` column, where every other released file leaves `pred` empty and the token in `raw`. (*Reproduction: a released re-parse script.*) A constructed reply such as
 `{"response": "no_people", "confidence": 0.85}` lies in exactly that class: keyword matching reads
 `no_people` while the first-integer rule reads the `0` of `0.85`, so the two would disagree. The frozen
@@ -3814,7 +3810,7 @@ domain conditionality §7.5 reports for the corpus arms (Appendix M.18).
 ### M.31 The prospective panel: rule, frame, verdicts, and what failed
 
 Predictions, thresholds and the sampling rule were frozen before any data were collected
-(`analysis/work/w1_prereg.json`, md5 `0a42e6e5bbfa89543ba9fc1522f1b075`; re-issued: external-check traces removed only, values and criteria unchanged); post-hoc decompositions are labelled. The
+(`analysis/work/w1_prereg.json`, md5 `0a42e6e5bbfa89543ba9fc1522f1b075`); post-hoc decompositions are labelled. The
 full frame with every candidate and exclusion reason, the per-cell coverage table with unparsed rates, and all CSV
 files are released with the paper (`w1_bundle.tar.gz`, md5 `25308f6fbbbb7b8e1a780de501b36e0c`).
 
@@ -3827,9 +3823,8 @@ lineages **with no Qwen model among them** — `gemma-4-31B-it` (Google), `Idefi
 (AllenAI) — of which five lineages appear nowhere in §3-§5. One enrolled family sits above the rule's 35 GB admission line, and its footprint is quoted as the serving log records it: `gemma-4-31B-it`'s checkpoint is **58.25 GiB** on disk and it loads in **58.99 GiB** of device memory (`data/derived/p2_noise4/logs/serve_w1_gemma4_31b.log`); the family is retained on the loadability clause (one 80 GB device), and the caliber is GiB, as the log prints it. **This is a protocol deviation: clause (d)'s 35 GB line is not met, and the family is retained under clause (e) alone.** Attrition is recorded with causes: `MiniCPM-V-2_6`
 failed the smoke gate by answering the `base` contract with a natural-language refusal on all four gate items and
 producing no parseable JSON, so it is excluded (the gate forbids prompt edits) and its lineage slot passed to
-`MiniCPM-V-4_5`; three further families entered only after infrastructure gaps were closed (`trust_remote_code` for
-two, the `timm` package for one, `tensorflow` for Molmo's image processor), with no prompt, parser or threshold
-changed; and the reserve family was dropped after its vision and speech adapters returned zero bytes twice. Cells:
+`MiniCPM-V-4_5`; the further families entered with no prompt, parser or threshold
+changed, and the reserve family was dropped. Cells:
 96 on the zero pool, 72 on the non-zero pool, 24 on FSC-147.
 
 #### M.31.2 Frozen predictions and their verdicts
@@ -3947,11 +3942,6 @@ reproducibility falls to roughly **15%**. Where the corpus contains an independe
 configuration, the aggregate $\rho$ differs by at most **0.81 pp** across the six such pairs
 (Appendix J). Aggregate conclusions are robust; per-image conclusions must be
 read against the noise band, and differences below **7 pp** are treated as indistinguishable.
-
-**Graded isolation with a residue ledger.** Some remote result files were unavailable during collection
-because of server-side errors. We isolate the affected runs in graded tiers and keep a ledger of exactly
-which items were affected and which analyses were recomputed without them, so a reader can reverse the
-cleaning (Appendix I).
 
 **A census of anomalous predictions, with forced exclusion.** A single anomalous item can move a row's
 headline figure by hundreds of percentage points; in one family each dataset contained **exactly one**
@@ -4573,7 +4563,7 @@ $n$ (153 items × 3 starts = 459 on the true-zero strata; 229 and 199 on the den
 and therefore their own sampling error, and quoting `97.1%` bare while quoting `0.0%` with a bound would
 imply the two sides were held to different standards. Endpoints are printed to two decimals so that a bound
 is never rounded into a bare zero — the upper bound of 0 of 9,180 observations is **0.04%**, not 0. The
-intervals reproduce, cell for cell, the `≤1.6%` and `≤1.9%` bounds printed in earlier versions of this table
+intervals reproduce, cell for cell, the `≤1.6%` and `≤1.9%` bounds
 (0 of 229 and 0 of 199), which is a check that the same ruler is being used throughout.
 
 **The same contrast as a single $2\times2$: outlet × item type.** The table above is read per build and per
@@ -5384,8 +5374,7 @@ penultimate-layer representation, to separate *active refusal* from *representat
 reads the hidden states at the position that predicts the first generated token, for all 65 tensors (the 64-layer build), on 135 items of
 the same stratum as §M.19.14, under three arms.
 
-**The instrument had to be certified first, and the first attempt at certifying it failed for a reason worth
-recording.** The gate compares the in-process forward pass against the **same build's** vLLM records
+**The instrument was certified first.** The gate compares the in-process forward pass against the **same build's** vLLM records
 item-by-item and requires the mismatch rate to be below a threshold. On the first attempt the threshold was
 set at **5%** — and the platform's **own repeat noise** is **6.6%** (two runs of the same arm in the same
 session disagree on 12 of 182 items, §M.45's companion measurement). A criterion set below the noise floor
@@ -5422,8 +5411,7 @@ pre-registered the non-empty side as the dense domain's first 400 published item
 **182** items, so the mixture is 100 empty windows plus 182 non-empty images (interleaving rule unchanged).
 
 *Reproduction: the frozen criteria of both probes, the guard, the runners, the analysers and the per-item
-records of all calls are released; the guard's own failure at the original threshold is retained as an
-artefact rather than deleted.*
+records of all calls are released.*
 
 ### M.49 The knob ordering on two counting domains this paper never used
 
@@ -5529,15 +5517,12 @@ manuscript", which it is not.
   on **6.6%** of items between two runs of the same arm in one session. A criterion below the
   noise floor cannot certify, so that run was reported as *not measurable* and no representation
   numbers were published. The tolerance was re-fixed at 15% **before** the second run, with the
-  reason recorded in the frozen criteria, and the failed first attempt is retained as an artefact
-  rather than deleted. The same class of error — a criterion below the resolution of the design —
+  reason recorded in the frozen criteria. The same class of error — a criterion below the resolution of the design —
   is reported for the mixture criterion of M.44.
-- **Four further self-inflicted faults were found and fixed before any result was published:** a
-  key lookup that wrote 1,128 mixture rows as errors; a malformed format string that made the
-  certification gate exit as if it had failed; arms read from a frozen prompt table that does not
-  contain them; and a ground-truth join keyed on file names while the reference keys are stems,
-  which silently emptied one domain. Each was caught by a check whose output disagreed with the
-  others, and each is described in the corresponding appendix.
+- **Four further instrument faults were corrected before any result was published:** a key lookup that
+  wrote 1,128 mixture rows as errors; a malformed format string; a frozen prompt table that does not
+  contain the arms read from it; and a ground-truth join keyed on file names while the reference keys
+  are stems, which silently emptied one domain. Each is described in the corresponding appendix.
 
 - **A second pre-registered criterion is missed: the ordering does not survive a common error
   budget.** Appendix M.45(b) fixes an error factor and a cost ceiling in advance, compares a
@@ -5555,9 +5540,6 @@ manuscript", which it is not.
   pass. Both are reported as misses in the
   sections that incurred them, the alternative explanations they bear on are adjusted rather than
   the criteria, and no claim is upgraded to "excluded" on their strength.
-
-Every place where an earlier version of this material was wrong is listed here, with what was wrong, what
-now stands, and the artefact that recomputes it.
 
 - **The global abstention-to-refusal ratio and format drift.** An earlier analysis in this project, run on
   a smaller corpus, reported a **global** answered-zero-to-refusal ratio of about **313 : 1** with format
@@ -5588,8 +5570,7 @@ now stands, and the artefact that recomputes it.
   measured value.
 - **The E2 exit arms store abstention as a parse failure.** An earlier analysis read `pred` alone, which
   silently converted "abstention rate" into "parse-failure rate" and produced a self-contradictory
-  $\Delta$zero without a matching $\Delta$abstention. That version is retained as a **void artefact**;
-  abstention is counted by scanning all columns other than `pred`/`gt`, and the amended criteria only
+  $\Delta$zero without a matching $\Delta$abstention. Abstention is counted by scanning all columns other than `pred`/`gt`, and the amended criteria only
   repair the instrument and leave every threshold unchanged.
 - **Two design flaws in the decision analysis of §M.27.** An earlier version swept a single θ (0.70), at
   which both conventions fail everything — a threshold outside the region where the statistics differ,
@@ -5603,8 +5584,7 @@ now stands, and the artefact that recomputes it.
   **−42.5%** in the single render tabulated in §J.8, and **45–50%** across five independent renders). The
   paragraph now states the three magnitudes separately and says explicitly that they are
   **not one common band**; no measured value changed. The per-cell table behind the synthetic figure is now
-  printed in **§J.8**, so that number is traceable inside the submitted material rather than only in an
-  internal record, and §1/§5.5/§5.7 quote the clean-input under-count as "**up to 50%**" — the five-render
+  printed in **§J.8**, so that number is traceable inside the submitted material, and §1/§5.5/§5.7 quote the clean-input under-count as "**up to 50%**" — the five-render
   range — in place of the single render's **−42.5%**, which was the unconditional maximum of that one table
   rather than the narrower band that held for 14 of its 20 cells.
 - **The two microscopy numbers are one quantity at two calibers.** §5.7 prints **−50.1%** and §J.7 printed

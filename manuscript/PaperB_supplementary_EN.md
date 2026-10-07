@@ -1804,7 +1804,7 @@ Released under three `data/derived/` subdirectories, each listed in `MANIFEST.cs
 `758962a2643e1035698682abefec5748`), analysed by the **same frozen analyzer** (md5
 `bf873c5e7da083dae42cb379efe9af9d`), imported rather than re-implemented. It is **not** the corpus grid of
 §C.2 and it is **not** the source of any number printed in the main text. What changes is the
-**implementation axis**: **six distinct hosted endpoints**, labelled **H1–H6** in the order in which the
+**implementation axis**: **six distinct hosted endpoints**, labelled by name in the order in which the
 per-implementation tables list them, in place of the three local builds b0 / b1 / b2 of §M.11.1.
 
 **Design.** Six implementations × 648 stimuli × 3 contracts × 3 repeats = **34,992 designed cells**, of which
@@ -1821,18 +1821,18 @@ share.
 
 | implementation | c08 | c32 | c80 | c80 modal answer (share) |
 |---|---:|---:|---:|---|
-| H1 | 60.75% | 49.13% | 42.44% | 80 (53.1%) |
-| H2 | 50.21% | 12.65% | 6.43% | 0 (11.5%) |
-| H3 | 49.90% | 36.10% | 22.77% | 80 (21.8%) |
-| H4 | 61.42% | 42.85% | 32.61% | 80 (41.7%) |
-| H5 | 55.92% | 35.08% | 23.66% | 80 (26.6%) |
-| H6 | 36.73% | 3.40% | 5.61% | 100 (23.3%) |
+| gpt-6.1-sol | 60.75% | 49.13% | 42.44% | 80 (53.1%) |
+| grok-4.7 | 50.21% | 12.65% | 6.43% | 0 (11.5%) |
+| gemini-3.8-flash | 49.90% | 36.10% | 22.77% | 80 (21.8%) |
+| qwen3.8-max | 61.42% | 42.85% | 32.61% | 80 (41.7%) |
+| qwen3.8-flash | 55.92% | 35.08% | 23.66% | 80 (26.6%) |
+| glm-4.6v | 36.73% | 3.40% | 5.61% | 100 (23.3%) |
 | b0 (AWQ 4-bit) | 48.82% | 1.90% | 0.51% | 0 (32.3%) |
 | b1 (FP8) | 50.26% | 2.57% | 0.72% | 0 (33.5%) |
 | b2 (BF16) | 50.46% | 2.21% | 0.67% | 0 (33.4%) |
 
 The denominators are the served cells of each band: **1,944** at `c08`; at `c32`, **1,944** for every
-implementation except H3 (**1,942**); at `c80`, **1,944** except H2 (**1,929**) and H3 (**1,919**).
+implementation except gemini-3.8-flash (**1,942**); at `c80`, **1,944** except grok-4.7 (**1,929**) and gemini-3.8-flash (**1,919**).
 
 **The count effect and criterion C4.** β is the logistic main effect of the z-standardised `count` after
 `radius` / `blur` / `overlap` / `contract` are controlled, fitted on the implementation's own cells, with Wald
@@ -1840,12 +1840,12 @@ intervals — the definition of §M.11.1, unchanged.
 
 | implementation | n | β | SE | 95% CI | C4 (±0.2) |
 |---|---:|---:|---:|---|---|
-| H1 | 5,832 | −0.5865 | 0.0606 | [−0.7053, −0.4677] | FAIL |
-| H2 | 5,817 | −1.2957 | 0.0805 | [−1.4536, −1.1379] | FAIL |
-| H3 | 5,805 | −0.5680 | 0.0606 | [−0.6867, −0.4493] | FAIL |
-| H4 | 5,832 | −0.7922 | 0.0585 | [−0.9070, −0.6775] | FAIL |
-| H5 | 5,832 | −0.8413 | 0.0620 | [−0.9630, −0.7197] | FAIL |
-| H6 | 5,832 | −1.0626 | 0.0890 | [−1.2371, −0.8882] | FAIL |
+| gpt-6.1-sol | 5,832 | −0.5865 | 0.0606 | [−0.7053, −0.4677] | FAIL |
+| grok-4.7 | 5,817 | −1.2957 | 0.0805 | [−1.4536, −1.1379] | FAIL |
+| gemini-3.8-flash | 5,805 | −0.5680 | 0.0606 | [−0.6867, −0.4493] | FAIL |
+| qwen3.8-max | 5,832 | −0.7922 | 0.0585 | [−0.9070, −0.6775] | FAIL |
+| qwen3.8-flash | 5,832 | −0.8413 | 0.0620 | [−0.9630, −0.7197] | FAIL |
+| glm-4.6v | 5,832 | −1.0626 | 0.0890 | [−1.2371, −0.8882] | FAIL |
 | **pooled (common slope, no count × implementation term)** | **34,950** | **−0.6841** | 0.0237 | **[−0.7305, −0.6377]** | **FAIL** |
 | b0 (AWQ 4-bit) | 5,832 | −4.3346 | 0.2638 | [−4.8517, −3.8176] | FAIL |
 | b1 (FP8) | 5,832 | −4.2096 | 0.2521 | [−4.7036, −3.7156] | FAIL |
@@ -1853,7 +1853,7 @@ intervals — the definition of §M.11.1, unchanged.
 
 **C4 reads FAIL for 6 of 6 implementations and for the pooled fit.** The criterion is that the interval lie
 **entirely inside** ±0.2 before "no material effect" may be stated; no interval comes near it — the least
-negative point estimate is −0.5680 (H3) and the highest interval bound is −0.4493. The disposition is
+negative point estimate is −0.5680 (gemini-3.8-flash) and the highest interval bound is −0.4493. The disposition is
 therefore the one §M.11.1 already records: **the claim that count has no material effect is withdrawn**. Here
 as there the design is C3-evaluable (rank-ok, no separation; outcome rate 0.152–0.508), the negative controls
 pass (NC1, within-stratum permutation, 20 draws: β median **0.0019**, union of intervals [−0.068, 0.073]
@@ -1863,7 +1863,7 @@ frozen quantities passes **20 of 20**.
 
 **Magnitude, and how far it may be pushed.** The pooled common slope is **−0.6841 [−0.7305, −0.6377]**
 (n = **34,950**). Against the local FP8 build of §M.11.1 (β = **−4.2096**) the implementation slopes are
-**13%–31%** of it — H3 13%, H1 14%, H4 19%, H5 20%, H6 25%, H2 31%. The **direction** repeats; the
+**13%–31%** of it — gemini-3.8-flash 13%, gpt-6.1-sol 14%, qwen3.8-max 19%, qwen3.8-flash 20%, glm-4.6v 25%, grok-4.7 31%. The **direction** repeats; the
 **magnitude** does not transfer. The design cannot separate numerical-format damage from task difficulty
 relative to implementation strength, because the local arm is one 32B open-weight model in three storage
 formats while this arm is six different hosted endpoints; we therefore read this as an **independent
@@ -1875,15 +1875,15 @@ significant digits.
 **The collapse shape is implementation-specific.** In the local arm all three builds collapse at `c32` and
 `c80` (1.90%–2.57% and 0.51%–0.72%), the modal answer becoming the constant 30 and then the constant 0.
 Four of the six hosted implementations do **not** do that: at `c80` their modal answer is still the **true
-value 80** (H1 53.1%, H4 41.7%, H5 26.6%, H3 21.8%), so their failure is a loss of accuracy rather than a
-collapse onto a constant. Only two genuinely degenerate — H2, whose modal answer at `c80` is **0** (11.5%),
-and H6, which overshoots to the constant **100** (23.3%). **"Large counts are compressed onto a constant" is
+value 80** (gpt-6.1-sol 53.1%, qwen3.8-max 41.7%, qwen3.8-flash 26.6%, gemini-3.8-flash 21.8%), so their failure is a loss of accuracy rather than a
+collapse onto a constant. Only two genuinely degenerate — grok-4.7, whose modal answer at `c80` is **0** (11.5%),
+and glm-4.6v, which overshoots to the constant **100** (23.3%). **"Large counts are compressed onto a constant" is
 therefore a form the effect takes in particular implementations, not a general law of the phenomenon.** The
 band ordering itself (c08 > c32 > c80) holds in **6 of 6** implementations.
 
 **Repeat consistency.** Three repeats of the same (implementation, contract, item) disagree — parsing to
-different integers, to `abstain`, or to no parsable value — at a rate of **33.4%–57.5%** (H4 33.38%,
-H1 38.22%, H6 38.73%, H3 44.38%, H5 56.74%, H2 57.49%), with a median |Δ| of **0–3** answers between
+different integers, to `abstain`, or to no parsable value — at a rate of **33.4%–57.5%** (qwen3.8-max 33.38%,
+gpt-6.1-sol 38.22%, glm-4.6v 38.73%, gemini-3.8-flash 44.38%, qwen3.8-flash 56.74%, grok-4.7 57.49%), with a median |Δ| of **0–3** answers between
 repeats and a 90th percentile of **8–43**. Two calibers are reported in parallel: the **per-call** caliber,
 which pools all three repeats and is the frozen one, and the **majority-value** caliber, which takes the mode
 per cell and counts a cell with no majority as wrong. Taking majority values moves the band accuracies by
@@ -1898,12 +1898,12 @@ away.
 count it was billed for, so the same fit can be run inside clusters of those two fields. Four of the six
 implementations show no clustering at all — their prompt-token count is unique within a contract and their
 served-endpoint name is unique — so for them the clustering renders the full sample and is **not tested**
-rather than tested negative. The other two do cluster: H1 has 15 distinct prompt-token counts within a
-contract, with 2,307 cells (39.56%) away from its modal value, and H2 is the arm's one clear routing split,
+rather than tested negative. The other two do cluster: gpt-6.1-sol has 15 distinct prompt-token counts within a
+contract, with 2,307 cells (39.56%) away from its modal value, and grok-4.7 is the arm's one clear routing split,
 with two served-endpoint names (4,512 and 1,305 cells). Splitting on those clusters leaves **every** stratum's
-C4 at FAIL (H1 −0.5732 modal against −0.5922 non-modal; H2 −1.4850 against −1.1181 by endpoint and −2.0161
-for its off-mode token cluster), and it does move the magnitude: H2's off-mode cluster sits further from zero
-than its modal one, and H1's low-token cluster gives β = **−0.8749** with interval **[−1.7235, −0.0262]** —
+C4 at FAIL (gpt-6.1-sol −0.5732 modal against −0.5922 non-modal; grok-4.7 −1.4850 against −1.1181 by endpoint and −2.0161
+for its off-mode token cluster), and it does move the magnitude: grok-4.7's off-mode cluster sits further from zero
+than its modal one, and gpt-6.1-sol's low-token cluster gives β = **−0.8749** with interval **[−1.7235, −0.0262]** —
 the only stratum in the arm whose upper bound approaches zero while still failing. Nothing here is read as
 mechanism.
 

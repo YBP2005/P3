@@ -42,8 +42,12 @@ import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
 PM = RP('analysis', 'data', 'pod_mirror')
-W = NR('@shared', 'work')
-B = NR('@shared', 'work', 'b_harvest_20260917')
+# ★ 2026-10-08 v0663: 这两处改用 `RP`. 两个校准阶梯件已随本轮放行到
+#   `data/derived/unit_ladders/`，`_repro_root._ALIAS` 里新增了 `@shared/work` 与
+#   `@shared/work/b_harvest_20260917/bbbc_eval` 两条前缀映射。作者树上这两条路径实存 ⇒
+#   `resolve()` 第一步就返回真实路径，**行为与本次改动前逐字一致**；放行树上改走别名表。
+W = RP('@shared', 'work')
+B = RP('@shared', 'work', 'b_harvest_20260917')
 OUT = RP('analysis', 'work', 'a39_unit_calib_heldout_result.json')
 ANOM, SENT = 1e5, 1234567890
 NSPLIT = 200
@@ -96,7 +100,7 @@ def add_unit(name, bylevel):
 for lab, path, pcol in (
         ('det·in-domain/VisDrone', RP('analysis', 'data', 'pod_mirror', 'A', 'det_yolo_ladder_visdrone_det.csv'), 'n_det_person'),
         ('det·zero-shot COCO', RP('analysis', 'data', 'pod_mirror', 'A', 'det_yolo_ladder_yolo12n.csv'), 'n_det_person'),
-        ('det·in-domain(micro)/BBBC005', NR('@shared', 'work', 'b_harvest_20260917', 'bbbc_eval', 'ladder.csv'), 'n_det')):
+        ('det·in-domain(micro)/BBBC005', RP('@shared', 'work', 'b_harvest_20260917', 'bbbc_eval', 'ladder.csv'), 'n_det')):
     if not os.path.exists(path):
         continue
     u = unitize(load(path), ['tau', 'imgsz'], pcol)
@@ -105,7 +109,7 @@ for lab, path, pcol in (
         add_unit('%s / tau@%s' % (lab, sz), {k: v for k, v in u.items() if len(k) > 1 and k[1] == sz})
 
 # ---------- 二、密度回归 ----------
-p = NR('@shared', 'work', 'dm_ladder.csv')
+p = RP('@shared', 'work', 'dm_ladder.csv')
 if os.path.exists(p):
     u = unitize(load(p), ['dataset', 'protocol', 'value'], 'pred')
     for ds in sorted({k[0] for k in u}):

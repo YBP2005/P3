@@ -2,7 +2,7 @@ path,bytes,md5
 .gitattributes,140,6146B876FB07285465C5CF17C4C2EBE6
 .gitignore,542,321BC7C5C84B947F05ED80A8A6E6CDCB
 LICENSE,2359,8181AE56741E4FFBE79EAAA397452F9B
-README.md,35339,4B1600502C28499F6B99950F9ECC8846
+README.md,35339,69ACCF56B3475E6F3171302CFA7BB891
 code/analysis/21_legibility_gaps.py,7345,01B0B32B782186BBB254A59EFAD41B66
 code/analysis/A_analyze.py,47050,8E1A016DD1D485C6A186084B8C160017
 code/analysis/A_criteria_frozen.json,17756,67DE0471E99F4C7167FE8A43BC5BAEB0
@@ -35,7 +35,7 @@ code/analysis/_parse_bug.py,3320,1E1C20E48EF2A6AE1EAED8B8DC241F70
 code/analysis/_parse_diag.py,1422,EEF98FC0C13CA7FAC28904C0CBA416DD
 code/analysis/_posctrl_white_vacuity.py,6493,B4C2B81CF470FC065CB170348CBBF71C
 code/analysis/_probe_f10_bug.py,4256,2BEA5645304D975732F153E5E712EAAE
-code/analysis/_repro_root.py,14165,CD240B888EEDA8742430BC3362692CC9
+code/analysis/_repro_root.py,15481,1F09BF71701336B52CD63E8BDD79758F
 code/analysis/_retro_rank_and_m35.py,7062,038733BDD38689CA88DF4B9220D4EB66
 code/analysis/_retro_rank_and_m35.py.AUTHOR_MACHINE_PATHS_20261003,6599,288B9D748B532BB2E102D0415E9CDA40
 code/analysis/_variance_boot.py,6874,C43AA1DEE0E44521E1751D34B8CD3DAA
@@ -47,7 +47,7 @@ code/analysis/a39_perknob_rung_robust34_result.json,8821,1490F90975DB53E1C9A2855
 code/analysis/a39_sharediso_fold2.py,16048,DEB47CC01A137E5D8612859436F0F1D1
 code/analysis/a39_sharediso_fold2_result.json,11309,3A7005EB88880E6A93F0CE6D7A784C09
 code/analysis/a39_sharediso_fold2_result.json.md5,145,36E1B0640CED739ACFEB7C019458003E
-code/analysis/a39_unit_calib_heldout.py,15264,4F260FE67EE4E1EA73D0E12331155505
+code/analysis/a39_unit_calib_heldout.py,15671,038C93A72AB79C40936BA634E7B68D6A
 code/analysis/a39_unit_calib_heldout_result.json,11029,392369AF65F13DCBF7720BC612FBF5EE
 code/analysis/a44_split16.py,15506,457F1788C2590ECA380866BFBDCE7DAE
 code/analysis/a44_split16_result.json,8817,A5897D63D3E3C9DAC3A4AFF228D64A7E
@@ -143,7 +143,7 @@ code/analysis/ctxctrl_run.sh,6086,642DD58E019F0F09996E9BE88055C361
 code/analysis/deploy_decision2.py,8837,32A1E9295D4E674519FF6AF97D18784A
 code/analysis/deploy_decision2_result.json,1344,F14CB96492C92F56825FF1C545D3329C
 code/analysis/deploy_decision_result.json,24664,7A2BFB6FBCAE4580D5AA0C318F234CB7
-code/analysis/derive_release_numbers.py,33962,221EDB9C9193A5A6DD7690F3FB21C09F
+code/analysis/derive_release_numbers.py,34380,C451E34C64BE0D3BD5A78C2B859D7B40
 code/analysis/diff_vs_locked_pack.py,2840,5B0AB5FC9C2EBFE6FD9A69A746A3EF6B
 code/analysis/dose_routeA_visdrone.py,7967,863333086C2F96901B226A4C8B293AE6
 code/analysis/ds_repeat.py,7141,0385F20BE12BB6BEE3A880B2C810C942
@@ -882,6 +882,7 @@ data/derived/_backup_32b_results/tile_results/vlm_ucf_over_tile2.csv,35536,7040E
 data/derived/_backup_32b_results/tile_results/vlm_ucf_over_tile3.csv,65120,AF04025A9F15ACC878F2F382DA17BE57
 data/derived/_backup_32b_results/tile_results/vlm_ucf_under_tile2.csv,32720,113AB1A8C0CB9BDB4EA35C1B44006AD7
 data/derived/_backup_32b_results/tile_results/vlm_ucf_under_tile3.csv,61841,859836B90CA267F12F905C6C5BF66EF9
+data/derived/a52_api_six_20261007/API_six_implementations_analysis.md,24376,9A6BCF26B1379C3175A0A9187169E58E
 data/derived/a52_api_six_20261007/analysis_manifest.md,19644,E98AFD1A0FA76E341C03826833F64E38
 data/derived/a52_api_six_20261007/table_per_model_band_accuracy.csv,5398,D124B4173ED9626734784F54D0EE015C
 data/derived/a52_api_six_20261007/table_repeat_consistency.csv,2463,EBEB30865EFEA710BFE748EA87DD71F7
@@ -4420,6 +4421,8 @@ data/derived/tile_results/vlm_ucf_over_tile2.csv,35536,7040E333292A855FF2802EB48
 data/derived/tile_results/vlm_ucf_over_tile3.csv,65120,AF04025A9F15ACC878F2F382DA17BE57
 data/derived/tile_results/vlm_ucf_under_tile2.csv,32720,113AB1A8C0CB9BDB4EA35C1B44006AD7
 data/derived/tile_results/vlm_ucf_under_tile3.csv,61841,859836B90CA267F12F905C6C5BF66EF9
+data/derived/unit_ladders/bbbc_eval/ladder.csv,336428,4A3816226F22CC7A0A78C5E8A4B68804
+data/derived/unit_ladders/dm_ladder.csv,280124,14F789E43E305927869F440911172945
 data/derived/w1_a800_bundle.tar.gz,631411,25308F6FBBBB7B8E1A780DE501B36E0C
 data/gold/shanghaitech_counts.csv,56956,632BFBD650234C02DCF9CCE8ABB0E2B0
 data/gold/ucf_qnrf_counts.csv,44163,6979CEBCF2B1C6A6F2BD21CB48C6825B
@@ -4757,8 +4760,8 @@ manuscript/P2E_evidence_record.md,6442,C84526246F18AB2F051C080A42E8A496
 manuscript/PaperB_Highlights.docx,36888,98A398EE2C0BD423799328E2BE794227
 manuscript/PaperB_cover_letter.md,6663,7A2C50564C45E1377E6866F7B94C6D05
 manuscript/PaperB_manuscript_EN.md,81087,6632A82F3306970482119AFA5C72261F
-manuscript/PaperB_manuscript_PR_layout.docx,980424,F452B4420BB28B065D3AC2E46D5D9541
-manuscript/PaperB_supplementary_EN.md,470969,B31465613A76728B76A941C7922AA6A0
-manuscript/pagination_measurement.json,866,624ADAC208ECCCCDC16C851F6D765B35
+manuscript/PaperB_manuscript_PR_layout.docx,980424,B9F35F788A8D0D2716EE7DB0358F2FBF
+manuscript/PaperB_supplementary_EN.md,477023,1D75C40CB8D5A308C272D9F0BDF8574E
+manuscript/pagination_measurement.json,866,B0B3E613EF3844035D031E5B6EC3CC1B
 manuscript/pagination_measurement_rtf_proxy.json,1409,DC1DB023B8575A68D3805307C7FE6CC2
 manuscript/review_control_evidence.md,7273,44DDAF365938DCD2F707DB96A51875F1

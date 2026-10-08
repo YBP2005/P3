@@ -1296,7 +1296,11 @@ zero. E1 makes the channel an experimental variable. The sample is the items on 
 configuration answered exactly 0 — **103** on ShanghaiTech-A (ground truth 138–797) and **180** on
 UCF-QNRF (137–2075) — from which **40 per domain** are drawn at equal spacing after sorting by ground
 truth. Sampling is deterministic, so all configurations and all arms share the same 40 items per
-domain; frame membership, duplicate keys and out-of-frame rows were checked file by file (40/40, no
+domain; because $S$ and $\rho$ both take the benchmark's ground truth as their denominator, the
+annotation protocol of the crowd benchmarks is a load-bearing input rather than a background detail,
+and the counting-error protocol of Idrees, Tayyab, Athrey, et al. (2018), *Composition Loss for
+Counting, Density Map Estimation and Localization in Dense Crowds* (ECCV 2018), is cited throughout
+as the source of the released annotation rather than as an independent check on it; frame membership, duplicate keys and out-of-frame rows were checked file by file (40/40, no
 duplicates). Arms: `base` (the corpus prompt, unchanged), `permit` (explicitly allowed to answer
 `abstain`), `bestA`/`bestB`/`bestC` (abstention forbidden and a best estimate demanded, three
 phrasings), and `channel` (an explicit three-way option: a number, `cannot_judge`, or `no_people`).
@@ -1865,7 +1869,20 @@ intervals — the definition of §M.11.1, unchanged.
 
 **C4 reads FAIL for 6 of 6 implementations and for the pooled fit.** The criterion is that the interval lie
 **entirely inside** ±0.2 before "no material effect" may be stated; no interval comes near it — the least
-negative point estimate is −0.5680 (gemini-3.8-flash) and the highest interval bound is −0.4493. The disposition is
+negative point estimate is −0.5680 (gemini-3.8-flash) and the highest interval bound is −0.4493.
+**How much of that margin survives a coarser clustering.** The intervals above are Wald intervals on the
+individual record. The design's genuinely repeated unit is the **cell** — the **81** combinations of
+3 counts × 3 radii × 3 blurs × 3 overlaps, of which the 648 stimuli are variants — so a cell-clustered
+sandwich (CR1, 81 clusters) is a stricter caliber than the layout-level check C5 reports. Under it the
+point estimates are unchanged and C4 still fails for 6 of 6 and for the pooled fit, but the intervals
+widen: the least-negative upper endpoint moves from −0.399 to **−0.119** for gpt-6.1-sol, so that
+fitting's margin above the −0.2 line falls from **0.25 to 0.081**, and the pooled fit that carries a
+`model` dummy for each implementation reaches **+0.042** at its reference level, i.e. its interval is no
+longer disjoint from the band. This does not flip the disposition — the band is entered by an interval
+**bound**, not by a point estimate, and the withdrawal §M.11.1 records rests on the point estimates and on
+the fact that no implementation's estimate sits inside the band — but it does mean that the strength of
+the statement "every interval is clear of the band" is caliber-dependent, and it is reported here rather
+than left to the Wald column. The disposition is
 therefore the one §M.11.1 already records: **the claim that count has no material effect is withdrawn**. Here
 as there the design is C3-evaluable (rank-ok, no separation; outcome rate 0.152–0.508), the negative controls
 pass (NC1, within-stratum permutation, 20 draws: β median **0.0019**, union of intervals [−0.068, 0.073]
@@ -3521,7 +3538,10 @@ sits beside is the abstention channel's coverage, which under the exhaustive two
 
 With `δ* = (q_C − θ)/(α − θ)`, **gemma-3-12b returns δ\* = 1.0125 > 1**, i.e. even at the largest α the construction permits, the corpus's own answered-zero rate cannot be produced — the joint transfer is **not reproducible** on that build — a **plug-in incompatibility on these pools, without a sampling-based transfer guarantee**. For reference, the frozen construction's own (designed, not measured) parameters return **δ\* = 0.5697 / 0.5756 / 0.5703**; the last of these **is** the construction's nominal base rate, which is the arithmetic reason the identity of §M.21.10(a) is a gate that cannot fail.
 
-The reverse direction is equally tight: at the construction's π the pool surface reproduces the corpus rate to **∓0.10–0.16 pp**. **The coverage of the abstention channel is mis-stated if its lower endpoint is written as $1/(\kappa+1)$.** $\kappa$ is the ratio of answered zeros to textual refusals, so the missed-refusal share is $f=1/(\kappa+1)$ and the answered-zero channel therefore captures **at least** $\kappa/(\kappa+1)$ of the abstentions; $1/(\kappa+1)$ bounds $f$, not the coverage, and differs from the correct floor by a factor of $\kappa$ — on a corpus with **200 items, 100 answered zeros, 1 textual refusal and 99 ordinary answers** ($\kappa=100$) the true coverage is $100/101=\mathbf{99.01\%}$, and the printed "interval" $[1/101,0.5]=[0.99\%,50\%]$ **does not contain the truth**. Under the exhaustive two-channel assumption that coverage is exactly $\kappa/(\kappa+1)$ (Proposition 7); the item-denominated answered-zero rate $q_C$ has a different denominator — all items, not abstentions — and does not bound that conditional coverage without additional prevalence information, so no interval is claimed for it here. What does follow is that this quantity bounds the abstention channel's **coverage**, not its **precision**: $\kappa$ gives the precision **no lower bound at all** (§M.21), and the abstention-only arm (`â = b̂ = 0`) leaves the precision at the trivial $[0,1]$. The identification argument itself is not new as a **method**: Manski, C. F. (2021), *Epidemiology* 32(2), DOI `10.1097/EDE.0000000000001309`, already shows that a positive or negative predictive value is bounded only under a bound on prevalence, so what is added here is the **application** to this construction — the coverage identification just given, and the trivialisation of the precision to $[0,1]$ by the abstention-only arm — and not the identifiability result, which we cite rather than claim.
+The reverse direction is equally tight: at the construction's π the pool surface reproduces the corpus rate to **∓0.10–0.16 pp**. **The coverage of the abstention channel is mis-stated if its lower endpoint is written as $1/(\kappa+1)$.** $\kappa$ is the ratio of answered zeros to textual refusals, so the missed-refusal share is $f=1/(\kappa+1)$ and the answered-zero channel therefore captures **at least** $\kappa/(\kappa+1)$ of the abstentions; $1/(\kappa+1)$ bounds $f$, not the coverage, and differs from the correct floor by a factor of $\kappa$ — on a corpus with **200 items, 100 answered zeros, 1 textual refusal and 99 ordinary answers** ($\kappa=100$) the true coverage is $100/101=\mathbf{99.01\%}$, and the printed "interval" $[1/101,0.5]=[0.99\%,50\%]$ **does not contain the truth**. Under the exhaustive two-channel assumption that coverage is exactly $\kappa/(\kappa+1)$ (Proposition 7); the item-denominated answered-zero rate $q_C$ has a different denominator — all items, not abstentions — and does not bound that conditional coverage without additional prevalence information, so no interval is claimed for it here. What does follow is that this quantity bounds the abstention channel's **coverage**, not its **precision**: $\kappa$ gives the precision **no lower bound at all** (§M.21), and the abstention-only arm (`â = b̂ = 0`) leaves the precision at the trivial $[0,1]$. The identification argument itself is not new as a **method**: Manski, C. F. (2021), *Epidemiology* 32(2), DOI `10.1097/EDE.0000000000001309`, already shows that a positive or negative predictive value is bounded only under a bound on prevalence, the parallel quantification literature supplies estimators for exactly this unidentified prevalence —
+Gonzalez, Castano, Chawla and del Coz (2017), *A Review on Quantification Learning*, ACM Computing
+Surveys 50:5 — and the partial-identification framing that fixes what stays unidentified without a bound
+on it is the one the evaluation literature has since adopted; so what is added here is the **application** to this construction — the coverage identification just given, and the trivialisation of the precision to $[0,1]$ by the abstention-only arm — and not the identifiability result, which we cite rather than claim.
 
 *Reproduction: the four builds × three starts are per-item records in the released package (the released per-build per-item records `E3_<build>_start{1,2,3}.csv`, twelve files); the mixture manifest (`pf_items_pi0570.json`, md5 `c43d7f94bc192ac0a2d9b697561d90ef`) and the frozen true-zero pool are those of §M.21.10.*
 
@@ -4166,7 +4186,7 @@ of the public-benchmark panel on the same stratified test images:
 | gemma3-12b | 82.7% | 67.4 | 30.5 | **36.9** |
 | llava-onevision-qwen2-7b-ov | 93.7% | 69.9 | 37.0 | **32.9** |
 
-The correction is **32.9** counts at the median and **45.6** at its largest, while the spread between the nine configurations under the published convention is only **2.6** counts — the convention effect is **12.7 times** that spread, which is the MAE range over nine configurations from six lineages and mixed precisions rather than a single-system factor. Rank correlation between the two conventions is **0.783** with **7 of 36** pairs inverting, so the published ordering is, to first order, an ordering of abstention propensity rather than of counting ability.
+The correction is **32.9** counts at the median and **45.6** at its largest, while the spread between the nine configurations under the published convention is only **2.6** counts — the convention effect is **12.7 times** that spread, which is the MAE range over nine configurations from six lineages and mixed precisions rather than a single-system factor. Rank correlation between the two conventions is **0.783** with **7 of 36** pairs inverting, so the published ordering is, to first order, an ordering of abstention propensity rather than of counting ability. **The caliber of that figure:** it is the Spearman correlation between the two **rankings of the nine configurations by MAE** — once under the published convention (an abstention scored as a predicted zero) and once under the answered-only convention — over the 36 configuration pairs, of which 7 invert (the top-1 configuration changes from gemma3-12b to Phi-3.5-vision-instruct); it is not the correlation of the per-item errors, and it is not the alternative figurable on the 9-configuration $\times$ 300-image frozen panel with images resampled, which is what an offline recomputation using that panel reports as 0.6833. **Reproduction:** `code/analysis/_retro_rank_and_m35.py`, which reads the released `data/derived/fsc_res/frozen384` records and prints this figure and the 7-of-36 inversion count; the same script regenerates this appendix section.
 
 **Conversion table.** For a benchmark with this ground-truth distribution (mean abstained-item ground truth
 about **72.6**), a system abstaining on a share $w$ of items has its published MAE separated from its answered-only MAE by the convention term:
@@ -4381,6 +4401,7 @@ artefacts to Δ = **0.0000**.
 | per-knob affine | 0.790 | 0.728–0.833 | 0% | 31.2× | needs a labelled sample per knob |
 | per-unit affine | 0.536 | 0.428–0.647 | 0% | 11.3× | needs target labels per unit |
 | per-unit, per-level affine / isotonic / quantile | 0.410–0.523 | — | 0% | 4.4–7× | no |
+| **per-domain quantile** (a **different caliber**: domain-level, not per-unit) | **0.8459** | **0.825–0.865** | 0% | — | needs a labelled sample per domain |
 | **constant map** (negative control) | undefined | — | — | 0 | — |
 
 **The two criteria are complementary, and that is stronger than the claim needs.** Median ρ ≥ 0.9 holds for
@@ -4389,7 +4410,13 @@ no other arm satisfies either. Those five leave the spread of spans **unchanged*
 uncalibrated): they rescale the caliber without making two units comparable. Conversely, every arm that
 **does** pull the magnitudes toward a common scale — per-unit per-level 4.4×, per-unit isotonic 5×, per-unit
 quantile 7×, per-unit affine 11× — sits at ρ 0.41–0.54 with P(≥0.9) = 0. **Among eleven map shapes at five
-granularities there is no arm in between.** The best deployable *nonlinear* families reach only 0.841
+granularities there is no arm in between.** One further granularity is worth separating out because it is
+**not** on the same axis as the rows around it: a **per-domain** quantile map scores **0.8459**
+(bootstrap 0.825–0.865, no split above 0.9), against **0.410** for the **per-unit** quantile map of the
+same shape. Both figures are reported and they do not conflict — the indexed unit differs (domain
+versus per-unit, eleven domains against thirty-six units) and the per-domain fit has fewer degrees of
+freedom to absorb unit-level differences, so it compresses the magnitudes less; the requirement stated
+below, that a deployable factor must vary **across units**, is what separates them. The best deployable *nonlinear* families reach only 0.841
 (global kernel) and 0.852 (global sigmoid), below the bar and with no gain in comparability.
 
 **The requirement is therefore not "per-unit" but "a factor that varies across units".** Every granularity a
@@ -4406,7 +4433,20 @@ the ordering**, not that none compresses them.
 
 **Two limits of this table, and one defect it exposed.** Conformal calibration is **not scorable here** — it
 emits intervals, whereas this table's estimand is a point statistic, and its nearest point-map relative is
-the quantile row. Platt scaling is defined for a **binary** target and temperature scaling has no standard
+the quantile row. That exclusion is a scoping choice, not a claim that the family is inapplicable: an
+interval-valued method scores by its **risk and interval width**, and the leading risk-controlling
+construction of Angelopoulos, Bates, et al. (2024), *Conformal Risk Control* (ICLR 2024), is stated
+directly for a bounded loss of this kind, so a risk-coverage readout is available to a reader who wants
+it. What would be an error is reading our rejection of the point-map comparison as a rejection of the
+family; the two criteria this table uses, median rank correlation and between-unit span spread, simply
+have no counterpart for an interval-valued map. Confidence calibration for detector and counting heads
+is a separate and still-thin literature — Guo et al. (2017), *On Calibration of Modern Neural Networks*
+(ICML 2017), is stated for classification and is imported here only as a naming convention (§3.1) —
+whereas the risk-control line of Bates, Angelopoulos, Romano, Sesia and Zhou (2021),
+*Distribution-Free, Risk-Controlling Prediction Sets* (JASA 116:536), and the dual-threshold conformal
+abstention of Kumar, Darabi, Tayebati, et al. (2025), *Beyond Confidence: Adaptive Abstention in
+Dual-Threshold Conformal Prediction for Autonomous Systems* (IEEE Int. Conf. Omni-layer Intelligent
+Systems), both address the uncertainty quantification this table sets aside. Platt scaling is defined for a **binary** target and temperature scaling has no standard
 regression form; we fit the nearest well-defined monotone point maps (a four-parameter sigmoid and a power
 family) and label them as substitutes. The constant map is the negative control and is *undefined* rather
 than poor, since it makes every span zero. **The defect**: the unit printed as `density·CSRNet / ladder` is
@@ -5342,7 +5382,16 @@ items × 3 arms × 4 families.
 | InternVL3.5-8B (control) | 0/6 = 0.00% *(95% upper bound 39.0%)* | 0/8 = 0.00% *(95% upper bound 32.4%)* | **0.00%** | pass |
 
 **Read the counts as well as the rates.** Several cells rest on 2–25 items, so their 95% upper bounds are wide (0 of 2 → up to 65.8%, 0 of 11 → up to 25.9%) and they are direction readings. **The interval family is named, because two are in use in this paper and they are not interchangeable:** the bound printed in the table above — and here — is the **Wilson two-sided 95% upper endpoint**, which is also the family the paper's Table 4 labels `(Wilson)`; the **Clopper–Pearson** single-sided limit on the same 0-of-2 cell is **77.6%**. Both are above the 5% residual, so the verdict does not turn on the choice, but the label must carry the family it was computed under. With that caveat, **all four families are inside the 5% residual** on the point estimate — which is what the pre-registered `pass` field is defined on, as §M.49 states — so the recipe's gate transfers to corpora and to families
-this paper never touched. One cell is above the bar and is reported rather than pooled away: the anchor
+this paper never touched. **The pass/fail judgement is read from the interval, not from the point
+estimate:** of the twelve rate cells in the table above, **eleven are `undetermined`** rather than `pass`,
+because a point estimate at or below 5% does not clear a one-sided 5% line unless the interval's endpoint
+does — so the pre-registered `verdict` column, which is defined on the point estimate as §M.49 states, is
+reported alongside the interval verdict and not in place of it. The anchored build's **0 of 70** cell is
+the one that turns on the family: its Wilson upper endpoint is **5.20%**, above the line, while its
+Clopper-Pearson upper endpoint is **4.19%**, below it, so that cell is reported as `undetermined`. Of the
+twelve cells one is a `fail` — the anchor build on TallyQA, **3 of 14 = 21.43%**, its two upper endpoints
+**47.6%** and **46.6%** — and the other **eleven are `undetermined`**. One cell is above the bar and is
+reported rather than pooled away: the anchor
 build on TallyQA leaves **3 of 14** answered zeros (21.43%). The channel composition on the same runs shows
 the outlets being used rather than ignored — numbers 35–52%, `cannot_judge` 46–64%, `no_people` 0.3–2.0%,
 `abstain` 0.0%.

@@ -54,6 +54,12 @@ SHARED = os.environ.get('PAPERB_SHARED') or 'E:/Edu_workplace'
 _ALIAS = (
     # `sync_repro.py` 的落点，逐条实测
     ('analysis/work', 'code/analysis'),
+    # ★ 2026-10-08（v0663）：作者机**共享语料盘**下的两个校准阶梯件已随本轮放行
+    #   （`data/derived/unit_ladders/`）。它们是 `a39_unit_calib_heldout.py` 的 36-unit 单元集里
+    #   此前**未随包发布**的 5 个单元的来源（官方 DM-Count ×2；BBBC005 ×3）。
+    #   作者树上这两条路径实存 ⇒ `resolve()` 第一步就返回真实路径，**行为与本次改动前逐字一致**。
+    ('@shared/work/b_harvest_20260917/bbbc_eval', 'data/derived/unit_ladders/bbbc_eval'),
+    ('@shared/work', 'data/derived/unit_ladders'),
     ('analysis/e2xt_a800', 'data/derived/e3'),
     ('analysis/e1_results_census', 'data/derived/e3/zero'),
     ('analysis/e1_results_nonzero', 'data/derived/e3/nonzero'),
@@ -188,9 +194,18 @@ def _join(parts):
 
 
 def _mapped(parts):
-    """放行树相对路径；不可映射（哨兵、盘符路径、无别名命中）返回 None。"""
+    """放行树相对路径；不可映射（盘符路径、无别名命中）返回 None。
+
+    ★ 2026-10-08（v0663）：`@shared`（作者机共享语料盘）**也走别名表** —— 但只在
+      `resolve()` 里（`_join` 落到的真实路径不存在之后）。新增的 `@shared/...` 别名条目
+      把**已经随包放行的两个校准阶梯件**接上（`data/derived/unit_ladders/`），从而
+      `a39_unit_calib_heldout.py` 的 36-unit 单元集在放行树上**不再缺那 5 个单元**。
+      在此之前 `@shared` 一律 return None（→ 落 `_NOT_RELEASED/`，故意不存在），
+      故本改动对**其它** `@shared` 路径的行为不变：没有别名命中时仍返回 None。
+      ★ 作者树侧完全不受影响：`resolve()` 在作者树上第一步就返回 `_join(parts)`（实测存在）。
+    """
     parts = [str(p) for p in parts]
-    if not parts or parts[0].startswith('@') or (len(parts[0]) > 1 and parts[0][1] == ':'):
+    if not parts or (len(parts[0]) > 1 and parts[0][1] == ':'):
         return None
     rel = '/'.join(parts)
     for a, b in _ALIAS:

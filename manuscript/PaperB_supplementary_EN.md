@@ -1816,8 +1816,9 @@ unparsable reply count as incorrect, exactly as the frozen criterion requires; t
 an `api_error` at run time are **removed from every denominator and are not counted as incorrect**
 (§B.1's `api_error` class, and §M.2's "excluded from every rate"), so every denominator in this subsection —
 the per-band cells, the per-implementation n and the pooled n — is a served-cell count: of the 42,
-**gemini-3.8-flash** contributes **27** and **grok-4.7** **15**, and the other four implementations **0**
-(27/15/0/0/0/0). The shortfall is **0.12%** of the designed grid, far inside the **0.25** margin by which the
+**27** fall in one hosted implementation and **15** in a second, the remaining four contributing **0**
+(27/15/0/0/0/0); the per-implementation mapping is the served/`ERR` row of `analysis_manifest.md` §2, printed
+with the tables above. The shortfall is **0.12%** of the designed grid, far inside the **0.25** margin by which the
 least-negative C4 interval misses ±0.2. Of the two record sets the frozen analyzer can return, this subsection
 reads the **contrast** set — every attained record — rather than the whole-cell-excluded **primary** set,
 because the contrast set is the one whose cell counts reproduce the served-cell denominators printed here;

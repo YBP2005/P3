@@ -274,6 +274,7 @@ password, a host or a key.
 | `env/a800_missing_20260927/_FETCH_MANIFEST.txt` | 2 | `07A031C921AE341D37520A1070CC9733` | `060920439D38AB48267A8B43D3762444` |
 | `manuscript/E2_evidence_record.md` | 2 | `5DC10DB6973AE87C27D16DC86DAE1AD0` | `2D27C099EA0CD30BED981FB9823622CD` |
 | `manuscript/review_control_evidence.md` | 2 | `EB1658CD01D61F6EE78B7C380C3BE991` | `44DDAF365938DCD2F707DB96A51875F1` |
+| `data/derived/a52_api_six_20261007/analysis_manifest.md` | 7 | `B8BA0EEB4CFE99AB1E0A03995D20E00D` | `E98AFD1A0FA76E341C03826833F64E38` |
 
 **Four counts that are easy to confuse**, each with the command that produces it (run from the
 package root). The first two are about *paths*, the last two about the *sanitiser*.
@@ -299,7 +300,7 @@ package root). The first two are about *paths*, the last two about the *sanitise
    scripts (**143** under `code/analysis/`, **3** under `code/experiments/`) plus **6** non-scripts. Those are
    the "146 / 152" figures in this package's earlier history; they counted *files with a placeholder*, not
    files with wrong numbers, and they are no longer the live count because the placeholder is gone.
-3. **34** files were rewritten by the sanitiser, in **68** substitutions (the table above). This set cannot be
+3. **35** files were rewritten by the sanitiser, in **75** substitutions (the table above). This set cannot be
    recomputed from this package alone — doing so needs the authors' pre-sanitisation sources, which are
    deliberately not released. What *is* checkable here is that the table agrees with the manifest: the
    `md5 in this package` column equals the `MANIFEST.csv` row for the same path (verified when this file was
@@ -309,7 +310,7 @@ package root). The first two are about *paths*, the last two about the *sanitise
    passwords. **v0610 changed none of these numbers**: it removed eight residue files instead (see
    *Write-back policy*), which took the package **at that revision** from **3,659** to **3,651** manifested
    files and left both the rewritten set and the substitution count untouched. **At this revision
-   `MANIFEST.csv` registers 4759 files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **3831**
+   `MANIFEST.csv` registers 4763 files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **3835**
    of them — both are re-derived by `code/analysis/derive_release_numbers.py`.
 4. **39** files merely *contain* one of the placeholder strings: `grep -rlE '<REDACTED-|<WORKDIR>|<SHARED-DIR>' . | wc -l`
    → **39** (the sanitiser's own rewritten set is count 3 above; the remainder only quote a placeholder
@@ -362,10 +363,10 @@ sanitiser and the path refactor.
 
 ### What the sanitiser did **not** touch
 
-**Almost nothing under `data/` was altered.** Of the **3831** files under `data/`, **4** are text files
-the sanitiser rewrote (they are the `data/` rows of the table above); every one of the remaining **3827** is
+**Almost nothing under `data/` was altered.** Of the **3835** files under `data/`, **5** are text files
+the sanitiser rewrote (they are the `data/` rows of the table above); every one of the remaining **3830** is
 byte-identical to the corresponding source file. Two independent checks say so: (i) a sanitiser substitution always leaves one
-of the six placeholder patterns above in the file, and a scan of all 3831 released data files finds **3**
+of the six placeholder patterns above in the file, and a scan of all 3835 released data files finds **3**
 carrying one of them — the remaining rewritten data file carries a neutral internal-name placeholder
 instead of a host/path placeholder; (ii) a per-file `path / bytes / md5`
 manifest of `data/` taken before and after the release script ran differs **only in the rows the sanitiser

@@ -1801,16 +1801,27 @@ Released under three `data/derived/` subdirectories, each listed in `MANIFEST.cs
 **Status: a separate experiment, reported in this appendix.** It shares the **same 648 frozen stimuli**, the
 **same three output contracts** (`base` / `strict` / `permit`), the **same three repeats**, the **same frozen
 `is_correct` definition** and the **same frozen criteria** as §M.11.1 (criteria md5
-`758962a2643e1035698682abefec5748`), analysed by the **same frozen analyzer** (md5
-`bf873c5e7da083dae42cb379efe9af9d`), imported rather than re-implemented. It is **not** the corpus grid of
+`758962a2643e1035698682abefec5748`), analysed by the **same frozen analyzer shipped with this
+package** (md5 `77f87f49b0e447fba54ea2a0435f80c8`), imported
+rather than re-implemented; the predecessor copy that produced the third local build's as-run readings is
+registered in the provenance paragraph below and in `archives/NOTICE_superseded_20261006.md`, which marks
+it **do-not-use for any analysis**. It is **not** the corpus grid of
 §C.2 and it is **not** the source of any number printed in the main text. What changes is the
 **implementation axis**: **six distinct hosted endpoints**, labelled by name in the order in which the
 per-implementation tables list them, in place of the three local builds b0 / b1 / b2 of §M.11.1.
 
 **Design.** Six implementations × 648 stimuli × 3 contracts × 3 repeats = **34,992 designed cells**, of which
-**34,950** were served and enter the analysis (per-implementation n in the tables below). Abstention, an
-unparsable reply and a non-served cell all count as incorrect, exactly as the frozen criterion requires.
-**42 of 34,992 cells could not be served at run time.** The endpoints' own per-implementation records are the
+**34,950** were served and enter the analysis (per-implementation n in the tables below). Abstention and an
+unparsable reply count as incorrect, exactly as the frozen criterion requires; the **42** cells that returned
+an `api_error` at run time are **removed from every denominator and are not counted as incorrect**
+(§B.1's `api_error` class, and §M.2's "excluded from every rate"), so every denominator in this subsection —
+the per-band cells, the per-implementation n and the pooled n — is a served-cell count: of the 42,
+**gemini-3.8-flash** contributes **27** and **grok-4.7** **15**, and the other four implementations **0**
+(27/15/0/0/0/0). The shortfall is **0.12%** of the designed grid, far inside the **0.25** margin by which the
+least-negative C4 interval misses ±0.2. Of the two record sets the frozen analyzer can return, this subsection
+reads the **contrast** set — every attained record — rather than the whole-cell-excluded **primary** set,
+because the contrast set is the one whose cell counts reproduce the served-cell denominators printed here;
+the primary caliber is the one §M.11.1 reports for the local builds. The endpoints' own per-implementation records are the
 three analysis tables behind this subsection — `table_per_model_band_accuracy.csv`,
 `table_repeat_consistency.csv` and `table_stratified_served_ptok.csv`, with `analysis_manifest.md` — each row
 carrying that endpoint's own identifier.
@@ -1876,10 +1887,14 @@ significant digits.
 `c80` (1.90%–2.57% and 0.51%–0.72%), the modal answer becoming the constant 30 and then the constant 0.
 Four of the six hosted implementations do **not** do that: at `c80` their modal answer is still the **true
 value 80** (gpt-6.1-sol 53.1%, qwen3.8-max 41.7%, qwen3.8-flash 26.6%, gemini-3.8-flash 21.8%), so their failure is a loss of accuracy rather than a
-collapse onto a constant. Only two genuinely degenerate — grok-4.7, whose modal answer at `c80` is **0** (11.5%),
-and glm-4.6v, which overshoots to the constant **100** (23.3%). **"Large counts are compressed onto a constant" is
+collapse onto a constant. Only two put their modal `c80` answer away from the true value — grok-4.7, whose modal
+answer is **0** (11.5% of its served cells), and glm-4.6v, which overshoots to the constant **100** (23.3%) — and
+in both cases that modal share is a minority of the served cells, so "compressed onto a constant" describes their
+modal answer rather than the bulk of their replies; the two are separated by the direction of the miss, not by a
+common concentration. **"Large counts are compressed onto a constant" is
 therefore a form the effect takes in particular implementations, not a general law of the phenomenon.** The
-band ordering itself (c08 > c32 > c80) holds in **6 of 6** implementations.
+band ordering itself (c08 > c32 > c80) holds in **5 of 6** implementations; the exception is **glm-4.6v**, whose
+`c32` reading (**3.40%**) sits *below* its `c80` reading (**5.61%**), the one non-monotone row of the table above.
 
 **Repeat consistency.** Three repeats of the same (implementation, contract, item) disagree — parsing to
 different integers, to `abstain`, or to no parsable value — at a rate of **33.4%–57.5%** (qwen3.8-max 33.38%,
@@ -1888,7 +1903,8 @@ repeats and a 90th percentile of **8–43**. Two calibers are reported in parall
 which pools all three repeats and is the frozen one, and the **majority-value** caliber, which takes the mode
 per cell and counts a cell with no majority as wrong. Taking majority values moves the band accuracies by
 **−3.9 to 0 pp** at `c08`, by **−7.4 to −1.5 pp** at `c32` and by **−5.7 to −2.8 pp** at `c80`; it leaves the
-modal `c80` answer unchanged in **6 of 6** implementations, leaves the band ordering unchanged in 6 of 6, and
+modal `c80` answer unchanged in **6 of 6** implementations, leaves each implementation's band ordering
+unchanged relative to the per-call caliber in **6 of 6** (the non-monotone glm-4.6v row above included), and
 makes each implementation's β **more** negative rather than less (×1.12–2.66; mean +57%, median +41%).
 **C4 reads FAIL in both calibers, for 6 of 6 implementations and for the pooled fit**, so the disposition does
 not depend on which caliber is read; the disagreement rate itself is reported as a limit rather than smoothed
@@ -1909,7 +1925,7 @@ mechanism.
 
 **Provenance.** The frozen criteria are those of §M.11.1 (md5 `758962a2643e1035698682abefec5748`) and the
 `is_correct` / Wilson / logistic routines are the frozen analyzer's (md5
-`bf873c5e7da083dae42cb379efe9af9d`), imported unchanged; every number above comes from the three analysis
+`77f87f49b0e447fba54ea2a0435f80c8`), imported unchanged; every number above comes from the three analysis
 tables named in the design paragraph and their manifest, `analysis_manifest.md`, which also lists the
 non-served cells one by one.
 

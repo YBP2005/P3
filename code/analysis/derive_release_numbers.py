@@ -328,7 +328,7 @@ not shipped-file digests: %s.'''
      % n_shared),
     ('   *Write-back policy*), which took the package **at that revision** from **3,659** to **3,651** manifested\n'
      '   files and left both the rewritten set and the substitution count untouched. **At this revision\n'
-     '   `MANIFEST.csv` registers 4757 files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **3829**\n'
+     '   `MANIFEST.csv` registers 4764 files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **3836**\n'
      '   of them — both are re-derived by `code/analysis/derive_release_numbers.py`.',
      '   *Write-back policy*), which took the package **at that revision** from **3,659** to **3,651** manifested\n'
      '   files and left both the rewritten set and the substitution count untouched. **At this revision\n'
@@ -346,14 +346,14 @@ not shipped-file digests: %s.'''
     #   换成一个**可复核**的陈述：改了几件、其余逐字节相同、manifest 只在被改写的行上变化。
     # ★ v0656：老串同步到 README **现印**的那一份（3829/4/3825）；被换下的"假全称句"那条
     #   （`**Nothing under data/ was altered.** Every one of the **3787** …`）已进 ⑥ 的持久注册表。
-    ('**Almost nothing under `data/` was altered.** Of the **3829** files under `data/`, **4** are text files\n'
-     'the sanitiser rewrote (they are the `data/` rows of the table above); every one of the remaining **3825** is\n'
+    ('**Almost nothing under `data/` was altered.** Of the **3836** files under `data/`, **5** are text files\n'
+     'the sanitiser rewrote (they are the `data/` rows of the table above); every one of the remaining **3831** is\n'
      'byte-identical to the corresponding source file.',
      '**Almost nothing under `data/` was altered.** Of the **%d** files under `data/`, **%d** are text files\n'
      'the sanitiser rewrote (they are the `data/` rows of the table above); every one of the remaining **%d** is\n'
      'byte-identical to the corresponding source file.' % (N_DATA, N_DATA_SAN, N_DATA - N_DATA_SAN)),
     # ★ v0656：老串同步到 README **现印**的那一份（3829 / **3**）；被换下的"finds **zero**"那条已进 ⑥。
-    ('of the six placeholder patterns above in the file, and a scan of all 3829 released data files finds **3**\n'
+    ('of the six placeholder patterns above in the file, and a scan of all 3836 released data files finds **3**\n'
      'carrying one of them — the remaining rewritten data file carries a neutral internal-name placeholder\n'
      'instead of a host/path placeholder; (ii)',
      'of the six placeholder patterns above in the file, and a scan of all %d released data files finds **%d**\n'
@@ -379,9 +379,30 @@ else:
     print('  ⚠ 未找到消毒台账（作者侧）⇒ 该两条派生量改用 README 消毒表：%d 个文件 / %d 处替换。'
           % (_N_SAN_FILES, _N_SAN_SUBS))
 SUB.append((
-    '3. **32** files were rewritten by the sanitiser, in **64** substitutions (the table above). This set cannot be',
+    '3. **34** files were rewritten by the sanitiser, in **68** substitutions (the table above). This set cannot be',
     '3. **%d** files were rewritten by the sanitiser, in **%d** substitutions (the table above). This set cannot be'
     % (_N_SAN_FILES, _N_SAN_SUBS)))
+
+# ★ 2026-10-08（v0662）：**消毒表按台账派生新增行**（append-only：只在表里缺该路径时追加，
+#   既有行一字不动）。起因：本轮新放行 5 件，其中
+#   `data/derived/a52_api_six_20261007/analysis_manifest.md` 被改写 7 处
+#   （`E:\Edu_workplace\…` → `[author-workdir]` 6 处 ＋ 台账"冻结分析器"行 1 处，与 §M.11.2 正文同源）
+#   ⇒ 表里必须多一行，否则"**N** files were rewritten … (the table above)"与表本身不符。
+#   四个字段**全部由消毒台账算出**（不手抄）；锚点 = 现表的最后一行。
+_TBL_ANCHOR = ('| `manuscript/review_control_evidence.md` | 2 | '
+               '`EB1658CD01D61F6EE78B7C380C3BE991` | `44DDAF365938DCD2F707DB96A51875F1` |')
+if san is not None and _TBL_ANCHOR in readme:
+    _add_rows = []
+    for _f in san['files']:
+        if ('| `%s` |' % _f['path']) in readme:
+            continue
+        _add_rows.append('| `%s` | %d | `%s` | `%s` |'
+                         % (_f['path'], _f['subs'], (_f['src_md5'] or '').upper(),
+                            (_f['shipped_md5'] or '').upper()))
+    if _add_rows:
+        readme = readme.replace(_TBL_ANCHOR, _TBL_ANCHOR + '\n' + '\n'.join(_add_rows), 1)
+        print('  ★ 消毒表按台账补 %d 行：%s'
+              % (len(_add_rows), [r.split('`')[1] for r in _add_rows]))
 plan = []
 for old, new in SUB:
     c = readme.count(old)

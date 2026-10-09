@@ -1988,7 +1988,7 @@ sent exactly as in the frozen panel):
    with `--max-num-seqs 3`, i.e. a measured concurrency of ≈2.09× (below the ≥4× used for
    the other builds). This is a property of **this build on this stimulus**, not a
    protocol choice.
-3. **Completion of nine cells by a local client.** For one model, nine cells (7.5% of
+3. **Completion of nine cells by a local client.** For one model, nine cells (0.75% of
    that model's 1200) could not be served through the remote gateway, which terminated
    the longest requests; they were completed with the **same runner and the same frozen
    payload** driven from a local client. The only difference is the machine issuing the
@@ -2049,26 +2049,36 @@ auditable.
 
 | build (layer) | arm | numeric | zero among numeric | semantic abstention | other non-numeric |
 |---|---|---:|---:|---:|---:|
-| InternVL2.5-38B (Qwen backb.) | base | 647 | 0.287 | 0.002 | 0 |
-| | **permit** | 176 | 0.045 | **0.728** | 0 |
-| | strict | 648 | 0.296 | 0.000 | 0 |
+| InternVL2.5-38B (Qwen backb.) | base | 595 | 0.224 | 0.049 | 21 |
+| InternVL2.5-38B (Qwen backb.) | **permit** | 170 | 0.012 | **0.733** | 3 |
+| InternVL2.5-38B (Qwen backb.) | strict | 634 | 0.251 | 0.011 | 7 |
+| InternVL3-38B | base | 647 | 0.287 | 0.002 | 0 |
 | InternVL3-38B | **permit** | 176 | 0.045 | **0.728** | 0 |
+| InternVL3-38B | strict | 648 | 0.296 | 0.000 | 0 |
+| InternVL2.5-38B-MPO | base | 624 | 0.197 | 0.028 | 6 |
 | InternVL2.5-38B-MPO | **permit** | 177 | 0.000 | **0.727** | 0 |
+| InternVL2.5-38B-MPO | strict | 647 | 0.295 | 0.002 | 0 |
+| NVLM-D-72B | base | 639 | 0.296 | 0.003 | 7 |
 | NVLM-D-72B | **permit** | 180 | 0.250 | **0.721** | 1 |
+| NVLM-D-72B | strict | 642 | 0.287 | 0.000 | 6 |
 | Pixtral-Large (Mistral) | base | 574 | 0.061 | 0.000 | 74 |
-| | **permit** | 42 | 0.000 | **0.929** | 4 |
-| | strict | 548 | 0.071 | 0.003 | 98 |
+| Pixtral-Large (Mistral) | **permit** | 42 | 0.000 | **0.929** | 4 |
+| Pixtral-Large (Mistral) | strict | 548 | 0.071 | 0.003 | 98 |
 | InternVL3.5-8B | base | 648 | 0.284 | 0.000 | 0 |
-| | **permit** | 319 | 0.000 | **0.508** | 0 |
-| | strict | 648 | 0.230 | 0.000 | 0 |
+| InternVL3.5-8B | **permit** | 319 | 0.000 | **0.508** | 0 |
+| InternVL3.5-8B | strict | 648 | 0.230 | 0.000 | 0 |
+| llava-onevision-7B | base | 555 | 0.229 | 0.051 | 60 |
 | llava-onevision-7B | **permit** | 352 | 0.185 | **0.398** | 38 |
+| llava-onevision-7B | strict | 585 | 0.258 | 0.031 | 43 |
+| Phi-3.5-vision | base | 549 | 0.368 | 0.069 | 54 |
 | Phi-3.5-vision | **permit** | 135 | 0.304 | **0.739** | 34 |
+| Phi-3.5-vision | strict | 548 | 0.286 | 0.105 | 32 |
 
 Two readings follow. First, **the same 648 hardest images move between two response
 regimes depending on the contract**: where the contract offers an abstention channel, most
 cells are spent as declared abstentions (0.398–0.929), and the cells that do answer
 almost never answer zero; where it does not, the same images produce a zero rate of
-0.20–0.37 among numeric answers. The zero-answer behaviour is therefore **a function of
+0.06–0.37 among numeric answers. The zero-answer behaviour is therefore **a function of
 the response space rather than a fixed property of the model**. Second, the magnitude of
 the effect is **not a simple function of scale** (7B 0.398 vs 4B 0.739 vs 8B 0.508 vs
 38B 0.72–0.73 vs 123B 0.93), so it cannot be summarised as "bigger models abstain more".

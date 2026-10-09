@@ -1947,6 +1947,159 @@ mechanism.
 tables named in the design paragraph and their manifest, `analysis_manifest.md`, which also lists the
 non-served cells one by one.
 
+### M.11.3 Serviceability, registered deviations, and the abstention channel of the cross-family panel
+
+#### M.11.3.1 Serviceability of the cross-family panel (what we could and could not run)
+
+The panel is reported **by the layer at which independence is claimed**. At the
+**language-backbone** layer, the InternVL builds are **not** independent of Qwen
+(`InternVL2.5-38B` and `InternVL3-38B` carry a Qwen2.5-32B backbone; `InternVL3.5-38B`
+carries Qwen3-32B), so they are written throughout as *"non-Qwen-VL family, but Qwen
+backbone"* and never abbreviated to "non-Qwen". The builds that are independent at the
+backbone layer and ≥30B in size are few; of these we could serve **`Pixtral-Large`
+(Mistral backbone, w4a16)**, while two could not be served in this environment for
+reasons that are **structural rather than numerical**, and we report them rather than
+silently dropping them:
+
+| build | backbone layer | status | verbatim failure |
+|---|---|---|---|
+| `Pixtral-Large-Instruct-2411` (w4a16, compressed-tensors) | Mistral | **served** | — |
+| `Aria` (Rhymes) | Rhymes (MoE) | **not served** | `OSError: rhymes-ai/Aria does not appear to have a file named vision_processor.py` |
+| `Llama-3.2-90B-Vision-Instruct` (int4, auto-round → `inc`) | Llama | **not served** | `AttributeError: 'MllamaProcessor' object has no attribute '_get_num_multimodal_tokens'` |
+| `Molmo-72B-0924` (w4a16, compressed-tensors) | Qwen2-72B | **not served** | `ValueError: There is no module or parameter named 'lm_head.weight_packed' in MolmoForCausalLM` |
+
+All three failures occur **before weights are loaded** (or, for Molmo, during weight
+mapping) and are reproduced under **two different `transformers` versions** (5.17.0 and
+5.10.4), i.e. they are not window-size or memory problems and cannot be fixed by tuning
+`--max-model-len`, quantization flags, or batch settings.
+
+#### M.11.3.2 Registered deviations for the panel runs
+
+Three deviations apply to the runs reported in this section; each is recorded here in
+full, and none of them changes the *request content* (contract text and image bytes are
+sent exactly as in the frozen panel):
+
+1. **Output cap `max_tokens = 1024`** (the frozen API panel uses 32768). The single-card
+   KV budget cannot hold a 32768-token request at the 8192-token context used for these
+   builds. We verified **zero truncation**: every served cell has `finish_reason = stop`
+   and the cumulative count of `finish_reason = length` is **0**.
+2. **`Pixtral-Large` context/concurrency.** A 1024×1024 stimulus costs ≈4,574 vision
+   tokens in this build's vision tower, so the panel was served at `--max-model-len 8192`
+   with `--max-num-seqs 3`, i.e. a measured concurrency of ≈2.09× (below the ≥4× used for
+   the other builds). This is a property of **this build on this stimulus**, not a
+   protocol choice.
+3. **Completion of nine cells by a local client.** For one model, nine cells (7.5% of
+   that model's 1200) could not be served through the remote gateway, which terminated
+   the longest requests; they were completed with the **same runner and the same frozen
+   payload** driven from a local client. The only difference is the machine issuing the
+   HTTP request; rows are recorded with a `client: local-windows` provenance field.
+
+#### M.11.3.3 Engine compatibility (upstream of the measurements)
+
+Serving the three non-served builds required an isolated environment: `vllm 0.29` expects
+`transformers ≥ 5.10.4`, but the Pixtral vision tower fails under `transformers 5.17.0`
+with a rotary-embedding shape mismatch (`The size of tensor a (88) must match the size of
+tensor b (32768)`), while it serves correctly under `transformers 5.10.4`. We therefore
+ran those panels in a **separate virtual environment** and left the system environment
+untouched.
+
+#### M.11.3.4 The six-implementation API arm (E11b), with the low-count contrast
+
+The API arm was run at the same frozen protocol (text first, PNG as-is, `max_tokens`
+32768, no temperature) with **1200 cells per implementation** (400 images × 3 arms). All
+counts below are **unique keys with HTTP 200**, filtered per implementation by its served
+model string; rows whose `model` field did not match the implementation were removed and
+the removal is recorded (`gpt-6.1-sol`: 4 rows).
+
+| implementation | cells served | parsed | zero-answer rate | over/under mean shift | truncation |
+|---|---:|---:|---:|---|---:|
+| `qwen3.8-max` | 1200/1200 | 1200 | 0.000 | 305.9 / 278.1 (median 200) | 0 |
+| `qwen3.8-flash` | 1200/1200 | 1199 | 0.021 | 325.8 / 261.1 (median 199/180) | 0 |
+| `gemini-3.8-flash` | 1200/1200 | 1198 | 0.000 | 281.9 / 256.9 (median 200) | 0 |
+| `gpt-6.1-sol` | 1180/1200 | 1176 | 0.003 | 307.6 / 274.9 (median 199) | 3 |
+| `grok-4.7` | 1200/1200 † | 1153 | 0.004 | 268.9 / 248.2 (median 160/170) | 0 |
+
+† nine cells (0.75% of this implementation) could not be served through the remote
+gateway and were completed by a local client with the identical frozen payload (see the
+deviations above); they are recorded with a `client: local-windows` provenance field.
+
+**Contrast with the low-count regime.** On these dense stimuli (50–800 rendered objects)
+the zero-answer rate is negligible (0.0–2.1%) and answers are over-dispersed
+(median ≈ 200, mean 245–329). This is the opposite regime from the cross-family panels
+above, whose stimuli carry **8, 32 and 80** objects and where the zero-answer behaviour is
+the object of study; the two sets therefore serve as mutual controls rather than as
+replications.
+
+#### M.11.3.5 Cross-family panels: what the abstention channel does
+
+All panel runs use the same 648-image corpus (three count levels: 8, 32 and 80 objects,
+216 images each) and the same frozen request protocol (`max_tokens = 1024`; see the
+deviations above). Three response contracts are compared: `base` (answer a number),
+`permit` (answer, **or answer `abstain` if you cannot confirm each object**), and `strict`
+(number only, no other text).
+
+We report, per arm, a **semantic abstention rate** — the union of schema-level abstentions
+(`{"count": "abstain"}`, detected either from the service flag or from the payload), bare
+abstentions (`abstain`, the bare Chinese "none" token, empty or brace-only payloads,
+from an explicit whitelist),
+divided by the 648 cells of that arm. Everything non-numeric that falls outside that
+whitelist is counted separately as **other non-numeric** and is never folded into the
+abstention rate. `numeric` and `zero among numeric` are given so both readings stay
+auditable.
+
+| build (layer) | arm | numeric | zero among numeric | semantic abstention | other non-numeric |
+|---|---|---:|---:|---:|---:|
+| InternVL2.5-38B (Qwen backb.) | base | 647 | 0.287 | 0.002 | 0 |
+| | **permit** | 176 | 0.045 | **0.728** | 0 |
+| | strict | 648 | 0.296 | 0.000 | 0 |
+| InternVL3-38B | **permit** | 176 | 0.045 | **0.728** | 0 |
+| InternVL2.5-38B-MPO | **permit** | 177 | 0.000 | **0.727** | 0 |
+| NVLM-D-72B | **permit** | 180 | 0.250 | **0.721** | 1 |
+| Pixtral-Large (Mistral) | base | 574 | 0.061 | 0.000 | 74 |
+| | **permit** | 42 | 0.000 | **0.929** | 4 |
+| | strict | 548 | 0.071 | 0.003 | 98 |
+| InternVL3.5-8B | base | 648 | 0.284 | 0.000 | 0 |
+| | **permit** | 319 | 0.000 | **0.508** | 0 |
+| | strict | 648 | 0.230 | 0.000 | 0 |
+| llava-onevision-7B | **permit** | 352 | 0.185 | **0.398** | 38 |
+| Phi-3.5-vision | **permit** | 135 | 0.304 | **0.739** | 34 |
+
+Two readings follow. First, **the same 648 hardest images move between two response
+regimes depending on the contract**: where the contract offers an abstention channel, most
+cells are spent as declared abstentions (0.398–0.929), and the cells that do answer
+almost never answer zero; where it does not, the same images produce a zero rate of
+0.20–0.37 among numeric answers. The zero-answer behaviour is therefore **a function of
+the response space rather than a fixed property of the model**. Second, the magnitude of
+the effect is **not a simple function of scale** (7B 0.398 vs 4B 0.739 vs 8B 0.508 vs
+38B 0.72–0.73 vs 123B 0.93), so it cannot be summarised as "bigger models abstain more".
+
+#### M.11.3.6 Non-numeric responses that are *not* abstentions
+
+The residual bucket above is small but qualitatively distinct, and we report it because it
+is easy to mistake for a counting failure:
+
+* **Denial of vision**: one build returns "I cannot read images" / "I don't have the
+  ability to read images" in 74–98 of 648 cells of `base`/`strict`.
+* **Fabricated missing input**: several builds answer as if no image had been supplied
+  (translated: "since no actual image is available for analysis…", "the content of
+  `quadrant` is not visible", one even citing privacy), i.e. the failure is reported
+  as absent input rather than as an inability to count.
+* **Degenerate generation**: one build emits broken or truncated text (e.g. a stray
+  (translated: "a question about naming a church") with no count at all.
+
+#### M.11.3.7 A caution on agent-mediated runs
+
+For completeness we also ran one implementation's missing cells through an interactive
+agent session (fresh session; contract text first, image second; tools and code
+explicitly forbidden). The counts came back close to ground truth (750 and 791–800 against
+800), but a read-only audit of the transcripts shows why this is **not** usable as
+independent counting evidence: the "800" figure is anchored as a prior in most
+transcripts ("an expected benchmark of around 800", "should be exactly 800", "aiming for a
+total of 800"), the arithmetic is self-contradictory in several files (27×29 = 783
+reported as 800; 28×28 = 784 reported as 800), three transcripts contain no verifiable
+reasoning at all, and one was truncated. We therefore exclude these cells from all
+counting statistics and report them only as a methods observation.
+
 ### M.14 Numeric detail for §§6.2, 7.7 and 7.9
 
 Per-cell numbers behind the corresponding main-text claims, moved verbatim.

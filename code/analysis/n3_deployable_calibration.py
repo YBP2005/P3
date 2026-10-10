@@ -193,14 +193,16 @@ for lab, path in (('density·CSRNet', RP('analysis', 'data', 'pod_mirror', 'A', 
         add_unit('%s / %s' % (lab, os.path.basename(path).split('_')[-2]), {k: v for k, v in u.items()}, path)
 
 for mdl in ('ivl', 'q32'):
-    for f in sorted(glob.glob(os.path.join(RP('analysis', 'data', 'pod_mirror'), 'res_ctrl__%s' % mdl, 'res_ctrl_*.csv'))):
+    # ★ v0666 A8-5：pod_mirror 子目录必须**整段**交给 RP()。旧写法只解析父目录：作者树上落回真实
+    #   pod_mirror 恰好对，放行树上落到兜底别名 data/derived/pA ⇒ 子目录全部查不到。
+    for f in sorted(glob.glob(RP('analysis', 'data', 'pod_mirror', 'res_ctrl__%s' % mdl, 'res_ctrl_*.csv'))):
         ds = os.path.basename(f)[len('res_ctrl_'):-4]
         u = unitize(load(f), ['budget'], 'pred')
         add_unit('VLM·pixel budget / %s / %s' % (mdl, ds), {k: v for k, v in u.items()}, f)
 
 for sub, mdl in (('tile_results', 'Qwen32B'), ('b2__out_32b_ctile', 'Qwen32B(ctile)'),
                  ('b2__out_8b_ctile', 'Qwen8B(ctile)')):
-    d = os.path.join(RP('analysis', 'data', 'pod_mirror'), sub)
+    d = RP('analysis', 'data', 'pod_mirror', sub)      # ★ v0666 A8-5：整段交给 RP()
     if not os.path.isdir(d):
         continue
     groups = collections.defaultdict(dict)
@@ -226,7 +228,7 @@ for mdl, pth in (('ivl', RP('analysis', 'data', 'pod_mirror', 'b2__out_ivl', 'E1
         add_unit('VLM·output contract / %s' % mdl, {k: v for k, v in u.items()}, pth)
 
 for sub, mdl in (('dense_prompt_results', 'Qwen32B'), ('ivl_dense_prompt_results', 'IVL')):
-    d = os.path.join(RP('analysis', 'data', 'pod_mirror'), sub)
+    d = RP('analysis', 'data', 'pod_mirror', sub)      # ★ v0666 A8-5：整段交给 RP()
     if not os.path.isdir(d):
         continue
     groups = collections.defaultdict(dict)
@@ -285,7 +287,9 @@ def add8(unit, levels, src):
 
 
 for mdl in ('q32', 'ivl'):
-    for f in sorted(glob.glob(os.path.join(RP('analysis', 'data', 'pod_mirror'), 'res_ctrl__%s' % mdl, 'res_ctrl_*.csv'))):
+    # ★ v0666 A8-5：pod_mirror 子目录必须**整段**交给 RP()。旧写法只解析父目录：作者树上落回真实
+    #   pod_mirror 恰好对，放行树上落到兜底别名 data/derived/pA ⇒ 子目录全部查不到。
+    for f in sorted(glob.glob(RP('analysis', 'data', 'pod_mirror', 'res_ctrl__%s' % mdl, 'res_ctrl_*.csv'))):
         ds = os.path.basename(f)[len('res_ctrl_'):-4]
         with io.open(f, encoding='utf-8-sig') as fh:
             buds = sorted(set(r['budget'] for r in csv.DictReader(fh)), key=float)
@@ -855,7 +859,11 @@ for k in ('C0e', 'C1u', 'C2l', 'Cg', 'ISO', 'QNT'):
     print('  %-5s 本脚本 %.4f ｜ 冻结 %.4f ｜ Δ %+.4f  %s' % (k, mine, theirs, mine - theirs, '✓' if ok else '✗'))
 print('  闸门 B %s' % ('全过' if gateB else '**未过**'))
 if not (gateA and gateB):
-    print('\n!! 复现闸门未过 ⇒ 两侧不同源，**停止**，不解释新臂。')
+    # ★ 2026-10-10（v0666 A8-5）：旧版只打印一句“**停止**”就继续往下跑，并把新臂写进
+    #   `n3_deployable_calibration_result.json` —— 屏幕说停、磁盘照写，两个状态互相矛盾。
+    #   现改为**真停**：非零退出，且在本行之前不写任何结果件。
+    print('\n!! 复现闸门未过 ⇒ 两侧不同源，**停止**，不解释新臂、不写结果件。')
+    sys.exit(3)
 
 DEPLOY = {
     'C0e': 'nothing', 'Cg': 'global', 'C1u': 'per-unit', 'C2l': 'per-unit',

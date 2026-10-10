@@ -328,14 +328,14 @@ not shipped-file digests: %s.'''
      % n_shared),
     ('   *Write-back policy*), which took the package **at that revision** from **3,659** to **3,651** manifested\n'
      '   files and left both the rewritten set and the substitution count untouched. **At this revision\n'
-     '   `MANIFEST.csv` registers 4763 files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **3835**\n'
+     '   `MANIFEST.csv` registers 4845 files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **3916**\n'
      '   of them — both are re-derived by `code/analysis/derive_release_numbers.py`.',
      '   *Write-back policy*), which took the package **at that revision** from **3,659** to **3,651** manifested\n'
      '   files and left both the rewritten set and the substitution count untouched. **At this revision\n'
      '   `MANIFEST.csv` registers %d files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **%d**\n'
      '   of them — both are re-derived by `code/analysis/derive_release_numbers.py`.' % (N_MAN, N_DATA)),
-    ("4. **37** files merely *contain* one of the placeholder strings: `grep -rlE '<REDACTED-|<WORKDIR>|<SHARED-DIR>' . | wc -l`\n"
-     "   → **37** (the sanitiser's own rewritten set is count 3 above; the remainder only quote a placeholder\n"
+    ("4. **39** files merely *contain* one of the placeholder strings: `grep -rlE '<REDACTED-|<WORKDIR>|<SHARED-DIR>' . | wc -l`\n"
+     "   → **39** (the sanitiser's own rewritten set is count 3 above; the remainder only quote a placeholder\n"
      "   string — this `README.md` does so on purpose).",
      "4. **%d** files merely *contain* one of the placeholder strings: `grep -rlE '<REDACTED-|<WORKDIR>|<SHARED-DIR>' . | wc -l`\n"
      "   → **%d** (the sanitiser's own rewritten set is count 3 above; the remainder only quote a placeholder\n"
@@ -346,14 +346,14 @@ not shipped-file digests: %s.'''
     #   换成一个**可复核**的陈述：改了几件、其余逐字节相同、manifest 只在被改写的行上变化。
     # ★ v0656：老串同步到 README **现印**的那一份（3829/4/3825）；被换下的"假全称句"那条
     #   （`**Nothing under data/ was altered.** Every one of the **3787** …`）已进 ⑥ 的持久注册表。
-    ('**Almost nothing under `data/` was altered.** Of the **3835** files under `data/`, **5** are text files\n'
-     'the sanitiser rewrote (they are the `data/` rows of the table above); every one of the remaining **3830** is\n'
+    ('**Almost nothing under `data/` was altered.** Of the **3916** files under `data/`, **6** are text files\n'
+     'the sanitiser rewrote (they are the `data/` rows of the table above); every one of the remaining **3910** is\n'
      'byte-identical to the corresponding source file.',
      '**Almost nothing under `data/` was altered.** Of the **%d** files under `data/`, **%d** are text files\n'
      'the sanitiser rewrote (they are the `data/` rows of the table above); every one of the remaining **%d** is\n'
      'byte-identical to the corresponding source file.' % (N_DATA, N_DATA_SAN, N_DATA - N_DATA_SAN)),
     # ★ v0656：老串同步到 README **现印**的那一份（3829 / **3**）；被换下的"finds **zero**"那条已进 ⑥。
-    ('of the six placeholder patterns above in the file, and a scan of all 3835 released data files finds **3**\n'
+    ('of the six placeholder patterns above in the file, and a scan of all 3916 released data files finds **3**\n'
      'carrying one of them — the remaining rewritten data file carries a neutral internal-name placeholder\n'
      'instead of a host/path placeholder; (ii)',
      'of the six placeholder patterns above in the file, and a scan of all %d released data files finds **%d**\n'
@@ -379,7 +379,7 @@ else:
     print('  ⚠ 未找到消毒台账（作者侧）⇒ 该两条派生量改用 README 消毒表：%d 个文件 / %d 处替换。'
           % (_N_SAN_FILES, _N_SAN_SUBS))
 SUB.append((
-    '3. **34** files were rewritten by the sanitiser, in **68** substitutions (the table above). This set cannot be',
+    '3. **36** files were rewritten by the sanitiser, in **77** substitutions (the table above). This set cannot be',
     '3. **%d** files were rewritten by the sanitiser, in **%d** substitutions (the table above). This set cannot be'
     % (_N_SAN_FILES, _N_SAN_SUBS)))
 
@@ -429,6 +429,44 @@ for old, new in SUB:
 #   ★ 范围（为什么只查 README）：本支的守卫对象就是 README 的派生数字。放行树里另有三处**冻结
 #     编排件**按纪律保留 `19 文件` 的历史叙述（登记不改；见本轮检查单 §25.2），故不做树级断言。
 #   ★ 注册表维护：每轮更新 ⑤ 的老串时，把**被换下的那一条**移入下表（而不是删掉）。
+# ── ★ 2026-10-10（v0666）：**可追溯退役表**（append-only 的第三条通道）────────────────────
+#   裁定（上级 2026-10-10）：当新派生值与某条"陈旧串"字面重合时，该条旧串的断言是**假阳性**
+#   （数值巧合，不是残留）。处置＝**退役**（不删条目）：
+#     · 下表逐条登记：字面（或前缀）、理由、实测依据、退役人/时间、依据件 md5；
+#     · `stale_hits()` 跳过**已退役**的字面；其余陈旧串的检测**一字未改**；
+#     · 自测里另加一条"已退役字面不再报红"的正例，与一条"未退役字面仍必须报红"的负例。
+#   ★ 本表 **append-only**：退役条目不删，新退役只能追加。
+RETIRED_STALE = [
+    dict(literal_prefix='4. **39** files merely *contain*',
+         label='（⑤ 上一代替换串）4. **39** files merely *contain* one of the',
+         reason='本轮实物派生的"含占位符件数"复现为 39，与上一代老串**字面重合**'
+                '（旧串=新串）⇒ 替换后命中是**数值巧合**，不是陈旧残留',
+         evidence='`python derive_release_numbers.py --check`（2026-10-10）：'
+                  'README 四类计数 = 共享根 157 ｜ code 里作者机路径 3 ｜ 全树 21 ｜ 含占位符 39',
+         retired_on='2026-10-10',
+         retired_by='v0666 轮（上级裁定 2026-10-10 可追溯退役）',
+         basis_md5='746dd9fd7761818f7b65e2224af03166（本轮补材）/'
+                   '35810a6d3fba7b9c2335ff6a90827d9c（本轮主稿）'),
+    # ★ 同一类假阳性（同一裁定、同一手续）：消毒件数/替换处数的实物派生值
+    #   本轮为 36 / 77，与上一代老串**字面重合** ⇒ 同样是数值巧合。
+    dict(literal_prefix='3. **36** files were rewritten by the sanitiser',
+         label='（⑤ 上一代替换串）3. **36** files were rewritten by the sanitiser',
+         reason='本轮实物派生的消毒件数/替换处数复现为 36 / 77，与上一代老串**字面重合**'
+                '（旧串=新串）⇒ 替换后命中是**数值巧合**，不是陈旧残留',
+         evidence='`python derive_release_numbers.py --check`（2026-10-10）：消毒台账 36 个文件 / 77 处替换；'
+                  'README 四类计数 = 共享根 157 ｜ code 里作者机路径 3 ｜ 全树 21 ｜ 含占位符 39',
+         retired_on='2026-10-10',
+         retired_by='v0666 轮（上级裁定 2026-10-10 可追溯退役）',
+         basis_md5='746dd9fd7761818f7b65e2224af03166（本轮补材）/'
+                   '35810a6d3fba7b9c2335ff6a90827d9c（本轮主稿）'),
+]
+
+
+def _retired(nd):
+    """该陈旧串字面是否已被**可追溯退役**（仅前缀匹配，其余判据不变）。"""
+    return any(nd.startswith(r['literal_prefix']) for r in RETIRED_STALE)
+
+
 STALE_STRINGS = [
     # —— 跨代陈旧叙述（官方 FP8 件的件数，原写多算 1）——
     ('FP8 官方件数（旧叙述，中文）', '19 文件'),
@@ -463,12 +501,23 @@ STALE_STRINGS = [
 
 
 def stale_hits(txt):
-    """注册表里每一条陈旧串在 txt 里的命中（只列非 0 的）。"""
-    return [(lab, nd, txt.count(nd)) for lab, nd in STALE_STRINGS if txt.count(nd)]
+    """注册表里每一条陈旧串在 txt 里的命中（只列非 0 的）。
+
+    ★ v0666：**已可追溯退役**的字面跳过对比（见 RETIRED_STALE）；其余一律照旧。
+    """
+    return [(lab, nd, txt.count(nd)) for lab, nd in STALE_STRINGS
+            if txt.count(nd) and not _retired(nd)]
 
 
 print('\n⑥ 持久陈旧串断言（对象 = 替换后的 README；注册表 %d 条，append-only）'
       % len(STALE_STRINGS))
+print('  ★ 可追溯退役表：%d 条（append-only，不删条目）' % len(RETIRED_STALE))
+for _r in RETIRED_STALE:
+    print('     RETIRE %s' % _r['label'])
+    print('       理由：%s' % _r['reason'])
+    print('       依据：%s' % _r['evidence'])
+    print('       退役人/时间：%s / %s；依据件 md5：%s'
+          % (_r['retired_by'], _r['retired_on'], _r['basis_md5']))
 _hits = stale_hits(readme)
 if _hits:
     for lab, nd, c in _hits:
@@ -493,11 +542,15 @@ if '--selftest' in sys.argv:
     for _p in _PROBES:
         if _p not in _NEG:
             print('     ★ 漏抓：%r' % _p)
-    if _POS and len(_NEG) == len(_PROBES):
+    _RET_PROBES = [r['literal_prefix'] for r in RETIRED_STALE]
+    _RETHIT = [p for p in _RET_PROBES if stale_hits(readme + '\n' + p + '\n')]
+    print('  [自测] 已退役字面不再报红（退役生效）：%s（%d 条）'
+          % ('PASS' if not _RETHIT else 'FAIL', len(_RET_PROBES)))
+    if _POS and len(_NEG) == len(_PROBES) and not _RETHIT:
         print('  ⇒ STALE_SELFTEST_PASS')
     else:
-        FAILS.append('持久陈旧串断言的自测未通过（正例=%s / 负例 %d/%d）'
-                     % (_POS, len(_NEG), len(_PROBES)))
+        FAILS.append('持久陈旧串断言的自测未通过（正例=%s / 负例 %d/%d / 退役正例=%s）'
+                     % (_POS, len(_NEG), len(_PROBES), 'PASS' if not _RETHIT else 'FAIL'))
 
 print('\n%s' % ('=' * 96))
 if FAILS:

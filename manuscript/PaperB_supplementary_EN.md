@@ -993,7 +993,7 @@ previous model's. The second concerned a missing field in one output format. Bot
 model-specific output directories and by de-duplicating on `item` while counting duplicates; we report
 them because the affected numbers would otherwise be silently contaminated rather than visibly wrong.
 
-## Appendix J. Proofs and verification evidence for Propositions 4–8 (Propositions 1–3 are stated in full in §M.21; this appendix carries 4–8)
+## Appendix J. Proofs and verification evidence for the formal statements of §3.8 (this appendix carries Propositions 4–8 and also verifies Proposition 2 in J.9; Propositions 1–3 are stated in full in §M.21)
 
 Every number in this appendix is **computed from the corpus** by `p4_decomp_verify.py`, not transcribed;
 re-running that script reproduces the tables below. The corpus conventions are those of Appendix I
@@ -1819,7 +1819,7 @@ per-implementation tables list them, in place of the three local builds b0 / b1 
 unparsable reply count as incorrect, exactly as the frozen criterion requires; the **42** cells that returned
 an `api_error` at run time are **removed from every denominator and are not counted as incorrect**
 (§B.1's `api_error` class, and §M.2's "excluded from every rate"), so every denominator in this subsection —
-the per-band cells, the per-implementation n and the pooled n — is a served-cell count: of the 42,
+the per-band cells, the per-implementation n and the pooled n — is a **served-cell** count, and the two are not interchangeable: the modal-share column below is a share **among integer replies**, so where a cell's replies include abstentions or unparsable output the two denominators differ. Of the 42,
 **27** fall in one hosted implementation and **15** in a second, the remaining four contributing **0**
 (27/15/0/0/0/0); the per-implementation mapping is the served/`ERR` row of `analysis_manifest.md` §2, printed
 with the tables above. The shortfall is **0.12%** of the designed grid, far inside the **0.25** margin by which the
@@ -1833,7 +1833,8 @@ carrying that endpoint's own identifier.
 
 **Per-count-level accuracy, alongside the three local builds of §M.11.1.** Accuracy is the frozen
 `is_correct` rate over served cells; the last column gives the modal integer answer in the `c80` band and its
-share.
+**share among integer replies** — not a served-cell share, and not a true count: the band's midpoint is a
+**nominal count level** of 80.
 
 | implementation | c08 | c32 | c80 | c80 modal answer (share) |
 |---|---:|---:|---:|---|
@@ -1903,8 +1904,8 @@ significant digits.
 
 **The collapse shape is implementation-specific.** In the local arm all three builds collapse at `c32` and
 `c80` (1.90%–2.57% and 0.51%–0.72%), the modal answer becoming the constant 30 and then the constant 0.
-Four of the six hosted implementations do **not** do that: at `c80` their modal answer is still the **true
-value 80** (gpt-6.1-sol 53.1%, qwen3.8-max 41.7%, qwen3.8-flash 26.6%, gemini-3.8-flash 21.8%), so their failure is a loss of accuracy rather than a
+Four of the six hosted implementations do **not** do that: at `c80` their modal answer is still **80**, the
+band's nominal count level (gpt-6.1-sol 53.1%, qwen3.8-max 41.7%, qwen3.8-flash 26.6%, gemini-3.8-flash 21.8%), so their failure is a loss of accuracy rather than a
 collapse onto a constant. Only two put their modal `c80` answer away from the true value — grok-4.7, whose modal
 answer is **0** (11.5% of its served cells), and glm-4.6v, which overshoots to the constant **100** (23.3%) — and
 in both cases that modal share is a minority of the served cells, so "compressed onto a constant" describes their
@@ -3337,9 +3338,12 @@ value $y \in \{0\} \cup \mathbb{Z}_{>0} \cup \{\bot\}$. Two distinct latent even
 and the model *estimates zero* — both produce $y = 0$. The output therefore does **not** identify
 abstention, and identification requires an **auxiliary channel** that reacts differently to the two
 events. We use $\kappa = \#\{y = 0\} / \#\{\text{textual refusals}\}$; the identifying condition is
-the lineage under study has a **large** $\kappa$ (we treat the criterion as operational rather than asymptotic: a lineage is usable when almost every abstention is expressed as an answered zero, and we report the measured $\kappa$ rather than asserting identification in the limit). **Corollary:** the paper's abstention headlines are
-identified for the Qwen family ($\kappa = 550.6$, 0.18% missed-refusal share) and **not** for InternVL2.5-8B
-($\kappa = 2.3$, 30.31%), which is why §3.6 reports the two separately rather than pooled.
+the lineage under study has a **large** $\kappa$ (we treat the criterion as operational rather than asymptotic: a lineage is usable when almost every abstention is expressed as an answered zero, and we report the measured $\kappa$ rather than asserting identification in the limit). **Corollary (observational, not identificational):** what is
+measured is the **observed** answered-zero share, whose complement is a missed-refusal share of 0.18% for the
+Qwen family ($\kappa = 550.6$) and 30.31% for InternVL2.5-8B ($\kappa = 2.3$) **under the two-channel
+assumption**; whether those answered zeros are latent abstentions is **not** identified by this comparison, so
+the headline names an answered-zero contribution rather than an abstention count. That is why §3.6 reports the
+two separately rather than pooled.
 
 **Proposition 2 (the two conventions diverge exactly when the per-image ratio correlates with ground
 truth).** With $r_i = (p_i - g_i)/g_i$, the pooled convention is the $g$-weighted mean of $r$ and the
@@ -3398,8 +3402,8 @@ answered-zero count then estimates the true abstention count with **relative err
 same assumption** (a third channel would make it a lower bound), and since
 $\kappa = (1-f)/f$ by definition, $f = 1/(\kappa+1)$.
 
-**A usability threshold.** We treat $\kappa \ge 50$ as *complete*, since the identification error is then
-$1/(\kappa+1) \le 2\%$; below that the error bar is quoted alongside every rate.
+**A usability threshold.** We treat $\kappa \ge 50$ as *observationally complete*, since the missed-refusal share is
+then $1/(\kappa+1) \le 2\%$ **under the two-channel assumption**; below that the error bar is quoted alongside every rate.
 
 **The three quantities, and the denominator.** (i) The **observed channel fraction** is the share of
 answered zeros among all outputs the system emitted, $G_N/G$ — what a report prints. (ii) The **latent
@@ -3436,7 +3440,7 @@ items the census had answered zero it returns `no_people` on **0.0–1.7%** and 
 this section defines, $P(\text{genuine zero}\mid\text{answered zero})$ for the **`base`** contract, is a
 third thing again: it additionally requires the **base rate of genuinely empty items in the mixed corpus**,
 which we do not have. That is why those two conditional rates are quoted as a **bounded, pool-stated
-substitute** and never as the precision itself, and why neither of them is recoverable from $\kappa$ (Appendix Z). The bound is one-sided, and it is worth stating positively: because this precision **rises** with the base rate of genuinely empty items in the pool — writing it as $p\,\pi/q$ with $p$ the answered-zero rate on truly empty items and $q$ the corpus answered-zero rate, both measured, the right-hand side increases in $\pi$ — and our pools bound that rate only from **below**, **the measurements here give the answered-zero channel's precision a lower bound on a mixed corpus, not an upper one**; the trivial upper bound is 1, and nothing informative is available above it.
+substitute** and never as the precision itself, and why neither of them is recoverable from $\kappa$ (Appendix Z). The bound is one-sided, and it is worth stating positively: because this precision **rises** with the base rate of genuinely empty items in the pool — writing it as $p\,\pi/q$ with $p$ the answered-zero rate on truly empty items and $q$ the corpus answered-zero rate, both measured, the right-hand side increases in $\pi$ — and our pools bound that rate only from **below**. Two further conditions are needed before any bound on the mixed corpus follows — that the measured $p$ be **transportable** to the target pool ($p \ge p_L$) and that the target pool's true-zero base rate be bounded below ($\pi \ge \pi_L$) — and **only then** does precision $\ge p_L\pi_L/q$. Without them **no non-trivial bound follows at all**: a target with $\pi = 0$ and $q > 0$ has precision $0$ and is fully compatible with a measured $p = 1$. The sentence this replaces — which gave the precision an unconditional lower bound on a mixed corpus — is therefore withdrawn.
 
 **Every rate in this appendix, with its contract, conditioning event, pool and denominator.** The four
 quantities above are easy to conflate in prose, so they are written out once:
@@ -3596,11 +3600,12 @@ Neither assumption is relied on in §5.12, which compares configurations only wi
 a fixed denominator.
 
 Two consequences. **(i)** The error is a *known
-function of a measured quantity* — it needs no assumption about which images are abstained on, only that
-the two channels are exhaustive. **(ii)** It makes the cross-lineage comparison quantitative rather than
-qualitative: the abstention rate of a lineage with $\kappa$ is identified to within $1/(\kappa+1)$, so the
-paper's headline rate is identified to **0.18%** for Qwen3-VL-32B ($\kappa = 550.6$) and to **30.31%** for
-InternVL2.5-8B ($\kappa = 2.3$) — which is precisely why §3.6 reports the two lineages separately instead of
+function of measured quantities* **conditional** on the two channels being exhaustive and pure — it needs no
+assumption about which images are abstained on, but it does need that condition, which nothing here measures.
+**(ii)** Under that condition it makes the cross-lineage comparison quantitative rather than
+qualitative: the missed-refusal share $f=1/(\kappa+1)$ is **0.18%** for Qwen3-VL-32B ($\kappa = 550.6$) and
+**30.31%** for InternVL2.5-8B ($\kappa = 2.3$) — properties of the **observed** channels, not of an unobserved
+latent state, which is precisely why §3.6 reports the two lineages separately instead of
 pooling them, and why the scope note of §8.2 is a consequence of the arithmetic rather than a hedge.
 **Scope:** the proposition is conditional on the two-channel exhaustiveness; a third channel (e.g. a
 non-numeric answer counted as a refusal) would change $f$, which is why Appendix B.3 states the unified
@@ -3701,7 +3706,7 @@ sits beside is the abstention channel's coverage, which under the exhaustive two
 
 With `δ* = (q_C − θ)/(α − θ)`, **gemma-3-12b returns δ\* = 1.0125 > 1**, i.e. even at the largest α the construction permits, the corpus's own answered-zero rate cannot be produced — the joint transfer is **not reproducible** on that build — a **plug-in incompatibility on these pools, without a sampling-based transfer guarantee**. For reference, the frozen construction's own (designed, not measured) parameters return **δ\* = 0.5697 / 0.5756 / 0.5703**; the last of these **is** the construction's nominal base rate, which is the arithmetic reason the identity of §M.21.10(a) is a gate that cannot fail.
 
-The reverse direction is equally tight: at the construction's π the pool surface reproduces the corpus rate to **∓0.10–0.16 pp**. **The coverage of the abstention channel is mis-stated if its lower endpoint is written as $1/(\kappa+1)$.** $\kappa$ is the ratio of answered zeros to textual refusals, so the missed-refusal share is $f=1/(\kappa+1)$ and the answered-zero channel therefore captures **at least** $\kappa/(\kappa+1)$ of the abstentions; $1/(\kappa+1)$ bounds $f$, not the coverage, and differs from the correct floor by a factor of $\kappa$ — on a corpus with **200 items, 100 answered zeros, 1 textual refusal and 99 ordinary answers** ($\kappa=100$) the true coverage is $100/101=\mathbf{99.01\%}$, and the printed "interval" $[1/101,0.5]=[0.99\%,50\%]$ **does not contain the truth**. Under the exhaustive two-channel assumption that coverage is exactly $\kappa/(\kappa+1)$ (Proposition 7); the item-denominated answered-zero rate $q_C$ has a different denominator — all items, not abstentions — and does not bound that conditional coverage without additional prevalence information, so no interval is claimed for it here. What does follow is that this quantity bounds the abstention channel's **coverage**, not its **precision**: $\kappa$ gives the precision **no lower bound at all** (§M.21), and the abstention-only arm (`â = b̂ = 0`) leaves the precision at the trivial $[0,1]$. The identification argument itself is not new as a **method**: Manski, C. F. (2021), *Epidemiology* 32(2), DOI `10.1097/EDE.0000000000001309`, already shows that a positive or negative predictive value is bounded only under a bound on prevalence, the parallel quantification literature supplies estimators for exactly this unidentified prevalence —
+The reverse direction is equally tight: at the construction's π the pool surface reproduces the corpus rate to **∓0.10–0.16 pp**. **The coverage of the abstention channel is mis-stated if its lower endpoint is written as $1/(\kappa+1)$.** $\kappa$ is the ratio of answered zeros to textual refusals, so the missed-refusal share is $f=1/(\kappa+1)$ and the answered-zero channel therefore captures **at most** $\kappa/(\kappa+1)$ of the abstentions — **with equality only if the two channels are exhaustive and pure**, since any third, non-verbalised zero channel can only lower it; $1/(\kappa+1)$ bounds $f$, not the coverage, and differs from the correct floor by a factor of $\kappa$ — on a corpus with **200 items, 100 answered zeros, 1 textual refusal and 99 ordinary answers** ($\kappa=100$) the true coverage is $100/101=\mathbf{99.01\%}$, and the printed "interval" $[1/101,0.5]=[0.99\%,50\%]$ **does not contain the truth**. Under the exhaustive two-channel assumption that coverage is exactly $\kappa/(\kappa+1)$ (Proposition 7); the item-denominated answered-zero rate $q_C$ has a different denominator — all items, not abstentions — and does not bound that conditional coverage without additional prevalence information, so no interval is claimed for it here. What does follow is that this quantity bounds the abstention channel's **coverage**, not its **precision**: $\kappa$ gives the precision **no lower bound at all** (§M.21), and the abstention-only arm (`â = b̂ = 0`) leaves the precision at the trivial $[0,1]$. The identification argument itself is not new as a **method**: Manski, C. F. (2021), *Epidemiology* 32(2), DOI `10.1097/EDE.0000000000001309`, already shows that a positive or negative predictive value is bounded only under a bound on prevalence, the parallel quantification literature supplies estimators for exactly this unidentified prevalence —
 Gonzalez, Castano, Chawla and del Coz (2017), *A Review on Quantification Learning*, ACM Computing
 Surveys 50:5 — and the partial-identification framing that fixes what stays unidentified without a bound
 on it is the one the evaluation literature has since adopted; so what is added here is the **application** to this construction — the coverage identification just given, and the trivialisation of the precision to $[0,1]$ by the abstention-only arm — and not the identifiability result, which we cite rather than claim.
@@ -3772,8 +3777,11 @@ abstention (`abstain` / `cannot_judge` / `no_people`) is the contract working as
 are listed separately, they stay in the denominator, and they make the residual a **lower bound** whose
 conservative upper bound is printed beside it; with no decidable record at all the report prints
 *undecidable* rather than an interval of zero width, and a missing arm record is listed rather than silently
-dropped. `adopt_report.py --selftest` is the standing negative control: it injects a timeout and requires
-the report to say *undecidable*.
+dropped. The denominator is the **base arm's full zero set**: a wholly missing permit row is reported as an
+*undecidable partial* rather than dropped from the denominator, and the `channel` arm's missing rows are listed
+rather than treated as already removed. `adopt_report.py --selftest` is the standing negative control: it injects
+a timeout, a wholly missing row, an entirely missing arm and an empty base set, and requires each to read
+*undecidable* / *undecidable partial* rather than *contract-decided*.
 
 **Worked example, one of the seven families end to end.** LLaVA-OneVision-7B, four domains, both pools,
 $n = 150$ per domain, one serving session on the stack of §M.19.1: **235** base zeros, of which `permit`
@@ -3857,6 +3865,13 @@ sample of 300 test images** (step-sampled over the GT-sorted test split, so the 
 objects), the corpus contracts reused verbatim, one image per prompt, `temperature 0`, `max_tokens 128`, up
 to 4 096 context. The probe **imports the census probe** and reuses its prompt dictionary, parser and
 transport rather than re-implementing them, so the instrument is the same one used on the nine corpora.
+
+**Scope of this panel.** Because the prompt asks a fixed people-counting question on FSC-147 images whose
+annotated category need not be `people`, the readings below are an `instrument-as-is` measurement of
+**observable response channels**. They do **not** estimate standard FSC-147 counting accuracy and do **not**
+identify implicit abstention on this benchmark; the error ordering obtained under a mismatched ground truth is
+not a benchmark-ability ranking. A target-matched panel on the same images would be required before any ability
+claim is made here, and none is made.
 
 **The image count, stated once and with both calibers.** The release as distributed links to, and mirrors
 redistribute, the pre-processed package `images_384_VarV2`, which holds **6,146** files — that is the object we
@@ -4279,7 +4294,7 @@ abstention from outputs alone, and Proposition 7 quantifies the residual error *
 abstentions are expressed only as answered zeros or as textual refusals**. That assumption is testable: on
 the items the corpus answered 0, offering an explicit abstention option produced **1591/1591** explicit
 abstentions and no zeros, and forbidding it produced best estimates at a median of **2.463–9.452×** the true
-count — so on that subset the third channel is excluded. The census (14 configurations, 5 usable domains,
+count — so on that subset the census's own third channel is not exercised. That is a **necessary** condition for the two-channel reading, not a proof of it, and it does not identify a latent abstention state. The census (14 configurations, 5 usable domains,
 item-level pairing) adds a fourth limit below and sharpens the first. Three limits remain. First, the
 re-query varies weight precision **and** serving engine together in E1, so it shows the channel is
 configuration-dependent without isolating which of the two causes it; the census holds the serving stack
@@ -4366,7 +4381,7 @@ abstention propensity can differ by tens of counts while failing equally where t
 identity needs no re-running, the abstention mass is recoverable from any stored output and is the quantity a
 reader should ask for.
 
-*Reproduction: the nine configurations' per-item records are in the released package at `data/derived/fsc_res/frozen384/` (nine `fsc_*_base.csv`); recomputing the identity and the table from them reproduces every cell printed here. The generator used for the table is `_retro_rank_and_m35.py`, **released in the package** at `code/analysis/`; its inputs are the nine released `fsc_*_base.csv` above. The abstained-item ground-truth means are 72.90 / 77.03 / 72.04 / 73.48 / 72.13 / 72.58 / 71.77 / 75.14 / 72.14 over the nine configurations, against the panel's corpus-wide mean of **70.13**. Each is computed on the **same item set as the table above** — all items of the stratified sample, with an item whose `pred` field is empty (an explicit textual refusal) counted as an abstention, which is what the table's $w$ counts. Two configurations, Qwen3-VL-30B-A3B and LLaVA-OneVision-7B, have unparsed items and are the only two for which the two item sets differ; reading their means on the parsed subset instead would move them to 72.08 and 77.07 and break the identity above on exactly those two rows, so we state the set here.*
+*Reproduction: the nine configurations' per-item records are in the released package at `data/derived/fsc_res/frozen384/` (nine `fsc_*_base.csv`); recomputing the identity and the table from them reproduces every cell printed here. The generator used for the table is `_retro_rank_and_m35.py`, **released in the package** at `code/analysis/`; its inputs are the nine released `fsc_*_base.csv` above. The abstained-item ground-truth means are 72.90 / 77.03 / 72.04 / 73.48 / 72.13 / 72.58 / 71.77 / 75.14 / 72.14 over the nine configurations, against the panel's corpus-wide mean of **70.13**. Each is computed on the **same item set as the table above** — all items of the stratified sample, with an item whose `pred` field is empty (an explicit textual refusal) counted as an abstention, which is what the table's $w$ counts. Two configurations, Qwen3-VL-30B-A3B and LLaVA-OneVision-7B, have unparsed items. The generator now uses **one** item set for the whole row — an unparsed reply is counted as an abstention in $w$, in the published-convention MAE **and** in the abstained-item ground-truth mean — so the identity above holds row by row with no residual; a version that omitted those items from the mean only would read 72.08 and 77.07 on exactly those two rows and break the identity there. The row-wise residual is asserted at run time, so the identity can no longer fail silently on a subset of rows.*
 
 ---
 
@@ -4624,7 +4639,8 @@ reproduction gates passing at Δ = 0.0000 against `a39_unit_calib_heldout_result
 `7d1f4667efb44a8d5831b16e2bf0429d`). **A protocol trap worth recording for anyone extending this ladder:**
 the calibration fold is drawn from a single `random.Random(SEED)` stream consumed in unit order, so any extra
 draw taken from that stream de-synchronises every later unit's fold — it first showed up as a large
-discrepancy on exactly the per-(unit, level) arms. The sampling here uses a second, separate stream.*
+discrepancy on exactly the per-(unit, level) arms. The sampling here uses a second, separate stream.
+In the **released** tree the script now constructs the full unit set — `--diag-units` compares unit ids and `span_full` against the frozen 36 and reports **36 of 36** (it previously reported 15, and 9 before the released-tree paths were repaired) — and the two gates are **fail-stop**: if either misses, the script exits non-zero **before** writing any result file, so "the gates passed" and "the results were written" can no longer disagree. The released inputs the unit set needs are emitted by the sync step rather than copied by hand, so a fresh tree rebuild reproduces 36/36.*
 
 **Reproduction.** the three scripts named above; frozen results alongside them.
 

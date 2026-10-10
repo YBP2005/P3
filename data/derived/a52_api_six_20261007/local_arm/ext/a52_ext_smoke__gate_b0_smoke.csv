@@ -1,0 +1,3 @@
+phase,item,latency_s,http_s,enc_s,prompt_tokens,completion_tokens,total_tokens,err,raw
+warmup,c08_s3_b0_o0_L00,0.7041611671447754,0.677905797958374,0.02586197853088379,1070,7,1077,,"{""count"": 8}"
+seq,c08_s3_b0_o0_L01,0.5904433727264404,0.5674929618835449,0.02273726463317871,1070,7,1077,,"{""count"": 8}"

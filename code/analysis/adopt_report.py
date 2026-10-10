@@ -91,11 +91,12 @@ def _fmt_ci(k, n):
 
 def diagnose(base, permit, channel=None, p1_pass=0.05, p1_counter=0.30):
     """通道诊断（纯函数，便于自测）。返回 (行列表, verdict 键)。"""
-    keys = sorted(set(base) & set(permit))
+    keys = sorted(set(base))
+    miss = [k for k in keys if k not in permit]
     z = [k for k in keys if base[k][0] == 0]
     base_fail = [k for k in keys if base[k][2] == FAIL]
-    still = sum(1 for k in z if permit[k][0] == 0)
-    undec = sum(1 for k in z if permit[k][2] == FAIL)          # ★ 失败/缺失：单列，且**留在分母里**
+    still = sum(1 for k in z if k in permit and permit[k][0] == 0)
+    undec = sum(1 for k in z if k not in permit or permit[k][2] == FAIL)
     n = len(z)
     rate, ci = _fmt_ci(still, n)
     ub = 100.0 * (still + undec) / n if n else None
@@ -105,6 +106,11 @@ def diagnose(base, permit, channel=None, p1_pass=0.05, p1_counter=0.30):
     if base_fail:
         lines.append('     · base 侧**不可判定**（超时/空串/未解析）%d 个 —— 单列，**不计入**上面的分母'
                      '（它们没有产生可判定的"零"）' % len(base_fail))
+    if miss:
+        _mz = [k for k in z if k in miss]
+        lines.append('     · ★ permit 侧**整行缺失** %d/%d 个（其中 base 答零项 %d 个）—— '
+                     '它们**不被从分母里删除**，而是归入下面的不可判定部分。'
+                     % (len(miss), len(keys), len(_mz)))
     if n and undec:
         lines.append('     · ★ permit 侧**不可判定** %d/%d 个 —— 已**计入分母**并单列；'
                      '它们**不得当作"零已被移除"**。故残留率 **%.1f%%** 是**下界**，'
@@ -182,7 +188,7 @@ def main():
         c = load(files['channel']) if 'channel' in files else None
         for line in diagnose(b, p, c, p1_pass, p1_counter)[0]:
             print(line)
-        keys = sorted(set(b) & set(p))
+        keys = sorted(set(b))
         ans = [k for k in keys if b[k][2] == NUM and b[k][0] != 0]
         w = len(ans) / float(len(keys)) if keys else None
         has_gt = all(b[k][1] is not None for k in keys) and bool(keys)
@@ -251,6 +257,25 @@ def selftest():
     l3, v3 = diagnose({'x': (5, 5, NUM, '')}, {'x': (5, 5, NUM, '')}, None)
     ctl.append(('空分母 ⇒ 判定"不可判定"、不印 [0.0%, 0.0%]',
                 v3 == 'undecidable' and not any('[0.0%, 0.0%]' in l for l in l3)))
+    # ★ 2026-10-10（v0666 A8-6）：三类**整行缺失 / 空基集**负例。旧版在这三类上都静默把分母缩到交集。
+    d2 = tempfile.mkdtemp(prefix='adopt_selftest_rowmiss_')
+    io.open(os.path.join(d2, 'adopt_m_base.csv'), 'w', encoding='utf-8', newline='\n').write(
+        hdr + 'a,5,0,1,{"count": 0},1.0\n'
+              'b,7,0,1,{"count": 0},1.0\n'
+              'c,9,0,1,{"count": 0},1.0\n')
+    io.open(os.path.join(d2, 'adopt_m_permit.csv'), 'w', encoding='utf-8', newline='\n').write(
+        hdr + 'a,5,,1,{"count": "abstain"},1.0\n')
+    b2 = load(os.path.join(d2, 'adopt_m_base.csv'))
+    p2 = load(os.path.join(d2, 'adopt_m_permit.csv'))
+    l4, v4 = diagnose(b2, p2, None)
+    ctl.append(('permit 整行缺失 2/3 ⇒ 分母不缩（3）且判 undecidable_partial',
+                v4 == 'undecidable_partial' and any('整行缺失' in l for l in l4)))
+    l5, v5 = diagnose(b2, {}, None)
+    ctl.append(('permit 全缺 ⇒ 分母仍为 base 零集（3）且判 undecidable',
+                v5 == 'undecidable' and any('整行缺失' in l for l in l5)))
+    l6, v6 = diagnose({'x': (5, 5, NUM, '')}, {}, None)
+    ctl.append(('空基集（base 无零）⇒ 判 undecidable、不印 CI [0.0%, 0.0%]',
+                v6 == 'undecidable' and not any('[0.0%, 0.0%]' in l for l in l6)))
     ok = True
     for name, passed in ctl:
         print('  [%s] %s' % ('PASS' if passed else 'FAIL', name))

@@ -88,6 +88,11 @@ _ALIAS = (
     ('analysis/data/pod_mirror/abstain_results', 'data/derived/abstain_results'),
     ('analysis/data/pod_mirror/aerial_results', 'data/derived/aerial_results'),
     ('analysis/data/pod_mirror/aerial_tile_results', 'data/derived/aerial_tile_results'),
+    # ★ 2026-10-10（v0666 A8-5）：`b2__out_ivl` / `b2__out_q32` 此前**漏在本表之外**，落到兜底别名
+    #   `data/derived/pA/b2__out_ivl/...`（不存在）。代价实测：`n3_deployable_calibration.py` 的
+    #   'VLM·output contract / ivl' 与 '/ q32' 两个单元**构造不出来**（36 → 34）。
+    ('analysis/data/pod_mirror/b2__out_ivl', 'data/derived/b2__out_ivl'),
+    ('analysis/data/pod_mirror/b2__out_q32', 'data/derived/b2__out_q32'),
     ('analysis/data/pod_mirror/b2__out_32b_ctile', 'data/derived/b2__out_32b_ctile'),
     ('analysis/data/pod_mirror/b2__out_8b_ctile', 'data/derived/b2__out_8b_ctile'),
     ('analysis/data/pod_mirror/decouple_results', 'data/derived/decouple_results'),

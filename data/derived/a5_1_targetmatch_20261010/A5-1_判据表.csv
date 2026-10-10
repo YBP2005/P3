@@ -1,0 +1,7 @@
+cond,arm,cells,numeric,zero,zero_rate_num,mae_median,mae_mean,imgs,imgs_with_zero,img_zero_rate,img_boot_ub95,wilson_ub95_cell
+people,base,3600,3010,2570,0.8538,34.0,67.32,300,288,0.96,0.9767,0.8641
+people,permit,3600,315,165,0.5238,34,49.95,300,66,0.22,0.26,0.5697
+people,channel,3600,135,0,0.0,27,40.33,300,0,0.0,0.0,0.0197
+class,base,3600,3511,45,0.0128,5,10262.97,300,14,0.0467,0.0667,0.0163
+class,permit,3600,2293,8,0.0035,3,156666.39,300,4,0.0133,0.0233,0.0062
+class,channel,3600,2114,2,0.0009,3.0,10.43,300,1,0.0033,0.01,0.0029

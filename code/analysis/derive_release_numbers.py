@@ -328,7 +328,7 @@ not shipped-file digests: %s.'''
      % n_shared),
     ('   *Write-back policy*), which took the package **at that revision** from **3,659** to **3,651** manifested\n'
      '   files and left both the rewritten set and the substitution count untouched. **At this revision\n'
-     '   `MANIFEST.csv` registers 4845 files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **3916**\n'
+     '   `MANIFEST.csv` registers 4846 files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **3917**\n'
      '   of them — both are re-derived by `code/analysis/derive_release_numbers.py`.',
      '   *Write-back policy*), which took the package **at that revision** from **3,659** to **3,651** manifested\n'
      '   files and left both the rewritten set and the substitution count untouched. **At this revision\n'
@@ -346,14 +346,14 @@ not shipped-file digests: %s.'''
     #   换成一个**可复核**的陈述：改了几件、其余逐字节相同、manifest 只在被改写的行上变化。
     # ★ v0656：老串同步到 README **现印**的那一份（3829/4/3825）；被换下的"假全称句"那条
     #   （`**Nothing under data/ was altered.** Every one of the **3787** …`）已进 ⑥ 的持久注册表。
-    ('**Almost nothing under `data/` was altered.** Of the **3916** files under `data/`, **6** are text files\n'
-     'the sanitiser rewrote (they are the `data/` rows of the table above); every one of the remaining **3910** is\n'
+    ('**Almost nothing under `data/` was altered.** Of the **3917** files under `data/`, **6** are text files\n'
+     'the sanitiser rewrote (they are the `data/` rows of the table above); every one of the remaining **3911** is\n'
      'byte-identical to the corresponding source file.',
      '**Almost nothing under `data/` was altered.** Of the **%d** files under `data/`, **%d** are text files\n'
      'the sanitiser rewrote (they are the `data/` rows of the table above); every one of the remaining **%d** is\n'
      'byte-identical to the corresponding source file.' % (N_DATA, N_DATA_SAN, N_DATA - N_DATA_SAN)),
     # ★ v0656：老串同步到 README **现印**的那一份（3829 / **3**）；被换下的"finds **zero**"那条已进 ⑥。
-    ('of the six placeholder patterns above in the file, and a scan of all 3916 released data files finds **3**\n'
+    ('of the six placeholder patterns above in the file, and a scan of all 3917 released data files finds **3**\n'
      'carrying one of them — the remaining rewritten data file carries a neutral internal-name placeholder\n'
      'instead of a host/path placeholder; (ii)',
      'of the six placeholder patterns above in the file, and a scan of all %d released data files finds **%d**\n'

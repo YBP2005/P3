@@ -311,7 +311,7 @@ package root). The first two are about *paths*, the last two about the *sanitise
    passwords. **v0610 changed none of these numbers**: it removed eight residue files instead (see
    *Write-back policy*), which took the package **at that revision** from **3,659** to **3,651** manifested
    files and left both the rewritten set and the substitution count untouched. **At this revision
-   `MANIFEST.csv` registers 4846 files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **3917**
+   `MANIFEST.csv` registers 4876 files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **3947**
    of them — both are re-derived by `code/analysis/derive_release_numbers.py`.
 4. **39** files merely *contain* one of the placeholder strings: `grep -rlE '<REDACTED-|<WORKDIR>|<SHARED-DIR>' . | wc -l`
    → **39** (the sanitiser's own rewritten set is count 3 above; the remainder only quote a placeholder
@@ -364,10 +364,10 @@ sanitiser and the path refactor.
 
 ### What the sanitiser did **not** touch
 
-**Almost nothing under `data/` was altered.** Of the **3917** files under `data/`, **6** are text files
-the sanitiser rewrote (they are the `data/` rows of the table above); every one of the remaining **3911** is
+**Almost nothing under `data/` was altered.** Of the **3947** files under `data/`, **6** are text files
+the sanitiser rewrote (they are the `data/` rows of the table above); every one of the remaining **3941** is
 byte-identical to the corresponding source file. Two independent checks say so: (i) a sanitiser substitution always leaves one
-of the six placeholder patterns above in the file, and a scan of all 3917 released data files finds **3**
+of the six placeholder patterns above in the file, and a scan of all 3947 released data files finds **3**
 carrying one of them — the remaining rewritten data file carries a neutral internal-name placeholder
 instead of a host/path placeholder; (ii) a per-file `path / bytes / md5`
 manifest of `data/` taken before and after the release script ran differs **only in the rows the sanitiser

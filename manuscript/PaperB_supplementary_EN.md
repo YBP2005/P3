@@ -64,20 +64,20 @@ not reported at all. The noise floor is the **across-repeat standard deviation o
 endpoint — computed from the repeated runs of `ds_repeat.py`, whose item-level agreement is the ≈**15%**
 above — and is **2.15–6.46 pp** across cells; §7.3 uses it as such.
 
-**Can the band be re-measured on the local stack the main tables use?** We re-ran the **same instrument**
-(`ds_repeat.py`, unchanged) with its endpoint pointed at the locally served AWQ-4-bit build, on **seven**
+**A local-stack counterpart to that band.** The **same instrument** (`ds_repeat.py`, unchanged), with its
+endpoint pointed at the locally served AWQ-4-bit build, applied to **seven**
 120-item cells drawn from the corpora already in the released package (VisDrone, AI-TOD, ShanghaiTech-A,
-UCF-QNRF, MTDC), **five independent repeats** each. The counts are complete (5 repeats \times 120 items per
-cell) and the per-cell standard deviations are small: **0.00–0.63 pp** on the pooled relative deviation (up to
-**1.32 pp** on the answered-only variant). **We do not adopt that as the noise floor — the conservative
-choice.** On these cells the model **saturates**: the pooled deviation averages **−57% to −100%** because it
+UCF-QNRF, MTDC), **five independent repeats** each, gives complete counts (5 repeats \times 120 items per
+cell) and small per-cell standard deviations: **0.00–0.63 pp** on the pooled relative deviation (up to
+**1.32 pp** on the answered-only variant). That quantity is **not adopted as the noise floor — the
+conservative choice.** On these cells the model **saturates**: the pooled deviation averages **−57% to −100%** because it
 answers zero for essentially every item (on MTDC the answered-only deviation is undefined in **all five**
 repeats), so a small standard deviation is partly a statement about **how little the answer changes**; the
 quantity is better read as a **lower bound** than as a floor. The informative comparison is a cell that is
-**not** saturated: in the synthetic-grid cell of Appendix J.8, re-running with the render seed held **fixed**
-moved the largest single-cell under-count by **2.47 pp** — **inside** the 2.15–6.46 pp band above. We
-therefore keep the hosted-endpoint band, which is the **wider (hence more conservative)** of the two, and
-record the local attempt here so that the borrowing is **disclosed rather than implicit**.
+**not** saturated: in the synthetic-grid cell of Appendix J.8, a re-run with the render seed held **fixed**
+moved the largest single-cell under-count by **2.47 pp** — **inside** the 2.15–6.46 pp band above. The
+hosted-endpoint band is therefore kept, being the **wider (hence more conservative)** of the two, and the
+local quantity is **recorded explicitly rather than borrowed implicitly**.
 
 ---
 
@@ -165,6 +165,26 @@ rate is markedly higher, and a global ratio computed without parsing the multi-t
 experiments is biased low. **The two lineage-stratified conclusions of §3.6(c) are unaffected**,
 because they are the product of the per-lineage re-computation rather than of any global ratio.
 The superseded global figures are listed in Appendix Z.
+
+### B.6 What each observable licenses, in one table
+
+The four record types a counting probe can return are not four readings of one quantity. The table below
+is the compact form of what §3.6 states in prose: for each observable, its definition, the denominator it
+enters, the quantity that is computable from it, and the quantity it does **not** identify.
+
+| Observable | Definition | Denominator it enters | What is computable | What is **not** identified |
+|---|---|---|---|---|
+| **numeric zero** (`answer_zero`) | `parse_ok = 1` and `pred = 0` | every rate whose denominator is *items*, and (as the numerator) the answered-zero share | the **answered-zero rate**; its **arithmetic contribution** to the net under-count (Proposition 4) | whether the item is empty, mis-counted, or abstained — a zero output is produced by all three |
+| **textual refusal** (`refuse`) | declared `refuse = 1`, or `parse_ok = 0` with a natural-language refusal in `raw` | the `κ` ratio, and the answered-only caliber when refusals are dropped | the **observed channel ratio** $\kappa$ between zero outputs and verbalised refusals | any **latent** abstention that was not verbalised: $\kappa$ assumes the two channels are exhaustive |
+| **unparsable** (`format_drift`) | neither a number nor a refusal | every denominator, when the frozen criterion counts it as incorrect | the **format-failure rate**, separately from the abstention rate | whether the underlying state was abstention or a counting failure — the two are conflated by this class |
+| **service error** (`api_error`) | HTTP 4xx/5xx, timeout, or insufficient balance | **no** denominator: excluded everywhere, never counted as incorrect | the **served/designed** shortfall itself | nothing about the model; the exclusion is a data-hygiene rule, not a measurement |
+
+Two consequences the table is meant to keep visible. First, **the priced quantity differs by row**: three
+of the four rows bear on the answered-zero rate and only one (`format_drift`) is a failure of the response
+format, which is why §M.18.4 separates them. Second, **no row identifies a latent state**: the last column
+is empty of latent quantities on purpose, since the identification of `answer_zero` as abstention is exactly
+the assumption Proposition 1 states rather than a measurement. Where a latency is nevertheless reported, it
+is reported **conditionally** on channel purity and exhaustiveness (§3.8, §M.21.9).
 
 ---
 
@@ -1054,6 +1074,16 @@ $\rho$, Appendix J.4):
 | Qwen3-VL-32B / AI-TOD | 83.8% | 83.8% | 68.1% |
 | Qwen3-VL-32B / VisDrone | 82.1% | 82.1% | 68.2% |
 
+**Reproduction scope of this table, stated because the entry point does not cover it whole.** The released
+recomputation entry (`code/analysis/recompute_S.py`) reads the dense-corpus records: run against the released
+package it prints the `base`, `over` and `under` cells of **ShanghaiTech-A**, **ShanghaiTech-B** and
+**UCF-QNRF**, reproducing the `94.2%` and `93.7%` base rows, the `99.4%` / `42.5%` / `98.4%` under rows and
+the `0.0%` over rows of the tables above. It does **not** read the aerial records, so the **AI-TOD** and
+**VisDrone** cells of the four-domain table (`83.8%`, `82.1%`) are **not** reproduced by that entry, and the
+four-domain headline is stated as a reading of the frozen records rather than as an end-to-end reproduction
+by one script. Closing that gap means extending the entry to the aerial corpus directories, not re-running
+inference.
+
 **Scope of the 82–94% headline.** Those four cells are the **base contract arm**, and they are what the main
 text's 82–94% refers to. Across the contract arms and domains other than the `over` arm — where there are no abstentions at all, below — the same quantity ranges from **42.5%**
 (ShanghaiTech-B, `under` arm — a cell whose abstention rate is itself only 13.6%) to **99.4%**
@@ -1589,7 +1619,7 @@ and **none** of the three arms moves the direction positive — the opposite of 
 
 ### M.11.1 New synthetic-dot experiment: count visible under a legibility control
 
-**Status: a separate experiment, reported in this appendix.** It is **not** the corpus grid of
+**A separate experiment, reported in this appendix.** It is **not** the corpus grid of
 §C.2 and it is **not** the source of any other number printed in this paper.
 
 **Reading guide — the five parts of this section.** This section carries:
@@ -1635,9 +1665,9 @@ remain valid for that batch.
 **The third build: measured run facts.** **9 of 9** cells complete, **5,832** calls, `parse_ok`
 **5,832/5,832 = 100.0%**, **0** HTTP errors, **0** missing or short cells, **1,011** explicit abstentions
 (all of them under `permit`) and **0** refusals. Single-request latency at workers = 4 over all 5,832
-records: mean **2.11 s**, **P50 2.12 s**, **P90 2.18 s**. The run took **three** service starts, and the
-accelerator was released after each of the three. Every value in
-this paragraph is re-derived from the released per-item records and the orchestration log by the released
+records: mean **2.11 s**, **P50 2.12 s**, **P90 2.18 s**. **Three** independent service starts were used, the
+accelerator being released after each. Every value in
+this paragraph is re-derived from the released per-item records and the orchestration record by the released
 generator script (`code/analysis/`, named in *MANIFEST.csv*), which also writes the machine-readable run
 record released beside them. The pre-run model estimate for this build proved low.
 
@@ -1682,12 +1712,12 @@ build) the single-request P50 is **2.03 s** for the FP8 build against **1.82 s**
 against **1.83 s** (AWQ 4-bit) and **1.71 s** (BF16) — the same ordering. What is compared here is
 **numerical-format robustness**, not speed, and no build is claimed to be faster than another.
 
-**The second 4-bit implementation could not be produced in this environment.** The pre-registered fourth
-cell was a second 4-bit build of the same family. Three routes were attempted and none produced a servable
-artifact, while **changing the shared library versions is a hard constraint**: a bitsandbytes NF4 route, the official
-one-shot compressor route, and an in-house round-to-nearest INT4 build whose packing round-trip was wrong
-(independent dequantisation relative error ≈ **1.07**) and whose smoke run degenerated (all 39 calls hit
-the token cap with repeated output), which trips the pre-registered *degenerate ⇒ stop* rule. The experiment is therefore reported as
+**The second 4-bit implementation is not available.** The pre-registered fourth
+cell was a second 4-bit build of the same family; **none** of the three construction routes yields a servable
+artifact, and **shared library versions are a hard constraint**: a bitsandbytes NF4 route, the official
+one-shot compressor route, and an in-house round-to-nearest INT4 build whose packing round-trip is wrong
+(independent dequantisation relative error ≈ **1.07**) and whose output degenerates (all 39 calls at
+the token cap with repeated output), which is the pre-registered *degenerate ⇒ stop* condition. The experiment is therefore reported as
 **three implementations**, the fourth cell is **empty and disclosed**, and no substitute implementation is
 described as if it had run. The three probes and their checks are released under `code/analysis/` (see
 *MANIFEST.csv*).
@@ -1701,7 +1731,7 @@ correct as declared).
 regressions are reported with the **same** legibility covariates (size, blur, overlap, in the ordinal
 `*_level` coding registered in the frozen criteria file) and the same contract/build terms; they differ
 **only in the record set** — **primary = whole-cell exclusion of the three pre-registered unrealizable
-cells (n = 11,232)**; **contrast = including them (n = 11,664, the caliber printed in the previous release)**.
+cells (n = 11,232)**; **contrast = including them (n = 11,664, the contrast caliber)**.
 
 **Primary caliber (main batch, whole-cell exclusion, n = 11,232):**
 
@@ -1712,7 +1742,7 @@ cells (n = 11,232)**; **contrast = including them (n = 11,664, the caliber print
 | `count_std × permit` | **−3.4937** | 0.5504 | −6.35 | 2.2e−10 | [−4.5725, −2.4149] |
 | `count_std × b2` | −0.2083 | 0.2519 | −0.83 | 0.408 | [−0.7019, 0.2854] |
 
-**Contrast caliber (including the three excluded cells, n = 11,664)** — the readings printed in the previous release. They are **not superseded or withdrawn**: they are the correct readings of the same records under that caliber, retained here for comparability, and **both calibers FAIL C4**.
+**Contrast caliber (including the three excluded cells, n = 11,664)**. These readings are **not superseded or withdrawn**: they are the correct readings of the same records under that caliber, retained here for comparability, and **both calibers FAIL C4**.
 
 | term | β | SE | z | p | Wald 95% CI |
 |---|---:|---:|---:|---:|---|
@@ -1732,7 +1762,7 @@ The pre-registered practical-null band was **±0.2** (`ci_lo > −0.2 AND ci_hi 
 | 32 | 80 / 3888 | **2.1%** |
 | 80 | 17 / 3600 | **0.5%** |
 
-**Pooled by count level — contrast caliber (including the excluded cells, n = 11,664; the values printed in the previous release).**
+**Pooled by count level — contrast caliber (including the excluded cells, n = 11,664; contrast caliber).**
 
 | count level | correct | rate |
 |---|---:|---:|
@@ -1751,7 +1781,7 @@ The pre-registered practical-null band was **±0.2** (`ci_lo > −0.2 AND ci_hi 
 | b2 (BF16) | strict | 1872 | 336 | **17.95%** | 0 | 657 |
 | b2 (BF16) | permit | 1872 | 328 | **17.52%** | **962** | 0 |
 
-**Per build × contract — contrast caliber (n = 1944 per cell; the values printed in the previous release).**
+**Per build × contract — contrast caliber (n = 1944 per cell; contrast caliber).**
 
 | build | contract | n | correct | rate | abstain | pred = 0 |
 |---|---|---:|---:|---:|---:|---:|
@@ -1802,7 +1832,7 @@ Released under three `data/derived/` subdirectories, each listed in `MANIFEST.cs
 
 ### M.11.2 The API control arm: the same frozen stimulus on six hosted implementations
 
-**Status: a separate experiment, reported in this appendix.** It shares the **same 648 frozen stimuli**, the
+**A separate experiment, reported in this appendix.** It shares the **same 648 frozen stimuli**, the
 **same three output contracts** (`base` / `strict` / `permit`), the **same three repeats**, the **same frozen
 `is_correct` definition** and the **same frozen criteria** as §M.11.1 (criteria md5
 `758962a2643e1035698682abefec5748`), analysed by the **same frozen analyzer shipped with this
@@ -1822,8 +1852,18 @@ an `api_error` at run time are **removed from every denominator and are not coun
 the per-band cells, the per-implementation n and the pooled n — is a **served-cell** count, and the two are not interchangeable: the modal-share column below is a share **among integer replies**, so where a cell's replies include abstentions or unparsable output the two denominators differ. Of the 42,
 **27** fall in one hosted implementation and **15** in a second, the remaining four contributing **0**
 (27/15/0/0/0/0); the per-implementation mapping is the served/`ERR` row of `analysis_manifest.md` §2, printed
-with the tables above. The shortfall is **0.12%** of the designed grid, far inside the **0.25** margin by which the
-least-negative C4 interval misses ±0.2. Of the two record sets the frozen analyzer can return, this subsection
+with the tables above. **Two denominators are therefore reported side by side throughout this subsection** —
+the **design** denominator (34,992 cells) and the **served** denominator (34,950) — and the shortfall between
+them (**42** cells, **0.12%**) is a share of *cells* that is **not on the same scale** as the **±0.2** C4 band
+or the **0.25** by which the least-negative interval misses it: those are β units, and the two quantities
+cannot be compared. The non-served cells are concentrated rather than spread — the two named implementations
+carry 27 and 15, and within them the bulk falls in the highest count band and in the `strict` contract — so the
+affected bands' direction is not reversed by their absence. Redoing the band accuracies with the absent cells
+filled **all-wrong** and **all-correct** in turn brackets the printed values (grok-4.7 at `c80`
+**6.379–7.150%** around 6.43%; gemini-3.8-flash at `c32` **36.060–36.163%** around 36.10% and at `c80`
+**22.479–23.765%** around 22.77% — arithmetic on the served counts of the table above and its band
+denominators). Those brackets bound the band-level effect of the missing cells; they do not replace the
+logistic and cluster refits, which is why the served-cell caliber above remains the reported one. Of the two record sets the frozen analyzer can return, this subsection
 reads the **contrast** set — every attained record — rather than the whole-cell-excluded **primary** set,
 because the contrast set is the one whose cell counts reproduce the served-cell denominators printed here;
 the primary caliber is the one §M.11.1 reports for the local builds. The endpoints' own per-implementation records are the
@@ -1871,20 +1911,23 @@ intervals — the definition of §M.11.1, unchanged.
 **C4 reads FAIL for 6 of 6 implementations and for the pooled fit.** The criterion is that the interval lie
 **entirely inside** ±0.2 before "no material effect" may be stated; no interval comes near it — the least
 negative point estimate is −0.5680 (gemini-3.8-flash) and the highest interval bound is −0.4493.
-**How much of that margin survives a coarser clustering.** The intervals above are Wald intervals on the
-individual record. The design's genuinely repeated unit is the **cell** — the **81** combinations of
-3 counts × 3 radii × 3 blurs × 3 overlaps, of which the 648 stimuli are variants — so a cell-clustered
-sandwich (CR1, 81 clusters) is a stricter caliber than the layout-level check C5 reports. Under it the
-point estimates are unchanged and C4 still fails for 6 of 6 and for the pooled fit, but the intervals
-widen: the least-negative upper endpoint moves from −0.399 to **−0.119** for gpt-6.1-sol, so that
-fitting's margin above the −0.2 line falls from **0.25 to 0.081**, and the pooled fit that carries a
-`model` dummy for each implementation reaches **+0.042** at its reference level, i.e. its interval is no
-longer disjoint from the band. This does not flip the disposition — the band is entered by an interval
-**bound**, not by a point estimate, and the withdrawal §M.11.1 records rests on the point estimates and on
-the fact that no implementation's estimate sits inside the band — but it does mean that the strength of
-the statement "every interval is clear of the band" is caliber-dependent, and it is reported here rather
-than left to the Wald column. The disposition is
-therefore the one §M.11.1 already records: **the claim that count has no material effect is withdrawn**. Here
+**Three estimators, reported separately, and how much of the margin survives each.** The table above is a
+per-record Wald caliber. The design's genuinely repeated unit is the **cell** — the **81** combinations of
+3 counts × 3 radii × 3 blurs × 3 overlaps, of which the 648 stimuli are variants — and the layout is a
+coarser grouping still. Three further calibers are therefore reported as **separate estimands**, not as one
+"robust" column: (i) the **layout-level bootstrap**, whose least-negative upper endpoint for gpt-6.1-sol is
+−0.399 (this is not the largest upper endpoint of the Wald table above, which is −0.4493); (ii) the
+**cell-clustered sandwich** (CR1, 81 clusters), under which the point estimates are unchanged and C4 still
+fails for 6 of 6 and for the pooled common slope, but the intervals widen and the same fitting's CR1 upper
+bound is **−0.119** — inside the ±0.2 band, **0.081** being the distance from −0.2 into the band rather than
+a margin outside it; and (iii) a **pooled fit carrying a count × model interaction**, whose reference-level
+slope is **+0.042**; that number is the interaction model's reference reading, **not** the interval of the
+−0.6841 common slope, and the two are not comparable. **What these three establish is that equivalence is
+not established** — not that every implementation's true effect has been shown to lie outside the band. The
+disposition is unchanged, because the band is entered by an interval **bound** rather than by a point
+estimate, because no implementation's point estimate sits inside the band, and because the withdrawal
+§M.11.1 records rests on those point estimates: **the claim that count has no material effect is
+withdrawn**. Here
 as there the design is C3-evaluable (rank-ok, no separation; outcome rate 0.152–0.508), the negative controls
 pass (NC1, within-stratum permutation, 20 draws: β median **0.0019**, union of intervals [−0.068, 0.073]
 inside ±0.2; NC3: **0** disagreements over **34,950** rows re-parsed independently from `raw`), C5 passes
@@ -1897,10 +1940,17 @@ frozen quantities passes **20 of 20**.
 **magnitude** does not transfer. The design cannot separate numerical-format damage from task difficulty
 relative to implementation strength, because the local arm is one 32B open-weight model in three storage
 formats while this arm is six different hosted endpoints; we therefore read this as an **independent
-repetition of the direction**, not as a calibrated comparison of magnitudes. Within this arm the estimator is
-the same one: the same driver run over the local FP8 records reproduces the printed β = −4.209594349791142 as
+repetition of the direction**, not as a calibrated comparison of magnitudes. What the two arms share is a
+**driver**, and that is what the reproduction below shows: the same driver run over the local FP8 records
+reproduces the printed β = −4.209594349791142 as
 **−4.209594349795038** and the printed SE = 0.25205848247725443 as **0.252058482477508**, i.e. to twelve
-significant digits.
+significant digits. **Twelve-digit agreement of a printed value identifies the design matrix that produced
+it; it does not establish that every column of the two arms' matrices is encoded identically.** The two
+calibers differ in their contract coding (`base`/`strict`/`permit` here against the local arm's arms, and the
+local table's `primary` against this subsection's `contrast` set, stated above), and the radius axis is
+carried in the local table's own level encoding; the encodings are therefore labelled per table rather than
+assumed common, and the local and hosted β values are compared **in direction only**, never in magnitude. A
+single common design matrix across the two arms is **not** claimed.
 
 **The collapse shape is implementation-specific.** In the local arm all three builds collapse at `c32` and
 `c80` (1.90%–2.57% and 0.51%–0.72%), the modal answer becoming the constant 30 and then the constant 0.
@@ -2318,7 +2368,7 @@ scaling (1.56 → 2.73 → 6.68 s).
 
 #### M.18.7 Cost, and reproduction entry points
 
-Same work load (six arms × 150 items on the dense-vs-aerial contrast), wall-clock:
+Same work load (six arms × 150 items on the dense-vs-aerial contrast); measured serving time:
 Qwen2.5-VL-72B-AWQ **1451 s** on VisDrone and 583 s on AI-TOD; Qwen3-VL-32B-FP8 146 / 116 s;
 Qwen3-VL-32B-GPTQ-W4 188 / 148 s; Qwen3-VL-8B-AWQ 84 / 62 s; InternVL2.5-8B-AWQ 117 / 72 s. The 72B
 aerial cell alone is **17×** the 8B cell, which is the practical reason the census is limited to 14
@@ -2327,7 +2377,7 @@ configurations.
 Entry points (all under the project's analysis tree): `e2_v7c_analysis.py` (arm tables and item-level
 pairing), `e2_v7c_subset.py` (common-150 comparison), `e2_all_models.py` (cross-configuration summary),
 `verify_s11.py` (asserts every number quoted in this appendix against the raw CSVs), plus the archived
-serving and probe logs. Raw results: **558 result CSVs** (414 from the zero pools, 144 from the
+serving and probe records. Raw results: **558 result CSVs** (414 from the zero pools, 144 from the
 non-zero pools), one per (configuration × domain × contract × pool).
 
 #### M.18.8 Build versus domain: a two-way variance decomposition
@@ -3533,7 +3583,10 @@ $\pm$5 pp choice as well as ours — but **no build** under $[20,80]$, $[15,85]$
 the other three builds are licensed only under the degenerate full range $[0,100]$, exactly as the
 saturation argument predicts. The conclusion is therefore **insensitive to the lower bound** (it
 does not depend on our having picked 10%) but **sensitive to the window width**, and it must be
-read that way rather than as a robust partition. (d) A repeat test on the anchor build, run at the **same four-worker concurrency as the table** over the
+read that way rather than as a robust partition. **The window family is an exploratory sensitivity, not a
+confirmatory test**: the window was chosen after the pools were read, so no claim of the form "transport
+holds inside this window" is made here, and any such claim would require the window to be frozen on a new
+sample before it could be read as confirmation. (d) A repeat test on the anchor build, run at the **same four-worker concurrency as the table** over the
 **full 300-item pool** and **three** independent passes, gave **900/900 pairwise itemwise agreement** in
 both the parsed value and the raw string (150/150 in each pool). Because a zero count cannot bound its own
 error, we report one-sided Clopper–Pearson bounds rather than the point estimate: **3.92 pp** treating each
@@ -3694,7 +3747,21 @@ side, the protocol gives
 | Phi-3.5-Vision-4.2B | 99.54% | 53.68% | 69.98% | **0.3555** |
 | gemma-3-12b | 35.32% | 1.77% | 35.74% | **1.0125** |
 
-A value below $1$ is a usable base rate; **a value above $1$ means the two are not jointly transferable on that build**: on gemma-3-12b no
+**Provenance of this table, and what it may be used for.** The two pool columns ($\alpha$, $\theta$) are
+recomputed from the **150**-item frozen true-zero pool of §M.21.10(a)–(b), `base` arm, over **three fresh
+service starts per build**, pooled $n = 2{,}653$–$2{,}688$; the per-start denominators are that pool's own item
+counts and the per-item records are the twelve released `E3_<build>_start{1,2,3}.csv` files named at the end of
+this subsection. The $q_C$ column does **not** have a single closed source. §M.19.16 reports a Chinese-`base`
+answered-zero rate for the **anchor** build only, so it can supply at most one row; the values printed here for
+the other builds coincide numerically with those builds' measured answered-zero rates on the **constructed
+526-item mixture** of (e) — a construction quantity, not an independently recomputed corpus rate — and the two
+are not interchangeable. **Because that column mixes two source types, this table is not used to support the
+transport conclusion**, and no row's $\delta^\star$ is read as a base-rate estimate for its corpus. The reading
+the subsection does carry is the **internal arithmetic of the definition** on the row whose measured $\alpha$
+falls below the $q_C$ entered (gemma-3-12b, below), which is a property of the entered numbers on that pool and
+mixture rather than a transport finding.
+
+A value below $1$ is a usable base rate for the numbers entered; **a value above $1$ means the two are not jointly transferable on that build**: on gemma-3-12b no
 $\pi_C \in [0,1]$ reconciles the corpus with the pool, because $\alpha = 35.32\% < q_C = 35.74\%$, so on that
 build the two are not jointly transferable however well the identity holds within each. The quantity is exact
 in $\alpha$ and must be reported **with $\alpha$'s caliber attached**: substituting the $p$ printed in
@@ -3945,6 +4012,51 @@ fix: **offer the three options, not a permission**, which is what §M.22 step 2 
 base/permit, plus four mechanism arms) and `code/analysis/permit_vs_channel.py` over the E2/E3 census
 (43 cells); probe `code/experiments/19g_probe_fsc.py`, which imports the census probe so prompts and parser
 are byte-identical; images, annotations and splits from the public `isentropic/FSC147` repository.*
+
+#### M.24.4 Target-word matching controls the zero-answer regime
+
+The panel above asks a fixed *people* question while the ground truth counts each image's own target
+class, so its "zero" answers cannot be read as counting failures. The design that separates the two is a
+target-word pairing on the **same 300 images, the same four builds and the same frozen protocol**, with
+**two target-word conditions side by side**: the original *people* wording, and the **per-image target
+class** taken from the dataset's own class list (e.g. "sea shells", "hot air balloons"). Each condition is
+evaluated under the three response contracts (`base`, `permit`, `channel`), and server-start variability is
+controlled by **three independent starts per cell**, giving 300 × 4 builds × 2 conditions × 3 arms × 3
+starts = **21,600 cells**, all served with **HTTP 200**. One cell's item is a degenerate repeat
+(`finish = length`) and is retained as missing rather than imputed.
+
+| target word | arm | answers with a number | zero among those | median MAE |
+|---|---|---:|---:|---:|
+| *people* (original) | base | 0.836 | **0.854** | 34.0 |
+| *people* (original) | permit | 0.088 | 0.524 | 34 |
+| *people* (original) | channel | 0.038 | 0.000 | 27 |
+| **per-image class** | base | 0.975 | **0.013** | **5** |
+| **per-image class** | permit | 0.637 | 0.004 | 3 |
+| **per-image class** | channel | 0.587 | 0.001 | 3.0 |
+
+Because the two conditions share images, builds and contracts, the comparison is available image by
+image. On the `base` arm the per-image difference is close to degenerate: of the 300 images, **279**
+answer zero under the mismatched wording and a non-zero count under the matched wording, **7** answer zero
+under both, and **2** answer zero only under the matched wording. The zero-answer behaviour of the panel
+above is therefore **predominantly a property of the target word rather than of counting ability**: on the
+matched wording the base-arm zero rate is **0.0128** against **0.8538**, and the median MAE **5** against
+**34.0**. The abstention-channel effect reported above survives on a much smaller base: under the matched
+wording the `permit` and `channel` arms abstain in **36–41%** of cells, and among the cells that do answer
+the zero rate is **0.1–0.4%**.
+
+**What we do not claim.** Under this experiment's pre-registered rule — a one-sided 95% upper bound on the
+residual zero rate, requiring at least **60** distinct images with a zero answer in the load-bearing cell —
+the matched condition is **indeterminate**: only **14** distinct images answer zero under the matched
+wording, below the 60-image requirement, and the image-level bootstrap one-sided 95% upper bound is
+**0.067**, above the 0.05 threshold. The observed collapse (**0.854 → 0.013**) is therefore reported as a
+**descriptive** result, and a residual below **5%** is **not** claimed.
+
+**Relation to the scope statement above.** The target-word mismatch named in *Scope of this panel* is thus
+not merely a reason to withhold that panel's ability reading: the paired panel **shows the mismatch to be
+what those zeros were mostly made of**, so the earlier reading is withdrawn as **not supported by the
+instrument** rather than merely unverified. The converse does not follow — this design does not restore a
+public-target counting-ability claim, which would require a different design.
+
 
 
 ---
@@ -4464,7 +4576,10 @@ and we state that here rather than leaving the omission unexplained.
 **Why the shared case is exact.** When the fitted coefficients do not vary with the level,
 `rho'(l) = a·rho(l) + c_u` with `c_u` independent of the level, so `span' = |a|·span` holds exactly (asserted
 to 1e-13). A shared calibrator therefore multiplies every span by one number, leaving the ordering invariant;
-this is Proposition 5's `span -> s·span`.
+this is Proposition 5's `span -> s·span`, and it is an **algebraic implication of a shared map rather than an
+independent robustness result**: it cannot fail, so it carries no empirical content. The evidence this section
+supplies is the **heterogeneity of the fitted factor across units** and the behaviour of the non-linear
+calibrators on the held-out folds, both of which are measured quantities.
 
 **The scale factor.** The measured per-unit `s = |a|` spans **0.027–2.352** (median 0.863 over the 8 units,
 0.488 over the 36), the shared fit gives `s` = 0.789 and 0.162. **What breaks the ordering is therefore not
@@ -4523,8 +4638,8 @@ count with it.
 *Reproduction: `analysis/work/a39_perknob_rung.py` and `perknob_rung_8unit.py`; frozen results
 `a39_perknob_rung_result.json` (md5 `643b71fcbdd2bdb38282e46b7ae72b68`) and `perknob_rung_8unit_result.json`
 (md5 `63ceb33804756655956d873c13a8d62e`). Per-item records are those `a39_unit_calib_heldout.py` loads. The
-5–95% figures are **200-split empirical quantiles, not bootstrap intervals**. A robustness pass dropping the
-two retired reproductions is available and not run — **and carrying it out leaves the conclusion
+5–95% figures are **200-split empirical quantiles, not bootstrap intervals**. A robustness pass that drops the
+two retired reproductions **was run on that 34-unit application set, and it leaves the conclusion
 unchanged and sharper**: on the 34-unit set the single global map still holds the ordering at **0.994**
 (200 of 200 splits at or above 0.9) while the per-knob map falls to **0.722–0.724** (**0** of 200), so the
 gap widens from **0.205** to **0.271–0.273** and the between-knob collapse deepens from **0.486** to

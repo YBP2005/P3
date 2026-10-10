@@ -265,18 +265,17 @@ trained on SFCHD [18], with public in-domain weights for the dense end.
 
 ### 3.6 Abstention: operationalisation and lineage stratification
 
-Abstention is our leading indicator, so its operationalisation is stated item by item, not left as
-"the predicted total is zero". Three points matter here.
+Abstention is our leading indicator, so its operationalisation is stated item by item, stated item by item. Three points matter here.
 
 **(a) Five mutually exclusive classes** — `normal`, `answer_zero`, `refuse`, `format_drift`, `api_error` —
 with `api_error` excluded from the denominator. **(b) De-duplication** at file level (MD5) and at row level
 by **identity of the experimental condition**, **not** by item. The class criteria, the de-duplication
-protocol and the per-tile parsing of concatenated `raw` fields are given in Appendix B.1–B.2.
+protocol and the per-tile parsing of concatenated `raw` fields are given in Appendix B.1–B.2, with a
+compact table of what each observable licenses.
 
-**(c) Is `pred = 0` a sufficient operationalisation? A two-lineage answer (the two lineages for which the ratio is measured).** We give an empirical
-criterion, not a stipulation: a lineage that abstained mainly in natural language would show a low
+**(c) Is `pred = 0` a sufficient operationalisation? A two-lineage answer (the two lineages for which the ratio is measured).** The criterion is empirical: a lineage that abstained mainly in natural language would show a low
 ratio of answered-zero to textual refusal, approaching 0, and **the lower that ratio, the larger the
-identification error $1/(\kappa+1)$ of Proposition 7** — the two statements point the same way. Over the
+identification error $1/(\kappa+1)$ of Proposition 7**. Over the
 whole corpus (892 result files, ~620k records):
 
 **Table 2.** Lineage-stratified abstention channel (the table behind §3.6(c) and Proposition 1).
@@ -289,9 +288,9 @@ whole corpus (892 result files, ~620k records):
 | **InternVL2.5-8B** | 14,015 | **6,096** | **2.3 : 1** | **69.69%** |
 
 **For the Qwen family — the source of all our abstention headlines — `pred = 0` covers **99.82%** of them**
-(the three configurations: 0.18%, 0% and 0%). **For InternVL2.5-8B it covers only about seven
-tenths**, the rest arriving as textual refusals. **Cross-lineage comparisons of abstention rate must
-therefore define the channel per lineage.** The incompleteness is **lower-bounded, not
+(three configurations: 0.18%, 0% and 0%). **For InternVL2.5-8B it covers only about seven
+tenths**, the rest arriving as textual refusals. **Cross-lineage comparisons must define
+the channel per lineage.** The incompleteness is **lower-bounded, not
 disclosed**: by Proposition 7, write $f=R/A$ and $R/N$ for relative missed detection and absolute omission; a lineage with ratio $\kappa$ identifies its **answered-zero rate** only conditionally, the equality
 failing under an unverbalised true zero, within **at least** the missed-refusal share $1/(\kappa+1)$ — **0.18%** for Qwen3-VL-32B and
 **30.31%** for InternVL2.5-8B — so any **answered-zero rate** quoted for a partially covered lineage carries that error bar, and the two lineages are never pooled
@@ -300,13 +299,12 @@ failing under an unverbalised true zero, within **at least** the missed-refusal 
 **(d) A consequence that corrects the mechanism.** What decides whether a refusal is expressed is the
 **output contract**, and specifically whether it offers an **abstention token** — not how much
 per-instance work the prompt demands. Prompts that *require* per-instance enumeration or localisation but expose only a numeric field produced
-**zero explicit refusals** and went on answering **0** (Qwen3-VL-32B-AWQ on VisDrone: **258/273** under
+**zero explicit refusals** and answered **0** (Qwen3-VL-32B-AWQ on VisDrone: **258/273** under
 `enum`, **263/273** under `locate`; both builds of that checkpoint reproduce it, Appendix M.18). Adding a
 single abstention token to **the same** enumeration prompt converted **268/273** of those items into
 explicit abstention, whereas relaxing the demand while still exposing only a number left the answered-zero count unchanged (**121 → 121**) or
-slightly higher (**232 → 235**). **The operative gate is
-therefore the availability of an abstention token, not the enumeration demand**. The legibility attribution consequently rests on the direct manipulations of
-§5.6–5.7, with one boundary the same census imposes: under an abstention contract the **dense**
+slightly higher (**232 → 235**). **The gate is therefore the availability of an
+abstention token, not the enumeration demand**. The legibility attribution rests on §5.6–5.7, with one boundary the census imposes: under an abstention contract the **dense**
 domains **saturate** (89–100% of items the corpus had answered with a number, 100% of those it had
 answered 0), so the outlet carries no selectivity there and legibility-gating is demonstrable only in the
 **aerial** domains, on **36–93%** of such items (Appendix M.18).
@@ -320,7 +318,7 @@ scan behind them are in **Appendix I**.
 ### 3.8 Formal framework: what is identifiable from outputs
 
 Eight statements are used later. All are **either identities of the reporting convention or decidability
-statements** — not empirical findings — so they are stated compactly here; full derivations and scope
+statements** — not empirical findings — so they are stated compactly here; derivations and scope
 notes are in **Appendix M.21**.
 
 **Proposition 1 (abstention is not identified by outputs alone).** `y = 0` is produced both by abstaining and
@@ -328,30 +326,33 @@ by estimating zero, so identification needs an auxiliary channel. **This holds o
 channels are exhaustive; a genuine zero that is also not verbalised would be a third, and our data do
 not exclude one.** We use
 $\kappa=\#\{y=0\}/\#\{\text{textual refusals}\}$ and report the measured value — the
-missed-refusal share **0.18%** for Qwen3-VL-32B ($\kappa = 550.6$) and **30.31%** for InternVL2.5-8B ($\kappa = 2.3$) — the arithmetic reason §3.6 reports the two lineages separately, not pooled.
+missed-refusal share **0.18%** for Qwen3-VL-32B ($\kappa = 550.6$) and **30.31%** for InternVL2.5-8B ($\kappa = 2.3$) — the arithmetic reason §3.6 reports the two lineages separately.
 
 **Proposition 2 (the two conventions diverge exactly when the per-image ratio correlates with
 ground truth).** $\rho_{\text{pooled}}-\bar\rho=\operatorname{Cov}_g(g,r)/\bar g$; abstention is itself
-GT-dependent, but that alone does not fix the covariance's sign or size: it is **measured per domain, not assumed**. §5.12 reports those values. Both conventions are therefore reported side by side, their divergence fixed by that covariance.
+GT-dependent, but that alone fixes neither its sign nor its size: it is **measured per domain, not assumed**. §5.12 reports those values. Both conventions are therefore reported side by side.
 
 **Proposition 3 (span is a functional of the admitted level set).** Any candidate predictor built from its
-extremes is a **component of the definition** (partial correlation exactly $\pm 1$). That is why we withdraw
-our own candidate and claim **availability** — decidable from the same quantities, since it holds iff
-$\max_\ell q_\ell \ge 1$ at the loosest admitted level — but **not magnitude**: magnitude is not predicted by
-any quantity we have been able to construct.
+extremes is a **component of the definition** (partial correlation exactly $\pm 1$). We therefore withdraw our own
+candidate and claim **availability** — decidable from the same quantities, since it holds iff
+$\max_\ell q_\ell \ge 1$ at the loosest admitted level — but **not magnitude**: magnitude is not predicted by any
+quantity constructible here.
 
 **Proposition 4 (the aggregate bias decomposes exactly).**
 $\rho_{\text{total}}=-(1-w)+w\,\rho_{\text{answered}}$ with $w=G_N/G$, and the abstention share of the
-under-count has the closed form $S=(1-w)/[1-w(1+\rho_{\text{answered}})]$, which is a share inside $[0,1]$ only when the net deviation is an under-count; where it is not, the two pp terms of Table 3 are the reported quantities (§8.2). This is a reporting identity of the same form as the answer-propensity / conditional-composition
-decomposition we use elsewhere [46]; what is in question is where the movement goes on this corpus.
+under-count has the closed form $S=(1-w)/[1-w(1+\rho_{\text{answered}})]$, a share inside $[0,1]$ only under a net under-count; otherwise Table 3's two pp terms are reported (§8.2). This is a reporting identity of the same form as the answer-propensity / conditional-composition
+decomposition we use elsewhere [46]. Conditioning precision on prevalence is not a new identification
+result: it is the partial-identification problem of Manski (2021) and the quantification literature's
+unidentified-prevalence target (Gonzalez et al., 2017), both cited in full in **Appendix M.21**, so what
+is added here is the application to counted outputs; what is in question is where the movement goes on
+this corpus.
 
 **Proposition 5 (span is equivariant, not invariant, under shared affine calibration).**
 $\text{span}\mapsto s\cdot\text{span}$, so the objection that a large span is a calibration artefact
 requires exhibiting $s\ll1$.
 
 **Proposition 6 (targets-per-image is not a legibility-consistent stratifier).** VisDrone and AI-TOD have the
-fewest targets (17–22) yet abstain as often as ShanghaiTech-A (433), which licenses stratifying by
-legibility, not by density.
+fewest targets (17–22) yet abstain as often as ShanghaiTech-A (433), licensing stratification by legibility, not density.
 
 **Proposition 7 (under the two-channel assumption the identification error of the answered-zero channel is
 $1/(\kappa+1)$, a lower bound).** Conditional on it, that error is a known function of a measured
@@ -363,8 +364,7 @@ Third-channel sensitivity is in Appendix J.5.
 
 **Proposition 8 (the dual-convention gap is an identity, not a bound).** From Proposition 4 the gap equals
 $-(1-w)(1+\rho_{\text{answered}})$, i.e. **zero iff $w = 1$ or $\rho_{\text{answered}}=-1$**, and it
-survives an unbiased answered subset — so a single-convention report is not merely incomplete but
-uninterpretable.
+survives an unbiased answered subset, so a single-convention report is uninterpretable.
 
 ### 3.9 Figures and tables
 
@@ -714,7 +714,7 @@ intervals are plotted in **Fig. F.17** (Appendix F.12). It also comes out **exac
 affine calibration (Proposition 5: `span ↦ s·span`) and under no calibration — the M.37 held-out third gives
 median **0.995**, interval **0.984–0.998**, above 0.9 in **200 of 200** splits — but not when each unit
 is re-fitted independently: **0.810 / 0.536** over 8 / 36 units, per-unit family medians **0.41–0.54**
-(isotonic **0.571 / 0.521**). Measured $s$ spans **0.027–2.352**, so a compressor must vary its factor **across units**; **no granularity validated here does so while preserving the ordering, so transfer is unverified rather than excluded** (per-domain
+(isotonic **0.571 / 0.521**). Measured $s$ spans **0.027–2.352**, so reducing the median span and equalising the factor **across units** are separate requirements, and only the second preserves the ordering; **no granularity validated here meets it, so transfer is unverified rather than excluded** (per-domain
 **0.732**; Appendix M.37). The claim is scoped to the first two calibers, and the VLM unit's build-sensitivity is bounded in **Appendix M.18.8**
 (its level moves 90.3 pp across five builds; its contract effect does not). The *magnitudes* are
 not caliber-portable: the in-domain detector ladders give **96–196 pp** person-matched and **353–508 pp**

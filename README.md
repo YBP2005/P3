@@ -41,7 +41,9 @@ weakened for release.
 
 | Claim in the paper | Reproduce with |
 |---|---|
-| Abstention share of the under-count (82–94%, base arm; **0–99.4%** over all arms) | `code/analysis/recompute_S.py` over `data/derived/corpus/` — prints `w`, `rho_answered`, `rho_total` and the closed form `S` per domain and arm. (The `42.5%` that appears beside these numbers in the paper is a **relative-deviation floor** of Mode A, *not* an abstention share; see §5.7's parenthetical.) |
+| Abstention share of the under-count (82–94%, base arm; **0–99.4%** over all arms) | `code/analysis/recompute_S.py` over `data/derived/corpus/` **and** `data/derived/aerial_results/` — **one call covers all four headline domains** (dense ground truth from the frozen archive counts tables, aerial ground truth from each record's own `gt` column), and prints `w`, `rho_answered`, `rho_total` and the closed form `S` per domain and arm; `--domain dense\|aerial\|all` selects the subset, and a missing corpus directory or required column fails with that path rather than printing an empty table. (The `42.5%` that appears beside these numbers in the paper is a **relative-deviation floor** of Mode A, *not* an abstention share; see §5.7's parenthetical.) |
+| **Sampling uncertainty on those four shares** (supplementary J.1) | `code/analysis/p3r4_zero_1_S_ci.py` — 2,000 case-resamples of the per-item records within each domain plus a four-cluster resample at the domain level, at the percentile convention and seed of §7.3 (`out[int(qN)]`, seed 20260924); it first re-derives the frozen supplementary M.37 intervals under that same convention and stops if they do not match. No model call, no GPU. |
+| **Which covariate coding each table is in** (supplementary M.11.2; the raw stimulus coding vs the ordinal levels the frozen criteria register) | `code/analysis/a52_encoding_check.py` — recomputes every printed beta under both codings from the released local-arm records and asserts each against its printed value, and asserts that the two codings are not interchangeable. The frozen analyzer it uses is shipped at `data/derived/a5_2_a800/env/a52_analyze.py`. No model call, no GPU. |
 | The identity behind Proposition 4 / the dual-convention gap (61.3 / 57.5 / 40.6 / 40.6 pp) | same script; the identity `(1-w)(1+rho_ans)` reproduces every printed gap to <= 0.04 pp. |
 | The abstention channel is set by the output contract (E1: 1591/1591 explicit abstentions, median 2.463-9.452x when abstention is forbidden) | `data/derived/e1/*.csv` (raw responses included); summarised by `code/analysis/e1_evidence.py`. |
 | **The gate is the abstention token, not the enumeration demand** (E2 census: `enum`/`locate` arms produce zero explicit refusals while the same prompt plus one abstention token converts 98-100% of the items) | `code/analysis/e2_v7c_analysis.py` over `data/derived/e2/` (its §M.18.2 table); the arm prompts are in `code/experiments/19e_probe_multi.py`. |
@@ -57,7 +59,7 @@ weakened for release.
 ## How to run: the package root
 
 **No script in this package hardcodes an author-machine path.** Every script under `code/` that resolves a
-data path at all — **157** of them — imports `code/analysis/_repro_root.py` and resolves its inputs through
+data path at all — **158** of them — imports `code/analysis/_repro_root.py` and resolves its inputs through
 it, so the package can be unpacked into any directory and run from there:
 
 ```bash
@@ -280,9 +282,9 @@ password, a host or a key.
 **Four counts that are easy to confuse**, each with the command that produces it (run from the
 package root). The first two are about *paths*, the last two about the *sanitiser*.
 
-1. **157** scripts resolve their inputs through the shared root: the **146** converted in v0608 plus the
+1. **158** scripts resolve their inputs through the shared root: the **146** converted in v0608 plus the
    scripts added to the released set since. Each imports `code/analysis/_repro_root.py`:
-   `grep -rl "from _repro_root import" code | wc -l` → **157**.
+   `grep -rl "from _repro_root import" code | wc -l` → **158**.
 2. **0** of those scripts carries an author-machine path, and no script's *data* path is absolute:
    `grep -rEl "(^|[^A-Za-z0-9])[A-Za-z]:[\\\\/]" code --include='*.py' --include='*.sh'` → **3** files, and
    neither is a data path: `_repro_root.py` itself (its single env-overridable `PAPERB_SHARED` default) and
@@ -311,7 +313,7 @@ package root). The first two are about *paths*, the last two about the *sanitise
    passwords. **v0610 changed none of these numbers**: it removed eight residue files instead (see
    *Write-back policy*), which took the package **at that revision** from **3,659** to **3,651** manifested
    files and left both the rewritten set and the substitution count untouched. **At this revision
-   `MANIFEST.csv` registers 4903 files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **3974**
+   `MANIFEST.csv` registers 4904 files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **3974**
    of them — both are re-derived by `code/analysis/derive_release_numbers.py`.
 4. **39** files merely *contain* one of the placeholder strings: `grep -rlE '<REDACTED-|<WORKDIR>|<SHARED-DIR>' . | wc -l`
    → **39** (the sanitiser's own rewritten set is count 3 above; the remainder only quote a placeholder

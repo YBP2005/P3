@@ -1074,25 +1074,19 @@ $\rho$, Appendix J.4):
 | Qwen3-VL-32B / AI-TOD | 83.8% | 83.8% | 68.1% |
 | Qwen3-VL-32B / VisDrone | 82.1% | 82.1% | 68.2% |
 
-**Reproduction scope of this table, stated because the entry point does not cover it whole.** The released
-recomputation entry (`code/analysis/recompute_S.py`) reads the dense-corpus records: run against the released
-package it prints the `base`, `over` and `under` cells of **ShanghaiTech-A**, **ShanghaiTech-B** and
-**UCF-QNRF**, reproducing the `94.2%` and `93.7%` base rows, the `99.4%` / `42.5%` / `98.4%` under rows and
-the `0.0%` over rows of the tables above. It does **not** read the aerial records, so the **AI-TOD** and
-**VisDrone** cells of the four-domain table (`83.8%`, `82.1%`) are **not** reproduced by that entry, and the
-four-domain headline is stated as a reading of the frozen records rather than as an end-to-end reproduction
-by one script. Closing that gap means extending the entry to the aerial corpus directories, not re-running
-inference.
+**Sampling uncertainty on those four shares.** The four point estimates above carry no interval of their own, and they are the numbers the main text's 82–94% range is drawn from. Bounding them needs no new inference — only a resampling of per-item records that are already released. Redrawing each domain's images with replacement (2,000 draws, seed 20260924, the percentile convention of §7.3, `out[int(qN)]`; the script re-derives the frozen §M.37 intervals under that same convention and **stops** if they do not match, so the caliber is checked rather than asserted) and recomputing $w$, $\rho_{\text{answered}}$ and the closed form $S$ on every draw puts $S$ at **90.75–97.03%** on ShanghaiTech-A, **91.16–95.99%** on UCF-QNRF, **70.47–91.72%** on AI-TOD and **75.35–87.78%** on VisDrone. The **clustering level that matches the headline** is the domain, because the 82–94% range is a statement about four domains taken as a set: resampling the four domains as four clusters leaves the observed range at 82.13–94.24% and moves its endpoints only to 82.13–93.69% (low) and 83.79–94.24% (high), so the range is stable as a range. What the intervals do and do not separate: VisDrone's interval is **disjoint** from both dense intervals, while AI-TOD's upper endpoint (91.72%) reaches just inside the dense lower bounds (90.75% and 91.16%), so the dense/aerial ordering the text relies on is carried by the point estimates and is **not** fully resolved by these intervals. Computed by the resampling script released under `code/analysis/` (named in *MANIFEST.csv*), which reads only the released per-item CSVs — no model call and no GPU.
+
+**Reproduction scope of this table.** The released recomputation entry (`code/analysis/recompute_S.py`) now covers the table **whole**: one call reads the dense records under `data/derived/corpus/` (ground truth from the frozen archive counts tables) **and** the aerial records under `data/derived/aerial_results/` (ground truth from each record's own `gt` column), and prints the `base`, `over` and `under` cells of **ShanghaiTech-A**, **ShanghaiTech-B**, **UCF-QNRF**, **AI-TOD** and **VisDrone** — reproducing all four base rows above (`94.2%`, `93.7%`, `83.8%`, `82.1%`), the `99.4%` / `42.5%` / `98.4%` dense `under` rows and the `0.0%` dense `over` rows. All four headline domains are therefore covered by the single entry, and the four-domain headline is a reading of the frozen records **reproduced** by that entry rather than only asserted of them. `--domain dense|aerial|all` selects the subset (default: all four headline domains). Closing the earlier gap required extending the entry to the aerial corpus directories, not re-running inference; the entry names the corpora it read and, if a corpus directory or a required column is absent, fails with that path instead of printing an empty table.
 
 **Scope of the 82–94% headline.** Those four cells are the **base contract arm**, and they are what the main
-text's 82–94% refers to. Across the contract arms and domains other than the `over` arm — where there are no abstentions at all, below — the same quantity ranges from **42.5%**
+text's 82–94% refers to. Across the contract arms and domains other than the `over` arm — where no item abstains, below — the same quantity ranges from **42.5%**
 (ShanghaiTech-B, `under` arm — a cell whose abstention rate is itself only 13.6%) to **99.4%**
 (ShanghaiTech-A, `under` arm). The `over` arm has **no abstentions at all** — its prompt requires every
-possible target to be counted — so its abstention share is **0%** in every domain, and the dense
+possible target to be counted — so **no item abstains** there and the dense `over` cells carry no answered zero either (`S` = `0.0%` on them). The **aerial** `over` cells are a different case, and the entry prints them: the contract forbids abstention but does not prevent an answered zero, so `S` reads **68.9%** (AI-TOD) and **73.7%** (VisDrone) on those cells, where it is an answered-zero share and carries **no** abstention reading (§3.8: which latent state a single zero reflects is not identified). The dense
 `base` cells sit at **93.7–94.2%** with their `under` counterparts at **98.4–99.4%**. The claim the paper makes — that answered-zero outputs account for the bulk of the aggregate under-count
 rather than estimation error — holds across most of these cells but **not all of them**: the counterexample
 is **42.5%** (ShanghaiTech-B, `under` arm), so "dominates" is a majority reading on these arms and not a
-universal one. It is not claimed for the `over` arm, where the abstention share is 0%, and **which latent
+universal one. It is not claimed for the `over` arm, where no item abstains, and **which latent
 state any single zero reflects is not identified** (§3.8, Proposition 1). The narrower 82–94% is the base-arm
 range and is not presented as a universal bound.
 
@@ -1955,10 +1949,25 @@ reproduces the printed β = −4.209594349791142 as
 significant digits. **Twelve-digit agreement of a printed value identifies the design matrix that produced
 it; it does not establish that every column of the two arms' matrices is encoded identically.** The two
 calibers differ in their contract coding (`base`/`strict`/`permit` here against the local arm's arms, and the
-local table's `primary` against this subsection's `contrast` set, stated above), and the radius axis is
-carried in the local table's own level encoding; the encodings are therefore labelled per table rather than
-assumed common, and the local and hosted β values are compared **in direction only**, never in magnitude. A
-single common design matrix across the two arms is **not** claimed.
+local table's `primary` against this subsection's `contrast` set, stated above). **Which covariate coding
+each table is in, stated per table rather than assumed common.** Every β in the table above — the six hosted
+rows and the three local rows alike — is in the **raw stimulus coding**: the legibility covariates enter as
+the physical values (radius 3/8/24, blur 0/4/8, overlap ratio 1.45/1.15/0.85), which is what the driver
+released with this package builds and what reproduces the numbers printed there. The covariates the frozen
+criteria register are instead the **ordinal levels** — `size_level` / `blur_level` / `overlap_level`, i.e.
+0/1/2 on each of the three axes — and the frozen analyzer shipped with this package implements that
+registered coding. Run over the same released local-arm records with the coding switched, the same per-build
+model form returns β = **−4.1891 / −4.1050 / −4.3473** for b0 / b1 / b2 against the **−4.3346 / −4.2096 /
+−4.4481** printed here, and the pooled 27-cell reading moves from **−4.5306** to **−4.4101** (contrast) /
+**−4.2356** (primary) — the two calibers §M.11.1's revision registration already prints side by side, and
+neither of which is a cross-coding comparison. **The two codings are therefore not interchangeable and are
+not mixed anywhere in this paper:** every β carries the coding of its own table as labelled here, a single
+common design matrix across the two arms is **not** claimed, and the local and hosted β values are compared
+**in direction only**, never in magnitude. Unifying the two arms on the registered ordinal coding is a refit
+that moves the values printed in this subsection, so it is not adopted here; the coding in use is stated per
+table instead. Both codings are printed side by side, with the assertion that fixes each of the numbers
+above, by the encoding check released under `code/analysis/` (named in *MANIFEST.csv*), which reads only
+released files.
 
 **The collapse shape is implementation-specific.** In the local arm all three builds collapse at `c32` and
 `c80` (1.90%–2.57% and 0.51%–0.72%), the modal answer becoming the constant 30 and then the constant 0.

@@ -66,20 +66,24 @@ import time
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
 W = os.path.dirname(os.path.abspath(__file__))
-PM = RP('analysis', 'data', 'pod_mirror')
-OUT = os.path.join(W, 'p3r4_zero_1_S_ci_result.json')
+OUTDIR = W                      # ★ v0669：`--out-dir` 可改（默认仍写脚本目录，行为不变）
+OUT = os.path.join(OUTDIR, 'p3r4_zero_1_S_ci_result.json')
 
 # ── 口径常量：全部**逐字**取自既有件，不新创 ──────────────────────────────────
 SEED = 20260924          # 与 m37_ci_power.py / p3r2_plan_m37_cluster.py 同
 N_BOOT = 2000            # 与 m37_ci_power.py::boot_ci 默认同
 ANOM = 1e5               # p4_decomp_verify.py：剔 pred >= 1e5
 
-# 四个 headline 域：(显示名, 单元 CSV 相对 pod_mirror 的路径, Table 3 印的 S, Table 3 末列印值)
+# 四个 headline 域：(显示名, **作者树相对路径各段**, Table 3 印的 S, Table 3 末列印值)
+# ★ 2026-10-11（v0669 A8-3/M-6）：原先写成 `PM = RP('analysis','data','pod_mirror')` 再
+#   `os.path.join(PM, rel)` —— 只解析**父目录**，放行树上落到兜底别名 `data/derived/pA`
+#   （不存在）⇒ 四处 `assert os.path.exists(p)` 直接失败。改为**子目录整段交给 RP()**
+#   （与 v0666 A8-5 对 `n3_deployable_calibration.py` 的修法同一风格）。
 DOMAINS = [
-    ('ShanghaiTech-A', r'dense_results\vlm_st_a_base_whole.csv', 94.2, 56.6),
-    ('UCF-QNRF',       r'dense_results\vlm_ucf_base_whole.csv',  93.7, 53.9),
-    ('AI-TOD',         r'aerial_results\aer_aitod_base.csv',     83.8, 68.1),
-    ('VisDrone',       r'aerial_results\aer_visdrone_base.csv',  82.1, 68.2),
+    ('ShanghaiTech-A', ('analysis', 'data', 'pod_mirror', 'dense_results', 'vlm_st_a_base_whole.csv'), 94.2, 56.6),
+    ('UCF-QNRF',       ('analysis', 'data', 'pod_mirror', 'dense_results', 'vlm_ucf_base_whole.csv'),  93.7, 53.9),
+    ('AI-TOD',         ('analysis', 'data', 'pod_mirror', 'aerial_results', 'aer_aitod_base.csv'),     83.8, 68.1),
+    ('VisDrone',       ('analysis', 'data', 'pod_mirror', 'aerial_results', 'aer_visdrone_base.csv'),  82.1, 68.2),
 ]
 
 NAME = re.compile(r'^(vlm|aer|ext)_(.+?)_(base|over|under)(?:_(whole|tile\d+))?\.csv$')
@@ -203,10 +207,17 @@ def boot_cluster(dom_recs, n_boot=N_BOOT, seed=SEED):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--selftest', action='store_true')
+    ap.add_argument('--out-dir', default=None,
+                    help='结果件输出目录（默认脚本所在目录；便于在放行树外复跑）')
     args = ap.parse_args()
 
     if args.selftest:
         return selftest()
+
+    global OUT
+    if args.out_dir:
+        os.makedirs(args.out_dir, exist_ok=True)
+        OUT = os.path.join(os.path.abspath(args.out_dir), 'p3r4_zero_1_S_ci_result.json')
 
     t0 = time.time()
     print('=' * 116)
@@ -214,9 +225,10 @@ def main():
     print('=' * 116)
 
     doms = []
-    for name, rel, printed_S, printed_col in DOMAINS:
-        p = os.path.join(PM, rel)
+    for name, parts, printed_S, printed_col in DOMAINS:
+        p = RP(*parts)
         assert os.path.exists(p), '缺单元件：%s' % p
+        rel = '/'.join(parts)
         recs = rows_clean(p)
         md5 = hashlib.md5(io.open(p, 'rb').read()).hexdigest()
         doms.append(dict(name=name, rel=rel, path=p, recs=recs, md5=md5,
@@ -291,12 +303,31 @@ def main():
     print('   ⇒ 本脚本的 S 区间用的是**同一条分位口径**（out[int(q*N)]）与**同一 seed**，')
     print('     单元定义按语料结构写死为「域内一批图像」（每个 headline 域恰一个单元）。')
     # 同一条口径也能复算 §7.3 的区间（本脚本内联实现，证明口径确实一致）
+    def _avg_ranks(v):
+        """平均秩（并列取平均）。★ 2026-10-11（v0669）：本脚本此前内联的 `spearman` 用
+        `{v: i for i, v in enumerate(sorted(x))}`（字典覆盖 ⇒ 并列取**最大秩**），而 v0648
+        （2026-10-04）已把 `m37_ci_power.py` / `n5_order_prereg.py` / `span_equalcount.py`
+        三处**统一到平均秩**并重算了 `m37_ci_power_result.json`。本脚本第五段自证
+        （"同口径 + 同 seed 必须逐位复现冻结件"）因此**必然报红**（实测）。此处把实现补成与
+        `m37_ci_power.py::_avg_ranks` **同一口径**（判据未放宽：断言、0.001 容差、对象、
+        seed、分位口径一字未动）。"""
+        order = sorted(range(len(v)), key=lambda i: v[i])
+        r = [0.0] * len(v)
+        i = 0
+        while i < len(order):
+            j = i
+            while j + 1 < len(order) and v[order[j + 1]] == v[order[i]]:
+                j += 1
+            avg = (i + j) / 2.0 + 1.0
+            for k in range(i, j + 1):
+                r[order[k]] = avg
+            i = j + 1
+        return r
+
     def spearman(x, y):
         n = len(x)
-        rx = {v: i for i, v in enumerate(sorted(x))}
-        ry = {v: i for i, v in enumerate(sorted(y))}
-        ax = [rx[v] for v in x]
-        ay = [ry[v] for v in y]
+        ax = _avg_ranks(x)
+        ay = _avg_ranks(y)
         mx, my = sum(ax) / n, sum(ay) / n
         num = sum((a - mx) * (b - my) for a, b in zip(ax, ay))
         dx = sum((a - mx) ** 2 for a in ax) ** 0.5
@@ -405,6 +436,27 @@ def selftest():
     sub = [recs[1], recs[2]]
     ctl.append(('抽掉弃权项后 S/无定义 与原点不同',
                 S_of(sub, 'gt')[0] != S))
+    # 7) ★ 负例：单元件缺失 ⇒ 明确失败（带路径），不是静默 0
+    bogus = RP('analysis', 'data', 'pod_mirror', 'dense_results', '__no_such_unit__.csv')
+    ctl.append(('缺单元件路径不存在（负例可构造）', not os.path.exists(bogus)))
+    try:
+        rows_clean(bogus)
+        ctl.append(('读缺失单元件 ⇒ 明确失败', False))
+    except (IOError, OSError):
+        ctl.append(('读缺失单元件 ⇒ 明确失败', True))
+    # 8) ★ 负例：四个域路径**逐段**经 RP() 解析且实存（旧写法只解析父目录 ⇒ 放行树上全落空）
+    ok_paths = True
+    for _nm, _parts, _s, _c in DOMAINS:
+        ok_paths = ok_paths and os.path.exists(RP(*_parts))
+    ctl.append(('四个 headline 域路径逐段经 RP() 解析且实存', ok_paths))
+    # 9) ★ 负例：路径解析与工作目录无关
+    cwd0 = os.getcwd()
+    try:
+        ref = [RP(*p) for _n, p, _s, _c in DOMAINS]
+        os.chdir(os.path.dirname(cwd0) or cwd0)
+        ctl.append(('路径解析与工作目录无关', [RP(*p) for _n, p, _s, _c in DOMAINS] == ref))
+    finally:
+        os.chdir(cwd0)
     ok = True
     for nm, passed in ctl:
         print('  [%s] %s' % ('PASS' if passed else 'FAIL', nm))

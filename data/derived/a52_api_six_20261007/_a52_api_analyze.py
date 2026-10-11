@@ -22,9 +22,11 @@
 
 只读输入、只写本目录的 5 个新产物（+ 本脚本）。不联网、不启服务、不跑 GPU。
 """
+import argparse
 import collections
 import csv
 import hashlib
+import importlib.util
 import io
 import json
 import math
@@ -33,21 +35,69 @@ import random
 import re
 import sys
 
-HERE = os.path.dirname(os.path.abspath(__file__))          # 驱动脚本所在（工作目录，非交付目录）
-WS = os.path.dirname(HERE)
-A52 = os.path.join(WS, '_a5_2')
-OUT = os.path.join(WS, '_p3_api_results_20261007')          # ★ 交付目录：只写 5 个新文件
-sys.path.insert(0, A52)
-import a52_analyze as A                                    # noqa: E402  冻结分析器
-
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+try:
+    sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+except Exception:
+    pass
 
-MERGED = os.path.join(OUT, 'merged_best.jsonl')
-CRIT = os.path.join(OUT, '_a52_criteria_frozen.json')
-DMAT = os.path.join(OUT, 'detection_matrix.csv')
-MANIFEST = os.path.join(A52, '_a800_a52_ext', 'a52__stim__manifest.csv')   # md5 d2dde2a8…（与源包一致）
-BASE_RES = os.path.join(A52, '_a800_a52', 'res')                          # b0 / b2 的 18 格
-BASE_EXT = os.path.join(A52, '_a800_a52_ext')                             # b1 的 9 格
+# ══════════════════════ 路径与导入（★ v0669 A8-3/M-6）══════════════════════
+# ★ 旧写法把运行布局**写死**成作者工作树：
+#     HERE = 本脚本所在；WS = 上一级；A52 = WS/_a5_2；sys.path.insert(0, A52); import a52_analyze
+#   放行树上本脚本位于 `data/derived/a52_api_six_20261007/`，`WS/_a5_2` **不存在** ⇒
+#   **ModuleNotFoundError: No module named 'a52_analyze'**；即便把 import 修好，
+#   `load_baseline()` 的 `os.listdir(WS/_a5_2/_a800_a52/res)` 仍会 FileNotFoundError。
+#   现在改为**显式候选路径 + 按文件路径导入 + 缺件即停**，两种布局都跑得通、且与 CWD 无关：
+#     release 布局 = 放行树：所有输入与冻结分析器都是本脚本的**同级件**；
+#     author  布局 = `_a52_api_work/`：输入在 `..\_p3_api_results_20261007\`、
+#                  分析器在 `..\_a5_2\a52_analyze.py`、本地臂在 `..\_a5_2\_a800_a52{,_ext}\`。
+#   ★ 判据与算术**一字未改**：只改"路径怎么找到"。
+HERE = os.path.dirname(os.path.abspath(__file__))
+WS = os.path.dirname(HERE)
+
+
+def _need(tag, cands, kind='file'):
+    for c in cands:
+        if kind == 'dir' and os.path.isdir(c):
+            return c
+        if kind == 'file' and os.path.isfile(c):
+            return c
+    sys.stderr.write('_a52_api_analyze: FAIL — 找不到 %s（%s）；候选：\n  %s\n'
+                     % (tag, kind, '\n  '.join(str(c) for c in cands)))
+    raise SystemExit(3)
+
+
+# 冻结分析器：放行树里改名 `_a52_analyze_frozen.py`（与作者侧 `_a5_2/a52_analyze.py` **同字节**，
+# md5 bf873c5e7da083dae42cb379efe9af9d）。按**文件路径**导入，不再依赖 sys.path 猜测。
+_ANALYZER = _need('冻结分析器（a52_analyze）', [
+    os.path.join(HERE, '_a52_analyze_frozen.py'),
+    os.path.join(WS, '_a5_2', 'a52_analyze.py'),
+])
+_spec = importlib.util.spec_from_file_location('a52_analyze', _ANALYZER)
+A = importlib.util.module_from_spec(_spec)                  # noqa: E402  冻结分析器
+sys.modules['a52_analyze'] = A
+_spec.loader.exec_module(A)
+
+# 交付/输入目录：放行树上就是本脚本所在；作者树上是上一级的 `_p3_api_results_20261007`。
+_DELIV = [HERE, os.path.join(WS, '_p3_api_results_20261007')]
+MERGED = _need('merged_best.jsonl', [os.path.join(d, 'merged_best.jsonl') for d in _DELIV])
+CRIT = _need('_a52_criteria_frozen.json', [os.path.join(d, '_a52_criteria_frozen.json') for d in _DELIV])
+DMAT = _need('detection_matrix.csv', [os.path.join(d, 'detection_matrix.csv') for d in _DELIV])
+MANIFEST = _need('a52__stim__manifest.csv（md5 d2dde2a8…，与源包一致）', [
+    os.path.join(HERE, 'a52__stim__manifest.csv'),
+    os.path.join(WS, '_a5_2', '_a800_a52_ext', 'a52__stim__manifest.csv'),
+])
+BASE_RES = _need('本地臂 b0/b2 的 18 格目录', [                       # b0 / b2 的 18 格
+    os.path.join(HERE, 'local_arm', 'res'),
+    os.path.join(WS, '_a5_2', '_a800_a52', 'res'),
+], kind='dir')
+BASE_EXT = _need('本地臂 b1 的 9 格目录', [                           # b1 的 9 格
+    os.path.join(HERE, 'local_arm', 'ext'),
+    os.path.join(WS, '_a5_2', '_a800_a52_ext'),
+], kind='dir')
+# 交付目录（3 张表）与原始转储目录：默认沿用作者树行为；`--out` / `--raw-out` 可覆盖。
+OUT = os.path.dirname(MERGED)
+RAWD = HERE
 LAYOUTS = ['L%02d' % i for i in range(8)]
 BAND = 0.2
 BOOT_B = 500
@@ -689,9 +739,9 @@ def main():
                              for r in served_rows if r['cls'] == 'unparsed']
     print('  已回 200 但无正文/不可解析 = %d' % len(R['empty_body_cells']))
 
-    io.open(os.path.join(HERE, '_api_analysis_raw.json'), 'w', encoding='utf-8', newline='\n').write(
+    io.open(os.path.join(RAWD, '_api_analysis_raw.json'), 'w', encoding='utf-8', newline='\n').write(
         json.dumps(R, ensure_ascii=False, indent=1, default=str) + '\n')
-    print('\n原始结果 ⇒ %s' % os.path.join(HERE, '_api_analysis_raw.json'))
+    print('\n原始结果 ⇒ %s' % os.path.join(RAWD, '_api_analysis_raw.json'))
 
     write_tables(R, served_rows)
     print('交付表 ⇒ %s' % OUT)
@@ -826,5 +876,84 @@ def write_tables(R, served_rows):
     _w(os.path.join(OUT, 'table_stratified_served_ptok.csv'), hdr4, rows4)
 
 
+# ══════════════════════ ★ 负例自测（v0669 A8-3/M-6）══════════════════════
+def selftest():
+    """负例自测：路径解析与导入的三类失败必须**明确报错**，且与工作目录无关。"""
+    import shutil
+    import tempfile
+    ctl = []
+
+    # (1) 冻结分析器已被找到、按文件路径导入、且三个复用入口齐备
+    ctl.append(('冻结分析器按文件路径导入成功（%s）' % os.path.basename(_ANALYZER),
+                os.path.isfile(_ANALYZER) and all(
+                    hasattr(A, n) for n in ('is_correct', 'wilson', 'fit_logit'))))
+    ctl.append(('冻结分析器 md5 == bf873c5e7da083dae42cb379efe9af9d',
+                md5f(_ANALYZER) == 'bf873c5e7da083dae42cb379efe9af9d'))
+
+    # (2) 缺件 ⇒ SystemExit(3) 且信息里带可读的候选路径（不是静默 0 结果）
+    tmp = tempfile.mkdtemp(prefix='_a52_api_selftest_')
+    try:
+        try:
+            _need('故意不存在的件', [os.path.join(tmp, '__nope__.json')])
+            ctl.append(('缺件 ⇒ 明确失败（退出码 3）', False))
+        except SystemExit as e:
+            ctl.append(('缺件 ⇒ 明确失败（退出码 3）', e.code == 3))
+        try:
+            _need('故意不存在的目录', [os.path.join(tmp, '__nope_dir__')], kind='dir')
+            ctl.append(('缺目录 ⇒ 明确失败（退出码 3）', False))
+        except SystemExit as e:
+            ctl.append(('缺目录 ⇒ 明确失败（退出码 3）', e.code == 3))
+
+        # (3) 四个输入件与两个本地臂目录**逐一实存**
+        ctl.append(('四个输入件实存',
+                    all(os.path.isfile(x) for x in (MERGED, CRIT, DMAT, MANIFEST))))
+        ctl.append(('两个本地臂目录实存',
+                    all(os.path.isdir(x) for x in (BASE_RES, BASE_EXT))))
+
+        # (4) 工作目录无关：切到临时目录后，同一批路径的判断不变
+        cwd0 = os.getcwd()
+        try:
+            os.chdir(tmp)
+            same = all(os.path.isfile(x) for x in (MERGED, CRIT, DMAT, MANIFEST))
+        finally:
+            os.chdir(cwd0)
+        ctl.append(('路径解析与工作目录无关', same))
+
+        # (5) 解析器负例：不可解析的 raw ⇒ None（下游 cls=unparsed、计 0 分），绝不静默丢弃
+        ctl.append(('不可解析 raw ⇒ parse_frozen 返回 None',
+                    parse_frozen('I cannot count these.') is None))
+        ctl.append(('is_correct(None) == 0（不计入正确）',
+                    A.is_correct({'pred': '', 'n_dots_detected_gt': '10'}) == 0))
+
+        # (6) 解析器正例回归
+        ctl.append(('parse_frozen `{"count": 8}` == 8', parse_frozen('{"count": 8}') == 8))
+        ctl.append(('parse_frozen abstain 保持字面量',
+                    parse_frozen('{"count": "abstain"}') == 'abstain'))
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+    ok = True
+    for nm, passed in ctl:
+        print('  [%s] %s' % ('PASS' if passed else 'FAIL', nm))
+        ok = ok and passed
+    print('SELFTEST: %s' % ('PASS' if ok else 'FAIL'))
+    return 0 if ok else 1
+
+
 if __name__ == '__main__':
+    _ap = argparse.ArgumentParser(description='A5-2 API 臂分析驱动（只读已放行记录）')
+    _ap.add_argument('--out', default=None, help='3 张交付表的输出目录（默认为输入所在目录）')
+    _ap.add_argument('--raw-out', default=None, help='_api_analysis_raw.json 的输出目录（默认本脚本目录）')
+    _ap.add_argument('--selftest', action='store_true', help='★ 负例自测（不跑全量分析）')
+    _a = _ap.parse_args()
+    if _a.selftest:
+        sys.exit(selftest())
+    if _a.out:
+        OUT = os.path.abspath(_a.out)
+    if _a.raw_out:
+        RAWD = os.path.abspath(_a.raw_out)
+    os.makedirs(OUT, exist_ok=True)
+    os.makedirs(RAWD, exist_ok=True)
+    print('输入目录 = %s' % os.path.dirname(MERGED))
+    print('交付目录 = %s' % OUT)
     main()

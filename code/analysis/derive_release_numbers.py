@@ -241,147 +241,86 @@ print('README 四类计数：共享根 %d ｜ code 里作者机路径 %d ｜ 全
 if san is not None:
     print('消毒台账：%d 个文件 / %d 处替换' % (len(san['files']), san['substitutions']))
 
-# ── ⑤ README 的替换（每条都必须**恰好命中 1 次**，否则不写盘）──────────────────
-SUB = []
-if san is not None:
-    for f in san['files']:
-        if f['path'] == 'manuscript/review_control_evidence.md' and f['src_md5']:
-            # ★ 2026-10-11：OLD 按 R5 老串同步到 README **现印**的那一份
-            #   （`EB1658CD…`/`44DDAF36…`）；NEW 仍由消毒台账当场派生（判据未放宽：
-            #   "老串恰好命中 1 次 / 或已应用"一字未动；旧值 `7052DE8C…` 已入 ⑥ 注册表）。
-            SUB.append(('| `manuscript/review_control_evidence.md` | 2 | `EB1658CD01D61F6EE78B7C380C3BE991` | `44DDAF365938DCD2F707DB96A51875F1` |',
-                        '| `manuscript/review_control_evidence.md` | 2 | `%s` | `%s` |'
-                        % (f['src_md5'].upper(), f['shipped_md5'].upper())))
-SUB += [
-    # worked example ①：A_analyze.py 的**发布形态** md5
-    ('`F795CD0233C4EA03C7E4C9D70CAC8BD2` both as the authors\' source file and as the copy shipped here (the sanitiser no longer',
-     '`%s` both as the authors\' source file and as the copy shipped here (the sanitiser no longer'
-     % by_md5.get(md5f(os.path.join(ROOT, 'code', 'analysis', 'A_analyze.py')).lower(), '?')),
-    # worked example ②：n4 的历史摘要 + 发布摘要
-    ('''* Supplementary §M.19.15 prints md5 `9c74db226c1b785361807ebc7e069771` for
-  `n4_cross_family_dense_panel.py`; that script now hashes to `3A9F8BB2FEED81D58E15E480419DF5F9`. The printed value is neither the
-  current source digest nor the shipped digest. It is stated here rather than silently corrected because
-  the submitted supplementary material is frozen; **the script's behaviour did not change**, only the
-  literals that located its inputs.''',
-     '''* Supplementary §M.19.15 prints, for `n4_cross_family_dense_panel.py`, a **historical** digest
-  `9c74db226c1b785361807ebc7e069771` and the digest of the copy shipped here,
-  `%s` — the latter is the `MANIFEST.csv` row for that path. **The script's behaviour did not
-  change**, only the literals that located its inputs, so both numbers are stated rather than one of them
-  being silently corrected.'''
-     % by_md5.get(md5f(os.path.join(ROOT, 'code', 'analysis', 'n4_cross_family_dense_panel.py')).lower(), '?')),
-    # 那句为假的全称句 → 派生式陈述
-    # ★ v0655：OLD 同步到 README **现印**的那一份（31/26/5）—— 本次补充材料新增了一个
-    #   "印在 provenance 行、但随包发的是**更正后**那一版"的摘要（机上实跑用的分析器副本），
-    #   故派生结果为 32/26/6；新串由 `printed`/`hits`/`miss` 当场算出。
-    # ★ v0656：老串再次同步到 README **现印**的那一份（32/26/6 —— 因为本次把`bf873c5e…`
-    #   （被取代的机上分析器）作为存档件放进 `archives/`，它**从"未随包摘要"变成"随包摘要"**，
-    #   故派生结果为 32/27/5；被换下的那一条已进 ⑥ 的持久注册表，不删。）
-    ('''Of the **32** distinct 32-hex digests printed in the manuscript and the supplementary material, **27**
-equal the `MANIFEST.csv` md5 of a file this package ships, before or after v0608. The remaining **5** are
-not shipped-file digests: `0a42e6e5bbfa89543ba9fc1522f1b075`, `758962a2643e1035698682abefec5748`, `9c74db226c1b785361807ebc7e069771`, `aca4444c7f681b0596db4e4a84578b62`, `d95d7466b482f575dc781d152e5ddf23`.''',
-     '''Of the **%d** distinct 32-hex digests printed in the manuscript and the supplementary material, **%d**
-equal the `MANIFEST.csv` md5 of a file this package ships, before or after v0608. The remaining **%d** are
-not shipped-file digests: %s.'''
-     % (len(printed), len(hits), len(miss), ', '.join('`%s`' % d for d in miss))),
-    # 四类计数（当场重算）
-    # ★ OLD = README **现印**的那一份（"上次印出的值"）；NEW = 当场派生。数目一变，本支就报红并要求
-    #   把 OLD 同步到新印值 —— 这正是"不许手抄、必须派生"的落地方式。
-    # ★ 2026-10-11（v0669）：本次新增一个走共享根的放行脚本（`code/analysis/a52_encoding_check.py`）
-    #   ⇒ 共享根脚本数 157 → **158**。按 R5 老串同步到 README **现印**值（**判据一字未放宽**：
-    #   仍要求"老串恰好命中 1 次 / 或已应用"，仍当场派生）。旧值 **154** / **149** 已自动进入
-    #   ⑥ 的 append-only 陈旧串注册表。
-    # ★ 2026-10-11（v0670）：再新增一个走共享根的放行脚本
-    #   （`code/analysis/a53_ordinal_fit_hosted.py`，§M.11.2.1）⇒ 共享根脚本数 158 → **159**。
-    #   老串按同一条 R5 纪律同步到 README **现印**值（157 已过期，故改指 **158**；判据未放宽）。
-    ('1. **158** scripts resolve their inputs through the shared root: the **146** converted in v0608 plus the\n'
-     '   scripts added to the released set since. Each imports `code/analysis/_repro_root.py`:\n'
-     '   `grep -rl "from _repro_root import" code | wc -l` → **158**.',
-     '1. **%d** scripts resolve their inputs through the shared root: the **146** converted in v0608 plus the\n'
-     '   scripts added to the released set since. Each imports `code/analysis/_repro_root.py`:\n'
-     '   `grep -rl "from _repro_root import" code | wc -l` → **%d**.' % (n_shared, n_shared)),
-    ('   Widening the same scan to **every** text file in the package gives **22** files, still none of them a\n'
-     '   script\'s data path. They are frozen artefacts and run logs whose recorded strings hold the authors\'\n'
-     '   prefix in backslash-escaped form (e.g. `A_result.json`, `ea2_z0_result.json`, `fsc_res_result.json`,',
-     '   Widening the same scan to **every** text file in the package gives **%d** files, still none of them a\n'
-     '   script\'s data path. They are frozen artefacts and run logs whose recorded strings hold the authors\'\n'
-     '   prefix in backslash-escaped form (e.g. `A_result.json`, `ea2_z0_result.json`, `fsc_res_result.json`,' % n_abspath_all),
-    ('   `n1_span_artefact_result.json`, `n2_rule_spread_inventory.json`, the per-image records under\n'
-     '   `data/derived/`, the `env/` handover notes, and this `README.md`, which quotes\n'
-     '   the `e:\\n` fragment above). The frozen artefacts are **deliberately not modified** — they are reported',
-     '   `n1_span_artefact_result.json`, `n2_rule_spread_inventory.json`, the per-image records under\n'
-     '   `data/derived/`, the `env/` handover notes, and this `README.md`, which quotes\n'
-     '   the `e:\\n` fragment above). The frozen artefacts are **deliberately not modified** — they are reported'),
-    # ★ v0655：计数 2 的前半句此前是**手写**的（后随的 `Widening…` 已派生，本句没有）。
-    #   本次 `derive_release_numbers.py` 自己的替换串引用了同一段 `e:\n` 片段 ⇒ 该计数
-    #   2 → 3（第三件就是本支自身）⇒ 老串从 README 现场读出、新串改用 `n_abspath_code`。
-    (
-     '2. **0** of those scripts carries an author-machine path, and no script\'s *data* path is absolute:\n'
-     '   `grep -rEl "(^|[^A-Za-z0-9])[A-Za-z]:[\\\\\\\\/]" code --include=\'*.py\' --include=\'*.sh\'` → **2** files, and\n'
-     '   neither is a data path: `_repro_root.py` itself (its single env-overridable `PAPERB_SHARED` default) and\n'
-     '   `w0_frame.py`, where the match is the fragment `e:\\n` inside a quoted Python-code template\n'
-     '   (`\'except Exception as e:\\n\'`), not a path.',
-     '2. **0** of those scripts carries an author-machine path, and no script\'s *data* path is absolute:\n'
-     '   `grep -rEl "(^|[^A-Za-z0-9])[A-Za-z]:[\\\\\\\\/]" code --include=\'*.py\' --include=\'*.sh\'` → **%d** files, and\n'
-     '   neither is a data path: `_repro_root.py` itself (its single env-overridable `PAPERB_SHARED` default) and\n'
-     '   `w0_frame.py`, where the match is the fragment `e:\\n` inside a quoted Python-code template\n'
-     '   (`\'except Exception as e:\\n\'`), and `derive_release_numbers.py`, which quotes that same fragment\n'
-     '   in its substitution strings below — none of the three is a path.' % n_abspath_code),
-    # ★ v0654：这一条**依赖作者侧消毒台账**（取件数/替换数）。此前它在 `san is None` 时
-    #   仍按写死的退路值 30/58 去替换 ⇒ 在**放行树里**跑本支时必然"命中 0 次"而**报红**，
-    #   而真因只是"放行树没有台账"。现在它只在有台账时参与（值一律由台账派生）。
-    # ★ v0654：README 里"共享根脚本数"**出现两次**（"How to run" 段一次、计数 1 一次），
-    #   旧支只改后者 ⇒ 两处会长期互不一致（实测本次接手时：一处 **149**、一处 **154**，真值 154）。
-    #   这两条把 "How to run" 那一处也纳入派生（值同 `n_shared`）。
-    ('data path at all — **158** of them — imports `code/analysis/_repro_root.py` and resolves its inputs through',
-     'data path at all — **%d** of them — imports `code/analysis/_repro_root.py` and resolves its inputs through'
-     % n_shared),
-    # ★ 2026-10-11（本次）：按派生的老串同步规则，把 README **现印**值同步进来（4903 / 3974；本次
-    #   MANIFEST 因新增一个放行脚本 +1 ⇒ 派生 4904 / 3974）。**判据一字未放宽**：仍"恰好命中 1 次 /
-    #   或已应用"，仍当场派生；旧值 4876 / 3947 已自动进入 ⑥ 的 append-only 陈旧串注册表。
-    ('   *Write-back policy*), which took the package **at that revision** from **3,659** to **3,651** manifested\n'
-     '   files and left both the rewritten set and the substitution count untouched. **At this revision\n'
-     '   `MANIFEST.csv` registers 4904 files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **3974**\n'
-     '   of them — both are re-derived by `code/analysis/derive_release_numbers.py`.',
-     '   *Write-back policy*), which took the package **at that revision** from **3,659** to **3,651** manifested\n'
-     '   files and left both the rewritten set and the substitution count untouched. **At this revision\n'
-     '   `MANIFEST.csv` registers %d files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **%d**\n'
-     '   of them — both are re-derived by `code/analysis/derive_release_numbers.py`.' % (N_MAN, N_DATA)),
-    ("4. **39** files merely *contain* one of the placeholder strings: `grep -rlE '<REDACTED-|<WORKDIR>|<SHARED-DIR>' . | wc -l`\n"
-     "   → **39** (the sanitiser's own rewritten set is count 3 above; the remainder only quote a placeholder\n"
-     "   string — this `README.md` does so on purpose).",
-     "4. **%d** files merely *contain* one of the placeholder strings: `grep -rlE '<REDACTED-|<WORKDIR>|<SHARED-DIR>' . | wc -l`\n"
-     "   → **%d** (the sanitiser's own rewritten set is count 3 above; the remainder only quote a placeholder\n"
-     "   string — this `README.md` does so on purpose)." % (n_ph, n_ph)),
-    # ★ v0655：`data/` 的"改没改"必须**派生**（见文件上方 N_PH_DATA / N_DATA_SAN 的计算与说明）。
-    #   下面三条的老串 = **本次落笔时 README 里的原文**；新串由实物算出。三条合起来把那句
-    #   既存的**假全称句**（"Nothing under data/ was altered … finds zero placeholder patterns"）
-    #   换成一个**可复核**的陈述：改了几件、其余逐字节相同、manifest 只在被改写的行上变化。
-    # ★ v0656：老串同步到 README **现印**的那一份（3829/4/3825）；被换下的"假全称句"那条
-    #   （`**Nothing under data/ was altered.** Every one of the **3787** …`）已进 ⑥ 的持久注册表。
-    ('**Almost nothing under `data/` was altered.** Of the **3974** files under `data/`, **6** are text files\n'
-     'the sanitiser rewrote (they are the `data/` rows of the table above); every one of the remaining **3968** is\n'
-     'byte-identical to the corresponding source file.',
-     '**Almost nothing under `data/` was altered.** Of the **%d** files under `data/`, **%d** are text files\n'
-     'the sanitiser rewrote (they are the `data/` rows of the table above); every one of the remaining **%d** is\n'
-     'byte-identical to the corresponding source file.' % (N_DATA, N_DATA_SAN, N_DATA - N_DATA_SAN)),
-    # ★ v0656：老串同步到 README **现印**的那一份（3829 / **3**）；被换下的"finds **zero**"那条已进 ⑥。
-    ('of the six placeholder patterns above in the file, and a scan of all 3974 released data files finds **3**\n'
-     'carrying one of them — the remaining rewritten data file carries a neutral internal-name placeholder\n'
-     'instead of a host/path placeholder; (ii)',
-     'of the six placeholder patterns above in the file, and a scan of all %d released data files finds **%d**\n'
-     'carrying one of them — the remaining rewritten data file carries a neutral internal-name placeholder\n'
-     'instead of a host/path placeholder; (ii)' % (N_DATA, N_PH_DATA)),
-    ('manifest of `data/` taken before and after the release script ran is **unchanged**. In particular the 138',
-     'manifest of `data/` taken before and after the release script ran differs **only in the rows the sanitiser\n'
-     'rewrote** (the table above). In particular the 138'),
-]
+# ══ ⑤ README 的槽位替换（★ v0673：OLD 侧**结构槽位化** —— 会漂移的数字/摘要位不再逐代手抄）══════
+# 【为什么改】2026-10-11 之前，每条替换的 OLD 侧是**手抄的 README 现印字面**，字面里含当轮会变的数字与
+#   md5。数字一变 OLD 就落后一代，只能在下一轮**手工重指**（v0667 / v0668 / v0672 各一次；留痕见检查单
+#   §37.4(乙) / §38.4(乙) / §41.10）—— **逐代复发**，而"重指"这一步本身又是手抄。
+# 【改法】按上级 2026-10-11 任务书允许的做法 **2 ＋ 3 的组合**（结构/正则匹配 ＋ 形状断言）：
+#   · 每条槽位给出**两类**模板，编译成正则后**仍要求"恰好命中 1 次"**（结构被改写 / 该行缺失 /
+#     重复出现一律报红）：
+#       `tmpl` = **预印形态**（README 现印文本：稳定散文逐字保留，**会漂移的数字位**写 `«n»`／
+#                带宽度 `«n:k-m»`，**会漂移的 32 位摘要位**写 `«h»`，变长摘要清单写 `«hlist»`）；
+#       `alt`  = **已应用形态**（`--apply` 之后的文本形态；没有则 None）。
+#   · 数字位另有**形状断言**：`«n:k-m»` ⇒ 必须恰为 k–m 位十进制整数；不满足时打印
+#     "严格 0 命中 / 宽松 1 命中"的诊断行，直接指出坏在宽度上。
+#   · 命中后一律做 `命中文本 == 本轮实物派生文本` 判定（旧支的"已应用"分支**静默不核对**，
+#     现支对**两种形态**都当场核对）：不等 ⇒ 记**待同步**并逐条打印；`--check` 不写盘。
+#   · 同一实物派生量出现在多条槽位时，追加**跨槽位一致性断言**（README 自相矛盾 ⇒ 报红）
+#     —— 这把旧字面匹配隐含的"同一量处处同值"显式化，强度不降。
+#   · **NEW 侧仍由实物当场派生**；派生拿不到实物由 `_need_path()` **直接报红**，不再静默回退成 `?`。
+#   · ⑥ 的 append-only 陈旧串注册表**固定条目一条未删**、可追溯退役表 3 条未删；动态条目仍按 ⑤ 的
+#     槽位构造。★ "本轮命中文本 == 派生文本（无漂移）"的槽位字面不是"被换下的字面"：⑥ 中**显式标注
+#     并打印**、不参与"复活"判定（不是静默跳过，注册表条目本身一条未删）。
+#   ★ 强度账（逐条对账见检查单 §42）：**新增** 形状断言 / 派生失败报红 / 已应用形态也当场核对 /
+#     跨槽位一致性 / 无漂移显式标注；**保留** 恰好命中 1 次、NEW 当场派生、⑥ append-only 不删条目；
+#     **唯一变化**："数字换成另一个合法宽度的整数"不再报红，而是当场**自动同步**为实物派生值并逐条打印。
+_MARK = re.compile(r'«(n|h|hlist|g)(?::(\d+)-(\d+))?»')
+
+
+def _slot_rx(tmpl, strict=True):
+    '''模板 → 正则：`«n»`/`«n:k-m»` → 数字组；`«h»` → 32 位十六进制；
+    `«g»` → 通用值位（**遗留误印形态**识别用）；`«hlist»` → 摘要清单。'''
+    out, i = [], 0
+    for m in _MARK.finditer(tmpl):
+        out.append(re.escape(tmpl[i:m.start()]))
+        kind, lo, hi = m.group(1), m.group(2), m.group(3)
+        if kind == 'n':
+            out.append((r'(\d{%s,%s})' % (lo, hi)) if (strict and lo)
+                       else (r'(\d{1,7})' if strict else r'(\d+)'))
+        elif kind == 'h':
+            out.append(r'([0-9A-Fa-f]{32})' if strict else r'([0-9A-Za-z]{2,64})')
+        elif kind == 'g':
+            out.append(r'([^\n`]{1,80})' if strict else r'([^\n]{1,80})')
+        else:
+            out.append(r'((?:`[0-9A-Fa-f]{32}`(?:, )?)+)' if strict else r'([^\n]*)')
+        i = m.end()
+    out.append(re.escape(tmpl[i:]))
+    return re.compile(''.join(out))
+
+
+def _need_path(rel, fails=None):
+    '''NEW 侧派生守卫：取 `<ROOT>/<rel>` 的**随包摘要**（= `MANIFEST.csv` 该行的 md5）。
+
+    ★ v0673 **缺陷修复**：此前这里是 `by_md5.get(md5f(path), '?')`，而 `by_md5` 是 **md5→路径**
+      的映射 ⇒ ⑤ 把**路径**印进了 README 里"摘要/digest"的位置（实测 2 处，见检查单 §42）。
+      改用 `by_path`（路径→md5；① 已断言它 == 实物 md5），拿不到实物时**报红**而不是静默给 `?`。
+    '''
+    p = os.path.join(ROOT, rel)
+    _f = FAILS if fails is None else fails
+    if not os.path.exists(p):
+        _f.append('NEW 侧实物派生失败：%s 不在磁盘（实物被删或改名？）' % rel)
+        return '?'
+    v = by_path.get(rel) or md5f(p)
+    if not v:
+        _f.append('NEW 侧实物派生失败：%s 不在 MANIFEST.csv' % rel)
+    return v or '?'
+
+
+SLOTS = []
+
+
+def slot(idtag, tmpl, new, alt=None, qty=None, note=''):
+    '''登记一条槽位。
+
+    `tmpl` = **预印形态**模板；`alt` = **已应用形态**模板（可 None）；`new` = 本轮实物派生文本；
+    `qty` = 每个标记位对应的实物派生量名（跨槽位一致性断言用）。
+    '''
+    SLOTS.append(dict(id=idtag, tmpl=tmpl, new=new, alt=alt, qty=qty or [], note=note))
+
+
+
 
 readme = rd(README)
-SUB = [x for x in SUB if x is not None]
-# 依赖消毒台账的那一条：台账在场时用台账；**台账缺席（放行树）时改用 README 消毒表**的同名算量。
-# ★ v0656：此处先前在台账缺席时**整段跳过**，于是放行树里的读数与 README 现印的 34/68 无人核对；
-#   而一旦有人把它写成"两边都不命中"，本支在放行树里就必然报红（包外复核会照 README 跑本支）。
-#   现在两条路径**都参与**，来源在上一段已显式打印（台账 vs README 表），判据一字未改。
 if san is not None:
     _N_SAN_FILES, _N_SAN_SUBS = len(san['files']), san['substitutions']
 else:
@@ -390,20 +329,103 @@ else:
     _N_SAN_FILES, _N_SAN_SUBS = len(_rm), sum(int(r[1]) for r in _rm)
     print('  ⚠ 未找到消毒台账（作者侧）⇒ 该两条派生量改用 README 消毒表：%d 个文件 / %d 处替换。'
           % (_N_SAN_FILES, _N_SAN_SUBS))
-SUB.append((
-    '3. **36** files were rewritten by the sanitiser, in **77** substitutions (the table above). This set cannot be',
-    '3. **%d** files were rewritten by the sanitiser, in **%d** substitutions (the table above). This set cannot be'
-    % (_N_SAN_FILES, _N_SAN_SUBS)))
+if san is not None:
+    for f in san['files']:
+        if f['path'] == 'manuscript/review_control_evidence.md' and f['src_md5']:
+            slot("san-row:review_control_evidence",
+                 "| `manuscript/review_control_evidence.md` | «n» | `«h»` | `«h»` |",
+                 '| `manuscript/review_control_evidence.md` | 2 | `%s` | `%s` |' % (f['src_md5'].upper(), f['shipped_md5'].upper()),
+                 alt=None,
+                 qty=['n_san_row_subs', None, None])
+slot("worked-example-1:A_analyze publish-form",
+     "`«h»` both as the authors' source file and as the copy shipped here (the sanitiser no longer",
+     "`%s` both as the authors' source file and as the copy shipped here (the sanitiser no longer" % _need_path('code/analysis/A_analyze.py'),
+     alt="`«g»` both as the authors' source file and as the copy shipped here (the sanitiser no longer",
+     qty=[None])
+slot("worked-example-2:n4 historical+shipped digest",
+     "* Supplementary §M.19.15 prints md5 `9c74db226c1b785361807ebc7e069771` for\n  `n4_cross_family_dense_panel.py`; that script now hashes to `«h»`. The printed value is neither the\n  current source digest nor the shipped digest. It is stated here rather than silently corrected because\n  the submitted supplementary material is frozen; **the script's behaviour did not change**, only the\n  literals that located its inputs.",
+     "* Supplementary §M.19.15 prints, for `n4_cross_family_dense_panel.py`, a **historical** digest\n  `9c74db226c1b785361807ebc7e069771` and the digest of the copy shipped here,\n  `%s` — the latter is the `MANIFEST.csv` row for that path. **The script's behaviour did not\n  change**, only the literals that located its inputs, so both numbers are stated rather than one of them\n  being silently corrected." % _need_path('code/analysis/n4_cross_family_dense_panel.py'),
+     alt="* Supplementary §M.19.15 prints, for `n4_cross_family_dense_panel.py`, a **historical** digest\n  `9c74db226c1b785361807ebc7e069771` and the digest of the copy shipped here,\n  `«g»` — the latter is the `MANIFEST.csv` row for that path. **The script's behaviour did not\n  change**, only the literals that located its inputs, so both numbers are stated rather than one of them\n  being silently corrected.",
+     qty=[None])
+slot("digest-counts:printed/equal/remaining",
+     "Of the **«n»** distinct 32-hex digests printed in the manuscript and the supplementary material, **«n»**\nequal the `MANIFEST.csv` md5 of a file this package ships, before or after v0608. The remaining **«n»** are\nnot shipped-file digests: «hlist».",
+     'Of the **%d** distinct 32-hex digests printed in the manuscript and the supplementary material, **%d**\nequal the `MANIFEST.csv` md5 of a file this package ships, before or after v0608. The remaining **%d** are\nnot shipped-file digests: %s.' % (len(printed), len(hits), len(miss), ', '.join(('`%s`' % d for d in miss))),
+     alt=None,
+     qty=['n_printed', 'n_hits', 'n_miss', None])
+slot("shared-root-script-count",
+     "1. **«n»** scripts resolve their inputs through the shared root: the **146** converted in v0608 plus the\n   scripts added to the released set since. Each imports `code/analysis/_repro_root.py`:\n   `grep -rl \"from _repro_root import\" code | wc -l` → **«n»**.",
+     '1. **%d** scripts resolve their inputs through the shared root: the **146** converted in v0608 plus the\n   scripts added to the released set since. Each imports `code/analysis/_repro_root.py`:\n   `grep -rl "from _repro_root import" code | wc -l` → **%d**.' % (n_shared, n_shared),
+     alt=None,
+     qty=['n_shared', 'n_shared'])
+slot("widen-scan:all-text-files",
+     "   Widening the same scan to **every** text file in the package gives **«n»** files, still none of them a\n   script's data path. They are frozen artefacts and run logs whose recorded strings hold the authors'\n   prefix in backslash-escaped form (e.g. `A_result.json`, `ea2_z0_result.json`, `fsc_res_result.json`,",
+     "   Widening the same scan to **every** text file in the package gives **%d** files, still none of them a\n   script's data path. They are frozen artefacts and run logs whose recorded strings hold the authors'\n   prefix in backslash-escaped form (e.g. `A_result.json`, `ea2_z0_result.json`, `fsc_res_result.json`," % n_abspath_all,
+     alt=None,
+     qty=['n_abspath_all'])
+slot("frozen-artefacts-note(no-slot)",
+     "   `n1_span_artefact_result.json`, `n2_rule_spread_inventory.json`, the per-image records under\n   `data/derived/`, the `env/` handover notes, and this `README.md`, which quotes\n   the `e:\\n` fragment above). The frozen artefacts are **deliberately not modified** — they are reported",
+     '   `n1_span_artefact_result.json`, `n2_rule_spread_inventory.json`, the per-image records under\n   `data/derived/`, the `env/` handover notes, and this `README.md`, which quotes\n   the `e:\\n` fragment above). The frozen artefacts are **deliberately not modified** — they are reported',
+     alt=None,
+     qty=[])
+slot("item-2:author-machine-path-files",
+     "2. **0** of those scripts carries an author-machine path, and no script's *data* path is absolute:\n   `grep -rEl \"(^|[^A-Za-z0-9])[A-Za-z]:[\\\\\\\\/]\" code --include='*.py' --include='*.sh'` → **«n»** files, and\n   neither is a data path: `_repro_root.py` itself (its single env-overridable `PAPERB_SHARED` default) and\n   `w0_frame.py`, where the match is the fragment `e:\\n` inside a quoted Python-code template\n   (`'except Exception as e:\\n'`), not a path.",
+     '2. **0** of those scripts carries an author-machine path, and no script\'s *data* path is absolute:\n   `grep -rEl "(^|[^A-Za-z0-9])[A-Za-z]:[\\\\\\\\/]" code --include=\'*.py\' --include=\'*.sh\'` → **%d** files, and\n   neither is a data path: `_repro_root.py` itself (its single env-overridable `PAPERB_SHARED` default) and\n   `w0_frame.py`, where the match is the fragment `e:\\n` inside a quoted Python-code template\n   (`\'except Exception as e:\\n\'`), and `derive_release_numbers.py`, which quotes that same fragment\n   in its substitution strings below — none of the three is a path.' % n_abspath_code,
+     alt="2. **0** of those scripts carries an author-machine path, and no script's *data* path is absolute:\n   `grep -rEl \"(^|[^A-Za-z0-9])[A-Za-z]:[\\\\\\\\/]\" code --include='*.py' --include='*.sh'` → **«n»** files, and\n   neither is a data path: `_repro_root.py` itself (its single env-overridable `PAPERB_SHARED` default) and\n   `w0_frame.py`, where the match is the fragment `e:\\n` inside a quoted Python-code template\n   (`'except Exception as e:\\n'`), and `derive_release_numbers.py`, which quotes that same fragment\n   in its substitution strings below — none of the three is a path.",
+     qty=['n_abspath_code'])
+slot("shared-root-count:second-occurrence",
+     "data path at all — **«n»** of them — imports `code/analysis/_repro_root.py` and resolves its inputs through",
+     'data path at all — **%d** of them — imports `code/analysis/_repro_root.py` and resolves its inputs through' % n_shared,
+     alt=None,
+     qty=['n_shared'])
+slot("manifest-and-data-counts",
+     "   *Write-back policy*), which took the package **at that revision** from **3,659** to **3,651** manifested\n   files and left both the rewritten set and the substitution count untouched. **At this revision\n   `MANIFEST.csv` registers «n» files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **«n»**\n   of them — both are re-derived by `code/analysis/derive_release_numbers.py`.",
+     '   *Write-back policy*), which took the package **at that revision** from **3,659** to **3,651** manifested\n   files and left both the rewritten set and the substitution count untouched. **At this revision\n   `MANIFEST.csv` registers %d files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **%d**\n   of them — both are re-derived by `code/analysis/derive_release_numbers.py`.' % (N_MAN, N_DATA),
+     alt=None,
+     qty=['n_man', 'n_data'])
+slot("placeholder-containing-files",
+     "4. **«n»** files merely *contain* one of the placeholder strings: `grep -rlE '<REDACTED-|<WORKDIR>|<SHARED-DIR>' . | wc -l`\n   → **«n»** (the sanitiser's own rewritten set is count 3 above; the remainder only quote a placeholder\n   string — this `README.md` does so on purpose).",
+     "4. **%d** files merely *contain* one of the placeholder strings: `grep -rlE '<REDACTED-|<WORKDIR>|<SHARED-DIR>' . | wc -l`\n   → **%d** (the sanitiser's own rewritten set is count 3 above; the remainder only quote a placeholder\n   string — this `README.md` does so on purpose)." % (n_ph, n_ph),
+     alt=None,
+     qty=['n_ph', 'n_ph'])
+slot("almost-nothing-under-data",
+     "**Almost nothing under `data/` was altered.** Of the **«n»** files under `data/`, **«n»** are text files\nthe sanitiser rewrote (they are the `data/` rows of the table above); every one of the remaining **«n»** is\nbyte-identical to the corresponding source file.",
+     '**Almost nothing under `data/` was altered.** Of the **%d** files under `data/`, **%d** are text files\nthe sanitiser rewrote (they are the `data/` rows of the table above); every one of the remaining **%d** is\nbyte-identical to the corresponding source file.' % (N_DATA, N_DATA_SAN, N_DATA - N_DATA_SAN),
+     alt=None,
+     qty=['n_data', 'n_data_san', 'n_data_rest'])
+slot("scan-all-released-data-finds",
+     "of the six placeholder patterns above in the file, and a scan of all «n» released data files finds **«n»**\ncarrying one of them — the remaining rewritten data file carries a neutral internal-name placeholder\ninstead of a host/path placeholder; (ii)",
+     'of the six placeholder patterns above in the file, and a scan of all %d released data files finds **%d**\ncarrying one of them — the remaining rewritten data file carries a neutral internal-name placeholder\ninstead of a host/path placeholder; (ii)' % (N_DATA, N_PH_DATA),
+     alt=None,
+     qty=['n_data', 'n_ph_data'])
+slot("manifest-before-after-prose(no-slot)",
+     "manifest of `data/` taken before and after the release script ran is **unchanged**. In particular the 138",
+     'manifest of `data/` taken before and after the release script ran differs **only in the rows the sanitiser\nrewrote** (the table above). In particular the 138',
+     alt="manifest of `data/` taken before and after the release script ran differs **only in the rows the sanitiser\nrewrote** (the table above). In particular the 138",
+     qty=[])
+if san is not None:
+    # 这一条**依赖作者侧消毒台账**（取件数/替换数）。旧写法在台账缺席（放行树）时按写死的退路值去替换
+    # ⇒ 在放行树里跑本支必然"命中 0 次"而报红。现由 `_N_SAN_FILES` / `_N_SAN_SUBS` 两条路径派生
+    # （台账在场用台账，缺席改用 README 消毒表），**判据一字未改**。
+    slot("sanitiser-files-and-substitutions",
+         "3. **«n»** files were rewritten by the sanitiser, in **«n»** substitutions (the table above). This set cannot be",
+         '3. **%d** files were rewritten by the sanitiser, in **%d** substitutions (the table above). This set cannot be' % (_N_SAN_FILES, _N_SAN_SUBS),
+         alt=None,
+         qty=['n_san_files', 'n_san_subs'])
 
-# ★ 2026-10-08（v0662）：**消毒表按台账派生新增行**（append-only：只在表里缺该路径时追加，
-#   既有行一字不动）。起因：本次新放行 5 件，其中
-#   `data/derived/a52_api_six_20261007/analysis_manifest.md` 被改写 7 处
-#   （`E:\Edu_workplace\…` → `[author-workdir]` 6 处 ＋ 台账"冻结分析器"行 1 处，与 §M.11.2 正文同源）
-#   ⇒ 表里必须多一行，否则"**N** files were rewritten … (the table above)"与表本身不符。
-#   四个字段**全部由消毒台账算出**（不手抄）；锚点 = 现表的最后一行。
-_TBL_ANCHOR = ('| `manuscript/review_control_evidence.md` | 2 | '
-               '`EB1658CD01D61F6EE78B7C380C3BE991` | `44DDAF365938DCD2F707DB96A51875F1` |')
-if san is not None and _TBL_ANCHOR in readme:
+# ★ v0673：消毒表**锚行**改为**结构定位**（原先是手抄的两个 md5 字面，会随现印值漂移）。
+#   锚行 = 表里 `manuscript/review_control_evidence.md` 那一行；**本应存在却找不到 ⇒ 报红**
+#   （原写法找不到就静默跳过 ⇒ 台账新行不会被追加而闸门照绿，属"静默跳过"缺陷）。
+_TBL_ANCHOR = None
+_TBL_ROW_RX = re.compile(r'\| `manuscript/review_control_evidence\.md` \| \d+ \| '
+                         r'`[0-9A-Fa-f]{32}` \| `[0-9A-Fa-f]{32}` \|')
+if san is not None and any(f['path'] == 'manuscript/review_control_evidence.md' for f in san['files']):
+    _m = _TBL_ROW_RX.search(readme)
+    if _m:
+        _TBL_ANCHOR = _m.group(0)
+    else:
+        FAILS.append('消毒表锚行（manuscript/review_control_evidence.md）未找到 ⇒ 台账新行无法追加')
+        print('  ★ %s' % FAILS[-1])
+if san is not None and _TBL_ANCHOR and _TBL_ANCHOR in readme:
     _add_rows = []
     for _f in san['files']:
         if ('| `%s` |' % _f['path']) in readme:
@@ -415,19 +437,85 @@ if san is not None and _TBL_ANCHOR in readme:
         readme = readme.replace(_TBL_ANCHOR, _TBL_ANCHOR + '\n' + '\n'.join(_add_rows), 1)
         print('  ★ 消毒表按台账补 %d 行：%s'
               % (len(_add_rows), [r.split('`')[1] for r in _add_rows]))
-plan = []
-for old, new in SUB:
-    c = readme.count(old)
-    if c == 0 and new in readme:
-        # ★ 幂等：本支已经跑过一次（旧串已被换成新串）⇒ 记为已应用，不算失败
-        plan.append('(已应用) ' + old[:48])
-        continue
-    if c != 1:
-        FAILS.append('README 替换串命中 %d 次（期望 1）：%r…' % (c, old[:70]))
-        print('  ★ README 替换串命中 %d 次：%r…' % (c, old[:70]))
-        continue
-    readme = readme.replace(old, new)
-    plan.append(old[:60])
+
+
+def _run_slots(txt, slots):
+    '''按槽位替换 txt。返回 (新文本, 失败行, plan, 被换下的字面, 无漂移字面, 同步明细, 跨槽位量值)。
+
+    ★ 与旧判据对账：旧支"每条 OLD 恰好命中 1 次 / 或已应用" ⇒ 现支"每条模板（预印或已应用）
+      **恰好命中 1 次**"，且命中后一律与实物派生文本核对（旧支的"已应用"分支**不核对**）。
+    '''
+    fails, plan, dyn, nodrift, syncs, qty = [], [], [], [], [], {}
+    for s in slots:
+        forms = [('预印形态', s['rx'], s['rxl'])]
+        if s['arx'] is not None:
+            forms.append(('已应用形态', s['arx'], s['arxl']))
+        m, msg = None, None
+        for _kind, _rx, _rxl in forms:
+            h = list(_rx.finditer(txt))
+            if len(h) == 1:
+                m = h[0]
+                break
+            if len(h) > 1:
+                msg = 'README 结构槽位 %s（%s）：**命中 %d 次（期望 1）**' % (s['id'], _kind, len(h))
+                break
+        if m is None:
+            if msg is None:
+                _diag = []
+                for _kind, _rx, _rxl in forms:
+                    lo = list(_rxl.finditer(txt))
+                    _diag.append('%s 严格 0 / 宽松 %d' % (_kind, len(lo)))
+                    if len(lo) == 1:
+                        msg = ('README 结构槽位 %s（%s）：数字/摘要位**形状不符**'
+                               '（严格 0 命中 / 宽松 1 命中）⇒ %r'
+                               % (s['id'], _kind, lo[0].group(0)[:90]))
+                if msg is None:
+                    msg = ('README 结构槽位 %s：锚文本**命中 0 次（期望 1）**（%s）⇒ 该行已被改写或缺失'
+                           % (s['id'], '；'.join(_diag)))
+            fails.append(msg)
+            continue
+        for _q, _g in zip(s['qty'], m.groups()):
+            if _q:
+                qty.setdefault(_q, {}).setdefault(_g, []).append(s['id'])
+        old = m.group(0)
+        if s['new'] == old:
+            plan.append('(一致) ' + s['id'])
+            nodrift.append(old)
+            continue
+        txt = txt[:m.start()] + s['new'] + txt[m.end():]
+        plan.append('(自动同步) ' + s['id'])
+        dyn.append(old)
+        syncs.append((s['id'], old, s['new']))
+    return txt, fails, plan, dyn, nodrift, syncs, qty
+
+
+for _s in SLOTS:
+    _s['rx'] = _slot_rx(_s['tmpl'], strict=True)
+    _s['rxl'] = _slot_rx(_s['tmpl'], strict=False)
+    _s['arx'] = _slot_rx(_s['alt'], strict=True) if _s['alt'] else None
+    _s['arxl'] = _slot_rx(_s['alt'], strict=False) if _s['alt'] else None
+_tpls = {}
+for _s in SLOTS:
+    _tpls.setdefault(_s['tmpl'], []).append(_s['id'])
+_DUP = [(t, ids) for t, ids in _tpls.items() if len(ids) > 1]
+if _DUP:
+    FAILS.append('槽位模板重复（%d 组）⇒ 同一段文本被登记两次：%s'
+                 % (len(_DUP), [ids for _t, ids in _DUP]))
+    print('  ★ %s' % FAILS[-1])
+readme, _f5, _plan, _DYN_OLD, _NODRIFT, _SYNCS, _QTY = _run_slots(readme, SLOTS)
+FAILS += _f5
+plan = _plan
+print('  ⑤ README 槽位：%d 条（本轮待同步 %d 处 / 已一致 %d 处；**--apply 才写盘**）'
+      % (len(SLOTS), len(_SYNCS), len(_NODRIFT)))
+for _lab, _vals in sorted(_QTY.items()):
+    if len(_vals) > 1:
+        FAILS.append('README 同一派生量「%s」在不同槽位印值不一致：%s ⇒ README 自相矛盾'
+                     % (_lab, sorted(_vals)))
+        print('  ★ %s' % FAILS[-1])
+for _sid, _o, _n in _SYNCS:
+    print('     SYNC %-46s %r… → %r…' % (_sid, _o[:56], _n[:56]))
+for _fm in _f5:
+    print('  ★ %s' % _fm)
 
 # ── ⑥ ★ v0656：**持久陈旧串断言**（把"上一代老串"升级为常设判据）────────────────────────────
 #   机制弱点（v0655 §7 登记、本次修）：⑤ 的替换表是**逐代手抄的老串**。它只在"老串仍印在 README
@@ -523,7 +611,7 @@ STALE_STRINGS = [
     ('w1_prereg 旧摘要', '75eeca6fa68c9be65c2b569d4237d8df'),
     ('被取代的机上分析器（本次已随 archives/ 放行 ⇒ 不再是"未随包"摘要）',
      'bf873c5e7da083dae42cb379efe9af9d'),
-] + [('（⑤ 上一代替换串）%s' % old[:44], old) for old, _n in SUB]
+] + [('（⑤ 上一代替换串）%s' % old[:44], old) for old in (_DYN_OLD + _NODRIFT)]
 
 
 def stale_hits(txt):
@@ -531,8 +619,10 @@ def stale_hits(txt):
 
     ★ v0666：**已可追溯退役**的字面跳过对比（见 RETIRED_STALE）；其余一律照旧。
     """
+    # ★ v0673：**无漂移槽位**的字面（本轮 ⑤ 命中的文本 == 实物派生文本）不是"被换下的字面"，
+    #   跳过对比 —— 这是**显式**规则（⑥ 段里逐条打印说明），不是静默跳过；注册表条目一条未删。
     return [(lab, nd, txt.count(nd)) for lab, nd in STALE_STRINGS
-            if txt.count(nd) and not _retired(nd)]
+            if txt.count(nd) and not _retired(nd) and nd not in _NODRIFT]
 
 
 print('\n⑥ 持久陈旧串断言（对象 = 替换后的 README；注册表 %d 条，append-only）'
@@ -544,6 +634,9 @@ for _r in RETIRED_STALE:
     print('       依据：%s' % _r['evidence'])
     print('       退役人/时间：%s / %s；依据件 md5：%s'
           % (_r['retired_by'], _r['retired_on'], _r['basis_md5']))
+if _NODRIFT:
+    print('  ★ 无漂移槽位（本轮命中文本 == 实物派生文本）%d 条：其字面不是"被换下的字面"，'
+          '不参与"复活"判定' % len(_NODRIFT))
 _hits = stale_hits(readme)
 if _hits:
     for lab, nd, c in _hits:
@@ -572,11 +665,33 @@ if '--selftest' in sys.argv:
     _RETHIT = [p for p in _RET_PROBES if stale_hits(readme + '\n' + p + '\n')]
     print('  [自测] 已退役字面不再报红（退役生效）：%s（%d 条）'
           % ('PASS' if not _RETHIT else 'FAIL', len(_RET_PROBES)))
-    if _POS and len(_NEG) == len(_PROBES) and not _RETHIT:
+    # ★ v0673：⑤ 的**负例自测**（内存里做，不写盘）——
+    #   ① OLD 侧锚文本改错 ⇒ 该槽位必须 0 命中并报红；
+    #   ② OLD 侧数字位形状改错（8 位）⇒ 严格 0 / 宽松 1 ⇒ 必须报红（并指出坏在宽度上）；
+    #   ③ NEW 侧实物改掉（文件被删/改名）⇒ `_need_path()` 必须报红。
+    _n1 = readme.replace('scripts resolve their inputs through the shared root',
+                         'scripts resolve their inputs via the shared root', 1)
+    _n1f = _run_slots(_n1, SLOTS)[1]
+    print('  [自测] NEG-1（OLD 侧锚文本改错必须报红）：%s' % ('PASS' if _n1f else 'FAIL'))
+    for _m in _n1f[:1]:
+        print('     %s' % _m)
+    _n2 = re.sub(r'(?<=1\. \*\*)\d+(?=\*\* scripts resolve)', '12345678', readme, count=1)
+    _n2f = _run_slots(_n2, SLOTS)[1]
+    print('  [自测] NEG-2（OLD 侧数字位形状改错必须报红）：%s' % ('PASS' if _n2f else 'FAIL'))
+    for _m in _n2f[:1]:
+        print('     %s' % _m)
+    _f3 = []
+    _need_path('code/analysis/__negtest_missing__.py', fails=_f3)
+    print('  [自测] NEG-3（NEW 侧实物改掉必须报红）：%s' % ('PASS' if _f3 else 'FAIL'))
+    for _m in _f3[:1]:
+        print('     %s' % _m)
+    if _POS and len(_NEG) == len(_PROBES) and not _RETHIT and _n1f and _n2f and _f3:
         print('  ⇒ STALE_SELFTEST_PASS')
     else:
-        FAILS.append('持久陈旧串断言的自测未通过（正例=%s / 负例 %d/%d / 退役正例=%s）'
-                     % (_POS, len(_NEG), len(_PROBES), 'PASS' if not _RETHIT else 'FAIL'))
+        FAILS.append('持久陈旧串/槽位断言的自测未通过（正例=%s / 负例 %d/%d / 退役正例=%s / '
+                     'NEG-1=%s / NEG-2=%s / NEG-3=%s）'
+                     % (_POS, len(_NEG), len(_PROBES), 'PASS' if not _RETHIT else 'FAIL',
+                        bool(_n1f), bool(_n2f), bool(_f3)))
 
 print('\n%s' % ('=' * 96))
 if FAILS:
@@ -584,7 +699,8 @@ if FAILS:
     for f in FAILS:
         print('   - %s' % f)
     sys.exit(1)
-print('全部断言通过；README 替换 %d 处' % len(plan))
+print('全部断言通过；README 槽位 %d 条（本轮待同步 %d 处 / 已一致 %d 处）'
+      % (len(plan), len(_SYNCS), len(_NODRIFT)))
 if not APPLY:
     print('（DRY-RUN：未写盘；加 --apply 才写）')
     sys.exit(0)

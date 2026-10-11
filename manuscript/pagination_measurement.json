@@ -4,7 +4,7 @@
   "authority": ".docx 是官方唯一接受的交付件（PR L573），故以它为准；RTF 代理见 measurement_pr_layout.json",
   "inputs": {
     "docx": "D:\\deepseek\\PaperB\\PaperB_英文稿_PR.docx",
-    "docx_md5": "1e938031599b7a471fe3429309d372e0",
+    "docx_md5": "cd8d26ab1ffb0b45cec97876a90574b8",
     "markdown": "D:\\deepseek\\PaperB\\PaperB_英文稿_PR_20260919.md",
     "markdown_md5": "0aa4506850bdebd701079207020f814b"
   },

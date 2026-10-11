@@ -12,7 +12,7 @@
 ## 0 一句话结论
 
 §M.43 原先写这两个旋钮 *"neither can be driven here — their weights are not on this machine — so they are
-reported as **not measured**"*。本轮把**两个都驱动了**（同一批 182 张 ShanghaiTech-A、整幅、无平铺、
+reported as **not measured**"*。本次把**两个都驱动了**（同一批 182 张 ShanghaiTech-A、整幅、无平铺、
 同一起服配置），**并如实报告两行都没有落座**：detector 是**地板效应**（零样本 COCO 在每个档位只回收标注计数的
 **1–6%**，五档 span 仅 **4.60 pp**），density 的响应**随密度模型换号**（官方 DM-Count 五档 span **13.71 pp** 且**全程负**；
 同一把尺换 **CSRNet** 则 **668.92 pp** 且从 1.25 档起**转正**）⇒ **该旋钮的响应是「旋钮 × 模型」的属性，不是旋钮单独的属性**。

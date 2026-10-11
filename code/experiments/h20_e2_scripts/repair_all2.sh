@@ -31,7 +31,7 @@ for rnd in 1 2 3; do
   say "=== 第 $rnd 轮 ==="
   check "$A8_ID" "$A8_DIR"; A8RC=$?
   check "$M72_ID" "$M72_DIR"; M72RC=$?
-  say "  本轮结论：AWQ-8bit rc=$A8RC，72B rc=$M72RC（0=尺寸全对）"
+  say "  本次结论：AWQ-8bit rc=$A8RC，72B rc=$M72RC（0=尺寸全对）"
   if [ "$A8RC" = "0" ] && [ "$M72RC" = "0" ]; then
     say "两者尺寸全部正确，补齐完成"
     break

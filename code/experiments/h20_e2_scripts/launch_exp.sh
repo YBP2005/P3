@@ -1,5 +1,5 @@
 #!/bin/bash
-# 启动实验（先确保日志目录存在 —— 上一版就死在重定向上）
+# 启动实验（先确保日志目录存在 —— 旧实现就死在重定向上）
 mkdir -p /root/logs /root/e1_results /root/e1_results_nonzero
 if [ -f /root/exp.pid ] && kill -0 "$(cat /root/exp.pid)" 2>/dev/null; then
   echo "exp.sh 已在运行 pid=$(cat /root/exp.pid)"; exit 0

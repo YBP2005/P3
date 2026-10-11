@@ -110,7 +110,7 @@ def build():
         a('| %s | %d/%d | %.4f | %.3f | yes | **FAIL** |' % (label, v[0], v[1], v[2], v[3]))
     a('')
     a('Both readings are released: the unrepaired one as `results/*_as_shipped.csv` and')
-    a('`analyze_a57.py.bak_before_D1D2`, the repaired one as `results/*.csv` and `analyze_a57.py`.')
+    a('`analyze_a57_prefix.py`, the repaired one as `results/*.csv` and `analyze_a57.py`.')
     a('The pre-registered reading is the one the criterion is judged against.')
     a('')
     a('## 4 Self-proof of the repair')

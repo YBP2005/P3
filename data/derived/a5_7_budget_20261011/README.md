@@ -14,7 +14,7 @@ Reported in the supplementary material at **M.51**.
 | `render_a57.py` | renders the new synthetic domain from the frozen seed |
 | `run_a57.sh` | the orchestration: one independent service start per `(alias, knob, level, start)` |
 | `analyze_a57.py` | the analyzer, **with the two defects of §"Analyzer repair" repaired** |
-| `analyze_a57.py.bak_before_D1D2` | the analyzer exactly as first shipped, kept so the unrepaired reading is checkable |
+| `analyze_a57_prefix.py` | the analyzer exactly as first shipped, kept so the unrepaired reading is checkable |
 | `selftest_after_fix.txt` | the repair's self-proof: the four printed reference readings, reproduced bit for bit |
 | `reproduce_a57.py` | a **second, independent** implementation that re-derives the readings from `raw/` alone |
 | `reproduce_a57.out.txt` | that implementation's output, including the unrepaired comparison reading |
@@ -118,7 +118,7 @@ the file through the repaired code and reproduces the four published readings **
 | cost ceiling only | **17** | **0.9275** | **1.000** |
 | error budget only | **16** | **0.8292** | **0.477** |
 
-The pre-fix analyzer is released alongside as `analyze_a57.py.bak_before_D1D2` so the unrepaired reading
+The pre-fix analyzer is released alongside as `analyze_a57_prefix.py` so the unrepaired reading
 stays checkable.
 
 ## Readings

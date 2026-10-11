@@ -59,7 +59,7 @@ with **no criterion relaxed**. The unrepaired numbers:
 | pre-registered secondary `(0.25, 4.0)` | 6/6 | 0.7714 | 0.625 | yes | **FAIL** |
 
 Both readings are released: the unrepaired one as `results/*_as_shipped.csv` and
-`analyze_a57.py.bak_before_D1D2`, the repaired one as `results/*.csv` and `analyze_a57.py`.
+`analyze_a57_prefix.py`, the repaired one as `results/*.csv` and `analyze_a57.py`.
 The pre-registered reading is the one the criterion is judged against.
 
 ## 4 Self-proof of the repair

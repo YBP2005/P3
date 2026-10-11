@@ -6,7 +6,7 @@
 没有一个是手写的（本项目纪律：数字能算就不要抄）：
 
   ① `data/derived/a5_2_a800/A52_b0_<contract>_s<k>.csv`（既有 18 格）＋
-     `data/derived/a52_ext/res/A52_b1_<contract>_s<k>.csv`（本轮 9 格）—— 27 个逐 item 记录；
+     `data/derived/a52_ext/res/A52_b1_<contract>_s<k>.csv`（本次 9 格）—— 27 个逐 item 记录；
      逐格行数、`parse_ok`、`http_err`、零格、单请求时延分位、按 count 档/按构建的**答对率**，
      全部用**随包分析器**里的同一个响应定义（`a52_analyze.py::is_correct`，TOL_ABS=1 / TOL_REL=0.05）重算。
   ② `data/derived/a52_ext/analysis/a52_b1.runner.log` —— 编排器全日志（起服次数、每次收服后

@@ -89,7 +89,7 @@ def main():
                caliber='raw-match（与 fsc_res_analyze.py / a5_judge.cls() 同源）',
                per_start={}, across_starts={}, history={}, headline=[])
 
-    # ── 本轮 18 次起服 ────────────────────────────────────────────────────
+    # ── 本次 18 次起服 ────────────────────────────────────────────────────
     for b in BUILDS:
         for ctx in CTXS:
             for k in STARTS:
@@ -130,7 +130,7 @@ def main():
     print('■ S1 服务栈对照：`--max-model-len` 4096 vs 8192（每格 3 次全新起服；同 300 图 / 同 384 px / 同探针）')
     print('=' * 118)
     print('%-26s %-14s %-22s %-22s %-16s %-16s' % (
-        '构建', '臂', '本轮 4096（均值[极差]）', '本轮 8192（均值[极差]）', '冻结面板(4096)', 'E1列(8192)'))
+        '构建', '臂', '本次 4096（均值[极差]）', '本次 8192（均值[极差]）', '冻结面板(4096)', 'E1列(8192)'))
     for b in BUILDS:
         for arm in ARMS:
             a4 = out['across_starts'].get('%s|4096|%s' % (b, arm))
@@ -147,7 +147,7 @@ def main():
     for ctx in CTXS:
         x = out['across_starts'].get('Phi-3.5-vision-instruct|%s|enumAbstain' % ctx)
         if x:
-            print('  本轮 ctx=%s：均值 %5.1f%%  三次 %s  极差 %.1f pp'
+            print('  本次 ctx=%s：均值 %5.1f%%  三次 %s  极差 %.1f pp'
                   % (ctx, x['abstain'], x['abstain_vals'], x['abstain_range'][1] - x['abstain_range'][0]))
     h4 = out['history'].get('frozen_panel_ml4096|Phi-3.5-vision-instruct|enumAbstain')
     h8 = out['history'].get('e1_sweep384_ml8192|Phi-3.5-vision-instruct|enumAbstain')

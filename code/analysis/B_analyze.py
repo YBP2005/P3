@@ -8,7 +8,7 @@ B0 已按预注册判据 FAIL，并按冻结件降级执行（英中同工件对
 
 输入（全部只读）
   · analysis/B_res_20260928/MD5SUMS_B.txt                66 行清单（md5 + 相对路径 + 字节数）
-  · analysis/B_res_20260928/start{1,2,3}/<ds>__<arm>.csv 60 个（本轮 4-bit，gt 列留空）
+  · analysis/B_res_20260928/start{1,2,3}/<ds>__<arm>.csv 60 个（本次 4-bit，gt 列留空）
   · analysis/g2_neutral0/_g2_result.json                  BF16 当年 20 格汇总（口径校验用）
   · analysis/g2_neutral0/<ds>__<arm>.csv                  BF16 逐项 20 个
   · analysis/g2_neutral0/pool/vlm_<ds>_base_whole.csv     gt 来源（= A800 /root/dense_results/，md5 已核对）
@@ -169,7 +169,7 @@ def sums_from(rows, gmap):
 
 # ---------------------------------------------------------------- assertions
 def verify_manifest():
-    """断言行数与 md5/字节数与 MD5SUMS_B.txt 逐条一致，且 60 个本轮文件齐。"""
+    """断言行数与 md5/字节数与 MD5SUMS_B.txt 逐条一致，且 60 个本次文件齐。"""
     with io.open(MANIFEST, encoding='utf-8') as f:
         lines = [ln.strip() for ln in f if ln.strip()]
     assert len(lines) == 66, 'MD5SUMS_B.txt 行数 %d != 66' % len(lines)
@@ -201,7 +201,7 @@ def verify_manifest():
                 assert all((r['gt'] or '').strip() == '' for r in rows), '%s 的 gt 列非空（设计上应为空）' % p
                 items = [r['item'] for r in rows]
                 assert len(set(items)) == len(items), '%s 有重复 item' % p
-    # 归属：b0_* 与 __w2/__w8b 不在本轮分析
+    # 归属：b0_* 与 __w2/__w8b 不在本次分析
     return {'manifest_lines': len(lines), 'start_files': len(start_named),
             'md5_all_ok': True, 'rows_ok': True}
 
@@ -474,7 +474,7 @@ def run():
     ann['ucf_item_set_mismatch'] = {
         'bf16_ok': len(bset), 'pool': len(gmap['ucf']),
         'note': 'BF16 的 ucf 有 127/334 项 HTTP 400（parse_ok==0），其 Δ 只在 207 项上算；'
-                '4-bit 本轮 334 项全有效（弃权 0）。下表把 4-bit 限制到同一 207 项复算——方向与结论不变。',
+                '4-bit 本次 334 项全有效（弃权 0）。下表把 4-bit 限制到同一 207 项复算——方向与结论不变。',
         'restricted_4bit': uc,
         'bf16_own': {'n': bf16_json['ucf|cn-base']['n'], 'delta_pp': B2['bf16']['ucf']['delta_pp'],
                      'delta_ci_newcombe': B2['bf16']['ucf']['delta_ci_newcombe']}}
@@ -646,7 +646,7 @@ def tables():
     d = json.load(io.open(OUT_JSON, encoding='utf-8'))
     L = []
     A = L.append
-    A('### 主表：答零率 %（pred==0 / parse_ok==1 的项）；弃权 = parse_ok==0，本轮全表为 0')
+    A('### 主表：答零率 %（pred==0 / parse_ok==1 的项）；弃权 = parse_ok==0，本次全表为 0')
     A('')
     A('| 域 | 臂 | start1 | start2 | start3 | 合并(3×) | BF16 |')
     A('|---|---|---|---|---|---|---|')

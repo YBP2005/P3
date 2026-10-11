@@ -1,21 +1,21 @@
 # -*- coding: utf-8 -*-
-"""theme_decompose.py — 把新颖度评分里 D1 类意见**按主题**分解，用于跨轮对比。
+"""theme_decompose.py — 把新颖度评分里 D1 类意见**按主题**分解，用于跨批对比。
 
-为什么要有这个脚本：上一版的主题表是人工目测归类出来的，跨轮再目测一次就会得到
+为什么要有这个脚本：旧实现的主题表是人工目测归类出来的，跨批再目测一次就会得到
 "看起来在缩小的主题"——这正是本项目已经吃过一次的亏（自证式比较）。所以这里把
 分类口径**写成显式关键词规则**，对第 4、5 两轮**同一份代码**执行，并且：
   · 每条意见都必须被归类；无法归类 → UNCLASSIFIED 并显式报出（不静默丢弃）；
   · 命中多个主题时按**优先级顺序**取唯一归属，并把命中的关键词一起打印，便于人工复核；
   · 主题总额必须等于 D1 意见总额（脚本内 assert）。
 
-主题定义（与上一版记录中的 A–F 同名，但口径以本文件为准）：
+主题定义（与旧实现记录中的 A–F 同名，但口径以本文件为准）：
   D_IDENTITIES   命题/对偶口径"只是算术恒等式、只是记账"——即 D 主题
   F_SPECTRUM_NEG 方向谱/量级律撤回/机制未解释/阴性结果——即 F 主题
   E_PROXY        可见性代理、无标注替代、检测框不可恢复
   A_COVERAGE     语料谱系单一、缺闭源/少样本族、构建特异性（外推性问题）
   C_RELABEL      "已知现象的重分解/近同义反复/提示消融"（不含"只是算术"）
   B_INCREMENT    未给出新的计数专门机理/原理（与 E、C 都不重叠时）
-用法：python theme_decompose.py R4 R5   （参数为轮次号，读 novelty_paperB<n>_result.json）
+用法：python theme_decompose.py R4 R5   （参数为批次号，读 novelty_paperB<n>_result.json）
 """
 
 
@@ -40,8 +40,8 @@ D = NR('analysis', 'model_review')
 MODELS = ['dsflash', 'dspro', 'grok46', 'glm53flash']
 
 # 顺序即优先级：越具体的主题越靠前。
-# ★ 2026-09-23 修正（本轮自查抓到，必须记下来）：原先把 D_IDENTITIES 排在 F 之前，
-#   结果 上一版那条意见（原文 "Directional-span spectrum is implementation×domain×protocol,
+# ★ 2026-09-23 修正（本次自查抓到，必须记下来）：原先把 D_IDENTITIES 排在 F 之前，
+#   结果 旧实现那条意见（原文 "Directional-span spectrum is implementation×domain×protocol,
 #   with magnitude law withdrawn (Prop. 3) … Would need a portable predictor of span size"）
 #   因为句中出现了 "(Prop. 3)" 而被归到 D，**掩盖了"谱系投诉仍在"这一事实**，
 #   从而把"F 主题下降"算得过大（−28.0 → −15.0）。这类"分类器优先级制造出来的结论"

@@ -193,7 +193,7 @@ deviation
 $$\rho \;=\; \frac{\overline{\text{pred}} - \overline{\text{gt}}}{\overline{\text{gt}}}
 \quad\text{(in percent, signed),}$$
 
-Two uncertainty quantities are used here and they are **not interchangeable**: the **across-repeat** band of
+Two uncertainty quantities are used here and are **not interchangeable**: the **across-repeat** band of
 §A.3 governs cross-model and cross-configuration comparisons, whereas a per-cell interval resamples images
 and is therefore a **lower bound** (§A.2). The quantity has **two sub-conventions that must be labelled
 separately** — the **pooled ratio** and the
@@ -380,12 +380,12 @@ Figures **1–4** and Tables **1–6** appear where their claim is stated (**App
 ### 4.1 Reachability of the zero crossing, and its domain conditionality
 
 Detection is the only family here in which a **single scalar** moves the signed direction continuously
-across zero: on VisDrone the in-domain detector's pooled $\rho$ — **person-matched** throughout this
-section — travels from **+109.4%** to **−86.3%**, while the same architecture with COCO-pretrained
-weights, on the same domain, item set and convention, covers only **16.4 / 30.3 / 55.5 pp** at the same three
-input sizes 640 / 1024 / 1536 px, against **95.9 / 159.3 / 195.7 pp** for the in-domain weights (three levels),
-and never crosses (all-detections, same eight-level grid: **63.1–156.0 pp** for the zero-shot
-ladder and **352.8–508.3 pp** for the in-domain one; Appendix F.10). (Appendix M.37)
+across zero. Two calibers are reported side by side. Under **person-matched**, used throughout this
+section, the in-domain detector's pooled $\rho$ travels from **+109.4%** to **−86.3%**, while the same
+architecture with COCO-pretrained weights, on the same domain, item set and convention, covers only
+**16.4 / 30.3 / 55.5 pp** on a three-level grid (640 / 1024 / 1536 px) against **95.9 / 159.3 / 195.7 pp**
+and never crosses. Under **all-detections** on the same eight-level grid, the zero-shot ladder covers
+**63.1–156.0 pp** while the in-domain one covers **352.8–508.3 pp** (Appendix F.10, M.37).
 
 ### 4.2 Refinement by density binning: the bound holds, but it is a per-tile bound
 

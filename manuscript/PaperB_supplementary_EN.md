@@ -4,18 +4,13 @@
 counting with vision-language models**
 
 > This file contains the methodological detail whose conclusions are stated in the main text.
-> **Appendix Z** states the move convention, where the review requests below came from, and the
-> corrections log.
+> **Appendix Z** states the move convention and the corrections log.
 
 **Where things are.** **A** conventions, metrics and statistical protocol; **B** abstention; **C** legibility;
 **D** datasets; **E** detection ladders; **F** the spectrum, its deflations and intervals; **G–I** corpus
 construction and hygiene; **J** proofs (Propositions 4–8); **K** detector-failure controls; **L**
 per-property numbers; **M** hypotheses, pre-registered criteria and census grids; **Z** provenance and
 corrections.
-
-> **Where a review request came from** — the generative-AI declaration it belongs to, and the fact that
-> **no review by this journal has taken place and the manuscript has not been submitted before** — is
-> stated once in **Appendix Z**.
 
 ---
 
@@ -1995,7 +1990,9 @@ unchanged relative to the per-call caliber in **6 of 6** (the non-monotone glm-4
 makes each implementation's β **more** negative rather than less (×1.12–2.66; mean +57%, median +41%).
 **C4 reads FAIL in both calibers, for 6 of 6 implementations and for the pooled fit**, so the disposition does
 not depend on which caliber is read; the disagreement rate itself is reported as a limit rather than smoothed
-away.
+away. **Whether the three repeats were routed to distinct service sessions was not recorded**, so this rate
+measures repetition consistency and is **not** a cross-session estimate; closing that would need a repeat
+design with the session assignment itself logged.
 
 **One restrained robustness check.** Each row also carries the endpoint that served it and the prompt-token
 count it was billed for, so the same fit can be run inside clusters of those two fields. Four of the six
@@ -2594,10 +2591,13 @@ in **none** of the four. They are not two readings of one quantity.
 ### M.19 The cross-family grid (E3): does the contract result belong to the contract, or to the lineage?
 
 §M.18 measures the contract effect inside a fixed serving stack, but every configuration in it descends
-from two lineages (Qwen and InternVL). E3 asks the narrower question the reviewers posed: **given an
+from two lineages (Qwen and InternVL). E3 asks the narrower question: **given an
 abstention token, is the answered zero removed in families we have never measured?** Design, criteria and
 instrument were fixed **before** the runs (criteria frozen by md5 `eaeafbc4ad4602e0a0f092d1306aea3c`), and
 both outcomes — cross-family replication or a reported family dependence — were publishable in advance.
+Work that **raises** counting ability itself proceeds on a different axis, by decomposing a large count
+into sub-counts (LVLM-COUNT; Qharabagh, Ghofrani and Fountoulakis, `arXiv:2412.00686`, 2024), whereas the
+quantity measured here is the **signed direction** of the error.
 
 #### M.19.1 Design, and what is held fixed
 
@@ -3269,7 +3269,7 @@ family-level rather than precision-level reading, without measuring it. The samp
 instruction** rather than the prohibition of zero: adding "it may be 0; if your judgement is 0, answer 0"
 raised the zero rate by up to **+86.5 pp**, while prohibiting 0 barely moved it. Two questions follow that
 the grid cannot answer — does the mechanism hold on the **real corpus** in the headline configurations, and
-does it survive a change of **prompt language**? A reviewer asked for exactly this closure.
+does it survive a change of **prompt language**? The measurements below close exactly this gap.
 
 **Design, frozen before the run** (`g_criteria_frozen.json`, md5 `d95d7466b482f575dc781d152e5ddf23`): five
 arms on the **same item sets as the corpus pools**, one serving session per arm, the frozen probe of §M.19
@@ -3762,7 +3762,7 @@ artefact is left byte-unchanged, so both readings remain available.
 |---|---|---|
 | Priority-pipeline agreement, **seven** conventions | **3,600** items | §M.21.9(e), above |
 | Zero / non-zero boundary identity, **seven** conventions | **95,160** rows | §M.21.9(e), above |
-| Prompt-experiment triple reading | **2,496** rows (832 items × 3 arms) | §M.6 (ledger §M.32) |
+| Prompt-experiment triple reading | **2,496** rows (832 items × 3 arms) | §M.6 (§M.32) |
 | Refusal token versus `pred` | **55,351** stored rows | §M.31.6 |
 | **Total audited rows** | **156,607** | |
 
@@ -3901,7 +3901,7 @@ sits beside is the abstention channel's coverage, which under the exhaustive two
 
 With `δ* = (q_C − θ)/(α − θ)`, **gemma-3-12b returns δ\* = 1.0125 > 1**: even at the largest α the construction permits, the entered $q_C$ cannot be produced. **These plug-in inputs are incompatible on that build; because the $q_C$ column mixes corpus and constructed-mixture sources, this is not a corpus-level transfer test** — it is a **plug-in incompatibility on these pools, without a sampling-based transfer guarantee**. For reference, the frozen construction's own (designed, not measured) parameters return **δ\* = 0.5697 / 0.5756 / 0.5703**; the last of these **is** the construction's nominal base rate, which is the arithmetic reason the identity of §M.21.10(a) is a gate that cannot fail.
 
-The reverse direction is equally tight: at the construction's π the pool surface reproduces the corpus rate to **∓0.10–0.16 pp**. **The coverage of the abstention channel is mis-stated if its lower endpoint is written as $1/(\kappa+1)$.** $\kappa$ is the ratio of answered zeros to textual refusals, so the missed-refusal share is $f=1/(\kappa+1)$ and the answered-zero channel therefore captures **at most** $\kappa/(\kappa+1)$ of the abstentions — **with equality only if the two channels are exhaustive and pure**, since any third, non-verbalised zero channel can only lower it; $1/(\kappa+1)$ bounds $f$, not the coverage, and differs from the correct floor by a factor of $\kappa$ — on a corpus with **200 items, 100 answered zeros, 1 textual refusal and 99 ordinary answers** ($\kappa=100$) the true coverage is $100/101=\mathbf{99.01\%}$, and the printed "interval" $[1/101,0.5]=[0.99\%,50\%]$ **does not contain the truth**. Under the exhaustive two-channel assumption that coverage is exactly $\kappa/(\kappa+1)$ (Proposition 7); the item-denominated answered-zero rate $q_C$ has a different denominator — all items, not abstentions — and does not bound that conditional coverage without additional prevalence information, so no interval is claimed for it here. What does follow is that this quantity bounds the abstention channel's **coverage**, not its **precision**: $\kappa$ gives the precision **no lower bound at all** (§M.21), and the abstention-only arm (`â = b̂ = 0`) leaves the precision at the trivial $[0,1]$. The identification argument itself is not new as a **method**: Manski, C. F. (2021), *Epidemiology* 32(2), DOI `10.1097/EDE.0000000000001309`, already shows that a positive or negative predictive value is bounded only under a bound on prevalence, the parallel quantification literature supplies estimators for exactly this unidentified prevalence —
+At the construction's π the pool surface closes the constructed-pool rate under matched inputs to **∓0.10–0.16 pp**. **The coverage of the abstention channel is mis-stated if its lower endpoint is written as $1/(\kappa+1)$.** $\kappa$ is the ratio of answered zeros to textual refusals, so the missed-refusal share is $f=1/(\kappa+1)$ and the answered-zero channel therefore captures **at most** $\kappa/(\kappa+1)$ of the abstentions — **with equality only if the two channels are exhaustive and pure**, since any third, non-verbalised zero channel can only lower it; $1/(\kappa+1)$ bounds $f$, not the coverage, and differs from the correct floor by a factor of $\kappa$ — on a corpus with **200 items, 100 answered zeros, 1 textual refusal and 99 ordinary answers** ($\kappa=100$) the true coverage is $100/101=\mathbf{99.01\%}$, and the printed "interval" $[1/101,0.5]=[0.99\%,50\%]$ **does not contain the truth**. Under the exhaustive two-channel assumption that coverage is exactly $\kappa/(\kappa+1)$ (Proposition 7); the item-denominated answered-zero rate $q_C$ has a different denominator — all items, not abstentions — and does not bound that conditional coverage without additional prevalence information, so no interval is claimed for it here. What does follow is that this quantity bounds the abstention channel's **coverage**, not its **precision**: $\kappa$ gives the precision **no lower bound at all** (§M.21), and the abstention-only arm (`â = b̂ = 0`) leaves the precision at the trivial $[0,1]$. The identification argument itself is not new as a **method**: Manski, C. F. (2021), *Epidemiology* 32(2), DOI `10.1097/EDE.0000000000001309`, already shows that a positive or negative predictive value is bounded only under a bound on prevalence, the parallel quantification literature supplies estimators for exactly this unidentified prevalence —
 Gonzalez, Castano, Chawla and del Coz (2017), *A Review on Quantification Learning*, ACM Computing
 Surveys 50:5 — and the partial-identification framing that fixes what stays unidentified without a bound
 on it is the one the evaluation literature has since adopted; so what is added here is the **application** to this construction — the coverage identification just given, and the trivialisation of the precision to $[0,1]$ by the abstention-only arm — and not the identifiability result, which we cite rather than claim.
@@ -4933,7 +4933,7 @@ calibers. Under a dimensionless per-item log ratio ($\operatorname{median}(\ln(\
 \ln(\text{gt}+1))$) the Spearman against the $\rho$ ordering falls to **0.629**, and under a per-item rank
 correlation — which is invariant under **any** monotone rescaling of either variable, and is therefore the
 strongest form of the "the span is merely a scale artefact" objection — to **0.595**; the top-ranked unit
-changes under both. The criterion a reviewer set for dismissing that objection was Spearman above 0.85, so
+changes under both. The criterion we adopt for dismissing that objection is Spearman above 0.85, so
 **the objection is not dismissed in this form**. It is also **not** an artefact of absolute magnitude:
 pooling and per-item averaging agree at **0.965**, so what moves the ordering is the **functional form of
 the error measure**, not the aggregation. We therefore state the ordering as an ordering **under the pooled
@@ -4941,7 +4941,7 @@ relative deviation**, the caliber in which every number in this paper is reporte
 units, the 34 without the retired reproductions, levels ≥ 4, and both restrictions together — all remain
 below 0.85 (**0.580–0.754**), and the result is insensitive to whether each level's own item set or the
 common intersection is used (**0.632 / 0.594**). Two related controls: against a **GT-shape-matched** subset
-the ordering is unchanged (Spearman **0.983**, a drop of 0.017 against the reviewer's 0.2 threshold), but an
+the ordering is unchanged (Spearman **0.983**, a drop of 0.017 against the 0.2 threshold), but an
 **absolute** ground-truth-profile match is **not constructible** from these records — the units'
 ground-truth supports are nearly disjoint and the common profile is **9** items, below our own 20-item
 eligibility floor — so that branch is left open rather than tested. Under a signed absolute count error the
@@ -5000,8 +5000,14 @@ is worst **between** groups (group-level ρ **0.393** for per-domain, **0.486** 
 "compresses" is read as *reduces the median span*, then a single global affine does compress it, by **6.2×**
 (83.0 → 13.4 pp), while holding the ordering at 0.995 with 200 of 200 splits above 0.9 — which is
 Proposition 5 itself. What it cannot do is **make two units' spans mutually comparable**: one factor maps
-22.7× to 22.3×. Our claim is therefore that **no deployable family equalises the magnitudes while preserving
-the ordering**, not that none compresses them.
+22.7× to 22.3×. Our claim is therefore scoped to what this table measures: **among the map shapes and
+granularities listed here, under this held-out-third fold design, none equalises the magnitudes while
+preserving the ordering** — it is not that none compresses them, and it is not a claim about calibration
+families we did not fit. **Two such families are not evaluated here and we do not claim they fail**:
+**stratified** (per-stratum) calibration and **partially pooled** (hierarchical/shrinkage) calibration,
+which sit between the shared and the per-unit ends of the ladder. The **calibration-data budget** is likewise
+the labelled-sample requirement printed per row in the `deployable` column above, not a swept budget: we do
+not vary that budget, so no row states what a smaller or larger labelled sample would do.
 
 **Two limits of this table, and one defect it exposed.** Conformal calibration is **not scorable here** — it
 emits intervals, whereas this table's estimand is a point statistic, and its nearest point-map relative is
@@ -5442,7 +5448,7 @@ intervals are not read as covering the family-level and group-selection continge
 ### M.41 Sensitivity to image resolution on FSC-147: 256, 384 and 768 pixels
 
 The FSC-147 panel is re-run here at resolutions other than the one used for the main panel (provenance:
-Appendix Z). The request has a
+Appendix Z). The measurement has a
 factual precondition, which changes what can honestly be delivered.
 
 **The precondition.** The official release of FSC-147 contains the image set `images_384_VarV2`, whose 6,146
@@ -5599,7 +5605,7 @@ fails on any number that is not registered.*
 The ordering of §7.3 compares spans across knobs whose **travel** — the ratio between the loosest and the
 tightest admitted level — differs from knob to knob. Appendix F.10 normalises each span by its knob's
 relative travel and the ordering survives, which leaves the alternative explanation *weakened but not
-excluded* (provenance: Appendix Z). A reviewer asked for the direct test rather than the normalisation:
+excluded* (provenance: Appendix Z). We run the direct test rather than the normalisation:
 re-run one knob on levels whose relative travel is **matched** to another knob's, and watch whether the
 span follows the travel. Levels, comparison and criteria were fixed before the first call, and the runner
 asserted the frozen file's digest at start-up.
@@ -5650,11 +5656,11 @@ the analyser recomputes every number above and writes them to a frozen result fi
 
 ### M.43 The value named in an instruction, and a pre-registered equal-level rescan
 
-Two review requests share one question: is the §7.3 span, or its ordering, a property of the *levels* we
+Two further tests share one question: is the §7.3 span, or its ordering, a property of the *levels* we
 happened to choose? §M.19.13 had shown that the median answer tracks the value named in the instruction
 (ρ = +1.00), which raises the possibility that some of the span is that naming and not the knob. And the
 ordering evidence had never been re-run on an **independently pre-registered, equal-level** set, which is
-the design precondition a reviewer said was missing. Both were run on the same 182-image dense pool, in
+the design precondition that was missing. Both were run on the same 182-image dense pool, in
 one serving session, with the criteria frozen first.
 
 **The anchor audit, and what "neutralised" can mean.** Scanning the six knobs' instructions for digits
@@ -5790,10 +5796,10 @@ computed, is released as `data/derived/p2e_a800/csrsta_ladder_st_a.csv`.*
 
 ### M.44 Recovering a known mixture proportion: an identity, its resolution, and the transfer that fails
 
-Four reviewers asked for the experiment that would close the precision loop: mix the verified true-zero
+The experiment that closes the precision loop is to mix the verified true-zero
 windows of §M.38 with verified non-empty dense images in a **known** proportion, so that the true
-proportion is known by construction, and check whether it is recovered. The request assumed new calls and
-new annotation. Neither is needed, and the reason changes what the result can mean.
+proportion is known by construction, and check whether it is recovered. That experiment is usually assumed
+to need new calls and new annotation. Neither is needed, and the reason changes what the result can mean.
 
 **The mixture is a weighted union of records already in hand.** Both sides of the mixture were measured
 per item, per build, per service start and per language: **306** verified empty windows (windows over
@@ -5812,11 +5818,11 @@ It does: across all 24 (build × start × language) cells the difference is **ze
 read as validation.
 
 **What the design can and cannot resolve.** Propagating the mixture's own binomial interval gives a 95%
-half-width on π̂ of **10.2 to 16.4 pp**, wider than the **7 pp** tolerance the request specifies in
+half-width on π̂ of **10.2 to 16.4 pp**, wider than the **7 pp** tolerance it specifies in
 **24 of 24** cells. Even with no systematic bias whatever, this design at n = 535 cannot resolve the
 criterion it was given — reaching the 7 pp tolerance would take roughly **1,140–2,940** items, since the half-width scales as $n^{-1/2}$ (from the 10.2 and 16.4 pp half-widths at n = 535).
 
-**The transfer test, which can fail, and does.** The failure mode the request names — "if p does not
+**The transfer test, which can fail, and does.** The failure mode it names — "if p does not
 transfer across domains the error reaches 54.7 pp" — is a **transfer** property, so we ran it as one:
 fit (â, b̂) on build A, apply to build B's own mixture. Over the **72** ordered pairs the error has median
 **10.80 pp** and maximum **35.23 pp**, and **40 of 72 (55.6%)** exceed the 7 pp tolerance. The structure
@@ -5837,7 +5843,8 @@ rate, interval and transfer error above is recomputed from those records by the 
 
 ### M.45 The ordering under pre-registered statistics, and under a common error budget
 
-Two requests press the §7.3 ordering from two sides: is it an artefact of *which* levels were compared, and
+Two further tests press the §7.3 ordering from two sides: is it an artefact of *which* levels were compared,
+and
 of *how much damage* each knob's extreme level is allowed to do? Both are answered from records that are
 already published — no new calls, no new annotation — and both designs were frozen before any statistic was
 computed.
@@ -6082,8 +6089,8 @@ answered-zero rates vary by at most **1.5 pp**. No reading below rests on choosi
 
 ### M.47 Serving-stack factors, and the value named in the instruction, on real images
 
-**(a) Which serving factor makes the answered zero move?** A reviewer proposed that the answered-zero rate
-is a property of the **serving configuration** rather than of the model, and named four candidate factors —
+**(a) Which serving factor makes the answered zero move?** We test whether the answered-zero rate
+is a property of the **serving configuration** rather than of the model, over four candidate factors —
 weight precision, context limit, system message, concurrency — with a decision rule fixed in advance: *if
 any single factor alone moves the rate by more than 30 pp, the answered zero must be reported as a serving
 configuration property*. On the anchor build, one card, reference configuration = 8,192-token context, no
@@ -6124,7 +6131,7 @@ as a floor rather than as a value to report.
 
 ### M.48 The penultimate layer, and whether the composition of a mixture matters
 
-**(a) The penultimate layer: refusal, not collapse.** A reviewer asked for the $L_2$ norm of the
+**(a) The penultimate layer: refusal, not collapse.** We measure the $L_2$ norm of the
 penultimate-layer representation, to separate *active refusal* from *representation collapse*. The probe
 reads the hidden states at the position that predicts the first generated token, for all 65 tensors (the 64-layer build), on 135 items of
 the same stratum as §M.19.14, under three arms.
@@ -6146,7 +6153,7 @@ Both arms keep the magnitude within **2.4%** of the base arm and the direction w
 on the 76 items where the naming arm answers zero and the base arm does not, the ratio is still 0.9884. The
 verdict under the pre-registered thresholds is therefore **active refusal, not collapse**: the
 representation does not lose its magnitude, it changes where it points. That is §M.19.14's "a change of
-direction rather than of magnitude" confirmed at the layer the reviewer named.
+direction rather than of magnitude" confirmed at that layer.
 
 **(b) Does putting the two pools in one batch change anything?** The zero-call recovery of §M.44 treats a
 mixture as the weighted union of its parts, which is exact only if the two kinds of item do not interact.
@@ -6238,17 +6245,7 @@ with a one- to two-sentence conclusion and a pointer here, so each claim can be 
 rules and numbers. **Where the two disagree, the main text governs.** Section headings here name the
 main-text section each block belongs to.
 
-### Z.2 Where the review requests came from
-
-Where this file says that a reviewer or a review panel asked for a particular measurement (**F.11**,
-**M.31**, **M.39**–**M.48**, **M.24**), the request comes from the **multi-model simulated review**
-described in the manuscript's declaration of generative-AI use: a panel of large language models was
-asked to referee the manuscript, and we then answered the points it raised, including by running new
-measurements. **No review by this journal has taken place, and the manuscript has not been submitted
-before.** We state this because "the reviewers asked for" would otherwise be read as "this is a revised
-manuscript", which it is not.
-
-### Z.3 Corrections log
+### Z.2 Corrections log
 
 - **A guard threshold set below the platform's own repeat noise.** The probe of Appendix M.48(a)
   was first certified against a 5% itemwise tolerance, while the same build disagrees with itself

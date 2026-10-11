@@ -100,7 +100,7 @@ def work():
             rawfh.flush()
             done[0] += 1
             if done[0] % 25 == 0:
-                print('  本轮 %d/%d' % (done[0], N * REPS - len(res) + done[0]), flush=True)
+                print('  本次 %d/%d' % (done[0], N * REPS - len(res) + done[0]), flush=True)
 
 
 t0 = time.time()

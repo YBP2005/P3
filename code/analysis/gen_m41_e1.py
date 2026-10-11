@@ -104,7 +104,7 @@ print('  384 与冻结面板核对：%d 个 (构建,臂) 格子；最大 |Δzero
 
 DISP = {'InternVL3_5-8B': 'InternVL3.5-8B', 'Phi-3.5-vision-instruct': 'Phi-3.5-vision-instruct',
         # ★ 必须与 M.40/SYNC 用**同一套**论文名：漏了 gemma 就会在表里印出 `gemma3-12b`（文件名），
-        #   与全文其它处的 `gemma-3-12b` 不一致（本轮就是这么被独立核对脚本抓到的）。
+        #   与全文其它处的 `gemma-3-12b` 不一致（本次就是这么被独立核对脚本抓到的）。
         'gemma3-12b': 'gemma-3-12b', 'llava-onevision-qwen2-7b-ov': 'LLaVA-OneVision-7B',
         'Qwen3-VL-32B-Instruct': 'Qwen3-VL-32B-Instruct'}
 

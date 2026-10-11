@@ -35,7 +35,7 @@ Table 3 末列标题写 `abstention term, item-count convention`，而**实测**
 真正的"item-count 口径 S"（`1-w_i)/(1-w_i(1+rho_a,i))`，w_i = n_answered/n）印出来是
 86.8 / 80.0 / 84.4 / 87.6 —— **与表内那四个数完全不同**。
 ⇒ 本脚本**不改任何冻结件**，只如实记录：这一列是**未加权弃权率**，与它的标题不符
-（属既有登记项 P-12 的同类命名问题，不是新发现）。**本轮的四个 S（Table 3 的 S 列）不受影响。**
+（属既有登记项 P-12 的同类命名问题，不是新发现）。**本次的四个 S（Table 3 的 S 列）不受影响。**
 
 用法：
   python p3r4_zero_1_S_ci.py --selftest   # 阴性对照（不读语料）
@@ -252,7 +252,7 @@ def main():
     assert ok, '点估计未复现 Table 3 ⇒ 语料或口径变了，拒绝继续'
 
     # ── 自证 2：末列 = 未加权弃权率（不是 item-count 口径的 S）────────────────────
-    print('\n② 自证：Table 3 末列的**真实口径**（这是既有登记项，不是本轮新缺陷）')
+    print('\n② 自证：Table 3 末列的**真实口径**（这是既有登记项，不是本次新缺陷）')
     print('   %-16s %-14s %-14s %-14s' % ('domain', '末列印值', '未加权弃权率', 'item-count 口径 S'))
     for d in doms:
         m1 = abs(d['unweighted_abstention'] - d['printed_col']) <= 0.05
@@ -381,7 +381,7 @@ def main():
             'item_count_convention_S': {d['name']: d['S_item_convention'] for d in doms},
             'finding': '末列四个印值逐位等于**未加权弃权率**，不等于 item-count 口径的 S；'
                        '列标题与内容不符。属既有登记项（第 3 轮 P-12 的同类命名问题），'
-                       '**本轮不改任何冻结件**，只如实记录。Table 3 的 S 列（本轮对象）不受影响。',
+                       '**本次不改任何冻结件**，只如实记录。Table 3 的 S 列（本次对象）不受影响。',
         },
         caliber_consistency=dict(
             frozen_m37_31k4=got31, frozen_m37_36k3=got36,

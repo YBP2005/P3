@@ -78,7 +78,7 @@
   "analysis_discipline": {
     "no_peeking": "本件的判据与阈值写在**任何调用之前**；跑完后本件 md5 不再变。",
     "gt_source": "每个 item 的 gt 取自同域语料池 CSV 的 gt 列（不是本脚本写出的；本脚本的产物里 gt 留空，分析时按 item 连接）。",
-    "classification": "答零 / 拒答 / 未解析一律用冻结探针 `19e_probe_multi.py` 的 `parse()` 与 `a5_report.py::cls()` 同一口径；两套口径都给（本轮已知它们在**零/非零边界**上逐行一致）。",
+    "classification": "答零 / 拒答 / 未解析一律用冻结探针 `19e_probe_multi.py` 的 `parse()` 与 `a5_report.py::cls()` 同一口径；两套口径都给（本次已知它们在**零/非零边界**上逐行一致）。",
     "report_undefined": "$S$ 无定义的格**不得**填数、不得当 0、不得当 1。"
   }
 }

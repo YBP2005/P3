@@ -2,7 +2,7 @@
 """p3r4_zero_3_parse_all_csv.py —— P3 第 4 轮 ③：把 parse 判据从 654 份扩到**发布件全部 2,338 个 CSV**。
 
 ## 来源与授权
-本轮第三次复核（= 上一轮③ 类 E-10）：§M.21.9(e) 的巡检口径只覆盖 **654** 份文件
+本次第三次复核（= 上一轮③ 类 E-10）：§M.21.9(e) 的巡检口径只覆盖 **654** 份文件
 （E3 `merged` 228 + E2 `e1_*` 426……实测见下），而发布件 `data/derived/` 自述 **2,338** 个 CSV。
 预注册条款原话："把同一判据扫全发布件 2,338 个 CSV（他们扫 654），差集非空则给出 audited scope 覆盖率%。"
 
@@ -14,7 +14,7 @@
 判据 = 数这类行的条数（既有审计印 **0**）。本脚本把它扫到全部 2,338 件。
 
 ## 口径边界（必须写清，否则"2,338"这个数会被误读）
-* 2,338 = `repro_github/data/derived/` 下 `*.csv` 的**实测件数**（本轮实测，与 README 自述一致）。
+* 2,338 = `repro_github/data/derived/` 下 `*.csv` 的**实测件数**（本次实测，与 README 自述一致）。
 * 判据**只能作用于同时有 `raw` 与 `pred`（或 `parse_ok`）列的件**：没有 `raw`/`pred` 的件
   （池定义、计数表、汇总表、hidden-states 表）**在结构上不可评**，本脚本把它们单列，
   不混进分母。这与既有审计只扫三种探针产物是同一个边界，只是现在**显式计量**。
@@ -72,7 +72,7 @@ FROZEN_PARSERS = [
     RP('repro_github', 'code', 'experiments', '19e_probe_multi.py'),
     RP('analysis', 'work', '19e_probe_multi.py'),
 ]
-# 三个窄判据命中行的**逐条定位**（由本轮实测得到；脚本会断言文件/行/值都在，不写死结论）
+# 三个窄判据命中行的**逐条定位**（由本次实测得到；脚本会断言文件/行/值都在，不写死结论）
 HIT_LOCATIONS = [
     ('e3/nonzero/e1_llava-onevision-qwen2-7b-ov_st_a_permit.csv', 32),
     ('fsc_res/frozen384/fsc_llava-onevision-qwen2-7b-ov_enumAbstain.csv', 42),
@@ -108,7 +108,7 @@ def rowcheck(raw):
 
 
 def rowcheck_wide(raw):
-    """★ 宽口径（本轮新增，用于给窄判据**划边界**）：raw 同时含数字与拒答词，
+    """★ 宽口径（本次新增，用于给窄判据**划边界**）：raw 同时含数字与拒答词，
     **不论**数字在拒答词之前还是之后。窄判据只在"数字在前"时才判定会分歧；
     实测本语料里两者**恰好相同**（见读数），故窄判据并未漏掉任何行。"""
     low = (raw or '').lower()
@@ -273,7 +273,7 @@ def _split(rel):
     return rel.replace('/', os.sep).split(os.sep)
 
 
-# ★ 子口径（本轮实测新增）：把"**纯散文拒答**却仍被记成一个数"的行单独数出来。
+# ★ 子口径（本次实测新增）：把"**纯散文拒答**却仍被记成一个数"的行单独数出来。
 #   判据（写死）：① raw **不含**任何弃权词；② raw **不能让结构式 frozen_regex 命中**；
 #   ③ raw 里出现拒答措辞（"数不清"类）；④ 该行 `pred` **非空**（= first_int 把散文里的数当了计数）。
 #   这**不是** §M.21.9(e) 的判据（那条只查"数字在弃权词之前"），而是同一弱点的另一形态；
@@ -363,13 +363,13 @@ def main():
     n_csv = sum(1 for r, d, fs in os.walk(REPO_DERIVED) for f in fs if f.lower().endswith('.csv'))
     n_all = sum(len(fs) for r, d, fs in os.walk(REPO_DERIVED) if '__pycache__' not in r)
     print('① 口径实测')
-    print('   repro_github/data/derived 下 *.csv 实测 = **%d**（本轮目标数）' % n_csv)
+    print('   repro_github/data/derived 下 *.csv 实测 = **%d**（本次目标数）' % n_csv)
     print('   同目录下全部文件（含非 CSV）实测        = %d' % n_all)
     print('   （对照：3,656 = 整个复现仓库的文件数；2,767 = data.zip 的名目数 —— 都不是本数）')
-    # 放行版：审计时的 2,338 是**当时**的盘面；后续轮次继续放行数据后盘面会变大，
+    # 放行版：审计时的 2,338 是**当时**的盘面；后续批次继续放行数据后盘面会变大，
     #   此时只提示、不中止（本审计的 654 件口径与 95,160 行仍按审计时清单复算，见下一步）。
     if n_csv != 2338:
-        print('   !! 提示：盘面 CSV 数已从审计时的 2,338 变为 %d（后续轮次又放行了数据）；'
+        print('   !! 提示：盘面 CSV 数已从审计时的 2,338 变为 %d（后续批次又放行了数据）；'
               '本审计不因此中止。' % n_csv)
 
     # ── 1) 阴性对照：既有 654 件口径必须逐项复现 ────────────────────────────────
@@ -479,7 +479,7 @@ def main():
           'fsc_res/frozen384、p1c/csv —— 均在其外。）')
 
     # ── 6c) 子口径：中文散文拒答 + 把那句话里的数字当计数 ────────────────────────
-    print('\n⑧ 子口径（本轮新增，**不是** §M.21.9(e) 的判据）：把"纯散文拒答"仍记成一个数')
+    print('\n⑧ 子口径（本次新增，**不是** §M.21.9(e) 的判据）：把"纯散文拒答"仍记成一个数')
     print('   判据：raw 无弃权词 · 结构式正则不命中 · 含拒答措辞 · **pred 非空**')
     ps = prose_subaudit()
     print('   纯散文拒答行 = %d ｜ 其中 `pred` **非空**（数被当计数）= **%d**（e3/ 下 %d 条）'
@@ -493,7 +493,7 @@ def main():
     for f, n in sorted(e3cfg.items(), key=lambda x: -x[1])[:6]:
         print('     %-64s %d 条' % (f, n))
     print('   ★ 说明：在 `bestA` 这类**故意要求给粗估**的臂上，这条口径命中的是**正常行为**；')
-    print('     它对本轮的意义限于给 §M.19.5 的那句 "holding neither a digit nor an abstention token"')
+    print('     它对本次的意义限于给 §M.19.5 的那句 "holding neither a digit nor an abstention token"')
     print('     **划定适用臂**（该句描述的是 base 臂；permit/channel 臂上是"给了数字又写了拒答措辞"）。')
 
     # ── 6d) 2,242 条"pred 列装了弃权 token"按目录归并（这是同一 schema 约定被破的唯一一处）──
@@ -554,7 +554,7 @@ def main():
             hits_outside_frozen_654=len(hits_out),
             scope_note='既有 654 件 = e3/merged 228 + e2 的 e1_* 426；三条命中位于 e3/nonzero、'
                        'fsc_res/frozen384、p1c/csv，均在其外 ⇒ 既有审计在自己的范围内仍为 0。'
-                       '本轮扩样是**范围问题**，不是既有读数算错。',
+                       '本次扩样是**范围问题**，不是既有读数算错。',
             hit_classification=hits,
         ),
         prose_refusal_subaudit=dict(
@@ -563,7 +563,7 @@ def main():
             why='与 §M.21.9(e) 同一弱点的**另一形态**：散文里出现"大约 N 人"时，'
                 'frozen_regex 不命中（不是 {"count": ...} 结构）⇒ 掉到 first_int ⇒ 把散文里的数当计数。'
                 '既有的 654 件审计只查"数字在弃权词之前"，查不到这种形态。'
-                '★ 在 `bestA` 这类故意要求粗估的臂上，这是**正常行为**；本口径对本轮的意义是'
+                '★ 在 `bestA` 这类故意要求粗估的臂上，这是**正常行为**；本口径对本次的意义是'
                 '给 §M.19.5 那句 "holding neither a digit nor an abstention token" **划定适用臂**。',
             **ps,
         ),

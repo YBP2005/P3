@@ -203,7 +203,7 @@ def split_test(U, tag):
     U = sorted(U, key=lambda r: r['iso'])
     n = len(U)
     # ★ 报出**所有** CI 互不重叠的切分（不只最优）：选"最优"时要靠 `>` 严格比较，
-    #   而当多个切分并列时（本轮 16 单元里 k=1 与 k=3 都是 0.2 pp），只报一个会掩盖真相。
+    #   而当多个切分并列时（本次 16 单元里 k=1 与 k=3 都是 0.2 pp），只报一个会掩盖真相。
     pos = []
     for k in range(1, n):
         gap = min(r['iso_lo'] for r in U[k:]) - max(r['iso_hi'] for r in U[:k])

@@ -38,7 +38,7 @@ Z0 = RP('analysis', 'work', 'ea2_z0_result.json')
 CON = RP('analysis', 'work', 'ea2_contrast_result.json')
 MARK = 'E2_M40_END'
 # ★ 与 en_check.py 的计数口径**逐字一致**（`W = lambda s: len(re.findall(r"[A-Za-z][A-Za-z'\-]*", s))`）：
-#   自订护栏必须用裁决者的尺子，否则会出现"护栏说超、en_check 说没事"的假警报（本轮已踩）。
+#   自订护栏必须用裁决者的尺子，否则会出现"护栏说超、en_check 说没事"的假警报（本次已踩）。
 WC = lambda s: len(re.findall(r"[A-Za-z][A-Za-z'\-]*", s))
 # 标签/文件名里的构建名 → 论文里的写法（表与正文都必须用论文名，否则同一构建出现两个名字）
 DISP_BUILD = {'InternVL3_5-8B': 'InternVL3.5-8B', 'llava-onevision-qwen2-7b-ov': 'LLaVA-OneVision-7B',
@@ -51,7 +51,7 @@ con = json.loads(io.open(CON, encoding='utf-8').read())
 # ── 汇总：每 (build, 语言, 分层) 的通道构成（三臂），取三次服务的合并（分析器已合并）──
 by_build = collections.defaultdict(dict)
 n_by_build = {}                     # ★ 同时存 n：Wilson 上限要按"该单元格自己的观测数"算，
-for k, v in con['z0'].items():      #   只存 pct 就会在算上限时拿到 None（本轮踩过：表里 0.0% 没带上限）
+for k, v in con['z0'].items():      #   只存 pct 就会在算上限时拿到 None（本次踩过：表里 0.0% 没带上限）
     model, lang, stratum, arm = k.split('|')
     by_build[(model, lang, stratum)][arm] = v['pct']
     n_by_build[(model, lang, stratum, arm)] = v['n']
@@ -62,7 +62,7 @@ for k, v in con['nonzero'].items():
     nz_n[(model, zone, arm)] = v['n']
 
 # 服务级噪声：取每 (build, 语言, 分层, 臂) 的 no_people 极差
-# ★ 注意两套命名的差别（本轮踩到并修）：噪声表按**构建短标签**（ivl8b/phi35/…）索引，
+# ★ 注意两套命名的差别（本次踩到并修）：噪声表按**构建短标签**（ivl8b/phi35/…）索引，
 #   而通道/对照表按**模型全名**（InternVL3_5-8B/Phi-3.5-vision-instruct/…）。对不上就会静默打印 0.0，
 #   把"0.0–2.6 pp"说成"0.0–0.0 pp"（结论方向都会变）。故先建 标签→全名 的映射。
 _tag2name = {}
@@ -223,7 +223,7 @@ src = io.open(SUP, encoding='utf-8', newline='').read()
 before = WC(src)
 if '### M.40 ' in src:
     # 已存在 ⇒ 替换整段（幂等，便于 E2 收尾后重跑）。M.40 是**文件最后一节** ⇒ 替换到 EOF 即可；
-    # ★ 不要用可见的哨兵串（本轮踩过：哨兵被写进了正文，撞了 en_check 的禁用串检查）。
+    # ★ 不要用可见的哨兵串（本次踩过：哨兵被写进了正文，撞了 en_check 的禁用串检查）。
     i = src.index('### M.40 ')
     # ★ M.40 曾是**文件最后一节**，故当初"替换到 EOF"是安全的；自从 M.41 追加在其后，
     #   "到 EOF"会把 M.41 一起删掉（静默丢一节）。改为**到下一个 ### 标题为止**，与位置无关。
@@ -246,7 +246,7 @@ else:
 after = WC(src)
 print('  补充材料词数：%d → %d（%+d）' % (before, after, after - before))
 # ★ 2026-09-24：自订上限取消 ⇒ 只报告、不拦截（与 gen_m41_e1.py 同口径）。
-# ★ 写盘前先跑 en_check 的**禁用串**清单（与裁决者同一份名单）：本轮踩过 `\bv\d+\b`
+# ★ 写盘前先跑 en_check 的**禁用串**清单（与裁决者同一份名单）：本次踩过 `\bv\d+\b`
 #   —— 我在正文里写了 "(v0527 #1)"，这是内部版本号，不能出现在送审件里。
 BANNED = [(r'⚠', '⚠'), (r'已撤回', '撤回'), (r'\bA\d{1,2}\b', '内部编号'), (r'\bv\d+\b', '版本号'),
           (r'PaperB_', '内部文档'), (r'[A-Za-z]:\\', '盘符'), (r'/root/', '服务器路径'),

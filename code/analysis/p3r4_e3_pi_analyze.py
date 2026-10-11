@@ -11,7 +11,7 @@
   恒等式：precision_obs ≈ p·π/q
 【预注册判据】
   ① |precision_obs − p·π/q| ≤ **0.59 pp** 的格数
-  ② **迁移检验**：p 改由**不相交**真零子集测（本轮**不可做**：300 个真零全用于构造 ⇒ 记 n/a + 原因）
+  ② **迁移检验**：p 改由**不相交**真零子集测（本次**不可做**：300 个真零全用于构造 ⇒ 记 n/a + 原因）
   ③ 该 π 格上 precision_obs 的 **Wilson 95% 区间**与宽度、以及 N（答零项数，即 precision 的分母）
 用法：python3 p3r4_e3_pi_analyze.py <manifest> <csv_dir> [tag1 tag2 ...]
   ★ 放行包内可直接重跑：
@@ -127,7 +127,7 @@ def main():
     print('\n**判据①（恒等式 ≤ 0.59 pp，名义 π）**：%d/%d 格满足' % (pass1, pass_n))
     lowp = [r for r in rows_out if r['parse'] < 0.95]
     if lowp:
-        print('★ **parse_ok < 95%% 的格**（按本轮既有的 P0-1 闸门口径应记**不可评**，不得改报 FAIL）：')
+        print('★ **parse_ok < 95%% 的格**（按本次既有的 P0-1 闸门口径应记**不可评**，不得改报 FAIL）：')
         for r in lowp:
             print('    %s start%d：parse_ok %.1f%%（%d/%d）｜真零里 parse_ok %d，census 里 parse_ok %d'
                   % (r['tag'], r['start'], 100 * r['parse'], r['n_ok'], r['n_rows'],
@@ -144,8 +144,8 @@ def main():
               % (min(ws), max(ws), min(r['n_answered_zero'] for r in rows_out),
                  max(r['n_answered_zero'] for r in rows_out)))
         print('   ★ 预注册里"N_2 = 最低 π 格的答零数"在本设计里对应**唯一的 π=%.4f**，故上表 N 即该量；'
-              '本轮**没有**多 π 水平，不得把它与 §M.21.10 的 N_2=12 混为一谈。' % pi)
-        print('**判据②（迁移检验）**：**n/a —— 本轮不可做**。300 个真零**全部**用于构造混合语料，'
+              '本次**没有**多 π 水平，不得把它与 §M.21.10 的 N_2=12 混为一谈。' % pi)
+        print('**判据②（迁移检验）**：**n/a —— 本次不可做**。300 个真零**全部**用于构造混合语料，'
               '不存在"不相交的真零子集"来独立测 p；如实记 n/a + 原因，不静默略过。')
         out = os.path.join(csv_dir, 'E3_cells.json')
         with io.open(out, 'w', encoding='utf-8') as f:

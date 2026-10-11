@@ -11,7 +11,7 @@ label-permutation 的对照。
 先前出现过 "**置换统计量在本设定下数学退化**"：`perm_cluster_order` 口径下，
 统计量 = 全局 Spearman 只依赖 (x_i, y_i) 的**配对集合**，而"把整块簇换个位置"只改**顺序**、
 不改配对 ⇒ 每次置换统计量与观测**逐位相同**，完整枚举 720 种 distinct = 1、p ≡ 1。
-本脚本对**本轮构造的零模型**逐一做同一项检查，结论写在结果 JSON 的 `degeneracy` 段。
+本脚本对**本次构造的零模型**逐一做同一项检查，结论写在结果 JSON 的 `degeneracy` 段。
 
 ## 零模型（两套，"跑前写死"）
 **H0-A：label-permutation（既有口径，阴性对照）** —— `m37_ci_power.py::perm_p()` **逐字**
@@ -138,7 +138,7 @@ def degeneracy_probe(a, b, labels=None, n_perm=2000, seed=SEED):
     """★ 退化自证：三类操作下统计量是否变化。
     (i) **单元顺序置换**（= 先前报过退化的那种操作）：只改顺序、不改配对。
     (ii) **簇标签置换**（把整块簇换位置）：同上，配对不变。
-    (iii) **span 值重抽/反复置换**（本轮零模型）：改配对。
+    (iii) **span 值重抽/反复置换**（本次零模型）：改配对。
     返回各自 distinct 统计量个数 —— (i)(ii) 应为 1（退化），(iii) 应远大于 1。"""
     n = len(a)
     rnd = random.Random(seed)
@@ -240,7 +240,7 @@ def main():
     assert all(not deg[t]['value_shuffle_invariant'] for t in deg), \
         '★ "span 值随机"竟然退化 ⇒ 需重估该零模型的定义'
 
-    print('\n② 主读数：H0-A（label-permutation，既有）vs H0-B（span 值随机，本轮新增）')
+    print('\n② 主读数：H0-A（label-permutation，既有）vs H0-B（span 值随机，本次新增）')
     print('   %-10s %-16s %-9s %-13s %-13s %-13s' %
           ('单元集', '去偏口径', 'rho_obs', 'A: perm p', 'B1: 经验重抽 p', 'B2: 对数正态 p'))
     readings = {}
@@ -298,7 +298,7 @@ def main():
                       n=N_DRAW, seed=SEED, held_fixed='去偏 span 一侧保持不动'),
         ),
         degeneracy=deg,
-        degeneracy_verdict='★ **本轮构造的 "span 值随机" 零模型不退化**：它改的是 (span, deflated span) 的'
+        degeneracy_verdict='★ **本次构造的 "span 值随机" 零模型不退化**：它改的是 (span, deflated span) 的'
                            '**配对本身**，统计量随每次重抽变化（实测 distinct 统计量 = %d / %d）。'
                            '先前报的退化的只是那个"把整块簇换个位置"的实现（只改顺序、不改配对，'
                            'distinct=1、p≡1）；本脚本把两者都实测并印在同一处，避免再被误读成'

@@ -3,10 +3,10 @@
 
 背景（必须写清楚，因为这里曾经差点出错）：
   各轮材料包开头那块 6,836 字符的文本里，**只有 `**Integrity.**` 一行**逐轮不同
-  （它记录本轮 manuscript / supplementary 的 md5 和包自身声明），其余**评分相关文本逐字复用**。
+  （它记录本次 manuscript / supplementary 的 md5 和包自身声明），其余**评分相关文本逐字复用**。
   因此整块的 md5 逐轮不同（v1/r2 `6a1c58340206` → r3 `443c5ca5e61e` → r4 `ac12aa5a8962`
   → r5 `84f04400ef6e`），但这**不代表**评分口径变了——若只看整块 md5 就下结论，会得出
-  "跨轮不可比"的错误结论；反之若手打一句"指令段逐字复用"而不核验，就是不可溯源的断言。
+  "跨批不可比"的错误结论；反之若手打一句"指令段逐字复用"而不核验，就是不可溯源的断言。
   本脚本把这件事变成**可核验的事实**：剥离 Integrity 行后逐包比对。
 
 另注：六模型通用那轮用的指令段是另一块 5,349 字符（md5 `d4002a4a53d9`），
@@ -74,7 +74,7 @@ for tag, name in PACKS:
 print()
 if len(seen) == 1:
     h = list(seen)[0]
-    print('判定：**一致** —— %d 个包剥离 Integrity 行后 md5 均为 %s ⇒ 跨轮评分口径逐字相同。'
+    print('判定：**一致** —— %d 个包剥离 Integrity 行后 md5 均为 %s ⇒ 跨批评分口径逐字相同。'
           % (sum(len(v) for v in seen.values()), h[:12]))
 else:
     print('判定：**不一致** —— 出现 %d 种不同的剥离后 md5：%s' % (len(seen), {k[:12]: v for k, v in seen.items()}))
@@ -84,4 +84,4 @@ if bad:
     for x in bad:
         print('  ✗ %s' % x)
     sys.exit(1)
-print('（唯一逐轮变化的是 Integrity 行本身：本轮稿件与补充材料的 md5 —— 属预期变化。）')
+print('（唯一逐轮变化的是 Integrity 行本身：本次稿件与补充材料的 md5 —— 属预期变化。）')

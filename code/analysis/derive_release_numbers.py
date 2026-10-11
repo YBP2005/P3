@@ -4,7 +4,7 @@
 为什么要有这一支（准则 §7「派生守卫」）：README 里同时出现过**同一件文件的三套 md5**
 （论文印一套、MANIFEST 记一套、README 又写一套），还有一句**为假的全称句**
 （"No other 32-hex digest … matches any file this package ships"）。手抄的数字必然漂移；
-本轮把这几类数字改成**当场算出来、并硬断言**。
+本次把这几类数字改成**当场算出来、并硬断言**。
 
 派生源（都在包内，第三方可复跑）：
   · `MANIFEST.csv`      —— 全树 path/bytes/md5 清单；
@@ -108,11 +108,11 @@ N_MAN = len(rows)
 N_DATA = sum(1 for p, _b, _m in rows if p.startswith('data/'))
 
 # ── ★ 2026-10-06（v0655）：`data/` 的"消毒器改了没有"必须**算**，不能写死 ──────────────────
-#   起因（本轮核到的**既存假全称句**）：README 写「Nothing under `data/` was altered … a scan of all
+#   起因（本次核到的**既存假全称句**）：README 写「Nothing under `data/` was altered … a scan of all
 #   <N> released data files finds **zero** placeholder patterns」。实测 `data/` 下**早已有** 1 件
 #   带占位符（`data/derived/a5_2_a800/env/_a52_运行单.md` 的 `<WORKDIR>`）＋1 件带中性内部名占位符
 #   （判据件的 `<INTERNAL-ITEM-NOTE>` / `<INTERNAL-PLAN-DIR>`），共 **2** 件被消毒改写。该句在 v0655
-#   之前就是**假**的，本轮又新增 2 件（扩构建两份报告），故改为**当场派生**三个计数：
+#   之前就是**假**的，本次又新增 2 件（扩构建两份报告），故改为**当场派生**三个计数：
 #     N_DATA_SAN   = 消毒台账里 `data/` 下的路径数（"被改写"）
 #     N_PH_DATA    = `data/` 下内容命中六种占位符图案的件数（"看得见占位"）
 #     其余         = N_DATA − N_DATA_SAN（逐字节相同的那些）
@@ -138,7 +138,7 @@ if os.path.exists(SANLOG):
     except Exception:
         N_DATA_SAN = 0
 else:
-    # ★ v0656 修（**本轮核出的既存缺陷**，不是本轮引入）：作者侧消毒台账**按设计不随包**，于是
+    # ★ v0656 修（**本次核出的既存缺陷**，不是本次引入）：作者侧消毒台账**按设计不随包**，于是
     #   在**放行树里**直接跑本支（包外复核时会这么做）时，上面这条断言必然 `3 ≤ 0` 报红、
     #   而 §5 里依赖同一算量的那条替换也会"两边都不命中"而报红 —— 真因只是"放行树没有台账"，
     #   与 v0654 已修过的那一类缺陷**同源**（见下 §5 那条注释）。
@@ -267,10 +267,10 @@ SUB += [
   being silently corrected.'''
      % by_md5.get(md5f(os.path.join(ROOT, 'code', 'analysis', 'n4_cross_family_dense_panel.py')).lower(), '?')),
     # 那句为假的全称句 → 派生式陈述
-    # ★ v0655：OLD 同步到 README **现印**的那一份（31/26/5）—— 本轮补充材料新增了一个
+    # ★ v0655：OLD 同步到 README **现印**的那一份（31/26/5）—— 本次补充材料新增了一个
     #   "印在 provenance 行、但随包发的是**更正后**那一版"的摘要（机上实跑用的分析器副本），
     #   故派生结果为 32/26/6；新串由 `printed`/`hits`/`miss` 当场算出。
-    # ★ v0656：老串再次同步到 README **现印**的那一份（32/26/6 —— 因为本轮把`bf873c5e…`
+    # ★ v0656：老串再次同步到 README **现印**的那一份（32/26/6 —— 因为本次把`bf873c5e…`
     #   （被取代的机上分析器）作为存档件放进 `archives/`，它**从"未随包摘要"变成"随包摘要"**，
     #   故派生结果为 32/27/5；被换下的那一条已进 ⑥ 的持久注册表，不删。）
     ('''Of the **32** distinct 32-hex digests printed in the manuscript and the supplementary material, **26**
@@ -283,7 +283,7 @@ not shipped-file digests: %s.'''
     # 四类计数（当场重算）
     # ★ OLD = README **现印**的那一份（"上次印出的值"）；NEW = 当场派生。数目一变，本支就报红并要求
     #   把 OLD 同步到新印值 —— 这正是"不许手抄、必须派生"的落地方式。
-    # ★ 2026-10-11（v0669）：本轮新增一个走共享根的放行脚本（`code/analysis/a52_encoding_check.py`）
+    # ★ 2026-10-11（v0669）：本次新增一个走共享根的放行脚本（`code/analysis/a52_encoding_check.py`）
     #   ⇒ 共享根脚本数 157 → **158**。按 R5 老串同步到 README **现印**值（**判据一字未放宽**：
     #   仍要求"老串恰好命中 1 次 / 或已应用"，仍当场派生）。旧值 **154** / **149** 已自动进入
     #   ⑥ 的 append-only 陈旧串注册表。
@@ -310,7 +310,7 @@ not shipped-file digests: %s.'''
      '   `data/derived/`, the `env/` handover notes, and this `README.md`, which quotes\n'
      '   the `e:\\n` fragment above). The frozen artefacts are **deliberately not modified** — they are reported'),
     # ★ v0655：计数 2 的前半句此前是**手写**的（后随的 `Widening…` 已派生，本句没有）。
-    #   本轮 `derive_release_numbers.py` 自己的替换串引用了同一段 `e:\n` 片段 ⇒ 该计数
+    #   本次 `derive_release_numbers.py` 自己的替换串引用了同一段 `e:\n` 片段 ⇒ 该计数
     #   2 → 3（第三件就是本支自身）⇒ 老串从 README 现场读出、新串改用 `n_abspath_code`。
     (
      '2. **0** of those scripts carries an author-machine path, and no script\'s *data* path is absolute:\n'
@@ -328,12 +328,12 @@ not shipped-file digests: %s.'''
     #   仍按写死的退路值 30/58 去替换 ⇒ 在**放行树里**跑本支时必然"命中 0 次"而**报红**，
     #   而真因只是"放行树没有台账"。现在它只在有台账时参与（值一律由台账派生）。
     # ★ v0654：README 里"共享根脚本数"**出现两次**（"How to run" 段一次、计数 1 一次），
-    #   旧支只改后者 ⇒ 两处会长期互不一致（实测本轮接手时：一处 **149**、一处 **154**，真值 154）。
+    #   旧支只改后者 ⇒ 两处会长期互不一致（实测本次接手时：一处 **149**、一处 **154**，真值 154）。
     #   这两条把 "How to run" 那一处也纳入派生（值同 `n_shared`）。
     ('data path at all — **158** of them — imports `code/analysis/_repro_root.py` and resolves its inputs through',
      'data path at all — **%d** of them — imports `code/analysis/_repro_root.py` and resolves its inputs through'
      % n_shared),
-    # ★ 2026-10-11（本轮）：按派生的老串同步规则，把 README **现印**值同步进来（4903 / 3974；本轮
+    # ★ 2026-10-11（本次）：按派生的老串同步规则，把 README **现印**值同步进来（4903 / 3974；本次
     #   MANIFEST 因新增一个放行脚本 +1 ⇒ 派生 4904 / 3974）。**判据一字未放宽**：仍"恰好命中 1 次 /
     #   或已应用"，仍当场派生；旧值 4876 / 3947 已自动进入 ⑥ 的 append-only 陈旧串注册表。
     ('   *Write-back policy*), which took the package **at that revision** from **3,659** to **3,651** manifested\n'
@@ -351,7 +351,7 @@ not shipped-file digests: %s.'''
      "   → **%d** (the sanitiser's own rewritten set is count 3 above; the remainder only quote a placeholder\n"
      "   string — this `README.md` does so on purpose)." % (n_ph, n_ph)),
     # ★ v0655：`data/` 的"改没改"必须**派生**（见文件上方 N_PH_DATA / N_DATA_SAN 的计算与说明）。
-    #   下面三条的老串 = **本轮落笔时 README 里的原文**；新串由实物算出。三条合起来把那句
+    #   下面三条的老串 = **本次落笔时 README 里的原文**；新串由实物算出。三条合起来把那句
     #   既存的**假全称句**（"Nothing under data/ was altered … finds zero placeholder patterns"）
     #   换成一个**可复核**的陈述：改了几件、其余逐字节相同、manifest 只在被改写的行上变化。
     # ★ v0656：老串同步到 README **现印**的那一份（3829/4/3825）；被换下的"假全称句"那条
@@ -394,7 +394,7 @@ SUB.append((
     % (_N_SAN_FILES, _N_SAN_SUBS)))
 
 # ★ 2026-10-08（v0662）：**消毒表按台账派生新增行**（append-only：只在表里缺该路径时追加，
-#   既有行一字不动）。起因：本轮新放行 5 件，其中
+#   既有行一字不动）。起因：本次新放行 5 件，其中
 #   `data/derived/a52_api_six_20261007/analysis_manifest.md` 被改写 7 处
 #   （`E:\Edu_workplace\…` → `[author-workdir]` 6 处 ＋ 台账"冻结分析器"行 1 处，与 §M.11.2 正文同源）
 #   ⇒ 表里必须多一行，否则"**N** files were rewritten … (the table above)"与表本身不符。
@@ -428,7 +428,7 @@ for old, new in SUB:
     plan.append(old[:60])
 
 # ── ⑥ ★ v0656：**持久陈旧串断言**（把"上一代老串"升级为常设判据）────────────────────────────
-#   机制弱点（v0655 §7 登记、本轮修）：⑤ 的替换表是**逐代手抄的老串**。它只在"老串仍印在 README
+#   机制弱点（v0655 §7 登记、本次修）：⑤ 的替换表是**逐代手抄的老串**。它只在"老串仍印在 README
 #   里"的那一轮起一次作用；计数一变，老串与新串两边都不命中 ⇒ 要么报红、要么落进"已应用"分支
 #   **静默跳过**。更要紧的是：**更早几代**的陈旧值（更旧的清单行数、更旧的目录计数、更旧的
 #   "发布形态"摘要）**此后没有任何一条判据再看一眼** —— 旧模板一旦被重新生成，陈旧数字会原地
@@ -437,7 +437,7 @@ for old, new in SUB:
 #   **替换后的 README** 里命中 **0 次**。⑤ 的"每条恰好命中 1 次 / 或已应用"两条判据**一字未改**
 #   —— 本段是**只加断言，不放宽任何现有判据**。
 #   ★ 范围（为什么只查 README）：本支的守卫对象就是 README 的派生数字。放行树里另有三处**冻结
-#     编排件**按纪律保留 `19 文件` 的历史叙述（登记不改；见本轮检查单 §25.2），故不做树级断言。
+#     编排件**按纪律保留 `19 文件` 的历史叙述（登记不改；见本次检查单 §25.2），故不做树级断言。
 #   ★ 注册表维护：每轮更新 ⑤ 的老串时，把**被换下的那一条**移入下表（而不是删掉）。
 # ── ★ 2026-10-10（v0666）：**可追溯退役表**（append-only 的第三条通道）────────────────────
 #   裁定（上级 2026-10-10）：当新派生值与某条"陈旧串"字面重合时，该条旧串的断言是**假阳性**
@@ -449,26 +449,26 @@ for old, new in SUB:
 RETIRED_STALE = [
     dict(literal_prefix='4. **39** files merely *contain*',
          label='（⑤ 上一代替换串）4. **39** files merely *contain* one of the',
-         reason='本轮实物派生的"含占位符件数"复现为 39，与上一代老串**字面重合**'
+         reason='本次实物派生的"含占位符件数"复现为 39，与上一代老串**字面重合**'
                 '（旧串=新串）⇒ 替换后命中是**数值巧合**，不是陈旧残留',
          evidence='`python derive_release_numbers.py --check`（2026-10-10）：'
                   'README 四类计数 = 共享根 157 ｜ code 里作者机路径 3 ｜ 全树 21 ｜ 含占位符 39',
          retired_on='2026-10-10',
          retired_by='v0666 轮（上级裁定 2026-10-10 可追溯退役）',
-         basis_md5='746dd9fd7761818f7b65e2224af03166（本轮补材）/'
-                   '35810a6d3fba7b9c2335ff6a90827d9c（本轮主稿）'),
+         basis_md5='746dd9fd7761818f7b65e2224af03166（本次补材）/'
+                   '35810a6d3fba7b9c2335ff6a90827d9c（本次主稿）'),
     # ★ 同一类假阳性（同一裁定、同一手续）：消毒件数/替换处数的实物派生值
-    #   本轮为 36 / 77，与上一代老串**字面重合** ⇒ 同样是数值巧合。
+    #   本次为 36 / 77，与上一代老串**字面重合** ⇒ 同样是数值巧合。
     dict(literal_prefix='3. **36** files were rewritten by the sanitiser',
          label='（⑤ 上一代替换串）3. **36** files were rewritten by the sanitiser',
-         reason='本轮实物派生的消毒件数/替换处数复现为 36 / 77，与上一代老串**字面重合**'
+         reason='本次实物派生的消毒件数/替换处数复现为 36 / 77，与上一代老串**字面重合**'
                 '（旧串=新串）⇒ 替换后命中是**数值巧合**，不是陈旧残留',
          evidence='`python derive_release_numbers.py --check`（2026-10-10）：消毒台账 36 个文件 / 77 处替换；'
                   'README 四类计数 = 共享根 157 ｜ code 里作者机路径 3 ｜ 全树 21 ｜ 含占位符 39',
          retired_on='2026-10-10',
          retired_by='v0666 轮（上级裁定 2026-10-10 可追溯退役）',
-         basis_md5='746dd9fd7761818f7b65e2224af03166（本轮补材）/'
-                   '35810a6d3fba7b9c2335ff6a90827d9c（本轮主稿）'),
+         basis_md5='746dd9fd7761818f7b65e2224af03166（本次补材）/'
+                   '35810a6d3fba7b9c2335ff6a90827d9c（本次主稿）'),
 ]
 
 
@@ -505,7 +505,7 @@ STALE_STRINGS = [
     ('review_control_evidence.md 旧摘要', '7052DE8CCB7FC67C57150619A570F742'),
     ('n4 脚本旧发布摘要', '3A9F8BB2FEED81D58E15E480419DF5F9'),
     ('w1_prereg 旧摘要', '75eeca6fa68c9be65c2b569d4237d8df'),
-    ('被取代的机上分析器（本轮已随 archives/ 放行 ⇒ 不再是"未随包"摘要）',
+    ('被取代的机上分析器（本次已随 archives/ 放行 ⇒ 不再是"未随包"摘要）',
      'bf873c5e7da083dae42cb379efe9af9d'),
 ] + [('（⑤ 上一代替换串）%s' % old[:44], old) for old, _n in SUB]
 

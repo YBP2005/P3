@@ -75,7 +75,7 @@
     "equal_levels": "四个旋钮各 **5** 档（K5 的 1x1..6x6 由 tilek 表给出）⇒ 满足「等水平」。",
     "item_set": "st_a 全 182 张（K5 亦同）",
     "criterion": {
-      "C_a_ordering": "本轮 4 旋钮按 span 的排序与**已发表 M.37 可复算集**中同 4 旋钮的排序**完全一致**（Spearman = 1.00）⇒ 「等水平、独立 level set」下排序复现。",
+      "C_a_ordering": "本次 4 旋钮按 span 的排序与**已发表 M.37 可复算集**中同 4 旋钮的排序**完全一致**（Spearman = 1.00）⇒ 「等水平、独立 level set」下排序复现。",
       "C_b_top": "最大跨度旋钮不变。",
       "C_c_normalised": "按**旋钮相对行程**归一后排序不变（与 F.10/G15 同一操作）。",
       "fail_reads_as": "排序或顶端改变 ⇒ §7.3 的排序主张在该 level set 下不复现，必须写明。"
@@ -108,7 +108,7 @@
     "gt_source": "/root/dense/shanghaitech/counts.csv",
     "cost": "契约 7 臂×182 + 问法 5×182 + 像素 5×182 + 切块 182×(1+4+9+16+36) + base 噪声 2×182 ≈ **15,100 次调用**",
     "deviation_declared": [
-      "构建：已发表 E1 阶梯是 **AWQ-4bit**（q32=ivl 两个部署），本轮是 **BF16** ⇒ G5 的 Δ 只在**本轮内部**（present vs neutralised，同一趟同一构建）判定；已发表行只作跨构建旁证并明确标注。",
+      "构建：已发表 E1 阶梯是 **AWQ-4bit**（q32=ivl 两个部署），本次是 **BF16** ⇒ G5 的 Δ 只在**本次内部**（present vs neutralised，同一趟同一构建）判定；已发表行只作跨构建旁证并明确标注。",
       "K1/K2 两个非 VLM 旋钮本机测不了（见 G6 scope_limit）。"
     ]
   }

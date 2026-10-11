@@ -42,7 +42,7 @@ import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
 PM = RP('analysis', 'data', 'pod_mirror')
-# ★ 2026-10-08 v0663: 这两处改用 `RP`. 两个校准阶梯件已随本轮放行到
+# ★ 2026-10-08 v0663: 这两处改用 `RP`. 两个校准阶梯件已随本次放行到
 #   `data/derived/unit_ladders/`，`_repro_root._ALIAS` 里新增了 `@shared/work` 与
 #   `@shared/work/b_harvest_20260917/bbbc_eval` 两条前缀映射。作者树上这两条路径实存 ⇒
 #   `resolve()` 第一步就返回真实路径，**行为与本次改动前逐字一致**；放行树上改走别名表。

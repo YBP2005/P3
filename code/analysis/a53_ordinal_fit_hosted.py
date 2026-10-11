@@ -233,7 +233,7 @@ def run():
          'n_rows': len(rows), 'n_served': len(served), 'n_missing': len(missing)}
 
     # ── ① 逐端点 × 两编码（Wald + CR1）──
-    print('\n① 逐端点：raw 编码（已印）与**序数编码（本轮新增）**并列')
+    print('\n① 逐端点：raw 编码（已印）与**序数编码（本次新增）**并列')
     print('   %-17s %8s | %-28s | %-28s | %s' %
           ('endpoint', 'n', 'raw  β / SE / CI', 'ord  β / SE / CI', '|Δβ|'))
     reg_ok = True

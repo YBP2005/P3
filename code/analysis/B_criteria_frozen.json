@@ -4,7 +4,7 @@
   "frozen_at": "2026-09-28",
   "frozen_by": "P3 owner (author side)",
   "status": "DRAFT — 等用户过目后再上机；权重下载与来源指纹已固化，见 artifact_frozen",
-  "why_this_file": "预注册要求把英文臂放到**语料基线同一个构建**上重跑。§M.19.16 / `g2_neutral0.py` 的 deviation_declared 逐字承认：语料基线用的是 Qwen3-VL-32B-**AWQ-4bit**，而当年本机没有该权重，英文臂跑在 **BF16** 上，因此**绝对率不可与语料池直接比**。本轮补上这一格。判据同样必须先冻结。",
+  "why_this_file": "预注册要求把英文臂放到**语料基线同一个构建**上重跑。§M.19.16 / `g2_neutral0.py` 的 deviation_declared 逐字承认：语料基线用的是 Qwen3-VL-32B-**AWQ-4bit**，而当年本机没有该权重，英文臂跑在 **BF16** 上，因此**绝对率不可与语料池直接比**。本次补上这一格。判据同样必须先冻结。",
   "question": "在**与语料基线同一个 4-bit 构建**上重跑五个臂（cn-base / cn-neutral0 / en-base / en-neutral0 / en-neutral0em）于四个头条域：① 语言对答零率的**绝对**效应是多少（带 95% 区间）；② 它是否与 BF16 上读到的方向一致；③ §M.19.16 报的『$S$ 离开单位区间』在 4-bit 构建上是否同样出现。",
   "artifact_frozen": {
     "repo": "cyankiwi/Qwen3-VL-32B-Instruct-AWQ-4bit (HuggingFace, public, gated=false)",
@@ -24,7 +24,7 @@
     "serve_cmd_fallback": "--quantization awq（若 awq_marlin 报错）；config.json 的 quant_method 为准"
   },
   "what_already_exists": {
-    "cn_base_archived": "本地 analysis/e2_newh20/e1_qwen3-vl-32b-awq_<ds>_<arm>.csv —— **原 4-bit 构建的逐项输出**，是本轮比对的黄金参照（st_a 103 / ucf 180 / visdrone 273 / aitod 154，均为按语料答零条件化后的池）",
+    "cn_base_archived": "本地 analysis/e2_newh20/e1_qwen3-vl-32b-awq_<ds>_<arm>.csv —— **原 4-bit 构建的逐项输出**，是本次比对的黄金参照（st_a 103 / ucf 180 / visdrone 273 / aitod 154，均为按语料答零条件化后的池）",
     "en_arms_on_bf16": "/root/g2_neutral0/<ds>__<arm>.csv（当年在 BF16 上跑的五个臂）",
     "prompt_sources": "/root/p1d_prompts.json 的 arms.neutral0（中文）；ec3_run_en.py 的 EN['base']（英文，= §M.39 冻结英文表）。**不自己另译**。",
     "missing": "**语料基线构建上的英文臂从未跑过** ⇒ §M.19.16 的语言效应只有 BF16 一个构建的读数，绝对率不可比。"
@@ -32,7 +32,7 @@
   "what_this_run_adds": "让语言的绝对效应从『BF16 上的一次读数』变成『语料基线构建上的读数 + 与 BF16 的对照』；并顺带检验 §M.19.16 的 $S$ 越界是不是某一构建的产物。",
   "deviation_declared": {
     "serving_stack": "★ 当年语料基线跑在 **5090 + 当时的 vLLM** 上，A800 是 **vLLM 0.29.0**。版本差本身是混杂因子 —— 因此设 B0 闸门把『工件 + 栈』作为整体先验一遍（见 criteria B0）。",
-    "build_matched": "本轮**故意**把构建对齐到语料基线（这正是本实验的目的），故不再是偏离。",
+    "build_matched": "本次**故意**把构建对齐到语料基线（这正是本实验的目的），故不再是偏离。",
     "emphasis_markers": "中文 neutral0 的存档字符串含 markdown `**`，当年发出的是否逐字含 `**` 无法从存档判定 ⇒ 英文侧**同时**跑 `en-neutral0`（不渲染）与 `en-neutral0em`（渲染），保持原设计的对照。",
     "card_shared": "A800 ×2 由会议侧在用；本实验只在空闲窗口跑，且**只用一张卡**。"
   },
@@ -60,7 +60,7 @@
     "output_dir": "/root/B_res/"
   },
   "prompts_frozen": {
-    "rule": "五个臂的字符串**逐字**取自下列既有冻结件；本轮不改一个字符。",
+    "rule": "五个臂的字符串**逐字**取自下列既有冻结件；本次不改一个字符。",
     "cn_base": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复。以JSON格式输出：{\"count\": 数量}，只输出JSON。",
     "cn_neutral0": "请数出图片中的人数（人群中的每个人头或人体），不要遗漏，不要重复。注意：**可能是 0**；如果你的判断确实是 0，请照实回答 0。以JSON格式输出：{\"count\": 数量}，只输出JSON。",
     "cn_neutral0_source": "/root/p1d_prompts.json → arms.neutral0（逐字）",

@@ -15,7 +15,7 @@ for i in $(seq 1 300); do
 done
 say "流水线已结束（或等待超时）⇒ 开始打包"
 
-# 收尾前把最后可能残留的服务清掉并确认显存归零（本轮所有服务都应由各段自行 gpu_clear）
+# 收尾前把最后可能残留的服务清掉并确认显存归零（本次所有服务都应由各段自行 gpu_clear）
 pkill -9 -i -f vllm 2>/dev/null; pkill -9 -f resource_tracker 2>/dev/null; sleep 3
 say "GPU 现值：$(nvidia-smi --query-gpu=memory.used --format=csv,noheader)"
 

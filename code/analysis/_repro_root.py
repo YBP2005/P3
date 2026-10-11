@@ -54,7 +54,7 @@ SHARED = os.environ.get('PAPERB_SHARED') or 'E:/Edu_workplace'
 _ALIAS = (
     # `sync_repro.py` 的落点，逐条实测
     ('analysis/work', 'code/analysis'),
-    # ★ 2026-10-08（v0663）：作者机**共享语料盘**下的两个校准阶梯件已随本轮放行
+    # ★ 2026-10-08（v0663）：作者机**共享语料盘**下的两个校准阶梯件已随本次放行
     #   （`data/derived/unit_ladders/`）。它们是 `a39_unit_calib_heldout.py` 的 36-unit 单元集里
     #   此前**未随包发布**的 5 个单元的来源（官方 DM-Count ×2；BBBC005 ×3）。
     #   作者树上这两条路径实存 ⇒ `resolve()` 第一步就返回真实路径，**行为与本次改动前逐字一致**。

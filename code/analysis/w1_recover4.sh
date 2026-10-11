@@ -2,7 +2,7 @@
 # w1_recover4.sh — Molmo-7B-D 第三次尝试（前两次都是**环境缺件**，均已修复并记录）
 #   ① 首轮：缺 `trust_remote_code`（仓库含自定义代码）→ 加参数；
 #   ② 次轮：自定义 image processor 需要 `import tensorflow` → 装 tensorflow-cpu 2.21.0（并已验证 vLLM/torch 环境完好）；
-#   ③ 本轮：应可起服。跑"普查 + FSC 示例臂"，完成后**重新打包**（覆盖上一版 bundle）。
+#   ③ 本次：应可起服。跑"普查 + FSC 示例臂"，完成后**重新打包**（覆盖旧实现 bundle）。
 # 纪律：同一仪器、同一 smoke 门、单卡串行、产物写同一目录。
 set -u
 export BAILIAN_API=http://127.0.0.1:8000/v1/chat/completions
@@ -59,7 +59,7 @@ $PY /root/w1_fsc_probe.py --model "$N" --arms base,permit,exemplar3,exemplar3per
 say "Molmo 完成：零池 $(ls $R/zero/e1_${N}_* | wc -l)/16，非零池 $(ls $R/nonzero/e1_${N}_* | wc -l)/12，FSC $(ls $R/fsc/fsc_${N}_* 2>/dev/null | wc -l)/4"
 gpu_clear
 
-say "重新打包（覆盖上一版 bundle）"
+say "重新打包（覆盖旧实现 bundle）"
 cd /root
 tar --exclude='*.part' -czf /root/w1_bundle.tar.gz \
   w1_results logs/w1_*.log w1_prereg.json w1_prereg.md5 \

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """w0_pools2.py — 按**列名**（不是列序号）重算各域零池/非零池规模。
 
-上一版用 awk 的 $4 取 pred，但 schema 是 `item,gt,pred,parse_ok,raw,latency_s` ⇒ pred 是第 3 列，
+旧实现用 awk 的 $4 取 pred，但 schema 是 `item,gt,pred,parse_ok,raw,latency_s` ⇒ pred 是第 3 列，
 于是四个域都印出"零池 0"（实际是 parse_ok 列全非 0）。这类"列序号拍脑袋"的错误必须当场改正，
 因为它会直接决定 W1 的每格样本量。
 """

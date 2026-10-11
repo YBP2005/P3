@@ -67,7 +67,7 @@ def ladders(caliber):
     # ★ 2026-10-06（v0654）：这件输入此前走 `not_released()` ⇒ 放行树上落到一个**故意不存在**的
     #   `_NOT_RELEASED/…` 路径，`io.open` 抛 `FileNotFoundError`（等于"开箱即崩"，且报错只给一个
     #   路径、不说为什么）。现在（a）改为 `resolve()`：作者树上原样、放行树上映射到
-    #   `data/derived/threeway_curves_v2.csv`（**该件已随本轮放行**）；（b）**仍然**做显式存在性检查
+    #   `data/derived/threeway_curves_v2.csv`（**该件已随本次放行**）；（b）**仍然**做显式存在性检查
     #   并给出可读原因——缺件必须**报出来**，不许静默、也不许把"我少读了一族阶梯"混进结果里。
     p = RP('analysis', 'data', 'threeway_curves_v2.csv')
     if not os.path.exists(p):

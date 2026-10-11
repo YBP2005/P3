@@ -59,7 +59,7 @@ def _avg_ranks(v):
     原文用 `{v: i for i, v in enumerate(sorted(x))}`：字典**覆盖**同名键 ⇒ 并列值一律取**最大秩**，
     与同轮的 `n5_order_prereg.py:215-225` 与 `span_equalcount.py:200`（两者都写"本数据有并列，用平均秩"）
     口径不一致。本函数把三处统一到**平均秩**；`m37_ci_power_result.json` 的 obs 与 2000 次 bootstrap
-    区间随之重算（逐处点名见本轮变化块）。
+    区间随之重算（逐处点名见本次变化块）。
     """
     order = sorted(range(len(v)), key=lambda i: v[i])
     r = [0.0] * len(v)

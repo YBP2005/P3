@@ -60,7 +60,7 @@ try:
             print('  %-22s 网格已完成 → 跳过' % tag)
             continue
         if running or launched:
-            print('  %-22s 有网格在跑 ⇒ 本轮不启动（串行）' % tag)
+            print('  %-22s 有网格在跑 ⇒ 本次不启动（串行）' % tag)
             continue
         print('  %-22s 启动网格（extra=%r）' % (tag, extra))
         launch(c, 'cd /root && setsid nohup bash /root/a5_grid.sh %s %s %s %s </dev/null > /dev/null 2>&1 &'

@@ -20,7 +20,7 @@ r18 `M-7`（阻塞）实测：本地臂刊载的 β（−4.3346 / −4.2096 / �
     原始像素编码  −4.5306  CI [−4.9427, −4.1184]          ← §M.11.1 刊载值
     登记档位编码  −4.4101  CI [−4.8165, −4.0037]          ← §M.11.1 registration 段已并列
 ⇒ ★ **两套编码不可互换**：(a) 统一到登记档位编码会改动**已印数字**，属另一类裁定
-（须逐笔归因＋主稿等量置换），本轮**不做**；故走 (b)：逐表标注 ＋ 明写不可直接比较。
+（须逐笔归因＋主稿等量置换），本次**不做**；故走 (b)：逐表标注 ＋ 明写不可直接比较。
 
 用法：
     python a52_encoding_check.py --selftest    # 负例自测（不读语料）
@@ -151,12 +151,12 @@ def main(argv=None):
         print('   %-12s β=%.6f CI=[%.6f, %.6f]（印 %.4f [%.4f, %.4f] %s）'
               % (nm, b, lo, hi, want[0], want[1], want[2], 'OK' if h else '<-- 不符'))
 
-    print('\n③ ★ 两套编码不可互换（本轮的裁定依据）')
+    print('\n③ ★ 两套编码不可互换（本次的裁定依据）')
     d = [abs(D.fit_rows(fits[b])['beta_count'] - D.fit_rows(recode(fits[b], REG))['beta_count'])
          for b in ('b0', 'b1', 'b2')]
     print('   逐构建 |Δβ| = %s（最小 %.4f）⇒ 统一到登记档位编码**会改动已印数字**，'
           % ([round(x, 4) for x in d], min(d)))
-    print('   故本轮走 (b) 逐表标注路线，(a) 统一重拟合**不执行**并上报。')
+    print('   故本次走 (b) 逐表标注路线，(a) 统一重拟合**不执行**并上报。')
     print('\n%s' % ('ENCODING_CHECK: PASS' if ok else 'ENCODING_CHECK: FAIL'))
     return 0 if ok else 1
 

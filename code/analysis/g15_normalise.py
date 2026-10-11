@@ -81,8 +81,8 @@ TRAVEL = {
     'tiling_side': dict(R=6.0, why='档位 whole/tile2…tile6 ⇒ 网格边长 1…6 ⇒ **6×**（边长口径）',
                         src='analysis/data/pod_mirror/{tile_results,b2__out_32b_ctile,b2__out_8b_ctile}/*.csv（文件名档位）'),
     'tiling_count': dict(R=36.0, why='同族按**块数**口径：6²÷1² = **36×**（与边长口径差 6 倍，纯口径歧义）', src='同上'),
-    'det_reviewer45': dict(R=0.90 / 0.02,
-                           why='★ **评审所引的口径**：τ 0.02→0.90 ⇒ **45×**。'
+    'det_finegrid45': dict(R=0.90 / 0.02,
+                           why='★ **细网格口径**：τ 0.02→0.90 ⇒ **45×**。'
                                '该区间出自 §4.3 的**可达性细网格**（177 点），**不是**跨度阶梯的区间 ⇒ 见 §未核实/§结论',
                            src='主稿 §4.3（细网格扫描）；与 det 的冻结阶梯文件**不是同一个测量**'),
     'categorical': dict(R=None, why='**类别型，没有可辩护的连续动程**（输出契约 4 臂；提示词族 V1–V5 五种指令）',
@@ -121,7 +121,7 @@ def knob_of(u):
 
 def R_of(knob, v):
     if knob == 'det':
-        return TRAVEL['det_reviewer45' if v.get('det45') else 'det']['R']
+        return TRAVEL['det_finegrid45' if v.get('det45') else 'det']['R']
     if knob == 'density':
         return {'mult': TRAVEL['density_mult']['R'],
                 'short': TRAVEL['density_short']['R']}.get(v.get('density'))

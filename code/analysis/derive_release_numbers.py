@@ -287,9 +287,12 @@ not shipped-file digests: %s.'''
     #   ⇒ 共享根脚本数 157 → **158**。按 R5 老串同步到 README **现印**值（**判据一字未放宽**：
     #   仍要求"老串恰好命中 1 次 / 或已应用"，仍当场派生）。旧值 **154** / **149** 已自动进入
     #   ⑥ 的 append-only 陈旧串注册表。
-    ('1. **157** scripts resolve their inputs through the shared root: the **146** converted in v0608 plus the\n'
+    # ★ 2026-10-11（v0670）：再新增一个走共享根的放行脚本
+    #   （`code/analysis/a53_ordinal_fit_hosted.py`，§M.11.2.1）⇒ 共享根脚本数 158 → **159**。
+    #   老串按同一条 R5 纪律同步到 README **现印**值（157 已过期，故改指 **158**；判据未放宽）。
+    ('1. **158** scripts resolve their inputs through the shared root: the **146** converted in v0608 plus the\n'
      '   scripts added to the released set since. Each imports `code/analysis/_repro_root.py`:\n'
-     '   `grep -rl "from _repro_root import" code | wc -l` → **157**.',
+     '   `grep -rl "from _repro_root import" code | wc -l` → **158**.',
      '1. **%d** scripts resolve their inputs through the shared root: the **146** converted in v0608 plus the\n'
      '   scripts added to the released set since. Each imports `code/analysis/_repro_root.py`:\n'
      '   `grep -rl "from _repro_root import" code | wc -l` → **%d**.' % (n_shared, n_shared)),
@@ -327,7 +330,7 @@ not shipped-file digests: %s.'''
     # ★ v0654：README 里"共享根脚本数"**出现两次**（"How to run" 段一次、计数 1 一次），
     #   旧支只改后者 ⇒ 两处会长期互不一致（实测本轮接手时：一处 **149**、一处 **154**，真值 154）。
     #   这两条把 "How to run" 那一处也纳入派生（值同 `n_shared`）。
-    ('data path at all — **157** of them — imports `code/analysis/_repro_root.py` and resolves its inputs through',
+    ('data path at all — **158** of them — imports `code/analysis/_repro_root.py` and resolves its inputs through',
      'data path at all — **%d** of them — imports `code/analysis/_repro_root.py` and resolves its inputs through'
      % n_shared),
     # ★ 2026-10-11（本轮）：按派生的老串同步规则，把 README **现印**值同步进来（4903 / 3974；本轮
@@ -335,7 +338,7 @@ not shipped-file digests: %s.'''
     #   或已应用"，仍当场派生；旧值 4876 / 3947 已自动进入 ⑥ 的 append-only 陈旧串注册表。
     ('   *Write-back policy*), which took the package **at that revision** from **3,659** to **3,651** manifested\n'
      '   files and left both the rewritten set and the substitution count untouched. **At this revision\n'
-     '   `MANIFEST.csv` registers 4903 files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **3974**\n'
+     '   `MANIFEST.csv` registers 4904 files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **3974**\n'
      '   of them — both are re-derived by `code/analysis/derive_release_numbers.py`.',
      '   *Write-back policy*), which took the package **at that revision** from **3,659** to **3,651** manifested\n'
      '   files and left both the rewritten set and the substitution count untouched. **At this revision\n'

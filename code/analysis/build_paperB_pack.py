@@ -38,6 +38,7 @@ except ImportError:                      # 只拷走单个脚本时：就地反�
     RP = lambda *p: _o.path.join(_r, *p)
     NR = lambda *p: _o.path.join(_r, '_NOT_RELEASED', *p)
 import glob
+import base64
 import hashlib
 import io
 import json
@@ -142,6 +143,123 @@ HEADER = """<!-- ===== 材料自述（由 build_paperB_pack.py 生成；数字�
        hashlib.md5(prompt.encode('utf-8')).hexdigest(),
        hashlib.md5(supp.encode('utf-8')).hexdigest()) + '\n'
 
+# ══════════════════════ ★ 图件（v0670 新增）══════════════════════
+# 起因（r20【阻塞】项）：**主稿 markdown 里没有任何 `![...](...)` 图片嵌入**
+#   （实测 0 命中），而主稿 §3.9 只把图件清单指到 Appendix D.4、D.4 又只给**语义**
+#   不给文件名 ⇒ 拿到纯 markdown 包的评审方在 `Fig. 3` 处看到的是一片空白。
+#   这是**打包层**的缺口，不是主稿缺内容：图件实体一直在 `repro_github/figures/` 下。
+# 处置：在本包末尾新增 `## Figures` 一节 ——
+#   ① 主稿 **Fig. 1–4** 以 **base64 内联**（纯文本读者也能直接看到）；
+#   ② 附录图清单：逐条给 `文件 → 渲染在 PNG 里的实际标题`（题注语义核对过，不猜）；
+#   ③ 明写一句"图件随包提供、栅格件也在复现包 `figures/` 下"。
+# ★ 不改主稿：图号↔文件名的映射取自 `build_pr_docx.py::FIGS`（构建期权威副本，
+#   与主稿四段 `**Fig. N.** …` 题注逐字对齐的那张表），**不新造映射**。
+FIGS_DIR = RP('repro_github', 'figures')
+# 主稿四图：文件 → (图号, 题注)　题注逐字取自 `build_pr_docx.py::FIGCAPS`（同一权威副本）
+MAIN_FIGS = [
+    ('F6b_abstention_vs_tile.png', 'Fig. 1',
+     'Tiling removes the ShanghaiTech-A abstention without harming direction.'),
+    ('F12_prompt_dose.png', 'Fig. 2',
+     'The prompt-strength dose-response: relaxation also drives abstention to zero, '
+     'but flips $\\rho$ from -82% to +234%...+345%.'),
+    ('F8_tau_cleaning.png', 'Fig. 3',
+     'The threshold-cleaning curve separating reachable from unreachable levels.'),
+    ('F11_abstention_vs_undercount.png', 'Fig. 4',
+     'The four-panel separation of the two failure modes: abstention and under-count decouple.'),
+]
+# 附录图清单：文件 → 该 PNG **实际渲染的标题**（取自各生成脚本的 set_title/suptitle；
+#   ★ 其中三个的渲染标题是**中文**（F6b / F11 / F12），此处照实登记，**不改写**）
+APPENDIX_FIGS = [
+    ('F6_paradigm_boundary.png', 'Paradigm boundary: normalized accuracy vs target density'),
+    ('F9_density_positions.png', 'Dataset positioning on the density axis'),
+    ('F9_abstention_vs_resolution.png',
+     'Abstention collapses as per-object resolution increases'),
+    ('F10_prompt_family.png',
+     'Direction vs prompt style (base arm) / Abstention vs prompt style (base arm)'),
+    ('F13_saturation_curves.png',
+     '(a) Saturation: relative bias vs. count / (b) Slope CIs overlap across lineages'),
+    ('F13_saturation_curves_v2.png',
+     '(a) Saturation curves: points + per-count median/IQR + LOWESS / '
+     '(b) Qwen3-8B vs 32B CIs do NOT overlap (4x params)'),
+    ('F14_contract_prediction_distribution.png',
+     'Contract shifts the collapse point, not the collapse itself'),
+    ('F15_threeway_knob_curves.png',
+     '(a) Detector: parameter side / (b) Density regression: input scale / (c) VLM: language side'),
+    ('F16_scale_invariance_8B_vs_32B.png',
+     '4x scale buys ABSTENTION plasticity, not direction controllability'),
+    ('F17_span_forest.png',
+     'Recomputable 36-unit spans, with the spread across the three deflations'),
+]
+_FIGS_LINES = []
+_FIGS_LINES.append('## Figures\n')
+_FIGS_LINES.append('Figures are shipped with this packet; the raster files are also in the reproduction '
+                   'package under `figures/`.\n')
+_FIGS_LINES.append('### Main-text figures (Fig. 1-4), inlined below\n')
+_FIGS_LINES.append('Each entry gives the figure number, the file it is in the reproduction package, and the '
+                   'caption. The four rasters are embedded as base64 PNG immediately after, so a plain-text '
+                   'reader renders them without any external file.\n')
+_main_md5 = []
+for _fn, _label, _cap in MAIN_FIGS:
+    _p = os.path.join(FIGS_DIR, _fn)
+    if not os.path.isfile(_p):
+        sys.exit('!! 主稿图件缺件（拒绝出包）：%s' % _p)
+    _raw = io.open(_p, 'rb').read()
+    _md5 = hashlib.md5(_raw).hexdigest()
+    _main_md5.append((_label, _fn, _md5, len(_raw)))
+    _FIGS_LINES.append('\n#### %s - `figures/%s`\n' % (_label, _fn))
+    _FIGS_LINES.append('> %s\n' % _cap)
+    _FIGS_LINES.append('![%s](data:image/png;base64,%s)\n'
+                       % (_label, base64.b64encode(_raw).decode('ascii')))
+_FIGS_LINES.append('\n### Appendix figures in the reproduction package (`figures/`)\n')
+_FIGS_LINES.append('The remaining figure files are listed below with their figure ID (the file name) and the '
+                   'title actually rendered in the image. They are not numbered in the main text; Appendix D.4 '
+                   'of the supplementary material describes them by content.\n')
+_FIGS_LINES.append('| figure file | title rendered in the image |')
+_FIGS_LINES.append('|---|---|')
+for _fn, _title in APPENDIX_FIGS:
+    _p = os.path.join(FIGS_DIR, _fn)
+    if not os.path.isfile(_p):
+        sys.exit('!! 附录图件缺件（拒绝出包）：%s' % _p)
+    _FIGS_LINES.append('| `figures/%s` | %s |' % (_fn, _title))
+# ★ 断言：`figures/` 下的每个 PNG 都必须在上面某一类里出现（防"悄悄漏掉一张"）
+_present = sorted(f for f in os.listdir(FIGS_DIR) if f.lower().endswith('.png'))
+_covered = set(f for f, _l, _c in MAIN_FIGS) | set(f for f, _t in APPENDIX_FIGS)
+_missing = [f for f in _present if f not in _covered]
+_nomatch = [_f for _f in sorted(_covered) if _f not in _present]
+if _missing or _nomatch:
+    sys.exit('!! 图件清单与 figures/ 实体不一致：未登记=%s ｜ 登记了但不存在=%s' % (_missing, _nomatch))
+# ★ 断言（r20【阻塞】项的回归）：Fig. 3 指向的那张**不得是空白图**。
+#   判据用"图里有曲线像素"（matplotlib 默认 C0/C1 两色），**不是**只用色数 ——
+#   色数会把"空坐标轴"判成非空白（正是 r20 那个坑）。
+_F8P = os.path.join(FIGS_DIR, 'F8_tau_cleaning.png')
+try:
+    from PIL import Image as _Image
+    _im = _Image.open(_F8P).convert('RGB')
+    _w, _h = _im.size
+    _px = _im.load()
+    _n0 = _n1 = 0
+    for _y in range(_h):
+        for _x in range(_w):
+            _q = _px[_x, _y]
+            if abs(_q[0] - 31) < 30 and abs(_q[1] - 119) < 30 and abs(_q[2] - 180) < 30:
+                _n0 += 1
+            if abs(_q[0] - 255) < 30 and abs(_q[1] - 127) < 30 and abs(_q[2] - 14) < 30:
+                _n1 += 1
+    if _n0 < 300 or _n1 < 300:
+        sys.exit('!! Fig. 3 的件 `F8_tau_cleaning.png` 疑似空白图（曲线像素 C0=%d C1=%d）⇒ 拒绝出包'
+                 % (_n0, _n1))
+    print('Fig. 3 非空白自检：曲线像素 C0=%d C1=%d（阈值各 300）✓' % (_n0, _n1))
+except ImportError:
+    print('⚠ 无 PIL ⇒ 跳过 Fig. 3 非空白自检（仅本次构建）')
+_FIGS_LINES.append('\nFigure-file md5 values (main-text figures, as inlined above):\n')
+_FIGS_LINES.append('| figure | file | bytes | md5 |')
+_FIGS_LINES.append('|---|---|---:|---|')
+for _label, _fn, _md5, _nb in _main_md5:
+    _FIGS_LINES.append('| %s | `figures/%s` | %d | `%s` |' % (_label, _fn, _nb, _md5))
+FIGS_BLOCK = '\n'.join(_FIGS_LINES) + '\n'
+print('图件节：主稿四图内联（%d 条 base64）＋ 附录清单 %d 条；`figures/` 实体 %d 张全部登记 ✓'
+      % (len(MAIN_FIGS), len(APPENDIX_FIGS), len(_present)))
+
 buf = []
 buf.append(HEADER)
 buf.append('\n<!-- ===== 以下为 %s ===== -->\n\n' % PARTS[0][0])
@@ -152,6 +270,9 @@ buf.append('\n<!-- ===== 以下为 %s ===== -->\n\n' % PARTS[2][0])
 buf.append(manu.rstrip('\n') + '\n')
 buf.append('\n<!-- ===== 以下为 %s ===== -->\n\n' % PARTS[3][0])
 buf.append(supp.rstrip('\n') + '\n')
+FIGS_MARK = '<!-- ===== 以下为 09_图件_Figures（内联主稿图 + 附录图清单）===== -->'
+buf.append('\n' + FIGS_MARK + '\n\n')
+buf.append(FIGS_BLOCK)
 pack = ''.join(buf)
 
 # 同构写入：包里的 06/08 与权威稿必须逐字一致（防止"包里是旧稿"）
@@ -169,6 +290,31 @@ for name, src in PARTS:
     origin = rd(SRC_PATH[name])
     assert seg == origin.strip('\n'), '包内 %s 与源文件不一致' % name
 print('四段齐全且与源文件逐字一致 ✓（含 02 提示词 / 02d 问句集——旧版门禁只查 06/08）')
+# 断言 1b（★ v0670 新增）：**图件段**在位，且四张主稿图的 base64 能逐张解回**与盘上逐字节相同**
+figseg = pack.split(FIGS_MARK)[-1]
+assert '## Figures' in figseg, '包内缺 `## Figures` 节（r20【阻塞】项未修）'
+assert 'Figures are shipped with this packet' in figseg, '图件随包声明缺位'
+for _fn, _label, _ in MAIN_FIGS:
+    _tok = re.search(r'!\[%s\]\(data:image/png;base64,([A-Za-z0-9+/=]+)\)' % re.escape(_label),
+                     figseg)
+    assert _tok, '包内缺 %s 的内联图' % _label
+    _dec = base64.b64decode(_tok.group(1))
+    _src = io.open(os.path.join(FIGS_DIR, _fn), 'rb').read()
+    assert _dec == _src, '%s 的内联图与盘上件不是逐字节相同' % _label
+    _im2 = None
+    try:
+        from PIL import Image as _I2
+        _im2 = _I2.open(io.BytesIO(_dec)).convert('RGB')
+        _q = _im2.load()
+        _c = set()
+        for _y in range(0, _im2.size[1], max(1, _im2.size[1] // 60)):
+            for _x in range(0, _im2.size[0], max(1, _im2.size[0] // 60)):
+                _c.add(_q[_x, _y])
+        assert len(_c) >= 12, '%s 解出的图只有 %d 种采样色 ⇒ 疑似空白' % (_label, len(_c))
+    except ImportError:
+        pass
+print('图件段 ✓：四张主稿图 base64 逐张解回与盘上件**逐字节相同**，且采样色数 ≥12（非空白）')
+
 # 断言 2（★ v0652 **反向**）：**评审面不得含"本轮变化块"**。
 #   上级裁定 (乙)：该块撤出评审面 ⇒ 判据从"它必须在包里"取反为"包里不得出现它"。
 #   轮次一致性的**其余部分**保留：包文件名必须带本轮 tag（TAG 是 OUT 名字的唯一来源，

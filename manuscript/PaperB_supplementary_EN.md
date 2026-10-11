@@ -2016,6 +2016,94 @@ mechanism.
 tables named in the design paragraph and their manifest, `analysis_manifest.md`, which also lists the
 non-served cells one by one.
 
+### M.11.2.1 The hosted arm under the registered ordinal coding: the same fit, both codings side by side
+
+§M.11.2 states, per table, **which covariate coding that table is in**, and says that unifying the two arms on the
+registered ordinal coding is a refit that moves the values printed there and is therefore not adopted. What that
+paragraph did **not** supply is the hosted arm's own readings **under the registered coding**. This subsection adds
+them, as a **new** result alongside the printed values, which are left exactly as printed.
+
+**What is refitted, and what is held fixed.** The records, the outcome definition, the model form and the fitting
+routine are those of §M.11.2, unchanged: the six hosted implementations' served cells (34,950 of 34,992 designed),
+the frozen `is_correct`, the same logistic main-effect-of-`count` form, and the same released driver that produces
+the printed values, which it continues to reproduce to the printed four decimals (asserted below). The **only**
+change is the coding of the three legibility axes: the physical values (radius 3/8/24, blur 0/4/8, overlap
+1.45/1.15/0.85) as printed, against the registered ordinal levels `size_level` / `blur_level` / `overlap_level`
+(0/1/2) that the frozen criteria register, obtained through the released frozen analyzer's own `level_of()`.
+`count` and `contract` are untouched.
+
+| implementation | n | raw coding β | raw SE | raw 95% CI | raw C4 | **ordinal coding β** | ord SE | ord 95% CI | ord C4 | \|Δβ\| |
+|---|---:|---:|---:|---|---|---:|---:|---|---|---:|
+| gpt-6.1-sol | 5,832 | −0.5865 | 0.0606 | [−0.7053, −0.4677] | FAIL | **−0.6004** | 0.0614 | [−0.7207, −0.4801] | FAIL | 0.0139 |
+| grok-4.7 | 5,817 | −1.2957 | 0.0805 | [−1.4536, −1.1379] | FAIL | **−1.3184** | 0.0813 | [−1.4777, −1.1591] | FAIL | 0.0227 |
+| gemini-3.8-flash | 5,805 | −0.5680 | 0.0606 | [−0.6867, −0.4493] | FAIL | **−0.5775** | 0.0610 | [−0.6971, −0.4579] | FAIL | 0.0095 |
+| qwen3.8-max | 5,832 | −0.7922 | 0.0585 | [−0.9070, −0.6775] | FAIL | **−0.8276** | 0.0599 | [−0.9451, −0.7101] | FAIL | 0.0354 |
+| qwen3.8-flash | 5,832 | −0.8413 | 0.0620 | [−0.9630, −0.7197] | FAIL | **−0.8467** | 0.0621 | [−0.9684, −0.7249] | FAIL | 0.0053 |
+| glm-4.6v | 5,832 | −1.0626 | 0.0890 | [−1.2371, −0.8882] | FAIL | **−1.0366** | 0.0879 | [−1.2089, −0.8642] | FAIL | 0.0261 |
+| **pooled (common slope)** | **34,950** | **−0.6841** | 0.0237 | **[−0.7305, −0.6377]** | **FAIL** | **−0.6938** | 0.0238 | **[−0.7405, −0.6471]** | **FAIL** | 0.0097 |
+| pooled with count × implementation (reference level = gpt-6.1-sol) | 34,950 | −0.3612 | — | [−0.4365, −0.2859] | FAIL | **−0.3718** | — | [−0.4479, −0.2957] | FAIL | 0.0106 |
+
+The raw-coding column is **the printed table**, reproduced here from the released records by the same driver; the
+reproduction is asserted to the printed four decimals for every row (β, SE and both interval bounds).
+
+**How large the coding difference is here, and whether it changes anything.** The per-implementation \|Δβ\| spans
+**0.0053–0.0354**, with a median of **0.0169**; the pooled common slope moves by **0.0097** and the
+interaction model's reference slope by **0.0106**. This is **an order of magnitude smaller than the local arm's**
+\|Δβ\| of **0.1008–0.1456** under the same two codings (§M.11.2), and the difference between the two arms in this
+respect is itself informative: the hosted arm's `radius` / `blur` / `overlap` nuisance slopes are far weaker, so a
+relabelling of those axes moves the `count` slope less. **The direction of every β is unchanged** (all negative, in
+both codings, for all six implementations and for both pooled readings), and **the C4 verdict is unchanged in all
+eight fits** — **C4 fails under both codings for 6 of 6 implementations and for both pooled fits**, with the
+least-negative upper bound in the ordinal coding still **−0.4493 → −0.4579** and no interval approaching ±0.2. The
+withdrawal §M.11.1 records therefore rests on a reading that **both codings support**: the disposition does not
+depend on which of the two codings is used, and this subsection does not revise any printed value.
+
+**Cluster-aware intervals for the new readings.** Because the design's genuinely repeated unit is the cell, the same
+fits are recomputed with a **cell-clustered sandwich** (CR1, **81 clusters** = 3 counts × 3 radii × 3 blurs × 3
+overlaps; small-sample correction G/(G−1)·(n−1)/(n−p)), which leaves every point estimate unchanged: pooled common
+slope **[−0.7296, −0.6386]** under the raw coding and **[−0.7385, −0.6492]** under the ordinal coding, and
+gpt-6.1-sol's own **[−0.6541, −0.5189]** and **[−0.6666, −0.5342]**. **C4 fails in every one of these intervals as
+well**, under both codings. A layout-clustered bootstrap (the driver's own clustering variable, 648 clusters, 200
+resamples at the frozen seed) gives the pooled common slope **[−0.8281, −0.5774]**, also failing C4.
+
+**Scope of those cluster-aware intervals.** The intervals just given are recomputed from the released records and
+from the clustering unit §M.11.2 names (CR1 over the 81 cells), and they are **not** the intervals §M.11.2 prints
+for the same fits. The printed **CR1** readings are materially **wider** than these recomputations — the printed
+pooled common slope **[−0.9598, −0.4084]** is roughly six times the width of the recomputed
+[−0.7296, −0.6386], and the printed reference slope **[−0.7639, +0.0416]** roughly four times the width of
+[−0.4293, −0.2930]. The point estimates agree exactly in every case, and the recomputed intervals are used
+here for the *ordinal* readings only as the same-unit comparison; the printed CR1 intervals are left as printed.
+The two calibers are **not** interchangeable and the difference is a matter for the audit, not for this
+subsection: it does not touch any value printed in §M.11.2 or in the main text, and it does not change any C4
+verdict, which is **FAIL under every estimator, both codings, and every filling of the missing cells**.
+
+**What the missing cells bound for β and C4, not only for band accuracy.** §M.11.2 already brackets the
+**band-accuracy** effect of the 42 unserved cells by filling them all-wrong and all-correct in turn. The same two
+fillings are run here against the **β / C4** estimand, with the affected units dropped as a third bound. The 42
+unserved cells fall in **13** distinct cells (`gemini-3.8-flash` 27, `grok-4.7` 15), concentrated at `c80`:
+
+| fit | served β | β with 42 filled all-wrong | β with 42 filled all-correct | β with the 13 affected cells dropped | C4 in all three |
+|---|---:|---:|---:|---:|---|
+| common slope, raw coding | −0.6841 | −0.6874 | −0.6805 | −0.7072 | FAIL / FAIL / FAIL |
+| common slope, ordinal coding | −0.6938 | −0.6970 | −0.6902 | −0.7008 | FAIL / FAIL / FAIL |
+| reference slope (gpt-6.1-sol), raw | −0.3612 | −0.3644 | −0.3591 | −0.4019 | FAIL / FAIL / FAIL |
+| reference slope (gpt-6.1-sol), ordinal | −0.3718 | −0.3747 | −0.3693 | −0.3955 | FAIL / FAIL / FAIL |
+
+The whole β range spanned by the two fillings is **0.0069** wide for the common slope (raw coding) and **0.0067**
+(ordinal), i.e. the absent cells **cannot** move the pooled common slope far enough to matter, and **C4 fails at
+both ends and under the drop bound in every coding**. This is the β/C4 counterpart of the band-accuracy bracket
+already printed: the missing cells do not bound the printed band accuracies alone, they bound the slope reading
+too, and the bound is tight.
+
+**Reproduction.** Every code point in this subsection comes from the same released per-record corpus, the same
+released analysis driver and the same released frozen analyzer that §M.11.2 names and that `analysis_manifest.md`
+registers row by row, each imported rather than re-implemented; the runnable entry point is the released
+`a53_ordinal_fit_hosted.py`, catalogued in the same manifest. It reads only released files, asserts every
+**raw**-coding reading against the value printed in §M.11.2 before reporting anything, and carries a negative
+self-test: an absent input file fails with its own path instead of returning an empty result, and a coding switch
+that did **not** move the estimate would be reported as a failure rather than a pass. No model call and no GPU are
+involved, so every value above is re-derivable from the released package alone.
+
 ### M.11.3 Serviceability, registered deviations, and the abstention channel of the cross-family panel
 
 #### M.11.3.1 Serviceability of the cross-family panel (what we could and could not run)

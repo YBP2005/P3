@@ -1,0 +1,159 @@
+{
+ "artifact": "A5-6 2x2 contracts builder",
+ "generated_by": "make_contracts_2x2.py",
+ "out_dir": "/root/a56_2x2/contracts",
+ "remote_contracts_dir": "/root/incoming/x01_corpus/contracts",
+ "templates": {
+  "base": {
+   "path": "/root/incoming/x01_corpus/contracts/base.txt",
+   "present": true,
+   "md5": "a7f75469c636c3b3e3a3d23e4841f171",
+   "bytes": 179,
+   "strip_len": 72,
+   "source": "/root/incoming/x01_corpus/contracts/base.txt",
+   "raw_endswith_nl": true
+  },
+  "permit": {
+   "path": "/root/incoming/x01_corpus/contracts/permit.txt",
+   "present": true,
+   "md5": "09da563b2ad0e15c16179ad2de801325",
+   "bytes": 242,
+   "strip_len": 113,
+   "source": "/root/incoming/x01_corpus/contracts/permit.txt",
+   "raw_endswith_nl": true
+  },
+  "channel": {
+   "path": "/root/incoming/x01_corpus/contracts/channel.txt",
+   "present": true,
+   "md5": "657917c9212d0abf01b1fb63777f4eae",
+   "bytes": 250,
+   "strip_len": 119,
+   "source": "/root/incoming/x01_corpus/contracts/channel.txt",
+   "raw_endswith_nl": true
+  }
+ },
+ "skeleton_template": {
+  "path": "/root/incoming/x01_corpus/contracts/base.txt",
+  "md5": "1aa6d8fa597f67ffb9504ec8b6c1075b",
+  "strip_len": 72
+ },
+ "skeleton_rewrite": {
+  "slot": "literal 目标物体",
+  "format_clause": "identity（模板格式句已是基线格式句）"
+ },
+ "fixed_sentences": {
+  "F1": "请数出图片中的<target_word>的数量（画面中每一个属于该类的个体）",
+  "F2": "不要遗漏，不要重复",
+  "F3": "只输出JSON。"
+ },
+ "variable_sentences": {
+  "V_A": {
+   "no_name0": "",
+   "name0": "若图中没有该目标，答案就是 0。"
+  },
+  "V_B": {
+   "no_exit": "以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+   "exit": "若无法逐个确证，请回答 abstain 或 cannot_judge，不要猜测。以JSON格式输出：{\"count\": 数量} 或 {\"count\": \"abstain\"}，只输出JSON。"
+  }
+ },
+ "fixed_part_of_each_cond": {
+  "no_name0_no_exit": {
+   "md5": "ffbbec0d020f4ad5d9e66567b43fbeb7",
+   "text": "请数出图片中的目标物体的数量（画面中每一个属于该类的个体），不要遗漏，不要重复，"
+  },
+  "no_name0_exit": {
+   "md5": "ffbbec0d020f4ad5d9e66567b43fbeb7",
+   "text": "请数出图片中的目标物体的数量（画面中每一个属于该类的个体），不要遗漏，不要重复，"
+  },
+  "name0_no_exit": {
+   "md5": "ffbbec0d020f4ad5d9e66567b43fbeb7",
+   "text": "请数出图片中的目标物体的数量（画面中每一个属于该类的个体），不要遗漏，不要重复，"
+  },
+  "name0_exit": {
+   "md5": "ffbbec0d020f4ad5d9e66567b43fbeb7",
+   "text": "请数出图片中的目标物体的数量（画面中每一个属于该类的个体），不要遗漏，不要重复，"
+  }
+ },
+ "contracts": {
+  "no_name0_no_exit": {
+   "text": "请数出图片中的目标物体的数量（画面中每一个属于该类的个体），不要遗漏，不要重复，以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+   "bytes": 179,
+   "md5": "a7f75469c636c3b3e3a3d23e4841f171",
+   "text_md5": "1aa6d8fa597f67ffb9504ec8b6c1075b",
+   "var_a": "",
+   "var_b": "以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+   "diff_vs_base": []
+  },
+  "no_name0_exit": {
+   "text": "请数出图片中的目标物体的数量（画面中每一个属于该类的个体），不要遗漏，不要重复，若无法逐个确证，请回答 abstain 或 cannot_judge，不要猜测。以JSON格式输出：{\"count\": 数量} 或 {\"count\": \"abstain\"}，只输出JSON。",
+   "bytes": 280,
+   "md5": "3afc29d16a331d75419653252d5ed830",
+   "text_md5": "80d84e9618336ab3049e29af1941ccee",
+   "var_a": "",
+   "var_b": "若无法逐个确证，请回答 abstain 或 cannot_judge，不要猜测。以JSON格式输出：{\"count\": 数量} 或 {\"count\": \"abstain\"}，只输出JSON。",
+   "diff_vs_base": [
+    "--- contract_no_name0_no_exit.txt\n",
+    "+++ contract_no_name0_exit.txt\n",
+    "@@ -1 +1 @@\n",
+    "-请数出图片中的目标物体的数量（画面中每一个属于该类的个体），不要遗漏，不要重复，以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+    "+请数出图片中的目标物体的数量（画面中每一个属于该类的个体），不要遗漏，不要重复，若无法逐个确证，请回答 abstain 或 cannot_judge，不要猜测。以JSON格式输出：{\"count\": 数量} 或 {\"count\": \"abstain\"}，只输出JSON。"
+   ]
+  },
+  "name0_no_exit": {
+   "text": "请数出图片中的目标物体的数量（画面中每一个属于该类的个体），不要遗漏，不要重复，若图中没有该目标，答案就是 0。以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+   "bytes": 223,
+   "md5": "623dbea85a1e8cbb26f58ff1271c00dc",
+   "text_md5": "fb32768a52af2f118e026374eb267eca",
+   "var_a": "若图中没有该目标，答案就是 0。",
+   "var_b": "以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+   "diff_vs_base": [
+    "--- contract_no_name0_no_exit.txt\n",
+    "+++ contract_name0_no_exit.txt\n",
+    "@@ -1 +1 @@\n",
+    "-请数出图片中的目标物体的数量（画面中每一个属于该类的个体），不要遗漏，不要重复，以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+    "+请数出图片中的目标物体的数量（画面中每一个属于该类的个体），不要遗漏，不要重复，若图中没有该目标，答案就是 0。以JSON格式输出：{\"count\": 数量}，只输出JSON。"
+   ]
+  },
+  "name0_exit": {
+   "text": "请数出图片中的目标物体的数量（画面中每一个属于该类的个体），不要遗漏，不要重复，若图中没有该目标，答案就是 0。若无法逐个确证，请回答 abstain 或 cannot_judge，不要猜测。以JSON格式输出：{\"count\": 数量} 或 {\"count\": \"abstain\"}，只输出JSON。",
+   "bytes": 324,
+   "md5": "524bb5645301855a237d3ce70b669b66",
+   "text_md5": "1a963d0225e716ea365912bdcd766ece",
+   "var_a": "若图中没有该目标，答案就是 0。",
+   "var_b": "若无法逐个确证，请回答 abstain 或 cannot_judge，不要猜测。以JSON格式输出：{\"count\": 数量} 或 {\"count\": \"abstain\"}，只输出JSON。",
+   "diff_vs_base": [
+    "--- contract_no_name0_no_exit.txt\n",
+    "+++ contract_name0_exit.txt\n",
+    "@@ -1 +1 @@\n",
+    "-请数出图片中的目标物体的数量（画面中每一个属于该类的个体），不要遗漏，不要重复，以JSON格式输出：{\"count\": 数量}，只输出JSON。",
+    "+请数出图片中的目标物体的数量（画面中每一个属于该类的个体），不要遗漏，不要重复，若图中没有该目标，答案就是 0。若无法逐个确证，请回答 abstain 或 cannot_judge，不要猜测。以JSON格式输出：{\"count\": 数量} 或 {\"count\": \"abstain\"}，只输出JSON。"
+   ]
+  }
+ },
+ "target_maps": {
+  "alias": "/root/a56_2x2/contracts/target_map.csv",
+  "per_cond": {
+   "no_name0_no_exit": "/root/a56_2x2/contracts/target_map_no_name0_no_exit.csv",
+   "no_name0_exit": "/root/a56_2x2/contracts/target_map_no_name0_exit.csv",
+   "name0_no_exit": "/root/a56_2x2/contracts/target_map_name0_no_exit.csv",
+   "name0_exit": "/root/a56_2x2/contracts/target_map_name0_exit.csv"
+  },
+  "rows": 600,
+  "source": "/root/a56_2x2/pool/manifest.csv"
+ },
+ "gates": {
+  "fixed_part_identical": true,
+  "no_exit_has_no_abstain": true,
+  "exit_has_both_tokens": true,
+  "no_name0_has_no_zero": true,
+  "name0_has_zero_sentence": true,
+  "all_cond_only_json": true,
+  "all_cond_has_count_json": true,
+  "four_cond_distinct": true,
+  "target_map_rows_600": true,
+  "true_zero_300": true,
+  "runner_shortcol_present_nonempty": true,
+  "target_map_alias_has_both_schemes": true
+ },
+ "gates_pass": true
+}

@@ -1,0 +1,9 @@
+====================================================================================================
+analyze_a57 — 实验 1「预算匹配预注册复验」｜§M.45(b) 口径（原文 L5788-L5833）
+====================================================================================================
+[selftest] 用内嵌 §M.45 冻结核（28 单元）回归自证：
+  [selftest] primary_B10_C2         usable=14 rho=0.7674 ret=0.477 top_changed=True  MATCH
+  [selftest] secondary_B25_C4       usable=20 rho=0.8227 ret=0.582 top_changed=True  MATCH
+  [selftest] posthoc_cost_only_C2   usable=17 rho=0.9275 ret=1.000 top_changed=False  MATCH
+  [selftest] posthoc_mae_only_B10   usable=16 rho=0.8292 ret=0.477 top_changed=True  MATCH
+  [selftest] 结论：★ 自证通过（四个读数逐位复现已印 §M.45(b) 数值）

@@ -81,7 +81,7 @@ report a **candidate** only, and claim neither two anchor zones nor bimodality
 **Contributions.** Two empirical findings, plus the apparatus that makes them checkable: the identities of §3.8
 and the appendices, which are arithmetic, not findings, and whose role is that every headline number is
 recomputed from the released records or labelled a transcription or author-side computation (Appendix F.9). 1. **Finding 1 — on dense scenes answered-zero outputs carry most of the aggregate under-count, and
-   that contribution is set by the output contract.** Within the cells studied, literal-zero outputs dominate
+   contract and outlet availability are leading; naming the zero is an independent factor.** Within the cells studied, literal-zero outputs dominate
    the pooled under-count (§5.5); for InternVL2.5-8B [6] the answered-zero channel covers 69.69% of
    abstentions (§3.6, Proposition 7); and **the outlet** is a property of the serving configuration, not the lineage (the **rate** is not; Appendix M.47) — given an abstention token **1591/1591** calls abstain, and in a census fixing the
    stack and varying only the contract, item-level pairing removes the answered zero in **46 of 52**
@@ -297,14 +297,12 @@ failing under an unverbalised true zero, within **at least** the missed-refusal 
 (§3.8, §8.2).
 
 **(d) A consequence that corrects the mechanism.** What decides whether a refusal is expressed is the
-**output contract**, and specifically whether it offers an **abstention token** — not how much
-per-instance work the prompt demands. Prompts that *require* per-instance enumeration or localisation but expose only a numeric field produced
+**output contract and the outlet it offers** — not how much per-instance work the prompt demands; naming zero is an independent factor. The contract answer leaves this open. Prompts that *require* per-instance enumeration or localisation but expose only a numeric field produced
 **zero explicit refusals** and answered **0** (Qwen3-VL-32B-AWQ on VisDrone: **258/273** under
 `enum`, **263/273** under `locate`; both builds of that checkpoint reproduce it, Appendix M.18). Adding a
 single abstention token to **the same** enumeration prompt converted **268/273** of those items into
 explicit abstention, whereas relaxing the demand while still exposing only a number left the answered-zero count unchanged (**121 → 121**) or
-slightly higher (**232 → 235**). **The gate is therefore the availability of an
-abstention token, not the enumeration demand**. The legibility attribution rests on §5.6–5.7, with one boundary the census imposes: under an abstention contract the **dense**
+slightly higher (**232 → 235**). The legibility attribution rests on §5.6–5.7, with one boundary the census imposes: under an abstention contract the **dense**
 domains **saturate** (89–100% of items the corpus had answered with a number, 100% of those it had
 answered 0), so the outlet carries no selectivity there and legibility-gating is demonstrable only in the
 **aerial** domains, on **36–93%** of such items (Appendix M.18).

@@ -1,0 +1,424 @@
+{
+ "n_units": 6,
+ "families": {
+  "q32fp8": "Qwen3-VL-32B-Instruct-FP8",
+  "ivl358b": "InternVL3_5-8B",
+  "lov7b": "llava-onevision-qwen2-7b-ov"
+ },
+ "levels": {
+  "density": [
+   24,
+   30,
+   36
+  ],
+  "res": [
+   640,
+   704,
+   832
+  ]
+ },
+ "selftest_pass": true,
+ "units_raw": {
+  "q32fp8 / density": {
+   "levels": [
+    "24",
+    "30",
+    "36"
+   ],
+   "mae": [
+    8.035,
+    2.02,
+    3.94
+   ],
+   "cost": [
+    3.0,
+    4.0,
+    5.0
+   ],
+   "rho": [
+    33.479166666666664,
+    6.733333333333333,
+    -10.944444444444445
+   ],
+   "span_full": 44.42361111111111,
+   "common_n": 200
+  },
+  "q32fp8 / res": {
+   "levels": [
+    "px640",
+    "px704",
+    "px832"
+   ],
+   "mae": [
+    4.765,
+    4.175,
+    5.695
+   ],
+   "cost": [
+    409600.0,
+    495616.0,
+    692224.0
+   ],
+   "rho": [
+    -9.927083333333334,
+    -8.697916666666666,
+    -11.864583333333334
+   ],
+   "span_full": 3.166666666666668,
+   "common_n": 200
+  },
+  "ivl358b / density": {
+   "levels": [
+    "24",
+    "30",
+    "36"
+   ],
+   "mae": [
+    7.325,
+    2.89,
+    5.185
+   ],
+   "cost": [
+    3.0,
+    4.0,
+    5.0
+   ],
+   "rho": [
+    30.520833333333332,
+    4.533333333333333,
+    -12.875
+   ],
+   "span_full": 43.39583333333333,
+   "common_n": 200
+  },
+  "ivl358b / res": {
+   "levels": [
+    "px640",
+    "px704",
+    "px832"
+   ],
+   "mae": [
+    9.525,
+    8.67,
+    7.78
+   ],
+   "cost": [
+    409600.0,
+    495616.0,
+    692224.0
+   ],
+   "rho": [
+    -19.84375,
+    -17.9375,
+    -15.666666666666666
+   ],
+   "span_full": 4.177083333333334,
+   "common_n": 200
+  },
+  "lov7b / density": {
+   "levels": [
+    "24",
+    "30",
+    "36"
+   ],
+   "mae": [
+    16.61855670103093,
+    11.891752577319588,
+    9.15979381443299
+   ],
+   "cost": [
+    3.0,
+    4.0,
+    5.0
+   ],
+   "rho": [
+    67.61168384879726,
+    34.72508591065292,
+    11.554982817869416
+   ],
+   "span_full": 56.05670103092784,
+   "common_n": 194
+  },
+  "lov7b / res": {
+   "levels": [
+    "px640",
+    "px704",
+    "px832"
+   ],
+   "mae": [
+    12.794285714285714,
+    25.01142857142857,
+    12.82857142857143
+   ],
+   "cost": [
+    409600.0,
+    495616.0,
+    692224.0
+   ],
+   "rho": [
+    5.130952380952381,
+    38.845238095238095,
+    6.488095238095238
+   ],
+   "span_full": 33.714285714285715,
+   "common_n": 175
+  }
+ },
+ "primary_B10_C2": {
+  "B": 0.1,
+  "C": 2.0,
+  "span_bm": {
+   "ivl358b / res": 1.90625,
+   "lov7b / res": 1.3571428571428568
+  },
+  "n_pairs": {
+   "ivl358b / res": 1,
+   "lov7b / res": 1
+  },
+  "undefined": [
+   "ivl358b / density",
+   "lov7b / density",
+   "q32fp8 / density",
+   "q32fp8 / res"
+  ],
+  "usable": [
+   "ivl358b / res",
+   "lov7b / res"
+  ],
+  "n_units": 6,
+  "n_usable": 2,
+  "n_undefined": 4,
+  "frac_comparable": 0.3333333333333333,
+  "frac_comparable_ge1pairs": 0.3333333333333333,
+  "median_n_pairs": 1,
+  "spearman": -0.9999999999999998,
+  "retention_median": 0.45635910224438897,
+  "top_full": "lov7b / density",
+  "top_bm": "ivl358b / res",
+  "top_changed": true,
+  "pass": false,
+  "boot_ci": [
+   NaN,
+   NaN
+  ],
+  "desc": "预注册主判据 (B,C)=(0.10,2.0)"
+ },
+ "secondary_B25_C4": {
+  "B": 0.25,
+  "C": 4.0,
+  "span_bm": {
+   "q32fp8 / res": 1.9375,
+   "ivl358b / res": 4.177083333333334,
+   "lov7b / res": 1.3571428571428568
+  },
+  "n_pairs": {
+   "q32fp8 / res": 2,
+   "ivl358b / res": 3,
+   "lov7b / res": 1
+  },
+  "undefined": [
+   "ivl358b / density",
+   "lov7b / density",
+   "q32fp8 / density"
+  ],
+  "usable": [
+   "ivl358b / res",
+   "lov7b / res",
+   "q32fp8 / res"
+  ],
+  "n_units": 6,
+  "n_usable": 3,
+  "n_undefined": 3,
+  "frac_comparable": 0.5,
+  "frac_comparable_ge1pairs": 0.5,
+  "median_n_pairs": 2,
+  "spearman": -0.4999999999999999,
+  "retention_median": 0.6118421052631576,
+  "top_full": "lov7b / density",
+  "top_bm": "ivl358b / res",
+  "top_changed": true,
+  "pass": false,
+  "boot_ci": [
+   -1.0000000000000002,
+   1.0000000000000002
+  ],
+  "desc": "预注册次判据 (B,C)=(0.25,4.0)"
+ },
+ "posthoc_cost_only_C2": {
+  "B": Infinity,
+  "C": 2.0,
+  "span_bm": {
+   "q32fp8 / density": 44.42361111111111,
+   "q32fp8 / res": 3.166666666666668,
+   "ivl358b / density": 43.39583333333333,
+   "ivl358b / res": 4.177083333333334,
+   "lov7b / density": 56.05670103092784,
+   "lov7b / res": 33.714285714285715
+  },
+  "n_pairs": {
+   "q32fp8 / density": 3,
+   "q32fp8 / res": 3,
+   "ivl358b / density": 3,
+   "ivl358b / res": 3,
+   "lov7b / density": 3,
+   "lov7b / res": 3
+  },
+  "undefined": [],
+  "usable": [
+   "ivl358b / density",
+   "ivl358b / res",
+   "lov7b / density",
+   "lov7b / res",
+   "q32fp8 / density",
+   "q32fp8 / res"
+  ],
+  "n_units": 6,
+  "n_usable": 6,
+  "n_undefined": 0,
+  "frac_comparable": 1.0,
+  "frac_comparable_ge1pairs": 1.0,
+  "median_n_pairs": 3,
+  "spearman": 1.0,
+  "retention_median": 1.0,
+  "top_full": "lov7b / density",
+  "top_bm": "lov7b / density",
+  "top_changed": false,
+  "pass": true,
+  "boot_ci": [
+   0.9999999999999998,
+   1.0
+  ],
+  "desc": "事后单边诊断：只放成本上限"
+ },
+ "posthoc_mae_only_B10": {
+  "B": 0.1,
+  "C": Infinity,
+  "span_bm": {
+   "ivl358b / res": 1.90625,
+   "lov7b / res": 1.3571428571428568
+  },
+  "n_pairs": {
+   "ivl358b / res": 1,
+   "lov7b / res": 1
+  },
+  "undefined": [
+   "ivl358b / density",
+   "lov7b / density",
+   "q32fp8 / density",
+   "q32fp8 / res"
+  ],
+  "usable": [
+   "ivl358b / res",
+   "lov7b / res"
+  ],
+  "n_units": 6,
+  "n_usable": 2,
+  "n_undefined": 4,
+  "frac_comparable": 0.3333333333333333,
+  "frac_comparable_ge1pairs": 0.3333333333333333,
+  "median_n_pairs": 1,
+  "spearman": -0.9999999999999998,
+  "retention_median": 0.45635910224438897,
+  "top_full": "lov7b / density",
+  "top_bm": "ivl358b / res",
+  "top_changed": true,
+  "pass": false,
+  "boot_ci": [
+   NaN,
+   NaN
+  ],
+  "desc": "事后单边诊断：只放误差预算"
+ },
+ "R2_strict_cost_semantics": {
+  "B": 0.1,
+  "C": 2.0,
+  "span_bm": {
+   "VLM·pixel budget / ivl / st_a": 1.0226079999999982,
+   "VLM·pixel budget / ivl / ucf": 1.8661369999999948,
+   "VLM·pixel budget / ivl / visdrone": 3.8225110000000058,
+   "VLM·pixel budget / q32 / st_a": 3.9943190000000044,
+   "VLM·pixel budget / q32 / ucf": 8.671661,
+   "VLM·pixel budget / q32 / visdrone": 3.7778020000000083,
+   "VLM·tiling / Qwen32B / ucf / base": 8.128198000000001,
+   "density·CSRNet / ladder": 124.155773,
+   "density·official DM-Count / st_a": 7.596528,
+   "density·official DM-Count / ucf": 6.855452,
+   "det·in-domain(micro)/BBBC005 (full grid)": 29.32851,
+   "det·in-domain(micro)/BBBC005 / tau@640": 29.32851,
+   "det·in-domain/VisDrone (full grid)": 159.282441,
+   "det·in-domain/VisDrone / tau@1024": 159.282441,
+   "det·in-domain/VisDrone / tau@1536": 113.971163,
+   "det·in-domain/VisDrone / tau@640": 80.328602,
+   "det·zero-shot COCO (full grid)": 26.46476,
+   "det·zero-shot COCO / tau@1024": 8.661194999999992,
+   "det·zero-shot COCO / tau@1536": 26.46476,
+   "det·zero-shot COCO / tau@640": 8.816868999999997
+  },
+  "n_pairs": {
+   "VLM·pixel budget / ivl / st_a": 5,
+   "VLM·pixel budget / ivl / ucf": 5,
+   "VLM·pixel budget / ivl / visdrone": 5,
+   "VLM·pixel budget / q32 / st_a": 5,
+   "VLM·pixel budget / q32 / ucf": 5,
+   "VLM·pixel budget / q32 / visdrone": 4,
+   "VLM·tiling / Qwen32B / ucf / base": 1,
+   "density·CSRNet / ladder": 1,
+   "density·official DM-Count / st_a": 7,
+   "density·official DM-Count / ucf": 4,
+   "det·in-domain(micro)/BBBC005 (full grid)": 1,
+   "det·in-domain(micro)/BBBC005 / tau@640": 1,
+   "det·in-domain/VisDrone (full grid)": 30,
+   "det·in-domain/VisDrone / tau@1024": 10,
+   "det·in-domain/VisDrone / tau@1536": 9,
+   "det·in-domain/VisDrone / tau@640": 11,
+   "det·zero-shot COCO (full grid)": 48,
+   "det·zero-shot COCO / tau@1024": 16,
+   "det·zero-shot COCO / tau@1536": 10,
+   "det·zero-shot COCO / tau@640": 22
+  },
+  "undefined": [
+   "VLM·tiling / Qwen32B(ctile) / ucf / base",
+   "VLM·tiling / Qwen32B(ctile) / ucf / choice",
+   "VLM·tiling / Qwen32B(ctile) / ucf / forbid0",
+   "VLM·tiling / Qwen32B(ctile) / ucf / range",
+   "VLM·tiling / Qwen8B(ctile) / ucf / base",
+   "density·CSRNet / st",
+   "det·in-domain(micro)/BBBC005 / tau@1024",
+   "det·in-domain(micro)/BBBC005 / tau@1536"
+  ],
+  "usable": [
+   "VLM·pixel budget / ivl / st_a",
+   "VLM·pixel budget / ivl / ucf",
+   "VLM·pixel budget / ivl / visdrone",
+   "VLM·pixel budget / q32 / st_a",
+   "VLM·pixel budget / q32 / ucf",
+   "VLM·pixel budget / q32 / visdrone",
+   "VLM·tiling / Qwen32B / ucf / base",
+   "density·CSRNet / ladder",
+   "density·official DM-Count / st_a",
+   "density·official DM-Count / ucf",
+   "det·in-domain(micro)/BBBC005 (full grid)",
+   "det·in-domain(micro)/BBBC005 / tau@640",
+   "det·in-domain/VisDrone (full grid)",
+   "det·in-domain/VisDrone / tau@1024",
+   "det·in-domain/VisDrone / tau@1536",
+   "det·in-domain/VisDrone / tau@640",
+   "det·zero-shot COCO (full grid)",
+   "det·zero-shot COCO / tau@1024",
+   "det·zero-shot COCO / tau@1536",
+   "det·zero-shot COCO / tau@640"
+  ],
+  "n_units": 28,
+  "n_usable": 20,
+  "n_undefined": 8,
+  "frac_comparable": 0.7142857142857143,
+  "frac_comparable_ge1pairs": 0.7142857142857143,
+  "median_n_pairs": 5,
+  "spearman": 0.8769294261207143,
+  "retention_median": 0.5361445350876146,
+  "top_full": "density·CSRNet / st",
+  "top_bm": "det·in-domain/VisDrone (full grid)",
+  "top_changed": true,
+  "pass": false
+ }
+}

@@ -246,7 +246,10 @@ SUB = []
 if san is not None:
     for f in san['files']:
         if f['path'] == 'manuscript/review_control_evidence.md' and f['src_md5']:
-            SUB.append(('| `manuscript/review_control_evidence.md` | 2 | `7052DE8CCB7FC67C57150619A570F742` | `C648AA81B75985825523170E44B8945F` |',
+            # ★ 2026-10-11：OLD 按 R5 老串同步到 README **现印**的那一份
+            #   （`EB1658CD…`/`44DDAF36…`）；NEW 仍由消毒台账当场派生（判据未放宽：
+            #   "老串恰好命中 1 次 / 或已应用"一字未动；旧值 `7052DE8C…` 已入 ⑥ 注册表）。
+            SUB.append(('| `manuscript/review_control_evidence.md` | 2 | `EB1658CD01D61F6EE78B7C380C3BE991` | `44DDAF365938DCD2F707DB96A51875F1` |',
                         '| `manuscript/review_control_evidence.md` | 2 | `%s` | `%s` |'
                         % (f['src_md5'].upper(), f['shipped_md5'].upper())))
 SUB += [
@@ -273,9 +276,9 @@ SUB += [
     # ★ v0656：老串再次同步到 README **现印**的那一份（32/26/6 —— 因为本次把`bf873c5e…`
     #   （被取代的机上分析器）作为存档件放进 `archives/`，它**从"未随包摘要"变成"随包摘要"**，
     #   故派生结果为 32/27/5；被换下的那一条已进 ⑥ 的持久注册表，不删。）
-    ('''Of the **32** distinct 32-hex digests printed in the manuscript and the supplementary material, **26**
-equal the `MANIFEST.csv` md5 of a file this package ships, before or after v0608. The remaining **6** are
-not shipped-file digests: `0a42e6e5bbfa89543ba9fc1522f1b075`, `758962a2643e1035698682abefec5748`, `9c74db226c1b785361807ebc7e069771`, `aca4444c7f681b0596db4e4a84578b62`, `bf873c5e7da083dae42cb379efe9af9d`, `d95d7466b482f575dc781d152e5ddf23`.''',
+    ('''Of the **32** distinct 32-hex digests printed in the manuscript and the supplementary material, **27**
+equal the `MANIFEST.csv` md5 of a file this package ships, before or after v0608. The remaining **5** are
+not shipped-file digests: `0a42e6e5bbfa89543ba9fc1522f1b075`, `758962a2643e1035698682abefec5748`, `9c74db226c1b785361807ebc7e069771`, `aca4444c7f681b0596db4e4a84578b62`, `d95d7466b482f575dc781d152e5ddf23`.''',
      '''Of the **%d** distinct 32-hex digests printed in the manuscript and the supplementary material, **%d**
 equal the `MANIFEST.csv` md5 of a file this package ships, before or after v0608. The remaining **%d** are
 not shipped-file digests: %s.'''
@@ -296,16 +299,15 @@ not shipped-file digests: %s.'''
      '1. **%d** scripts resolve their inputs through the shared root: the **146** converted in v0608 plus the\n'
      '   scripts added to the released set since. Each imports `code/analysis/_repro_root.py`:\n'
      '   `grep -rl "from _repro_root import" code | wc -l` → **%d**.' % (n_shared, n_shared)),
-    ('   Widening the same scan to **every** text file in the package gives **21** files, still none of them a\n'
+    ('   Widening the same scan to **every** text file in the package gives **22** files, still none of them a\n'
      '   script\'s data path. They are frozen artefacts and run logs whose recorded strings hold the authors\'\n'
      '   prefix in backslash-escaped form (e.g. `A_result.json`, `ea2_z0_result.json`, `fsc_res_result.json`,',
      '   Widening the same scan to **every** text file in the package gives **%d** files, still none of them a\n'
      '   script\'s data path. They are frozen artefacts and run logs whose recorded strings hold the authors\'\n'
      '   prefix in backslash-escaped form (e.g. `A_result.json`, `ea2_z0_result.json`, `fsc_res_result.json`,' % n_abspath_all),
-    ('   `n1_span_artefact_result.json`, `n2_rule_spread_inventory.json`, two copies of the first two under\n'
-     '   `data/derived/fsc_res/`, and `manuscript/pagination_measurement.json` plus its RTF-proxy companion);\n'
-     '   **3** prose mentions in the `env/a800_logs_20260927/` handover notes; and this `README.md`, which quotes\n'
-     '   the `e:\\n` fragment above. The frozen artefacts are **deliberately not modified** — they are reported',
+    ('   `n1_span_artefact_result.json`, `n2_rule_spread_inventory.json`, the per-image records under\n'
+     '   `data/derived/`, the `env/` handover notes, and this `README.md`, which quotes\n'
+     '   the `e:\\n` fragment above). The frozen artefacts are **deliberately not modified** — they are reported',
      '   `n1_span_artefact_result.json`, `n2_rule_spread_inventory.json`, the per-image records under\n'
      '   `data/derived/`, the `env/` handover notes, and this `README.md`, which quotes\n'
      '   the `e:\\n` fragment above). The frozen artefacts are **deliberately not modified** — they are reported'),
@@ -356,14 +358,14 @@ not shipped-file digests: %s.'''
     #   换成一个**可复核**的陈述：改了几件、其余逐字节相同、manifest 只在被改写的行上变化。
     # ★ v0656：老串同步到 README **现印**的那一份（3829/4/3825）；被换下的"假全称句"那条
     #   （`**Nothing under data/ was altered.** Every one of the **3787** …`）已进 ⑥ 的持久注册表。
-    ('**Almost nothing under `data/` was altered.** Of the **3947** files under `data/`, **6** are text files\n'
-     'the sanitiser rewrote (they are the `data/` rows of the table above); every one of the remaining **3941** is\n'
+    ('**Almost nothing under `data/` was altered.** Of the **3974** files under `data/`, **6** are text files\n'
+     'the sanitiser rewrote (they are the `data/` rows of the table above); every one of the remaining **3968** is\n'
      'byte-identical to the corresponding source file.',
      '**Almost nothing under `data/` was altered.** Of the **%d** files under `data/`, **%d** are text files\n'
      'the sanitiser rewrote (they are the `data/` rows of the table above); every one of the remaining **%d** is\n'
      'byte-identical to the corresponding source file.' % (N_DATA, N_DATA_SAN, N_DATA - N_DATA_SAN)),
     # ★ v0656：老串同步到 README **现印**的那一份（3829 / **3**）；被换下的"finds **zero**"那条已进 ⑥。
-    ('of the six placeholder patterns above in the file, and a scan of all 3947 released data files finds **3**\n'
+    ('of the six placeholder patterns above in the file, and a scan of all 3974 released data files finds **3**\n'
      'carrying one of them — the remaining rewritten data file carries a neutral internal-name placeholder\n'
      'instead of a host/path placeholder; (ii)',
      'of the six placeholder patterns above in the file, and a scan of all %d released data files finds **%d**\n'
@@ -469,6 +471,20 @@ RETIRED_STALE = [
          retired_by='v0666 轮（上级裁定 2026-10-10 可追溯退役）',
          basis_md5='746dd9fd7761818f7b65e2224af03166（本次补材）/'
                    '35810a6d3fba7b9c2335ff6a90827d9c（本次主稿）'),
+    # ★ 2026-10-11：同一类假阳性，同一裁定、同一手续。⑤ 的 `n1_span_artefact_result.json`
+    #   那一条 OLD 按 R5 纪律同步到 README **现印**文本后，该 OLD 字面与 ⑥ 注册表里"上一代替换串"
+    #   （上一轮那条 "two copies of the first two under …" 的被换下字面）**逐字重合** ⇒ 替换后命中
+    #   是**字面重合**，不是陈旧残留。判据未放宽：注册表 append-only，此条只跳过对比、不删条目。
+    dict(literal_prefix='   `n1_span_artefact_result.json`, `n2_rule_spread_inventory.json`, the per-image records under',
+         label='（⑤ 上一代替换串）   `n1_span_artefact_result.json`, `n2_rule_…',
+         reason='⑤ 的 OLD 按 R5 同步到 README **现印**文本后，与上一代被换下的字面**逐字重合**'
+                '（旧串=新串）⇒ 替换后命中是**字面重合**，不是陈旧残留',
+         evidence='`python derive_release_numbers.py --check`（2026-10-11）：消毒台账 37 个文件 / 81 处替换；'
+                  'README 四类计数 = 共享根 159 ｜ code 里作者机路径 3 ｜ 全树 25 ｜ 含占位符 40',
+         retired_on='2026-10-11',
+         retired_by='沿用 v0666 可追溯退役裁定（本次无新裁定）',
+         basis_md5='9fdd442397196fbe26f3f8c6a6b72c9e（本次补材）/'
+                   '0aa4506850bdebd701079207020f814b（本次主稿）'),
 ]
 
 

@@ -1,0 +1,96 @@
+规范化中间件（修订 B）报告
+========================================================================
+输入文件数 = 54 ｜ 输入总行 = 14400
+http==200 行 = 12600 ｜ http!=200 行 = 1800
+★ 保留行（修订 B 去重后）= 10800 ｜ 期望 = 6 单元 × 3 档 × 3 起服 × 200 图 = 10800
+★ 排除的 http==200 重复轮行 = 1800（q32fp8/density 9 格 × 200）
+★ 排除的 NOIMG 行 = 1800（q32fp8/res 9 格 × 200）
+★ 因选轮而整身份丢失数 = 0（期望 0）
+★ 物理名→逻辑 item 解析路径分布 = {'manifest.image 列': 10800}
+★ 未解析行 = 0（期望 0）
+
+★ 逻辑 item 公共交集（每单元：3 档 × 3 起服并集）
+  ivl358b   density  各档 item 数 = {'24': 200, '30': 200, '36': 200} ｜ 3 档交集 = 200
+  ivl358b   res      各档 item 数 = {'px640': 200, 'px704': 200, 'px832': 200} ｜ 3 档交集 = 200
+  lov7b     density  各档 item 数 = {'24': 200, '30': 200, '36': 200} ｜ 3 档交集 = 200
+  lov7b     res      各档 item 数 = {'px640': 200, 'px704': 200, 'px832': 200} ｜ 3 档交集 = 200
+  q32fp8    density  各档 item 数 = {'24': 200, '30': 200, '36': 200} ｜ 3 档交集 = 200
+  q32fp8    res      各档 item 数 = {'px640': 200, 'px704': 200, 'px832': 200} ｜ 3 档交集 = 200
+
+逐格审计（每 (alias,knob,level,start)）：
+family    knob     level  start     rows http200  NOIMG uniq_img uniq_item   kept  dropped unparsed  unres
+ivl358b   density  24     start1     200     200      0      200      200    200        0        0      0
+ivl358b   density  24     start2     200     200      0      200      200    200        0        0      0
+ivl358b   density  24     start3     200     200      0      200      200    200        0        0      0
+ivl358b   density  30     start1     200     200      0      200      200    200        0        0      0
+ivl358b   density  30     start2     200     200      0      200      200    200        0        0      0
+ivl358b   density  30     start3     200     200      0      200      200    200        0        0      0
+ivl358b   density  36     start1     200     200      0      200      200    200        0        0      0
+ivl358b   density  36     start2     200     200      0      200      200    200        0        0      0
+ivl358b   density  36     start3     200     200      0      200      200    200        0        0      0
+ivl358b   res      px640  start1     200     200      0      200      200    200        0        0      0
+ivl358b   res      px640  start2     200     200      0      200      200    200        0        0      0
+ivl358b   res      px640  start3     200     200      0      200      200    200        0        0      0
+ivl358b   res      px704  start1     200     200      0      200      200    200        0        0      0
+ivl358b   res      px704  start2     200     200      0      200      200    200        0        0      0
+ivl358b   res      px704  start3     200     200      0      200      200    200        0        0      0
+ivl358b   res      px832  start1     200     200      0      200      200    200        0        0      0
+ivl358b   res      px832  start2     200     200      0      200      200    200        0        0      0
+ivl358b   res      px832  start3     200     200      0      200      200    200        0        0      0
+lov7b     density  24     start1     200     200      0      200      200    200        0        5      0
+lov7b     density  24     start2     200     200      0      200      200    200        0        6      0
+lov7b     density  24     start3     200     200      0      200      200    200        0        5      0
+lov7b     density  30     start1     200     200      0      200      200    200        0        6      0
+lov7b     density  30     start2     200     200      0      200      200    200        0        5      0
+lov7b     density  30     start3     200     200      0      200      200    200        0        6      0
+lov7b     density  36     start1     200     200      0      200      200    200        0        5      0
+lov7b     density  36     start2     200     200      0      200      200    200        0        5      0
+lov7b     density  36     start3     200     200      0      200      200    200        0        6      0
+lov7b     res      px640  start1     200     200      0      200      200    200        0        9      0
+lov7b     res      px640  start2     200     200      0      200      200    200        0        8      0
+lov7b     res      px640  start3     200     200      0      200      200    200        0        9      0
+lov7b     res      px704  start1     200     200      0      200      200    200        0       10      0
+lov7b     res      px704  start2     200     200      0      200      200    200        0       11      0
+lov7b     res      px704  start3     200     200      0      200      200    200        0       10      0
+lov7b     res      px832  start1     200     200      0      200      200    200        0        4      0
+lov7b     res      px832  start2     200     200      0      200      200    200        0        6      0
+lov7b     res      px832  start3     200     200      0      200      200    200        0        5      0
+q32fp8    density  24     start1     400     400      0      200      200    200      200        0      0
+q32fp8    density  24     start2     400     400      0      200      200    200      200        0      0
+q32fp8    density  24     start3     400     400      0      200      200    200      200        0      0
+q32fp8    density  30     start1     400     400      0      200      200    200      200        0      0
+q32fp8    density  30     start2     400     400      0      200      200    200      200        0      0
+q32fp8    density  30     start3     400     400      0      200      200    200      200        0      0
+q32fp8    density  36     start1     400     400      0      200      200    200      200        0      0
+q32fp8    density  36     start2     400     400      0      200      200    200      200        0      0
+q32fp8    density  36     start3     400     400      0      200      200    200      200        0      0
+q32fp8    res      px640  start1     400     200    200      200      200    200        0        0      0
+q32fp8    res      px640  start2     400     200    200      200      200    200        0        0      0
+q32fp8    res      px640  start3     400     200    200      200      200    200        0        0      0
+q32fp8    res      px704  start1     400     200    200      200      200    200        0        0      0
+q32fp8    res      px704  start2     400     200    200      200      200    200        0        0      0
+q32fp8    res      px704  start3     400     200    200      200      200    200        0        0      0
+q32fp8    res      px832  start1     400     200    200      200      200    200        0        0      0
+q32fp8    res      px832  start2     400     200    200      200      200    200        0        0      0
+q32fp8    res      px832  start3     400     200    200      200      200    200        0        0      0
+
+逐 (family,knob,level) 汇总（3 起服）：
+family    knob     level     rows  http200  NOIMG  uniq_id     kept  dropped unparsed
+ivl358b   density  24         600      600      0      600      600        0        0
+ivl358b   density  30         600      600      0      600      600        0        0
+ivl358b   density  36         600      600      0      600      600        0        0
+ivl358b   res      px640      600      600      0      600      600        0        0
+ivl358b   res      px704      600      600      0      600      600        0        0
+ivl358b   res      px832      600      600      0      600      600        0        0
+lov7b     density  24         600      600      0      600      600        0       16
+lov7b     density  30         600      600      0      600      600        0       17
+lov7b     density  36         600      600      0      600      600        0       16
+lov7b     res      px640      600      600      0      600      600        0       26
+lov7b     res      px704      600      600      0      600      600        0       31
+lov7b     res      px832      600      600      0      600      600        0       15
+q32fp8    density  24        1200     1200      0      600      600      600        0
+q32fp8    density  30        1200     1200      0      600      600      600        0
+q32fp8    density  36        1200     1200      0      600      600      600        0
+q32fp8    res      px640     1200      600    600      600      600        0        0
+q32fp8    res      px704     1200      600    600      600      600        0        0
+q32fp8    res      px832     1200      600    600      600      600        0        0

@@ -1,0 +1,18 @@
+manifest rows = 1200  |  raw cells = 54  |  http==200 rows = 10800
+
+--- pre-registered caliber (per-level GT, cost ceil(d/8)) ---
+  common items per unit: ivl358b / density=200, ivl358b / res=200, lov7b / density=194, lov7b / res=175, q32fp8 / density=200, q32fp8 / res=200
+  (B,C)=(0.10,2.0)  usable=2/6 = 0.3333 [Wilson 0.097, 0.700]  Spearman=-1.0000  retention=0.456  top change=True  => FAIL
+       not computable: ivl358b / density, lov7b / density, q32fp8 / density, q32fp8 / res
+  (B,C)=(0.25,4.0)  usable=3/6 = 0.5000 [Wilson 0.188, 0.812]  Spearman=-0.5000  retention=0.612  top change=True  => FAIL
+       not computable: ivl358b / density, lov7b / density, q32fp8 / density
+  cost ceiling released (C=2), error budget kept=inf: Spearman=1.0000 retention=1.000 top change=False => PASS
+  error budget released (B=0.10), cost ceiling kept=inf: Spearman=-1.0000 retention=0.456 top change=True => FAIL
+
+--- as first shipped (GT reused from level 0, density cost mis-parsed) ---
+  common items per unit: ivl358b / density=200, ivl358b / res=200, lov7b / density=194, lov7b / res=175, q32fp8 / density=200, q32fp8 / res=200
+  (B,C)=(0.10,2.0)  usable=5/6 = 0.8333 [Wilson 0.436, 0.970]  Spearman=0.8000  retention=0.456  top change=True  => FAIL
+       not computable: q32fp8 / res
+  (B,C)=(0.25,4.0)  usable=6/6 = 1.0000 [Wilson 0.610, 1.000]  Spearman=0.7714  retention=0.625  top change=True  => FAIL
+  cost ceiling released (C=2), error budget kept=inf: Spearman=0.9429 retention=1.000 top change=False => FAIL
+  error budget released (B=0.10), cost ceiling kept=inf: Spearman=0.8000 retention=0.456 top change=True => FAIL

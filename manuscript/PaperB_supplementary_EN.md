@@ -6236,6 +6236,195 @@ the item lists and all 13,200 per-item records are released with the paper; the 
 digest and the byte-level prompt substitution before its first call, and each service start's readiness
 timestamp, endpoint and criteria digest are recorded in the run log.*
 
+### M.50 The output contract is one leading factor, not the only one: a 2x2 experiment that separates the abstention outlet from the naming of zero
+
+The mechanism M.19 tests is stated there as a gate on the **availability of an abstention token**. A
+census that holds the stack fixed and varies only the contract cannot, by construction, separate that
+factor from a second one: the contract that names zero is also the contract that a model may satisfy
+without abstaining. The two are confounded in every three-arm contrast this paper has reported, because
+those arms never cross the two. This section crosses them.
+
+**Design.** Two binary factors are crossed, giving four conditions and nothing else:
+
+| factor | level | the one sentence that varies |
+|---|---|---|
+| A: the value zero is named | `name0` | names zero as the answer when the target is absent |
+| | `no_name0` | empty string: the instruction never mentions zero |
+| B: an abstention outlet is offered | `exit` | offers `abstain` / `cannot_judge` and a two-form JSON output |
+| | `no_exit` | single-form JSON output only |
+
+Stripping both variable sentences leaves a byte-identical fixed part in all four conditions (md5
+`ffbbec0d020f4ad5d9e66567b43fbeb7`, 40 characters, for each of the four); the contract builder asserts
+this and refuses to emit the four files otherwise. The outlet sentence necessarily also carries the
+output-format sentence, since permitting an abstention changes the JSON shape; that sentence is therefore
+declared as part of the variable block rather than smuggled into the fixed block, and the audit records
+it. The image set, the target word per image, the counting and no-double-count sentences, `max_tokens`
+1024 and the serving stack are held fixed, and the four conditions of one build run inside **one service
+start**, so the start is not a degree of freedom between conditions.
+
+**Stimulus.** 600 newly rendered images: **300 true-zero** images, in which the asked target is drawn
+nowhere (`count_gt = 0`), and **300 non-zero controls** with `count_gt = 48`. The two classes share the
+same joint distribution of `px` (704 / 832 / 960), `size` (16 / 20 / 24), `blur` (0 / 1) and `overlap`
+(0.1 / 0.3) **cell for cell** (36 combinations, 8 or 9 images each), each class carries 150 images per
+target word, and a true-zero image's distractor family differs from the asked target in both colour and
+shape while being drawn in the same count, so visual load matches the control. The renderer's own gate
+asserts that the asked target lands on exactly 0 points in every true-zero image and exactly 48 in every
+control.
+
+**Scale.** 5 builds x 4 conditions x 600 images = **12,000** cells, every one served with HTTP 200, with
+no repeated key and no malformed JSON. The table below is per build and is **never pooled across
+builds**, because the served build is the unit the contract cannot equalise.
+
+**Answered-zero count on the 300 true-zero images.**
+
+| build | `no_name0_no_exit` | `no_name0_exit` | `name0_no_exit` | `name0_exit` |
+|---|---:|---:|---:|---:|
+| **InternVL3.5-8B** | 249 | **0** | 299 | 28 |
+| **Qwen3-VL-32B-FP8** | 300 | 290 | 300 | 300 |
+| **llava-onevision-7B** | 162 | **3** | 207 | 30 |
+| **Phi-3.5-vision** | 202 | 50 | 226 | 103 |
+| **InternVL3.5-38B-FP8** | 299 | 55 | 300 | 296 |
+
+**1. The outlet factor's effect is build-specific.** With zero not named, offering the outlet moves the
+answered-zero count **249 -> 0**, **162 -> 3**, **202 -> 50** and **299 -> 55**. Four of the five builds
+therefore collapse, in the direction M.19 reports: they retain **0.0%**, **1.9%**, **24.8%** and **18.4%**
+of their baseline answered zeros. The fifth is nearly immune: the 32B-FP8 build moves **300 -> 290** and
+retains **96.7%**.
+
+**2. Naming zero acts in the same direction in 5 of 5 builds, at both outlet levels.** Without the
+outlet, naming zero raises the count **249 -> 299**, **162 -> 207**, **202 -> 226**, **299 -> 300** and
+**300 -> 300**; with the outlet offered it raises it **0 -> 28**, **3 -> 30**, **50 -> 103**, **55 -> 296**
+and **290 -> 300**. The direction is positive in every build at both levels, and on the outlet arms it
+**recovers part of what the outlet removed** — the four collapsing builds move from 0, 3, 50 and 55 back
+to 28, 30, 103 and 296.
+
+**3. What this means for the mechanism claim.** Because the named-zero factor moves the answered-zero
+count in its own right, and moves it in the same direction in every build here, the
+**output contract and the outlet it offers cannot be written as the sole mechanism**. The accurate form is
+that contract and outlet availability are a **leading** factor — four of the five builds lose most of
+their answered zeros when the outlet appears — while **naming the target value zero is an independent
+strong factor** that operates at both outlet levels. The three-arm contrasts of M.18 and M.19 are
+reported alongside this result, and they **do not isolate the named-zero factor**, since none of those
+arms crosses it with outlet availability; the two experiments answer different questions and neither
+supersedes the other. §3.6(d) is amended accordingly.
+
+**4. The cost axis, briefly.** On the 300 non-zero controls the exact-48 count falls when the outlet
+appears in four builds — **20 -> 13** on the 38B-FP8 build and **11 -> 7** on
+llava-onevision-7B — so the outlet is not free there either, even though it removes the answered zeros.
+The named-zero factor is not uniformly cheap: on Phi-3.5-vision the condition that names zero without an
+outlet drives the exact-48 count to **0 of 300** while its answered-zero count on the true-zero pool rises
+to **226 of 300**, which is the clearest instance of the degenerate direction the cost axis is there to
+catch. The per-cell numbers are in the release.
+
+**5. Limits.** Each condition is measured in **one service start per build, with no repetition**, so this
+experiment supports statements about the **direction** of each factor and about **between-build
+heterogeneity**; it does not measure start-to-start variability and no such claim is made from it. A
+sixth build (a 4-bit quantised large model) was planned and is reported as **not run**; the family count
+is five rather than being filled with a near neighbour.
+
+*Reproduction: the renderer, the contract builder, the orchestration, the 600-row stimulus manifest with
+its per-image `sha256`, the contract audit and all **12,000** per-call records are released under
+`data/derived/a5_6_2x2_20261011/`; `criteria_tables.py` regenerates every number above from the records
+alone, with no model call and no GPU.*
+
+### M.51 The ordering under a common error and cost budget, re-checked on a new synthetic domain
+
+M.45(b) holds every knob to the same error and cost budget on the released 36-unit construction and
+finds the ordering **not preserved**, with the largest-response knob changing and about half the units
+admitting no admissible pair at all. It closes by naming the **error budget, not the cost ceiling**, as
+the binding constraint, from two post-hoc one-sided diagnostics. That conclusion rests on one domain. The
+experiment below re-derives it on a **newly rendered synthetic domain** whose item sets, levels and
+criteria were frozen before any call was made. The domain is **synthetic and is not a public benchmark**;
+no number here is comparable to one measured on a public corpus.
+
+**Caliber.** A pair of a unit's levels may be compared only if `max(MAE)/min(MAE) <= 1 + B` **and**
+`max(cost)/min(cost) <= C`, with `(B, C)` pre-registered at **(0.10, 2.0)** primary and **(0.25, 4.0)**
+secondary. Cost is a **declared proxy**: `ceil(d / 8)` for the density knob, giving **3 / 4 / 5** at
+densities 24 / 30 / 36, and `px^2` for the resolution knob. A unit with no admissible pair is recorded as
+**not computable** and stays in the denominator; it is never imputed and never dropped. The criterion is
+Spearman(full-level ordering, budget-matched ordering) `= 1.00` **and** the top knob unchanged, and a miss
+is reported as a miss. Ground truth is taken **per level**; the two pre-run revisions (the per-cell image
+count raised to 200, and the de-duplication rule) are part of the frozen record.
+
+**Domain and scale.** Two knobs, three levels each: `density` at 24 / 30 / 36 targets on a common 832 px
+canvas, re-rendered per level from the same seed so the levels are nested; and `res` at 640 / 704 / 832 px
+with the target count fixed at 48. 3 builds x 2 knobs x 3 levels x **200 images** x **3 independent
+service starts** = **10,800** calls from **54** independent service starts.
+
+**What was served.** **54** service starts; **14,400** raw rows; **12,600** rows with `http == 200`, i.e.
+real calls; **1,800** rows with `http == NOIMG`, i.e. no call made. In one build x knob a contract-path
+change made the image field a prefixed path while the runner's key embeds it, so the same 200 images were
+really called twice, in two rounds about 32 minutes apart; de-duplication is by **image identity**, keeping
+the newer vintage, and removes exactly **1,800** rows. In the other affected cell no image was resolvable,
+so no call was made; those **1,800** rows are retained in the release as the audit evidence for that cell
+and are **not** counted as calls. After de-duplication **10,800** rows enter the analysis, which is 6 units
+x 3 levels x 3 starts x 200 images. **121** rows (**3.36%** of one build's 3,600 rows) carry no parseable
+number and are recorded as **missing, never imputed**; that build's two units therefore have common-item
+intersections of **194** and **175** against **200** for the other four, both above the 0.80 valid-share
+gate. Image identity is asserted before any statistic is computed: for the density knob the three levels
+must share a seed and canvas while differing in bytes, and for the resolution knob they must share the
+scene while differing in bytes.
+
+**Main readings.**
+
+| criterion | units meeting it | proportion | Wilson 95% | Spearman | median retention | top knob | verdict |
+|---|---:|---:|---|---:|---:|---|---|
+| **primary `(0.10, 2.0)`** | 2 of 6 | **0.3333** | **[0.097, 0.700]** | **-1.0000** | **0.456** | changes | **missed** |
+| secondary `(0.25, 4.0)` | 3 of 6 | 0.5000 | [0.188, 0.812] | -0.5000 | 0.612 | changes | **missed** |
+
+**The criterion is missed, and is reported as missed.** Under this caliber the density knob admits **no**
+admissible pair at `B = 0.10`, so three density units and one resolution unit are **not computable**;
+all four remain in the denominator.
+
+**The same experiment also exposes two analyzer defects, which are repaired and disclosed here.** As
+first implemented, the analyzer disagreed with the frozen criteria in two places, and neither repair
+relaxes a criterion — the `(B, C)` pairs, the comparability condition, the top-knob rule and the
+`min(cost) <= 0` skip rule are unchanged.
+
+- **D1, the density cost proxy was mis-parsed.** The cost parser for the resolution knob strips a
+  two-character prefix, which is right for a label like `px640`. The same parser was applied to the
+  density knob, whose labels are bare numbers, so `'24'` was read as `4`, `'30'` as `0` and `'36'` as
+  `6`, giving `ceil(d / 8)` = **1 / 0 / 1** instead of 3 / 4 / 5. The consequence was not only a wrong
+  cost: because `min(cost) = 0` trips the `min(cost) <= 0` skip, two level pairs per density unit were
+  **silently skipped** and every density unit lost its comparability.
+- **D2, ground truth was reused from level 0.** Ground truth was taken once, from the unit's first level,
+  and reused at all three. For the resolution knob the count is fixed at 48, so nothing changed; for the
+  density knob the GT is 24 / 30 / 36, so levels 30 and 36 were scored against **24**, which corrupted
+  both the MAE and the denominator of `rho` at two of three levels.
+
+With both defects present the analyzer reports **5 of 6 = 0.8333**, Spearman **0.8000**, retention
+**0.456** and a changed top knob. Both readings are released; the pre-registered caliber is the one the
+criterion is judged against. The repair's self-proof is that the analyzer's embedded 28-unit reference
+construction still reproduces the four published M.45(b) readings **bit for bit** after the change:
+**14 / 0.7674 / 0.477**, **20 / 0.8227 / 0.582**, **17 / 0.9275 / 1.000** and **16 / 0.8292 / 0.477**.
+The pre-fix analyzer is released alongside so the comparison stays checkable.
+
+**The positive finding: which constraint binds.**
+
+| diagnostic | units | Spearman | median retention | top knob | verdict |
+|---|---:|---:|---:|---|---|
+| cost ceiling released, error budget kept | 6 | **1.0000** | 1.000 | unchanged | pass |
+| error budget released, cost ceiling kept | 2 | **-1.0000** | 0.456 | changes | miss |
+
+Releasing the cost ceiling leaves the ordering **exactly** as the full-level ordering, with the top knob
+unchanged, while releasing the error budget leaves it failing. On this independently constructed domain
+the **error budget, not the cost ceiling, is the binding constraint** — the same direction as M.45(b),
+now reproduced outside the corpus that produced it. Both rows are post-hoc one-sided diagnostics and not
+pre-registered criteria, and they are labelled as such.
+
+**Sensitivity, as printed.** The result is not uniformly robust and is reported that way: excluding one
+build gives 2 of 4; the density knob alone gives 0 of 3 (not computable); the resolution knob alone gives
+2 of 3. Imputing the not-computable units at their best and worst spans — **post-hoc, and labelled as
+such** — moves Spearman to **0.7714** and **-0.4395**; both directions still miss, but the top-knob
+verdict is sensitive to the imputation direction, which is disclosed rather than resolved.
+
+*Reproduction: the frozen criteria file (with both pre-run revisions), the renderer, the orchestration,
+the 1,200-row manifest, the 54 per-start record files, the repaired analyzer, the pre-fix analyzer, the
+repair's self-test log and a second independent implementation are released under
+`data/derived/a5_7_budget_20261011/`; `analyze_a57.py --selftest` reproduces the four reference readings
+and needs no data, and `reproduce_a57.py` re-derives every reading above from the records alone, with no
+model call and no GPU.*
+
 ## Appendix Z. Provenance and corrections
 
 ### Z.1 The move convention

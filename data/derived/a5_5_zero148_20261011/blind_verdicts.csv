@@ -1,0 +1,151 @@
+blind_id,asked_class,verdict,confidence,note
+blind_001,people,absent,high,满墙书架书堆，无人影
+blind_002,sauce bottles,absent,high,桌上仅苹果与提灯
+blind_003,toilet paper rolls,absent,high,书架与木地板，无卷纸
+blind_004,eggs,absent,high,红筐内全为苹果
+blind_005,cereals,absent,high,航拍羊群草坡，无谷物
+blind_006,ice cream,absent,high,成堆苹果，无冰品
+blind_007,cups,absent,high,苹果树与山景，无杯具
+blind_008,m&m pieces,absent,high,成排红色座椅，无糖果
+blind_009,sauce bottles,absent,high,木书架满是书，无瓶
+blind_010,toilet paper rolls,absent,high,木箱装苹果，无卷纸
+blind_011,mosaic tiles,absent,high,白底苹果排列，无瓷砖
+blind_012,gemstones,absent,high,墙面滑板排列，无宝石
+blind_013,cranes,absent,high,室内儿童与苹果，无鹤/吊车
+blind_014,plates,absent,high,水边火烈鸟群，无盘子
+blind_015,cars,absent,high,围栏内马群，无汽车
+blind_016,coffee beans,absent,high,成堆旧书，无咖啡豆
+blind_017,watches,absent,high,成堆苹果，无手表
+blind_018,sunglasses,absent,high,象群行进，无墨镜
+blind_019,toilet paper rolls,absent,high,木箱苹果，无卷纸
+blind_020,kiwis,absent,medium,背景绿果为带柄苹果非猕猴桃
+blind_021,donuts tray,absent,high,现代展厅木椅成排，无甜甜圈
+blind_022,windows,absent,high,海滩躺椅与海面，无窗
+blind_023,candles,absent,high,晚霞飞鸟剪影，无蜡烛
+blind_024,nuts,absent,high,箱装绿苹果带贴纸，无坚果
+blind_025,cotton balls,absent,high,暮色木桌上散落苹果
+blind_026,skateboard,absent,high,红苹果特写成堆，无滑板
+blind_027,goats,absent,high,套白布座椅成排，无山羊
+blind_028,cotton balls,absent,high,透明底高叠书堆，无棉球
+blind_029,bread rolls,absent,high,航拍象群行走，无面包
+blind_030,clams,absent,high,箱内红绿苹果，无蛤蜊
+blind_031,cars,absent,high,苹果特写堆叠，无汽车
+blind_032,go game,absent,high,成摞书籍，无围棋
+blind_033,cereals,absent,high,苹果堆与切半果，无谷物
+blind_034,lighters,absent,high,航拍草场羊群，无打火机
+blind_035,cassettes,absent,high,水边雁群泥滩，无磁带
+blind_036,chopstick,absent,high,落叶间苹果，无筷子
+blind_037,cement bags,absent,high,木椅成排，无水泥袋
+blind_038,clams,absent,high,蓝色看台座椅成排，无蛤蜊
+blind_039,buns,absent,high,黑盆装苹果，无面包
+blind_040,macarons,absent,high,整墙书架，无马卡龙
+blind_041,watermelon,absent,high,航拍象群草原，无西瓜
+blind_042,polka dot tiles,absent,high,青苹果成堆，无圆点瓷砖
+blind_043,nuts,absent,high,纸箱装红苹果，无坚果
+blind_044,spring rolls,absent,high,市场托盘摆苹果，无春卷
+blind_045,grapes,absent,high,摊位前人与苹果，无葡萄
+blind_046,grapes,absent,high,男子抱书街头，无葡萄
+blind_047,alcohol bottles,absent,high,木箱满装苹果，无酒瓶
+blind_048,onion rings,absent,high,红黄苹果成堆，无洋葱圈
+blind_049,matches,absent,high,白底苹果摆件，无火柴
+blind_050,cassettes,absent,high,白布上青苹果，无磁带
+blind_051,onion rings,absent,high,货架DVD光盘，无洋葱圈
+blind_052,mosaic tiles,absent,high,苹果成堆，无马赛克瓷砖
+blind_053,bottles,absent,high,白底散置苹果，无瓶子
+blind_054,pearls,absent,high,带叶红苹果密堆，无珍珠
+blind_055,cotton balls,absent,medium,蓝天飞鸟，白云近似但非棉球
+blind_056,comic books,absent,high,超市果篮货架，无漫画书
+blind_057,hot air balloons,absent,high,彩鹦鹉栖枝倒影，无热气球
+blind_058,birthday candles,absent,high,流水线纸箱青苹果，无蜡烛
+blind_059,deers,absent,high,成排古典皮面书，无鹿
+blind_060,pearls,absent,high,苹果酱罐头与苹果，无珍珠
+blind_061,toilet paper rolls,absent,high,剧场观众席绿座椅，无卷纸
+blind_062,biscuits,absent,high,航拍草场羊群，无饼干
+blind_063,coffee beans,absent,high,书架上一排小说，无咖啡豆
+blind_064,crows,present,medium,天空大群黑色飞鸟，形态似乌鸦
+blind_065,meat skewers,absent,high,会场成排红椅，无肉串
+blind_066,cans,absent,high,旧照人物与彩椅，无罐
+blind_067,shirts,absent,high,古旧书籍成叠，无衬衫
+blind_068,meat skewers,absent,high,白色塑料椅成排，无肉串
+blind_069,supermarket shelf,absent,high,电线栖绿鹦鹉，无超市货架
+blind_070,shallots,absent,high,空中飞鸽与云，无红葱头
+blind_071,caps,absent,high,木地板上苹果按色排列，无瓶盖
+blind_072,onion rings,absent,high,空教室课桌椅，无洋葱圈
+blind_073,strawberries,absent,high,航拍草场羊群，无草莓
+blind_074,beads,absent,high,户外咖啡座彩椅，无串珠
+blind_075,lipstick,absent,high,木箱内苹果，无口红
+blind_076,macarons,absent,high,青红苹果陈列，无马卡龙
+blind_077,chairs,absent,high,航拍山坡象群，无椅子
+blind_078,carrom board pieces,absent,high,插画书籍成叠，无棋子
+blind_079,naan bread,absent,high,场馆粉白座椅成排，无烤饼
+blind_080,lipstick,absent,high,苹果密堆特写，无口红
+blind_081,buns,absent,high,果园摊位果篮与人，无面包
+blind_082,toilet paper rolls,absent,high,儿童小说封面拼贴，无卷纸
+blind_083,sticky notes,absent,high,黑椅环绕排列，无便利贴
+blind_084,lipstick,absent,high,白底红苹果，无口红
+blind_085,crayons,absent,high,水面成群水鸟，无蜡笔
+blind_086,strawberries,absent,high,碗中苹果，非草莓
+blind_087,goats,unclear,medium,航拍白色羊群，绵羊与山羊难辨
+blind_088,cotton balls,absent,high,霞光中飞鸟剪影，无棉球
+blind_089,m&m pieces,absent,medium,电线上鸟剪影，无糖果
+blind_090,camels,absent,high,草地浅蓝塑料椅成排，无骆驼
+blind_091,zebras,absent,high,蓝天中海鸥群，无斑马
+blind_092,camels,absent,high,田野上空鹤群，无骆驼
+blind_093,donuts tray,absent,high,多排电线上鸟群，无甜甜圈
+blind_094,cement bags,absent,high,蓝天零星飞鸟，无水泥袋
+blind_095,books,absent,high,海滩奔驰马群，无书
+blind_096,windows,absent,high,满墙滑板货架，无窗
+blind_097,m&m pieces,absent,high,航拍干地羊群，无糖果
+blind_098,croissants,absent,high,成排白椅中一橙椅，无牛角包
+blind_099,kidney beans,absent,high,阴天飞鸟，无腰豆
+blind_100,prawn crackers,absent,high,果树苹果与木栅栏，无虾片
+blind_101,deers,absent,high,航拍旱地象群，无鹿
+blind_102,cranes,absent,high,纸箱内苹果，无鹤/吊车
+blind_103,bread rolls,absent,high,市场购物人与苹果，无面包
+blind_104,kitchen towels,absent,high,暮色飞鸟与满月，无厨巾
+blind_105,donuts tray,absent,high,雪野上空猫头鹰，无甜甜圈
+blind_106,chopstick,absent,high,书架书与光盘盒，无筷子
+blind_107,deers,absent,high,青苹果中一颗红苹果，无鹿
+blind_108,shallots,absent,high,滑板板面陈列，无红葱头
+blind_109,prawn crackers,absent,high,黑色折叠椅成排，无虾片
+blind_110,strawberries,absent,high,纸箱装红苹果带标，无草莓
+blind_111,zebras,absent,high,书架书籍与相框，无斑马
+blind_112,skateboard,absent,high,苹果密堆，无滑板
+blind_113,crab cakes,absent,high,木槽内苹果，无蟹饼
+blind_114,apples,absent,high,田野上空雁群，无苹果
+blind_115,sea shells,absent,high,航拍羊群聚团，无贝壳
+blind_116,birthday candles,absent,high,书籍封面拼贴，无蜡烛
+blind_117,sauce bottles,absent,high,蓝天中海鸥群，无酱料瓶
+blind_118,bananas,absent,high,滑雪板陈列架，无香蕉
+blind_119,chewing gum pieces,absent,high,路上雁群与汽车，无口香糖
+blind_120,polka dot tiles,absent,high,航拍羊群与围栏，无瓷砖
+blind_121,matches,absent,high,木板上散置苹果，无火柴
+blind_122,kidney beans,absent,high,地面白色单椅，无腰豆
+blind_123,spoon,absent,high,塑料袋装苹果，无汤匙
+blind_124,pencils,absent,high,苹果网格排列带半果，无铅笔
+blind_125,spoon,absent,high,草地白色折叠椅带字，无汤匙
+blind_126,cans,absent,high,地毯上两童与苹果，无罐头
+blind_127,toilet paper rolls,absent,high,荒原奔驰马群，无卷纸
+blind_128,green peas,absent,high,白底成对滑雪板，无青豆
+blind_129,toilet paper rolls,absent,high,航拍象群与直升机影，无卷纸
+blind_130,hot air balloons,absent,high,厨房台面玻璃碗苹果，无热气球
+blind_131,sunglasses,absent,high,滑板板面挂架，无墨镜
+blind_132,skis,absent,high,红苹果密堆，无滑雪板
+blind_133,kiwis,absent,high,地面铺展滑板，无猕猴桃
+blind_134,straws,absent,high,空教室木课桌椅，无吸管
+blind_135,strawberries,absent,high,礼堂成排座椅，无草莓
+blind_136,instant noodles,absent,high,整排大英百科，无方便面
+blind_137,cassettes,absent,high,整排柏林旅行指南，无磁带
+blind_138,flower pots,absent,high,湿地草原象群，无花盆
+blind_139,candy pieces,absent,high,航拍象群枯林地，无糖果
+blind_140,birds,absent,high,红绿黄苹果密堆，无鸟
+blind_141,grapes,absent,high,航拍草场散点羊群，无葡萄
+blind_142,candy pieces,absent,high,蓝天白云中飞鸟群，无糖果
+blind_143,cans,absent,high,带叶苹果密堆，无罐
+blind_144,cupcakes,absent,high,纸箱青红苹果与说明牌，无纸杯蛋糕
+blind_145,potatoes,absent,high,地毯上儿童与苹果列，无土豆
+blind_146,chopstick,absent,high,夕照电线间飞鸟，无筷子
+blind_147,bowls,absent,high,蓝天中飞行鸟群，无碗
+blind_148,kitchen towels,absent,high,绿筐装苹果，无厨巾
+blind_149,kitchen towels,absent,high,阴天雁阵飞行，无厨巾
+blind_150,prawn crackers,absent,high,礼堂灰色座椅成排，无虾片

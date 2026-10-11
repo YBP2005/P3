@@ -289,7 +289,7 @@ package root). The first two are about *paths*, the last two about the *sanitise
    `w0_frame.py`, where the match is the fragment `e:\n` inside a quoted Python-code template
    (`'except Exception as e:\n'`), and `derive_release_numbers.py`, which quotes that same fragment
    in its substitution strings below — none of the three is a path.
-   Widening the same scan to **every** text file in the package gives **21** files, still none of them a
+   Widening the same scan to **every** text file in the package gives **22** files, still none of them a
    script's data path. They are frozen artefacts and run logs whose recorded strings hold the authors'
    prefix in backslash-escaped form (e.g. `A_result.json`, `ea2_z0_result.json`, `fsc_res_result.json`,
    `n1_span_artefact_result.json`, `n2_rule_spread_inventory.json`, the per-image records under
@@ -311,7 +311,7 @@ package root). The first two are about *paths*, the last two about the *sanitise
    passwords. **v0610 changed none of these numbers**: it removed eight residue files instead (see
    *Write-back policy*), which took the package **at that revision** from **3,659** to **3,651** manifested
    files and left both the rewritten set and the substitution count untouched. **At this revision
-   `MANIFEST.csv` registers 4876 files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **3947**
+   `MANIFEST.csv` registers 4903 files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **3974**
    of them — both are re-derived by `code/analysis/derive_release_numbers.py`.
 4. **39** files merely *contain* one of the placeholder strings: `grep -rlE '<REDACTED-|<WORKDIR>|<SHARED-DIR>' . | wc -l`
    → **39** (the sanitiser's own rewritten set is count 3 above; the remainder only quote a placeholder
@@ -364,10 +364,10 @@ sanitiser and the path refactor.
 
 ### What the sanitiser did **not** touch
 
-**Almost nothing under `data/` was altered.** Of the **3947** files under `data/`, **6** are text files
-the sanitiser rewrote (they are the `data/` rows of the table above); every one of the remaining **3941** is
+**Almost nothing under `data/` was altered.** Of the **3974** files under `data/`, **6** are text files
+the sanitiser rewrote (they are the `data/` rows of the table above); every one of the remaining **3968** is
 byte-identical to the corresponding source file. Two independent checks say so: (i) a sanitiser substitution always leaves one
-of the six placeholder patterns above in the file, and a scan of all 3947 released data files finds **3**
+of the six placeholder patterns above in the file, and a scan of all 3974 released data files finds **3**
 carrying one of them — the remaining rewritten data file carries a neutral internal-name placeholder
 instead of a host/path placeholder; (ii) a per-file `path / bytes / md5`
 manifest of `data/` taken before and after the release script ran differs **only in the rows the sanitiser

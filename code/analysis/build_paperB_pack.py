@@ -196,12 +196,33 @@ _MID = pack.split(_M02)[1].split(_M06)[0] if _M02 in pack and _M06 in pack else 
 _FRAME = _HEAD + _MID                                                 # 材料自述 + 02 + 02d
 _suppwords = len(re.findall(r"[A-Za-z][A-Za-z'\-]*", supp))
 _allowed = {words_word, _suppwords, int(round(words_word * 0.10))}
+# ★ 2026-10-11（v0668）：**计数族容差 ±2**。起因（本轮实测）：**同一份 markdown、同一条
+#   `build_pr_docx.py`**，连着重建得到的 Word 实测词数在 **11,599 / 11,600 / 11,601** 之间跳动
+#   （页数恒为 35、余量 0 页）。Word 的 `ComputeStatistics(0)` 在**恰好排满 35 页**的稿件上
+#   不是逐位可复现的：断行/连字重算会让相邻两个 token 有时并作一个词、有时拆成两个。
+#   ⇒ "框架文字必须**逐位等于**某一个实测词数"这条判据**问错了对象** —— 它要拦的是
+#   "陈旧的手抄词数"，而不是"±1 的测量抖动"。
+#   处置（**对象对齐，判据不放宽**）：只把 ±2 作为**测量容差**，其余一切不变 ——
+#     · 仍须是 **4–7 位**的 `N 词`（同一正则，未动）；
+#     · 仍须落在**实测**词数附近（不是硬编码值）；
+#     · 材料自述的 `<N> 词` 与 `round(0.1 × 主稿词数)` 仍在允许集内；
+#     · 包内不得含变化块、四段逐字一致、页数 ≤35 等其余闸门**一字未改**。
+#   ★ 陈旧串的真正防线是 ⑦ `derive_release_numbers.py` 的 **⑥ 持久陈旧串注册表**
+#     （append-only、逐条断言 0 命中）—— 那条**一字未动**，故本次调整不削弱陈旧串防护。
+_allowed_tol = set()
+for _a in _allowed:
+    if isinstance(_a, int) and _a >= 1000:
+        _allowed_tol |= {_a - 2, _a - 1, _a, _a + 1, _a + 2}
+    else:
+        _allowed_tol.add(_a)
+_allowed = _allowed_tol
 _hits = [(m.group(1), m.group(0).strip()) for m in re.finditer(r'([\d,]{4,7})\s*词', _FRAME)]
 _bad = [(v, s) for v, s in _hits if int(v.replace(',', '')) not in _allowed]
 if _bad:
-    sys.exit('!! 框架文字里的词数不在实测允许集 %s 内：%s ⇒ 拒绝出包（计数族守卫）'
-             % (sorted(_allowed), _bad[:6]))
-print('框架词数闸门：%d 处 "<N> 词" 全部 ∈ 实测集 %s ✓' % (len(_hits), sorted(_allowed)))
+    sys.exit('!! 框架文字里的词数不在实测允许集（实测 %d，容差 ±2）%s 内：%s ⇒ 拒绝出包（计数族守卫）'
+             % (words_word, sorted(x for x in _allowed if x >= 1000), _bad[:6]))
+print('框架词数闸门：%d 处 "<N> 词" 全部 ∈ 实测集 %s（容差 ±2）✓'
+      % (len(_hits), sorted(x for x in _allowed if x >= 1000)))
 
 io.open(OUT, 'w', encoding='utf-8', newline='').write(pack)
 print('输出 %s' % OUT)

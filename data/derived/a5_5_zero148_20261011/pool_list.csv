@@ -1,0 +1,151 @@
+blind_id,fname,own_class,asked_class,count_gt_own,split
+blind_001,865.jpg,books,people,1022,val_coco
+blind_002,715.jpg,apples,sauce bottles,21,test_coco
+blind_003,869.jpg,books,toilet paper rolls,250,val_coco
+blind_004,713.jpg,apples,eggs,24,test_coco
+blind_005,6893.jpg,sheep,cereals,81,test_coco
+blind_006,2197.jpg,apples,ice cream,90,test_coco
+blind_007,2175.jpg,apples,cups,91,test_coco
+blind_008,7257.jpg,chairs,m&m pieces,33,val_coco
+blind_009,850.jpg,books,sauce bottles,183,val_coco
+blind_010,2173.jpg,apples,toilet paper rolls,169,test_coco
+blind_011,2140.jpg,apples,mosaic tiles,21,test_coco
+blind_012,7149.jpg,skateboard,gemstones,17,val_coco
+blind_013,6257.jpg,apples,cranes,12,test_coco
+blind_014,961.jpg,birds,plates,48,val_coco
+blind_015,2411.jpg,horses,cars,9,val_coco
+blind_016,838.jpg,books,coffee beans,113,val_coco
+blind_017,2156.jpg,apples,watches,68,test_coco
+blind_018,1873.jpg,elephants,sunglasses,12,test_coco
+blind_019,6270.jpg,apples,toilet paper rolls,92,test_coco
+blind_020,6282.jpg,apples,kiwis,66,test_coco
+blind_021,2840.jpg,chairs,donuts tray,35,val_coco
+blind_022,5947.jpg,chairs,windows,12,val_coco
+blind_023,7305.jpg,birds,candles,31,val_coco
+blind_024,7662.jpg,apples,nuts,30,test_coco
+blind_025,695.jpg,apples,cotton balls,11,test_coco
+blind_026,2142.jpg,apples,skateboard,35,test_coco
+blind_027,2825.jpg,chairs,goats,8,val_coco
+blind_028,6801.jpg,books,cotton balls,29,val_coco
+blind_029,7547.jpg,elephants,bread rolls,19,test_coco
+blind_030,7176.jpg,apples,clams,39,test_coco
+blind_031,6241.jpg,apples,cars,293,test_coco
+blind_032,7003.jpg,books,go game,182,val_coco
+blind_033,6262.jpg,apples,cereals,74,test_coco
+blind_034,7239.jpg,sheep,lighters,180,test_coco
+blind_035,925.jpg,birds,cassettes,47,val_coco
+blind_036,2270.jpg,apples,chopstick,50,test_coco
+blind_037,2861.jpg,chairs,cement bags,40,val_coco
+blind_038,7658.jpg,chairs,clams,211,val_coco
+blind_039,2216.jpg,apples,buns,36,test_coco
+blind_040,840.jpg,books,macarons,637,val_coco
+blind_041,7140.jpg,elephants,watermelon,22,test_coco
+blind_042,714.jpg,apples,polka dot tiles,100,test_coco
+blind_043,7283.jpg,apples,nuts,22,test_coco
+blind_044,6936.jpg,apples,spring rolls,111,test_coco
+blind_045,706.jpg,apples,grapes,90,test_coco
+blind_046,772.jpg,books,grapes,28,val_coco
+blind_047,6261.jpg,apples,alcohol bottles,324,test_coco
+blind_048,6259.jpg,apples,onion rings,74,test_coco
+blind_049,2153.jpg,apples,matches,12,test_coco
+blind_050,2203.jpg,apples,cassettes,22,test_coco
+blind_051,6866.jpg,books,onion rings,207,val_coco
+blind_052,2277.jpg,apples,mosaic tiles,49,test_coco
+blind_053,2141.jpg,apples,bottles,11,test_coco
+blind_054,7027.jpg,apples,pearls,93,test_coco
+blind_055,6753.jpg,birds,cotton balls,18,val_coco
+blind_056,2287.jpg,apples,comic books,195,test_coco
+blind_057,934.jpg,birds,hot air balloons,13,val_coco
+blind_058,7614.jpg,apples,birthday candles,27,test_coco
+blind_059,841.jpg,books,deers,11,val_coco
+blind_060,2244.jpg,apples,pearls,12,test_coco
+blind_061,2878.jpg,chairs,toilet paper rolls,301,val_coco
+blind_062,7598.jpg,sheep,biscuits,31,test_coco
+blind_063,837.jpg,books,coffee beans,35,val_coco
+blind_064,952.jpg,birds,crows,139,val_coco
+blind_065,2827.jpg,chairs,meat skewers,140,val_coco
+blind_066,2808.jpg,chairs,cans,26,val_coco
+blind_067,6896.jpg,books,shirts,15,val_coco
+blind_068,2860.jpg,chairs,meat skewers,38,val_coco
+blind_069,750.jpg,birds,supermarket shelf,8,val_coco
+blind_070,929.jpg,birds,shallots,23,val_coco
+blind_071,7062.jpg,apples,caps,59,test_coco
+blind_072,5952.jpg,chairs,onion rings,48,val_coco
+blind_073,7328.jpg,sheep,strawberries,51,test_coco
+blind_074,2890.jpg,chairs,beads,32,val_coco
+blind_075,6249.jpg,apples,lipstick,111,test_coco
+blind_076,6965.jpg,apples,macarons,70,test_coco
+blind_077,7282.jpg,elephants,chairs,23,test_coco
+blind_078,7660.jpg,books,carrom board pieces,11,val_coco
+blind_079,2807.jpg,chairs,naan bread,263,val_coco
+blind_080,2191.jpg,apples,lipstick,42,test_coco
+blind_081,2172.jpg,apples,buns,86,test_coco
+blind_082,867.jpg,books,toilet paper rolls,23,val_coco
+blind_083,2873.jpg,chairs,sticky notes,11,val_coco
+blind_084,6279.jpg,apples,lipstick,10,test_coco
+blind_085,969.jpg,birds,crayons,38,val_coco
+blind_086,2267.jpg,apples,strawberries,9,test_coco
+blind_087,7412.jpg,sheep,goats,36,test_coco
+blind_088,763.jpg,birds,cotton balls,56,val_coco
+blind_089,7011.jpg,birds,m&m pieces,44,val_coco
+blind_090,2851.jpg,chairs,camels,61,val_coco
+blind_091,6814.jpg,birds,zebras,28,val_coco
+blind_092,941.jpg,birds,camels,13,val_coco
+blind_093,7049.jpg,birds,donuts tray,92,val_coco
+blind_094,7301.jpg,birds,cement bags,36,val_coco
+blind_095,7393.jpg,horses,books,18,val_coco
+blind_096,7271.jpg,skateboard,windows,127,val_coco
+blind_097,6901.jpg,sheep,m&m pieces,38,test_coco
+blind_098,2815.jpg,chairs,croissants,49,val_coco
+blind_099,965.jpg,birds,kidney beans,10,val_coco
+blind_100,2245.jpg,apples,prawn crackers,82,test_coco
+blind_101,6980.jpg,elephants,deers,38,test_coco
+blind_102,6268.jpg,apples,cranes,25,test_coco
+blind_103,2184.jpg,apples,bread rolls,33,test_coco
+blind_104,948.jpg,birds,kitchen towels,24,val_coco
+blind_105,755.jpg,birds,donuts tray,13,val_coco
+blind_106,7002.jpg,books,chopstick,100,val_coco
+blind_107,6243.jpg,apples,deers,24,test_coco
+blind_108,7019.jpg,skateboard,shallots,65,val_coco
+blind_109,2869.jpg,chairs,prawn crackers,119,val_coco
+blind_110,7627.jpg,apples,strawberries,16,test_coco
+blind_111,770.jpg,books,zebras,83,val_coco
+blind_112,2258.jpg,apples,skateboard,75,test_coco
+blind_113,685.jpg,apples,crab cakes,86,test_coco
+blind_114,760.jpg,birds,apples,21,val_coco
+blind_115,7075.jpg,sheep,sea shells,195,test_coco
+blind_116,862.jpg,books,birthday candles,15,val_coco
+blind_117,959.jpg,birds,sauce bottles,18,val_coco
+blind_118,4500.jpg,skis,bananas,8,test_coco
+blind_119,759.jpg,birds,chewing gum pieces,10,val_coco
+blind_120,6713.jpg,sheep,polka dot tiles,190,test_coco
+blind_121,2204.jpg,apples,matches,9,test_coco
+blind_122,2867.jpg,chairs,kidney beans,8,val_coco
+blind_123,2227.jpg,apples,spoon,11,test_coco
+blind_124,7538.jpg,apples,pencils,41,test_coco
+blind_125,2864.jpg,chairs,spoon,45,val_coco
+blind_126,6266.jpg,apples,cans,17,test_coco
+blind_127,7391.jpg,horses,toilet paper rolls,14,val_coco
+blind_128,4493.jpg,skis,green peas,18,test_coco
+blind_129,1875.jpg,elephants,toilet paper rolls,54,test_coco
+blind_130,6240.jpg,apples,hot air balloons,34,test_coco
+blind_131,7314.jpg,skateboard,sunglasses,23,val_coco
+blind_132,2257.jpg,apples,skis,23,test_coco
+blind_133,914.jpg,skateboard,kiwis,65,val_coco
+blind_134,2839.jpg,chairs,straws,67,val_coco
+blind_135,2850.jpg,chairs,strawberries,287,val_coco
+blind_136,7344.jpg,books,instant noodles,30,val_coco
+blind_137,767.jpg,books,cassettes,55,val_coco
+blind_138,1884.jpg,elephants,flower pots,16,test_coco
+blind_139,6869.jpg,elephants,candy pieces,13,test_coco
+blind_140,697.jpg,apples,birds,52,test_coco
+blind_141,7475.jpg,sheep,grapes,122,test_coco
+blind_142,943.jpg,birds,candy pieces,97,val_coco
+blind_143,6267.jpg,apples,cans,95,test_coco
+blind_144,6277.jpg,apples,cupcakes,42,test_coco
+blind_145,6264.jpg,apples,potatoes,16,test_coco
+blind_146,6948.jpg,birds,chopstick,166,val_coco
+blind_147,6751.jpg,birds,bowls,142,val_coco
+blind_148,7661.jpg,apples,kitchen towels,36,test_coco
+blind_149,6783.jpg,birds,kitchen towels,17,val_coco
+blind_150,2881.jpg,chairs,prawn crackers,131,val_coco

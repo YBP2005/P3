@@ -89,6 +89,13 @@ assert wil, 'M.40 的逐构建区间冻结件缺失：m40_wilson_result.json（�
 #   的独立重算件 —— 48.8/12.4/0.3/0.4/36.37/4.6/最大历史差 0.27 等值都出自它（**不是**分析器输出）。
 ctx = load('ctxctrl_indep_result.json')
 assert ctx, 'S1 独立重算冻结件缺失：ctxctrl_indep_result.json（跑 _ctxctrl_indep_check.py）'
+# ★ 2026-10-12（v0676）：M.40.1 的**校准两件**（(iii) 的窄测试「20 观测 vs 20 唯一图」与
+#   (v) 的 partial pooling 校准）由 `m40_calib_two.py --nsplit 200` 实测，
+#   再由 `gen_m40_calib_two.py --freeze <raw.json> --apply` 冻在此（只补 `printed` 段，
+#   不改原始任何读数）。它必须进"取值宇宙"，否则 (iii)/(v) 里印的实测值会被本门禁判为无出处。
+cal = load('m40_calib_two_result.json')
+assert cal, 'M.40.1 校准两件冻结件缺失：m40_calib_two_result.json（跑 gen_m40_calib_two.py --apply）'
+assert cal.get('printed'), 'M.40.1 冻结件缺 `printed` 段（锚点门禁取值靠它）'
 
 # ── 1. 由冻结件收集"取值宇宙"─────────────────────────────────────────────────
 UNIV = collections.defaultdict(list)
@@ -113,10 +120,10 @@ def harvest(obj, tag):
 
 
 for obj, tag in ((z0, 'ea2_z0'), (con, 'ea2_contrast'), (fsc, 'fsc_res'), (qc, 'e1_qc'), (facts, 'facts'),
-                 (x2, 'm40_2x2'), (wil, 'm40_wilson'), (ctx, 'ctxctrl')):
+                 (x2, 'm40_2x2'), (wil, 'm40_wilson'), (ctx, 'ctxctrl'), (cal, 'm40_calib_two')):
     if obj:
         harvest(obj, tag)
-print('取值宇宙：%d 个不同数值（来自 8 份冻结件）' % len(UNIV))
+print('取值宇宙：%d 个不同数值（来自 9 份冻结件）' % len(UNIV))
 
 # ── 2. 结构恒等（当场算）──────────────────────────────────────────────────
 STRUCT = {}

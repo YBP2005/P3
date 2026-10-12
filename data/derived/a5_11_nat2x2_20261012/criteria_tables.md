@@ -83,8 +83,8 @@ of **150** with **42.1%** retained and a rate difference of **-57.9 pp**.
 | rendered | 300 | 300 | 290 | -10 | 96.7% | -3.3 pp |
 | natural | 259 | 259 | 109 | **-150** | **42.1%** | **-57.9 pp** |
 
-The rate difference grows from **-3.3 pp** to **-57.9 pp**, so the effect on the natural pool is
-roughly **13 times** the effect on the rendered pool for this build. The direction is preserved; the
+The rate difference grows from **-3.3 pp** to **-57.9 pp**, a factor of **17.4** on the
+rate-difference scale (the ratio of the two counts, 150/10, is **15**). The direction is preserved; the
 magnitude and the immunity are not.
 
 **The conclusion this licenses.** Outlet suppression is **strong in most builds**, and **its strength

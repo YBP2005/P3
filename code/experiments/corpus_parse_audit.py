@@ -1,11 +1,18 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""语料解析器审计：06_dense_vlm.py 的 parse 是否真的用到了 JSON 里的 count？
+"""语料解析器审计：dense-VLM 驱动脚本的 parse 是否真的用到了 JSON 里的 count？
 对每个 dense_results CSV：
-  - 结构分支是否命中（按 06 的 pattern 原样，从源码 AST 取出）
+  - 结构分支是否命中（按该驱动的 pattern 原样，从源码 AST 取出）
   - 第一个整数（fallback）与 JSON count 字段是否一致
   - 出货的 pred 与谁一致
   - pred==0 的行：JSON count 是否就是 0
+
+★ 2026-10-12：**去掉作者机绝对路径**。此前本脚本把驱动脚本与结果目录都写成作者机上的
+  绝对路径（服务器侧根目录下），第三方拿到放行包后**无从复算**本件承诺的审计。
+  现在两处都经 `_repro_root.resolve()` 解析（放行包内为 `code/experiments/06_dense_vlm.py` 与
+  `data/derived/dense_results/`），并可用环境变量 `PAPERB_DENSE_VLM_SRC` /
+  `PAPERB_DENSE_RESULTS` 覆盖。行为与取数口径**一字未改**：仍是同一个驱动的 `parse` 结构分支、
+  同一批 CSV、同一套逐行判定。
 """
 import ast
 import csv
@@ -16,8 +23,44 @@ import re
 import sys
 from collections import Counter
 
-SRC = '/root/06_dense_vlm.py'
+# ★ 本件在放行包里同时落在 `code/analysis/` 与 `code/experiments/`，而 `_repro_root.py`
+#   只随包放在 `code/analysis/`。先把同级 `analysis/` 加进 sys.path，使两个落点都能取到
+#   **带前缀映射表**的解析器（否则 `code/experiments/` 那份会退化成朴素拼接并报缺件）。
+sys.path.insert(0, os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'analysis'))
+try:
+    from _repro_root import resolve as RP
+except ImportError:                      # 只拷走单个脚本时：就地反推仓库根
+    _r = os.environ.get('PAPERB_ROOT') or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    RP = lambda *p: os.path.join(_r, *p)
+
 BS = chr(92)
+
+
+def _first_file(cands, what):
+    for p in cands:
+        if os.path.isfile(p):
+            return p
+    raise SystemExit('找不到 %s；已试：%s' % (what, list(cands)))
+
+
+def _first_dir(cands, what):
+    for p in cands:
+        if os.path.isdir(p):
+            return p
+    raise SystemExit('找不到 %s 目录；已试：%s' % (what, list(cands)))
+
+
+SRC = os.environ.get('PAPERB_DENSE_VLM_SRC') or _first_file((
+    # 作者树 / 放行树两条等价落点（同一文件，md5 实测相同）
+    RP('analysis', 'e1_5090', '06_dense_vlm.py'),
+    RP('repro_github', 'code', 'experiments', '06_dense_vlm.py'),
+), 'dense-VLM 驱动脚本')
+
+RESULTS_DIR = os.environ.get('PAPERB_DENSE_RESULTS') or _first_dir((
+    RP('analysis', 'data', 'pod_mirror', 'dense_results'),
+    RP('repro_github', 'data', 'derived', 'dense_results'),
+), 'dense_results')
 
 
 def load_pattern():
@@ -64,7 +107,7 @@ def first_int(raw):
     return int(m.group(0)) if m else None
 
 
-files = sorted(glob.glob('/root/dense_results/*.csv'))
+files = sorted(glob.glob(os.path.join(RESULTS_DIR, '*.csv')))
 print('语料结果文件 %d 个' % len(files))
 print()
 hdr = '%-44s %5s %5s %6s %7s %7s %7s' % ('file', 'rows', 'nodig', 'j≠1st', 'pred≠1st', 'jNone', 'z_json0')

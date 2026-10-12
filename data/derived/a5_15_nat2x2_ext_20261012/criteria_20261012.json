@@ -1,0 +1,41 @@
+{
+ "_what": "Five builds, two corpus domains, one contract set",
+ "arms": [
+  "no_name0_no_exit",
+  "no_name0_exit",
+  "name0_no_exit",
+  "name0_exit"
+ ],
+ "counting_rules": {
+  "abstention": "`abstain is True` (the contract's own refusal token)",
+  "answered_zero": "`pred == 0`",
+  "deduplication": "one image one vote (deduplicate by `image`)",
+  "double_annotation": "a row that is both `pred == 0` and `abstain is True`; the inclusive reading counts it as an answered zero and the exclusive reading does not, and both are printed where the case arises",
+  "partition_identity": "answered zero + non-zero + unparseable == denominator",
+  "rows_counted": "only rows with http == 200; other rows enter neither numerator nor denominator",
+  "true_zero_roster": "the frozen contract `target_map_<cond>.csv`, column `true_zero == 1`",
+  "unparseable": "`parse_ok is False`, reported in its own column and never merged into abstention"
+ },
+ "families": [
+  "ivl38fp8",
+  "phi35v"
+ ],
+ "pool": {
+  "natural": {
+   "note": "518 = 259 true zeros + 259 non-zeros, exactly balanced",
+   "total_images": 518,
+   "true_zero_images": 259
+  },
+  "rendered": {
+   "total_images": 300,
+   "true_zero_images": 300
+  }
+ },
+ "published": {},
+ "section": "M.60",
+ "source_archive": {
+  "bytes": 444460,
+  "md5": "0d89dc743c210e5a9cea1e696c9a3c77"
+ },
+ "source_directory_in_archive": "root/a58_nat2x2"
+}

@@ -1,0 +1,79 @@
+{
+ "C1u": {
+  "median": 0.5360705333193382,
+  "n": 200,
+  "p05": 0.4278267593645811,
+  "p95": 0.6466310586785967
+ },
+ "Cd": {
+  "median": 0.7358259877518983,
+  "n": 200,
+  "p05": 0.6815110381574779,
+  "p95": 0.7897548121122351
+ },
+ "Cd20": {
+  "median": 0.7499839130016287,
+  "n": 200,
+  "p05": 0.5777720586003624,
+  "p95": 0.8631186065881109
+ },
+ "Cd20u": {
+  "median": 0.7345389036382864,
+  "n": 200,
+  "p05": 0.5847223128138663,
+  "p95": 0.8387927168408469
+ },
+ "Cg": {
+  "median": 0.994916019821965,
+  "n": 200,
+  "p05": 0.9842332216789866,
+  "p95": 0.9978763132832723
+ },
+ "Cpool": {
+  "median": 0.5488126660440956,
+  "n": 200,
+  "p05": 0.4502220229414274,
+  "p95": 0.6647789446805239
+ },
+ "_diag": {
+  "obs_over_20": 35.0,
+  "u_lt_20": 1.0
+ },
+ "_draw_unique_images": {
+  "max": 20,
+  "median": 19,
+  "min": 12,
+  "n": 36,
+  "n_eq_20": 8,
+  "n_lt_20": 28
+ },
+ "_paired_Cd20u_minus_Cd20": {
+  "frac_lt_0": 0.59,
+  "median": -0.028058433676738437,
+  "n": 200
+ },
+ "_provenance": {
+  "_what": "Appendix M.40.1 (iii)/(v) calibration measurements: the values as printed",
+  "freezer": "gen_m40_calib_two.py --freeze <raw.json> --apply",
+  "generator": "m40_calib_two.py --nsplit 200",
+  "note": "printed block only; no value in the raw sections is altered",
+  "raw_input": "_m40_calib_raw.json"
+ },
+ "printed": {
+  "C1u_median": 0.5361,
+  "Cd20_median": 0.75,
+  "Cd20u_median": 0.7345,
+  "Cd_median": 0.7358,
+  "Cg_median": 0.9949,
+  "Cpool_median": 0.5488,
+  "configurations_pool_over_20_unique": 35,
+  "configurations_short_of_20_unique": 28,
+  "configurations_total": 36,
+  "paired_frac_negative_pct": 59.0,
+  "paired_median_magnitude": 0.028,
+  "paired_median_signed": -0.028,
+  "released_draw_unique_images_median": 19,
+  "released_draw_unique_images_min": 12,
+  "splits": 200
+ }
+}

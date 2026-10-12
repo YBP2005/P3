@@ -1,0 +1,32 @@
+# FINGERPRINTS — a5_13_2x2en_20261012
+
+Source archive: 444460 bytes, md5 0d89dc743c210e5a9cea1e696c9a3c77
+
+| file | bytes | md5 |
+|---|---:|---|
+| `README.md` | 1814 | `8c167d44a83db6574b12b5d59839d947` |
+| `contracts/contract_name0_exit.txt` | 371 | `03d31a74bbf62d31d84dfb5fbd811f54` |
+| `contracts/contract_name0_no_exit.txt` | 245 | `22b78b5d427859d026e441789831c2b9` |
+| `contracts/contract_no_name0_exit.txt` | 320 | `e6c166f6d25e2705061745fed99e257e` |
+| `contracts/contract_no_name0_no_exit.txt` | 194 | `ba95e3b053aaad8737ffaee81a6be65e` |
+| `contracts/target_map_name0_exit.csv` | 478275 | `11bbf7c89414641fe1879f3464befa62` |
+| `contracts/target_map_name0_no_exit.csv` | 317481 | `8239c67fc1d93453559fad32df43570c` |
+| `contracts/target_map_no_name0_exit.csv` | 417081 | `05d251c48b9cf4f17c5fe64caf2be677` |
+| `contracts/target_map_no_name0_no_exit.csv` | 256287 | `1b1eb0b2c310661f33e2632faef9cf42` |
+| `criteria_20261012.json` | 1807 | `7dc7fd881b8631d99b73f3bc8bd3c07a` |
+| `work/ivl358b/name0_exit/run.jsonl` | 258183 | `57482d0a72655e3d6089980f5c751d20` |
+| `work/ivl358b/name0_no_exit/run.jsonl` | 258577 | `7680f942ecaf395a027d5708a0044639` |
+| `work/ivl358b/no_name0_exit/run.jsonl` | 261086 | `e3fab1174a38abddd439458fb821653d` |
+| `work/ivl358b/no_name0_no_exit/run.jsonl` | 259906 | `ebb09ef739585e13d4a46cb431fd8df7` |
+| `work/lov7b/name0_exit/run.jsonl` | 262026 | `f7fbafc457648406fb3b9309e0c9349b` |
+| `work/lov7b/name0_no_exit/run.jsonl` | 266724 | `7cce302deebbe71619f0538252b6eb8b` |
+| `work/lov7b/no_name0_exit/run.jsonl` | 271434 | `490749feb13ce42cdbc703741383458e` |
+| `work/lov7b/no_name0_no_exit/run.jsonl` | 281673 | `a52bf37934b0969c8e93baac6602f51f` |
+| `work/phi35v/name0_exit/run.jsonl` | 270342 | `238fe33e9165843ae7b972298ca57105` |
+| `work/phi35v/name0_no_exit/run.jsonl` | 285497 | `bcabb5576ac059f450b5a1feb1c7acb3` |
+| `work/phi35v/no_name0_exit/run.jsonl` | 286557 | `7c9af80d6206d490a903183625325b0a` |
+| `work/phi35v/no_name0_no_exit/run.jsonl` | 305692 | `982fd144e7a4d3436ad3e6e19b54ee5d` |
+| `work/q32fp8/name0_exit/run.jsonl` | 258253 | `273795fd7a8bc2b6db2bfd1388ffb2b1` |
+| `work/q32fp8/name0_no_exit/run.jsonl` | 261835 | `eb2acad6bd4d32f268419042416c902e` |
+| `work/q32fp8/no_name0_exit/run.jsonl` | 261826 | `f982fb409113d2c444f784d19998065b` |
+| `work/q32fp8/no_name0_no_exit/run.jsonl` | 265438 | `a4003681ad024de58f4a43131621c1d9` |

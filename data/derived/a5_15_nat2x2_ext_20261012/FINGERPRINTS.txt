@@ -1,0 +1,24 @@
+# FINGERPRINTS — a5_15_nat2x2_ext_20261012
+
+Source archive: 444460 bytes, md5 0d89dc743c210e5a9cea1e696c9a3c77
+
+| file | bytes | md5 |
+|---|---:|---|
+| `README.md` | 1789 | `f9ebfd874e305e7f8aa1af60ad29e8e6` |
+| `contracts/contract_name0_exit.txt` | 324 | `524bb5645301855a237d3ce70b669b66` |
+| `contracts/contract_name0_no_exit.txt` | 223 | `623dbea85a1e8cbb26f58ff1271c00dc` |
+| `contracts/contract_no_name0_exit.txt` | 280 | `3afc29d16a331d75419653252d5ed830` |
+| `contracts/contract_no_name0_no_exit.txt` | 179 | `a7f75469c636c3b3e3a3d23e4841f171` |
+| `contracts/target_map_name0_exit.csv` | 350414 | `bc6e0f7e2cd774ec0adc99be7548ebad` |
+| `contracts/target_map_name0_no_exit.csv` | 241640 | `f4997a266e5f503328446059da0c26a0` |
+| `contracts/target_map_no_name0_exit.csv` | 304836 | `9ea8ce46cec64e13cf12b67d2e7ccc81` |
+| `contracts/target_map_no_name0_no_exit.csv` | 196062 | `131a5c5cb0e9c4540bfb7c2e9a0db6c2` |
+| `criteria_20261012.json` | 1386 | `286d3f18aefbc299758baa1b1695517d` |
+| `work_ext/ivl38fp8/name0_exit/run.jsonl` | 254255 | `c7c85bc8e12442cdac19b1003f5458ae` |
+| `work_ext/ivl38fp8/name0_no_exit/run.jsonl` | 257038 | `fbf41f6dbac362553627b0ab8f002c44` |
+| `work_ext/ivl38fp8/no_name0_exit/run.jsonl` | 260414 | `dd2be7b773e36c9a88fd155dba45cb64` |
+| `work_ext/ivl38fp8/no_name0_no_exit/run.jsonl` | 260415 | `db222f7be7356e6b8c73b070fa6c7c66` |
+| `work_ext/phi35v/name0_exit/run.jsonl` | 259968 | `7a65cc704a04c810207cc434425fe233` |
+| `work_ext/phi35v/name0_no_exit/run.jsonl` | 269529 | `2b73583dc9bdd49f80089dff53115162` |
+| `work_ext/phi35v/no_name0_exit/run.jsonl` | 272138 | `d8bbd98c7431406fd0fdaa9a9188e4f6` |
+| `work_ext/phi35v/no_name0_no_exit/run.jsonl` | 289440 | `76010e0437b86d65ad863ac229c2cdc6` |

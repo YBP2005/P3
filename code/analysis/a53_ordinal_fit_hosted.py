@@ -14,7 +14,8 @@ v0669 只做了**如实标注**（逐表标编码、撤可比性措辞、不主�
 `cluster_bootstrap`，冻结分析器 `a52_analyze.py` 的 `IRLS` 与 `level_of` 直接 import 复用），
 **只换可读性三轴的编码**，给出三套并列读数：
   (A) **Wald**（逐记录，放行驱动的刊载口径）
-  (B) **81 格聚类 CR1 夹心**（`Y = X(X'X)^{-1}(Σ_g X_g'u_g u_g'X_g)(X'X)^{-1}`，含小样本修正）
+  (B) **81 格聚类 CR1 夹心**（`Y = H^{-1}(Σ_g X_g'u_g u_g'X_g)H^{-1}`，
+      `H = X' diag(p(1-p)) X` 为 logistic 的观测信息阵，含小样本修正）
   (C) 池化**共同斜率**（无 model 项）与**含 model 项**的参考档
 并且：**缺失格（42 行）对 β/C4 的界定** —— 除已有的 band accuracy 夹逼外，
 把 42 个未服务格分别按 **all-wrong** 与 **all-correct** 补回后重拟合，给出 β 的**区间**与
@@ -88,8 +89,29 @@ PRINTED_RAW_CI = dict((r[0], (r[3], r[4])) for r in _PRINTED_ROWS)
 PRINTED_RAW_CI['pooled'] = (-0.7305, -0.6377)
 assert set(PRINTED_RAW) == set(PRINTED_RAW_SE) == set(PRINTED_RAW_CI)
 assert len(PRINTED_RAW) == 7
-# §M.11.2 已印的 81-格 CR1 参考读数（用于回归断言）
-PRINTED_CR1 = {'gpt-6.1-sol': -0.119, 'pooled_common': (-0.9598, -0.4084)}
+# ★★ 2026-10-12（本构建）：**81 格 CR1 的回归基线**。
+#   起因（实测）：`cluster_cr1()` 此前把 bread 写成未加权的 `(X'X)^{-1}`。logistic 的夹心
+#   必须用观测信息阵 `H = X' diag(p(1-p)) X` 作 bread；未加权 bread 不改点估计，但把标准误
+#   **系统性地算小**（实测 pooled 共同斜率宽度比 6.06×、参考档 5.91×）。
+#   ⇒ 已改为 `H^{-1}`，并在此把**已印的** 81 格 CR1 参考读数登记为**断言对象**：
+#     修好 bread 之后，本驱动必须**逐位复现**这三个参考读数；对不上即失败退出（不是警告）。
+#   ★ 这同时消掉一处内部矛盾：修正前本驱动只能产出比已印窄 ~6 倍的区间，与所引的已印读数同源而不同值。
+PRINTED_CR1 = {
+    'gpt-6.1-sol_raw_upper': -0.119,          # §M.11.2 已印（四舍五入 4 位）
+    'gpt-6.1-sol_raw_ci': (-1.0543, -0.1187),  # 同一读数的未舍入形态
+    'pooled_common_raw': (-0.9598, -0.4084),   # §M.11.2 已印
+    'pooled_ref_raw': (-0.7639, 0.0416),       # §M.11.2 已印（参考档跨 0）
+}
+# 同一 `H^{-1}` 口径下的**序数编码**读数（本次更正的补充材料读数；同源同式，一并回归）
+PRINTED_CR1_ORD = {
+    'pooled_common_ord': (-0.9663, -0.4213),
+    'gpt-6.1-sol_ord': (-1.0660, -0.1348),
+}
+
+
+def cr1_matches(ci, want, tol=5e-5):
+    """逐位比对（四位小数印出口径；容差 5e-5 只吸收浮点末位）。"""
+    return ci is not None and abs(ci[0] - want[0]) <= tol and abs(ci[1] - want[1]) <= tol
 
 
 def die(msg):
@@ -145,12 +167,9 @@ def _solve(M):
     return [[A[i][n + j] for j in range(n)] for i in range(n)]
 
 
-def cluster_cr1(rows, D, use_model_terms=False, ref_model=None):
-    """81 格 CR1 聚类夹心（与 §M.11.2 已印的 cell-clustered 口径同族）。
-
-    簇 = `cell_id`（3 counts × 3 radii × 3 blurs × 3 overlaps = 81）。
-    返回 {'beta','se','ci','n_clusters'}；不可评时返回 None。
-    """
+def _cluster_cr1(rows, D, use_model_terms=False, ref_model=None, weighted=True):
+    """81 格 CR1 聚类夹心。`weighted=True` ⇒ bread = H^{-1}（正确形式）；
+    `weighted=False` 是**阴性对照**用的旧形态（未加权 `(X'X)^{-1}`），只供自测反证断言非空。"""
     if ref_model is None:
         ref_model = D.REF_MODEL
     n = len(rows)
@@ -167,8 +186,19 @@ def cluster_cr1(rows, D, use_model_terms=False, ref_model=None):
     beta, cov, se, ok, nit = D.A.fit_logit(X, y)
     if not ok:
         return None
-    # bread = (X'X)^-1
-    G = [[sum(X[k][i] * X[k][j] for k in range(n)) for j in range(p)] for i in range(p)]
+    # ★ 观测信息阵：一次按**最终 beta** 算出 p_k 与 W_k = p_k(1-p_k)，
+    #   bread 与 meat 段**复用同一 pr**（两处若各算一次，就会给出互相不一致的夹心）。
+    eta = [sum(X[k][j] * beta[j] for j in range(p)) for k in range(n)]
+    pr = [1.0 / (1.0 + math.exp(-max(-500.0, min(500.0, e)))) for e in eta]
+    W = [q * (1.0 - q) for q in pr]
+    if weighted:
+        # bread = (X' diag(p(1-p)) X)^-1
+        G = [[sum(X[k][i] * X[k][j] * W[k] for k in range(n)) for j in range(p)]
+             for i in range(p)]
+    else:
+        # 阴性对照：未加权 bread（旧形态，故意保留以免回归断言退化成永真）
+        G = [[sum(X[k][i] * X[k][j] for k in range(n)) for j in range(p)]
+             for i in range(p)]
     Gi = _solve([row[:] for row in G])
     if Gi is None:
         return None
@@ -180,9 +210,7 @@ def cluster_cr1(rows, D, use_model_terms=False, ref_model=None):
     for _cell, idx in by.items():
         s = [0.0] * p
         for k in idx:
-            eta = sum(X[k][j] * beta[j] for j in range(p))
-            pr = 1.0 / (1.0 + math.exp(-max(-500.0, min(500.0, eta))))
-            u = y[k] - pr
+            u = y[k] - pr[k]                       # ← 复用上面同一个 pr
             for j in range(p):
                 s[j] += X[k][j] * u
         for i in range(p):
@@ -200,7 +228,52 @@ def cluster_cr1(rows, D, use_model_terms=False, ref_model=None):
     se_c = math.sqrt(var) if var > 0 else float('nan')
     return {'beta': float(beta[i0]), 'se': se_c,
             'ci': [float(beta[i0]) - 1.96 * se_c, float(beta[i0]) + 1.96 * se_c],
-            'n_clusters': Gc, 'n_rows': n, 'cr1_adj': adj}
+            'n_clusters': Gc, 'n_rows': n, 'cr1_adj': adj, 'weighted_bread': bool(weighted)}
+
+
+def cluster_cr1(rows, D, use_model_terms=False, ref_model=None):
+    """81 格 CR1 聚类夹心（`H^{-1}` bread；修好后**逐位复现 §M.11.2 已印区间**）。
+
+    簇 = `cell_id`（3 counts × 3 radii × 3 blurs × 3 overlaps = 81）。
+    返回 {'beta','se','ci','n_clusters'}；不可评时返回 None。
+    """
+    return _cluster_cr1(rows, D, use_model_terms, ref_model, weighted=True)
+
+
+def cr1_regression(served, served_ord, D):
+    """★★ 回归自证：修好 bread 后，81 格 CR1 必须**逐位复现**已印的 §M.11.2 读数。
+
+    三条已印读数（raw 编码）＋两条同一 `H^{-1}` 口径的序数编码读数（本次更正的新增读数）。
+    任一对不上即返回失败清单（调用方据此**停下**，不继续报告）。
+    """
+    chk = []
+    gpt = [r for r in served if r['model'] == 'gpt-6.1-sol']
+    gpt_ord = [r for r in served_ord if r['model'] == 'gpt-6.1-sol']
+    fits = {
+        'pooled_common_raw': cluster_cr1(served, D),
+        'pooled_ref_raw': cluster_cr1(served, D, use_model_terms=True),
+        'gpt-6.1-sol_raw_ci': cluster_cr1(gpt, D),
+        'pooled_common_ord': cluster_cr1(served_ord, D),
+        'gpt-6.1-sol_ord': cluster_cr1(gpt_ord, D),
+    }
+    want = dict(PRINTED_CR1)
+    want.update(PRINTED_CR1_ORD)
+    bad = []
+    for k in ('pooled_common_raw', 'pooled_ref_raw', 'gpt-6.1-sol_raw_ci',
+              'pooled_common_ord', 'gpt-6.1-sol_ord'):
+        ci = fits[k]['ci'] if fits[k] else None
+        ok = cr1_matches(ci, want[k])
+        chk.append((k, ci, want[k], ok))
+        if not ok:
+            bad.append('%s 实得 %s ≠ 已印 %s' % (k, ci, want[k]))
+    # 上界已印为 −0.119（四位小数），单独判四舍五入
+    up = fits['gpt-6.1-sol_raw_ci']['ci'][1] if fits['gpt-6.1-sol_raw_ci'] else None
+    ok_up = up is not None and abs(round(up, 3) - PRINTED_CR1['gpt-6.1-sol_raw_upper']) <= 1e-9
+    chk.append(('gpt-6.1-sol_raw_upper', up, PRINTED_CR1['gpt-6.1-sol_raw_upper'], ok_up))
+    if not ok_up:
+        bad.append('gpt raw 上界实得 %.4f ⇒ 四舍五入 %.3f ≠ 已印 %.3f'
+                   % (up, round(up, 3), PRINTED_CR1['gpt-6.1-sol_raw_upper']))
+    return chk, bad
 
 
 def c4(ci):
@@ -391,6 +464,22 @@ def run():
     print('   C4 判决（两编码逐端点 + 池化一致）：%s' % ('**未改变**（全 FAIL）' if c4_same
                                                 else '★ 改变了 ⇒ 停下上报'))
 
+    # ── ⑥ ★★ 回归自证：修好 bread 后必须**逐位复现**已印的 §M.11.2 CR1 ──
+    print('\n⑥ ★★ CR1 回归自证（H^-1 bread ⇒ 必须逐位复现已印 §M.11.2 读数）')
+    chk, bad = cr1_regression(served, served_ord, D)
+    R['cr1_regression'] = [{'key': k, 'got': g, 'printed': w, 'ok': bool(o)} for k, g, w, o in chk]
+    for k, g, w, o in chk:
+        _g = ('[%+.4f, %+.4f]' % (g[0], g[1])) if isinstance(g, (tuple, list)) \
+            else ('%+.4f' % g if g is not None else 'None')
+        _w = ('[%+.4f, %+.4f]' % (w[0], w[1])) if isinstance(w, (tuple, list)) else ('%.3f' % w)
+        print('   [%s] %-22s 实得 %s ／ 已印 %s' % ('PASS' if o else 'FAIL', k, _g, _w))
+    reg_ok = reg_ok and not bad
+    if bad:
+        print('   ★ 回归自证**未过** ⇒ 停下上报（不把未复现的读数写进结论）：%s' % '；'.join(bad))
+    else:
+        print('   回归自证：**5/5 逐位复现**（raw 池化共同斜率／raw 参考档／raw gpt 上界／'
+              'ord 池化共同斜率／ord gpt）')
+
     R['printed_raw_match'] = reg_ok
     try:
         if _JSON_OUT:
@@ -448,6 +537,22 @@ def selftest():
         ctl.append(('CR1 SE ≠ Wald SE（%.4f vs %.4f）' % (c1['se'], se_w),
                     c1 is not None and abs(c1['se'] - se_w) > 1e-6))
         ctl.append(('CR1 簇数 = 81（实得 %d）' % c1['n_clusters'], c1['n_clusters'] == 81))
+        # ⑤b ★★ bread 的**阴性对照**：未加权 (X'X)^-1 必须**不能**复现已印宽区间。
+        #    若两者都给同一答案，下面这条回归断言就是永真的 ⇒ 断言本身先被证伪。
+        c1u = _cluster_cr1(mr, D, weighted=False)
+        ctl.append(('未加权 bread 给出**不同**（更窄）区间（%s vs %s）'
+                    % ('[%+.4f,%+.4f]' % tuple(c1u['ci']), '[%+.4f,%+.4f]' % tuple(c1['ci'])),
+                    c1u is not None and not cr1_matches(c1u['ci'], PRINTED_CR1['gpt-6.1-sol_raw_ci'])))
+        # ⑤c ★★ 回归自证：H^-1 口径必须**逐位复现**已印 §M.11.2 CR1（raw 池化／raw 参考档／
+        #    raw gpt 上界 ＋ ord 池化／ord gpt）。这是"修好公式却没改错已印数字"的正向证据。
+        man_x = D.load_manifest()
+        rows_x, _miss = D.load_api(man_x)
+        served_x = [r for r in rows_x if r['http'] == 200]
+        served_xo = recode_ordinal(served_x, REG)
+        _chk, _bad = cr1_regression(served_x, served_xo, D)
+        ctl.append(('CR1 回归自证 5/5 逐位复现已印区间（%s）'
+                    % ('；'.join(_bad) if _bad else 'pooled/ref/gpt × raw/ord'),
+                    not _bad))
         # ⑥ 补回边界格必须真的移动 β（否则"界定"是空的）
         fill_hi = served + [{**r, 'correct': 1} for r in missing]
         b_hi = D.fit_rows(fill_hi)['beta_count']

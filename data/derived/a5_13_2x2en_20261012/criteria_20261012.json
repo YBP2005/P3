@@ -1,0 +1,39 @@
+{
+ "_what": "Cross-language replication of the four output contracts (English prompt, same pool)",
+ "arms": [
+  "no_name0_no_exit",
+  "no_name0_exit",
+  "name0_no_exit",
+  "name0_exit"
+ ],
+ "counting_rules": {
+  "abstention": "`abstain is True` (the contract's own refusal token)",
+  "answered_zero": "`pred == 0`",
+  "deduplication": "one image one vote (deduplicate by `image`)",
+  "double_annotation": "a row that is both `pred == 0` and `abstain is True`; the inclusive reading counts it as an answered zero and the exclusive reading does not, and both are printed where the case arises",
+  "partition_identity": "answered zero + non-zero + unparseable == denominator",
+  "rows_counted": "only rows with http == 200; other rows enter neither numerator nor denominator",
+  "true_zero_roster": "the frozen contract `target_map_<cond>.csv`, column `true_zero == 1`",
+  "unparseable": "`parse_ok is False`, reported in its own column and never merged into abstention"
+ },
+ "families": [
+  "ivl358b",
+  "q32fp8",
+  "lov7b",
+  "phi35v"
+ ],
+ "pool": {
+  "denominator": "300 true-zero images per condition",
+  "roster": "frozen contract target_map_<cond>.csv, true_zero == 1",
+  "total_images": 600,
+  "true_zero_images": 300
+ },
+ "published": {},
+ "replication_definition": "A family counts as replicated when its outlet effect (no_name0_no_exit -> no_name0_exit) and its naming effect at both outlet levels (no_name0 -> name0, without and with the outlet) point the same way (same sign) in both prompt languages. The count is three of four families. The fourth, q32fp8, is at the ceiling in both languages and its outlet-effect sign changes there.",
+ "section": "M.58",
+ "source_archive": {
+  "bytes": 444460,
+  "md5": "0d89dc743c210e5a9cea1e696c9a3c77"
+ },
+ "source_directory_in_archive": "root/a59_2x2en"
+}

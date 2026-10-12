@@ -1,0 +1,1 @@
+Count the number of <target_word> in the image (every individual that belongs to this class). Do not miss any, do not double-count, If the target is not in the image, the answer is 0.If you cannot confirm each one individually, answer "abstain" or "cannot_judge" rather than guessing. Output in JSON format: {"count": <number>} or {"count": "abstain"}, output JSON only.

@@ -58,12 +58,13 @@ FIGFILE = dict((label, fn) for fn, label in FIGS)
 #     · **本表** —— 构建期的**权威副本 + 同名断言**：每遇到一个题注段，就断言它与本表**逐字相等**，
 #       不等即**抛错停链**（防"改了源稿忘了这里"或反之而两份悄悄漂移）。
 #   两处**不是重复排版**：docx 里只出现一次（正文那份被本表校验后原地渲染）。
+# ★ 2026-10-12：四条图注随**四图注口径**一并改写（口径正文进补材 §D.5）。
+#   本 dict 与源稿题注的**两处逐字一致**由下方的断言兜住；改稿时若只改源稿不改此处，`final_gates` 第 ① 步当场停链（本轮实测踩到）。
 FIGCAPS = {
-    'Fig. 1': 'Tiling removes the ShanghaiTech-A abstention without harming direction.',
-    'Fig. 2': 'The prompt-strength dose–response: relaxation also drives abstention to zero, '
-              'but flips $\\rho$ from −82% to +234%…+345%.',
-    'Fig. 3': 'The threshold-cleaning curve separating reachable from unreachable levels.',
-    'Fig. 4': 'The four-panel separation of the two failure modes: abstention and under-count decouple.',
+    'Fig. 1': 'Tiling removes the ShanghaiTech-A abstention; direction: Appendix L.',
+    'Fig. 2': 'Prompt-strength dose–response, base arm: relaxation drives abstention to zero, but flips $\\rho$ from −82% to +234%…+345%.',
+    'Fig. 3': 'Threshold-cleaning curve: annotation calibers on the fine grid.',
+    'Fig. 4': 'Four-panel separation of two failure modes: under-count up to 50%, abstention decoupled.',
 }
 assert set(FIGCAPS) == set(FIGFILE), 'FIGCAPS 与 FIGS 的图号不是一一对应'
 RE_CAP = re.compile(r'^\*\*(Fig\.\s*\d+)\.\*\*\s*(.+)$')

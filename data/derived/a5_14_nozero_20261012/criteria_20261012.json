@@ -1,0 +1,35 @@
+{
+ "_what": "\"Output no zero\": the answered zero shrinks under the instruction but is not removed",
+ "arms": [
+  "base",
+  "nozero"
+ ],
+ "counting_rules": {
+  "abstention": "`abstain is True` (the contract's own refusal token)",
+  "answered_zero": "`pred == 0`",
+  "deduplication": "one image one vote (deduplicate by `image`)",
+  "double_annotation": "a row that is both `pred == 0` and `abstain is True`; the inclusive reading counts it as an answered zero and the exclusive reading does not, and both are printed where the case arises",
+  "partition_identity": "answered zero + non-zero + unparseable == denominator",
+  "rows_counted": "only rows with http == 200; other rows enter neither numerator nor denominator",
+  "true_zero_roster": "the frozen contract `target_map_<cond>.csv`, column `true_zero == 1`",
+  "unparseable": "`parse_ok is False`, reported in its own column and never merged into abstention"
+ },
+ "families": [
+  "ivl358b",
+  "q32fp8",
+  "lov7b",
+  "ivl38fp8"
+ ],
+ "pool": {
+  "note": "all-true-zero pool; the base arm and the no-zero arm are served on the same 299 images, verified column by column",
+  "total_images": 299,
+  "true_zero_images": 299
+ },
+ "published": {},
+ "section": "M.59",
+ "source_archive": {
+  "bytes": 444460,
+  "md5": "0d89dc743c210e5a9cea1e696c9a3c77"
+ },
+ "source_directory_in_archive": "root/a60_nozero"
+}

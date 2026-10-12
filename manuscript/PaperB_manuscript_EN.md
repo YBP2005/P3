@@ -5,8 +5,8 @@
 ## Abstract
 
 Symmetric magnitudes look alike: a count of 100 and one of 150. We contribute **two findings plus the apparatus that makes
-them checkable**: an **operationalisation** of abstention that separates a suppressed abstention
-from a true zero, and the **dual-convention identities** that make under-counts readable. For **one anchor
+them checkable**: an **operationalisation** of abstention that reads the answered zero as an observable
+channel, and the **dual-convention identities** that make under-counts readable. For **one anchor
 build under Chinese base prompts** **answered-zero outputs** account for **82–94%** of the net
 under-count under ground-truth-weighted share (**base arm**); contract interventions change **observable response channels**, and the **item-count** abstention rate is **53.9–68.2%**. The **answered-zero rate** drops **42.7 pp on the BF16 build under English** (§8.2). Removing the answered zero does not turn an abstaining model into an accurate counter: the zero is a channel, not the error.
 Given an abstention option **1591/1591** calls abstain; forbidding it yields a **per-item median** of **2.463–9.452×** (§5.7, M.1).
@@ -60,12 +60,12 @@ same base arm neither abstains nor becomes directionally accurate (§5.6, §5.7)
 **③ Switchable from both ends**, being a behaviour: tiling (**Fig. 1**) drops the ShanghaiTech-A [5] abstention rate from **56.6%** to **0.0%** (2×2: 6.0%, 3×3: 0.55%)
 without harming direction.
 
-**Fig. 1.** Tiling removes the ShanghaiTech-A abstention without harming direction.
+**Fig. 1.** Tiling removes the ShanghaiTech-A abstention; direction: Appendix L.
 
 **④ Removing abstention costs direction among the tested interventions.** Prompt relaxation (**Fig. 2**) also
 drives abstention to zero but flips $\rho$ from **−82%** to **+234%…+345%**; **tiling is the only one that improves both.** *(Per-property numbers: Appendix L.)*
 
-**Fig. 2.** The prompt-strength dose–response: relaxation also drives abstention to zero, but flips $\rho$ from −82% to +234%…+345%.
+**Fig. 2.** Prompt-strength dose–response, base arm: relaxation drives abstention to zero, but flips $\rho$ from −82% to +234%…+345%.
 
 **Supporting result: the response spectrum of direction.** The signed direction can be moved
 continuously, but its **achievable span is an empirical property of {implementation × training domain ×
@@ -147,8 +147,8 @@ multi-granularity annotation ([22]; [23]); §3.2 makes it a first-class variable
 Recent work locates counting failure at the **reporting** stage ([24]; a hierarchy in [25]) and establishes
 cross-paradigm counting comparison ([26]); **we cite that locus, not claim it**. Those works localise the failing stage — one decomposing counting into visual individuation,
 magnitude awareness and symbolic mapping [27] — whereas our quantity is the
-**composition of what it emits**: an answered `0` split
-into a **suppressed abstention** recoverable by an output contract and a **genuine estimate of zero**, separated
+**composition of what it emits**: an answered `0`
+read as a **response channel** set by an output contract, not a **genuine estimate of zero**, evidenced
 on a fixed serving stack in §3.8 and §5.7.
 
 ### 2.7 Evaluation validity: non-determinism and aggregate metrics
@@ -384,7 +384,7 @@ The published ladders scan $\tau$ at different granularities, so the boundary is
 (per-level tables in Appendix F.8). **The
 threshold-cleaning curve of Fig. 3** separates reachable from unreachable levels; the fine-grid magnitudes are read with their grid density (§7.3).
 
-**Fig. 3.** The threshold-cleaning curve separating reachable from unreachable levels.
+**Fig. 3.** Threshold-cleaning curve: annotation calibers on the fine grid.
 
 To rule out a coarse-grid artefact we repeat the scan on a **fine grid** — $\tau$ from 0.02 to 0.90 in
 steps of 0.005 (**177 points**), with **4,000× bootstrap image resampling** for the 95% interval of
@@ -509,7 +509,7 @@ removed the answered zero in **five of seven**:
 under-counts by **up to 50%**; in microscopy (BBBC005 [48]) abstention is **0.0%** while the bias reaches **−50.1%**.
 Conversely, on dense crowds abstention is 50–70% while the answered-only bias is only −19.8% / −29.2%.
 
-**Fig. 4.** The four-panel separation of the two failure modes: abstention and under-count decouple.
+**Fig. 4.** Four-panel separation of two failure modes: under-count up to 50%, abstention decoupled.
 
 (Appendix M.34)
 

@@ -267,8 +267,37 @@ detection ladders, per-level saturation curves, the contract prediction distribu
 knob curves and the scale-invariance panels — are provided in the supplementary file, as are the per-cell
 tables referenced from Appendices E–G. Table 1 is the numerosity-stimulus comparison of §2.4; the lineage-stratified abstention table of §3.6 is Table 2.
 
-Main-text figure list (the pointer of §3.9): **Fig. 1** tiling removes the abstention; **Fig. 2** the prompt-strength dose–response; **Fig. 3** the threshold-cleaning curve that separates reachable from unreachable levels; **Fig. 4** the four-panel separation of the two failure modes. All tables are supplied as editable text with no
+Main-text figure list (the pointer of §3.9): **Fig. 1** tiling removes the abstention; **Fig. 2** the prompt-strength dose–response; **Fig. 3** the threshold-cleaning curve on a common grid, by annotation caliber; **Fig. 4** the four-panel separation of the two failure modes. The build, arm, aggregate and image set behind each figure are stated once in **D.5**. All tables are supplied as editable text with no
 vertical rules and no shading.
+
+### D.5 Figure calibers: what each panel plots, on which build and arm
+
+Each main-text figure is read with the **build**, the **arm**, the **aggregate** and the **image set** that
+produced it. Stated once here, because the figures carry no legend of their own and the caption is shorter than
+the reading:
+
+- **Fig. 1 (tiling).** Answered-zero rate on the ShanghaiTech-A corpus, anchor build, base arm, whole-image
+  serving, on the image set of §5.9; the tiling arms (2x2, 3x3) are served on the **same** images. The panel
+  plots the **abstention (answered-zero) rate only**. The *direction* half of the caption's claim is therefore
+  not read from this figure: the direction evidence is the per-property record of Appendix L, and the caption
+  points there.
+- **Fig. 2 (prompt strength).** Signed relative deviation $\rho$ and answered-zero rate against prompt
+  strength, anchor build, base contract, one service start per point; the relaxation ladder is the prompt-side
+  intervention of §5.8. The caption and the **in-panel annotations do not report the same aggregate**. The
+  caption quotes $\rho$ moving from **−82%** to **+234%…+345%** end to end over the ladder; the in-panel
+  annotations quote **step-wise** changes of the same ladder (including the per-corpus cuts of §5.8), which are
+  larger precisely because they are step-wise. They are not one quantity, and neither may be read as the other.
+- **Fig. 3 (threshold cleaning).** Mean error against the detector-$\tau$ ladder on a common grid, anchor build,
+  base arm, over the four domains of §4.3, with the **two annotation calibers** of Appendix F.10 drawn
+  separately. The figure's purpose is to show how the **zero point moves with $\tau$ and with the annotation
+  caliber**; it is not a classification of configurations into reachable and unreachable, and the caption is
+  worded accordingly. The magnitude reading, and its known dependence on grid density, is in §7.3 and
+  Appendix F.8.
+- **Fig. 4 (decoupling).** Four panels that measure the two failure modes separately — answered-zero rate and
+  signed under-count — on clean synthetic dots, on microscopy (BBBC005) and on the dense-crowd domains, anchor
+  build, base arm. The under-count range the panels support is **0% to 42.5% in the single-render synthetic
+  grid**, widening to **up to 50%** across the five independent renders of §J.8. The panel titles quote the
+  single-render figure and are read with that bound; the caption uses the five-render form.
 
 ## Appendix E. Detection ladders in full
 
@@ -1130,7 +1159,7 @@ $\kappa = 14{,}015/6{,}096 = 2.2990$, which rounds to the 2.3 : 1 printed in Tab
 $\kappa = 2.3$ gives 30.30%, so the exact ratio is used here).
 
 **Proposition 8.** The bound follows from the identity of Proposition 4 by taking absolute values. The
-$\lvert\rho_{\text{answered}}\rvert$ form holds with **equality if and only if** $\rho_{\text{answered}} \ge 0$ (§M.21); for $\rho_{\text{answered}} < 0$ it is **strict**, and at $w = 1$ both sides are $0$. All four measured cells have $\rho_{\text{answered}} < 0$, so the exact form $\lvert\rho_{\text{total}} - \rho_{\text{answered}}\rvert = (1-w)(1+\rho_{\text{answered}})$ is the one used there.
+$\lvert\rho_{\text{answered}}\rvert$ form holds with **equality if and only if** $w = 1$ **or** $\rho_{\text{answered}} \ge 0$ (§M.21); for $\rho_{\text{answered}} < 0$ and $w < 1$ it is **strict**, and at $w = 1$ both sides are $0$. All four measured cells have $\rho_{\text{answered}} < 0$, so the exact form $\lvert\rho_{\text{total}} - \rho_{\text{answered}}\rvert = (1-w)(1+\rho_{\text{answered}})$ is the one used there.
 using the canonical primary runs of Appendix J.1 ($w$ and $\rho_{\text{answered}}$ printed in that table):
 
 | Domain | $w$ | $\rho_{\text{answered}}$ | identity $(1-w)(1+\rho_{\text{ans}})$ | observed gap |
@@ -2057,21 +2086,25 @@ depend on which of the two codings is used, and this subsection does not revise 
 
 **Cluster-aware intervals for the new readings.** Because the design's genuinely repeated unit is the cell, the same
 fits are recomputed with a **cell-clustered sandwich** (CR1, **81 clusters** = 3 counts × 3 radii × 3 blurs × 3
-overlaps; small-sample correction G/(G−1)·(n−1)/(n−p)), which leaves every point estimate unchanged: pooled common
-slope **[−0.7296, −0.6386]** under the raw coding and **[−0.7385, −0.6492]** under the ordinal coding, and
-gpt-6.1-sol's own **[−0.6541, −0.5189]** and **[−0.6666, −0.5342]**. **C4 fails in every one of these intervals as
+overlaps; small-sample correction G/(G−1)·(n−1)/(n−p)) built on the logistic **observed information matrix**
+`H = Xᵀdiag(p(1−p))X`, which leaves every point estimate unchanged: pooled common
+slope **[−0.9598, −0.4084]** under the raw coding and **[−0.9663, −0.4213]** under the ordinal coding, and
+gpt-6.1-sol's own **[−1.0543, −0.1187]** and **[−1.0660, −0.1348]**. **C4 fails in every one of these intervals as
 well**, under both codings. A layout-clustered bootstrap (the driver's own clustering variable, 648 clusters, 200
 resamples at the frozen seed) gives the pooled common slope **[−0.8281, −0.5774]**, also failing C4.
 
 **Scope of those cluster-aware intervals.** The intervals just given are recomputed from the released records and
-from the clustering unit §M.11.2 names (CR1 over the 81 cells), and they are **not** the intervals §M.11.2 prints
-for the same fits. The printed **CR1** readings are materially **wider** than these recomputations — the printed
-pooled common slope **[−0.9598, −0.4084]** is roughly six times the width of the recomputed
-[−0.7296, −0.6386], and the printed reference slope **[−0.7639, +0.0416]** roughly four times the width of
-[−0.4293, −0.2930]. The point estimates agree exactly in every case, and the recomputed intervals are used
-here for the *ordinal* readings only as the same-unit comparison; the printed CR1 intervals are left as printed.
-The two calibers are **not** interchangeable and the difference is a matter for the audit, not for this
-subsection: it does not touch any value printed in §M.11.2 or in the main text, and it does not change any C4
+from the clustering unit §M.11.2 names (CR1 over the 81 cells), and with the weighted information matrix they
+**coincide with the CR1 intervals §M.11.2 prints for the same fits** — the printed
+pooled common slope **[−0.9598, −0.4084]** and reference slope **[−0.7639, +0.0416]** come back to the printed
+four decimals. They are therefore **one** estimator, not two, and the ordinal-coding rows above are its
+counterpart under the registered coding. An earlier recomputation of this same sandwich used an **unweighted**
+bread, `(XᵀX)⁻¹` in place of `H⁻¹`: that leaves every point estimate unchanged but returns a systematically
+**too-narrow** standard error, and the values it produced are narrower by roughly **six times** for the pooled
+common slope (the correct **[−0.9598, −0.4084]** against **[−0.7296, −0.6386]**) and by roughly **5.9 times** for
+the reference slope (**[−0.7639, +0.0416]** against **[−0.4293, −0.2930]**). Registering that as a difference of
+**calibers**, rather than as one defective implementation of a single estimator, was wrong. The correction does
+not touch any value printed in §M.11.2 or in the main text, and it does not change any C4
 verdict, which is **FAIL under every estimator, both codings, and every filling of the missing cells**.
 
 **What the missing cells bound for β and C4, not only for band accuracy.** §M.11.2 already brackets the
@@ -2096,9 +2129,13 @@ too, and the bound is tight.
 released analysis driver and the same released frozen analyzer that §M.11.2 names and that `analysis_manifest.md`
 registers row by row, each imported rather than re-implemented; the runnable entry point is the released
 `a53_ordinal_fit_hosted.py`, catalogued in the same manifest. It reads only released files, asserts every
-**raw**-coding reading against the value printed in §M.11.2 before reporting anything, and carries a negative
-self-test: an absent input file fails with its own path instead of returning an empty result, and a coding switch
-that did **not** move the estimate would be reported as a failure rather than a pass. No model call and no GPU are
+**raw**-coding reading against the value printed in §M.11.2 before reporting anything, and asserts the
+**cell-clustered CR1** readings against the three printed there as well (pooled common slope, reference slope,
+and the gpt-6.1-sol upper bound), so the weighted-bread sandwich is checked against §M.11.2 rather than merely
+reported; the same assertion covers the two ordinal-coding CR1 readings printed above. It carries a negative
+self-test: an absent input file fails with its own path instead of returning an empty result, a coding switch
+that did **not** move the estimate would be reported as a failure rather than a pass, and the unweighted bread
+is evaluated alongside the weighted one so that the regression assertion cannot pass vacuously. No model call and no GPU are
 involved, so every value above is re-derivable from the released package alone.
 
 ### M.11.3 Serviceability, registered deviations, and the abstention channel of the cross-family panel
@@ -3796,7 +3833,7 @@ criterion explicitly.
 $\rho_{\text{total}} - \rho_{\text{answered}} = -(1-w)(1+\rho_{\text{answered}})$, hence
 $$\lvert \rho_{\text{total}} - \rho_{\text{answered}}\rvert \;\le\; (1-w)\,(1 + \lvert\rho_{\text{answered}}\rvert),$$
 where the inequality is the exact identity restated with $\lvert\rho_{\text{answered}}\rvert$: it holds with
-**equality if and only if** $\rho_{\text{answered}} \ge 0$, so for every cell measured here (all of which
+**equality if and only if** $w = 1$ **or** $\rho_{\text{answered}} \ge 0$, so for every cell measured here (all of which
 have $\rho_{\text{answered}} < 0$) the identity $\lvert\rho_{\text{total}} - \rho_{\text{answered}}\rvert =
 (1-w)\,(1+\rho_{\text{answered}})$ applies exactly while the $\lvert\rho_{\text{answered}}\rvert$ form is strict. The gap therefore **vanishes if and only if** either there is no abstention ($w = 1$) or the answered
 subset reports zero ($\rho_{\text{answered}} = -1$); note that an *unbiased* answered subset
@@ -5390,13 +5427,15 @@ frozen probe), analyzers `ea2_analyze.py`, `ea2_contrast.py`, `ea2_integrity.py`
 M.41 — from those frozen artifacts, checks the design constants against a frozen inventory of them, and fails
 on any number that is not registered.*
 
-#### M.40.1 Four production-process caveats, stated because the intervals above cannot show them
+#### M.40.1 Five production-process caveats, stated because the intervals above cannot show them
 
-The four uncertainty-producing procedures behind the calibration and ranking figures of §5.14,
-§7.3 and §M.37 were re-read at the source for this appendix. Three are **conventions a reader should hold
-alongside the printed interval** rather than defects that change a printed value, and one has been
-**corrected and recomputed**; they are collected here so that no printed interval is read as covering
-contingencies it does not cover.
+The five uncertainty-producing procedures behind the calibration and ranking figures of §5.14,
+§7.3 and §M.37 were re-read at the source for this appendix. One has been
+**corrected and recomputed** (i); three are **conventions a reader should hold
+alongside the printed interval** rather than defects that change a printed value (ii, iii, iv); and one
+records **two measurements taken from the released per-item records for this appendix** (v), with which the
+direction previously asserted in (iii) is now measured rather than asserted. They are collected here so that
+no printed interval is read as covering contingencies it does not cover.
 
 **(i) The rank convention was not uniform, and is now average-rank throughout.** `m37_ci_power.py` computed
 Spearman by mapping each distinct value to its position in `sorted(...)` through a dictionary, so a **tie
@@ -5425,10 +5464,17 @@ should not be compared as if only the fit differed.
 `sub += allp[:min(20, len(allp))]`, so "20 labelled images per configuration" is, in the released code, the
 first **20 observation pairs** of the expanded list — a configuration whose items appear at several levels
 contributes several rows per image, and the first 20 rows need not be 20 distinct images. The direction of the
-bias is toward **less** image diversity than the label claims, i.e. the 20-image budget is an optimistic
-reading of the arm, not a conservative one. The arm's printed score (0.732 per-domain) is therefore a **floor
-on the penalty** for a genuinely image-deduplicated budget; the arm would not improve if the budget were
-deduplicated.
+bias is toward **less** image diversity than the label claims, and that direction is now **measured** rather
+than asserted. `m40_calib_two.py` re-runs the same arm on the same released per-item records, with the seed and
+the split discipline of the releasing script, and adds one counterfactual budget that draws **20 distinct
+images** per configuration. Across the thirty-six configurations the released draw returns a **median of 19
+and as few as 12 distinct images**, falling short of 20 in **28 of 36** configurations — the same 35
+configurations whose calibration pool holds more than 20 distinct images, so the shortfall is the drawing rule
+and not a shortage of data. The deduplicated budget does **not** improve the arm: the span-Spearman of the
+per-domain affine map moves from **0.7500** under the released caliber to **0.7345** under the deduplicated
+one, a paired difference whose median over the 200 splits is **−0.028** and which is negative in **59.0%** of
+them. The 20-image budget is therefore a mildly **optimistic** reading of the arm, not a conservative one, and
+the arm does not improve if the budget is image-deduplicated.
 
 **(iv) The 12-cell family-level interval is a within-cell image resample, and the split-16 certification
 selects its groups from the data.** `w1_judge.py (the per-cell row draw)` draws bootstrap rows inside the fixed
@@ -5444,6 +5490,19 @@ uniform split, which is the reading the main text gives it. Neither of these two
 would need the shared-image pairing to be re-derived across the released per-item files, which is a
 data-production change rather than a reporting one. They are recorded as **stated calibers** so that the two
 intervals are not read as covering the family-level and group-selection contingencies.
+
+**(v) A partially pooled (hierarchical) calibration is computable on the released per-item records, and it does
+not recover the pooled fit.** The rows above compare a **fully pooled** map with maps fitted **per unit**, which
+leaves the shrinkage family unmeasured; it is measured here. `m40_calib_two.py` takes each configuration's own
+affine map and shrinks it toward the global map with the empirical-Bayes weight $\lambda_u = \tau^2/(\tau^2 +
+\sigma_u^2)$, where $\sigma_u^2$ is the within-configuration slope variance from the least-squares fit and
+$\tau^2$ the between-configuration component by method of moments. Over the same 200 splits the span-Spearman
+is **0.9949** for the fully pooled map, **0.5361** for the unshrunk per-configuration map, and **0.5488** for
+the partially pooled one. Shrinkage therefore moves the per-configuration family *toward* the pooled family by
+a little (0.5361 to 0.5488) without approaching it: the between-configuration component is large relative to
+the within-configuration slope variance, so the data keep most of the weight. The partially pooled map is
+reported as computed and is **not** a substitute for the pooled map in any printed row, and this paragraph is
+the only place in this appendix where it is read.
 
 ### M.41 Sensitivity to image resolution on FSC-147: 256, 384 and 768 pixels
 
@@ -6679,8 +6738,8 @@ of **-57.9 pp**.
 | rendered | 300 | 300 | 290 | -10 | 96.7% | -3.3 pp |
 | natural | 259 | 259 | 109 | **-150** | **42.1%** | **-57.9 pp** |
 
-The rate difference grows from **-3.3 pp** to **-57.9 pp**, so the effect on the natural pool is roughly
-**13 times** the effect on the rendered pool for this build. The direction is preserved; the magnitude and
+The rate difference grows from **-3.3 pp** to **-57.9 pp**, a factor of **17.4** on the rate-difference
+scale (the ratio of the two counts, 150/10, is **15**). The direction is preserved; the magnitude and
 the immunity are not. This is a **negative result about a previously stated reading**, and we draw the
 consequence rather than preserve the reading.
 
@@ -6805,12 +6864,14 @@ units at each of `r` in `{1, 2, 5, 10}` the difference is **0.000000000**, with 
 difference of **0.000e+00**. The wider reading, which includes unpaired items, also gives a maximum
 absolute difference of **0.0000** and **10 of 10** units at zero for every `r`.
 
-**The reading we take from it.** *Treating an answered zero as an estimate of zero is cost-identical to
-discarding the whole image; the answered zero therefore carries no usable count information under
-asymmetric cost.* That is a stronger statement than "some difference is significantly positive": it says
-that the cheapest defensible thing one can do with an answered zero — throw the image away — costs
-exactly as much as the most literal thing one can do with it, treat it as a measurement. A value that
-cannot be distinguished from discarding it is not information about the count.
+**The reading we take from it.** *Under the specified abstention charge `c_u·gt`, the two actions have
+identical loss for a zero output; this identity does not establish that the output contains no statistical
+or decision-relevant information.* The identity is exact, and it is stronger than "some difference is
+significantly positive": the cheapest defensible thing one can do with an answered zero — throw the image
+away — costs exactly as much as the most literal thing one can do with it, treat it as a measurement,
+**under this one charge**. What that rules out is a *cost* argument for the value of the zero, not the value
+of the zero: an asymmetric cost alone cannot separate the two actions, and a claim that the output carries
+no decision-relevant information would need a different analysis, which this section does not run.
 
 **The boundary of the identity, stated with it.** The equality holds when the over-count unit cost is
 fixed at one, when the abstention is priced on the under-count side at `c_u * gt`, and when true counts are
@@ -6867,6 +6928,216 @@ model call, and no serving stack is involved.
 table are released under `data/derived/a5_12_cost_20261012/`; the driver recomputes every ratio, every
 median and both directions of the identity from the released input alone, in pure CPU, with no model call
 and no GPU.*
+
+### M.58 The same four contracts in a second prompt language: three of four families replicate, and the fourth sits at the ceiling in both
+
+M.52 and M.54 vary the corpus domain with the language held fixed. This section varies the **prompt language**
+with the image pool held fixed: the same four output contracts are written in English and served on the same
+images that carry the mother-pool conditions, with the image pool, the true-zero roster and the target word
+held constant.
+
+**What is held fixed, verified rather than assumed.** For all four conditions the English records and the
+mother-pool records are the **same images in the same order**, with an identical true-zero set, an identical
+`class_name` and an identical `gt_count` (100% of cells, four conditions). The one variable between the two
+columns is therefore the **language of the prompt** — not the image pool, not the true-zero set and not the
+target word.
+
+**Answered zeros in the true-zero pool, by family and language** (denominator 300 in every cell).
+
+| family | language | `no_name0_no_exit` | `no_name0_exit` | `name0_no_exit` | `name0_exit` |
+|---|---|---:|---:|---:|---:|
+| `ivl358b` | English | **248** | **0** | **294** | **1** |
+| `ivl358b` | mother pool | 249 | 0 | 299 | 28 |
+| `q32fp8` | English | **300** | **300** | **300** | **300** |
+| `q32fp8` | mother pool | 300 | 290 | 300 | 300 |
+| `lov7b` | English | **190** | **20** | **223** | **92** |
+| `lov7b` | mother pool | 162 | 3 | 207 | 30 |
+| `phi35v` | English | **167** | **16** | **194** | **100** |
+| `phi35v` | mother pool | 202 | 51 | 226 | 104 |
+
+**The outlet effect, assessed separately in each language** (`no_name0_no_exit` -> `no_name0_exit`).
+
+| family | English change | English retained | mother-pool change | mother-pool retained | same direction |
+|---|---:|---:|---:|---:|:--:|
+| `ivl358b` | −248 | 0.00% | −249 | 0.00% | yes |
+| `q32fp8` | **0** | 100.00% | −10 | 96.67% | **no** |
+| `lov7b` | −170 | 10.53% | −159 | 1.85% | yes |
+| `phi35v` | −151 | 9.58% | −151 | 25.25% | yes |
+
+**The naming effect, assessed separately at each outlet level** (`no_name0` -> `name0`).
+
+| family | English, no outlet | mother pool, no outlet | English, with outlet | mother pool, with outlet |
+|---|---:|---:|---:|---:|
+| `ivl358b` | +46 | +50 | +1 | +28 |
+| `q32fp8` | 0 | 0 | **0** | **+10** |
+| `lov7b` | +33 | +45 | +72 | +27 |
+| `phi35v` | +27 | +24 | +84 | +53 |
+
+**The replication count, and the definition it rests on.** A family is counted as replicated when its
+**outlet effect** and its **naming effect at both outlet levels** point the **same way** (same sign) in both
+languages; the definition is stated here because no earlier material fixes one. On that definition the
+cross-language behaviour is **replicated in three of four families** — `ivl358b`, `lov7b` and `phi35v`. **The
+fourth, `q32fp8`, sits at the ceiling in both languages**: its English outlet arm does not move at all
+(300 -> 300, change 0) and its mother-pool arm moves by 10 (300 -> 290), so the sign of the outlet effect
+changes between the languages at a baseline that is already saturated in both. Reading the English zero-change
+cell as "not an increase" rather than as "a different direction" would make the count four of four; that
+reading is **not** used here.
+
+**Where the directions differ, in full.** Across the sixteen cells of the comparison the English count is
+above the mother-pool count in **5** cells, below it in **7** and equal in **4**. The direction agreement is
+therefore a statement about the outlet and naming effects, not about the levels: `lov7b` answers zero more
+often in English than in the mother pool (190 against 162 at the baseline, and 20 against 3 under the outlet),
+while `phi35v` reverses that (167 against 202). **Agreement of direction is not agreement of magnitude**, and
+no cell is pooled across families here.
+
+**The double annotation, in this pool.** In the English true-zero pool **no** cell contains a row that is both
+`pred == 0` and `abstain == True`, so the two readings above are the same reading. Outside the true-zero pool,
+one row across the sixteen English cells carries both flags; it enters none of the counts above and is
+disclosed for completeness.
+
+*Reproduction: the sixteen English per-condition record files, the four English contract texts, the four
+rosters and the criterion table are released under `data/derived/a5_13_2x2en_20261012/`; every count and every
+rate above is recomputed from those files alone, with no model call and no GPU.*
+
+### M.59 "Output no zero": the answered zero shrinks but is not removed, and the models do not move to the abstention outlet
+
+M.52 to M.58 vary the *form* of the contract. This section changes its *content*: one sentence is inserted into
+the base contract that instructs the model to output **only a positive integer — neither `0` nor an
+abstention is permitted** — while the JSON-shape sentence and the "output JSON only" discipline are unchanged
+verbatim. The image pool is the **299-image all-true-zero pool** of M.56; the base arm and the no-zero arm are
+served on the **same** pool, verified column by column on `image` / `class_name` / `gt_count` / `true_zero` /
+the base condition key (299 of 299 identical), so the one variable is that sentence.
+
+**What the no-zero instruction produced** (denominator 299 in every row).
+
+| build | unique 200 | non-zero | non-zero share | abstention (`abstain is True`) | `pred == 0` | **`pred == 0` share** | unparseable |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| `ivl358b` | 299/299 | 143 | 47.83% | 0 | 156 | **52.17%** | 0 |
+| `q32fp8` | 299/299 | 5 | 1.67% | 0 | 294 | **98.33%** | 0 |
+| `lov7b` | 299/299 | 156 | 52.17% | 0 | 66 | **22.07%** | 77 |
+| `ivl38fp8` | 299/299 | 46 | 15.38% | 0 | 251 | **83.95%** | 2 |
+| **total** | 1196/1196 | 350 | 29.26% | **0** | 767 | **64.13%** | 79 |
+
+**The instruction is violated in exactly the value it names.** The contract forbids `0` and forbids abstaining.
+Zero is still the answer in **767 of 1196 rows (64.13%)**, from **22.07%** in the least affected build to
+**98.33%** in `q32fp8`. The abstention outlet is closed by the instruction and the measured abstention count is
+**0 in all four builds** — and not merely by the flag: across all **1196** raw outputs the literal tokens
+`abstain` and `cannot_judge` occur **zero** times, so the refusal vocabulary the contract closes is a
+vocabulary the models did not use at all. The 77 unparseable `lov7b` rows return `{}` or `[]` (7 rows) or free
+text, not a refusal token.
+
+**The same pool under the base contract, as a directional check.**
+
+| build | base answered zeros | no-zero answered zeros | change | base rate | no-zero rate | change (pp) |
+|---|---:|---:|---:|---:|---:|---:|
+| `ivl358b` | 205 | 156 | −49 | 68.56% | 52.17% | −16.39 |
+| `q32fp8` | 298 | 294 | −4 | 99.67% | 98.33% | −1.34 |
+| `lov7b` | 77 | 66 | −11 | 25.75% | 22.07% | −3.68 |
+| `ivl38fp8` | 279 | 251 | −28 | 93.31% | 83.95% | −9.36 |
+| **total** | 859 | 767 | **−92** | 71.82% | 64.13% | **−7.69** |
+
+**What this licenses, and what it does not.** The direction is reported as measured and not as expected from
+the reading above it: prohibiting the value **lowers** the answered-zero count in **4 of 4** builds, by **92
+rows (−7.69 pp)** in total, and it does **not** remove it. The mechanism statement this supports is:
+**the answered zero is a robust response mode — prohibiting it shrinks the mode but does not clear it, and the
+models do not switch to the abstention outlet.** Two neighbouring readings are **not** supported and are not
+made: it is not the case that the answered zero is **unaffected** by the contract (it falls in every build,
+and most sharply in `ivl358b`), and it is not the case that the answered zero is a **product of the contract**
+(the contract forbids it outright, and it remains at 22.07% to 98.33% across builds). One further change is
+reported as measured: the unparseable count for `lov7b` falls from **133** rows under the base contract to
+**77** under the no-zero instruction, so the inserted sentence also reduces the outputs that cannot be parsed
+at all.
+
+**The boundary of the word "abstention" here, stated because it moves.** Abstention is defined in this section
+as `abstain is True` — the contract's own refusal token, parsed as the count. Under that definition it is zero
+everywhere. Under a **wider** reading — free text that expresses uncertainty — `lov7b` has **23 of 299** rows
+(7.69%) whose free text carries a refusal wording, some of them parsed to
+a number (including `0`) and some unparseable; the other three builds have **0** such rows. The wording is
+matched **literally**, as the two-character Chinese word glossed "cannot / unable", because these outputs are
+in the pool's own prompt language and an English paraphrase of that wording matches nothing; the literal token
+is the one the released recomputation script tests, so the count of 23 is reproducible as printed. The wide reading
+would move `lov7b`'s abstention rate from 0% to about 7.7% and leave the other three at 0%, and both readings
+are given rather than one.
+
+*Reproduction: the four per-build record files, the no-zero contract text, the base roster and the criterion
+table are released under `data/derived/a5_14_nozero_20261012/`; every count and every rate above is recomputed
+from those files alone, with no model call and no GPU.*
+
+### M.60 Five builds, two corpus domains, one contract set
+
+M.54 established the outlet effect on a natural-image pool for three builds. This section extends the same
+two-domain comparison to **five** builds, on the same natural pool and under the same four contracts, and adds
+the checks that the pool and the contract instance are shared.
+
+**The natural pool.** **518 images = 259 true zeros + 259 non-zeros**, exactly balanced (it is not 600). Each of
+the eight natural cells returns **518 of 518** unique `http == 200` images. The rendered column is the
+300-image true-zero pool of M.52.
+
+| family | domain | `no_name0_no_exit` | `no_name0_exit` | `name0_no_exit` | `name0_exit` | denominator |
+|---|---|---:|---:|---:|---:|---:|
+| `ivl358b` | rendered | 249 | 0 | 299 | 28 | 300 |
+| `ivl358b` | natural | 198 | 0 | 244 | 53 | 259 |
+| `lov7b` | rendered | 162 | 3 | 207 | 30 | 300 |
+| `lov7b` | natural | 83 | 6 | 91 | 21 | 259 |
+| `q32fp8` | rendered | 300 | 290 | 300 | 300 | 300 |
+| `q32fp8` | natural | 259 | 109 | 259 | 258 | 259 |
+| `ivl38fp8` | rendered | 299 | 55 | 300 | 296 | 300 |
+| `ivl38fp8` | natural | 250 | 7 | 258 | 235 | 259 |
+| `phi35v` | rendered | 202 | 51 | 226 | 104 | 300 |
+| `phi35v` | natural | 168 | 19 | 205 | 73 | 259 |
+
+**The outlet effect is present in both domains in five of five builds.**
+
+| family | rendered before -> after | rendered change | rendered retained | natural before -> after | natural change | natural retained | suppressed in both |
+|---|---|---:|---:|---|---:|---:|:--:|
+| `ivl358b` | 249 -> 0 | −249 | 0.0% | 198 -> 0 | −198 | 0.0% | yes |
+| `lov7b` | 162 -> 3 | −159 | 1.9% | 83 -> 6 | −77 | 7.2% | yes |
+| `q32fp8` | 300 -> 290 | −10 | 96.7% | 259 -> 109 | −150 | 42.1% | yes |
+| `ivl38fp8` | 299 -> 55 | −244 | 18.4% | 250 -> 7 | −243 | 2.8% | yes |
+| `phi35v` | 202 -> 51 | −151 | 25.2% | 168 -> 19 | −149 | 11.3% | yes |
+
+**What this licenses.** Five of five builds lower the answered-zero count under the outlet in **both** domains,
+so the **direction** is what transfers between domains. The **strength** does not: retention runs from 0.0% to
+96.7% across builds within the rendered domain, and one and the same build moves by a factor of **17.4**
+between the domains on the rate-difference scale (`q32fp8`: −3.3 pp against −57.9 pp; the ratio of the two
+counts, 150 and 10, is 15). The conclusion this licenses is therefore that **inhibition strength varies with
+the model and with the corpus domain** — not that a build, or a scale, is immune, and not that an outlet effect
+measured on a rendered pool transfers to a natural one.
+
+**The contract files are byte-identical across the two domains.**
+
+| condition | natural-domain measured md5 | published rendered-domain md5 | identical |
+|---|---|---|---|
+| `no_name0_no_exit` | `a7f75469c636c3b3e3a3d23e4841f171` | `a7f75469c636c3b3e3a3d23e4841f171` | yes |
+| `no_name0_exit` | `3afc29d16a331d75419653252d5ed830` | `3afc29d16a331d75419653252d5ed830` | yes |
+| `name0_no_exit` | `623dbea85a1e8cbb26f58ff1271c00dc` | `623dbea85a1e8cbb26f58ff1271c00dc` | yes |
+| `name0_exit` | `524bb5645301855a237d3ce70b669b66` | `524bb5645301855a237d3ce70b669b66` | yes |
+
+**The boundary of that md5 statement.** The rendered-domain contract bytes are not carried in this release;
+the rendered-domain digests above come from the published rendered-domain material. What is supported here is
+therefore "**the natural-domain measured contract md5 equals the published rendered-domain md5**, four of
+four" — and **not** "this section compared the two domains byte by byte". A related asymmetry is unavoidable
+and is stated: the natural-domain `target_map` rosters necessarily differ from the rendered ones (different
+images and different target words); what is byte-identical is the **contract text**. The natural-domain rosters
+used here are byte-identical to the rosters the three existing natural-domain builds were served on (four of
+four), so the five builds share one pool and one contract instance. The rendered-domain columns for `ivl358b`,
+`lov7b` and `q32fp8` are recomputed from the released records and agree cell by cell with the earlier
+cross-domain table; the natural-domain cells for `ivl38fp8` and `phi35v` are computed here for the first time
+and have no earlier release to be checked against.
+
+**One build carries rows with two annotations, and both readings are given.** In the natural pool `phi35v` has
+**6** rows that are simultaneously `pred == 0` and `abstain == True` — **2** in `name0_exit` and **4** in
+`no_name0_exit`. Counting them as answered zeros, those two natural cells are **73** and **19** (the
+corresponding rendered cells are 104 and 51); excluding them, the natural cells are **71** and **15**. The table
+above uses the **inclusive** reading; the exclusive reading is given here. Both readings leave the outlet
+effect in the same direction and change no conclusion; the exclusive reading raises `no_name0_exit` retention
+in the natural domain from 11.3% to 8.9%. In the rendered-domain cells of this section, as in M.52, no row
+carries both flags.
+
+*Reproduction: the eight natural-domain per-condition record files, the 518-row pool manifest, the four natural
+contract texts and rosters, and the criterion table are released under
+`data/derived/a5_15_nat2x2_ext_20261012/`; every count and every rate above is recomputed from those files
+alone, with no model call and no GPU.*
 
 ## Appendix Z. Provenance and corrections
 
@@ -6956,3 +7227,26 @@ main-text section each block belongs to.
   bin ($[60,101)$) of the same domain under the same convention; §J.7 now labels both calibers explicitly.
 
 
+
+- **The cell-clustered interval of the hosted arm was computed with an unweighted bread.** Corrected:
+  the CR1 sandwich of §M.11.2.1 was first computed with `(XᵀX)⁻¹` on both sides instead of
+  the logistic **observed information matrix** `H⁻¹ = (Xᵀdiag(p(1−p))X)⁻¹`. The point
+  estimates are identical under either bread, but the unweighted form returns a systematically
+  **too-narrow** standard error, and the narrower readings it produced — pooled common slope
+  **[−0.7296, −0.6386]**, pooled ordinal **[−0.7385, −0.6492]** and gpt-6.1-sol's
+  **[−0.6541, −0.5189]** and **[−0.6666, −0.5342]** — are replaced by the weighted-bread
+  values **[−0.9598, −0.4084]**, **[−0.9663, −0.4213]**, **[−1.0543, −0.1187]** and
+  **[−1.0660, −0.1348]**. With the weighted bread the recomputation **coincides with the intervals
+  §M.11.2 prints**, so the two columns are one estimator and not two calibers: treating the difference as a
+  difference of **calibers** was wrong, and the §M.11.2 printed values were always the correct side and are
+  unchanged. The width ratio quoted for the reference slope is corrected from "roughly four times" to
+  roughly **5.9 times** (the pooled ratio of roughly six times was already accurate). The released driver
+  now asserts the three printed CR1 readings and evaluates the unweighted bread as a negative control, so
+  the regression cannot pass vacuously. **No point estimate, no C4 verdict (still FAIL in all sixteen
+  readings) and no withdrawal recorded in §M.11.1 is affected.**
+- **The cross-domain magnification of the outlet effect on one build.** Corrected: §M.55 and the
+  cross-domain criteria table reported that the effect on the natural pool is roughly **13 times** the
+  effect on the rendered pool for that build. That build's own two rate differences are **−3.3 pp** and
+  **−57.9 pp**, a ratio of **17.4**; the ratio of the two counts (150 and 10) is **15**. The figure
+  printed is now **17.4 times**, the rate-difference scale it was computed from, with the count ratio
+  stated alongside it. No other number changes.

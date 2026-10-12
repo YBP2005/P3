@@ -1,0 +1,15 @@
+# FINGERPRINTS — a5_14_nozero_20261012
+
+Source archive: 444460 bytes, md5 0d89dc743c210e5a9cea1e696c9a3c77
+
+| file | bytes | md5 |
+|---|---:|---|
+| `README.md` | 1816 | `2a6bba960e22901e4f53c188d1f812d9` |
+| `contracts/contract_nozero.txt` | 241 | `a4a64f51d2ecf82f2033a3599701a1ab` |
+| `contracts/target_map_base.csv` | 115997 | `f85ad675f618d4dab7d5b09b89a46478` |
+| `contracts/target_map_nozero.csv` | 153077 | `048414c57eaf803c56d03171b08acdce` |
+| `criteria_20261012.json` | 1358 | `b3dad543f86d35c5e120e3c2c98f6e62` |
+| `work/ivl358b/run.jsonl` | 122808 | `f76d70eaacf80fc0bd1b2916494d6558` |
+| `work/ivl38fp8/run.jsonl` | 133782 | `a6ab4092b693f168771e5f251204897a` |
+| `work/lov7b/run.jsonl` | 144924 | `0bce1082433380b99b372baadc12c785` |
+| `work/q32fp8/run.jsonl` | 124660 | `225a5d12d7e1422183936fb319b02405` |

@@ -60,7 +60,7 @@ weakened for release.
 ## How to run: the package root
 
 **No script in this package hardcodes an author-machine path.** Every script under `code/` that resolves a
-data path at all — **159** of them — imports `code/analysis/_repro_root.py` and resolves its inputs through
+data path at all — **162** of them — imports `code/analysis/_repro_root.py` and resolves its inputs through
 it, so the package can be unpacked into any directory and run from there:
 
 ```bash
@@ -284,16 +284,16 @@ password, a host or a key.
 **Four counts that are easy to confuse**, each with the command that produces it (run from the
 package root). The first two are about *paths*, the last two about the *sanitiser*.
 
-1. **159** scripts resolve their inputs through the shared root: the **146** converted in v0608 plus the
+1. **162** scripts resolve their inputs through the shared root: the **146** converted in v0608 plus the
    scripts added to the released set since. Each imports `code/analysis/_repro_root.py`:
-   `grep -rl "from _repro_root import" code | wc -l` → **159**.
+   `grep -rl "from _repro_root import" code | wc -l` → **162**.
 2. **0** of those scripts carries an author-machine path, and no script's *data* path is absolute:
    `grep -rEl "(^|[^A-Za-z0-9])[A-Za-z]:[\\\\/]" code --include='*.py' --include='*.sh'` → **3** files, and
    neither is a data path: `_repro_root.py` itself (its single env-overridable `PAPERB_SHARED` default) and
    `w0_frame.py`, where the match is the fragment `e:\n` inside a quoted Python-code template
    (`'except Exception as e:\n'`), and `derive_release_numbers.py`, which quotes that same fragment
    in its substitution strings below — none of the three is a path.
-   Widening the same scan to **every** text file in the package gives **27** files, still none of them a
+   Widening the same scan to **every** text file in the package gives **28** files, still none of them a
    script's data path. They are frozen artefacts and run logs whose recorded strings hold the authors'
    prefix in backslash-escaped form (e.g. `A_result.json`, `ea2_z0_result.json`, `fsc_res_result.json`,
    `n1_span_artefact_result.json`, `n2_rule_spread_inventory.json`, the per-image records under
@@ -315,7 +315,7 @@ package root). The first two are about *paths*, the last two about the *sanitise
    passwords. **v0610 changed none of these numbers**: it removed eight residue files instead (see
    *Write-back policy*), which took the package **at that revision** from **3,659** to **3,651** manifested
    files and left both the rewritten set and the substitution count untouched. **At this revision
-   `MANIFEST.csv` registers 5180 files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **4249**
+   `MANIFEST.csv` registers 5241 files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **4305**
    of them — both are re-derived by `code/analysis/derive_release_numbers.py`.
 4. **41** files merely *contain* one of the placeholder strings: `grep -rlE '<REDACTED-|<WORKDIR>|<SHARED-DIR>' . | wc -l`
    → **41** (the sanitiser's own rewritten set is count 3 above; the remainder only quote a placeholder
@@ -368,10 +368,10 @@ sanitiser and the path refactor.
 
 ### What the sanitiser did **not** touch
 
-**Almost nothing under `data/` was altered.** Of the **4249** files under `data/`, **6** are text files
-the sanitiser rewrote (they are the `data/` rows of the table above); every one of the remaining **4243** is
+**Almost nothing under `data/` was altered.** Of the **4305** files under `data/`, **6** are text files
+the sanitiser rewrote (they are the `data/` rows of the table above); every one of the remaining **4299** is
 byte-identical to the corresponding source file. Two independent checks say so: (i) a sanitiser substitution always leaves one
-of the six placeholder patterns above in the file, and a scan of all 4249 released data files finds **5**
+of the six placeholder patterns above in the file, and a scan of all 4305 released data files finds **5**
 carrying one of them — the remaining rewritten data file carries a neutral internal-name placeholder
 instead of a host/path placeholder; (ii) a per-file `path / bytes / md5`
 manifest of `data/` taken before and after the release script ran differs **only in the rows the sanitiser

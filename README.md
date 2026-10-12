@@ -60,7 +60,7 @@ weakened for release.
 ## How to run: the package root
 
 **No script in this package hardcodes an author-machine path.** Every script under `code/` that resolves a
-data path at all — **162** of them — imports `code/analysis/_repro_root.py` and resolves its inputs through
+data path at all — **163** of them — imports `code/analysis/_repro_root.py` and resolves its inputs through
 it, so the package can be unpacked into any directory and run from there:
 
 ```bash
@@ -284,9 +284,9 @@ password, a host or a key.
 **Four counts that are easy to confuse**, each with the command that produces it (run from the
 package root). The first two are about *paths*, the last two about the *sanitiser*.
 
-1. **162** scripts resolve their inputs through the shared root: the **146** converted in v0608 plus the
+1. **163** scripts resolve their inputs through the shared root: the **146** converted in v0608 plus the
    scripts added to the released set since. Each imports `code/analysis/_repro_root.py`:
-   `grep -rl "from _repro_root import" code | wc -l` → **162**.
+   `grep -rl "from _repro_root import" code | wc -l` → **163**.
 2. **0** of those scripts carries an author-machine path, and no script's *data* path is absolute:
    `grep -rEl "(^|[^A-Za-z0-9])[A-Za-z]:[\\\\/]" code --include='*.py' --include='*.sh'` → **3** files, and
    neither is a data path: `_repro_root.py` itself (its single env-overridable `PAPERB_SHARED` default) and
@@ -315,7 +315,7 @@ package root). The first two are about *paths*, the last two about the *sanitise
    passwords. **v0610 changed none of these numbers**: it removed eight residue files instead (see
    *Write-back policy*), which took the package **at that revision** from **3,659** to **3,651** manifested
    files and left both the rewritten set and the substitution count untouched. **At this revision
-   `MANIFEST.csv` registers 5241 files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **4305**
+   `MANIFEST.csv` registers 5242 files** (`wc -l MANIFEST.csv` minus the header) and `data/` holds **4305**
    of them — both are re-derived by `code/analysis/derive_release_numbers.py`.
 4. **41** files merely *contain* one of the placeholder strings: `grep -rlE '<REDACTED-|<WORKDIR>|<SHARED-DIR>' . | wc -l`
    → **41** (the sanitiser's own rewritten set is count 3 above; the remainder only quote a placeholder

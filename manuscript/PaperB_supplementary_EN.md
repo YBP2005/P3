@@ -2135,8 +2135,14 @@ and the gpt-6.1-sol upper bound), so the weighted-bread sandwich is checked agai
 reported; the same assertion covers the two ordinal-coding CR1 readings printed above. It carries a negative
 self-test: an absent input file fails with its own path instead of returning an empty result, a coding switch
 that did **not** move the estimate would be reported as a failure rather than a pass, and the unweighted bread
-is evaluated alongside the weighted one so that the regression assertion cannot pass vacuously. No model call and no GPU are
-involved, so every value above is re-derivable from the released package alone.
+is evaluated alongside the weighted one so that the regression assertion cannot pass vacuously. The
+**layout-clustered bootstrap** reading is recomputed and asserted by a second released script,
+`a54_layout_bootstrap_check.py`, catalogued in the same manifest: it calls the driver's own
+`cluster_bootstrap` on the same released records at the registered resample count and the driver's frozen
+seed, checks the layout-cluster count and the C4 verdict, and fails loudly if the printed interval does not
+come back — with a negative control (a different resample count must give a different interval) so that
+assertion cannot pass vacuously either. No model call and no GPU are involved, so every value above is
+re-derivable from the released package alone.
 
 ### M.11.3 Serviceability, registered deviations, and the abstention channel of the cross-family panel
 
@@ -6766,7 +6772,7 @@ over starts; M.53 supplies the repetition on rendered stimuli for this build, wh
 and the intervals are wide. The two pools have different sizes (**300** and **259** true-zero images), so
 we compare **rates**, not counts. The natural pool's parse failures are concentrated in a different build
 (llava-onevision-7B, M.56) and not in this one, so they do not explain the change of magnitude reported
-here, but we have not repeated this contrast on a third domain and do not claim that **13** is a stable
+here, but we have not repeated this contrast on a third domain and do not claim that **17.4** is a stable
 ratio.
 
 *Reproduction: both halves of the table are computed from released records — the rendered column from

@@ -1,15 +1,14 @@
-# Answered-zero outputs dominate the aggregate under-count on dense scenes for one anchor build and language: signed error direction in object counting with vision-language models
+# Answered-zero outputs dominate the aggregate under-count in dense VLM counting: signed error direction as a measurable dimension
 
 ---
 
 ## Abstract
 
-Symmetric magnitudes look alike: a count of 100 and one of 150. We treat the **signed
-error direction** as a measurable dimension and contribute **two findings plus the apparatus that makes
+Symmetric magnitudes look alike: a count of 100 and one of 150. We contribute **two findings plus the apparatus that makes
 them checkable**: an **operationalisation** of abstention that separates a suppressed abstention
 from a true zero, and the **dual-convention identities** that make under-counts readable. For **one anchor
 build under Chinese base prompts** **answered-zero outputs** account for **82–94%** of the net
-under-count under ground-truth-weighted share (**base arm**); contract interventions change **observable response channels**, not each base response's **latent state**; reading the zero contribution as abstention **requires channel purity and exhaustiveness**, and the **item-count** abstention rate is **53.9–68.2%**. The **answered-zero rate** drops **42.7 pp on the BF16 build under English** (§8.2).
+under-count under ground-truth-weighted share (**base arm**); contract interventions change **observable response channels**, and the **item-count** abstention rate is **53.9–68.2%**. The **answered-zero rate** drops **42.7 pp on the BF16 build under English** (§8.2). Removing the answered zero does not turn an abstaining model into an accurate counter: the zero is a channel, not the error.
 Given an abstention option **1591/1591** calls abstain; forbidding it yields a **per-item median** of **2.463–9.452×** (§5.7, M.1).
 The gate is **availability of an abstention token**, not demand. Abstention is behaviour, not a capability ceiling: gated by legibility, removable by tiling (**56.6% → 0.0%** on the anchor build) or, at a directional cost, by prompt relaxation
 (**−82% → +234%**). Direction span is a property
@@ -17,7 +16,7 @@ of {implementation × training domain × data domain × protocol}, not a paradig
 **2–3.4×** across implementations under a **shared** protocol (DM-Count **20.1–34.3 pp** vs
 P2PNet [1] **10.1 pp**), **3.5×** under a domain swap,
 and a defective reproduction as an **implementation defect** (§6.1, K).
-What replicates under **shared calibration** is the **ordering** of these spans, not their magnitudes, and only under the **level sets and calibers compared** (§7.3).
+What replicates under **shared calibration** is the **ordering** of these spans, not their magnitudes, for one anchor build, one prompt language and the **level sets and calibers compared** (§7.3).
 
 ## 1. Introduction
 
@@ -48,8 +47,7 @@ abstention as **explicit**: classification, question answering, reasoning, regre
 Counting differs: abstention is **implicit** (a literal 0, indistinguishable at the output level from
 an estimate of zero); costs are **asymmetric**; and **no dependable confidence** exists for a rejection
 rule. Abstention must be **operationalised** in the counting domain (§3.6, Proposition 1); our
-contribution is bounded to the **output contract**, the **zero-counted versus answered-only**
-conventions, and **ordering within pre-specified level sets**.
+contribution is the operationalisation and the identities that make the results checkable.
 
 **Four properties of abstention.** **① Measurable, with a lineage-specific channel.** Rather than stipulate that `pred = 0`
 means abstention, we give an **empirical criterion**: a lineage abstaining mainly in language would
@@ -73,9 +71,7 @@ drives abstention to zero but flips $\rho$ from **−82%** to **+234%…+345%**;
 continuously, but its **achievable span is an empirical property of {implementation × training domain ×
 data domain × protocol}, not of a paradigm**. What is established is the **ordering**, preserved at
 **Spearman 0.981–0.999** when every ladder is re-estimated on a common level count with its extreme level
-removed (Appendix F.10): the **ordering** is not a function of the scanning grid, the **magnitudes** are. What is **not**
-established is a partition: the observed separating split is **1.6 pp**, below our own noise floor, so we
-report a **candidate** only, and claim neither two anchor zones nor bimodality
+removed (Appendix F.10): the **ordering** is not a function of the scanning grid, the **magnitudes** are. What remains open is the partition: the observed separating split is **1.6 pp**, below our own noise floor
 (Appendices F.3, M.37, M.17).
 
 **Contributions.** Two empirical findings, plus the apparatus that makes them checkable: the identities of §3.8
@@ -91,18 +87,8 @@ recomputed from the released records or labelled a transcription or author-side 
    M.19), two of the seven having offered only **9** and **156 zeros** to remove (**2** of the latter
    from the dense domains). The **frequency** claim stays bounded by lineage, build and domain (§8.2,
    Appendices M.18–M.19).
-2. **Finding 2 — per-instance legibility gates whether a model answers, and it is a diagnostic, not a
-   repair.** We give the proxy, the effect structure under three controlled manipulations, and what it
-   **cannot** do: it supports selective prediction (the most legible 20% of images reduce MAE by
-   **31–66%**, selector AUC **0.753–0.786**) but **cannot repair direction** ($\rho$ attenuating only from
-   **−85.0%** to **−53.4%**), and because it requires instance-level boxes it is a **diagnostic, not a
-   deployment-time criterion** (§3.3, §7.1).
-3. **The apparatus: a re-checkable measurement discipline.** The dual convention and its divergence
-   condition (Proposition 2), the anomaly-exclusion rule, span variants against the noise floor
-   (**2.15–6.46 pp**), and every split point enumerated, not searched (Appendix F.3). It yields one
-   positive rule where a magnitude law is absent: the span **ordering** is robust, magnitudes are not,
-   and a magnitude is quoted with the grid density and the caliber that produced it
-   (Propositions 3, 5; §7.3). The spectrum is reported as an **ordering, not as a finding**.
+2. **Finding 2 — per-instance legibility gates whether a model answers, and it is a diagnostic, not a repair.** We give the proxy, the effect structure under three controlled manipulations, and what it **cannot** do: it supports selective prediction (the most legible 20% of images reduce MAE by **31–66%**, selector AUC **0.753–0.786**) but **cannot repair direction** ($\rho$ attenuating only from **−85.0%** to **−53.4%**), and because it requires instance-level boxes it is a **diagnostic, not a deployment-time criterion** (§3.3, §7.1).
+3. **The apparatus: a re-checkable measurement discipline.** The dual convention and its divergence condition (Proposition 2), the anomaly-exclusion rule, span variants against the noise floor (**2.15–6.46 pp**), and every split point enumerated, not searched (Appendix F.3). It yields one positive rule where a magnitude law is absent: the span **ordering** is robust when a magnitude is quoted with the grid density and the caliber that produced it (Propositions 3, 5; §7.3).
 
 **Where each result binds.** The abstention results are measured on **seven families across four corpus domains plus a
 nine-configuration panel on FSC-147 [7]**, and tested prospectively on an **independently sampled panel of six
@@ -701,7 +687,7 @@ number is not a comparable quantity unless the weight set is specified. (Appendi
 **What this design can and cannot resolve.** Ten unit values on four sides — six knobs map onto four sides, and Appendix F.2 reconciles the three unit sets — resolve to the design's own noise
 floor, **2.15–6.46 pp**, and the separating split (**1.6 pp**, corrected $p$ **≥0.075**) lies below it, so
 **no gap whatsoever would be certified by this test**; a 5-vs-5 split needs **6.5 pp** for 80% power.
-**We therefore do not claim a separable structure**; what the design supports is the **ordering**
+What the design supports is the **ordering**
 under the **pooled relative deviation** (Appendix F.7, M.37). **The ordering is stable under the two obvious deflations, with intervals.** Re-estimated
 on a **common level count** with each ladder's extreme level removed, it still comes out at Spearman
 **0.999 / 0.981 / 0.991** over 24 (knob × domain) units, and at **0.983 / 0.987 / 0.983** on a **fully
@@ -720,9 +706,9 @@ all-detections, so a magnitude is quoted with its **caliber** (Appendix F.2; M.3
 **No scale-free form of the span — equal-count gridding, endpoint removal, or the three M.37 calibration
 families — makes cross-knob magnitudes invariant, and the ordering also survives normalising each span by
 its knob travel (Appendix F.10; M.37).** **On two counting domains this paper has never used it passes on one and is a knife-edge that fails on the other (M.49).** **Under a common error-and-cost budget the ordering is
-not preserved and half the units admit no admissible pair at all (Appendix M.45).** **What the spectrum supports is an ordering rule, and we state it as one.** **Availability is decidable**:
+not preserved and half the units admit no admissible pair at all (Appendix M.45).** **Availability is decidable**:
 "is `pred/gt ≥ 1` at the loosest admitted level?" predicts reachability with **zero exceptions** across three
-lineages and nine cells. **The ordering is the surviving quantity** within the level sets and calibers measured here: **quote a magnitude only with its grid density and caliber.** **We do not turn this into a deployment rule**: the ordering is descriptive, and our own magnitude candidate (Proposition 3) is a component of the definition and is withdrawn; the ordering itself is measured, not assumed.
+lineages and nine cells. **The ordering is the surviving quantity** within the level sets and calibers measured here: **quote a magnitude only with its grid density and caliber.** The ordering is descriptive, its magnitude candidate (Proposition 3) is a component of the definition and is withdrawn, and the ordering itself is measured, not assumed.
 
 ### 7.4 The high response of the detector threshold is domain-conditional
 
@@ -775,6 +761,12 @@ fixed before the runs (Appendix M.46).
 
 ## 8. Limitations
 
+**The latent state behind an answered zero is not identified from the output.** **Pooled and
+single-build calibers are not interchangeable.** **The frozen direction criterion is not pinned in
+sign.** **Some experiments rest on a single service start or a single arm.** **The rendered domain is
+not a public benchmark.** **Precision of the zero channel is not identifiable without a
+ground-truth-zero domain.** **Every frequency claim stays bounded by the lineage, the build and the domain.**
+
 ### 8.1 Disclosure of measurement fragility
 
 Seven counts of measurement fragility are itemised with item-level impact in **Appendix M.32**: **Two runner defects**
@@ -789,7 +781,6 @@ residue ledger and **a census of anomalous predictions**; **No attention-based c
 **The optimal input fidelity was not located**: whether **increasing** fidelity beyond the native scale becomes harmful was not measured — a non-monotonicity existing work suggests may exist. **The attribution boundary is behavioural, not anthropomorphic.** We read an answered zero as **mode
 collapse** — output degenerating onto the mode or a prior integer — not as a human-like refusal, and claim
 nothing about intent; the operationalisation is stated so that it can be replaced.
-
 **The detector lineage is narrow**, resting on YOLO with RetinaNet and Faster R-CNN as secondary lineages; a
 broader sweep would establish whether §4.1's and §4.5's properties are family or architecture properties. The exemplar condition is measured on **one benchmark, three boxes and
 six families** (§5.14), so it bounds the zero without mapping the few-shot counting family; its **384-px**
@@ -803,7 +794,6 @@ build; three residual limits are in **Appendix M.33**. A **true-zero control** b
 three-way contract returns `no_people` on **47–87%** of easy-stratum items, whereas on dense items the census had
 answered zero the models return `no_people` on **0–1%** and `cannot_judge` on **98–100%** —
 **sensitivity and specificity on stated pools**, **not** the channel's precision. **On these pools answering zero is correct behaviour**, so the control measures sensitivity and says nothing about the mixed corpus (§3.8; Appendices M.21, M.38, M.40).
-
 **The corpus is dominated by one lineage, which bounds every frequency claim.** Most of the ~620k records
 come from the Qwen family, so the abstractions' frequency statements are claims about that family and the
 configurations measured alongside it, not about vision-language models in general. **The contract result is
@@ -823,7 +813,6 @@ carries a **~1.3% item-level stack band** (M.19.16, M.46(c)). **The 8-bit rows w
 
 **Domain composition is not systematic**: the nine datasets span a legibility range, not a stated population, so
 domain-level statements describe these domains, not a distribution.
-
 **The corpus was not pre-registered as a whole.** Only the sub-experiments explicitly marked as pre-registered
 had their criteria written before the data were examined (Appendix G.1, G.2 quote each as frozen); the rest are
 post hoc, including the tiling level, weight set and aggregation convention. **Statistical power for the spectrum is low** (four knob

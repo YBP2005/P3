@@ -1,0 +1,82 @@
+{
+ "directory": "a5_10_zero300_20261012",
+ "source": {
+  "archive": "e4e6_20261012.tgz",
+  "archive_md5": "116af0b850561122fddd561002643eca"
+ },
+ "extraction_note": "Records were taken from the archive named above; only rows with http == 200 were kept, and one row per image per (condition) is present. Fields were preserved verbatim except that the image identifier was reduced to its bare file name and a server-side model path was reduced to the model name.",
+ "file_count": 14,
+ "total_bytes": 1134460,
+ "files": [
+  {
+   "path": "PROTOCOL.md",
+   "bytes": 913,
+   "md5": "55b8bf8bc0c8828eab5a9b575ae59875"
+  },
+  {
+   "path": "README.md",
+   "bytes": 430,
+   "md5": "563a4489a671b1dcc2a8a59726fce975"
+  },
+  {
+   "path": "criteria_tables.md",
+   "bytes": 3744,
+   "md5": "103b84992571f2ee507011adbf888a2d"
+  },
+  {
+   "path": "pool/target_map.csv",
+   "bytes": 217633,
+   "md5": "d05500e014e4ed39c437cba518c814ab"
+  },
+  {
+   "path": "pool/target_map_148.csv",
+   "bytes": 108118,
+   "md5": "a14593fcaa391dfd2ffc84cdd5052ad8"
+  },
+  {
+   "path": "raw/ivl358b.jsonl",
+   "bytes": 124520,
+   "md5": "783a260a3d6af8c27be93750aa5fafb9"
+  },
+  {
+   "path": "raw/ivl38fp8.jsonl",
+   "bytes": 128544,
+   "md5": "8d29993045826f702f1f11d0de248fda"
+  },
+  {
+   "path": "raw/lov7b.jsonl",
+   "bytes": 156269,
+   "md5": "b5566d53f44f5e847ac143590e5c1c4c"
+  },
+  {
+   "path": "raw/pool148_ivl358b.jsonl",
+   "bytes": 61991,
+   "md5": "fff8292d1823159c7c305e28990475a2"
+  },
+  {
+   "path": "raw/pool148_ivl38fp8.jsonl",
+   "bytes": 63970,
+   "md5": "6ffae0ba6cc7fcd0ed8819b553607c51"
+  },
+  {
+   "path": "raw/pool148_lov7b.jsonl",
+   "bytes": 78834,
+   "md5": "9e12ca81c30174f2da6b352379401409"
+  },
+  {
+   "path": "raw/pool148_q32fp8.jsonl",
+   "bytes": 62373,
+   "md5": "906ed8bedfa9b52ae53c42559881ba19"
+  },
+  {
+   "path": "raw/q32fp8.jsonl",
+   "bytes": 125220,
+   "md5": "fd24490908909d5653bf91bc1b4675d1"
+  },
+  {
+   "path": "recount.py",
+   "bytes": 1901,
+   "md5": "e1e02714a2d2db33ca1ad72bf8706157"
+  }
+ ]
+}

@@ -1,0 +1,47 @@
+{
+ "directory": "a5_12_cost_20261012",
+ "source": {
+  "archive": "author-side E1/E5 analysis directory",
+  "archive_md5": null
+ },
+ "extraction_note": "Records were taken from the archive named above; only rows with http == 200 were kept, and one row per image per (condition) is present. Fields were preserved verbatim except that the image identifier was reduced to its bare file name and a server-side model path was reduced to the model name.",
+ "file_count": 7,
+ "total_bytes": 1577522,
+ "files": [
+  {
+   "path": "E5_zero_channel_audit.csv",
+   "bytes": 143834,
+   "md5": "04fb4b5e49105cf9199f6eccb96af7cf"
+  },
+  {
+   "path": "PROTOCOL.md",
+   "bytes": 1406,
+   "md5": "1876e0c86f8510024a0a7ed862977d9b"
+  },
+  {
+   "path": "README.md",
+   "bytes": 531,
+   "md5": "aa55c81c4070d5f47fcd20b1e6a1ba31"
+  },
+  {
+   "path": "analysis_input.csv",
+   "bytes": 1315798,
+   "md5": "4d0e16ca6b3d4c452e1a54a813888fa9"
+  },
+  {
+   "path": "cost_asymmetry.py",
+   "bytes": 96043,
+   "md5": "8e0753e1ee62c8e45f5930f601861e84"
+  },
+  {
+   "path": "criteria_tables.md",
+   "bytes": 7609,
+   "md5": "b5e268f0cd2f99b96c4decf4921b0901"
+  },
+  {
+   "path": "source_provenance.json",
+   "bytes": 12301,
+   "md5": "c290f8d283587b0c5001e6786125e301"
+  }
+ ]
+}

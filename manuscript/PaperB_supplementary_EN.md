@@ -6282,21 +6282,30 @@ builds**, because the served build is the unit the contract cannot equalise.
 | **InternVL3.5-8B** | 249 | **0** | 299 | 28 |
 | **Qwen3-VL-32B-FP8** | 300 | 290 | 300 | 300 |
 | **llava-onevision-7B** | 162 | **3** | 207 | 30 |
-| **Phi-3.5-vision** | 202 | 50 | 226 | 103 |
+| **Phi-3.5-vision** | 202 | 51 | 226 | 104 |
 | **InternVL3.5-38B-FP8** | 299 | 55 | 300 | 296 |
 
+Two rows of the Phi-3.5-vision build satisfy **both** `pred == 0` and `abstain == True`: image
+`t2x2_0433.png` under `no_name0_exit`, and image `t2x2_0125.png` under `name0_exit`. Counting such a
+row as an answered zero gives **51** and **104**; excluding it gives 50 and 103. This section and the
+released records use the **inclusive** reading, so the two entries in the table above are **51** and
+**104**; the alternative is stated here so that a reader who prefers the exclusive reading can
+reconstruct it exactly.
+
 **1. The outlet factor's effect is build-specific.** With zero not named, offering the outlet moves the
-answered-zero count **249 -> 0**, **162 -> 3**, **202 -> 50** and **299 -> 55**. Four of the five builds
-therefore collapse, in the direction M.19 reports: they retain **0.0%**, **1.9%**, **24.8%** and **18.4%**
+answered-zero count **249 -> 0**, **162 -> 3**, **202 -> 51** and **299 -> 55**. Four of the five builds
+therefore collapse, in the direction M.19 reports: they retain **0.0%**, **1.9%**, **25.2%** and **18.4%**
 of their baseline answered zeros. The fifth is nearly immune: the 32B-FP8 build moves **300 -> 290** and
-retains **96.7%**.
+retains **96.7%**. That near-immunity is a property of this pool rather than of the build: M.54 and M.55
+re-serve the same four contract files on a natural-image pool, where the same build's outlet effect is
+an order of magnitude larger.
 
 **2. Naming zero acts in the same direction in 5 of 5 builds, at both outlet levels.** Without the
 outlet, naming zero raises the count **249 -> 299**, **162 -> 207**, **202 -> 226**, **299 -> 300** and
-**300 -> 300**; with the outlet offered it raises it **0 -> 28**, **3 -> 30**, **50 -> 103**, **55 -> 296**
+**300 -> 300**; with the outlet offered it raises it **0 -> 28**, **3 -> 30**, **51 -> 104**, **55 -> 296**
 and **290 -> 300**. The direction is positive in every build at both levels, and on the outlet arms it
 **recovers part of what the outlet removed** — the four collapsing builds move from 0, 3, 50 and 55 back
-to 28, 30, 103 and 296.
+to 28, 30, 104 and 296.
 
 **3. What this means for the mechanism claim.** Because the named-zero factor moves the answered-zero
 count in its own right, and moves it in the same direction in every build here, the
@@ -6318,14 +6327,15 @@ catch. The per-cell numbers are in the release.
 
 **5. Limits.** Each condition is measured in **one service start per build, with no repetition**, so this
 experiment supports statements about the **direction** of each factor and about **between-build
-heterogeneity**; it does not measure start-to-start variability and no such claim is made from it. A
-sixth build (a 4-bit quantised large model) was planned and is reported as **not run**; the family count
-is five rather than being filled with a near neighbour.
+heterogeneity**; it does not measure start-to-start variability and no such claim is made from it. The **five** builds above are the ones this experiment served. A **sixth** build's four conditions were
+served separately, on the same four contract files, and are reported in M.52 together with their own
+released records; they are not pooled with the five here.
 
 *Reproduction: the renderer, the contract builder, the orchestration, the 600-row stimulus manifest with
 its per-image `sha256`, the contract audit and all **12,000** per-call records are released under
-`data/derived/a5_6_2x2_20261011/`; `criteria_tables.py` regenerates every number above from the records
-alone, with no model call and no GPU.*
+`data/derived/a5_6_2x2_20261011/`, together with the four record files of the sixth build reported in
+M.52; `criteria_tables.py` regenerates every number above from the records alone, with no model call
+and no GPU.*
 
 ### M.51 The ordering under a common error and cost budget, re-checked on a new synthetic domain
 
@@ -6424,6 +6434,439 @@ repair's self-test log and a second independent implementation are released unde
 `data/derived/a5_7_budget_20261011/`; `analyze_a57.py --selftest` reproduces the four reference readings
 and needs no data, and `reproduce_a57.py` re-derives every reading above from the records alone, with no
 model call and no GPU.*
+
+### M.52 Six served builds under the same four contracts: the outlet effect, its ordering, and the naming of zero
+
+M.50 crossed the two binary factors on **five** builds. This section reports the same four contracts on a
+**sixth** build served separately, and states the six-build table as the experiment's own result. The
+sixth build is **Pixtral-Large-w4a16**; its four conditions were served with the same four contract files
+as the other five, and its records are released beside theirs. No row here is pooled with another row:
+the served build is the unit the contract cannot equalise.
+
+**Conventions.** Answered zero means `is_zero is True`, which on every row below is identical to
+`pred == 0`. The true-zero roster is the **frozen contract** — `target_map_<cond>.csv`, image by image,
+with `true_zero = 1` — because the per-call record files carry no `true_zero` field. Only rows with
+HTTP **200** enter a numerator or a denominator. Each denominator is **300** true-zero images.
+
+**Answered-zero count on the 300 true-zero images.**
+
+| build | `no_name0_no_exit` | `no_name0_exit` | `name0_no_exit` | `name0_exit` |
+|---|---:|---:|---:|---:|
+| **InternVL3.5-8B** | 249 | **0** | 299 | 28 |
+| **Qwen3-VL-32B-FP8** | 300 | 290 | 300 | 300 |
+| **llava-onevision-7B** | 162 | **3** | 207 | 30 |
+| **Phi-3.5-vision** | 202 | 51 | 226 | 104 |
+| **InternVL3.5-38B-FP8** | 299 | 55 | 300 | 296 |
+| **Pixtral-Large-w4a16** | 178 | **5** | 269 | 140 |
+
+**1. The outlet factor is negative in 6 of 6 builds, and its size is build-specific.** With zero not
+named, offering the outlet moves the answered-zero count as follows.
+
+| build | `no_name0_no_exit` | `no_name0_exit` | change | retained | relative collapse |
+|---|---:|---:|---:|---:|---:|
+| **InternVL3.5-8B** | 249 | 0 | **-249** | 0.0% | 100.0% |
+| **InternVL3.5-38B-FP8** | 299 | 55 | **-244** | 18.4% | 81.6% |
+| **Pixtral-Large-w4a16** | 178 | 5 | **-173** | 2.8% | 97.2% |
+| **llava-onevision-7B** | 162 | 3 | **-159** | 1.9% | 98.1% |
+| **Phi-3.5-vision** | 202 | 51 | **-151** | 25.2% | 74.8% |
+| **Qwen3-VL-32B-FP8** | 300 | 290 | **-10** | 96.7% | 3.3% |
+
+The direction is the same in every build: **6 of 6 are negative**, none is flat and none is positive. The
+size is not: the raw drop runs from **-249** to **-10**, and the ordering by raw drop (the table above)
+is **not** the ordering by relative collapse. Ordered by relative collapse the sequence is
+InternVL3.5-8B **100.0%**, llava-onevision-7B **98.1%**, Pixtral-Large-w4a16 **97.2%**,
+InternVL3.5-38B-FP8 **81.6%**, Phi-3.5-vision **74.8%**, Qwen3-VL-32B-FP8 **3.3%**. We report both
+orderings rather than one, because the two disagree and neither is privileged by the design.
+
+**2. The bracket we use, stated as our own split.** To keep the prose readable we group the six builds by
+relative collapse on a rule we state here rather than leave implicit: **at least 80%** is a strong
+collapse, **70% to 80%** is intermediate, and **below 10%** is effectively no collapse. That gives four
+strong builds (InternVL3.5-8B, InternVL3.5-38B-FP8, Pixtral-Large-w4a16, llava-onevision-7B), one
+intermediate (Phi-3.5-vision) and one that barely moves (Qwen3-VL-32B-FP8). The bracket is a reading aid,
+not a criterion frozen before the runs, and the six individual rows are the measurement.
+
+**3. Naming zero acts in the same direction in 6 of 6 builds on the outlet arms.** Without the outlet,
+naming zero raises the count **249 -> 299**, **162 -> 207**, **202 -> 226**, **299 -> 300**,
+**300 -> 300** and **178 -> 269**, i.e. **five of six positive** with one flat and none negative. With the
+outlet offered it raises the count **0 -> 28**, **3 -> 30**, **51 -> 104**, **55 -> 296**, **290 -> 300**
+and **5 -> 140**, i.e. **six of six positive**, with none flat and none negative. Naming zero therefore
+moves the answered zero on its own, at both outlet levels, and on the outlet arms it recovers part of what
+the outlet removed. The asymmetry between the two levels (5 of 6 against 6 of 6) is itself informative:
+the outlet arm has more room to recover, so the naming factor is easier to see there.
+
+**4. Two rows carry a double annotation, and this is the convention we use.** In the Phi-3.5-vision build,
+**two rows** satisfy **both** `pred == 0` and `abstain == True`: image `t2x2_0433.png` under
+`no_name0_exit`, and image `t2x2_0125.png` under `name0_exit`. Such a row is simultaneously an answered
+zero and a refusal, and a table that counts answered zeros must decide. We count them **as answered
+zeros** (the inclusive reading), because the released records and the released criterion tables use that
+reading; excluding them would give 50 and 103 in place of **51** and 104. We state the alternative here
+so that a reader who prefers the exclusive reading can reconstruct it exactly, and we note that the other
+five builds have no such row under either condition, so no other cell in the table above is affected.
+
+**5. What this changes, and what it does not.** Adding the sixth build **reproduces** the qualitative
+result M.50 reports — the outlet is a strong suppressor in most builds and a weak one in the 32B-FP8
+build — and it shows that the suppression strength is a property of the served build rather than a
+constant. It does **not** show that the outlet is the only route: the naming factor moves the same
+quantity in its own right (item 3 above). It also does **not** show that the 32B-FP8 build's near-immunity
+is a property of the model: M.54 and M.55 re-serve the same four contracts on a natural-image pool, where
+that build's suppression is an order of magnitude larger.
+
+**6. Limits.** Every condition here is measured in **one service start per build, with no repetition**,
+so this experiment supports statements about the **direction** of each factor and about **between-build
+heterogeneity**; it does not measure start-to-start variability, and no such claim is made from it. Each
+denominator is 300 true-zero images, which bounds the resolution of the rates but not the direction
+readings. M.53 supplies the repetition on three of the six builds.
+
+*Reproduction: the four contract files, the stimulus manifest with its per-image `sha256`, the renderer,
+the contract audit and all per-call records for the five builds originally reported are released under
+`data/derived/a5_6_2x2_20261011/`; the sixth build's four record files are released in the same
+directory, and the criterion tables there now cover all six builds. `criteria_tables.py` regenerates every
+count above from the records alone, with no model call and no GPU.*
+
+### M.53 The outlet effect across independent service starts: intervals, and one separation that must not be read as a collapse
+
+M.52 measures each build in a single service start, so its own uncertainty is not observable. This section
+re-serves the four contracts in **three independent service starts** on three of the six builds —
+InternVL3.5-8B, Qwen3-VL-32B-FP8 and llava-onevision-7B — giving **36 cells** of 200 images each, of which
+**100 per cell** are true-zero images from the same frozen contract. Every one of the 36 cells delivered
+200 rows with HTTP 200, no repeated image and no missing `parse_ok` value.
+
+**Interval conventions, stated because the conclusions depend on them.** The denominator is the **100**
+true-zero images, not the 200 images in the cell; the other 100 are non-zero controls and do not enter
+this table. Intervals are given two ways. The **image-level bootstrap** gives one vote per image — the
+three starts are averaged per image first, and images are then resampled — with `n_boot = 2000`, the
+lower bound read at `out[int(0.05*N)]`, the upper bound at `out[int(0.95*N)]`, and seed **20261011**. The
+**Wilson** interval is one-sided with `z = 1.6448536269514722`. The separation criterion is the frozen
+one: the upper bound of `no_name0_exit` must lie **below** the lower bound of `no_name0_no_exit`.
+
+| build | condition | rep1 | rep2 | rep3 | mean | range | mean rate | boot LB95 | boot UB95 | Wilson LB95 | Wilson UB95 |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| InternVL3.5-8B | `no_name0_no_exit` | 77 | 82 | 83 | 80.67 | 6 | 0.8067 | 0.7433 | 0.8633 | 0.7376 | 0.8660 |
+| InternVL3.5-8B | `no_name0_exit` | 0 | 0 | 0 | 0.00 | 0 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0263 |
+| InternVL3.5-8B | `name0_no_exit` | 98 | 99 | 99 | 98.67 | 1 | 0.9867 | 0.9667 | 1.0000 | 0.9564 | 0.9978 |
+| InternVL3.5-8B | `name0_exit` | 5 | 4 | 6 | 5.00 | 2 | 0.0500 | 0.0233 | 0.0800 | 0.0245 | 0.0992 |
+| Qwen3-VL-32B-FP8 | `no_name0_no_exit` | 100 | 100 | 100 | 100.00 | 0 | 1.0000 | 1.0000 | 1.0000 | 0.9737 | 1.0000 |
+| Qwen3-VL-32B-FP8 | `no_name0_exit` | 95 | 96 | 97 | 96.00 | 2 | 0.9600 | 0.9333 | 0.9833 | 0.9138 | 0.9819 |
+| Qwen3-VL-32B-FP8 | `name0_no_exit` | 100 | 100 | 100 | 100.00 | 0 | 1.0000 | 1.0000 | 1.0000 | 0.9737 | 1.0000 |
+| Qwen3-VL-32B-FP8 | `name0_exit` | 100 | 100 | 100 | 100.00 | 0 | 1.0000 | 1.0000 | 1.0000 | 0.9737 | 1.0000 |
+| llava-onevision-7B | `no_name0_no_exit` | 47 | 54 | 52 | 51.00 | 7 | 0.5100 | 0.4367 | 0.5800 | 0.4286 | 0.5909 |
+| llava-onevision-7B | `no_name0_exit` | 1 | 0 | 3 | 1.33 | 3 | 0.0133 | 0.0033 | 0.0267 | 0.0022 | 0.0436 |
+| llava-onevision-7B | `name0_no_exit` | 66 | 63 | 69 | 66.00 | 6 | 0.6600 | 0.5967 | 0.7233 | 0.5788 | 0.7328 |
+| llava-onevision-7B | `name0_exit` | 12 | 11 | 15 | 12.67 | 4 | 0.1267 | 0.0833 | 0.1733 | 0.0843 | 0.1952 |
+
+**1. Two builds separate under both interval methods.** InternVL3.5-8B moves **80.67 -> 0.00** per 100
+true-zero images: the bootstrap upper bound of the outlet arm is **0.0000** and the Wilson upper bound is
+**0.0263**, both below that build's lower bounds of **0.7433** (bootstrap) and **0.7376** (Wilson).
+llava-onevision-7B moves **51.00 -> 1.33**: its outlet upper bounds are **0.0267** and **0.0436**, both
+below its lower bounds of **0.4367** and **0.4286**. For these two builds the separation holds whichever
+interval is used, so the collapse is not an artefact of one interval convention.
+
+**2. The third build separates formally and is not a collapse.** Qwen3-VL-32B-FP8 shows
+`no_name0_no_exit` at **100 of 100 true-zero images in all three starts**, so its rate sits exactly on the
+ceiling of 1.0, its bootstrap lower bound is **exactly 1.0000**, and any outlet upper bound below 1.0
+"separates" from it. Its bootstrap bounds do separate (**0.9833** against **1.0000**) while its Wilson
+bounds do not (**0.9819** against **0.9737**, which cross). Its actual outlet effect is
+**100 -> 96**, i.e. **-4 pp** with **96.0%** retained — the smallest effect of the six builds measured in
+M.52. **We therefore do not cite this separation as collapse evidence**: it is a consequence of the
+baseline sitting at the rate ceiling, not a measurement that the outlet removes answered zeros. The
+frozen criterion as written is satisfied; the reading we attach to it is that it is uninformative for this
+build, and we state that rather than quietly reporting a pass.
+
+**3. What the repetition buys, and what it does not.** It buys a direction result that does not depend on
+one service start: on the two builds that separate, all three starts agree in sign and the intervals are
+disjoint under both conventions. It does not buy resolution: with **100** true-zero images per cell the
+intervals are wide — llava-onevision-7B's own baseline lower bound is only **0.4367** — and the width is a
+property of the cell size, not of the effect. It also does not cover the other three builds
+(Phi-3.5-vision, InternVL3.5-38B-FP8, Pixtral-Large-w4a16), so the cross-build claim in M.52 rests on
+that table, and this section supplies only the independent, sign-level confirmation on three builds.
+Finally, the bootstrap is seeded (**20261011**); a different seed moves the last decimal but does not
+reverse any separation reported here.
+
+*Reproduction: the 36 per-start record files, the four frozen contracts and the criterion table are
+released under `data/derived/a5_9_2x2_rep_20261012/`; the counts, the mean rates and the ranges above are
+recomputed from those files alone, and the interval algorithms are implemented in the released driver,
+with no model call and no GPU.*
+
+### M.54 The same four contracts on a natural-image pool: the only variable is the corpus domain
+
+M.52 and M.53 render their stimuli. A reader is entitled to ask whether the outlet result is a property of
+a rendered distribution. This section re-serves the four contracts on **natural images** — a COCO subset
+drawn under nine natural target words — and compares the two domains side by side.
+
+**The contracts are byte-identical across the two domains.** We verified this rather than assuming it. For
+each of the four conditions the contract file used on the natural pool has the same md5 as the contract
+file used on the rendered pool:
+
+| condition | rendered-pool contract md5 | natural-pool contract md5 | identical |
+|---|---|---|---|
+| `no_name0_no_exit` | `a7f75469c636c3b3e3a3d23e4841f171` | `a7f75469c636c3b3e3a3d23e4841f171` | yes |
+| `no_name0_exit` | `3afc29d16a331d75419653252d5ed830` | `3afc29d16a331d75419653252d5ed830` | yes |
+| `name0_no_exit` | `623dbea85a1e8cbb26f58ff1271c00dc` | `623dbea85a1e8cbb26f58ff1271c00dc` | yes |
+| `name0_exit` | `524bb5645301855a237d3ce70b669b66` | `524bb5645301855a237d3ce70b669b66` | yes |
+
+The fixed and variable sentence files are also identical, and a byte comparison passes on all four
+contracts. The per-image `target_map` files necessarily differ, because the images and the target words
+differ; they are instantiations of the same four contract texts. **The only variable between the two
+columns below is therefore the corpus domain** — rendered versus natural — with the prompt text, the
+contract, the output format and the scoring conventions held fixed.
+
+**The natural pool is 518 images, not 600.** The pool holds **518** images: **259** true-zero and **259**
+non-zero, an exact balance. It is not a truncated 600-image quota; it is the pool that the quota
+constraint admits (nine natural target words, `test_coco` 250 plus `val_coco` 268). The rendered pool has
+300 true-zero images and the natural pool has 259, so the two denominators differ. We therefore report
+**counts and rates** and make the **rate difference in percentage points** the comparison of record,
+giving the count difference only as a secondary, rescaled figure.
+
+| build | condition | rendered: count | rate | natural: count | rate | rate difference (pp) |
+|---|---|---:|---:|---:|---:|---:|
+| InternVL3.5-8B | `no_name0_no_exit` | 249 | 83.0% | 198 | 76.4% | -6.6 |
+| InternVL3.5-8B | `no_name0_exit` | 0 | 0.0% | 0 | 0.0% | +0.0 |
+| InternVL3.5-8B | `name0_no_exit` | 299 | 99.7% | 244 | 94.2% | -5.5 |
+| InternVL3.5-8B | `name0_exit` | 28 | 9.3% | 53 | 20.5% | +11.1 |
+| llava-onevision-7B | `no_name0_no_exit` | 162 | 54.0% | 83 | 32.0% | -22.0 |
+| llava-onevision-7B | `no_name0_exit` | 3 | 1.0% | 6 | 2.3% | +1.3 |
+| llava-onevision-7B | `name0_no_exit` | 207 | 69.0% | 91 | 35.1% | -33.9 |
+| llava-onevision-7B | `name0_exit` | 30 | 10.0% | 21 | 8.1% | -1.9 |
+| Qwen3-VL-32B-FP8 | `no_name0_no_exit` | 300 | 100.0% | 259 | 100.0% | +0.0 |
+| Qwen3-VL-32B-FP8 | `no_name0_exit` | 290 | 96.7% | 109 | 42.1% | -54.6 |
+| Qwen3-VL-32B-FP8 | `name0_no_exit` | 300 | 100.0% | 259 | 100.0% | +0.0 |
+| Qwen3-VL-32B-FP8 | `name0_exit` | 300 | 100.0% | 258 | 99.6% | -0.4 |
+
+**1. The outlet direction is the same in both domains, in 3 of 3 builds.** InternVL3.5-8B moves
+**249 -> 0** on rendered images and **198 -> 0** on natural images; llava-onevision-7B moves **162 -> 3**
+and **83 -> 6**; Qwen3-VL-32B-FP8 moves **300 -> 290** and **259 -> 109**. Every one of the six
+domain-by-build combinations falls, so the **sign** of the outlet effect is not a property of the rendered
+distribution. The **magnitude** is a different matter, and M.55 reports the case where the two domains
+disagree most.
+
+**2. The naming direction is also the same in both domains.** In the rendered domain naming zero raises
+the answered-zero count by **+50**, **+45**, **+0**, **+24**, **+1** and **+91** with no outlet and by
+**+28**, **+27**, **+10**, **+53**, **+241** and **+135** with one; the corresponding natural-domain
+changes are **+46**, **+8**, **+0**, **+53**, **+149** and **+15**. Taking the three builds re-served here
+at both outlet levels, that is **6 of 6** pairs moving in the same direction. Naming zero and offering an
+outlet are therefore separable in both domains, not only in the rendered one.
+
+**3. One natural-domain row carries a double annotation.** In the natural pool the llava-onevision-7B
+`no_name0_exit` cell contains **one** row with both `pred == 0` and `abstain == True`. Counting it as an
+answered zero gives **6**; excluding it gives **5**. We print both readings rather than one, and we use
+the inclusive reading (**6**) in the table above, matching the convention stated in M.52. The other
+eleven cells of this table are identical under the two readings.
+
+**4. The natural pool's lower baseline is not a domain effect alone.** The natural-domain
+llava-onevision-7B column sits far below its rendered counterpart (**32.0%** against **54.0%** on the
+`no_name0_no_exit` cell), and that cell also has **122 of 259** rows (**47.1%**) whose output cannot be
+parsed into a number. Under the double reading of M.56 the strict rate of 32.0% corresponds to **60.6%**
+inside parseable rows. The gap between the two domains is therefore a joint effect of the model and the
+corpus, and it cannot be attributed to the corpus alone; we state it rather than resolve it here.
+
+*Reproduction: the twelve per-condition record files, the 518-row pool manifest, the four contract files
+and the contract md5 table are released under `data/derived/a5_11_nat2x2_20261012/`; every count, rate and
+rate difference above is recomputed from those files alone, with no model call and no GPU.*
+
+### M.55 A negative result that changes the conclusion: the 32B immunity does not survive the domain change
+
+M.52 reports that the **Qwen3-VL-32B-FP8** build is the least responsive to the outlet of the six builds
+served on rendered stimuli: **300 -> 290**, a drop of **10** with **96.7%** retained and a rate difference
+of **-3.3 pp**. Read alone, that row invites the summary that a 32B build is "immune" to the outlet. M.54
+re-serves the same four contracts, with byte-identical contract files, on the natural pool. The same
+build's outlet arm moves **259 -> 109**, a drop of **150** with **42.1%** retained and a rate difference
+of **-57.9 pp**.
+
+**The comparison, stated on the rate scale.**
+
+| domain | true-zero images | `no_name0_no_exit` | `no_name0_exit` | change | retained | rate difference |
+|---|---:|---:|---:|---:|---:|---:|
+| rendered | 300 | 300 | 290 | -10 | 96.7% | -3.3 pp |
+| natural | 259 | 259 | 109 | **-150** | **42.1%** | **-57.9 pp** |
+
+The rate difference grows from **-3.3 pp** to **-57.9 pp**, so the effect on the natural pool is roughly
+**13 times** the effect on the rendered pool for this build. The direction is preserved; the magnitude and
+the immunity are not. This is a **negative result about a previously stated reading**, and we draw the
+consequence rather than preserve the reading.
+
+**The conclusion we now state.** Outlet suppression is **strong in most builds**, and **its strength
+varies with the model and with the corpus domain**. We remove from this paper any statement of the form
+that a particular build or scale is immune to the outlet, and any extrapolation from the rendered pool to
+a natural one. What survives is the sign: offering an outlet lowers the answered-zero count in 6 of 6
+builds on rendered stimuli and in 3 of 3 builds on natural images, and it is the **size** of that lowering
+that must be quoted with the build and the domain that produced it. The near-immunity of the
+Qwen3-VL-32B-FP8 build is a fact about that build **on that pool**, and it is reported as such.
+
+**Why this matters for the mechanism claim.** If the outlet suppressed the answered zero by a mechanism
+intrinsic to scale or to the serving stack, the effect would be expected to survive a change of corpus
+with the contract held fixed. It does not, for the build that was least affected. That is evidence for a
+**build-by-domain interaction** rather than for a build-level property, and it is consistent with the
+view that the answered zero is an output-level channel whose use depends on what the model is looking at
+as well as on what it was asked. The two other builds re-served in M.54 change in the same direction
+between domains, so the interaction is not unique to one build either; it is largest exactly where the
+rendered reading was most confident.
+
+**Limits, stated because this section removes a claim.** Both domains are measured in a **single service
+start per condition**, so the two numbers above are point facts about those two runs and not distributions
+over starts; M.53 supplies the repetition on rendered stimuli for this build, where the effect is small
+and the intervals are wide. The two pools have different sizes (**300** and **259** true-zero images), so
+we compare **rates**, not counts. The natural pool's parse failures are concentrated in a different build
+(llava-onevision-7B, M.56) and not in this one, so they do not explain the change of magnitude reported
+here, but we have not repeated this contrast on a third domain and do not claim that **13** is a stable
+ratio.
+
+*Reproduction: both halves of the table are computed from released records — the rendered column from
+`data/derived/a5_6_2x2_20261011/` and the natural column from
+`data/derived/a5_11_nat2x2_20261012/` — with the contract md5 comparison of M.54 establishing that the
+contract text is held fixed across the two.*
+
+### M.56 The true-zero detection rate on two all-true-zero pools, and why the lower of the two rates is not what it looks like
+
+A model's answered zero on a dense scene is the object of this paper, but a model that answers zero
+everywhere would be trivial. This section measures the other end: how often each build answers zero when
+the target genuinely is absent. Two all-true-zero pools are used, and they are reported **side by side and
+never merged**, because they differ in size and in provenance.
+
+**The two pools.** The **148-image** pool holds 148 images, all true zero, measured in one service start
+on the base arm. The **299-image** pool holds 299 images, all true zero, measured in one service start on
+the base arm; the pool name records a quota of 300 and the realised size is **299**, so no table in this
+section rounds it to 300. The detection rate is the answered-zero count over the true-zero image count.
+Answered zero is `is_zero is True`, measured identical to `pred == 0` on all 1,196 rows of the larger
+comparison below. The upper bound is a **Wilson** one-sided bound with `z = 1.6448536269514722`.
+
+| build | 148-pool answered zero | rate | Wilson UB95 | unparseable | 299-pool answered zero | rate | Wilson UB95 | unparseable |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| InternVL3.5-8B | 110/148 | **74.3%** | 0.7976 | 0 | 205/299 | **68.6%** | 0.7280 | 0 |
+| Qwen3-VL-32B-FP8 | 148/148 | **100.0%** | 1.0000 | 0 | 298/299 | **99.7%** | 0.9993 | 0 |
+| llava-onevision-7B | 40/148 | **27.0%** | 0.3340 | 66 | 77/299 | **25.8%** | 0.3012 | 133 |
+| InternVL3.5-38B-FP8 | 135/148 | **91.2%** | 0.9434 | 0 | 279/299 | **93.3%** | 0.9532 | 1 |
+| **pooled** | 433/592 | **73.1%** | 0.7603 | 66 | **859/1196** | **71.8%** | 0.7391 | 134 |
+
+The pooled 299-pool rate is **859/1196 = 71.8%**; the pooled 148-pool rate is **433/592 = 73.1%**. The two
+pools agree closely for three of the four builds (74.3% against 68.6%, 100.0% against 99.7%, 91.2% against
+93.3%) and disagree in level for llava-onevision-7B (27.0% against 25.8%) while agreeing in rank: that
+build answers zero far less often than the other three on both pools.
+
+**The value for the 148-image pool must not be swapped with the value for the 299-image pool.** The
+correct figure for llava-onevision-7B on the **148-image** pool is **27.0%** (40/148). The figure
+**25.8%** belongs to the **299-image** pool (77/299). The two pools are reported separately here precisely
+because a single pooled number would have hidden the difference.
+
+**The double reading for the lower rate.** The llava-onevision-7B build has **133 rows out of 299** in the
+larger pool whose output cannot be parsed into a number (`parse_ok = False`). That gives two legitimate
+readings of the same cell:
+
+| reading | numerator | denominator | rate | what the denominator is |
+|---|---:|---:|---:|---|
+| strict, whole pool | 77 | 299 | **25.8%** | every true-zero image, including rows that do not parse |
+| inside parseable rows | 77 | 166 | **46.4%** | the 299 images minus the 133 unparseable rows |
+
+The same direction holds on the 148-image pool, and more strongly: **66 of 148** rows are unparseable, so
+the strict reading of **27.0%** corresponds to **40/82 = 48.8%** inside parseable rows. The two readings
+differ by **20.6 pp** on the larger pool and by **21.8 pp** on the smaller one.
+
+**What that means for the reading.** The low strict rate for this build is **not** evidence that the model
+explicitly answered a non-zero number when the target was absent. It is, in the first instance, evidence
+that the model's output failed the contract's format in nearly half of the cells — a counting or
+compliance weakness rather than a positive claim that objects are present. We therefore require the
+unparseable count to be quoted **next to** the rate, and we do not read the strict rate as a measure of
+the model's belief about the target.
+
+**Limits.** Each pool is measured in a single service start, so the rates are point facts about those
+runs; the Wilson bounds account for sampling of images but not for start-to-start variation. The pools
+contain **only** true-zero images, so a rate here is a sensitivity-like quantity on a stated pool and says
+nothing about precision — what fraction of answered zeros occur where a target really is absent. Precision
+would need a mixed pool, and the 299-image pool is not one.
+
+*Reproduction: the 299-image pool's four record files and its roster, together with the 148-image pool's
+four record files and its own roster, are released under `data/derived/a5_10_zero300_20261012/`; every
+count and every rate above, including the two denominators of the double reading, is recomputed from
+those files alone, with no model call and no GPU.*
+
+### M.57 What an answered zero is worth under an asymmetric cost: two exact results and one negative one
+
+The sections above measure how often a zero is answered. This section asks what such an answer is worth
+when the two error directions are priced differently — the setting the introduction motivates — and it
+does so without any model call. All numbers below are computed on released per-item records.
+
+**The cost, stated once.** For an item with true count `gt` and prediction `pred`, and with an
+under-count unit cost `c_u` and an over-count unit cost `c_o` fixed at `c_o = 1`, the cost is
+`C = [ c_u * sum max(gt - pred, 0) + c_o * sum max(pred - gt, 0) ] / sum gt`, and the asymmetry is carried
+by the ratio `r = c_u / c_o` over `r` in `{1, 2, 5, 10}`; `r = 1` is the symmetric baseline. A decision
+unit is a `(domain x family)` pair, and an arm is a candidate action within that unit. The paired reading
+keeps only items that every arm parses successfully.
+
+**1. The main result is an identity, not a fit.** We compare two ways of handling an answered zero. Under
+`P2` the zero is read as an **estimate of zero**. Under `P1` the whole image is **discarded** and handed to
+a human, and the abstention is priced at the under-count side, `c_u * gt` — the upper bound on the loss
+from dropping one image. The two readings are then cost-identical item by item:
+
+* if `pred = 0`, then `P2 = c_u * max(gt - 0, 0) + c_o * max(0 - gt, 0) = r * gt`, and `P1 = c_u * gt = r * gt`;
+* if `pred != 0`, the two billing expressions are literal copies of one another.
+
+Dividing both by the same `sum gt` preserves the equality, so `C(P2) - C(P1)` is **identically zero**.
+This is algebra, not a measurement, and we verified it numerically anyway: across **10 of 10** decision
+units at each of `r` in `{1, 2, 5, 10}` the difference is **0.000000000**, with a maximum absolute
+difference of **0.000e+00**. The wider reading, which includes unpaired items, also gives a maximum
+absolute difference of **0.0000** and **10 of 10** units at zero for every `r`.
+
+**The reading we take from it.** *Treating an answered zero as an estimate of zero is cost-identical to
+discarding the whole image; the answered zero therefore carries no usable count information under
+asymmetric cost.* That is a stronger statement than "some difference is significantly positive": it says
+that the cheapest defensible thing one can do with an answered zero — throw the image away — costs
+exactly as much as the most literal thing one can do with it, treat it as a measurement. A value that
+cannot be distinguished from discarding it is not information about the count.
+
+**The boundary of the identity, stated with it.** The equality holds when the over-count unit cost is
+fixed at one, when the abstention is priced on the under-count side at `c_u * gt`, and when true counts are
+non-negative. It **fails** if the abstention is instead booked as an over-count, `c_o * gt`, where the
+per-item difference becomes `(r - 1) * gt`; and it fails in the other direction if one fixes `c_u = 1` and
+lets `c_o = r` vary, because then both sides of the ratio move together and the conclusion reverses. We
+quote the identity only together with these boundaries.
+
+**2. The secondary reading: booking the abstention as an over-count.** Under that alternative booking the
+difference is positive by construction, and we report it as a comparison quantity rather than as a
+finding. On the ten paired units the difference is positive in **7 of 10** units at `r = 2`, with a median
+of **+0.171694** and a range of `[0.000000, 0.268610]`; the bootstrap interval for the units that move
+excludes zero. At `r = 5` and `r = 10` the sign pattern is the same (**7 of 10**) with medians
+**+0.686775** and **+1.545243**. The three units that do not move are those in which no answered zero
+occurs, so the quantity is undefined rather than zero for them.
+
+**3. The negative result: at the smallest asymmetry the criterion is exactly met and therefore not met.**
+The decision-relevant question is whether the arm that is optimal under the asymmetric cost is different
+from the arm that is optimal under mean absolute error. The frozen criterion asks for a change in at least
+**more than half** of the decision units. On the ten paired units the counts are:
+
+| r | units with a changed best arm | ratio | Wilson 95% | cost-optimal differs from MAE-optimal | median overpayment of the MAE-chosen arm |
+|---|---:|---:|---|---:|---:|
+| 1 | **0/10** | 0.0000 | [0.0000, 0.2775] | 0/10 | 0.00% |
+| 2 | **5/10** | **0.5000** | [0.2366, 0.7634] | 5/10 | 34.25% |
+| 5 | **8/10** | **0.8000** | [0.4902, 0.9433] | 8/10 | **23.53%** |
+| 10 | **8/10** | **0.8000** | [0.4902, 0.9433] | 8/10 | **62.01%** |
+
+At `r = 2` the count is **5 of 10 = 0.5000**, which sits exactly on the threshold and therefore **does
+not clear it**. We report that as a **negative result**: the smallest asymmetry tested is not enough to
+change the best arm in most units, and a criterion requiring more than half is missed by exactly the
+margin that a strict reading of "more than half" implies. At `r = 5` and `r = 10` the count is **8 of 10 =
+0.8000** with a Wilson interval of `[0.4902, 0.9433]`, so the criterion is met at both, and the same
+counts hold for the difference between the cost-optimal and the error-optimal arm. Choosing the arm by
+mean absolute error and then paying the asymmetric cost overpays at the median by **+23.5%** at `r = 5`
+and by **+62.0%** at `r = 10`, which is the practical size of the mistake the criterion is guarding
+against.
+
+**4. The base of the answered-zero channel is thin, and we say so.** In the local-arm sources that carry
+an explicit abstention flag, **every** row with `pred = 0` also carries the flag set, so the number of
+records in which a genuinely answered zero was used as an estimate of zero is **zero** there. The only
+source in which zero-valued rows appear without the flag is a family whose flag is not set for numeric
+output, which cannot distinguish "the model estimated zero" from "the refusal was not annotated"; we use
+it as supporting material only. The identity in item 1 does not depend on that base, because it is
+algebra; the empirical claim that such rows occur in practice does.
+
+**Limits.** The decision units number **ten** (and **twenty** when a wider labelling is admitted), so the
+ratios above have wide intervals and the `r = 2` result is a threshold miss rather than a demonstration of
+no effect. Both the asymmetric-cost experiment and the identity are computed on records produced under
+contracts measured elsewhere in this paper, so they inherit those contracts' scope; no arm here is a new
+model call, and no serving stack is involved.
+
+*Reproduction: the driver, the per-item analysis input, the answered-zero channel audit and the criterion
+table are released under `data/derived/a5_12_cost_20261012/`; the driver recomputes every ratio, every
+median and both directions of the identity from the released input alone, in pure CPU, with no model call
+and no GPU.*
 
 ## Appendix Z. Provenance and corrections
 

@@ -1,0 +1,10 @@
+★ A5-6 两个因子对应的**可变句**（逐字；除此之外四条件无任何差异）
+
+Factor A 是否点名 0：
+  no_name0 = "" (空串)   ← 空串：完全不提 0
+  name0    = 若图中没有该目标，答案就是 0。
+Factor B 是否给弃答出口：
+  no_exit  = 以JSON格式输出：{"count": 数量}，只输出JSON。
+  exit     = 若无法逐个确证，请回答 abstain 或 cannot_judge，不要猜测。以JSON格式输出：{"count": 数量} 或 {"count": "abstain"}，只输出JSON。
+
+插入位置：V_A 紧接 F2 之后（"…不要重复，"+V_A+","），V_B 占据输出格式位（含"只输出JSON。"）。

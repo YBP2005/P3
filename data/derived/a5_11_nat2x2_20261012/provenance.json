@@ -1,0 +1,152 @@
+{
+ "directory": "a5_11_nat2x2_20261012",
+ "source": {
+  "archive": "e4e6_20261012.tgz",
+  "archive_md5": "116af0b850561122fddd561002643eca"
+ },
+ "extraction_note": "Records were taken from the archive named above; only rows with http == 200 were kept, and one row per image per (condition) is present. Fields were preserved verbatim except that the image identifier was reduced to its bare file name and a server-side model path was reduced to the model name.",
+ "file_count": 28,
+ "total_bytes": 5158037,
+ "files": [
+  {
+   "path": "PROTOCOL.md",
+   "bytes": 1328,
+   "md5": "4a20c90eca843f4a3c9934aa9ea11d74"
+  },
+  {
+   "path": "README.md",
+   "bytes": 624,
+   "md5": "094149d8e601c6f1fce5690d9c9c6e9e"
+  },
+  {
+   "path": "contracts/FIXED_SENTENCES.txt",
+   "bytes": 823,
+   "md5": "a5b47c3c9ca11342bcc004bfc615291b"
+  },
+  {
+   "path": "contracts/VARIABLE_SENTENCES.txt",
+   "bytes": 644,
+   "md5": "1acb2fb2631c14c2ddd41056128abef6"
+  },
+  {
+   "path": "contracts/contract_name0_exit.txt",
+   "bytes": 324,
+   "md5": "524bb5645301855a237d3ce70b669b66"
+  },
+  {
+   "path": "contracts/contract_name0_no_exit.txt",
+   "bytes": 223,
+   "md5": "623dbea85a1e8cbb26f58ff1271c00dc"
+  },
+  {
+   "path": "contracts/contract_no_name0_exit.txt",
+   "bytes": 280,
+   "md5": "3afc29d16a331d75419653252d5ed830"
+  },
+  {
+   "path": "contracts/contract_no_name0_no_exit.txt",
+   "bytes": 179,
+   "md5": "a7f75469c636c3b3e3a3d23e4841f171"
+  },
+  {
+   "path": "contracts/target_map.csv",
+   "bytes": 1055290,
+   "md5": "4835f2662d50c1ff65a3d7d621dc5e8a"
+  },
+  {
+   "path": "contracts/target_map_name0_exit.csv",
+   "bytes": 350933,
+   "md5": "55e76b1ae12437ac7565eb38605a8d66"
+  },
+  {
+   "path": "contracts/target_map_name0_no_exit.csv",
+   "bytes": 242159,
+   "md5": "cbb68cf8f32f194092d76724b81d1176"
+  },
+  {
+   "path": "contracts/target_map_no_name0_exit.csv",
+   "bytes": 305355,
+   "md5": "b87f776ab87792a4dbfd43f2874aace9"
+  },
+  {
+   "path": "contracts/target_map_no_name0_no_exit.csv",
+   "bytes": 196581,
+   "md5": "cccc14f692286e2ddf1c3de88ae4a758"
+  },
+  {
+   "path": "criteria_tables.md",
+   "bytes": 6880,
+   "md5": "15ed135aa20f6b48bad9de0a5e63e123"
+  },
+  {
+   "path": "pool/manifest.csv",
+   "bytes": 73259,
+   "md5": "29b41c6736bf534ee6cc9f8a9b0e22ac"
+  },
+  {
+   "path": "raw/ivl358b/name0_exit.jsonl",
+   "bytes": 231987,
+   "md5": "8eac6c351fe26c507bcff6e5a06dff64"
+  },
+  {
+   "path": "raw/ivl358b/name0_no_exit.jsonl",
+   "bytes": 232717,
+   "md5": "310508ea4861452d1f720ac1c0ec383b"
+  },
+  {
+   "path": "raw/ivl358b/no_name0_exit.jsonl",
+   "bytes": 236157,
+   "md5": "f502ac07fc292e7879fb0109d90633db"
+  },
+  {
+   "path": "raw/ivl358b/no_name0_no_exit.jsonl",
+   "bytes": 237824,
+   "md5": "086df6c627cd6580d8940e945d3032e5"
+  },
+  {
+   "path": "raw/lov7b/name0_exit.jsonl",
+   "bytes": 239271,
+   "md5": "253d6a43f8f60284907b982505149d97"
+  },
+  {
+   "path": "raw/lov7b/name0_no_exit.jsonl",
+   "bytes": 261047,
+   "md5": "799c2f5e13c0490ec29ba8a8ade65656"
+  },
+  {
+   "path": "raw/lov7b/no_name0_exit.jsonl",
+   "bytes": 250449,
+   "md5": "1a02e169e773ed8aeb612decca79bfa1"
+  },
+  {
+   "path": "raw/lov7b/no_name0_no_exit.jsonl",
+   "bytes": 281626,
+   "md5": "b5cd1959d3a28f63928f4e4829ac1430"
+  },
+  {
+   "path": "raw/q32fp8/name0_exit.jsonl",
+   "bytes": 234324,
+   "md5": "129de4fc6f003d6f83a9ec0730c08235"
+  },
+  {
+   "path": "raw/q32fp8/name0_no_exit.jsonl",
+   "bytes": 236566,
+   "md5": "cafa06a1c313b98656dff6fe1f261c33"
+  },
+  {
+   "path": "raw/q32fp8/no_name0_exit.jsonl",
+   "bytes": 239714,
+   "md5": "779f1e9f6c31c69abf29b5d61014ee59"
+  },
+  {
+   "path": "raw/q32fp8/no_name0_no_exit.jsonl",
+   "bytes": 239757,
+   "md5": "ed19ddb21f39cb6644805986be628bd3"
+  },
+  {
+   "path": "recount.py",
+   "bytes": 1716,
+   "md5": "be86d6ac0795757a03d3d709c9a4f6d8"
+  }
+ ]
+}

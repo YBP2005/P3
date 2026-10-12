@@ -3,7 +3,9 @@
 Every number below is recomputed from `raw/*.jsonl` alone; no model call and no GPU are needed.
 Pool sizes are **300** true-zero images (`gt = 0`) and **300** non-zero controls (`gt = 48`) per
 cell; **5** weight builds x **4** conditions x **600** images = **12,000** cells, all served with
-HTTP **200**, with **no** repeated key and **no** malformed JSON.
+HTTP **200**, with **no** repeated key and **no** malformed JSON. A **sixth** build was served
+separately, on the same four contract files, and its four record files are released in `raw/`
+beside the others; its counts are in section 8 below and are **never** pooled with the five.
 
 The four conditions are the cross of two two-level factors and nothing else:
 
@@ -125,3 +127,27 @@ is `manifest.csv` (600 rows, each with its `sha256`); `render_2x2.py` rebuilds t
 frozen seed and `make_contracts_2x2.py` rebuilds the four contracts while asserting the fixed-part
 equality above. `run_2x2.sh` is the orchestration that produced the raw records, and
 `contracts_audit.md` is its own contract audit.
+
+## 8 The sixth build, served separately
+
+The five builds in sections 1-5 are the ones the original 2x2 design served. A **sixth** build,
+**Pixtral-Large-w4a16**, was served separately on the **same four contract files** (the byte-identity of
+the contract text is checked in the sibling directory `a5_11_nat2x2_20261012`). Its four record files are
+`raw/pixtral__<condition>.jsonl`; each holds **600** unique images with HTTP **200**, no repeated key and
+no malformed line. Its counted rows are **never** pooled with the five builds above.
+
+| build | `no_name0_no_exit` | `no_name0_exit` | `name0_no_exit` | `name0_exit` |
+|---|---:|---:|---:|---:|
+| **Pixtral-Large-w4a16** | 178 | **5** | 269 | 140 |
+
+Each entry is a count out of **300** true-zero images. The outlet effect on this build is
+**178 -> 5**, a change of **-173** with **2.8%** of the baseline retained; the naming effect is
+**178 -> 269** without the outlet and **5 -> 140** with it.
+
+**Conventions, stated for all six builds.** Answered zero is `is_zero is True`, which on every row here
+is identical to `pred == 0`. The true-zero roster is the **frozen contract** `target_map_<condition>.csv`,
+read image by image for `true_zero == 1`, because the record files carry no `true_zero` field. Only rows
+with HTTP **200** enter a numerator or a denominator. Two rows of the Phi-3.5-vision build satisfy **both**
+`pred == 0` and `abstain == True` (image `t2x2_0433.png` under `no_name0_exit`, image `t2x2_0125.png`
+under `name0_exit`); counting them as answered zeros gives **51** and **104**, excluding them gives 50 and
+103, and the released table and records use the **inclusive** reading.

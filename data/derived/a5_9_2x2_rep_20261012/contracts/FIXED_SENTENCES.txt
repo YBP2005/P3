@@ -1,0 +1,10 @@
+★ A5-6 四条件**共同**的固定句（逐字，四条件中出现次数均=1；由 make_contracts_2x2.py 断言）
+来源：/root/incoming/x01_corpus/contracts/base.txt（md5=a7f75469c636c3b3e3a3d23e4841f171，strip 后 72 字符）
+
+F1 数数要求句：请数出图片中的<target_word>的数量（画面中每一个属于该类的个体）
+F2 不漏不重句：不要遗漏，不要重复
+F3 只输出JSON句：只输出JSON。
+
+可变句只有 2 句：
+  V_A 点名 0 句 = {'no_name0': '', 'name0': '若图中没有该目标，答案就是 0。'}
+  V_B 出口句   = {'no_exit': '以JSON格式输出：{"count": 数量}，只输出JSON。', 'exit': '若无法逐个确证，请回答 abstain 或 cannot_judge，不要猜测。以JSON格式输出：{"count": 数量} 或 {"count": "abstain"}，只输出JSON。'}

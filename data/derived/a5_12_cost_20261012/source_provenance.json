@@ -1,0 +1,450 @@
+[
+ {
+  "source": "b2__out_ivl/E1.csv",
+  "rows_file": 2328,
+  "rows_used": 2126,
+  "labels": "explicit columns (domain, arm, model)",
+  "family": "model column + tree"
+ },
+ {
+  "source": "b2__out_q32/E1.csv",
+  "rows_file": 2328,
+  "rows_used": 2328,
+  "labels": "explicit columns (domain, arm, model)",
+  "family": "model column + tree"
+ },
+ {
+  "source": "b2__out_8b_ctile/vlm_st_a_base_whole.csv",
+  "rows_file": 182,
+  "rows_used": 182,
+  "labels": "filename tokens",
+  "family": "internvl25-8b-awq__ctile"
+ },
+ {
+  "source": "b2__out_8b_ctile/vlm_ucf_base_whole.csv",
+  "rows_file": 668,
+  "rows_used": 334,
+  "labels": "filename tokens",
+  "family": "internvl25-8b-awq__ctile"
+ },
+ {
+  "source": "b2__out_32b_ctile/vlm_st_a_base_whole.csv",
+  "rows_file": 182,
+  "rows_used": 182,
+  "labels": "filename tokens",
+  "family": "qwen3-vl-32b-awq__ctile"
+ },
+ {
+  "source": "b2__out_32b_ctile/vlm_st_a_choice_whole.csv",
+  "rows_file": 182,
+  "rows_used": 182,
+  "labels": "filename tokens",
+  "family": "qwen3-vl-32b-awq__ctile"
+ },
+ {
+  "source": "b2__out_32b_ctile/vlm_st_a_forbid0_whole.csv",
+  "rows_file": 182,
+  "rows_used": 182,
+  "labels": "filename tokens",
+  "family": "qwen3-vl-32b-awq__ctile"
+ },
+ {
+  "source": "b2__out_32b_ctile/vlm_st_a_range_whole.csv",
+  "rows_file": 182,
+  "rows_used": 182,
+  "labels": "filename tokens",
+  "family": "qwen3-vl-32b-awq__ctile"
+ },
+ {
+  "source": "b2__out_32b_ctile/vlm_ucf_base_whole.csv",
+  "rows_file": 334,
+  "rows_used": 334,
+  "labels": "filename tokens",
+  "family": "qwen3-vl-32b-awq__ctile"
+ },
+ {
+  "source": "b2__out_32b_ctile/vlm_ucf_choice_whole.csv",
+  "rows_file": 334,
+  "rows_used": 334,
+  "labels": "filename tokens",
+  "family": "qwen3-vl-32b-awq__ctile"
+ },
+ {
+  "source": "b2__out_32b_ctile/vlm_ucf_forbid0_whole.csv",
+  "rows_file": 334,
+  "rows_used": 334,
+  "labels": "filename tokens",
+  "family": "qwen3-vl-32b-awq__ctile"
+ },
+ {
+  "source": "b2__out_32b_ctile/vlm_ucf_range_whole.csv",
+  "rows_file": 334,
+  "rows_used": 334,
+  "labels": "filename tokens",
+  "family": "qwen3-vl-32b-awq__ctile"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-235b-a22b-instruct_st_a_base.csv",
+  "rows_file": 240,
+  "rows_used": 237,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-235b-a22b-instruct"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-235b-a22b-instruct_st_a_bestA.csv",
+  "rows_file": 40,
+  "rows_used": 39,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-235b-a22b-instruct"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-235b-a22b-instruct_st_a_bestB.csv",
+  "rows_file": 40,
+  "rows_used": 40,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-235b-a22b-instruct"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-235b-a22b-instruct_st_a_bestC.csv",
+  "rows_file": 40,
+  "rows_used": 39,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-235b-a22b-instruct"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-235b-a22b-instruct_st_a_channel.csv",
+  "rows_file": 40,
+  "rows_used": 0,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-235b-a22b-instruct"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-235b-a22b-instruct_st_a_permit.csv",
+  "rows_file": 240,
+  "rows_used": 0,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-235b-a22b-instruct"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-235b-a22b-instruct_ucf_base.csv",
+  "rows_file": 240,
+  "rows_used": 238,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-235b-a22b-instruct"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-235b-a22b-instruct_ucf_bestA.csv",
+  "rows_file": 40,
+  "rows_used": 39,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-235b-a22b-instruct"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-235b-a22b-instruct_ucf_bestB.csv",
+  "rows_file": 40,
+  "rows_used": 39,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-235b-a22b-instruct"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-235b-a22b-instruct_ucf_bestC.csv",
+  "rows_file": 40,
+  "rows_used": 39,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-235b-a22b-instruct"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-235b-a22b-instruct_ucf_channel.csv",
+  "rows_file": 40,
+  "rows_used": 0,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-235b-a22b-instruct"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-235b-a22b-instruct_ucf_permit.csv",
+  "rows_file": 240,
+  "rows_used": 0,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-235b-a22b-instruct"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-32b-instruct_st_a_base.csv",
+  "rows_file": 240,
+  "rows_used": 240,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-32b-instruct"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-32b-instruct_st_a_bestA.csv",
+  "rows_file": 40,
+  "rows_used": 40,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-32b-instruct"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-32b-instruct_st_a_bestB.csv",
+  "rows_file": 40,
+  "rows_used": 40,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-32b-instruct"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-32b-instruct_st_a_bestC.csv",
+  "rows_file": 40,
+  "rows_used": 40,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-32b-instruct"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-32b-instruct_st_a_channel.csv",
+  "rows_file": 40,
+  "rows_used": 0,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-32b-instruct"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-32b-instruct_st_a_permit.csv",
+  "rows_file": 240,
+  "rows_used": 0,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-32b-instruct"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-32b-instruct_ucf_base.csv",
+  "rows_file": 240,
+  "rows_used": 240,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-32b-instruct"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-32b-instruct_ucf_bestA.csv",
+  "rows_file": 40,
+  "rows_used": 40,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-32b-instruct"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-32b-instruct_ucf_bestB.csv",
+  "rows_file": 40,
+  "rows_used": 40,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-32b-instruct"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-32b-instruct_ucf_bestC.csv",
+  "rows_file": 40,
+  "rows_used": 40,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-32b-instruct"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-32b-instruct_ucf_channel.csv",
+  "rows_file": 40,
+  "rows_used": 0,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-32b-instruct"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-32b-instruct_ucf_permit.csv",
+  "rows_file": 240,
+  "rows_used": 0,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-32b-instruct"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-8b-instruct_st_a_base.csv",
+  "rows_file": 40,
+  "rows_used": 40,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-8b-instruct"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-8b-instruct_st_a_bestA.csv",
+  "rows_file": 40,
+  "rows_used": 40,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-8b-instruct"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-8b-instruct_st_a_channel.csv",
+  "rows_file": 40,
+  "rows_used": 0,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-8b-instruct"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-8b-instruct_st_a_permit.csv",
+  "rows_file": 40,
+  "rows_used": 0,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-8b-instruct"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-8b-instruct_ucf_base.csv",
+  "rows_file": 40,
+  "rows_used": 40,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-8b-instruct"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-8b-instruct_ucf_bestA.csv",
+  "rows_file": 40,
+  "rows_used": 40,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-8b-instruct"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-8b-instruct_ucf_channel.csv",
+  "rows_file": 40,
+  "rows_used": 0,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-8b-instruct"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-8b-instruct_ucf_permit.csv",
+  "rows_file": 40,
+  "rows_used": 0,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-8b-instruct"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-flash_st_a_base.csv",
+  "rows_file": 40,
+  "rows_used": 40,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-flash"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-flash_st_a_bestA.csv",
+  "rows_file": 40,
+  "rows_used": 40,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-flash"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-flash_st_a_channel.csv",
+  "rows_file": 40,
+  "rows_used": 0,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-flash"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-flash_st_a_permit.csv",
+  "rows_file": 40,
+  "rows_used": 0,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-flash"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-flash_ucf_base.csv",
+  "rows_file": 40,
+  "rows_used": 40,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-flash"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-flash_ucf_bestA.csv",
+  "rows_file": 40,
+  "rows_used": 40,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-flash"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-flash_ucf_channel.csv",
+  "rows_file": 40,
+  "rows_used": 0,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-flash"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-flash_ucf_permit.csv",
+  "rows_file": 40,
+  "rows_used": 0,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-flash"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-plus_st_a_base.csv",
+  "rows_file": 40,
+  "rows_used": 40,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-plus"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-plus_st_a_bestA.csv",
+  "rows_file": 40,
+  "rows_used": 40,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-plus"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-plus_st_a_channel.csv",
+  "rows_file": 40,
+  "rows_used": 0,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-plus"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-plus_st_a_permit.csv",
+  "rows_file": 40,
+  "rows_used": 0,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-plus"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-plus_ucf_base.csv",
+  "rows_file": 40,
+  "rows_used": 40,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-plus"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-plus_ucf_bestA.csv",
+  "rows_file": 40,
+  "rows_used": 40,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-plus"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-plus_ucf_channel.csv",
+  "rows_file": 40,
+  "rows_used": 0,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-plus"
+ },
+ {
+  "source": "e1_results/e1_qwen3-vl-plus_ucf_permit.csv",
+  "rows_file": 40,
+  "rows_used": 0,
+  "labels": "filename tokens",
+  "family": "e1_results__qwen3-vl-plus"
+ },
+ {
+  "source": "g3_res/g3_InternVL3_5-8B.csv",
+  "rows_file": 1800,
+  "rows_used": 1166,
+  "labels": "explicit columns (family, domain, arm)",
+  "family": "g3_res__InternVL3_5-8B"
+ },
+ {
+  "source": "g3_res/g3_Qwen2.5-VL-3B-Instruct.csv",
+  "rows_file": 1800,
+  "rows_used": 842,
+  "labels": "explicit columns (family, domain, arm)",
+  "family": "g3_res__Qwen2.5-VL-3B-Instruct"
+ },
+ {
+  "source": "g3_res/g3_Qwen3-VL-32B-Instruct.csv",
+  "rows_file": 1800,
+  "rows_used": 1072,
+  "labels": "explicit columns (family, domain, arm)",
+  "family": "g3_res__Qwen3-VL-32B-Instruct"
+ },
+ {
+  "source": "g3_res/g3_Qwen3-VL-4B-Instruct.csv",
+  "rows_file": 1800,
+  "rows_used": 1111,
+  "labels": "explicit columns (family, domain, arm)",
+  "family": "g3_res__Qwen3-VL-4B-Instruct"
+ }
+]
